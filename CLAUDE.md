@@ -13,7 +13,7 @@ Przy konflikcie: `CLAUDE.md` > plan pod-etapu > `brief-claude-code.md` > `brief-
 ## Stack i komendy
 
 - Next.js (App Router), TypeScript strict, React Server Components domyślnie; Client Components tylko tam, gdzie jest interakcja (menu, lightbox, akordeon, filtry).
-- Stylowanie: Tailwind. Tokeny z `design/projekt/README` jako zmienne w `globals.css` (`@theme` / CSS variables), używane przez klasy Tailwind. Bez wartości arbitralnych (`text-[13px]`, `bg-[#…]`) – jeśli brakuje tokenu, zgłoś.
+- Stylowanie: Tailwind. Tokeny z `design/README` jako zmienne w `globals.css` (`@theme` / CSS variables), używane przez klasy Tailwind. Bez wartości arbitralnych (`text-[13px]`, `bg-[#…]`) – jeśli brakuje tokenu, zgłoś.
 - Menedżer pakietów: npm. Node: wersja 22.20.0
 - Komendy: `npm run dev`, `npm run build`, `npm run lint`. Skrypty w `scripts/` uruchamiane przez `tsx`.
 - Nie instaluj nowych zależności bez pytania – zaproponuj w meldunku z uzasadnieniem.
@@ -27,6 +27,26 @@ Przy konflikcie: `CLAUDE.md` > plan pod-etapu > `brief-claude-code.md` > `brief-
 - Dostępność: każdy interaktywny element ma widoczny fokus (obrys 2px `#e8c765`, odstęp 2px); `alt` obowiązkowy; respektuj `prefers-reduced-motion`.
 - Tokeny designu z `design/README`; nie zmieniać bez wyraźnej prośby. Zakazane w produkcji: `#8d7d69`, rozmiar 13px, zaokrąglenia i cienie poza `Lightbox`, IBM Plex Mono.
 - Komentarze w kodzie, nazwy zmiennych, komunikaty commitów i PR: po angielsku. Treść widoczna dla użytkownika: po polsku, przez `pl.ts` lub `content/`.
+
+### Język w kodzie vs. polski w produkcie (K-11)
+
+| Warstwa | Język | Przykład |
+|---|---|---|
+| Pliki, komponenty, funkcje, zmienne, typy | angielski | `WorkshopsPage`, `workshopsLink`, `SectionKey` |
+| Komentarze, commity, PR | angielski | — |
+| Stringi UI | polski w `src/i18n/pl.ts` | `pl.header.contactCta` |
+| Etykiety nawigacji | polski w `src/navigation.ts` | `label: "Wykłady"` — dane UI, nie identyfikatory |
+| Segmenty tras w `src/app/` | polski (= publiczny URL) | `warsztaty/page.tsx` → `/warsztaty` |
+| Query stringi w URL | polski | `?kategoria=wystawa` |
+| Wartości enumów w `src/content/types.ts` | polski (zamrożone, brief §4) | `kind: "kurs"`, `category: "wystawa"` |
+| Treść redakcyjna | polski w `content/` | `settings.json`, MDX |
+
+**Zasady:**
+- Foldery w `src/app/` są po polsku, bo w App Routerze nazwa folderu = segment URL (brief §3). To nie jest wyjątek od K-11 — to powierzchnia publiczna, nie identyfikator kodu.
+- `SectionKey` (`"warsztaty" | "wyklady" | …`) celowo powiela slugi tras — spójność z routingiem.
+- Prop `active` w `Header`/`SectionNav` przyjmuje **label z `navigation.ts`** (polski tekst UI), nie własny klucz — na v1 PL-only wystarczy; przy i18n zamienić na stabilny klucz sekcji.
+- Nazwy domyślnych exportów w `page.tsx`: angielski (`WorkshopsPage`, nie `WarsztatyPage`).
+- Nie duplikuj etykiet nawigacji na sztywno w `page.tsx` — czytaj z `mainNav` / `sectionNav` (np. `sectionNav.wydarzenia[0].label`).
 
 ## Treść
 

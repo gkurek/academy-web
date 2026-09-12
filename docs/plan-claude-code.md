@@ -2,7 +2,7 @@
 
 > **Wersja:** 0.2 · **Data:** 2026-09-11
 > **Status:** żywy dokument. Jedyne miejsce, w którym śledzony jest postęp fazy implementacji. Aktualizowany po każdym checkpoincie.
-> **Dokumenty powiązane:** `brief-claude-code.md` (wymagania techniczne, model treści, fakty stałe), `instrukcja-pracy.md` (kontekst całego procesu; §2 tej instrukcji zastępuje niniejszy plan), `design/README` (handoff z Claude Design).
+> **Dokumenty powiązane:** `brief-claude-code.md` (wymagania techniczne, model treści, fakty stałe), `design/README` (handoff z Claude Design).
 > **Miejsce w repo:** `docs/plan-claude-code.md`. Plany pod-etapów: `docs/plans/0N-nazwa.md`.
 
 Stan wejściowy: makiety w Claude Design zatwierdzone i zhandoffowane, repo `academy-web` założone w stacku z briefu, `CLAUDE.md` do uzupełnienia o protokół z §1.
@@ -63,7 +63,7 @@ Statusy: ⬜ nie zaczęty · 🟡 plan w przygotowaniu · 🔵 plan zatwierdzony
 
 | #   | Pod-etap                                       | Plik planu                       | Status               | Zakończono |
 | --- | ---------------------------------------------- | -------------------------------- | -------------------- | ---------- |
-| 1   | Szkielet, design system, warstwa treści        | `docs/plans/01-szkielet.md`      | 🔵 plan zatwierdzony | —          |
+| 1   | Szkielet, design system, warstwa treści        | `docs/plans/01-skeleton.md`      | ✅ zamknięty         | 2026-09-12 |
 | 2   | Strona główna                                  | `docs/plans/02-strona-glowna.md` | ⬜                   | —          |
 | 3   | Strony ofertowe                                | `docs/plans/03-oferta.md`        | ⬜                   | —          |
 | 4   | Wykłady                                        | `docs/plans/04-wyklady.md`       | ⬜                   | —          |
@@ -88,7 +88,7 @@ Dla każdego: cel, zakres, kryteria ukończenia (DoD), proponowany podział na k
 **Zakres:**
 
 - tokeny z `design/README` (kolory z rolami, skala typograficzna, odstępy, radius 0, brak cieni) w jednym miejscu; fonty przez `next/font` (EB Garamond, IBM Plex Sans; `latin` + `latin-ext`);
-- komponenty: `Header` (z podtytułem „Studium Ikonograficzne św. Andrzeja Apostoła”), `Footer` z pełną mapą strony, `SectionNav`, `Breadcrumb`, menu mobilne z akordeonem sekcji, dropdown desktop otwierany kliknięciem;
+- komponenty: `Header` (z podtytułem „Studium Ikonograficzne św. Andrzeja Apostoła”), `Footer` z pełną mapą strony, `SectionNav`, `Breadcrumb`, menu mobilne z akordeonem sekcji; menu desktop — płaska lista 6 linków, bez dropdownu;
 - `app/layout.tsx`, `src/i18n/pl.ts` ze stringami UI, stany fokusu (obrys 2 px `#e8c765`, odstęp 2 px), `prefers-reduced-motion`;
 - `src/content/types.ts` skopiowany z briefu §4 bez zmian nazw pól; `src/content/` jako warstwa odczytu (funkcje typu `getOffer(kind)`, `getNews()`) czytająca z `content/`; `SiteSettings` z faktami stałymi z briefu §8;
 - `content/` z pierwszymi plikami `sample` w zakresie potrzebnym do szkieletu (settings, `upcoming`);
@@ -96,25 +96,20 @@ Dla każdego: cel, zakres, kryteria ukończenia (DoD), proponowany podział na k
 
 **DoD:**
 
-- [ ] każda trasa z briefu §3 istnieje i renderuje layout z nagłówkiem i stopką;
-- [ ] `SectionNav` i menu mobilne działają na 390 px, nawigacja klawiaturą z widocznym fokusem;
-- [ ] brak `#8d7d69` i brak 13 px w kodzie (grep);
-- [ ] `types.ts` zgodny z briefem §4, warstwa `src/content/*` używana przez layout (`SiteSettings`).
+- [x] każda **statyczna** trasa z briefu §3 istnieje i renderuje layout z nagłówkiem i stopką (`[slug]` i custom 404 — pod-etapy 5–6);
+- [x] `SectionNav` i menu mobilne działają na 390 px, nawigacja klawiaturą z widocznym fokusem;
+- [x] brak `#8d7d69` i brak 13 px w kodzie (grep);
+- [x] `types.ts` zgodny z briefem §4, `SiteSettings` używane przez `Header`/`Footer` (patrz K-02, `docs/plans/01-skeleton.md`).
 
-**Proponowane kawałki:** (1) tokeny + fonty + layout + `pl.ts`; (2) `Header`, dropdown, menu mobilne; (3) `Footer`, `Breadcrumb`, `SectionNav`, trasy-zaślepki; (4) `types.ts`, warstwa `src/content/`\*, `SiteSettings`, pierwsze pliki `sample`.
+**Proponowane kawałki:** (1) tokeny + fonty + layout + `pl.ts`; (2) `Header`, menu mobilne; (3) `Footer`, `Breadcrumb`, `SectionNav`, trasy-zaślepki; (4) `types.ts`, warstwa `src/content/`\*, `SiteSettings`, pierwsze pliki `sample`.
 
-**Pytania na sesję planistyczną:**
-
-- Tailwind czy CSS Modules — jak wyglądają tokeny w handoffie i co jest mniejszym kosztem; decyzja jedna, ostateczna (rejestr §4).
-- Jak `SectionNav` dostaje listę pozycji — konfiguracja per sekcja w jednym pliku (`src/navigation.ts`) czy props przy każdej stronie.
-- Czy stan aktywnej pozycji `SectionNav`/menu liczyć z `usePathname` (Client Component) czy przekazywać z serwera.
-- Obrazy z makiet: format, wymiary, gdzie leżą (`public/media/sample/`), jak oznaczone do wymiany.
+**Pytania na sesję planistyczną** — rozstrzygnięte w `docs/plans/01-skeleton.md` (K-02, `src/navigation.ts`; obrazy `sample` odłożone do pod-etapu 2).
 
 ### Pod-etap 2 — Strona główna
 
 **Cel:** pierwsza pełna strona; ustala rytm sekcji, użycie obrazów i komponentów treściowych.
 
-**Zakres:** `Hero` (ikona + zdanie + dwa CTA), sekcja „Najbliższe” z `SiteSettings.upcoming`, trzy filary, „Wybrane ikony” (z `IconWork`, dane `sample`), `Testimonial`, blok „Prowadząca” (mały), `MapBlock`, kontakt; wersja mobilna z kadrem hero ok. 60 % wysokości ekranu.
+**Zakres:** `Hero` (ikona + zdanie + dwa CTA), sekcja „Najbliższe” z `SiteSettings.upcoming`, trzy filary, „Wybrane ikony” (z `IconWork`, dane `sample`), `Testimonial`, blok „Prowadząca” (mały), `MapBlock`, kontakt; wersja mobilna z kadrem hero ok. 60 % wysokości ekranu. **`content/icons.json`** — utworzenie pliku z 3–4 wpisami `sample` na sekcję „Wybrane ikony” (zdjęcia z `design/assets/icons` → `public/media/sample/`).
 
 **DoD:**
 
@@ -160,7 +155,7 @@ Dla każdego: cel, zakres, kryteria ukończenia (DoD), proponowany podział na k
 
 ### Pod-etap 5 — Galeria ikon
 
-**Zakres:** `/ikony` z `IconGrid`, filtry autor (Elżbieta / uczniowie) i temat (z `tags`), `Lightbox` desktop i mobile (strzałki ≥ 48 px, zamknięcie, klawiatura, blokada scrolla, focus trap); podpisy: tytuł, autor, wymiary, rok; zdanie o zamawianiu z linkiem do `/ikony/na-zamowienie`; zajawka „Ikony na zamówienie” na dole. `/ikony/[slug]` — decyzja w sesji planistycznej (brief: opcjonalnie w v1).
+**Zakres:** `/ikony` z `IconGrid`, filtry autor (Elżbieta / uczniowie) i temat (z `tags`), `Lightbox` desktop i mobile (strzałki ≥ 48 px, zamknięcie, klawiatura, blokada scrolla, focus trap); podpisy: tytuł, autor, wymiary, rok; zdanie o zamawianiu z linkiem do `/ikony/na-zamowienie`; zajawka „Ikony na zamówienie” na dole. `/ikony/[slug]` — decyzja w sesji planistycznej (brief: opcjonalnie w v1). **`content/icons.json`** — uzupełnienie do pełnego zestawu `sample` galerii (ten sam plik co w pod-etapie 2; wymiary z podpisów nadal niezweryfikowane).
 
 **DoD:**
 
@@ -174,7 +169,7 @@ Dla każdego: cel, zakres, kryteria ukończenia (DoD), proponowany podział na k
 
 ### Pod-etap 6 — Strony pozostałe
 
-**Zakres:** `/kontakt` (adres, osadzona mapa, dwa maile z opisem, telefon, zakrystia, „Akademia w sieci”); `/o-akademii` na szablonie strony tekstowej z `TocSidebar`; `/aktualnosci` z `NewsCard` i paginacją + `/aktualnosci/[slug]`; `/wydarzenia` z `EventCard`, kategorie jako `SectionNav`; `/publikacje` na szablonie tekstowym z zakładkami; `/polityka-prywatnosci`; strona 404 w stylu projektu.
+**Zakres:** `/kontakt` (adres, osadzona mapa, dwa maile z opisem, telefon, zakrystia, „Akademia w sieci”); `/o-akademii` i `/pracownia` na szablonie strony tekstowej z `TocSidebar`; `/aktualnosci` z `NewsCard` i paginacją + `/aktualnosci/[slug]`; `/wydarzenia` z `EventCard`, kategorie w `SectionNav` (linki z query string `?kategoria=`, wartości jak `Event.category`: `wystawa`, `poswiecenie`, `oprowadzanie`, `wyjazd`); `/publikacje` na szablonie tekstowym z zakładkami; `/polityka-prywatnosci`; strona 404 w stylu projektu.
 
 **DoD:**
 
@@ -237,8 +232,7 @@ Dla każdego: cel, zakres, kryteria ukończenia (DoD), proponowany podział na k
 
 | #    | Decyzja                                            | Pod-etap | Wybór                                                                                       | Data       |
 | ---- | -------------------------------------------------- | -------- | ------------------------------------------------------------------------------------------- | ---------- |
-| K-01 | Tailwind vs CSS Modules                            | 1        | **Tailwind**; tokeny jako zmienne w `globals.css`                                           | 2026-09-11 |
-| K-02 | Źródło aktywnej pozycji nawigacji (klient/serwer)  | 1        | —                                                                                           | —          |
+| K-02 | Źródło aktywnej pozycji nawigacji (klient/serwer)  | 1        | **Prop `active` ze strony/serwera**, nie `usePathname`; `Header`/`Footer` montują się w `PagePlaceholder` (i docelowo w stronach), nie w root `layout.tsx` — patrz `docs/plans/01-skeleton.md` | 2026-09-12 |
 | K-03 | Renderer MDX i zestaw komponentów w body           | 3        | —                                                                                           | —          |
 | K-04 | `/ikony/[slug]` w v1                               | 5        | —                                                                                           | —          |
 | K-05 | Filtry galerii: query string vs stan               | 5        | —                                                                                           | —          |
@@ -264,11 +258,12 @@ Lista rośnie w każdym pod-etapie. Odhaczana w pod-etapie 8.
 | Wpisy aktualności `[przykład]`         | `content/news/sample-*.mdx`                        | 6        | migracja WP                                       | ⬜  |
 | „Rytm dnia” w Letniej Szkole Światła   | `content/offers/plener.mdx`                        | 3        | potwierdzenie z EJK albo usunięcie sekcji         | ⬜  |
 | Tytuł wykładu inauguracyjnego          | `content/lectures/2026-2027.json`                  | 4        | program od sekretariatu                           | ⬜  |
-| Wymiary ikon `[z podpisu WP]`          | `content/icons.json`                               | 2, 5     | weryfikacja przy migracji                         | ⬜  |
+| Wymiary ikon `[z podpisu WP]`          | `content/icons.json`                               | 2 (plik + 3–4 wpisy na stronę główną), 5 (pełny zestaw sample galerii) | migracja WP (pod-etap 8)                         | ⬜  |
 | Czas realizacji ikony na zamówienie    | `content/offers/zamowienie.mdx` (`facts.leadTime`) | 3        | potwierdzenie z EJK                               | ⬜  |
 | Liczba sezonów `[do weryfikacji]`      | `content/lectures/*`, `pl.ts`                      | 4        | źródło: archiwum WP                               | ⬜  |
-| Zdjęcia z makiet                       | `public/media/sample/`                             | 1        | oryginały z `/wp-content/uploads/` lub nowa sesja | ⬜  |
+| Zdjęcia z makiet                       | `public/media/sample/`                             | —        | oryginały z `/wp-content/uploads/` lub nowa sesja | ⬜  |
 | Sezony archiwum `sample` (2–3)         | `content/lectures/sample-*.json`                   | 4        | 15 sezonów z migracji                             | ⬜  |
+| „Najbliższe” na stronie głównej (2 wpisy, `[przykład]`) | `content/settings.json` (`upcoming`) | 1 | prawdziwa treść „Najbliższe” | ⬜ |
 
 ---
 
@@ -277,7 +272,8 @@ Lista rośnie w każdym pod-etapie. Odhaczana w pod-etapie 8.
 | Data       | Wpis                                                                                                                                                                  |
 | ---------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | 2026-09-11 | v0.1 — utworzenie planu; kolejność: migracja WP przeniesiona na koniec (pod-etap 8), strony budowane na treściach z makiet.                                           |
-| 2026-09-11 | v0.2 — decyzje K-01 (Tailwind), K-10 (nabór na starej stronie), K-11 (angielski w kodzie), K-12 (commity ręczne). Załącznik C zastąpiony finalnym `CLAUDE.md` w repo. |
+| 2026-09-11 | v0.2 — decyzje K-10 (nabór na starej stronie), K-11 (angielski w kodzie), K-12 (commity ręczne). Załącznik C zastąpiony finalnym `CLAUDE.md` w repo. |
+| 2026-09-12 | Pod-etap 1 zamknięty (4/4 kawałki, OK użytkownika). K-02 rozstrzygnięte. Sample „Najbliższe” dodane do §5. **Gap:** kopia `design/assets/{icons,photos}` → `public/media/sample/` z decyzji planistycznej pod-etapu 1 nie trafiła do żadnego kawałka — nie wykonana; użytkownik zdecydował odłożyć do pod-etapu 2 (zdjęcia i tak potrzebne dopiero tam). |
 
 ---
 

@@ -2,7 +2,7 @@
 
 > **Cel dokumentu:** wersja `akademia-ikony-brief-v2.md` skrócona do tego, co potrzebne w fazie implementacji. Makiety w Claude Design są zatwierdzone i zhandoffowane — ten dokument nie opisuje procesu ich tworzenia, tylko to, co z nich wynika dla kodu.
 > **Repo:** `academy-web`. **Pełny brief (kontekst biznesowy, audyt, decyzje marketingowe):** `docs/brief-full.md` — czytaj przy niejasnościach co do treści/copy, nie przy pytaniach technicznych.
-> **Dokument nadrzędny:** `docs/CLAUDE.md` (konwencje kodu, patrz niżej) ma pierwszeństwo przy konflikcie.
+> **Dokument nadrzędny:** `CLAUDE.md` w korzeniu repo (konwencje kodu, patrz niżej) ma pierwszeństwo przy konflikcie.
 
 ---
 
@@ -19,7 +19,7 @@ Strona jest częścią szerszego ekosystemu (Akademia + Fundacja + planowana str
 ## 2. Stack i decyzje techniczne
 
 - **Frontend:** Next.js (App Router), TypeScript strict, React Server Components domyślnie; Client Components tylko gdy potrzebna interakcja (menu, lightbox, akordeon).
-- **Stylowanie:** Tailwind lub CSS Modules z tokenami z handoffu Claude Design — wybrać jedno, nie mieszać (patrz `design/README`).
+- **Stylowanie:** Tailwind; tokeny z handoffu Claude Design jako zmienne w `globals.css` (`@theme` / CSS variables), używane przez klasy Tailwind (patrz `design/README`).
 - **Treść (v1):** pliki w repo — `content/` (MDX + JSON), zgodne z typami w `src/content/types.ts` (patrz §4). **Nie baza danych w v1.**
 - **Treść (v2, później):** ten sam model danych przeniesiony na SQLite/Postgres + panel `/admin` (Auth.js, 2–3 konta). Strony publiczne czytają z tej samej warstwy `src/content/*`, żeby zmiana źródła nie dotykała komponentów.
 - **Obrazy:** `next/image`; oryginały z WP zmigrowane do `public/media/` (na start) lub object storage; automatyczne WebP/AVIF.
@@ -36,6 +36,7 @@ Strona jest częścią szerszego ekosystemu (Akademia + Fundacja + planowana str
 ```
 /                          strona główna
 /o-akademii                historia, misja, EJK, zespół, miejsce
+/pracownia                 pracownia ikonograficzna (osobna strona tekstowa; treść ze starego WP)
 /warsztaty                 hub: dwie ścieżki
 /warsztaty/kurs-roczny-i-trzyletni
 /warsztaty/letnia-szkola-swiatla
@@ -64,9 +65,9 @@ Zawartość `SectionNav` per sekcja:
 - Warsztaty: Przegląd · Kurs roczny i trzyletni · Letnia Szkoła Światła
 - Wykłady: Bieżący sezon · Archiwum · Wykładowcy
 - Ikony: Galeria · Ikony na zamówienie
-- Wydarzenia: Wszystkie · Wystawy · Poświęcenia · Oprowadzania · Wyjazdy studyjne
+- Wydarzenia: Wszystkie · Wystawy · Poświęcenia · Oprowadzania · Wyjazdy studyjne — kategorie jako **filtry przez query string** na `/wydarzenia` (np. `/wydarzenia?kategoria=wystawa`), bez osobnych tras pod `/wydarzenia/*`
 
-Dropdown w menu głównym (desktop, opcjonalny) musi się otwierać **kliknięciem, nie hoverem**. W menu mobilnym: akordeon per sekcja, nagłówek sekcji zawsze też linkiem do huba.
+Menu główne (desktop): **płaska lista 6 linków** — bez dropdownu; drugi poziom wyłącznie przez `SectionNav` na stronach sekcji (zgodnie z makietą). W menu mobilnym: akordeon per sekcja, nagłówek sekcji zawsze też linkiem do huba.
 
 ---
 
@@ -133,7 +134,7 @@ type Testimonial = { quote: string; author: string; role?: string };
 
 type SiteSettings = {
   orgName: string; place: string; address: string;
-  emails: { label: string; address: string }[];
+  emails: { label: string; address: string; contactName?: string }[];
   phone: string; mapEmbedUrl: string; blogUrl: string;
   ecosystem: {
     foundationUrl: string;
@@ -178,7 +179,7 @@ Szacunek ręcznej korekty po migracji: ~10 stron statycznych, 15 sezonów wykła
 |---|---|
 | `/` | zostaje treściowo inna strona; stare posty → `/aktualnosci` |
 | `/strona-glowna/celem-dzialalnosci-...` | `/o-akademii` |
-| `/strona-glowna/pracownia/` | `/o-akademii#pracownia` (do potwierdzenia objętości treści) |
+| `/strona-glowna/pracownia/` | `/pracownia` |
 | `/strona-glowna/kontakt/` | `/kontakt` |
 | `/strona-glowna/polityka-prywatnosci/` | `/polityka-prywatnosci` |
 | `/warsztaty/` | `/warsztaty` |
@@ -190,7 +191,7 @@ Szacunek ręcznej korekty po migracji: ~10 stron statycznych, 15 sezonów wykła
 | `/wyklady/wykladowcy/` | `/wyklady/wykladowcy` |
 | `/wyklady/zapisy-na-wyklady/` | scalone w `/wyklady#zapisy` |
 | `/ikona/`, `/ikona/galeria/` | `/ikony` |
-| `/ikona/wystawy/`, `/wernisaze/` | `/wydarzenia/wystawy` |
+| `/ikona/wystawy/`, `/wernisaze/` | `/wydarzenia?kategoria=wystawa` |
 | `/ikona/ikony-na-zamowienie/` | `/ikony/na-zamowienie` |
 | `/wydarzenia/`, `/poswiecenia-ikon/`, `/oprowadzania-kuratorskie/`, `/wyjazdy-studyjne/` | `/wydarzenia` z kategoriami |
 | `/publikacje/`, `/publikacje/artykuly/`, `/multimedia/`, `/plakaty/` | `/publikacje` z zakładkami |
@@ -208,7 +209,7 @@ Szacunek ręcznej korekty po migracji: ~10 stron statycznych, 15 sezonów wykła
 - Program bieżącego sezonu wykładów jako lista (data, tytuł, prowadzący); archiwum jako rozwijane sezony (`SeasonAccordion`).
 - Galeria z filtrami (autor, temat) i lightboxem; każde zdjęcie z podpisem (tytuł, autor, wymiary, rok jeśli znany).
 - Aktualności z paginacją + wpis pojedynczy.
-- Kontakt: adres, **osadzona** mapa (nie surowy link), dwa maile z opisem, telefon.
+- Kontakt: adres, **osadzona** mapa (nie surowy link; `MapBlock` + `SiteSettings.mapEmbedUrl`), dwa maile z opisem, telefon, info o wejściu od strony zakrystii (treść redakcyjna w MDX), blok „Akademia w sieci” w `MapBlock`.
 - Mobile-first, WCAG AA (kontrast, fokus, alt), `prefers-reduced-motion`.
 - SEO: metadata + Open Graph per strona, sitemap, 301 ze starych URL.
 - JSON-LD: `Organization` (z `parentOrganization` → Fundacja), `Person` (EJK, z `sameAs`), `Event` (wykłady bieżącego sezonu), `Course` (kurs, plener).
@@ -262,12 +263,13 @@ Telefon jako `tel:+48601734705`.
 
 - Nazwa: AKADEMIA IKONY – Studium Ikonograficzne św. Andrzeja Apostoła. Założona 2010, w KŚT od 2012.
 - Miejsce: Kościół Środowisk Twórczych pw. św. Andrzeja Apostoła i św. Brata Alberta Chmielowskiego, Plac Teatralny, Warszawa. Rektor: ks. Grzegorz Michalczyk. Przestrzeń bez barier architektonicznych.
+- Mapa Google (embed, `SiteSettings.mapEmbedUrl`): `https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2442.9544621239593!2d21.00606051625467!3d52.24421077976289!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x471eccf307a4ec4f%3A0x8f7c429c0465b439!2zS2_Fm2Npw7PFgiBwdy4gxZt3LiBCcmF0YSBBbGJlcnRhIGkgxZt3LiBBbmRyemVqYSBBcG9zdG_FgmE!5e0!3m2!1spl!2spl!4v1506790619997` (kościół pw. św. Brata Alberta i św. Andrzeja Apostoła — ze strony kontaktowej WP).
 - Organizator: fundacja IKONA DZIŚ, www.ikonadzis.org.
 - Kontakt ogólny/warsztaty/ikony: `akademiaikony@gmail.com`, tel. `601 734 705` (Elżbieta Jackowska-Kurek).
 - Wykłady/sekretariat: `sekretariat.ikony22@gmail.com` (Maurycy Lubak).
 - Blog: studiumikony.blogspot.com. Facebook: facebook.com/akademiaikony. YouTube: @akademiaikony3822.
-- Warsztaty 2026/2027: zgłoszenia do 24.09.2026 mailem; rozmowa wstępna ~30 min; pierwsze spotkanie 6.10.2026, 18:00; raz w tygodniu, październik–czerwiec, grupy wieczorne i dzienne.
-- Wykłady 2026/2027: „Ikona – korzenie i owoce wiary. Mistyka dziś”; wybrane wtorki 18:00–20:30; 400 zł/rok; terminy: 06.10, 10.11, 08.12, 19.01, 16.02, 09.03, 13.04, 11.05, 08.06, 11.06, 12.06 (wernisaż, AGAPA).
+- Warsztaty 2026/2027: zgłoszenia do 24.09.2026 mailem; rozmowa wstępna ~30 min; pierwsze spotkanie 6.10.2026, 18:00; raz w tygodniu, październik–czerwiec, grupy wieczorne i dzienne; materiały na miejscu.
+- Wykłady 2026/2027: „Ikona – korzenie i owoce wiary. Mistyka dziś”; wybrane wtorki 18:00–20:30; 400 zł/rok; zapisy od września 2026; terminy: 06.10, 10.11, 08.12, 19.01, 16.02, 09.03, 13.04, 11.05, 08.06, 11.06, 12.06 (wernisaż, AGAPA).
 - Letnia Szkoła Światła: plenery tygodniowe sierpień/wrzesień; nabór na 2027 rusza w marcu 2027, kolejność zgłoszeń.
 - Ikony na zamówienie: kontakt jak wyżej; szczegóły procesu i czas realizacji — do potwierdzenia z EJK (nie zgadywać, zostawić placeholder w CMS-owalnym polu).
 - Uwaga prawna do zachowania dosłownie: „nauczanie w Akademii Ikony nie niesie za sobą żadnych skutków formalnych.”
@@ -291,4 +293,12 @@ Telefon jako `tel:+48601734705`.
 
 ## Kolejność implementacji (przypomnienie)
 
-Etap A (szkielet + design system) → Etap B (model treści + migracja) → Etap C (strony, w kolejności: główna → kurs → plener → wykłady → galeria → kontakt → o Akademii → aktualności → wydarzenia/publikacje) → Etap D (SEO, sitemap, redirecty, 404, Lighthouse) → Etap E (wdrożenie, test przekierowań i `mailto:`, zgłoszenie do GSC).
+Szczegóły i status: `docs/plan-claude-code.md` §2. Strony budujemy na danych `sample` z makiet; migracja WP zastępuje je na końcu, bez dotykania komponentów.
+
+1. Szkielet, design system, warstwa treści
+2. Strona główna
+3. Strony ofertowe
+4. Wykłady · 5. Galeria · 6. Pozostałe (kolejność 4–6 elastyczna)
+7. Wykończenie: SEO, dane strukturalne, analityka
+8. **Migracja treści z WordPressa** (zastąpienie wszystkich `sample`)
+9. Wdrożenie (DNS, 301, GSC, runbook)

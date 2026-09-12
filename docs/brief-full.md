@@ -2,7 +2,7 @@
 
 > **Wersja:** 2.0 · **Data:** 2026-09-06
 > **Status:** żywy dokument, aktualizowany po każdej sesji decyzyjnej. Dziennik zmian na końcu.
-> **Dokumenty powiązane:** `instrukcja-pracy.md` (Claude Design → Claude Code), `ikony-ejk-master-plan.md` (strona autorska EJK), `ekosystem-ejk.md` (dokument nadrzędny – do założenia po sesji 0b).
+> **Dokumenty powiązane:** `plan-claude-code.md` (implementacja), `brief-claude-code.md` (wymagania techniczne), `ikony-ejk-master-plan.md` (strona autorska EJK, poza repo), `ekosystem-ejk.md` (dokument nadrzędny ekosystemu, poza repo).
 
 Dokument kontekstowy dla Claude Design (makiety) i Claude Code (implementacja).
 Stan analizy: wrzesień 2026, na podstawie obecnej strony [https://www.akademiaikony.pl/](https://www.akademiaikony.pl/).
@@ -82,7 +82,7 @@ Stack: WordPress 7.1, darmowy motyw blogowy **Nisarg** (ok. 2015), wtyczka GDPR 
 | ---------------------------------------------------------------------------------------- | ------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `/` (Aktualności)                                                                        | lista postów | Nowa strona główna + `/aktualnosci`                                                                                                                                                                      |
 | `/strona-glowna/celem-dzialalnosci-...` (O nas)                                          | page         | `/o-akademii`                                                                                                                                                                                            |
-| `/strona-glowna/pracownia/`                                                              | page         | `/o-akademii#pracownia` lub `/pracownia` (do sprawdzenia, ile treści)                                                                                                                                    |
+| `/strona-glowna/pracownia/`                                                              | page         | `/pracownia` (osobna strona tekstowa — obszerna treść ze starego WP)                                                                                                                                     |
 | `/strona-glowna/kontakt/`                                                                | page         | `/kontakt`                                                                                                                                                                                               |
 | `/strona-glowna/polityka-prywatnosci/`                                                   | page         | `/polityka-prywatnosci` (stopka)                                                                                                                                                                         |
 | `/warsztaty/`                                                                            | page         | `/warsztaty` (hub sekcji)                                                                                                                                                                                |
@@ -95,7 +95,7 @@ Stack: WordPress 7.1, darmowy motyw blogowy **Nisarg** (ok. 2015), wtyczka GDPR 
 | `/wyklady/zapisy-na-wyklady/`                                                            | page         | scalić w `/wyklady#zapisy`                                                                                                                                                                               |
 | posty `wyklady-YYYY-YYYY`, `ikona-korzenie-...`                                          | post         | kolekcja `LectureSeason` (15 rekordów)                                                                                                                                                                   |
 | `/ikona/`, `/ikona/galeria/`                                                             | page         | `/ikony` (galeria z filtrami)                                                                                                                                                                            |
-| `/ikona/wystawy/`, `/wernisaze/`                                                         | page         | `/wydarzenia/wystawy` (jedno miejsce)                                                                                                                                                                    |
+| `/ikona/wystawy/`, `/wernisaze/`                                                         | page         | `/wydarzenia?kategoria=wystawa`                                                                                                                                                                          |
 | `/ikona/ikony-na-zamowienie/`                                                            | page         | `/ikony/na-zamowienie` – **pełna strona ofertowa w v1, treść wymienna** (§5, §10.2)                                                                                                                      |
 | `/wydarzenia/`, `/poswiecenia-ikon/`, `/oprowadzania-kuratorskie/`, `/wyjazdy-studyjne/` | page         | `/wydarzenia` z kategoriami                                                                                                                                                                              |
 | `/publikacje/`, `/publikacje/artykuly/`, `/multimedia/`, `/plakaty/`                     | page         | `/publikacje` z zakładkami                                                                                                                                                                               |
@@ -111,6 +111,7 @@ Media: wszystkie oryginały w `/wp-content/uploads/YYYY/MM/`. Podpisy ikon są w
 ```
 /                          strona główna
 /o-akademii                historia, misja, Elżbieta Jackowska-Kurek, zespół, miejsce
+/pracownia                 pracownia ikonograficzna (osobna strona tekstowa; treść ze starego WP)
 /warsztaty                 hub: dwie ścieżki
 /warsztaty/kurs-roczny-i-trzyletni
 /warsztaty/letnia-szkola-swiatla
@@ -140,7 +141,7 @@ Struktura ma dwa poziomy; każda podstrona musi być osiągalna w maksymalnie dw
 1. **Strona sekcji jako hub.** Pozycja menu prowadzi zawsze na stronę sekcji (`/warsztaty`, `/wyklady`, `/ikony`, `/wydarzenia`). Główną treścią huba są duże, klikalne bloki podstron (np. `/warsztaty`: Kurs roczny i trzyletni / Letnia Szkoła Światła), a nie sam opis.
 2. `SectionNav` – pozioma listwa nawigacji drugiego poziomu pod nagłówkiem strony, widoczna na każdej podstronie sekcji (np. w Wykładach: _Bieżący sezon · Archiwum · Wykładowcy_). Na mobile: zwykła lista linków pod nagłówkiem, nie ukryta.
 3. **Stopka z pełną mapą strony** – nawigacja ratunkowa i sygnał dla SEO.
-   Opcjonalnie na desktopie: dropdown przy Warsztaty / Wykłady / Ikony, **otwierany kliknięciem** (nie hoverem), z widoczną strzałką; pozycja główna nadal jest linkiem do huba. W menu mobilnym sekcja może rozwijać się akordeonem, ale nagłówek sekcji też musi być linkiem.
+   Menu główne (desktop): płaska lista 6 linków — **bez dropdownu** w v1; drugi poziom wyłącznie przez `SectionNav`. W menu mobilnym sekcja rozwija się akordeonem, ale nagłówek sekcji też musi być linkiem do huba.
 
 ---
 
@@ -224,8 +225,8 @@ Kierunek wybieramy **po** domknięciu sesji 0b i decyzji E2.2 z master planu str
 
 ## 7. Decyzje techniczne
 
-- **Frontend:** Next.js (App Router), TypeScript, React Server Components; stylowanie – Tailwind lub CSS Modules z tokenami z Claude Design (zdecydować przy handoffie; unikać mieszania).
-- **Stack jako decyzja ekosystemu.** Akademia rusza pierwsza, więc jej stack de facto rozstrzyga E5 z master planu strony autorskiej. Decyzję o CMS (własny vs Payload/Sanity) podjąć raz, dla obu serwisów, najpóźniej przed etapem 2 (panel). Rozważyć monorepo (pnpm workspaces): pakiety `ui` (tokeny + komponenty), `content-schema` (typy), aplikacje `akademia`, `ejk`. Minimum, jeśli monorepo za dużo na start: jeden współdzielony plik tokenów i typów.
+- **Frontend:** Next.js (App Router), TypeScript, React Server Components; stylowanie – Tailwind z tokenami z Claude Design jako zmienne w `globals.css`.
+- **Stack jako decyzja ekosystemu.** Akademia rusza pierwsza, więc jej stack de facto rozstrzyga E5 z master planu strony autorskiej. Decyzję o CMS (własny vs Payload/Sanity) podjąć raz, dla obu serwisów, najpóźniej przed etapem 2 (panel). **Repo:** osobne (nie monorepo) — wspólne typy i tokeny dla przyszłej strony EJK trzymane jako pliki do skopiowania, nie jako workspace.
 - **Treść:** własny CMS. W v1 – treść jako pliki (MDX/JSON w repo) generowane migracją z WP, żeby nie blokować startu. W v2 – baza (SQLite/Postgres) + panel admina, ten sam model danych.
 - **Obrazy:** `next/image`, oryginały zmigrowane z WP do storage (na start `/public` lub object storage), automatyczne formaty WebP/AVIF.
 - **Hosting:** dowolny obsługujący Next.js; przekierowania 301 w `next.config.ts`.
@@ -339,7 +340,7 @@ type SiteSettings = {
   orgName: string;
   place: string;
   address: string;
-  emails: { label: string; address: string }[];
+  emails: { label: string; address: string; contactName?: string }[];
   phone: string;
   mapEmbedUrl: string;
   blogUrl: string;
@@ -370,6 +371,7 @@ type SiteSettings = {
 
 - Nazwa: AKADEMIA IKONY – Studium Ikonograficzne św. Andrzeja Apostoła. Założona 2010, w KŚT od 2012.
 - Miejsce: Kościół Środowisk Twórczych pw. św. Andrzeja Apostoła i św. Brata Alberta Chmielowskiego, Plac Teatralny, Warszawa. Rektor: ks. Grzegorz Michalczyk. Przestrzeń bez barier architektonicznych.
+- Mapa Google (embed, `SiteSettings.mapEmbedUrl`): `https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2442.9544621239593!2d21.00606051625467!3d52.24421077976289!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x471eccf307a4ec4f%3A0x8f7c429c0465b439!2zS2_Fm2Npw7PFgiBwdy4gxZt3LiBCcmF0YSBBbGJlcnRhIGkgxZt3LiBBbmRyemVqYSBBcG9zdG_FgmE!5e0!3m2!1spl!2spl!4v1506790619997` (kościół pw. św. Brata Alberta i św. Andrzeja Apostoła — ze strony kontaktowej WP).
 - Organizator: fundacja IKONA DZIŚ, [www.ikonadzis.org](http://www.ikonadzis.org).
 - Kontakt ogólny / warsztaty / ikony: [akademiaikony@gmail.com](mailto:akademiaikony@gmail.com), tel. 601 734 705 (Elżbieta Jackowska-Kurek).
 - Wykłady / sekretariat: [sekretariat.ikony22@gmail.com](mailto:sekretariat.ikony22@gmail.com) (Maurycy Lubak).
@@ -428,7 +430,7 @@ Każdy typ treści ma jednego właściciela w danym momencie; pozostałe serwisy
 | D-01 | Architektura marki: nazwa i domena strony autorskiej, relacja do Akademii i Fundacji                          | sesja 0b, przed wyborem kierunku wizualnego |
 | D-02 | Zakres prac EJK w galerii Akademii po starcie strony autorskiej; domyślny filtr galerii (uczniowie / wszyscy) | sesja 0b                                    |
 | D-03 | CMS dla obu serwisów (własny / Payload / Sanity)                                                              | przed etapem 2 (panel)                      |
-| D-04 | Monorepo vs osobne repozytoria ze współdzielonymi plikami                                                     | przy zakładaniu repo strony autorskiej      |
+| D-04 | Monorepo vs osobne repozytoria ze współdzielonymi plikami                                                     | **Osobne repozytoria**; typy/tokeny przez kopiowanie plików (jak `brief-claude-code.md` §2) |
 | D-05 | Czy ikony na zamówienie oferowane z opcją poświęcenia (wpływa na treść `/ikony/na-zamowienie`)                | sesja 0c                                    |
 
 ### 10.6 Kolejność prac
@@ -436,7 +438,7 @@ Każdy typ treści ma jednego właściciela w danym momencie; pozostałe serwisy
 1. Sesje 0b–0d master planu, decyzje D-01, D-02, D-05 (1–2 spotkania).
 2. Aktualizacja tego briefu (v2.x) i master planu; założenie `ekosystem-ejk.md`.
 3. Claude Design: trzy kierunki dla Akademii + ekran testowy strony autorskiej przy wybranym kierunku.
-4. Implementacja Akademii (instrukcja-pracy.md, etapy A–E). Równolegle: E1–E3 master planu – research nie blokuje kodu.
+4. Implementacja Akademii (`docs/plan-claude-code.md`, pod-etapy 1–9). Równolegle: E1–E3 master planu – research nie blokuje kodu.
 5. Design i implementacja strony autorskiej z tego samego systemu i repo.
 6. Po starcie strony autorskiej: wymiana treści `/ikony/na-zamowienie`, aktualizacja `ecosystem.personalSiteUrl`, `sameAs`, galerii (D-02).
 
