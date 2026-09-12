@@ -1,0 +1,31 @@
+{
+  "orgName": "AKADEMIA IKONY – Studium Ikonograficzne św. Andrzeja Apostoła",
+  "place": "Kościół Środowisk Twórczych pw. św. Andrzeja Apostoła i św. Brata Alberta Chmielowskiego",
+  "address": "Plac Teatralny, Warszawa",
+  "emails": [
+    { "label": "Warsztaty i ikony", "address": "akademiaikony@gmail.com", "contactName": "Elżbieta Jackowska-Kurek" },
+    { "label": "Wykłady i sekretariat", "address": "sekretariat.ikony22@gmail.com", "contactName": "Maurycy Lubak" }
+  ],
+  "phone": "601 734 705",
+  "mapEmbedUrl": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2442.9544621239593!2d21.00606051625467!3d52.24421077976289!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x471eccf307a4ec4f%3A0x8f7c429c0465b439!2zS2_Fm2Npw7PFgiBwdy4gxZt3LiBCcmF0YSBBbGJlcnRhIGkgxZt3LiBBbmRyemVqYSBBcG9zdG_FgmE!5e0!3m2!1spl!2spl!4v1506790619997",
+  "blogUrl": "https://studiumikony.blogspot.com",
+  "ecosystem": {
+    "foundationUrl": "https://www.ikonadzis.org",
+    "social": {
+      "facebook": "https://facebook.com/akademiaikony",
+      "youtube": "https://www.youtube.com/@akademiaikony3822"
+    }
+  },
+  "upcoming": [
+    {
+      "title": "[przykład] Najbliższe wydarzenie",
+      "text": "[do uzupełnienia]",
+      "href": "/wydarzenia"
+    },
+    {
+      "title": "[przykład] Kolejny termin",
+      "text": "[do uzupełnienia]",
+      "href": "/aktualnosci"
+    }
+  ]
+}

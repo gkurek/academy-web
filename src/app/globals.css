@@ -1,0 +1,226 @@
+@import "tailwindcss";
+
+/* Design tokens — ported from design/tokens/{colors,spacing,typography}.css.
+   Font families (--font-serif, --font-sans) are supplied at runtime by
+   next/font via a className on <html> in layout.tsx, not declared here. */
+:root {
+  /* Umbra scale */
+  --umbra-1000: #0d0a08;
+  --umbra-950: #120e0b;
+  --umbra-900: #18130f;
+  --umbra-850: #1f1913;
+  --umbra-800: #231b14;
+
+  /* Bone / parchment scale */
+  --bone-100: #f6eddc;
+  --bone-200: #f3ead9;
+  --bone-300: #f0e6d5;
+  --bone-400: #ece2d3;
+  --bone-500: #c7b8a2;
+  --bone-600: #a2917c;
+  --bone-700: #6b5e4d;
+
+  /* Gold */
+  --gold-500: #c9a227;
+  --gold-400: #e8c765;
+  --gold-300: #f2d98a;
+
+  /* Surfaces */
+  --surface-page: var(--umbra-900);
+  --surface-card: var(--umbra-800);
+  --surface-tile: var(--umbra-850);
+  --surface-footer: var(--umbra-950);
+  --surface-lightbox: var(--umbra-1000);
+
+  /* Text */
+  --text-body: var(--bone-400);
+  --text-secondary: var(--bone-500);
+  --text-tertiary: var(--bone-600);
+  --text-h1: var(--bone-100);
+  --text-h2: var(--bone-200);
+  --text-list-title: var(--bone-300);
+  --text-on-gold: var(--umbra-900);
+
+  /* Accent */
+  --accent: var(--gold-500);
+  --accent-text: var(--gold-400);
+  --accent-hover: var(--gold-300);
+  --accent-veil: rgba(232, 199, 101, .5);
+
+  /* States */
+  --state-disabled: var(--bone-700);
+  --focus-ring: var(--gold-400);
+
+  /* Lines and borders — one value per role, no exceptions */
+  --line-gold: rgba(201, 162, 39, .28);
+  --line-neutral: rgba(236, 226, 211, .14);
+  --border-button: rgba(236, 226, 211, .4);
+  --border-secondary: rgba(162, 145, 124, .45);
+
+  /* Shadows — none by default, exception is the lightbox */
+  --shadow-lightbox: 0 30px 80px rgba(0, 0, 0, .7);
+  --shadow-hero-image: 0 30px 70px rgba(0, 0, 0, .55);
+  --scrim-lightbox: rgba(0, 0, 0, .7);
+
+  /* Typography scale — desktop */
+  --size-h1: 48px;
+  --size-h1-home: 56px;
+  --size-h2: 34px;
+  --size-h2-sm: 28px;
+  --size-h3: 26px;
+  --size-list-title: 21px;
+  --size-lead: 19.5px;
+  --size-body: 16.5px;
+  --size-body-lg: 17.5px;
+  --size-ui: 15.5px;
+  --size-nav: 15px;
+  --size-caption: 14.5px;
+  --size-quote: 20px;
+  --size-quote-lg: 38px;
+
+  /* Typography scale — mobile 390px */
+  --size-h1-m: 38px;
+  --size-h2-m: 26px;
+  --size-h3-m: 21px;
+  --size-lead-m: 17.5px;
+  --size-body-m: 16.5px;
+  --size-ui-m: 16px;
+  --size-caption-m: 15px;
+
+  --leading-tight: 1.12;
+  --leading-heading: 1.2;
+  --leading-body: 1.6;
+  --leading-loose: 1.75;
+
+  /* Spacing scale */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 10px;
+  --space-4: 14px;
+  --space-5: 20px;
+  --space-6: 26px;
+  --space-7: 34px;
+  --space-8: 52px;
+  --space-9: 56px;
+
+  --page-margin: 56px;
+  --page-margin-mobile: 20px;
+  --section-gap: 60px;
+  --section-gap-mobile: 32px;
+  --card-padding: 30px 32px 32px;
+  --tile-padding: 26px 30px;
+  --hairline-gap: 1px;
+
+  --tap-min: 48px;
+  --tap-min-mobile-header: 44px;
+
+  --content-max: 1180px;
+  --measure: 34em;
+}
+
+/* Tailwind utility mappings for the tokens this piece actually consumes.
+   Extend as later pieces need more of the scale above. */
+@theme inline {
+  --color-surface-page: var(--surface-page);
+  --color-surface-card: var(--surface-card);
+  --color-surface-tile: var(--surface-tile);
+  --color-surface-footer: var(--surface-footer);
+  --color-surface-lightbox: var(--surface-lightbox);
+  --color-text-body: var(--text-body);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-tertiary: var(--text-tertiary);
+  --color-text-h1: var(--text-h1);
+  --color-text-h2: var(--text-h2);
+  --color-text-list-title: var(--text-list-title);
+  --color-text-on-gold: var(--text-on-gold);
+  --color-accent: var(--accent);
+  --color-accent-text: var(--accent-text);
+  --color-accent-hover: var(--accent-hover);
+  --color-accent-veil: var(--accent-veil);
+  --color-state-disabled: var(--state-disabled);
+  --color-focus-ring: var(--focus-ring);
+  --color-line-gold: var(--line-gold);
+  --color-line-neutral: var(--line-neutral);
+  --color-border-button: var(--border-button);
+  --color-border-secondary: var(--border-secondary);
+
+  --text-size-h1: var(--size-h1);
+  --text-size-h1-m: var(--size-h1-m);
+  --text-size-body: var(--size-body);
+  --text-size-body-lg: var(--size-body-lg);
+  --text-size-ui: var(--size-ui);
+  --text-size-ui-m: var(--size-ui-m);
+  --text-size-nav: var(--size-nav);
+  --text-size-h3-m: var(--size-h3-m);
+  --text-size-caption-m: var(--size-caption-m);
+  --text-size-caption: var(--size-caption);
+  --text-size-lead: var(--size-lead);
+  /* Logo lockup — a fixed brand element, not part of the general type scale. */
+  --text-size-logo: 23px;
+  --text-size-logo-subtitle: 14px;
+  --text-size-logo-m: 18px;
+
+  --tracking-logo: .14em;
+  --tracking-logo-footer: .1em;
+
+  --spacing-space-2: var(--space-2);
+  --spacing-space-3: var(--space-3);
+  --spacing-space-4: var(--space-4);
+  --spacing-space-5: var(--space-5);
+  --spacing-space-6: var(--space-6);
+  --spacing-space-7: var(--space-7);
+  --spacing-page-margin: var(--page-margin);
+  --spacing-page-margin-mobile: var(--page-margin-mobile);
+  --spacing-tap-min: var(--tap-min);
+  --spacing-tap-min-mobile-header: var(--tap-min-mobile-header);
+  --spacing-btn-x-md: 30px;
+  --spacing-btn-y-md: 16px;
+  --spacing-btn-x-lg: 32px;
+  --spacing-btn-y-lg: 17px;
+  /* Mobile accordion sub-item indent (design/README "Menu mobilne — 390 px"). */
+  --spacing-menu-indent: 36px;
+  /* Gold underline offset under an active nav link. */
+  --spacing-link-underline-gap: 2px;
+  /* Footer (design/components/navigation/Footer.jsx: padding 48px .. 40px, gap 40px). */
+  --spacing-footer-pt: 48px;
+  --spacing-footer-pb: 40px;
+  --spacing-footer-gap: 40px;
+
+  --grid-template-columns-footer: 1.25fr 1fr 1fr 1fr;
+}
+
+@layer base {
+  body {
+    margin: 0;
+    background: var(--surface-page);
+    color: var(--text-body);
+    font-family: var(--font-sans);
+    font-size: var(--size-body);
+    line-height: var(--leading-body);
+    -webkit-font-smoothing: antialiased;
+    text-wrap: pretty;
+  }
+
+  a:focus-visible,
+  button:focus-visible {
+    outline: 2px solid var(--focus-ring);
+    outline-offset: 2px;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-serif);
+    font-weight: 400;
+    margin: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
