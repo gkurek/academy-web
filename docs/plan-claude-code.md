@@ -64,7 +64,7 @@ Statusy: ⬜ nie zaczęty · 🟡 plan w przygotowaniu · 🔵 plan zatwierdzony
 | #   | Pod-etap                                       | Plik planu                       | Status               | Zakończono |
 | --- | ---------------------------------------------- | -------------------------------- | -------------------- | ---------- |
 | 1   | Szkielet, design system, warstwa treści        | `docs/plans/01-skeleton.md`      | ✅ zamknięty         | 2026-09-12 |
-| 2   | Strona główna                                  | `docs/plans/02-strona-glowna.md` | ⬜                   | —          |
+| 2   | Strona główna                                  | `docs/plans/02-homepage.md` | 🔵 zatwierdzony      | —          |
 | 3   | Strony ofertowe                                | `docs/plans/03-oferta.md`        | ⬜                   | —          |
 | 4   | Wykłady                                        | `docs/plans/04-wyklady.md`       | ⬜                   | —          |
 | 5   | Galeria ikon                                   | `docs/plans/05-galeria.md`       | ⬜                   | —          |
@@ -109,18 +109,18 @@ Dla każdego: cel, zakres, kryteria ukończenia (DoD), proponowany podział na k
 
 **Cel:** pierwsza pełna strona; ustala rytm sekcji, użycie obrazów i komponentów treściowych.
 
-**Zakres:** `Hero` (ikona + zdanie + dwa CTA), sekcja „Najbliższe” z `SiteSettings.upcoming`, trzy filary, „Wybrane ikony” (z `IconWork`, dane `sample`), `Testimonial`, blok „Prowadząca” (mały), `MapBlock`, kontakt; wersja mobilna z kadrem hero ok. 60 % wysokości ekranu. **`content/icons.json`** — utworzenie pliku z 3–4 wpisami `sample` na sekcję „Wybrane ikony” (zdjęcia z `design/assets/icons` → `public/media/sample/`).
+**Zakres:** `Hero` (ikona + zdanie + dwa CTA), sekcja „Najbliższe” z `SiteSettings.upcoming`, trzy filary, „Wybrane ikony” (z `IconWork`, dane `sample`), `Testimonial` (cytat EJK, bez portretu/bio/linku — K-14); wersja mobilna z kadrem hero ok. 60 % wysokości ekranu. **`content/icons.json`** — utworzenie pliku z 4 wpisami `sample` na sekcję „Wybrane ikony” (zdjęcia z `design/assets/icons` → `public/media/sample/`). Poza zakresem: `MapBlock` i sekcja kontakt (K-13 — makieta ich nie zawiera na stronie głównej; pełny `MapBlock` w pod-etapie 6 na `/kontakt`).
 
 **DoD:**
 
-- [ ] zgodność z makietą desktop i mobile (screenshot obok makiety);
+- [ ] zgodność z makietą desktop i mobile (screenshot obok makiety), z uwzględnieniem K-13/K-14;
 - [ ] wszystkie treści z `content/` lub `pl.ts`; brak tekstu redakcyjnego w JSX;
-- [ ] CTA „Warsztaty”/„Wykłady” prowadzą do hubów; kliknięcia mają hooki pod analitykę (patrz pytania);
+- [ ] CTA „Warsztaty”/„Wykłady” prowadzą do hubów `/warsztaty` i `/wyklady`;
 - [ ] Lighthouse mobile na tej stronie: dostępność ≥ 95 (wydajność sprawdzana w pod-etapie 7).
 
-**Proponowane kawałki:** (1) `Hero` + „Najbliższe” + filary; (2) `IconGrid` w wersji „wybrane” + `Testimonial` + „Prowadząca”; (3) `MapBlock` + kontakt + mobile.
+**Proponowane kawałki:** (1) `Hero` + „Najbliższe” + filary; (2) `Testimonial` + `IconGrid` w wersji „wybrane” + dane sample; (3) dopracowanie mobile i finalizacja.
 
-**Pytania:** czy `MapBlock` osadza iframe Google od razu (konsekwencje: zewnętrzny skrypt, ewentualna informacja o cookies — brief mówi „brak banera”); jak oznaczamy zdarzenia analityczne już teraz (atrybut `data-event`, żeby w pod-etapie 7 podpiąć Plausible bez wracania do komponentów).
+**Pytania:** rozstrzygnięte w sesji planistycznej — patrz K-13, K-14, K-15 w §4.
 
 ### Pod-etap 3 — Strony ofertowe
 
@@ -243,6 +243,9 @@ Dla każdego: cel, zakres, kryteria ukończenia (DoD), proponowany podział na k
 | K-10 | Termin przełączenia DNS względem naboru 24.09.2026 | 9        | **Nabór 2026/2027 obsługuje stara strona**; wdrożenie bez presji terminu                    | 2026-09-11 |
 | K-11 | Język komentarzy, commitów i PR                    | —        | **Angielski** (treść dla użytkownika po polsku)                                             | 2026-09-11 |
 | K-12 | Kto commituje                                      | —        | **Wyłącznie właściciel repo**, po „OK” dla kawałka; Claude Code nie używa `git commit/push` | 2026-09-11 |
+| K-13 | MapBlock/kontakt na stronie głównej                | 2        | **Usunięte z zakresu** — makieta (#1a/#3b) nie ma tych sekcji na home; kontakt zostaje w stopce, pełny `MapBlock` w pod-etapie 6 na `/kontakt` | 2026-09-12 |
+| K-14 | Testimonial vs blok „Prowadząca” na stronie głównej | 2        | **Jedna sekcja** — cytat + podpis Elżbiety Jackowskiej-Kurek, bez portretu/bio/linku, identycznie na desktop i mobile; świadome uproszczenie względem wariantu mobile makiety i `Testimonial.prompt.md` | 2026-09-12 |
+| K-15 | Konwencja zdarzeń analitycznych (`data-event` itp.) | 2        | **Nie dodajemy w pod-etapie 2** — konwencja i podłączenie w całości w pod-etapie 7 | 2026-09-12 |
 
 Decyzje spoza kodu (D-01…D-05 z briefu v2) pozostają w dokumentach ekosystemu; tu wpisujemy tylko ich skutki dla implementacji.
 
@@ -274,6 +277,7 @@ Lista rośnie w każdym pod-etapie. Odhaczana w pod-etapie 8.
 | 2026-09-11 | v0.1 — utworzenie planu; kolejność: migracja WP przeniesiona na koniec (pod-etap 8), strony budowane na treściach z makiet.                                           |
 | 2026-09-11 | v0.2 — decyzje K-10 (nabór na starej stronie), K-11 (angielski w kodzie), K-12 (commity ręczne). Załącznik C zastąpiony finalnym `CLAUDE.md` w repo. |
 | 2026-09-12 | Pod-etap 1 zamknięty (4/4 kawałki, OK użytkownika). K-02 rozstrzygnięte. Sample „Najbliższe” dodane do §5. **Gap:** kopia `design/assets/{icons,photos}` → `public/media/sample/` z decyzji planistycznej pod-etapu 1 nie trafiła do żadnego kawałka — nie wykonana; użytkownik zdecydował odłożyć do pod-etapu 2 (zdjęcia i tak potrzebne dopiero tam). |
+| 2026-09-12 | Sesja planistyczna pod-etapu 2 zakończona, plan zatwierdzony (`docs/plans/02-homepage.md`). W trakcie sesji zweryfikowano opis pod-etapu bezpośrednio w pliku makiety — dwie rozbieżności wobec pierwotnego opisu: K-13 (brak MapBlock/kontaktu na stronie głównej w makiecie) i K-14 (Testimonial i „Prowadząca” to w makiecie jedna sekcja, nie dwie; dodatkowo świadomie uproszczona — bez portretu na żadnym breakpoincie). K-15: konwencja zdarzeń analitycznych odłożona w całości do pod-etapu 7. |
 
 ---
 
