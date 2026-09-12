@@ -61,17 +61,17 @@ Strony budujemy na przykładowych treściach i zdjęciach z makiet Claude Design
 
 Statusy: ⬜ nie zaczęty · 🟡 plan w przygotowaniu · 🔵 plan zatwierdzony · 🟠 w implementacji (N/M) · ✅ zamknięty
 
-| # | Pod-etap | Plik planu | Status | Zakończono |
-|---|---|---|---|---|
-| 1 | Szkielet, design system, warstwa treści | `docs/plans/01-szkielet.md` | ⬜ | — |
-| 2 | Strona główna | `docs/plans/02-strona-glowna.md` | ⬜ | — |
-| 3 | Strony ofertowe | `docs/plans/03-oferta.md` | ⬜ | — |
-| 4 | Wykłady | `docs/plans/04-wyklady.md` | ⬜ | — |
-| 5 | Galeria ikon | `docs/plans/05-galeria.md` | ⬜ | — |
-| 6 | Strony pozostałe | `docs/plans/06-pozostale.md` | ⬜ | — |
-| 7 | Wykończenie: SEO, dane strukturalne, analityka | `docs/plans/07-wykonczenie.md` | ⬜ | — |
-| 8 | Migracja treści z WordPressa | `docs/plans/08-migracja.md` | ⬜ | — |
-| 9 | Wdrożenie | `docs/plans/09-wdrozenie.md` | ⬜ | — |
+| #   | Pod-etap                                       | Plik planu                       | Status               | Zakończono |
+| --- | ---------------------------------------------- | -------------------------------- | -------------------- | ---------- |
+| 1   | Szkielet, design system, warstwa treści        | `docs/plans/01-szkielet.md`      | 🔵 plan zatwierdzony | —          |
+| 2   | Strona główna                                  | `docs/plans/02-strona-glowna.md` | ⬜                   | —          |
+| 3   | Strony ofertowe                                | `docs/plans/03-oferta.md`        | ⬜                   | —          |
+| 4   | Wykłady                                        | `docs/plans/04-wyklady.md`       | ⬜                   | —          |
+| 5   | Galeria ikon                                   | `docs/plans/05-galeria.md`       | ⬜                   | —          |
+| 6   | Strony pozostałe                               | `docs/plans/06-pozostale.md`     | ⬜                   | —          |
+| 7   | Wykończenie: SEO, dane strukturalne, analityka | `docs/plans/07-wykonczenie.md`   | ⬜                   | —          |
+| 8   | Migracja treści z WordPressa                   | `docs/plans/08-migracja.md`      | ⬜                   | —          |
+| 9   | Wdrożenie                                      | `docs/plans/09-wdrozenie.md`     | ⬜                   | —          |
 
 Kolejność jest wiążąca dla 1 → 2 → 3 (szablon ofertowy i `FactsBox` są potrzebne dalej). Pod-etapy 4, 5, 6 można przestawiać. 7 wymaga wszystkich stron. 8 przed 9.
 
@@ -86,6 +86,7 @@ Dla każdego: cel, zakres, kryteria ukończenia (DoD), proponowany podział na k
 **Cel:** wszystko, co jest wspólne dla każdej strony, plus fundament pod treść.
 
 **Zakres:**
+
 - tokeny z `design/README` (kolory z rolami, skala typograficzna, odstępy, radius 0, brak cieni) w jednym miejscu; fonty przez `next/font` (EB Garamond, IBM Plex Sans; `latin` + `latin-ext`);
 - komponenty: `Header` (z podtytułem „Studium Ikonograficzne św. Andrzeja Apostoła”), `Footer` z pełną mapą strony, `SectionNav`, `Breadcrumb`, menu mobilne z akordeonem sekcji, dropdown desktop otwierany kliknięciem;
 - `app/layout.tsx`, `src/i18n/pl.ts` ze stringami UI, stany fokusu (obrys 2 px `#e8c765`, odstęp 2 px), `prefers-reduced-motion`;
@@ -94,14 +95,16 @@ Dla każdego: cel, zakres, kryteria ukończenia (DoD), proponowany podział na k
 - puste trasy dla całej architektury z briefu §3 (żeby `SectionNav` i mapa strony w stopce nie prowadziły do 404).
 
 **DoD:**
+
 - [ ] każda trasa z briefu §3 istnieje i renderuje layout z nagłówkiem i stopką;
 - [ ] `SectionNav` i menu mobilne działają na 390 px, nawigacja klawiaturą z widocznym fokusem;
 - [ ] brak `#8d7d69` i brak 13 px w kodzie (grep);
 - [ ] `types.ts` zgodny z briefem §4, warstwa `src/content/*` używana przez layout (`SiteSettings`).
 
-**Proponowane kawałki:** (1) tokeny + fonty + layout + `pl.ts`; (2) `Header`, dropdown, menu mobilne; (3) `Footer`, `Breadcrumb`, `SectionNav`, trasy-zaślepki; (4) `types.ts`, warstwa `src/content/*`, `SiteSettings`, pierwsze pliki `sample`.
+**Proponowane kawałki:** (1) tokeny + fonty + layout + `pl.ts`; (2) `Header`, dropdown, menu mobilne; (3) `Footer`, `Breadcrumb`, `SectionNav`, trasy-zaślepki; (4) `types.ts`, warstwa `src/content/`\*, `SiteSettings`, pierwsze pliki `sample`.
 
 **Pytania na sesję planistyczną:**
+
 - Tailwind czy CSS Modules — jak wyglądają tokeny w handoffie i co jest mniejszym kosztem; decyzja jedna, ostateczna (rejestr §4).
 - Jak `SectionNav` dostaje listę pozycji — konfiguracja per sekcja w jednym pliku (`src/navigation.ts`) czy props przy każdej stronie.
 - Czy stan aktywnej pozycji `SectionNav`/menu liczyć z `usePathname` (Client Component) czy przekazywać z serwera.
@@ -114,6 +117,7 @@ Dla każdego: cel, zakres, kryteria ukończenia (DoD), proponowany podział na k
 **Zakres:** `Hero` (ikona + zdanie + dwa CTA), sekcja „Najbliższe” z `SiteSettings.upcoming`, trzy filary, „Wybrane ikony” (z `IconWork`, dane `sample`), `Testimonial`, blok „Prowadząca” (mały), `MapBlock`, kontakt; wersja mobilna z kadrem hero ok. 60 % wysokości ekranu.
 
 **DoD:**
+
 - [ ] zgodność z makietą desktop i mobile (screenshot obok makiety);
 - [ ] wszystkie treści z `content/` lub `pl.ts`; brak tekstu redakcyjnego w JSX;
 - [ ] CTA „Warsztaty”/„Wykłady” prowadzą do hubów; kliknięcia mają hooki pod analitykę (patrz pytania);
@@ -130,6 +134,7 @@ Dla każdego: cel, zakres, kryteria ukończenia (DoD), proponowany podział na k
 **Zakres:** szablon `Offer` (breadcrumb, `SectionNav`, H1, lead, `FactsBox` po prawej / na mobile pod leadem, body MDX, „Jak się zapisać”, `Testimonial`); `FactsBox` zasilany z `OfferFacts` ze stanami `enrollmentOpen: true/false` i różnymi komunikatami per `kind`; `mailto:` z dokładnymi tematami z briefu §7 i `tel:+48601734705`; hub `/warsztaty` z `OfferCard`; strony: `/warsztaty/kurs-roczny-i-trzyletni` (program 6 semestrów jako sekwencja), `/warsztaty/letnia-szkola-swiatla` (stan zamknięty domyślnie, „Rytm dnia” tylko jako `sample`), `/ikony/na-zamowienie` (`StepList` 5 kroków, „Przykłady realizacji”, nota o gotowych ikonach). Wariant `wyklady` szablonu przygotować, ale strona `/wyklady` powstaje w pod-etapie 4.
 
 **DoD:**
+
 - [ ] `FactsBox` renderuje oba stany z jednego komponentu, sterowane wyłącznie danymi;
 - [ ] tematy `mailto:` identyczne ze stringami z briefu §7 (test: kliknięcie na telefonie otwiera klienta z tematem);
 - [ ] cztery `content/offers/*.mdx` z `facts` zgodnymi z `OfferFacts`; wartości niepotwierdzone (czas realizacji zamówień) jako puste pola, nie zmyślone;
@@ -144,6 +149,7 @@ Dla każdego: cel, zakres, kryteria ukończenia (DoD), proponowany podział na k
 **Zakres:** `/wyklady` jako hub + bieżący sezon (`LectureList`: data, tytuł, prowadzący) + „Jak się zapisać” (`FactsBox` w wariancie `wyklady`) + zwinięte archiwum z linkiem „Pełne archiwum”; `/wyklady/archiwum` z `SeasonAccordion` (15 sezonów, jeden rozwinięty); `/wyklady/wykladowcy` z `Lecturer`. Dane: `content/lectures/<season>.json` — na razie 2–3 sezony `sample` w docelowym schemacie, żeby akordeon miał co pokazywać.
 
 **DoD:**
+
 - [ ] `SeasonAccordion` dostępny z klawiatury (Enter/Space, fokus, `aria-expanded`), działa bez JS w sensownym stopniu (treść w DOM);
 - [ ] miejsca oznaczone `[do weryfikacji: liczba sezonów]` zaznaczone w treści `sample`, nie w kodzie;
 - [ ] terminy 2026/2027 z briefu §8 wpisane jako prawdziwe dane bieżącego sezonu (tytuły wykładów puste/placeholder).
@@ -157,6 +163,7 @@ Dla każdego: cel, zakres, kryteria ukończenia (DoD), proponowany podział na k
 **Zakres:** `/ikony` z `IconGrid`, filtry autor (Elżbieta / uczniowie) i temat (z `tags`), `Lightbox` desktop i mobile (strzałki ≥ 48 px, zamknięcie, klawiatura, blokada scrolla, focus trap); podpisy: tytuł, autor, wymiary, rok; zdanie o zamawianiu z linkiem do `/ikony/na-zamowienie`; zajawka „Ikony na zamówienie” na dole. `/ikony/[slug]` — decyzja w sesji planistycznej (brief: opcjonalnie w v1).
 
 **DoD:**
+
 - [ ] filtry działają jako query string lub stan — ustalone w planie; bez przeładowania strony;
 - [ ] `Lightbox`: Esc zamyka, strzałki klawiatury, fokus wraca do klikniętego kafla, `prefers-reduced-motion` respektowany;
 - [ ] wymiary z podpisów oznaczone jako niezweryfikowane w danych `sample`.
@@ -170,6 +177,7 @@ Dla każdego: cel, zakres, kryteria ukończenia (DoD), proponowany podział na k
 **Zakres:** `/kontakt` (adres, osadzona mapa, dwa maile z opisem, telefon, zakrystia, „Akademia w sieci”); `/o-akademii` na szablonie strony tekstowej z `TocSidebar`; `/aktualnosci` z `NewsCard` i paginacją + `/aktualnosci/[slug]`; `/wydarzenia` z `EventCard`, kategorie jako `SectionNav`; `/publikacje` na szablonie tekstowym z zakładkami; `/polityka-prywatnosci`; strona 404 w stylu projektu.
 
 **DoD:**
+
 - [ ] szablon strony tekstowej użyty na co najmniej trzech trasach bez rozgałęzień w kodzie;
 - [ ] paginacja aktualności działa z 60+ wpisami (wygenerować dane `sample` skryptem, nie ręcznie);
 - [ ] wszystkie trasy z briefu §3 mają realną treść lub `sample` — koniec zaślepek.
@@ -183,6 +191,7 @@ Dla każdego: cel, zakres, kryteria ukończenia (DoD), proponowany podział na k
 **Zakres:** `generateMetadata` + Open Graph dla każdej trasy (obraz OG domyślny + per strona); `sitemap.ts`, `robots.ts`; JSON-LD: `Organization` (z `parentOrganization`), `Person` (EJK, `sameAs`), `Event` dla bieżącego sezonu, `Course` dla kursu i pleneru; Plausible lub Umami bez ciasteczek ze zdarzeniami na CTA zapisów, `mailto:`, `tel:`; przegląd Lighthouse (dostępność ≥ 95, wydajność ≥ 90 mobile) i naprawa blokad; przegląd kontrastu i fokusu na wszystkich stanach z ekranu „Komponenty”.
 
 **DoD:**
+
 - [ ] walidator schema.org bez błędów dla czterech typów;
 - [ ] podgląd linku (OG) sprawdzony narzędziem debugującym dla strony głównej i jednej ofertowej;
 - [ ] zdarzenia analityczne widoczne w panelu narzędzia w środowisku testowym;
@@ -199,6 +208,7 @@ Dla każdego: cel, zakres, kryteria ukończenia (DoD), proponowany podział na k
 **Zakres:** sprawdzenie REST API vs WXR; skrypt `scripts/migrate-wp.ts` wg briefu §5 (pages/posts → MDX, oryginały obrazów z `href` nie z `src`, wykłady → `LectureSeason`, galeria → `IconWork`, `docs/redirects.json`); raport `scripts/migrate-report.md`; ręczna korekta (literówki, nazwiska, podpisy ikon, daty 2025 → archiwum lub aktualizacja); usunięcie wszystkich plików i wpisów `sample`; weryfikacja listy z §5; 301 w `next.config.ts`.
 
 **DoD:**
+
 - [ ] `grep -r sample content/ public/media/` pusty;
 - [ ] każda pozycja z §5 odhaczona;
 - [ ] raport migracji przejrzany, niejasne przypadki rozstrzygnięte lub zgłoszone EJK;
@@ -214,6 +224,7 @@ Dla każdego: cel, zakres, kryteria ukończenia (DoD), proponowany podział na k
 **Zakres:** hosting, zmienne środowiskowe, domena i certyfikat, test 301 ze starych URL-i (w tym długi slug „O nas”), test `mailto:` i `tel:` na telefonie (iOS i Android), zgłoszenie sitemap w Google Search Console, monitoring (uptime, błędy), procedura publikacji zmian treści do czasu panelu CMS.
 
 **DoD:**
+
 - [ ] lista starych URL-i z briefu §5 przetestowana skryptem (status + cel);
 - [ ] GSC potwierdza sitemap;
 - [ ] `docs/runbook.md`: jak wdrożyć, jak zmienić treść, gdzie są logi.
@@ -224,20 +235,20 @@ Dla każdego: cel, zakres, kryteria ukończenia (DoD), proponowany podział na k
 
 ## 4. Rejestr decyzji
 
-| # | Decyzja | Pod-etap | Wybór | Data |
-|---|---|---|---|---|
-| K-01 | Tailwind vs CSS Modules | 1 | **Tailwind**; tokeny jako zmienne w `globals.css` | 2026-09-11 |
-| K-02 | Źródło aktywnej pozycji nawigacji (klient/serwer) | 1 | — | — |
-| K-03 | Renderer MDX i zestaw komponentów w body | 3 | — | — |
-| K-04 | `/ikony/[slug]` w v1 | 5 | — | — |
-| K-05 | Filtry galerii: query string vs stan | 5 | — | — |
-| K-06 | Paginacja aktualności: trasa vs query | 6 | — | — |
-| K-07 | Plausible vs Umami | 7 | — | — |
-| K-08 | Domena kanoniczna (www / bez) | 7 | — | — |
-| K-09 | Hosting | 9 | — | — |
-| K-10 | Termin przełączenia DNS względem naboru 24.09.2026 | 9 | **Nabór 2026/2027 obsługuje stara strona**; wdrożenie bez presji terminu | 2026-09-11 |
-| K-11 | Język komentarzy, commitów i PR | — | **Angielski** (treść dla użytkownika po polsku) | 2026-09-11 |
-| K-12 | Kto commituje | — | **Wyłącznie właściciel repo**, po „OK” dla kawałka; Claude Code nie używa `git commit/push` | 2026-09-11 |
+| #    | Decyzja                                            | Pod-etap | Wybór                                                                                       | Data       |
+| ---- | -------------------------------------------------- | -------- | ------------------------------------------------------------------------------------------- | ---------- |
+| K-01 | Tailwind vs CSS Modules                            | 1        | **Tailwind**; tokeny jako zmienne w `globals.css`                                           | 2026-09-11 |
+| K-02 | Źródło aktywnej pozycji nawigacji (klient/serwer)  | 1        | —                                                                                           | —          |
+| K-03 | Renderer MDX i zestaw komponentów w body           | 3        | —                                                                                           | —          |
+| K-04 | `/ikony/[slug]` w v1                               | 5        | —                                                                                           | —          |
+| K-05 | Filtry galerii: query string vs stan               | 5        | —                                                                                           | —          |
+| K-06 | Paginacja aktualności: trasa vs query              | 6        | —                                                                                           | —          |
+| K-07 | Plausible vs Umami                                 | 7        | —                                                                                           | —          |
+| K-08 | Domena kanoniczna (www / bez)                      | 7        | —                                                                                           | —          |
+| K-09 | Hosting                                            | 9        | —                                                                                           | —          |
+| K-10 | Termin przełączenia DNS względem naboru 24.09.2026 | 9        | **Nabór 2026/2027 obsługuje stara strona**; wdrożenie bez presji terminu                    | 2026-09-11 |
+| K-11 | Język komentarzy, commitów i PR                    | —        | **Angielski** (treść dla użytkownika po polsku)                                             | 2026-09-11 |
+| K-12 | Kto commituje                                      | —        | **Wyłącznie właściciel repo**, po „OK” dla kawałka; Claude Code nie używa `git commit/push` | 2026-09-11 |
 
 Decyzje spoza kodu (D-01…D-05 z briefu v2) pozostają w dokumentach ekosystemu; tu wpisujemy tylko ich skutki dla implementacji.
 
@@ -247,25 +258,25 @@ Decyzje spoza kodu (D-01…D-05 z briefu v2) pozostają w dokumentach ekosystemu
 
 Lista rośnie w każdym pod-etapie. Odhaczana w pod-etapie 8.
 
-| Treść | Gdzie (plik `sample`) | Dodano w | Zastąpić czym | ✔ |
-|---|---|---|---|---|
-| Cytaty uczestników (Adam, Hania, Iza…) | `content/offers/*`, `content/testimonials.json` | 3 | cytaty z obecnej strony, dosłownie | ⬜ |
-| Wpisy aktualności `[przykład]` | `content/news/sample-*.mdx` | 6 | migracja WP | ⬜ |
-| „Rytm dnia” w Letniej Szkole Światła | `content/offers/plener.mdx` | 3 | potwierdzenie z EJK albo usunięcie sekcji | ⬜ |
-| Tytuł wykładu inauguracyjnego | `content/lectures/2026-2027.json` | 4 | program od sekretariatu | ⬜ |
-| Wymiary ikon `[z podpisu WP]` | `content/icons.json` | 2, 5 | weryfikacja przy migracji | ⬜ |
-| Czas realizacji ikony na zamówienie | `content/offers/zamowienie.mdx` (`facts.leadTime`) | 3 | potwierdzenie z EJK | ⬜ |
-| Liczba sezonów `[do weryfikacji]` | `content/lectures/*`, `pl.ts` | 4 | źródło: archiwum WP | ⬜ |
-| Zdjęcia z makiet | `public/media/sample/` | 1 | oryginały z `/wp-content/uploads/` lub nowa sesja | ⬜ |
-| Sezony archiwum `sample` (2–3) | `content/lectures/sample-*.json` | 4 | 15 sezonów z migracji | ⬜ |
+| Treść                                  | Gdzie (plik `sample`)                              | Dodano w | Zastąpić czym                                     | ✔   |
+| -------------------------------------- | -------------------------------------------------- | -------- | ------------------------------------------------- | --- |
+| Cytaty uczestników (Adam, Hania, Iza…) | `content/offers/*`, `content/testimonials.json`    | 3        | cytaty z obecnej strony, dosłownie                | ⬜  |
+| Wpisy aktualności `[przykład]`         | `content/news/sample-*.mdx`                        | 6        | migracja WP                                       | ⬜  |
+| „Rytm dnia” w Letniej Szkole Światła   | `content/offers/plener.mdx`                        | 3        | potwierdzenie z EJK albo usunięcie sekcji         | ⬜  |
+| Tytuł wykładu inauguracyjnego          | `content/lectures/2026-2027.json`                  | 4        | program od sekretariatu                           | ⬜  |
+| Wymiary ikon `[z podpisu WP]`          | `content/icons.json`                               | 2, 5     | weryfikacja przy migracji                         | ⬜  |
+| Czas realizacji ikony na zamówienie    | `content/offers/zamowienie.mdx` (`facts.leadTime`) | 3        | potwierdzenie z EJK                               | ⬜  |
+| Liczba sezonów `[do weryfikacji]`      | `content/lectures/*`, `pl.ts`                      | 4        | źródło: archiwum WP                               | ⬜  |
+| Zdjęcia z makiet                       | `public/media/sample/`                             | 1        | oryginały z `/wp-content/uploads/` lub nowa sesja | ⬜  |
+| Sezony archiwum `sample` (2–3)         | `content/lectures/sample-*.json`                   | 4        | 15 sezonów z migracji                             | ⬜  |
 
 ---
 
 ## 6. Dziennik
 
-| Data | Wpis |
-|---|---|
-| 2026-09-11 | v0.1 — utworzenie planu; kolejność: migracja WP przeniesiona na koniec (pod-etap 8), strony budowane na treściach z makiet. |
+| Data       | Wpis                                                                                                                                                                  |
+| ---------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 2026-09-11 | v0.1 — utworzenie planu; kolejność: migracja WP przeniesiona na koniec (pod-etap 8), strony budowane na treściach z makiet.                                           |
 | 2026-09-11 | v0.2 — decyzje K-01 (Tailwind), K-10 (nabór na starej stronie), K-11 (angielski w kodzie), K-12 (commity ręczne). Załącznik C zastąpiony finalnym `CLAUDE.md` w repo. |
 
 ---
@@ -280,33 +291,43 @@ Gałąź: feat/0N-nazwa
 Makiety: design/[pliki i stany, które obowiązują]
 
 ## Cel i zakres
+
 [2–4 zdania; co wchodzi, co wyraźnie nie wchodzi]
 
 ## Decyzje podjęte w sesji planistycznej
+
 - K-xx: [decyzja] — [uzasadnienie w jednym zdaniu]
 
 ## Pliki i komponenty
+
 | Plik | Nowy/zmiana | Odpowiedzialność |
-|---|---|---|
+| ---- | ----------- | ---------------- |
 
 ## Kawałki
+
 ### Kawałek 1 — [nazwa]
+
 Zakres: […]
 Kryterium „gotowe”: […]
+
 ### Kawałek 2 — […]
 
 ## Dane sample dodawane w tym pod-etapie
+
 [lista → do przepisania do docs/plan-claude-code.md §5]
 
 ## Kryteria ukończenia pod-etapu
+
 - [ ] […]
 
 ## Ryzyka i pytania otwarte
+
 - […]
 
 ## Postęp
+
 | Kawałek | Status | Uwagi z checkpointu |
-|---|---|---|
+| ------- | ------ | ------------------- |
 ```
 
 ## Załącznik B — prompty
@@ -327,7 +348,7 @@ Implementujemy docs/plans/0N-nazwa.md (zatwierdzony). Przeczytaj go, CLAUDE.md i
 Zrób wyłącznie Kawałek 1. Po nim zatrzymaj się i złóż meldunek w formacie z CLAUDE.md („Checkpoint”). Nie zaczynaj Kawałka 2 bez mojego OK.
 ```
 
-**Wznowienie po `/clear`:**
+**Wznowienie po** `/clear`**:**
 
 ```
 Kontynuujemy docs/plans/0N-nazwa.md. Zaliczone checkpointy: 1–K. Przeczytaj plan, CLAUDE.md i sekcję „Postęp” w planie, sprawdź stan repo (git status, git log -5). Zrób Kawałek K+1, potem meldunek i czekaj na OK.
@@ -341,12 +362,13 @@ Poprzednia wersja fragmentu (historyczna):
 
 ```md
 ## Rytm pracy (docs/plan-claude-code.md)
+
 - Praca idzie pod-etapami; każdy ma plan w docs/plans/0N-nazwa.md. Bez zatwierdzonego planu nie piszesz kodu w danym pod-etapie.
 - Implementujesz jeden kawałek z planu naraz. Po każdym kawałku zatrzymujesz się i składasz meldunek:
   ## Checkpoint N/M — [nazwa]
   Zrobione: / Odstępstwa od planu lub makiety: / Do decyzji: / Następny krok: / Build/lint: / Czekam na OK.
 - Kolejny kawałek zaczynasz dopiero po „OK” użytkownika. „OK z uwagami” = najpierw uwagi, potem kawałek.
 - Jeśli plan okazuje się błędny w trakcie — przerywasz, meldujesz, proponujesz korektę planu. Nie improwizujesz poza planem.
-- Treści redakcyjne wyłącznie w content/ przez warstwę src/content/*; nigdy w JSX. Dane przykładowe oznaczasz `sample` i dopisujesz do docs/plan-claude-code.md §5.
+- Treści redakcyjne wyłącznie w content/ przez warstwę src/content/\*; nigdy w JSX. Dane przykładowe oznaczasz `sample` i dopisujesz do docs/plan-claude-code.md §5.
 - Aktualizujesz sekcję „Postęp” w pliku planu po każdym checkpoincie.
 ```
