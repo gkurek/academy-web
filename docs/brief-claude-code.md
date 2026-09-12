@@ -1,0 +1,294 @@
+# Akademia Ikony — brief techniczny dla Claude Code
+
+> **Cel dokumentu:** wersja `akademia-ikony-brief-v2.md` skrócona do tego, co potrzebne w fazie implementacji. Makiety w Claude Design są zatwierdzone i zhandoffowane — ten dokument nie opisuje procesu ich tworzenia, tylko to, co z nich wynika dla kodu.
+> **Repo:** `academy-web`. **Pełny brief (kontekst biznesowy, audyt, decyzje marketingowe):** `docs/brief-full.md` — czytaj przy niejasnościach co do treści/copy, nie przy pytaniach technicznych.
+> **Dokument nadrzędny:** `docs/CLAUDE.md` (konwencje kodu, patrz niżej) ma pierwszeństwo przy konflikcie.
+
+---
+
+## 1. Kontekst w skrócie
+
+Akademia Ikony (akademiaikony.pl) — instytucja edukacyjna prowadząca warsztaty pisania ikon, cykl wykładów i plenery, działająca przy fundacji IKONA DZIŚ. Strona ma trzy cele w tej kolejności: (1) wizerunek instytucji, (2) zapisy na warsztaty/plener, (3) zapisy na wykłady. Odbiorcy: 35–70 lat, często z telefonu, niekoniecznie techniczni — stąd wymagania dostępności i prostoty nawigacji są równie ważne jak funkcje.
+
+Odświeżenie zastępuje starą stronę WordPress (motyw Nisarg, 2015) — stąd duży komponent migracji treści w projekcie.
+
+Strona jest częścią szerszego ekosystemu (Akademia + Fundacja + planowana strona autorska Elżbiety Jackowskiej-Kurek), ale **to repo dotyczy wyłącznie Akademii**. Jedyna konsekwencja tego dla kodu: nazwy pól w `IconWork` powinny zostać zgodne z tym, co jest w brief §7 (współdzielony model danych na przyszłość) — nie zmieniać nazw pól bez potrzeby.
+
+---
+
+## 2. Stack i decyzje techniczne
+
+- **Frontend:** Next.js (App Router), TypeScript strict, React Server Components domyślnie; Client Components tylko gdy potrzebna interakcja (menu, lightbox, akordeon).
+- **Stylowanie:** Tailwind lub CSS Modules z tokenami z handoffu Claude Design — wybrać jedno, nie mieszać (patrz `design/README`).
+- **Treść (v1):** pliki w repo — `content/` (MDX + JSON), zgodne z typami w `src/content/types.ts` (patrz §4). **Nie baza danych w v1.**
+- **Treść (v2, później):** ten sam model danych przeniesiony na SQLite/Postgres + panel `/admin` (Auth.js, 2–3 konta). Strony publiczne czytają z tej samej warstwy `src/content/*`, żeby zmiana źródła nie dotykała komponentów.
+- **Obrazy:** `next/image`; oryginały z WP zmigrowane do `public/media/` (na start) lub object storage; automatyczne WebP/AVIF.
+- **Zapisy (v1):** przyciski `mailto:` z ujednoliconymi tematami (lista w §6) + `tel:+48601734705`. Żaden backend formularzy w v1.
+- **Analityka:** Plausible lub Umami (bez ciasteczek), zdarzenia na klikach CTA zapisów, telefonu, `mailto:`. **Brak banera cookies** (nic go nie wymaga w v1).
+- **Hosting:** dowolny wspierający Next.js; przekierowania 301 w `next.config.ts` z `docs/redirects.json`.
+- **Język:** PL only w v1; wszystkie stringi UI w `src/i18n/pl.ts` (nie hardkodować w JSX) — przygotowanie pod EN w przyszłości.
+- **Repo:** osobne (nie monorepo). Wspólne typy/tokeny dla przyszłej strony EJK trzymane jako plik do skopiowania, nie jako workspace.
+
+---
+
+## 3. Architektura informacji (routing)
+
+```
+/                          strona główna
+/o-akademii                historia, misja, EJK, zespół, miejsce
+/warsztaty                 hub: dwie ścieżki
+/warsztaty/kurs-roczny-i-trzyletni
+/warsztaty/letnia-szkola-swiatla
+/wyklady                   hub: bieżący sezon + jak się zapisać
+/wyklady/archiwum          15 sezonów, rozwijane
+/wyklady/wykladowcy
+/ikony                     galeria z filtrami (autor: Elżbieta / uczniowie; temat)
+/ikony/[slug]              pojedyncza ikona (opcjonalnie w v1)
+/ikony/na-zamowienie       strona ofertowa (treść wymienna w przyszłości — nie istotne teraz)
+/wydarzenia                wystawy, poświęcenia, oprowadzania, wyjazdy (kategorie)
+/aktualnosci               lista + archiwum
+/aktualnosci/[slug]
+/publikacje                artykuły, multimedia, plakaty (szablon strony tekstowej z zakładkami)
+/kontakt
+/polityka-prywatnosci
+```
+
+**Menu główne (max 6 pozycji):** O Akademii · Warsztaty · Wykłady · Ikony · Wydarzenia · Kontakt.
+
+**Wzorzec nawigacji drugiego poziomu (obowiązkowy, zaimplementowany w makietach jako `SectionNav`):**
+1. Strona sekcji (`/warsztaty`, `/wyklady`, `/ikony`, `/wydarzenia`) jest hubem z dużymi klikalnymi blokami podstron, nie tylko opisem.
+2. `SectionNav` — pozioma listwa linków drugiego poziomu pod nagłówkiem, na każdej podstronie sekcji. Na mobile: zwykła zawijana lista, nie select, nie skryta.
+3. Stopka z pełną mapą strony (nawigacja ratunkowa + SEO).
+
+Zawartość `SectionNav` per sekcja:
+- Warsztaty: Przegląd · Kurs roczny i trzyletni · Letnia Szkoła Światła
+- Wykłady: Bieżący sezon · Archiwum · Wykładowcy
+- Ikony: Galeria · Ikony na zamówienie
+- Wydarzenia: Wszystkie · Wystawy · Poświęcenia · Oprowadzania · Wyjazdy studyjne
+
+Dropdown w menu głównym (desktop, opcjonalny) musi się otwierać **kliknięciem, nie hoverem**. W menu mobilnym: akordeon per sekcja, nagłówek sekcji zawsze też linkiem do huba.
+
+---
+
+## 4. Model treści (`src/content/types.ts`)
+
+Skopiować bez zmian nazw pól (współdzielony model z przyszłą stroną EJK):
+
+```ts
+type Image = { src: string; alt: string; width: number; height: number; caption?: string };
+
+type Page = {
+  slug: string; title: string; lead?: string;
+  body: string;                 // MDX
+  hero?: Image; seo?: { description: string; ogImage?: string };
+};
+
+type OfferFacts = {             // blok „W skrócie”
+  seasonLabel?: string;         // „2026/2027”
+  when?: string;                // „raz w tygodniu, październik–czerwiec”
+  where?: string;
+  audience?: string;
+  price?: string;               // „400 zł / rok”
+  enrollmentDeadline?: string;  // ISO
+  enrollmentEmail: string;
+  enrollmentPhone?: string;
+  enrollmentSubject: string;    // ujednolicony temat mailto
+  firstMeeting?: string;        // ISO
+  enrollmentOpen: boolean;
+  leadTime?: string;            // zamówienia: orientacyjny czas realizacji
+};
+
+type Offer = Page & {
+  kind: 'kurs' | 'plener' | 'wyklady' | 'zamowienie';
+  facts: OfferFacts;
+  testimonials?: Testimonial[];
+};
+
+type Lecturer = { slug: string; name: string; titles?: string; affiliation?: string; bio?: string; photo?: Image };
+
+type Lecture = { date: string; title: string; lecturerSlugs: string[]; note?: string };
+
+type LectureSeason = {
+  slug: string; label: string;  // „2026/2027”
+  cycleTitle: string;           // „Ikona – korzenie i owoce wiary. Mistyka dziś”
+  intro?: string; lectures: Lecture[]; gallery?: Image[];
+};
+
+// Podzbiór przyszłego `Product` ze strony autorskiej EJK — nazwy pól
+// zgodne celowo, żeby przeniesienie/współdzielenie danych było mechaniczne.
+type IconWork = {
+  slug: string; title: string;  // „Chrystus Pantokrator”
+  author: 'ejk' | 'student'; authorName: string;
+  technique?: string;           // „tempera jajowa na desce, złocenie”
+  size?: { w: number; h: number }; year?: number;
+  image: Image; tags?: string[];
+};
+
+type Event = { slug: string; category: 'wystawa' | 'poswiecenie' | 'oprowadzanie' | 'wyjazd';
+  title: string; date?: string; dateEnd?: string; body: string; images?: Image[] };
+
+type News = { slug: string; title: string; date: string; excerpt?: string; body: string; cover?: Image };
+
+type Testimonial = { quote: string; author: string; role?: string };
+
+type SiteSettings = {
+  orgName: string; place: string; address: string;
+  emails: { label: string; address: string }[];
+  phone: string; mapEmbedUrl: string; blogUrl: string;
+  ecosystem: {
+    foundationUrl: string;
+    personalSiteUrl?: string;   // uzupełnić po starcie strony autorskiej EJK — puste teraz
+    social: { facebook: string; youtube: string };
+  };
+  upcoming: { title: string; text: string; href: string }[];   // „Najbliższe” na stronie głównej
+};
+```
+
+---
+
+## 5. Migracja z WordPressa
+
+**Krok 1 — sprawdzić źródło:** `https://www.akademiaikony.pl/wp-json/wp/v2/pages?per_page=100` i `/posts`. Jeśli 200 → REST API. Jeśli 401/404 → eksport WXR (Narzędzia → Eksport w WP), parsować XML.
+
+**Krok 2 — media:** z `content.rendered` wyciągnąć `<a href="…/uploads/YYYY/MM/x.jpg"><img title="…">`. **`href` to oryginał, `src` to cache — brać `href`.** Ignorować wszystko z `/wp-content/uploads/cache/`.
+
+**Krok 3 — HTML → MDX**, np. `turndown` + korekta ręczna.
+
+**Krok 4 — wykłady:** rozbić posty `wyklady-YYYY-YYYY` regexem na `Lecture[]`: wzorzec `DD.MM` + linie `**Tytuł,** Prowadzący`.
+
+**Krok 5 — galeria → `IconWork`:** regex `^(.+?),\s*(\d+)x(\d+)\s*\(cm\)$` na podpis; wariant „pisany/pisana ręką X” → `author: 'student'`, `authorName: X`. Spodziewać się literówek w źródle (np. „Advokata” vs „Advocata”, „Matyaszczak” vs „Matyaszczyk”) — logować niejasne przypadki, nie zgadywać.
+
+**Krok 6 — przekierowania:** wygenerować `docs/redirects.json` (stary → nowy URL) z tabeli poniżej, użyć w `next.config.ts`.
+
+**Skrypt migracji** (`scripts/migrate-wp.ts`, uruchamiany przez `tsx`) ma:
+1. pobrać pages/posts (REST albo WXR, oba źródła za flagą),
+2. HTML → MDX do `content/pages`, `content/news`,
+3. pobrać oryginały obrazów do `public/media/` (pomijając `/cache/`),
+4. wygenerować `content/lectures/<season>.json`,
+5. wygenerować `content/icons.json`,
+6. wygenerować `docs/redirects.json`.
+
+Być idempotentny, logować nieudane parsowania do `scripts/migrate-report.md`. Bez pętli `for`/`for-of` — `map`/`filter`/`reduce`/`forEach`.
+
+Szacunek ręcznej korekty po migracji: ~10 stron statycznych, 15 sezonów wykładów (nazwiska), ~65 podpisów ikon. ~60 wpisów aktualności bez korekty. Blog (blogspot) — nie migrować, tylko link w stopce.
+
+### Tabela przekierowań (kluczowe wpisy)
+
+| Stary URL | Nowy URL |
+|---|---|
+| `/` | zostaje treściowo inna strona; stare posty → `/aktualnosci` |
+| `/strona-glowna/celem-dzialalnosci-...` | `/o-akademii` |
+| `/strona-glowna/pracownia/` | `/o-akademii#pracownia` (do potwierdzenia objętości treści) |
+| `/strona-glowna/kontakt/` | `/kontakt` |
+| `/strona-glowna/polityka-prywatnosci/` | `/polityka-prywatnosci` |
+| `/warsztaty/` | `/warsztaty` |
+| `/warsztaty/warsztaty-roczne/` | `/warsztaty/kurs-roczny-i-trzyletni` |
+| `/warsztaty/warsztaty-wakacyjne/` | `/warsztaty/letnia-szkola-swiatla` |
+| `/warsztaty/zapisy-na-warsztaty/` | scalone w sekcję „Jak się zapisać” na stronach kursów |
+| `/wyklady/` | `/wyklady` |
+| `/wyklady/tematy/` | `/wyklady` (bieżący) + `/wyklady/archiwum` |
+| `/wyklady/wykladowcy/` | `/wyklady/wykladowcy` |
+| `/wyklady/zapisy-na-wyklady/` | scalone w `/wyklady#zapisy` |
+| `/ikona/`, `/ikona/galeria/` | `/ikony` |
+| `/ikona/wystawy/`, `/wernisaze/` | `/wydarzenia/wystawy` |
+| `/ikona/ikony-na-zamowienie/` | `/ikony/na-zamowienie` |
+| `/wydarzenia/`, `/poswiecenia-ikon/`, `/oprowadzania-kuratorskie/`, `/wyjazdy-studyjne/` | `/wydarzenia` z kategoriami |
+| `/publikacje/`, `/publikacje/artykuly/`, `/multimedia/`, `/plakaty/` | `/publikacje` z zakładkami |
+
+---
+
+## 6. Wymagania funkcjonalne v1
+
+**Musi być:**
+- Strona główna: hero, sekcja „Najbliższe” (z CMS/danych), trzy filary, wybrane ikony, cytat, blok „Prowadząca” (mały, nie dominujący), miejsce, kontakt.
+- Strony ofertowe (kurs, plener, wykłady, ikony na zamówienie) z blokiem `FactsBox`/„W skrócie” zasilanym z `OfferFacts` — nie z tekstu w body.
+- Dwa stany `FactsBox`: nabór otwarty (CTA złote) i zamknięty (`enrollmentOpen: false` → przycisk drugorzędny + inny komunikat, np. „nabór rusza w marcu” lub „zapytaj o miejsce”).
+- `/ikony/na-zamowienie` na szablonie strony ofertowej, sekcja „Jak przebiega zamówienie” jako sekwencja 5 kroków, „Przykłady realizacji” (3–4 ikony), link do niej z Galerii.
+- Zapisy: przyciski `mailto:` z tematami z §7 poniżej + `tel:`. Przygotować miejsce pod formularz w v2 (nie budować go teraz).
+- Program bieżącego sezonu wykładów jako lista (data, tytuł, prowadzący); archiwum jako rozwijane sezony (`SeasonAccordion`).
+- Galeria z filtrami (autor, temat) i lightboxem; każde zdjęcie z podpisem (tytuł, autor, wymiary, rok jeśli znany).
+- Aktualności z paginacją + wpis pojedynczy.
+- Kontakt: adres, **osadzona** mapa (nie surowy link), dwa maile z opisem, telefon.
+- Mobile-first, WCAG AA (kontrast, fokus, alt), `prefers-reduced-motion`.
+- SEO: metadata + Open Graph per strona, sitemap, 301 ze starych URL.
+- JSON-LD: `Organization` (z `parentOrganization` → Fundacja), `Person` (EJK, z `sameAs`), `Event` (wykłady bieżącego sezonu), `Course` (kurs, plener).
+- Analityka bez ciasteczek od v1 (zdarzenia: klik CTA zapisów, telefonu, mailto).
+
+**Poza zakresem v1:** formularze z backendem, płatności, sklep, wersja EN, konta użytkowników, wyszukiwarka, import listy ikon na sprzedaż z blogspota.
+
+---
+
+## 7. Z handoffu Claude Design — co musi trafić do kodu
+
+*(Makiety zatwierdzone, pełny handoff w `design/`. Poniżej tylko to, co łatwo przeoczyć.)*
+
+**Tematy `mailto:` (dokładne stringi, nie parafrazować):**
+- `Zgłoszenie – kurs roczny 2026/2027`
+- `Zgłoszenie – Letnia Szkoła Światła 2027`
+- `Zgłoszenie – wykłady 2026/2027`
+- `Zapytanie – ikona na zamówienie`
+
+Telefon jako `tel:+48601734705`.
+
+**Nazwy komponentów (użyć tych nazw w kodzie, żeby zgadzały się z design/README):**
+`Header`, `Footer`, `SectionNav`, `Breadcrumb`, `Hero`, `FactsBox`, `OfferCard`, `LectureList`, `SeasonAccordion`, `IconGrid`, `Lightbox`, `NewsCard`, `Testimonial`, `MapBlock`, `EventCard`, `StepList` (proces zamówienia), `TocSidebar` (strona tekstowa).
+
+**Tokeny — kolory:** kolor `#8d7d69` był w makietach niedostatecznie kontrastowy (4,3:1 na tłach kart) i został **zamieniony na `#a2917c`** w całym systemie. `#8d7d69` może zostać wyłącznie w placeholderach makietowych (IBM Plex Mono) — **nie kopiować go do produkcji.**
+
+**Tokeny — typografia:** EB Garamond (H1–H3, cytaty, daty), IBM Plex Sans (tekst, UI). IBM Plex Mono **nie jest tokenem produkcyjnym** — to tylko oznaczenia placeholderów w makiecie.
+
+**Rozmiar tekstu:** minimalny stopień skali dla tekstu czytanego (podpisy, stopka, breadcrumb, etykiety) to 14px desktop / 15px mobile. **13px nie istnieje w skali produkcyjnej** — jeśli coś w handoffie ma 13px, to błąd makiety, zgłosić, nie kopiować.
+
+**Fokus:** obrys 2px złoto `#e8c765`, odstęp 2px, musi być widoczny na ciemnym tle.
+
+**Promień/cień:** brak zaokrągleń (radius 0) w całym projekcie poza lightboxem; brak cieni poza lightboxem.
+
+**Treści makietowe — NIE przenosić do kodu jako prawdziwa treść (to placeholdery z makiet, nadpisać danymi z §8 lub z rzeczywistej treści klienta):**
+- cytaty uczestników bez wskazanego źródła
+- wpisy aktualności oznaczone `[przykład]`
+- sekcja „Rytm dnia” na stronie Letniej Szkoły Światła — układ dnia jest propozycją, nie faktem
+- tytuł wykładu inauguracyjnego („Otwarcie sezonu”) — nie pochodzi z briefu
+- wymiary ikon oznaczone `[z podpisu WP]` — niezweryfikowane, sprawdzić przy migracji
+
+**Do potwierdzenia przed publikacją (oznaczone w makietach jako `[do weryfikacji]`):** liczba sezonów wykładów (piętnasty vs czternaście — sprzeczność do wyjaśnienia ze źródłem).
+
+**Decyzje strukturalne z handoffu:**
+- `/wyklady` = hub + bieżący sezon + zwinięte archiwum; `/wyklady/archiwum` = osobna trasa z pełną listą.
+- `/publikacje` używa szablonu strony tekstowej (jak polityka prywatności) z zakładkami Artykuły · Multimedia · Plakaty jako `SectionNav`.
+
+---
+
+## 8. Fakty stałe (źródło prawdy dla treści — wpisać dosłownie, nie parafrazować)
+
+- Nazwa: AKADEMIA IKONY – Studium Ikonograficzne św. Andrzeja Apostoła. Założona 2010, w KŚT od 2012.
+- Miejsce: Kościół Środowisk Twórczych pw. św. Andrzeja Apostoła i św. Brata Alberta Chmielowskiego, Plac Teatralny, Warszawa. Rektor: ks. Grzegorz Michalczyk. Przestrzeń bez barier architektonicznych.
+- Organizator: fundacja IKONA DZIŚ, www.ikonadzis.org.
+- Kontakt ogólny/warsztaty/ikony: `akademiaikony@gmail.com`, tel. `601 734 705` (Elżbieta Jackowska-Kurek).
+- Wykłady/sekretariat: `sekretariat.ikony22@gmail.com` (Maurycy Lubak).
+- Blog: studiumikony.blogspot.com. Facebook: facebook.com/akademiaikony. YouTube: @akademiaikony3822.
+- Warsztaty 2026/2027: zgłoszenia do 24.09.2026 mailem; rozmowa wstępna ~30 min; pierwsze spotkanie 6.10.2026, 18:00; raz w tygodniu, październik–czerwiec, grupy wieczorne i dzienne.
+- Wykłady 2026/2027: „Ikona – korzenie i owoce wiary. Mistyka dziś”; wybrane wtorki 18:00–20:30; 400 zł/rok; terminy: 06.10, 10.11, 08.12, 19.01, 16.02, 09.03, 13.04, 11.05, 08.06, 11.06, 12.06 (wernisaż, AGAPA).
+- Letnia Szkoła Światła: plenery tygodniowe sierpień/wrzesień; nabór na 2027 rusza w marcu 2027, kolejność zgłoszeń.
+- Ikony na zamówienie: kontakt jak wyżej; szczegóły procesu i czas realizacji — do potwierdzenia z EJK (nie zgadywać, zostawić placeholder w CMS-owalnym polu).
+- Uwaga prawna do zachowania dosłownie: „nauczanie w Akademii Ikony nie niesie za sobą żadnych skutków formalnych.”
+
+---
+
+## 9. `CLAUDE.md` — konwencje (przypomnienie, plik ma być w repo)
+
+- Bez pętli `for`/`for-of` — `map`/`filter`/`reduce`/`forEach`.
+- Jeden plik = jeden komponent, nazwane eksporty, props typowane.
+- Stringi UI w `src/i18n/pl.ts`, nie hardkodować w JSX.
+- Obrazy tylko przez `next/image` z podanymi wymiarami.
+- Każdy interaktywny element: widoczny fokus; `alt` obowiązkowy; `prefers-reduced-motion` respektowany.
+- Fonty przez `next/font`, subsety `latin` + `latin-ext` (polskie znaki).
+- Zadania >3 plików: najpierw plan, czekać na OK.
+- Po każdym etapie: `npm run build` + `npm run lint` muszą przechodzić.
+- Nie zmieniać tokenów designu bez wyraźnej prośby — odstępstwa od makiety zgłaszać, nie decydować samemu.
+- `docs/brief-full.md` §9 (odzwierciedlone w §8 tutaj) jest źródłem prawdy dla maili/telefonu/dat — nie wymyślać innych wartości.
+
+---
+
+## Kolejność implementacji (przypomnienie)
+
+Etap A (szkielet + design system) → Etap B (model treści + migracja) → Etap C (strony, w kolejności: główna → kurs → plener → wykłady → galeria → kontakt → o Akademii → aktualności → wydarzenia/publikacje) → Etap D (SEO, sitemap, redirecty, 404, Lighthouse) → Etap E (wdrożenie, test przekierowań i `mailto:`, zgłoszenie do GSC).

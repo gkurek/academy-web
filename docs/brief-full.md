@@ -1,0 +1,450 @@
+# Akademia Ikony – brief odświeżenia strony
+
+> **Wersja:** 2.0 · **Data:** 2026-09-06
+> **Status:** żywy dokument, aktualizowany po każdej sesji decyzyjnej. Dziennik zmian na końcu.
+> **Dokumenty powiązane:** `instrukcja-pracy.md` (Claude Design → Claude Code), `ikony-ejk-master-plan.md` (strona autorska EJK), `ekosystem-ejk.md` (dokument nadrzędny – do założenia po sesji 0b).
+
+Dokument kontekstowy dla Claude Design (makiety) i Claude Code (implementacja).
+Stan analizy: wrzesień 2026, na podstawie obecnej strony [https://www.akademiaikony.pl/](https://www.akademiaikony.pl/).
+
+---
+
+## 1. Kim jest klient i po co ta strona
+
+**Akademia Ikony – Studium Ikonograficzne św. Andrzeja Apostoła** działa od 2010 r. w Warszawie, od 2012 r. w Kościele Środowisk Twórczych pw. św. Andrzeja Apostoła i św. Brata Alberta Chmielowskiego na Placu Teatralnym. Jest projektem wiodącym fundacji IKONA DZIŚ (ikonadzis.org). Założycielką i prowadzącą warsztaty jest **Elżbieta Jackowska-Kurek**, malarka ikon z ponad dwudziestoletnią praktyką; sekretarzem jest **Maurycy Lubak**.
+
+Trzy filary działalności:
+
+1. **Warsztaty pisania ikon** – kurs roczny (przedwstępny/wstępny) i trzyletni (doskonalący), raz w tygodniu, październik–czerwiec, praca indywidualna z każdym uczestnikiem. Plus **Letnia Szkoła Światła** – tygodniowe plenery ikonowe w sierpniu/wrześniu, w trybie rekolekcyjnym.
+2. **Wykłady** – cykl „Ikona – korzenie i owoce wiary”, wybrane wtorki miesiąca 18:00–20:30, październik–czerwiec, 400 zł/rok, możliwy roczny dostęp do nagrań. Prowadzą teolodzy, historycy sztuki, duchowni (UKSW, UO, dominikanie, prawosławni). Archiwum od sezonu 2012/2013 – 15 sezonów.
+3. **Ikony** – galeria prac Elżbiety Jackowskiej-Kurek i uczniów, wystawy (m.in. stała „Ikona – korzenie i owoce wiary” w kościele), ikony na zamówienie, poświęcenia, oprowadzania kuratorskie, wyjazdy studyjne.
+   **Cele nowej strony (w kolejności ważności):**
+4. Wizerunek i prestiż – strona ma odpowiadać randze instytucji z 15-letnim dorobkiem i zapleczem akademickim.
+5. Zapisy na warsztaty roczne i plener.
+6. Zapisy na wykłady.
+   Strona jest **pełnoprawną stroną sprzedażową** warsztatów, wykładów i plenerów. Kontekst ekosystemu (§10) nie zmienia tej hierarchii: hero, strona główna i strony ofertowe są zaprojektowane pod zapisy, a rola strony jako źródła autorytetu Elżbiety Jackowskiej-Kurek jest efektem ubocznym dobrze zrobionej strony instytucji, nie osobnym celem projektowym.
+
+**Odbiorcy:** dorośli, głównie 35–70 lat, często bez tła artystycznego; osoby religijne szukające praktyki duchowej przez sztukę; artyści i teolodzy; osoby zamawiające ikony (parafie, osoby prywatne). Wielu wejdzie z telefonu, z linku z kościoła, plakatu lub od znajomego.
+
+**Ton komunikacji:** spokojny, poważny, ciepły. Nie marketingowy. Język obecnej strony jest dobry i autentyczny („Kreska po kresce wspinamy się na Górę Tabor”) – zachować, tylko uporządkować. „Sprzedażowość” tej strony to klarowność (cena, termin, miejsce, sposób zapisu widoczne od razu), nie ton.
+
+---
+
+## 2. Audyt obecnej strony
+
+Stack: WordPress 7.1, darmowy motyw blogowy **Nisarg** (ok. 2015), wtyczka GDPR Cookie Compliance, galeria z cache’owanymi miniaturami. Domena z `www`, HTTPS działa, `http://` przekierowuje.
+
+### 2.1 Problemy strukturalne
+
+| Problem                              | Szczegół                                                                                                                                                                        | Skutek                                                             |
+| ------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------ |
+| Brak strony głównej                  | `/` to lista wpisów „Aktualności”; brak hero, brak zdania „czym jesteśmy”, brak CTA                                                                                             | Nowy użytkownik nie wie, co Akademia oferuje i co ma zrobić        |
+| Sidebar blogowy na każdej podstronie | „Ostatnie wpisy” + archiwum miesięczne 2012–2026                                                                                                                                | Szum wizualny, zawęża kolumnę treści, na mobile ląduje pod treścią |
+| Nawigacja przeładowana               | 7 pozycji głównych, 22 podstrony; „Strona główna” ma własne podmenu (O nas, Pracownia, Aktualności→`/`, Blog→blogspot, Polityka prywatności); Kontakt w podmenu „Strona główna” | Brak hierarchii; użytkownik nie znajduje kontaktu                  |
+| Duplikaty w nawigacji                | Ikony › Wystawy **i** Wydarzenia › Wystawy ikon; Wykłady › Tematy **i** wpisy z programem jako osobne posty                                                                     | Niejasne, gdzie jest aktualna informacja                           |
+| Brzydkie URL-e                       | Slug „O nas” to całe zdanie: `/strona-glowna/celem-dzialalnosci-akademii-ikony-studium-ikonograficznego-sw-andrzeja-apostola-jest-ksztalcenie-...`                              | Nieudostępnialne, słabe SEO                                        |
+| Blog poza domeną                     | studiumikony.blogspot.com; galeria „ikon na sprzedaż” tylko tam; zdjęcia w „O nas” hotlinkowane z blogspot                                                                      | Rozproszenie treści, ryzyko martwych obrazków                      |
+| Social media                         | Sprawdzić, czy i gdzie strona linkuje do facebook.com/akademiaikony i YouTube @akademiaikony3822                                                                                | Docelowo: stopka + dane strukturalne (§5)                          |
+
+### 2.2 Problemy treściowe
+
+- **Nieaktualne / sprzeczne dane**: strona główna – zapisy do 24.09.**2026**; strona „Kurs roczny” – nagłówek „2025/2026”, zapisy do 24.09.**2025**. Treść musi być zarządzana w jednym miejscu (CMS: pole `seasonLabel`, `enrollmentDeadline`).
+- **Kontakt rozproszony i niespójny**: `akademiaikony@gmail.com` (warsztaty, ogólny), `sekretariat.ikony22@gmail.com` (wykłady), tel. „601 734 705” raz, „601 734705” gdzie indziej. Strona Kontakt: mapa Google **nie jest osadzona** – widać surowy link `google.com/maps/embed?...`.
+- **Brak zebranych faktów praktycznych**: cena, terminy, godziny, miejsce, jak się zapisać – rozsiane po akapitach. Potrzebna sekcja „W skrócie” na każdej stronie ofertowej.
+- **Galeria**: ~38 ikon Elżbiety + ~28 ikon uczniów jako płaska lista; podpisy w formacie „Tytuł, 25x30 (cm)”, część bez podpisu, jedna z podpisem „opis”, literówki („Madylion”, „Mgdaleny”, „Advokata” vs „Advocata”, „Matyaszczak” vs „Matyaszczyk”). Brak filtrów autor/temat, brak strony pojedynczej ikony.
+- **Literówki w treści**: „starcjonarne”, „kreatywnośći”, „zdecydowne”, „wkłady” (zam. wykłady), „Zgłoszenia przyjmujemy do 24 września 2025.” obok „2026”.
+- **Testimoniale z pleneru** (Adam, Hania, Iza, Robert, Maciej, Artur, Emilia) – wartościowe, ale wklejone jako wypunktowanie z półpauzami; zasługują na własny komponent.
+- Zdjęcia głównie z 2017–2021, jedno ze strony głównej z 2017 (`Chrystus212m_n.jpg`). Potrzebna nowa sesja (wspólna dla całego ekosystemu, §10.4) lub przynajmniej selekcja najlepszych ujęć w wysokiej rozdzielczości.
+
+### 2.3 Problemy techniczne / UX
+
+- Widoczny tekst „Toggle navigation” i „Skip to content” (motyw bez stylowania).
+- Podwójny baner cookies (panel + ustawienia) – przy analityce bez ciasteczek (§7) wystarczy prosta informacja lub nic.
+- Brak `meta description`, brak Open Graph → link udostępniony na Facebooku/WhatsApp wygląda pusto.
+- Miniatury galerii przez wtyczkę cache (`/wp-content/uploads/cache/.../123456.jpg`) – migracja musi pobierać **oryginały** z `/wp-content/uploads/YYYY/MM/`.
+- Brak wersji językowej – na start PL only, ale struktura ma to umożliwić.
+- Brak jakiejkolwiek analityki – nie wiadomo, skąd przychodzą zapisy.
+
+### 2.4 Co jest dobre i ma zostać
+
+- Bogata, autentyczna treść: pełny program kursu trzyletniego (semestr po semestrze), 15 sezonów wykładów z nazwiskami i tytułami, opisy pleneru, testimoniale.
+- Silna, konkretna tożsamość miejsca: kościół na Placu Teatralnym, „przestrzeń wolna od barier architektonicznych”.
+- Jedna wyrazista osoba prowadząca – Elżbieta Jackowska-Kurek – z dorobkiem (polichromie, ikony w świątyniach w kraju i za granicą).
+- Dobre fotografie ikon (do ponownego użycia po selekcji).
+
+---
+
+## 3. Inwentaryzacja obecnych treści (do migracji)
+
+Ścieżki względem `https://www.akademiaikony.pl`.
+
+| Obecna strona                                                                            | Typ w WP     | Docelowo                                                                                                                                                                                                 |
+| ---------------------------------------------------------------------------------------- | ------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `/` (Aktualności)                                                                        | lista postów | Nowa strona główna + `/aktualnosci`                                                                                                                                                                      |
+| `/strona-glowna/celem-dzialalnosci-...` (O nas)                                          | page         | `/o-akademii`                                                                                                                                                                                            |
+| `/strona-glowna/pracownia/`                                                              | page         | `/o-akademii#pracownia` lub `/pracownia` (do sprawdzenia, ile treści)                                                                                                                                    |
+| `/strona-glowna/kontakt/`                                                                | page         | `/kontakt`                                                                                                                                                                                               |
+| `/strona-glowna/polityka-prywatnosci/`                                                   | page         | `/polityka-prywatnosci` (stopka)                                                                                                                                                                         |
+| `/warsztaty/`                                                                            | page         | `/warsztaty` (hub sekcji)                                                                                                                                                                                |
+| `/warsztaty/warsztaty-roczne/`                                                           | page         | `/warsztaty/kurs-roczny-i-trzyletni`                                                                                                                                                                     |
+| `/warsztaty/warsztaty-wakacyjne/`                                                        | page         | `/warsztaty/letnia-szkola-swiatla`                                                                                                                                                                       |
+| `/warsztaty/zapisy-na-warsztaty/`                                                        | page         | scalić w sekcję „Jak się zapisać” na stronach kursów                                                                                                                                                     |
+| `/wyklady/`                                                                              | page         | `/wyklady` (hub + bieżący sezon)                                                                                                                                                                         |
+| `/wyklady/tematy/`                                                                       | page         | `/wyklady` (bieżący) + `/wyklady/archiwum`                                                                                                                                                               |
+| `/wyklady/wykladowcy/`                                                                   | page         | `/wyklady/wykladowcy`                                                                                                                                                                                    |
+| `/wyklady/zapisy-na-wyklady/`                                                            | page         | scalić w `/wyklady#zapisy`                                                                                                                                                                               |
+| posty `wyklady-YYYY-YYYY`, `ikona-korzenie-...`                                          | post         | kolekcja `LectureSeason` (15 rekordów)                                                                                                                                                                   |
+| `/ikona/`, `/ikona/galeria/`                                                             | page         | `/ikony` (galeria z filtrami)                                                                                                                                                                            |
+| `/ikona/wystawy/`, `/wernisaze/`                                                         | page         | `/wydarzenia/wystawy` (jedno miejsce)                                                                                                                                                                    |
+| `/ikona/ikony-na-zamowienie/`                                                            | page         | `/ikony/na-zamowienie` – **pełna strona ofertowa w v1, treść wymienna** (§5, §10.2)                                                                                                                      |
+| `/wydarzenia/`, `/poswiecenia-ikon/`, `/oprowadzania-kuratorskie/`, `/wyjazdy-studyjne/` | page         | `/wydarzenia` z kategoriami                                                                                                                                                                              |
+| `/publikacje/`, `/publikacje/artykuly/`, `/multimedia/`, `/plakaty/`                     | page         | `/publikacje` z zakładkami                                                                                                                                                                               |
+| posty 2012–2026 (ok. 60)                                                                 | post         | `News` – zmigrować, ale w UI pokazać tylko ostatnie; reszta w archiwum                                                                                                                                   |
+| studiumikony.blogspot.com                                                                | zewn.        | link w stopce. **Bez importu listy „ikon na sprzedaż” w v1** – bez panelu CMS nikt nie zaktualizuje statusu „sprzedana”; kontakt w sprawie gotowych ikon załatwia jedno zdanie na `/ikony/na-zamowienie` |
+
+Media: wszystkie oryginały w `/wp-content/uploads/YYYY/MM/`. Podpisy ikon są w atrybucie `title` obrazka i w `<figcaption>` – parsować oba.
+
+---
+
+## 4. Nowa architektura informacji
+
+```
+/                          strona główna
+/o-akademii                historia, misja, Elżbieta Jackowska-Kurek, zespół, miejsce
+/warsztaty                 hub: dwie ścieżki
+/warsztaty/kurs-roczny-i-trzyletni
+/warsztaty/letnia-szkola-swiatla
+/wyklady                   hub: bieżący sezon + jak się zapisać
+/wyklady/archiwum          15 sezonów, rozwijane
+/wyklady/wykladowcy
+/ikony                     galeria z filtrami (autor: Elżbieta / uczniowie; temat)
+/ikony/[slug]              pojedyncza ikona (opcjonalnie w v1)
+/ikony/na-zamowienie       strona ofertowa (treść wymienna po starcie strony autorskiej)
+/wydarzenia                wystawy, poświęcenia, oprowadzania, wyjazdy (kategorie)
+/aktualnosci               lista + archiwum
+/aktualnosci/[slug]
+/publikacje                artykuły, multimedia, plakaty
+/kontakt
+/polityka-prywatnosci
+```
+
+**Menu główne (max 6 pozycji):** O Akademii · Warsztaty · Wykłady · Ikony · Wydarzenia · Kontakt.
+**Stopka:** adres, maile, telefon, Aktualności, Publikacje, Blog (zewn.), fundacja IKONA DZIŚ, Facebook, YouTube, polityka prywatności, **pełna mapa strony** (wszystkie podstrony drugiego poziomu pod nagłówkami sekcji).
+
+Zasada: **Aktualności nie są stroną główną.** Strona główna prezentuje ofertę i to, co dzieje się teraz (jeden–dwa boksy „Najbliższe”), aktualności są osobno.
+
+### 4.1 Wzorzec nawigacji drugiego poziomu
+
+Struktura ma dwa poziomy; każda podstrona musi być osiągalna w maksymalnie dwóch kliknięciach z dowolnego miejsca. Nawigacja nie może polegać na dropdownach otwieranych na hover (odbiorca 65+, telefon). Trzy warstwy, wszystkie obowiązkowe:
+
+1. **Strona sekcji jako hub.** Pozycja menu prowadzi zawsze na stronę sekcji (`/warsztaty`, `/wyklady`, `/ikony`, `/wydarzenia`). Główną treścią huba są duże, klikalne bloki podstron (np. `/warsztaty`: Kurs roczny i trzyletni / Letnia Szkoła Światła), a nie sam opis.
+2. `SectionNav` – pozioma listwa nawigacji drugiego poziomu pod nagłówkiem strony, widoczna na każdej podstronie sekcji (np. w Wykładach: _Bieżący sezon · Archiwum · Wykładowcy_). Na mobile: zwykła lista linków pod nagłówkiem, nie ukryta.
+3. **Stopka z pełną mapą strony** – nawigacja ratunkowa i sygnał dla SEO.
+   Opcjonalnie na desktopie: dropdown przy Warsztaty / Wykłady / Ikony, **otwierany kliknięciem** (nie hoverem), z widoczną strzałką; pozycja główna nadal jest linkiem do huba. W menu mobilnym sekcja może rozwijać się akordeonem, ale nagłówek sekcji też musi być linkiem.
+
+---
+
+## 5. Wymagania funkcjonalne – wersja 1
+
+### Musi być
+
+- Strona główna: hero (obraz ikony + jedno zdanie o Akademii + dwa CTA: „Warsztaty” i „Wykłady”), sekcja „Najbliższe” (sterowana z CMS: nabór, wykład, wystawa), trzy filary, wybrane ikony, cytat/testimonial, prowadząca (zdjęcie, jedno zdanie, link do „O Akademii” – **nie** bohaterka strony głównej), miejsce (kościół, dostępność), kontakt.
+- Strony ofertowe (kurs, plener, wykłady, **ikony na zamówienie**) z blokiem **„W skrócie”**: kiedy, gdzie, dla kogo, koszt, jak się zapisać, termin zgłoszeń – wszystko z pól CMS, nie z tekstu. Dla zamówień pola: co można zamówić, orientacyjny czas realizacji, jak przebiega proces, kontakt.
+- Strona `/ikony/na-zamowienie` ma **treść wymienną**: w v1 pełna oferta (co, proces: rozmowa → projekt → zaliczka → realizacja → ewentualne poświęcenie, przykłady realizacji, kontakt). Po starcie strony autorskiej EJK zostaje z niej wstęp i wyraźne odesłanie (bez 301 – strona pozostaje wartościowa lokalnie). Body strony to jedno pole MDX, więc wymiana treści nie wymaga zmian w kodzie.
+- Zapisy w v1: przyciski `mailto:` z gotowym, **ujednoliconym tematem** (`Zgłoszenie – kurs roczny 2026/2027`, `Zgłoszenie – Letnia Szkoła Światła 2027`, `Zgłoszenie – wykłady 2026/2027`, `Zapytanie – ikona na zamówienie`) i telefonem. Tematy pozwalają liczyć zgłoszenia w skrzynce bez żadnego systemu. Przygotować miejsce na formularz (v2).
+- Nawigacja wg §4.1: huby sekcji, `SectionNav`, stopka z mapą strony.
+- Program bieżącego sezonu wykładów jako lista wydarzeń (data, tytuł(y), prowadzący), archiwum jako rozwijane sezony.
+- Galeria ikon z filtrami i lightboxem, każde zdjęcie z podpisem (tytuł, autor, wymiary, rok jeśli znany). Zakres prac EJK w galerii Akademii i domyślny filtr – decyzja po sesji 0b (§10.5).
+- Aktualności z paginacją, pojedynczy wpis.
+- Kontakt: adres, osadzona mapa, dwa maile z opisem czego dotyczą, telefon, info o zakrystii.
+- Responsywność mobile-first, dostępność (WCAG AA: kontrast, fokus, alt), `prefers-reduced-motion`.
+- Metadane SEO + Open Graph dla każdej strony, sitemap, przekierowania 301 ze starych URL-i (tabela w §3).
+- **Dane strukturalne (JSON-LD):** `Organization` (Akademia, z `parentOrganization` → Fundacja), `Person` (Elżbieta Jackowska-Kurek) z `sameAs` → ikonadzis.org, Facebook, YouTube, w przyszłości strona autorska; `Event` dla wykładów bieżącego sezonu; `Course` dla kursu i pleneru.
+- **Analityka bez ciasteczek od v1** (Plausible lub Umami) ze zdarzeniami na kliknięciach CTA zapisów (`mailto:`) i telefonu. Nie wymaga banera cookies.
+- Informacja o cookies tylko jeśli pojawi się narzędzie, które ich wymaga (w v1 – nie).
+
+### Poza zakresem v1
+
+- Formularze zapisów z backendem, płatności, sklep z ikonami, wersja EN, konta użytkowników, wyszukiwarka, import listy ikon na sprzedaż.
+
+### Panel CMS (etap 2, po uruchomieniu strony)
+
+- Logowanie dla 2–3 osób nietechnicznych.
+- Edycja: aktualności, „Najbliższe” na stronie głównej, pola „W skrócie” (terminy, ceny), program sezonu wykładów, galeria (upload + podpis), wydarzenia, treść strony zamówień.
+- Podgląd przed publikacją. Bez edycji layoutu.
+
+---
+
+## 6. Brief dla Claude Design
+
+### Zadanie
+
+Zaproponować **trzy odrębne kierunki wizualne** dla strony głównej i jednej strony ofertowej (Kurs roczny i trzyletni), potem rozwinąć wybrany kierunek na pozostałe szablony.
+
+### Warunek wstępny
+
+Kierunek wybieramy **po** domknięciu sesji 0b i decyzji E2.2 z master planu strony autorskiej (architektura marki: nazwa, domena, relacja do Akademii i Fundacji). Bez tego kierunek dla Akademii powstaje w próżni.
+
+### Co musi wynikać z designu
+
+- Od pierwszego ekranu widać: to instytucja o poważnym, duchowym charakterze, z dorobkiem; nie kurs hobbystyczny, nie sklep.
+- Ikony są głównym materiałem wizualnym – design ma je eksponować, nie konkurować z nimi. Ikona ma złoto, ochrę, cynober, ciemne błękity – interfejs powinien być wobec tego neutralny lub czerpać z tego wprost, ale nie „udawać” ikony.
+- Hierarchia: użytkownik w 5 sekund wie, że są warsztaty i wykłady i gdzie kliknąć.
+- Dużo treści tekstowej (programy semestrów, archiwum) – typografia i rytm pionowy są ważniejsze niż efekty.
+- Działa na telefonie osoby 65+: duże klikalne elementy, wysoki kontrast, brak ukrytej nawigacji poza hamburgerem.
+- **Rozszerzalność na rodzinę trzech serwisów.** Wybrany kierunek jest bazą systemu dla Akademii, Fundacji (w przyszłości) i strony autorskiej EJK. Wspólne: typografia, ton, złoto jako akcent, zasady dostępności. Różne: temperatura i rola – Akademia spokojna i instytucjonalna, strona autorska bardziej premium i produktowa. Przy wybranym kierunku Claude Design ma pokazać **jeden ekran testowy** „jak wyglądałaby strona autorska w tej rodzinie” (np. karta ikony), zanim zacznie się kod.
+
+### Trzy kierunki do zaproponowania (punkt wyjścia, Claude Design może zaproponować własne)
+
+1. **Kontemplacyjny** – ciemne tło (nie czarne; głęboka umbra lub granat), ikony jak w ciemnym wnętrzu kościoła, oszczędne złoto jako akcent, serif o wyraźnym charakterze. Ryzyko: ciężkość, czytelność długich tekstów.
+2. **Galeryjny** – jasne, chłodne tło, ikony na dużych planszach, dużo powietrza, jedna rodzina kroju z mocnym kontrastem wagi. Ryzyko: chłód, „muzealność” bez ciepła wspólnoty.
+3. **Warsztatowy / materiałowy** – nawiązanie do materii ikony: drewno, kreda, lewkas, pigmenty; faktura i ciepłe neutralne tła, ilustracyjne detale procesu (kreska, złocenie). Ryzyko: kicz, jeśli faktura zdominuje.
+
+### Reguły, których Claude Design ma się trzymać
+
+- Nie używać: karuzeli w hero, „kart” z jednakowym cieniem na wszystko, numerowanych markerów tam, gdzie treść nie jest sekwencją, wszystkich-kapitalików jako etykiet nad każdym nagłówkiem, animacji wejścia na każdej sekcji, strzałek „→” w każdym linku, stockowych zdjęć ludzi.
+- Jedna rodzina kroju lub dwie wyraźnie różne. Polskie znaki muszą być kompletne w wybranym kroju (sprawdzić: ąćęłńóśźż w kursywie i boldzie).
+- Program kursu trzyletniego (6 semestrów) **jest** sekwencją – tam numeracja/oś czasu jest uzasadniona. Proces zamówienia ikony też.
+- Prawdziwe treści z tego dokumentu i z obecnej strony, nie lorem ipsum.
+- Przygotować stany: menu mobilne (z akordeonem sekcji), `SectionNav` desktop i mobile, lightbox galerii, blok „W skrócie”, sezon rozwinięty/zwinięty w archiwum, wpis aktualności, stopka z mapą strony.
+
+### Szablony do zaprojektowania (po wyborze kierunku)
+
+1. Strona główna
+2. Strona ofertowa (jeden szablon, **cztery** warianty treści: kurs / plener / wykłady / ikony na zamówienie)
+3. Hub sekcji (Warsztaty jako wzorzec; Wykłady łączy hub z bieżącym sezonem)
+4. Wykłady – bieżący sezon + archiwum
+5. Galeria ikon + lightbox
+6. Strona tekstowa (O Akademii, wydarzenia, publikacje)
+7. Lista i wpis aktualności
+8. Kontakt
+9. Nagłówek/stopka + menu mobilne + `SectionNav`
+
+---
+
+## 7. Decyzje techniczne
+
+- **Frontend:** Next.js (App Router), TypeScript, React Server Components; stylowanie – Tailwind lub CSS Modules z tokenami z Claude Design (zdecydować przy handoffie; unikać mieszania).
+- **Stack jako decyzja ekosystemu.** Akademia rusza pierwsza, więc jej stack de facto rozstrzyga E5 z master planu strony autorskiej. Decyzję o CMS (własny vs Payload/Sanity) podjąć raz, dla obu serwisów, najpóźniej przed etapem 2 (panel). Rozważyć monorepo (pnpm workspaces): pakiety `ui` (tokeny + komponenty), `content-schema` (typy), aplikacje `akademia`, `ejk`. Minimum, jeśli monorepo za dużo na start: jeden współdzielony plik tokenów i typów.
+- **Treść:** własny CMS. W v1 – treść jako pliki (MDX/JSON w repo) generowane migracją z WP, żeby nie blokować startu. W v2 – baza (SQLite/Postgres) + panel admina, ten sam model danych.
+- **Obrazy:** `next/image`, oryginały zmigrowane z WP do storage (na start `/public` lub object storage), automatyczne formaty WebP/AVIF.
+- **Hosting:** dowolny obsługujący Next.js; przekierowania 301 w `next.config.ts`.
+- **Zapisy:** `mailto:` w v1; v2 – route handler + e-mail (Resend/Nodemailer) + zapis zgłoszenia w CMS.
+- **Analityka:** Plausible lub Umami (bez ciasteczek) od v1, zdarzenia: klik CTA zapisów, klik telefonu, klik `mailto:`. Brak banera cookies.
+- **Język:** PL; wszystkie stringi UI w jednym module (`src/i18n/pl.ts`), żeby EN była możliwa – ekosystem docelowo PL+EN.
+
+### Model treści (TypeScript, do użycia zarówno w plikach, jak i w bazie)
+
+```ts
+type Image = {
+  src: string;
+  alt: string;
+  width: number;
+  height: number;
+  caption?: string;
+};
+
+type Page = {
+  slug: string;
+  title: string;
+  lead?: string;
+  body: string; // MDX
+  hero?: Image;
+  seo?: { description: string; ogImage?: string };
+};
+
+type OfferFacts = {
+  // blok „W skrócie”
+  seasonLabel?: string; // „2026/2027”
+  when?: string; // „raz w tygodniu, październik–czerwiec”
+  where?: string;
+  audience?: string;
+  price?: string; // „400 zł / rok”
+  enrollmentDeadline?: string; // ISO
+  enrollmentEmail: string;
+  enrollmentPhone?: string;
+  enrollmentSubject: string; // ujednolicony temat mailto
+  firstMeeting?: string; // ISO
+  enrollmentOpen: boolean;
+  leadTime?: string; // zamówienia: orientacyjny czas realizacji
+};
+
+type Offer = Page & {
+  kind: "kurs" | "plener" | "wyklady" | "zamowienie";
+  facts: OfferFacts;
+  testimonials?: Testimonial[];
+};
+
+type Lecturer = {
+  slug: string;
+  name: string;
+  titles?: string;
+  affiliation?: string;
+  bio?: string;
+  photo?: Image;
+};
+
+type Lecture = {
+  date: string;
+  title: string;
+  lecturerSlugs: string[];
+  note?: string;
+};
+
+type LectureSeason = {
+  slug: string;
+  label: string; // „2026/2027”
+  cycleTitle: string; // „Ikona – korzenie i owoce wiary. Mistyka dziś”
+  intro?: string;
+  lectures: Lecture[];
+  gallery?: Image[];
+};
+
+// Podzbiór przyszłego `Product` ze strony autorskiej – te same nazwy pól,
+// żeby współdzielenie lub przeniesienie danych było mechaniczne.
+type IconWork = {
+  slug: string;
+  title: string; // „Chrystus Pantokrator”
+  author: "ejk" | "student";
+  authorName: string;
+  technique?: string; // „tempera jajowa na desce, złocenie”
+  size?: { w: number; h: number };
+  year?: number;
+  image: Image;
+  tags?: string[];
+};
+
+type Event = {
+  slug: string;
+  category: "wystawa" | "poswiecenie" | "oprowadzanie" | "wyjazd";
+  title: string;
+  date?: string;
+  dateEnd?: string;
+  body: string;
+  images?: Image[];
+};
+
+type News = {
+  slug: string;
+  title: string;
+  date: string;
+  excerpt?: string;
+  body: string;
+  cover?: Image;
+};
+
+type Testimonial = { quote: string; author: string; role?: string };
+
+type SiteSettings = {
+  orgName: string;
+  place: string;
+  address: string;
+  emails: { label: string; address: string }[];
+  phone: string;
+  mapEmbedUrl: string;
+  blogUrl: string;
+  ecosystem: {
+    foundationUrl: string;
+    personalSiteUrl?: string; // uzupełnić po starcie strony autorskiej
+    social: { facebook: string; youtube: string };
+  };
+  upcoming: { title: string; text: string; href: string }[]; // „Najbliższe” na stronie głównej
+};
+```
+
+---
+
+## 8. Plan migracji z WordPressa
+
+1. Sprawdzić `https://www.akademiaikony.pl/wp-json/wp/v2/pages?per_page=100` i `/posts`. Jeśli 200 – migracja przez REST (pola: `slug`, `title.rendered`, `content.rendered`, `date`, `link`, `parent`). Jeśli 401/404 – eksport WXR z panelu WP (Narzędzia → Eksport) i parsowanie XML.
+2. Pobrać media: z `content.rendered` wyciągnąć `<a href="…/uploads/YYYY/MM/x.jpg"><img title="…">` – link `href` to oryginał, `title`/`figcaption` to podpis. Ignorować `/uploads/cache/`.
+3. HTML → MDX (np. `turndown` + ręczna korekta); rozbić posty „wyklady-YYYY-YYYY” regexem na `Lecture[]` (wzorzec: `DD.MM` + linie `**Tytuł,** Prowadzący`).
+4. Podpisy galerii → `IconWork`: regex `^(.+?),\s*(\d+)x(\d+)\s*\(cm\)$`, wariant z „pisany/pisana ręką X” → `author: 'student'`, `authorName: X`.
+5. Wygenerować tabelę przekierowań stare→nowe URL-e (§3) i zapisać w `next.config.ts`.
+6. Ręczna korekta: literówki (§2.2), ujednolicenie telefonu i maili, uzupełnienie brakujących podpisów, aktualizacja dat na 2026/2027.
+   Szacunkowo do ręcznej korekty: ~10 stron statycznych, 15 sezonów wykładów (parsowanie automatyczne, korekta nazwisk), ~65 podpisów ikon. Reszta (60 aktualności) – migracja bez korekty. Blogspot: nie migrować.
+
+---
+
+## 9. Fakty stałe (źródło prawdy dla treści)
+
+- Nazwa: AKADEMIA IKONY – Studium Ikonograficzne św. Andrzeja Apostoła. Założona 2010, w KŚT od 2012.
+- Miejsce: Kościół Środowisk Twórczych pw. św. Andrzeja Apostoła i św. Brata Alberta Chmielowskiego, Plac Teatralny, Warszawa. Rektor: ks. Grzegorz Michalczyk. Przestrzeń bez barier architektonicznych.
+- Organizator: fundacja IKONA DZIŚ, [www.ikonadzis.org](http://www.ikonadzis.org).
+- Kontakt ogólny / warsztaty / ikony: [akademiaikony@gmail.com](mailto:akademiaikony@gmail.com), tel. 601 734 705 (Elżbieta Jackowska-Kurek).
+- Wykłady / sekretariat: [sekretariat.ikony22@gmail.com](mailto:sekretariat.ikony22@gmail.com) (Maurycy Lubak).
+- Blog: studiumikony.blogspot.com. Facebook: facebook.com/akademiaikony. YouTube: @akademiaikony3822.
+- Warsztaty 2026/2027: zgłoszenia do 24.09.2026 mailem; rozmowa wstępna ok. 30 min; pierwsze spotkanie 6.10.2026, 18:00; zajęcia raz w tygodniu, październik–czerwiec, grupy wieczorne i dzienne; materiały na miejscu.
+- Wykłady 2026/2027: „Ikona – korzenie i owoce wiary. Mistyka dziś”; wybrane wtorki 18:00–20:30; 400 zł/rok; zapisy od września 2026; terminy: 06.10, 10.11, 08.12, 19.01, 16.02, 09.03, 13.04, 11.05, 08.06, 11.06, 12.06 (wernisaż, AGAPA).
+- Letnia Szkoła Światła: plenery tygodniowe sierpień/wrzesień; nabór na 2027 rusza w marcu 2027, kolejność zgłoszeń.
+- Ikony na zamówienie: kontakt [akademiaikony@gmail.com](mailto:akademiaikony@gmail.com) / 601 734 705; szczegóły procesu i czas realizacji – do potwierdzenia z EJK.
+- Uwaga prawna do zachowania: „nauczanie w Akademii Ikony nie niesie za sobą żadnych skutków formalnych.”
+
+---
+
+## 10. Miejsce w ekosystemie
+
+Strona Akademii jest jednym z trzech serwisów skupionych wokół Elżbiety Jackowskiej-Kurek. Szczegóły w `ekosystem-ejk.md` (do założenia po sesji 0b); tu tylko to, co wpływa na tę stronę.
+
+### 10.1 Podział ról
+
+| Serwis              | Rola                                                                                                          | Status                                          |
+| ------------------- | ------------------------------------------------------------------------------------------------------------- | ----------------------------------------------- |
+| akademiaikony.pl    | Instytucja edukacyjna: warsztaty, wykłady, plenery, dorobek wspólnoty. Strona sprzedażowa oferty edukacyjnej. | odświeżenie – ten brief                         |
+| ikonadzis.org       | Fundacja: misja, organizator, wartości                                                                        | bez zmian; w przyszłości dopasowanie do systemu |
+| strona autorska EJK | Osoba i sprzedaż: portfolio, unikaty, ikony na zamówienie, PL+EN                                              | w planowaniu (`ikony-ejk-master-plan.md`)       |
+
+### 10.2 Zasada „jedna strona kanoniczna, druga odsyła”
+
+Każdy typ treści ma jednego właściciela w danym momencie; pozostałe serwisy linkują, nie kopiują. Właściciel może się zmienić w czasie – wtedy poprzednia strona kurczy się do odsyłacza, ale nie znika.
+
+| Treść                                                            | Właściciel teraz                  | Właściciel po starcie strony autorskiej                              |
+| ---------------------------------------------------------------- | --------------------------------- | -------------------------------------------------------------------- |
+| Warsztaty, wykłady, plenery, zapisy                              | Akademia                          | Akademia                                                             |
+| Aktualności Akademii, wydarzenia (wystawy, poświęcenia, wyjazdy) | Akademia                          | Akademia                                                             |
+| Ikony na zamówienie – pełna oferta i proces                      | Akademia (`/ikony/na-zamowienie`) | strona autorska; na Akademii wstęp + odesłanie                       |
+| Portfolio EJK (pełny katalog)                                    | Akademia (galeria)                | strona autorska; na Akademii wybór prac „prowadzącej”                |
+| Prace uczniów                                                    | Akademia                          | Akademia                                                             |
+| Bio EJK                                                          | Akademia (`/o-akademii`)          | strona autorska (kanoniczne, pełne); Akademia – wersja krótka + link |
+| Misja, fundacja, sprawozdania                                    | Fundacja                          | Fundacja                                                             |
+
+### 10.3 Lejki w obie strony
+
+- Akademia → strona autorska: `/ikony/na-zamowienie` (po starcie), podpisy prac EJK w galerii, sekcja „prowadząca”.
+- Strona autorska → Akademia: CTA „Naucz się pisać ikony” → `/warsztaty`; „Wykłady o ikonie” → `/wyklady`. Zapisać jako wymaganie w E3/E4 master planu, żeby strona autorska nie była jednokierunkowym odbiorcą ruchu.
+- Fundacja → obie.
+- Warstwa niewidoczna: `sameAs` w danych strukturalnych na wszystkich trzech serwisach (§5).
+
+### 10.4 Wspólne zasoby
+
+- **Jedna sesja zdjęciowa** dla całego ekosystemu, ze wspólną listą ujęć: ikony w wysokiej rozdzielczości (wszystkie serwisy), detale procesu (strona autorska), wnętrze kościoła i pracowni (Akademia), portret EJK (wszystkie). Zastępuje osobne sesje z §2.2 i E6.1 master planu.
+- Jeden zestaw tokenów designu i typów treści (§7).
+- Wspólny rejestr decyzji w `ekosystem-ejk.md`.
+
+### 10.5 Decyzje otwarte wpływające na ten brief
+
+| #    | Decyzja                                                                                                       | Kiedy                                       |
+| ---- | ------------------------------------------------------------------------------------------------------------- | ------------------------------------------- |
+| D-01 | Architektura marki: nazwa i domena strony autorskiej, relacja do Akademii i Fundacji                          | sesja 0b, przed wyborem kierunku wizualnego |
+| D-02 | Zakres prac EJK w galerii Akademii po starcie strony autorskiej; domyślny filtr galerii (uczniowie / wszyscy) | sesja 0b                                    |
+| D-03 | CMS dla obu serwisów (własny / Payload / Sanity)                                                              | przed etapem 2 (panel)                      |
+| D-04 | Monorepo vs osobne repozytoria ze współdzielonymi plikami                                                     | przy zakładaniu repo strony autorskiej      |
+| D-05 | Czy ikony na zamówienie oferowane z opcją poświęcenia (wpływa na treść `/ikony/na-zamowienie`)                | sesja 0c                                    |
+
+### 10.6 Kolejność prac
+
+1. Sesje 0b–0d master planu, decyzje D-01, D-02, D-05 (1–2 spotkania).
+2. Aktualizacja tego briefu (v2.x) i master planu; założenie `ekosystem-ejk.md`.
+3. Claude Design: trzy kierunki dla Akademii + ekran testowy strony autorskiej przy wybranym kierunku.
+4. Implementacja Akademii (instrukcja-pracy.md, etapy A–E). Równolegle: E1–E3 master planu – research nie blokuje kodu.
+5. Design i implementacja strony autorskiej z tego samego systemu i repo.
+6. Po starcie strony autorskiej: wymiana treści `/ikony/na-zamowienie`, aktualizacja `ecosystem.personalSiteUrl`, `sameAs`, galerii (D-02).
+
+---
+
+## Dziennik zmian
+
+| Data       | Wersja | Zmiana                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
+| ---------- | ------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 2026-09    | 1.0    | Pierwsza wersja: audyt, inwentaryzacja, architektura, wymagania v1, brief dla Claude Design, decyzje techniczne, migracja, fakty stałe.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
+| 2026-09-06 | 2.0    | §1: strona jako pełnoprawna strona sprzedażowa oferty edukacyjnej. §2: social media, brak analityki. §3: `/ikony/na-zamowienie` jako pełna strona ofertowa z treścią wymienną; bez importu ikon na sprzedaż z blogspota. §4.1: wzorzec nawigacji drugiego poziomu (huby, `SectionNav`, mapa strony w stopce, dropdown tylko na klik). §5: ujednolicone tematy `mailto:`, dane strukturalne z `sameAs`, analityka bez ciasteczek od v1, prowadząca na stronie głównej bez dominacji. §6: warunek wstępny (sesja 0b), rozszerzalność na rodzinę serwisów + ekran testowy, czwarty wariant strony ofertowej, hub sekcji jako szablon. §7: stack jako decyzja ekosystemu, monorepo, `SiteSettings.ecosystem`, `IconWork` bez `forSale`, z `technique`, `OfferFacts.enrollmentSubject`. §9: FB, YT, kontakt ws. zamówień. §10 nowy: ekosystem, macierz własności treści, lejki, wspólne zasoby, decyzje otwarte, kolejność prac. |
