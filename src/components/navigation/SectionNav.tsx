@@ -23,8 +23,8 @@ export function SectionNav({ items, active }: SectionNavProps) {
             aria-current={isActive ? "page" : undefined}
             className={
               isActive
-                ? "border-b border-accent pb-link-underline-gap text-accent-text"
-                : "border-b border-transparent pb-link-underline-gap text-text-secondary hover:border-accent-hover hover:text-accent-hover"
+                ? "nav-link-underline nav-link-underline-section nav-link-underline-active text-accent-text"
+                : "nav-link-underline nav-link-underline-section text-text-secondary hover:text-accent-hover"
             }
           >
             {item.label}

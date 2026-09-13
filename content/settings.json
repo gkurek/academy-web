@@ -18,14 +18,22 @@
   },
   "upcoming": [
     {
-      "title": "[przykład] Najbliższe wydarzenie",
-      "text": "[do uzupełnienia]",
-      "href": "/wydarzenia"
+      "title": "Nabór na kurs roczny i trzyletni 2026/2027",
+      "text": "Zgłoszenia do 24 września 2026",
+      "href": "/warsztaty/kurs-roczny-i-trzyletni",
+      "linkLabel": "Jak się zapisać"
     },
     {
-      "title": "[przykład] Kolejny termin",
-      "text": "[do uzupełnienia]",
-      "href": "/aktualnosci"
+      "title": "Pierwszy wykład cyklu „Ikona – korzenie i owoce wiary. Mistyka dziś”",
+      "text": "6 października 2026, 18:00",
+      "href": "/wyklady",
+      "linkLabel": "Program sezonu"
+    },
+    {
+      "title": "[przykład] Wystawa stała",
+      "text": "[do potwierdzenia z Akademią]",
+      "href": "/wydarzenia?kategoria=wystawa",
+      "linkLabel": "Wystawy"
     }
   ]
 }

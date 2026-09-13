@@ -141,7 +141,7 @@ type SiteSettings = {
     personalSiteUrl?: string;   // uzupełnić po starcie strony autorskiej EJK — puste teraz
     social: { facebook: string; youtube: string };
   };
-  upcoming: { title: string; text: string; href: string }[];   // „Najbliższe” na stronie głównej
+  upcoming: { title: string; text: string; href: string; linkLabel: string }[];   // „Najbliższe” na stronie głównej (K-16)
 };
 ```
 

@@ -7,6 +7,7 @@
 - `docs/brief-claude-code.md` – wymagania, architektura tras (§3), model treści (§4), fakty stałe (§8); czytaj przy pytaniach „co ma być”.
 - `docs/brief-full.md` – kontekst biznesowy; tylko przy niejasnościach co do treści lub copy, nie przy pytaniach technicznych.
 - `design/README` + `design/*.dc.html` – makiety i tokeny. Obowiązuje kierunek 1a i jego rozwinięcia 2a/3a/3b;
+- `docs/design-mockup-guide.md` – **czytaj zawsze, zanim weźmiesz obraz albo dokładną wartość stylu wprost z `.dc.html`.** Jak znaleźć właściwy plik (`design/uploads/`, nie tylko `design/assets/`) i jak odczytać realne, rozwiązane wartości placeholderów `{{ }}` (lokalny serwer zamiast `file://`) — spisane po dwóch złych zgadnięciach w pod-etapie 2.
 
 Przy konflikcie: `CLAUDE.md` > plan pod-etapu > `brief-claude-code.md` > `brief-full.md` > makieta. Rozbieżność zgłaszasz w meldunku, nie rozstrzygasz sam.
 

@@ -67,10 +67,10 @@ export function HeaderMobileMenu({ active, phone, blogUrl }: HeaderMobileMenuPro
   return (
     <>
       <div className="flex items-center justify-between gap-space-4 px-page-margin-mobile py-space-5">
-        <div className="font-serif leading-tight">
+        <Link href="/" className="font-serif leading-tight">
           <div className="text-size-logo-m text-text-h2">{pl.meta.orgShortName}</div>
           <div className="text-size-caption-m text-text-tertiary">{pl.meta.orgSubtitle}</div>
-        </div>
+        </Link>
         <button
           type="button"
           onClick={() => setIsOpen((value) => !value)}

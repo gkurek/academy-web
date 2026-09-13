@@ -116,6 +116,49 @@
 
   --content-max: 1180px;
   --measure: 34em;
+
+  /* Home hero — larger than the generic Hero.jsx padding/type scale
+     (mirrors --size-h1-home already being a distinct "home" step). */
+  --hero-pt: 64px;
+  --hero-pb: 60px;
+  --hero-pt-m: 26px;
+  --hero-pb-m: 34px;
+  /* Exact values from the resolved mockup DOM (design/Akademia Ikony -
+     kierunki wizualne.dc.html, #1a desktop / mobile "strona główna" — the
+     raw .dc.html source only has unresolved {{ heroStyleDesktop/Mobile }}
+     placeholders, confirmed against the live-resolved element). */
+  --hero-image-h: 760px;
+  --hero-image-w-m: 62%;
+
+  /* "Najbliższe" tiles — literals from resolved mockup DOM (#1a desktop). */
+  --tile-py: 28px;
+  --tile-px: 30px;
+  --tile-py-m: 22px;
+  --tile-title-size: 18.5px;
+  --tile-title-leading: 1.45;
+  --tile-link-mt: 14px;
+  --tile-link-mt-m: 12px;
+
+  /* Three pillars */
+  --pillars-gap: 40px;
+  --pillar-image-h: 210px;
+  --pillar-image-h-m: 190px;
+
+  /* Testimonial (K-14: one simple quote+signature block, no portrait,
+     identical on mobile/desktop — literal values from the resolved
+     "cytat" block, #1a desktop). */
+  --measure-quote: 20em;
+  --leading-quote: 1.35;
+  --testimonial-py: 52px;
+  --testimonial-px: 56px;
+
+  /* "Wybrane ikony" — sizing specific to this curated home-page preview
+     (repeat(4,1fr) desktop / 2 cols mobile, height 290/200). The full
+     /ikony gallery in pod-etap 5 uses a different height (300px per
+     design/README) — parameterize IconGrid then, not now. */
+  --icon-grid-gap: 22px;
+  --icon-grid-h: 290px;
+  --icon-grid-h-m: 200px;
 }
 
 /* Tailwind utility mappings for the tokens this piece actually consumes.
@@ -145,7 +188,12 @@
   --color-border-secondary: var(--border-secondary);
 
   --text-size-h1: var(--size-h1);
+  --text-size-h1-home: var(--size-h1-home);
   --text-size-h1-m: var(--size-h1-m);
+  /* "Wybrane ikony" heading: mockup instance is 32px desktop / 28px mobile —
+     rounded to the nearest existing scale steps (34/28, ≤2px diff, same
+     rounding precedent as pod-etap 1's Button "lg"). */
+  --text-size-h2: var(--size-h2);
   --text-size-body: var(--size-body);
   --text-size-body-lg: var(--size-body-lg);
   --text-size-ui: var(--size-ui);
@@ -155,6 +203,10 @@
   --text-size-caption-m: var(--size-caption-m);
   --text-size-caption: var(--size-caption);
   --text-size-lead: var(--size-lead);
+  --text-size-lead-m: var(--size-lead-m);
+  --text-size-h2-sm: var(--size-h2-sm);
+  --text-size-h2-m: var(--size-h2-m);
+  --text-size-quote-lg: var(--size-quote-lg);
   /* Logo lockup — a fixed brand element, not part of the general type scale. */
   --text-size-logo: 23px;
   --text-size-logo-subtitle: 14px;
@@ -162,6 +214,23 @@
 
   --tracking-logo: .14em;
   --tracking-logo-footer: .1em;
+
+  /* Hero image shadow — the one exception to "no shadows" (design/README §3).
+     Literal values, same self-collision reason as leading-* above. Mobile
+     gets a lighter shadow per the resolved mockup DOM (20px/50px/.5 vs
+     30px/70px/.55 on desktop). */
+  --shadow-hero-image: 0 30px 70px rgba(0, 0, 0, .55);
+  --shadow-hero-image-m: 0 20px 50px rgba(0, 0, 0, .5);
+
+  /* Line-height roles from design/README §2 — named leading-* utilities.
+     Literal values (kept in sync with the Typography scale in :root above,
+     same pattern as --text-size-logo below) — a var() reference here would
+     self-collide with the :root declaration of the same name. */
+  --leading-tight: 1.12;
+  --leading-heading: 1.2;
+  --leading-body: 1.6;
+  --leading-loose: 1.75;
+  --leading-quote: 1.35;
 
   --spacing-space-2: var(--space-2);
   --spacing-space-3: var(--space-3);
@@ -187,6 +256,46 @@
   --spacing-footer-gap: 40px;
 
   --grid-template-columns-footer: 1.25fr 1fr 1fr 1fr;
+
+  /* Home hero */
+  --spacing-hero-pt: var(--hero-pt);
+  --spacing-hero-pb: var(--hero-pb);
+  --spacing-hero-pt-m: var(--hero-pt-m);
+  --spacing-hero-pb-m: var(--hero-pb-m);
+  --spacing-hero-image-h: var(--hero-image-h);
+  --spacing-hero-image-w-m: var(--hero-image-w-m);
+  --grid-template-columns-hero: 1fr 420px;
+
+  /* "Najbliższe" tiles */
+  --spacing-tile-py: var(--tile-py);
+  --spacing-tile-px: var(--tile-px);
+  --spacing-tile-py-m: var(--tile-py-m);
+  --spacing-tile-link-mt: var(--tile-link-mt);
+  --spacing-tile-link-mt-m: var(--tile-link-mt-m);
+  --spacing-hairline-gap: var(--hairline-gap);
+  --text-size-tile-title: var(--tile-title-size);
+  --leading-tile-title: var(--tile-title-leading);
+
+  /* Three pillars */
+  --spacing-pillars-gap: var(--pillars-gap);
+  --spacing-pillar-image-h: var(--pillar-image-h);
+  --spacing-pillar-image-h-m: var(--pillar-image-h-m);
+
+  /* Text measure (Hero lead, body copy) — design/README §3 "miara tekstu 34–36 em". */
+  --spacing-measure: var(--measure);
+
+  /* Page column — mockup canvas is 1180px (design/README §3 "kolumna treści do 1180 px"). */
+  --spacing-content-max: var(--content-max);
+
+  /* Testimonial */
+  --spacing-measure-quote: var(--measure-quote);
+  --spacing-testimonial-py: var(--testimonial-py);
+  --spacing-testimonial-px: var(--testimonial-px);
+
+  /* "Wybrane ikony" */
+  --spacing-icon-grid-gap: var(--icon-grid-gap);
+  --spacing-icon-grid-h: var(--icon-grid-h);
+  --spacing-icon-grid-h-m: var(--icon-grid-h-m);
 }
 
 @layer base {
@@ -213,6 +322,111 @@
     font-family: var(--font-serif);
     font-weight: 400;
     margin: 0;
+  }
+}
+
+@layer utilities {
+  /* Structural gold rules span the full viewport while content stays in the max-width column. */
+  .rule-gold-b {
+    position: relative;
+  }
+
+  .rule-gold-b::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+    width: 100vw;
+    border-bottom: 1px solid var(--line-gold);
+    pointer-events: none;
+  }
+
+  .rule-gold-t {
+    position: relative;
+  }
+
+  .rule-gold-t::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 0;
+    transform: translateX(-50%);
+    width: 100vw;
+    border-top: 1px solid var(--line-gold);
+    pointer-events: none;
+  }
+
+  .rule-neutral-t {
+    position: relative;
+  }
+
+  .rule-neutral-t::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 0;
+    transform: translateX(-50%);
+    width: 100vw;
+    border-top: 1px solid var(--line-neutral);
+    pointer-events: none;
+  }
+
+  /* Footer (and similar bands) — background spans the full viewport. */
+  .surface-footer-bleed {
+    position: relative;
+    isolation: isolate;
+  }
+
+  .surface-footer-bleed::after {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100vw;
+    background: var(--surface-footer);
+  }
+
+  /* Main nav link — underline grows from center on hover (design/README: color transition ≤150ms). */
+  .nav-link-underline {
+    position: relative;
+    padding-bottom: var(--spacing-link-underline-gap);
+    transition: color 150ms ease-out;
+  }
+
+  .nav-link-underline::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 1px;
+    background-color: var(--nav-underline-color, transparent);
+    transform: scaleX(var(--nav-underline-scale, 0));
+    transform-origin: center;
+    transition:
+      transform 150ms ease-out,
+      background-color 150ms ease-out;
+  }
+
+  .nav-link-underline:hover {
+    --nav-underline-scale: 1;
+  }
+
+  .nav-link-underline-active {
+    --nav-underline-color: var(--accent);
+    --nav-underline-scale: 1;
+  }
+
+  .nav-link-underline:not(.nav-link-underline-active):hover {
+    --nav-underline-color: var(--accent);
+  }
+
+  .nav-link-underline-section:not(.nav-link-underline-active):hover {
+    --nav-underline-color: var(--accent-hover);
   }
 }
 

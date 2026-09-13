@@ -20,7 +20,7 @@ const sizeClasses: Record<NonNullable<ButtonProps["size"]>, string> = {
 
 const variantClasses: Record<NonNullable<ButtonProps["variant"]>, string> = {
   primary:
-    "bg-accent text-text-on-gold font-semibold hover:bg-accent-text " +
+    "border-transparent bg-accent text-text-on-gold font-semibold hover:bg-accent-text " +
     "aria-disabled:bg-state-disabled aria-disabled:text-text-tertiary aria-disabled:cursor-not-allowed",
   secondary:
     "border-border-button text-text-body font-medium hover:border-accent-text hover:text-accent-text " +
@@ -43,7 +43,7 @@ export function Button({
       onClick={disabled ? undefined : onClick}
       aria-disabled={disabled || undefined}
       className={[
-        "rounded-none border border-transparent text-center cursor-pointer box-border",
+        "rounded-none border text-center cursor-pointer box-border",
         block ? "block" : "inline-block",
         sizeClasses[size],
         variantClasses[variant],
