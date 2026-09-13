@@ -25,7 +25,11 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       lang="pl"
       className={`${ebGaramond.variable} ${ibmPlexSans.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">
+        <div className="mx-auto flex min-h-full w-full max-w-content-max flex-1 flex-col">
+          {children}
+        </div>
+      </body>
     </html>
   );
 }

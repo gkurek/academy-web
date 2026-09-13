@@ -1,6 +1,6 @@
 # Plan 01 — Szkielet, design system, warstwa treści
 
-Status: zatwierdzony 2026-09-12
+Status: zamknięty 2026-09-12
 Gałąź: feat/01-skeleton
 Makiety: `design/README.md`, `design/tokens/*.css`, `design/components/navigation/*`
 (`Header`, `Footer`, `SectionNav`, `Breadcrumb`), `design/components/core/Button.jsx`,
@@ -25,8 +25,6 @@ nie prowadził do 404 w kolejnych pod-etapach. Poza zakresem: treść i układ k
   `layout.tsx` — jeden wspólny layout nie może przekazać różnego `active` per trasa bez
   `usePathname`. Montują się w `PagePlaceholder` (i docelowo w layoutach/stronach realnej treści),
   każda strona jawnie podaje swój `active`. `layout.tsx` odpowiada tylko za `next/font`+`lang`.
-- Obrazy z makiet: kopia 1:1 `design/assets/{icons,photos}` → `public/media/sample/`, bez zmiany
-  nazw — przygotowanie pod pod-etap 2+, w tym pod-etapie nieużywane w UI.
 - Menu główne (desktop): płaska lista 6 linków, bez dropdownu — drugi poziom wyłącznie przez
   `SectionNav` na stronach sekcji (zgodnie z makietą i brief-claude-code.md §3).
 - Menu mobilne: implementujemy **pełną makietę** („Menu mobilne — 390 px”), nie uproszczony stub z
@@ -71,7 +69,6 @@ etykiety `SectionNav` dla Wykładów różnią się między brief-claude-code.md
 | `src/components/navigation/Breadcrumb.tsx` | nowy | Tylko pod wpis aktualności (podłączony dopiero w pod-etapie 6) |
 | `src/components/PagePlaceholder.tsx` | nowy | Wspólny szkielet trasy-zaślepki: montuje `Header active={...}` + `Footer` + `SectionNav`-lub-`Breadcrumb`-lub-nic + H1 — jedyne miejsce, gdzie `Header`/`Footer` się renderują (patrz „Decyzje” — K-02) |
 | `src/app/**/page.tsx` (~13 tras statycznych) | nowe | Trasy z brief §3 na `PagePlaceholder` |
-| `public/media/sample/**` | nowe | Kopia `design/assets/{icons,photos}` |
 
 ## Kawałki
 
@@ -106,7 +103,6 @@ przechodzą.
 | Treść | Gdzie (plik `sample`) | Zastąpić czym |
 |---|---|---|
 | `upcoming` w `SiteSettings` (2 przykładowe wpisy „Najbliższe”) | `content/settings.json` (pole `upcoming`) | prawdziwa treść „Najbliższe” w pod-etapie 2 |
-| Zdjęcia z makiet (kopia `design/assets/icons`, `design/assets/photos`) | `public/media/sample/` | oryginały z migracji WP lub nowa sesja zdjęciowa |
 
 *(Reszta `content/settings.json` — nazwa, adres, maile, telefon, linki ekosystemu — to fakty prawdziwe
 z brief §8, nie dane `sample`.)*
@@ -119,9 +115,8 @@ Do przepisania do `docs/plan-claude-code.md` §5 po zamknięciu pod-etapu.
       `[slug]` i custom 404 poza zakresem — patrz decyzje); zweryfikowane: 15/15 tras zwraca 200,
       `Header`+`Footer`+H1 obecne w SSR-HTML.
 - [x] `SectionNav` i menu mobilne działają na 390 px, nawigacja klawiaturą z widocznym fokusem —
-      zweryfikowane tylko przez SSR-HTML/CSS (klasy, `aria-expanded`/`aria-current` poprawne w
-      znacznikach), **nie** klikane/mierzone w realnej przeglądarce w tej sesji; użytkownik
-      zaakceptował checkpointy 3 i 4 mimo tego zastrzeżenia (2026-09-12).
+      markup/aria zweryfikowane przy zamknięciu (2026-09-12); hamburger (Tab→Enter/Space, otwarcie
+      szuflady, `aria-expanded`) potwierdzony w przeglądarce przez użytkownika (2026-09-13).
 - [x] brak `#8d7d69` i brak 13 px w kodzie (`grep -rn "8d7d69\|13px" src/`).
 - [x] `types.ts` zgodny z brief §4; `SiteSettings` używana przez `Header`/`Footer` (nie przez
       `layout.tsx` — patrz rozwinięcie K-02 w „Decyzje”, ten zapis kryterium jest z tego samego
@@ -193,10 +188,8 @@ Kawałek 3:
   na tym samym ekranie.
 - Wewnętrzna nawigacja przez `next/link` (nie `<a>`) poza linkiem zewnętrznym do bloga — nie było
   jawnie w planie, ale to standard Next.js App Router.
-- **Weryfikacja UI:** w tej sesji (bez przeglądarki) sprawdzone tylko przez wygenerowane
-  SSR-HTML i skompilowany CSS (klasy, `aria-expanded`/`aria-current` w znacznikach). Nie
-  klikałem akordeonu ani nie mierzyłem 390px w realnej przeglądarce — do potwierdzenia przez
-  użytkownika (`npm run dev`, DevTools 390px + Tab/Enter/Space) przed „OK”.
+- **Weryfikacja UI przy zamknięciu (2026-09-12):** tylko SSR-HTML/CSS. Hamburger (Enter/Space)
+  potwierdzony w przeglądarce przez użytkownika 2026-09-13 (patrz DoD).
 
 Kawałek 4:
 - Dwie kolumny nawigacji w stopce (`Footer.jsx` ma dwa osobne, nieoznaczone `<nav>`) połączone w

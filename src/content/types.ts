@@ -113,5 +113,5 @@ export type SiteSettings = {
     personalSiteUrl?: string; // fill in once EJK's personal site launches — empty for now
     social: { facebook: string; youtube: string };
   };
-  upcoming: { title: string; text: string; href: string }[]; // "Najbliższe" on the home page
+  upcoming: { title: string; text: string; href: string; linkLabel: string }[]; // "Najbliższe" on the home page
 };

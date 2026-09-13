@@ -20,7 +20,7 @@ export function Footer() {
   const telHref = `tel:+48${settings.phone.replace(/\s/g, "")}`;
 
   return (
-    <footer className="bg-surface-footer border-t border-line-gold font-sans">
+    <footer className="rule-gold-t surface-footer-bleed font-sans">
       <div className="px-page-margin-mobile md:px-page-margin pt-footer-pt">
         <div className="grid gap-space-6 md:grid-cols-footer md:gap-footer-gap">
         <div>
@@ -104,8 +104,9 @@ export function Footer() {
         </div>
       </div>
 
-      <div className="mt-space-7 border-t border-line-neutral">
+      <div className="mt-space-7 rule-neutral-t">
         <div className="px-page-margin-mobile md:px-page-margin pt-space-5 pb-footer-pb flex flex-wrap gap-x-space-6 gap-y-space-3 text-size-caption text-text-tertiary">
+        <span>{pl.footer.copyright}</span>
         <span>
           {pl.footer.organizerLabel}:{" "}
           <a href={settings.ecosystem.foundationUrl} className={organizerLinkClass}>

@@ -1,0 +1,57 @@
+[
+  {
+    "slug": "matka-boza-znaku",
+    "title": "Matka Boża Znaku",
+    "author": "ejk",
+    "authorName": "Elżbieta Jackowska-Kurek",
+    "size": { "w": 40, "h": 30 },
+    "image": {
+      "src": "/media/sample/icons/matka-boza-znaku.jpg",
+      "alt": "Ikona Matka Boża Znaku",
+      "width": 829,
+      "height": 1105
+    },
+    "sample": true
+  },
+  {
+    "slug": "przemienienie",
+    "title": "Przemienienie",
+    "author": "ejk",
+    "authorName": "Elżbieta Jackowska-Kurek",
+    "size": { "w": 60, "h": 45 },
+    "image": {
+      "src": "/media/sample/icons/przemienienie.jpeg",
+      "alt": "Ikona Przemienienie Pańskie",
+      "width": 784,
+      "height": 1045
+    },
+    "sample": true
+  },
+  {
+    "slug": "mandylion",
+    "title": "Mandylion",
+    "author": "ejk",
+    "authorName": "Elżbieta Jackowska-Kurek",
+    "size": { "w": 35, "h": 28 },
+    "image": {
+      "src": "/media/sample/icons/mandylion.jpg",
+      "alt": "Ikona Mandylion",
+      "width": 540,
+      "height": 673
+    },
+    "sample": true
+  },
+  {
+    "slug": "sw-antoni",
+    "title": "Św. Antoni",
+    "author": "student",
+    "authorName": "uczestniczki",
+    "image": {
+      "src": "/media/sample/icons/sw-antoni.jpg",
+      "alt": "Ikona Świętego Antoniego",
+      "width": 810,
+      "height": 1440
+    },
+    "sample": true
+  }
+]
