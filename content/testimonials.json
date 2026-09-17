@@ -1,0 +1,36 @@
+{
+  "sample": true,
+  "items": [
+    {
+      "quote": "[cytat z obecnej strony – Adam]",
+      "author": "Adam",
+      "role": "uczestnik pleneru"
+    },
+    {
+      "quote": "[cytat z obecnej strony – Hania]",
+      "author": "Hania",
+      "role": "uczestniczka pleneru"
+    },
+    {
+      "quote": "[cytat z obecnej strony – Iza]",
+      "author": "Iza",
+      "role": "uczestniczka pleneru"
+    },
+    {
+      "quote": "[cytat z obecnej strony – Emilia]",
+      "author": "Emilia"
+    },
+    {
+      "quote": "[cytat z obecnej strony – Robert]",
+      "author": "Robert"
+    },
+    {
+      "quote": "[cytat z obecnej strony – Maciej]",
+      "author": "Maciej"
+    },
+    {
+      "quote": "[cytat z obecnej strony – Artur]",
+      "author": "Artur"
+    }
+  ]
+}

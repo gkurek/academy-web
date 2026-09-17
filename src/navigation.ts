@@ -44,7 +44,7 @@ export type SectionKey = "warsztaty" | "wyklady" | "ikony" | "wydarzenia";
 // breadcrumb (see design/README §4 — Breadcrumb).
 export const sectionNav: Record<SectionKey, NavLink[]> = {
   warsztaty: [
-    { label: "Przegląd", href: "/warsztaty" },
+    { label: "Warsztaty", href: "/warsztaty" },
     { label: "Kurs roczny i trzyletni", href: "/warsztaty/kurs-roczny-i-trzyletni" },
     { label: "Letnia Szkoła Światła", href: "/warsztaty/letnia-szkola-swiatla" },
   ],

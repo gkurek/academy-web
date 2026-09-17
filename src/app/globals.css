@@ -159,6 +159,67 @@
   --icon-grid-gap: 22px;
   --icon-grid-h: 290px;
   --icon-grid-h-m: 200px;
+
+  /* Offer pages — FactsBox sidebar, hub OfferCard, quote grid (#2a-warsztaty / #1a-oferta). */
+  --offer-sidebar-w: 400px;
+  --offer-main-gap: 52px;
+  --offer-facts-x: 32px;
+  --offer-facts-y: 30px;
+  --offer-facts-pb: 32px;
+  --offer-facts-top: 3px;
+  --offer-facts-heading: 24px;
+  --offer-facts-dd-mt: 2px;
+  --offer-facts-dd-mb: 16px;
+  --offer-intro-secondary: 17px;
+  --leading-facts: 1.55;
+  --leading-intro-secondary: 1.65;
+  --leading-quote-offer: 1.55;
+  --offer-card-image-h: 240px;
+  --offer-card-x: 34px;
+  --offer-card-y: 32px;
+  --offer-card-pb: 36px;
+  --offer-card-title: 30px;
+  --offer-hub-lead-pb: 44px;
+  --measure-hub-lead: 38em;
+  --offer-quotes-gap: 22px;
+  --offer-quote-x: 30px;
+  --offer-quote-y: 28px;
+  --offer-quote-top: 2px;
+  --offer-semester-num: 34px;
+  --offer-semester-num-m: 28px;
+  --offer-semester-num-width: 34px;
+  --offer-semester-num-width-m: 34px;
+  --offer-semester-x: 28px;
+  --offer-semester-y: 26px;
+  --offer-semester-x-m: 22px;
+  --offer-semester-y-m: 20px;
+  --offer-semester-gap: 20px;
+  --offer-semester-gap-m: 16px;
+  --offer-enrollment-gap: 44px;
+  --offer-quote-feature-x: 32px;
+  --offer-quote-feature-y: 32px;
+  --offer-quote-feature: 24px;
+  --offer-quote-feature-m: 21px;
+  --offer-quote-image-h: 180px;
+  --offer-quote-image-mt: 26px;
+  --offer-figure-h: 340px;
+  --offer-figure-h-m: 220px;
+  --offer-day-rhythm-time-col: 140px;
+  --offer-day-rhythm-gap: 28px;
+  --offer-day-rhythm-x: 28px;
+  --offer-day-rhythm-y: 20px;
+  --offer-step-num: 30px;
+  --offer-step-x: 24px;
+  --offer-step-y: 26px;
+  --offer-step-gap: 12px;
+  --offer-step-gap-m: 20px;
+  --offer-ready-y: 34px;
+  --offer-ready-title: 24px;
+  --offer-ready-gap-x: 24px;
+  --offer-examples-heading-mb: 28px;
+  --offer-examples-link-mt: 22px;
+  --offer-examples-pb: 56px;
+  --measure-ready-note: 46em;
 }
 
 /* Tailwind utility mappings for the tokens this piece actually consumes.
@@ -199,7 +260,9 @@
   --text-size-ui: var(--size-ui);
   --text-size-ui-m: var(--size-ui-m);
   --text-size-nav: var(--size-nav);
+  --text-size-h3: var(--size-h3);
   --text-size-h3-m: var(--size-h3-m);
+  --text-size-quote: var(--size-quote);
   --text-size-caption-m: var(--size-caption-m);
   --text-size-caption: var(--size-caption);
   --text-size-lead: var(--size-lead);
@@ -296,9 +359,75 @@
   --spacing-icon-grid-gap: var(--icon-grid-gap);
   --spacing-icon-grid-h: var(--icon-grid-h);
   --spacing-icon-grid-h-m: var(--icon-grid-h-m);
+
+  /* Offer pages */
+  --spacing-offer-sidebar-w: var(--offer-sidebar-w);
+  --spacing-offer-main-gap: var(--offer-main-gap);
+  --spacing-offer-facts-x: var(--offer-facts-x);
+  --spacing-offer-facts-y: var(--offer-facts-y);
+  --spacing-offer-facts-pb: var(--offer-facts-pb);
+  --spacing-offer-facts-dd-mt: var(--offer-facts-dd-mt);
+  --spacing-offer-facts-dd-mb: var(--offer-facts-dd-mb);
+  --spacing-offer-card-image-h: var(--offer-card-image-h);
+  --spacing-offer-card-x: var(--offer-card-x);
+  --spacing-offer-card-y: var(--offer-card-y);
+  --spacing-offer-card-pb: var(--offer-card-pb);
+  --spacing-offer-hub-lead-pb: var(--offer-hub-lead-pb);
+  --spacing-offer-quotes-gap: var(--offer-quotes-gap);
+  --spacing-offer-quote-x: var(--offer-quote-x);
+  --spacing-offer-quote-y: var(--offer-quote-y);
+  --text-size-offer-card-title: var(--offer-card-title);
+  --text-size-offer-facts-heading: var(--offer-facts-heading);
+  --text-size-offer-intro-secondary: var(--offer-intro-secondary);
+  --leading-facts: 1.55;
+  --leading-intro-secondary: 1.65;
+  --leading-quote-offer: 1.55;
+  --max-width-measure-hub: var(--measure-hub-lead);
+  --border-width-offer-facts-top: var(--offer-facts-top);
+  --border-width-offer-quote-top: var(--offer-quote-top);
+  --grid-template-columns-offer-main: 1fr var(--offer-sidebar-w);
+  --spacing-offer-semester-x: var(--offer-semester-x);
+  --spacing-offer-semester-y: var(--offer-semester-y);
+  --spacing-offer-semester-x-m: var(--offer-semester-x-m);
+  --spacing-offer-semester-y-m: var(--offer-semester-y-m);
+  --spacing-offer-semester-gap: var(--offer-semester-gap);
+  --spacing-offer-semester-gap-m: var(--offer-semester-gap-m);
+  --spacing-offer-semester-num-width: var(--offer-semester-num-width);
+  --spacing-offer-semester-num-width-m: var(--offer-semester-num-width-m);
+  --spacing-offer-enrollment-gap: var(--offer-enrollment-gap);
+  --spacing-offer-quote-feature-x: var(--offer-quote-feature-x);
+  --spacing-offer-quote-feature-y: var(--offer-quote-feature-y);
+  --spacing-offer-quote-image-mt: var(--offer-quote-image-mt);
+  --spacing-offer-quote-image-h: var(--offer-quote-image-h);
+  --spacing-offer-figure-h: var(--offer-figure-h);
+  --spacing-offer-figure-h-m: var(--offer-figure-h-m);
+  --text-size-offer-semester-num: var(--offer-semester-num);
+  --text-size-offer-semester-num-m: var(--offer-semester-num-m);
+  --text-size-offer-quote: var(--offer-quote-feature);
+  --text-size-offer-quote-m: var(--offer-quote-feature-m);
+  --spacing-offer-day-rhythm-time-col: var(--offer-day-rhythm-time-col);
+  --spacing-offer-day-rhythm-gap: var(--offer-day-rhythm-gap);
+  --spacing-offer-day-rhythm-x: var(--offer-day-rhythm-x);
+  --spacing-offer-day-rhythm-y: var(--offer-day-rhythm-y);
+  --spacing-offer-step-x: var(--offer-step-x);
+  --spacing-offer-step-y: var(--offer-step-y);
+  --spacing-offer-step-gap: var(--offer-step-gap);
+  --spacing-offer-step-gap-m: var(--offer-step-gap-m);
+  --spacing-offer-ready-y: var(--offer-ready-y);
+  --spacing-offer-ready-gap-x: var(--offer-ready-gap-x);
+  --spacing-offer-examples-heading-mb: var(--offer-examples-heading-mb);
+  --spacing-offer-examples-link-mt: var(--offer-examples-link-mt);
+  --spacing-offer-examples-pb: var(--offer-examples-pb);
+  --text-size-offer-step-num: var(--offer-step-num);
+  --text-size-offer-ready-title: var(--offer-ready-title);
+  --max-width-measure-ready-note: var(--measure-ready-note);
 }
 
 @layer base {
+  html {
+    scrollbar-gutter: stable;
+  }
+
   body {
     margin: 0;
     background: var(--surface-page);
@@ -390,6 +519,24 @@
     background: var(--surface-footer);
   }
 
+  /* Offer bands (e.g. “Gotowe ikony”) — background spans the full viewport. */
+  .surface-tile-bleed {
+    position: relative;
+    isolation: isolate;
+  }
+
+  .surface-tile-bleed::after {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100vw;
+    background: var(--surface-tile);
+  }
+
   /* Main nav link — underline grows from center on hover (design/README: color transition ≤150ms). */
   .nav-link-underline {
     position: relative;
@@ -427,6 +574,153 @@
 
   .nav-link-underline-section:not(.nav-link-underline-active):hover {
     --nav-underline-color: var(--accent-hover);
+  }
+
+  /* Secondary button — border lines only: top/bottom first, then sides (≤150ms each). */
+  .btn-secondary {
+    position: relative;
+    isolation: isolate;
+    border-color: transparent;
+    transition: color 150ms ease-out;
+  }
+
+  .btn-secondary-borders {
+    position: absolute;
+    inset: -1px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .btn-secondary-borders::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border: 1px solid var(--border-button);
+  }
+
+  .btn-secondary-borders__top,
+  .btn-secondary-borders__bottom,
+  .btn-secondary-borders__left,
+  .btn-secondary-borders__right {
+    position: absolute;
+    background-color: var(--accent);
+  }
+
+  .btn-secondary-borders__top {
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    transform: scaleX(0);
+    transform-origin: center;
+    /* Mouse leave: retract after sides. */
+    transition: transform 150ms ease-out 150ms;
+  }
+
+  .btn-secondary-borders__bottom {
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    transform: scaleX(0);
+    transform-origin: center;
+    transition: transform 150ms ease-out 150ms;
+  }
+
+  .btn-secondary-borders__left {
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 1px;
+    transform: scaleY(0);
+    transform-origin: center;
+    /* Mouse leave: retract first. */
+    transition: transform 150ms ease-out;
+  }
+
+  .btn-secondary-borders__right {
+    top: 0;
+    bottom: 0;
+    right: 0;
+    width: 1px;
+    transform: scaleY(0);
+    transform-origin: center;
+    transition: transform 150ms ease-out;
+  }
+
+  .btn-secondary:hover:not([aria-disabled="true"]) .btn-secondary-borders__top,
+  .btn-secondary:hover:not([aria-disabled="true"]) .btn-secondary-borders__bottom {
+    transform: scaleX(1);
+    /* Mouse enter: expand first. */
+    transition: transform 150ms ease-out;
+  }
+
+  .btn-secondary:hover:not([aria-disabled="true"]) .btn-secondary-borders__left,
+  .btn-secondary:hover:not([aria-disabled="true"]) .btn-secondary-borders__right {
+    transform: scaleY(1);
+    /* Mouse enter: expand after top/bottom. */
+    transition: transform 150ms ease-out 150ms;
+  }
+
+  .btn-secondary[aria-disabled="true"] .btn-secondary-borders::before {
+    border-color: var(--line-neutral);
+  }
+}
+
+@layer components {
+  .offer-mdx .offer-day-rhythm-label {
+    font-size: var(--size-caption);
+    line-height: var(--leading-body);
+    color: var(--text-tertiary);
+    margin: 0 0 var(--space-2);
+  }
+
+  .offer-mdx .offer-day-rhythm-grid {
+    display: grid;
+    gap: var(--hairline-gap);
+    background: var(--line-gold);
+    margin-top: var(--space-7);
+  }
+
+  .offer-mdx .offer-day-rhythm-row {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-4);
+    align-items: baseline;
+    background: var(--surface-tile);
+    padding: var(--offer-day-rhythm-y) var(--offer-day-rhythm-x);
+    font-size: var(--size-body-lg);
+    line-height: var(--leading-body);
+    color: var(--text-secondary);
+  }
+
+  @media (min-width: 768px) {
+    .offer-mdx .offer-day-rhythm-row {
+      grid-template-columns: var(--offer-day-rhythm-time-col) 1fr;
+      gap: var(--offer-day-rhythm-gap);
+    }
+  }
+
+  .offer-mdx .offer-day-rhythm-time {
+    font-family: var(--font-serif);
+    font-size: var(--size-h2-sm);
+    color: var(--accent-text);
+  }
+
+  .offer-step-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--hairline-gap);
+    background: var(--line-gold);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  @media (min-width: 1024px) {
+    .offer-step-grid {
+      grid-template-columns: repeat(var(--step-count), minmax(0, 1fr));
+    }
   }
 }
 
