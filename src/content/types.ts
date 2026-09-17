@@ -25,7 +25,9 @@ export type OfferFacts = {
   where?: string;
   audience?: string;
   price?: string; // "400 zł / rok"
-  enrollmentDeadline?: string; // ISO
+  enrollmentDeadline?: string; // ISO; kurs: row label „Zgłoszenia”
+  enrollmentStart?: string; // plener: row label „Nabór”
+  enrollmentRule?: string; // plener: row label „Zasada naboru”
   enrollmentEmail: string;
   enrollmentPhone?: string;
   enrollmentSubject: string; // unified mailto subject

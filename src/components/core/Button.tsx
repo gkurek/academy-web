@@ -23,8 +23,8 @@ const variantClasses: Record<NonNullable<ButtonProps["variant"]>, string> = {
     "border-transparent bg-accent text-text-on-gold font-semibold hover:bg-accent-text " +
     "aria-disabled:bg-state-disabled aria-disabled:text-text-tertiary aria-disabled:cursor-not-allowed",
   secondary:
-    "border-border-button text-text-body font-medium hover:border-accent-text hover:text-accent-text " +
-    "aria-disabled:border-line-neutral aria-disabled:text-state-disabled aria-disabled:cursor-not-allowed",
+    "btn-secondary text-text-body font-medium hover:text-accent-text " +
+    "aria-disabled:text-state-disabled aria-disabled:cursor-not-allowed",
 };
 
 export function Button({
@@ -37,6 +37,8 @@ export function Button({
   onClick,
   className,
 }: ButtonProps) {
+  const isSecondary = variant === "secondary";
+
   return (
     <a
       href={disabled ? undefined : href}
@@ -52,7 +54,19 @@ export function Button({
         .filter(Boolean)
         .join(" ")}
     >
-      {children}
+      {isSecondary ? (
+        <>
+          <span className="btn-secondary-borders" aria-hidden="true">
+            <span className="btn-secondary-borders__top" />
+            <span className="btn-secondary-borders__bottom" />
+            <span className="btn-secondary-borders__left" />
+            <span className="btn-secondary-borders__right" />
+          </span>
+          <span className="relative z-10">{children}</span>
+        </>
+      ) : (
+        children
+      )}
     </a>
   );
 }
