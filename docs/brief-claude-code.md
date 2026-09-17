@@ -62,7 +62,7 @@ Strona jest częścią szerszego ekosystemu (Akademia + Fundacja + planowana str
 3. Stopka z pełną mapą strony (nawigacja ratunkowa + SEO).
 
 Zawartość `SectionNav` per sekcja:
-- Warsztaty: Przegląd · Kurs roczny i trzyletni · Letnia Szkoła Światła
+- Warsztaty: Warsztaty · Kurs roczny i trzyletni · Letnia Szkoła Światła
 - Wykłady: Bieżący sezon · Archiwum · Wykładowcy
 - Ikony: Galeria · Ikony na zamówienie
 - Wydarzenia: Wszystkie · Wystawy · Poświęcenia · Oprowadzania · Wyjazdy studyjne — kategorie jako **filtry przez query string** na `/wydarzenia` (np. `/wydarzenia?kategoria=wystawa`), bez osobnych tras pod `/wydarzenia/*`
@@ -90,7 +90,9 @@ type OfferFacts = {             // blok „W skrócie”
   where?: string;
   audience?: string;
   price?: string;               // „400 zł / rok”
-  enrollmentDeadline?: string;  // ISO
+  enrollmentDeadline?: string;  // ISO; kurs: wiersz „Zgłoszenia”
+  enrollmentStart?: string;     // plener: wiersz „Nabór” (np. „Rusza w marcu 2027”)
+  enrollmentRule?: string;      // plener: wiersz „Zasada naboru” (np. „Kolejność zgłoszeń”)
   enrollmentEmail: string;
   enrollmentPhone?: string;
   enrollmentSubject: string;    // ujednolicony temat mailto
@@ -204,7 +206,7 @@ Szacunek ręcznej korekty po migracji: ~10 stron statycznych, 15 sezonów wykła
 - Strona główna: hero, sekcja „Najbliższe” (z CMS/danych), trzy filary, wybrane ikony, cytat, blok „Prowadząca” (mały, nie dominujący), miejsce, kontakt.
 - Strony ofertowe (kurs, plener, wykłady, ikony na zamówienie) z blokiem `FactsBox`/„W skrócie” zasilanym z `OfferFacts` — nie z tekstu w body.
 - Dwa stany `FactsBox`: nabór otwarty (CTA złote) i zamknięty (`enrollmentOpen: false` → przycisk drugorzędny + inny komunikat, np. „nabór rusza w marcu” lub „zapytaj o miejsce”).
-- `/ikony/na-zamowienie` na szablonie strony ofertowej, sekcja „Jak przebiega zamówienie” jako sekwencja 5 kroków, „Przykłady realizacji” (3–4 ikony), link do niej z Galerii.
+- `/ikony/na-zamowienie` na szablonie strony ofertowej, sekcja „Jak przebiega zamówienie” jako sekwencja 3 kroków (Rozmowa · Zaliczka · Realizacja — makieta `#2a-zamowienie`), „Przykłady realizacji” (3–4 ikony), link do niej z Galerii.
 - Zapisy: przyciski `mailto:` z tematami z §7 poniżej + `tel:`. Przygotować miejsce pod formularz w v2 (nie budować go teraz).
 - Program bieżącego sezonu wykładów jako lista (data, tytuł, prowadzący); archiwum jako rozwijane sezony (`SeasonAccordion`).
 - Galeria z filtrami (autor, temat) i lightboxem; każde zdjęcie z podpisem (tytuł, autor, wymiary, rok jeśli znany).
@@ -272,7 +274,7 @@ Telefon jako `tel:+48601734705`.
 - Wykłady 2026/2027: „Ikona – korzenie i owoce wiary. Mistyka dziś”; wybrane wtorki 18:00–20:30; 400 zł/rok; zapisy od września 2026; terminy: 06.10, 10.11, 08.12, 19.01, 16.02, 09.03, 13.04, 11.05, 08.06, 11.06, 12.06 (wernisaż, AGAPA).
 - Letnia Szkoła Światła: plenery tygodniowe sierpień/wrzesień; nabór na 2027 rusza w marcu 2027, kolejność zgłoszeń.
 - Ikony na zamówienie: kontakt jak wyżej; szczegóły procesu i czas realizacji — do potwierdzenia z EJK (nie zgadywać, zostawić placeholder w CMS-owalnym polu).
-- Uwaga prawna do zachowania dosłownie: „nauczanie w Akademii Ikony nie niesie za sobą żadnych skutków formalnych.”
+- Uwaga prawna (pełne zdanie, wielka litera na początku): „Nauczanie w Akademii Ikony nie niesie za sobą żadnych skutków formalnych.”
 
 ---
 

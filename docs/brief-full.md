@@ -151,7 +151,7 @@ Struktura ma dwa poziomy; każda podstrona musi być osiągalna w maksymalnie dw
 
 - Strona główna: hero (obraz ikony + jedno zdanie o Akademii + dwa CTA: „Warsztaty” i „Wykłady”), sekcja „Najbliższe” (sterowana z CMS: nabór, wykład, wystawa), trzy filary, wybrane ikony, cytat/testimonial, prowadząca (zdjęcie, jedno zdanie, link do „O Akademii” – **nie** bohaterka strony głównej), miejsce (kościół, dostępność), kontakt.
 - Strony ofertowe (kurs, plener, wykłady, **ikony na zamówienie**) z blokiem **„W skrócie”**: kiedy, gdzie, dla kogo, koszt, jak się zapisać, termin zgłoszeń – wszystko z pól CMS, nie z tekstu. Dla zamówień pola: co można zamówić, orientacyjny czas realizacji, jak przebiega proces, kontakt.
-- Strona `/ikony/na-zamowienie` ma **treść wymienną**: w v1 pełna oferta (co, proces: rozmowa → projekt → zaliczka → realizacja → ewentualne poświęcenie, przykłady realizacji, kontakt). Po starcie strony autorskiej EJK zostaje z niej wstęp i wyraźne odesłanie (bez 301 – strona pozostaje wartościowa lokalnie). Body strony to jedno pole MDX, więc wymiana treści nie wymaga zmian w kodzie.
+- Strona `/ikony/na-zamowienie` ma **treść wymienną**: w v1 pełna oferta (co, proces w 3 krokach: rozmowa → zaliczka → realizacja — makieta `#2a-zamowienie`, przykłady realizacji, kontakt). Po starcie strony autorskiej EJK zostaje z niej wstęp i wyraźne odesłanie (bez 301 – strona pozostaje wartościowa lokalnie). Body strony to jedno pole MDX, więc wymiana treści nie wymaga zmian w kodzie.
 - Zapisy w v1: przyciski `mailto:` z gotowym, **ujednoliconym tematem** (`Zgłoszenie – kurs roczny 2026/2027`, `Zgłoszenie – Letnia Szkoła Światła 2027`, `Zgłoszenie – wykłady 2026/2027`, `Zapytanie – ikona na zamówienie`) i telefonem. Tematy pozwalają liczyć zgłoszenia w skrzynce bez żadnego systemu. Przygotować miejsce na formularz (v2).
 - Nawigacja wg §4.1: huby sekcji, `SectionNav`, stopka z mapą strony.
 - Program bieżącego sezonu wykładów jako lista wydarzeń (data, tytuł(y), prowadzący), archiwum jako rozwijane sezony.
@@ -380,7 +380,7 @@ type SiteSettings = {
 - Wykłady 2026/2027: „Ikona – korzenie i owoce wiary. Mistyka dziś”; wybrane wtorki 18:00–20:30; 400 zł/rok; zapisy od września 2026; terminy: 06.10, 10.11, 08.12, 19.01, 16.02, 09.03, 13.04, 11.05, 08.06, 11.06, 12.06 (wernisaż, AGAPA).
 - Letnia Szkoła Światła: plenery tygodniowe sierpień/wrzesień; nabór na 2027 rusza w marcu 2027, kolejność zgłoszeń.
 - Ikony na zamówienie: kontakt [akademiaikony@gmail.com](mailto:akademiaikony@gmail.com) / 601 734 705; szczegóły procesu i czas realizacji – do potwierdzenia z EJK.
-- Uwaga prawna do zachowania: „nauczanie w Akademii Ikony nie niesie za sobą żadnych skutków formalnych.”
+- Uwaga prawna (pełne zdanie, wielka litera): „Nauczanie w Akademii Ikony nie niesie za sobą żadnych skutków formalnych.”
 
 ---
 
