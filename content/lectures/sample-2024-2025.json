@@ -1,0 +1,65 @@
+{
+  "sample": true,
+  "slug": "2024-2025",
+  "label": "2024/2025",
+  "cycleTitle": "Ikona – piękno zanurzone w tajemnicy. Piękno Boga, piękno człowieka",
+  "intro": "Spotkania odbywają się w godz. 18.00–20.30 w Kościele Środowisk Twórczych św. Andrzeja Apostoła i św. Brata Alberta Chmielowskiego w Warszawie. Koszt roczny 300 zł. Nr konta do wpłaty i regulaminy przesyłamy po zgłoszeniu się na adres: sekretariat.ikony22@gmail.com",
+  "lectures": [
+    {
+      "date": "2024-10-08",
+      "title": "Piękno Boga, piękno człowieka",
+      "lecturerSlugs": ["andrzej-persidok"]
+    },
+    {
+      "date": "2024-11-12",
+      "title": "Duccio i złota sztuka Sieny · Sacrum w muzycznych obrazach mistrzów – rozważania",
+      "lecturerSlugs": ["ewa-korpysz", "emanuel-baczkowski"]
+    },
+    {
+      "date": "2024-12-10",
+      "title": "Koncepcja piękna według św. Augustyna · Chorał gregoriański jako pieśń tradycyjna",
+      "lecturerSlugs": ["jozef-naumowicz", "marcin-bornus-szczycinski"]
+    },
+    {
+      "date": "2025-01-21",
+      "title": "Sztuka jako wyraz pełni człowieka",
+      "lecturerSlugs": ["henryk-paprocki"]
+    },
+    {
+      "date": "2025-02-18",
+      "title": "Jezus był piękny czy brzydki? Teorie apologetów wczesnochrześcijańskich · Piękno człowieka na podstawie psalmu 1",
+      "lecturerSlugs": ["jozef-naumowicz", "aleksander-jacyniak"]
+    },
+    {
+      "date": "2025-03-25",
+      "title": "Jakie piękno zbawi świat? Refleksje na bazie listu duszpasterskiego ks. kard. C. M. Martiniego 1999–2000",
+      "lecturerSlugs": ["aleksander-jacyniak"]
+    },
+    {
+      "date": "2025-04-08",
+      "title": "Piękno krzyża: Męka Chrystusa w teologii i sztuce od katakumb do wczesnego renesansu · Dlaczego uczyniono duszę „dzieckiem”, czyli o obrazie Bożym inaczej",
+      "lecturerSlugs": ["jozef-naumowicz", "justyna-sprutta"]
+    },
+    {
+      "date": "2025-05-06",
+      "title": "Mistyczne wizje El Greca · Piękno relacji Boga z człowiekiem na podstawie ps. 8",
+      "lecturerSlugs": ["ewa-korpysz", "aleksander-jacyniak"]
+    },
+    {
+      "date": "2025-06-10",
+      "title": "W widzialnym dostrzec niewidzialne. O pięknie w ikonach",
+      "lecturerSlugs": ["marek-wojnarowski"]
+    },
+    {
+      "date": "2025-06-13",
+      "title": "„Spes non confundit”, „nadzieja zawieść nie może” (Rz 5, 5)",
+      "lecturerSlugs": ["dariusz-klejnowski-rozycki"]
+    },
+    {
+      "date": "2025-06-14",
+      "title": "Piękno Boga w ikonach · Wernisaż wystawy ikon",
+      "lecturerSlugs": ["elzbieta-jackowska-kurek"],
+      "note": "wernisaż"
+    }
+  ]
+}

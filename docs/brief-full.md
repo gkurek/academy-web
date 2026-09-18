@@ -16,7 +16,7 @@ Stan analizy: wrzesień 2026, na podstawie obecnej strony [https://www.akademiai
 Trzy filary działalności:
 
 1. **Warsztaty pisania ikon** – kurs roczny (przedwstępny/wstępny) i trzyletni (doskonalący), raz w tygodniu, październik–czerwiec, praca indywidualna z każdym uczestnikiem. Plus **Letnia Szkoła Światła** – tygodniowe plenery ikonowe w sierpniu/wrześniu, w trybie rekolekcyjnym.
-2. **Wykłady** – cykl „Ikona – korzenie i owoce wiary”, wybrane wtorki miesiąca 18:00–20:30, październik–czerwiec, 400 zł/rok, możliwy roczny dostęp do nagrań. Prowadzą teolodzy, historycy sztuki, duchowni (UKSW, UO, dominikanie, prawosławni). Archiwum od sezonu 2012/2013 – 15 sezonów.
+2. **Wykłady** – cykl „Ikona – korzenie i owoce wiary”, wybrane wtorki miesiąca 18:00–20:30, październik–czerwiec, 400 zł/rok, możliwy roczny dostęp do nagrań. Prowadzą teolodzy, historycy sztuki, duchowni (UKSW, UO, dominikanie, prawosławni). 16 sezonów łącznie (od 2012/2013); bieżący 2026/2027 to szesnasty; archiwum — 15 sezonów archiwalnych.
 3. **Ikony** – galeria prac Elżbiety Jackowskiej-Kurek i uczniów, wystawy (m.in. stała „Ikona – korzenie i owoce wiary” w kościele), ikony na zamówienie, poświęcenia, oprowadzania kuratorskie, wyjazdy studyjne.
    **Cele nowej strony (w kolejności ważności):**
 4. Wizerunek i prestiż – strona ma odpowiadać randze instytucji z 15-letnim dorobkiem i zapleczem akademickim.
@@ -67,7 +67,7 @@ Stack: WordPress 7.1, darmowy motyw blogowy **Nisarg** (ok. 2015), wtyczka GDPR 
 
 ### 2.4 Co jest dobre i ma zostać
 
-- Bogata, autentyczna treść: pełny program kursu trzyletniego (semestr po semestrze), 15 sezonów wykładów z nazwiskami i tytułami, opisy pleneru, testimoniale.
+- Bogata, autentyczna treść: pełny program kursu trzyletniego (semestr po semestrze), 16 sezonów wykładów z nazwiskami i tytułami, opisy pleneru, testimoniale.
 - Silna, konkretna tożsamość miejsca: kościół na Placu Teatralnym, „przestrzeń wolna od barier architektonicznych”.
 - Jedna wyrazista osoba prowadząca – Elżbieta Jackowska-Kurek – z dorobkiem (polichromie, ikony w świątyniach w kraju i za granicą).
 - Dobre fotografie ikon (do ponownego użycia po selekcji).
@@ -116,7 +116,7 @@ Media: wszystkie oryginały w `/wp-content/uploads/YYYY/MM/`. Podpisy ikon są w
 /warsztaty/kurs-roczny-i-trzyletni
 /warsztaty/letnia-szkola-swiatla
 /wyklady                   hub: bieżący sezon + jak się zapisać
-/wyklady/archiwum          15 sezonów, rozwijane
+/wyklady/archiwum          15 sezonów archiwalnych, rozwijane (bieżący 2026/2027 — szesnasty)
 /wyklady/wykladowcy
 /ikony                     galeria z filtrami (autor: Elżbieta / uczniowie; temat)
 /ikony/[slug]              pojedyncza ikona (opcjonalnie w v1)
@@ -363,7 +363,7 @@ type SiteSettings = {
 4. Podpisy galerii → `IconWork`: regex `^(.+?),\s*(\d+)x(\d+)\s*\(cm\)$`, wariant z „pisany/pisana ręką X” → `author: 'student'`, `authorName: X`.
 5. Wygenerować tabelę przekierowań stare→nowe URL-e (§3) i zapisać w `next.config.ts`.
 6. Ręczna korekta: literówki (§2.2), ujednolicenie telefonu i maili, uzupełnienie brakujących podpisów, aktualizacja dat na 2026/2027.
-   Szacunkowo do ręcznej korekty: ~10 stron statycznych, 15 sezonów wykładów (parsowanie automatyczne, korekta nazwisk), ~65 podpisów ikon. Reszta (60 aktualności) – migracja bez korekty. Blogspot: nie migrować.
+   Szacunkowo do ręcznej korekty: ~10 stron statycznych, 16 sezonów wykładów (parsowanie automatyczne, korekta nazwisk), ~65 podpisów ikon. Reszta (60 aktualności) – migracja bez korekty. Blogspot: nie migrować.
 
 ---
 

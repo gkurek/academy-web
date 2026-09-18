@@ -220,6 +220,37 @@
   --offer-examples-link-mt: 22px;
   --offer-examples-pb: 56px;
   --measure-ready-note: 46em;
+
+  /* Lectures hub + LectureList (#2a-wyklady). */
+  --lectures-eyebrow: 16px;
+  --lectures-eyebrow-mb: 12px;
+  --lectures-program-heading-mb: 8px;
+  --lectures-program-lead-mb: 26px;
+  --lectures-archive-section-pt: 56px;
+  --lecture-date-col: 160px;
+  --lecture-date-size: 22px;
+  --lecture-row-gap: 28px;
+  --lecture-row-x: 28px;
+  --lecture-row-y: 22px;
+  --lecture-title-mb: 5px;
+  --lecture-talk-gap: 20px;
+  --lecture-date-offset: 2px;
+  --season-accordion-expanded-x: 28px;
+  --season-accordion-expanded-y-top: 24px;
+  --season-accordion-collapsed-y: 22px;
+  --season-accordion-collapsed-label: 22px;
+  --season-accordion-toggle: 15px;
+  --season-accordion-header-mb: 18px;
+
+  /* LecturerCard + LecturersPage (#3a-wykladowcy layout, WP row with photo). */
+  --lecturer-photo-col: 240px;
+  --lecturer-row-gap: 28px;
+  --lecturer-row-x: 28px;
+  --lecturer-row-y: 24px;
+  --lecturer-name-mb: 6px;
+  --lecturer-affiliation-size: var(--size-body-lg);
+  --lecturer-affiliation-mb: 14px;
+  --lecturer-photo-aspect: 4 / 5;
 }
 
 /* Tailwind utility mappings for the tokens this piece actually consumes.
@@ -421,6 +452,41 @@
   --text-size-offer-step-num: var(--offer-step-num);
   --text-size-offer-ready-title: var(--offer-ready-title);
   --max-width-measure-ready-note: var(--measure-ready-note);
+
+  /* Lectures hub + LectureList */
+  --text-size-lectures-eyebrow: var(--lectures-eyebrow);
+  --text-size-lecture-date: var(--lecture-date-size);
+  --spacing-lectures-eyebrow-mb: var(--lectures-eyebrow-mb);
+  --spacing-lectures-program-heading-mb: var(--lectures-program-heading-mb);
+  --spacing-lectures-program-lead-mb: var(--lectures-program-lead-mb);
+  --spacing-lectures-archive-section-pt: var(--lectures-archive-section-pt);
+  --spacing-lecture-row-gap: var(--lecture-row-gap);
+  --spacing-lecture-row-x: var(--lecture-row-x);
+  --spacing-lecture-row-y: var(--lecture-row-y);
+  --spacing-lecture-title-mb: var(--lecture-title-mb);
+  --spacing-lecture-talk-gap: var(--lecture-talk-gap);
+  --spacing-lecture-date-offset: var(--lecture-date-offset);
+  --spacing-lecture-date-col: var(--lecture-date-col);
+  --grid-template-columns-lecture-row: var(--lecture-date-col) 1fr;
+
+  /* SeasonAccordion (#2a-wyklady archive preview). */
+  --text-size-season-accordion-collapsed-label: var(--season-accordion-collapsed-label);
+  --text-size-season-accordion-toggle: var(--season-accordion-toggle);
+  --spacing-season-accordion-expanded-x: var(--season-accordion-expanded-x);
+  --spacing-season-accordion-expanded-y-top: var(--season-accordion-expanded-y-top);
+  --spacing-season-accordion-collapsed-y: var(--season-accordion-collapsed-y);
+  --spacing-season-accordion-header-mb: var(--season-accordion-header-mb);
+
+  /* LecturerCard + LecturersPage */
+  --spacing-lecturer-photo-col: var(--lecturer-photo-col);
+  --spacing-lecturer-row-gap: var(--lecturer-row-gap);
+  --spacing-lecturer-row-x: var(--lecturer-row-x);
+  --spacing-lecturer-row-y: var(--lecturer-row-y);
+  --spacing-lecturer-name-mb: var(--lecturer-name-mb);
+  --spacing-lecturer-affiliation-mb: var(--lecturer-affiliation-mb);
+  --text-size-lecturer-affiliation: var(--lecturer-affiliation-size);
+  --aspect-lecturer-photo: var(--lecturer-photo-aspect);
+  --grid-template-columns-lecturer-row: var(--lecturer-photo-col) 1fr;
 }
 
 @layer base {
@@ -722,6 +788,7 @@
       grid-template-columns: repeat(var(--step-count), minmax(0, 1fr));
     }
   }
+
 }
 
 @media (prefers-reduced-motion: reduce) {

@@ -25,7 +25,7 @@ export type OfferFacts = {
   where?: string;
   audience?: string;
   price?: string; // "400 zł / rok"
-  enrollmentDeadline?: string; // ISO; kurs: row label „Zgłoszenia”
+  enrollmentDeadline?: string; // display text for FactsBox row (e.g. „Do 24 września 2026”); not ISO — use `firstMeeting` for machine-readable dates
   enrollmentStart?: string; // plener: row label „Nabór”
   enrollmentRule?: string; // plener: row label „Zasada naboru”
   enrollmentEmail: string;
@@ -46,9 +46,20 @@ export type Lecturer = {
   slug: string;
   name: string;
   titles?: string;
+  /** Short label for lecture programs, e.g. "UKSW". */
   affiliation?: string;
+  /** Full institution name shown on the lecturers profile page. */
+  affiliationFull?: string;
   bio?: string;
   photo?: Image;
+};
+
+/** Display labels for lecture programs; separate from profile-only `Lecturer` registry. */
+export type LecturerDirectoryEntry = {
+  slug: string;
+  name: string;
+  titles?: string;
+  affiliation?: string;
 };
 
 export type Lecture = {
@@ -63,6 +74,7 @@ export type LectureSeason = {
   label: string; // "2026/2027"
   cycleTitle: string; // "Ikona – korzenie i owoce wiary. Mistyka dziś"
   intro?: string;
+  introSecondary?: string;
   lectures: Lecture[];
   gallery?: Image[];
 };

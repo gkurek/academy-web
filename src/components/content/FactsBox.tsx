@@ -200,7 +200,7 @@ export function FactsBox({ facts, kind }: FactsBoxProps) {
 
             <dt className="text-size-caption text-text-tertiary">{row.label}</dt>
 
-            <dd className="mt-offer-facts-dd-mt mb-offer-facts-dd-mb last:mb-0 text-text-body">{row.value}</dd>
+            <dd className="mt-offer-facts-dd-mt pb-space-6 text-text-body">{row.value}</dd>
 
           </div>
 

@@ -41,7 +41,7 @@ Strona jest częścią szerszego ekosystemu (Akademia + Fundacja + planowana str
 /warsztaty/kurs-roczny-i-trzyletni
 /warsztaty/letnia-szkola-swiatla
 /wyklady                   hub: bieżący sezon + jak się zapisać
-/wyklady/archiwum          15 sezonów, rozwijane
+/wyklady/archiwum          15 sezonów archiwalnych, rozwijane (bieżący 2026/2027 — szesnasty)
 /wyklady/wykladowcy
 /ikony                     galeria z filtrami (autor: Elżbieta / uczniowie; temat)
 /ikony/[slug]              pojedyncza ikona (opcjonalnie w v1)
@@ -90,7 +90,7 @@ type OfferFacts = {             // blok „W skrócie”
   where?: string;
   audience?: string;
   price?: string;               // „400 zł / rok”
-  enrollmentDeadline?: string;  // ISO; kurs: wiersz „Zgłoszenia”
+  enrollmentDeadline?: string;  // tekst wiersza w FactsBox (np. „Do 24 września 2026”, „do końca września 2026”); nie ISO — daty maszynowe w `firstMeeting`
   enrollmentStart?: string;     // plener: wiersz „Nabór” (np. „Rusza w marcu 2027”)
   enrollmentRule?: string;      // plener: wiersz „Zasada naboru” (np. „Kolejność zgłoszeń”)
   enrollmentEmail: string;
@@ -107,14 +107,24 @@ type Offer = Page & {
   testimonials?: Testimonial[];
 };
 
-type Lecturer = { slug: string; name: string; titles?: string; affiliation?: string; bio?: string; photo?: Image };
+type Lecturer = {
+  slug: string; name: string; titles?: string;
+  affiliation?: string;       // skrót w programie wykładów, np. „UKSW”
+  affiliationFull?: string;   // pełna nazwa instytucji na stronie wykładowców
+  bio?: string; photo?: Image;
+};
+
+/** Etykiety prowadzących w programie — osobny plik `content/lecturer-directory.json`. */
+type LecturerDirectoryEntry = { slug: string; name: string; titles?: string; affiliation?: string };
 
 type Lecture = { date: string; title: string; lecturerSlugs: string[]; note?: string };
 
 type LectureSeason = {
   slug: string; label: string;  // „2026/2027”
   cycleTitle: string;           // „Ikona – korzenie i owoce wiary. Mistyka dziś”
-  intro?: string; lectures: Lecture[]; gallery?: Image[];
+  intro?: string;
+  introSecondary?: string;      // drugi akapit leadu na hubie wykładów
+  lectures: Lecture[]; gallery?: Image[];
 };
 
 // Podzbiór przyszłego `Product` ze strony autorskiej EJK — nazwy pól
@@ -173,7 +183,7 @@ type SiteSettings = {
 
 Być idempotentny, logować nieudane parsowania do `scripts/migrate-report.md`. Bez pętli `for`/`for-of` — `map`/`filter`/`reduce`/`forEach`.
 
-Szacunek ręcznej korekty po migracji: ~10 stron statycznych, 15 sezonów wykładów (nazwiska), ~65 podpisów ikon. ~60 wpisów aktualności bez korekty. Blog (blogspot) — nie migrować, tylko link w stopce.
+Szacunek ręcznej korekty po migracji: ~10 stron statycznych, 16 sezonów wykładów (nazwiska), ~65 podpisów ikon. ~60 wpisów aktualności bez korekty. Blog (blogspot) — nie migrować, tylko link w stopce.
 
 ### Tabela przekierowań (kluczowe wpisy)
 
@@ -253,7 +263,7 @@ Telefon jako `tel:+48601734705`.
 - tytuł wykładu inauguracyjnego („Otwarcie sezonu”) — nie pochodzi z briefu
 - wymiary ikon oznaczone `[z podpisu WP]` — niezweryfikowane, sprawdzić przy migracji
 
-**Do potwierdzenia przed publikacją (oznaczone w makietach jako `[do weryfikacji]`):** liczba sezonów wykładów (piętnasty vs czternaście — sprzeczność do wyjaśnienia ze źródłem).
+**Potwierdzone:** liczba sezonów wykładów — 16 łącznie (od 2012/2013); bieżący sezon 2026/2027 to szesnasty; archiwum obejmuje 15 sezonów archiwalnych (2012/2013–2025/2026).
 
 **Decyzje strukturalne z handoffu:**
 - `/wyklady` = hub + bieżący sezon + zwinięte archiwum; `/wyklady/archiwum` = osobna trasa z pełną listą.
@@ -271,7 +281,7 @@ Telefon jako `tel:+48601734705`.
 - Wykłady/sekretariat: `sekretariat.ikony22@gmail.com` (Maurycy Lubak).
 - Blog: studiumikony.blogspot.com. Facebook: facebook.com/akademiaikony. YouTube: @akademiaikony3822.
 - Warsztaty 2026/2027: zgłoszenia do 24.09.2026 mailem; rozmowa wstępna ~30 min; pierwsze spotkanie 6.10.2026, 18:00; raz w tygodniu, październik–czerwiec, grupy wieczorne i dzienne; materiały na miejscu.
-- Wykłady 2026/2027: „Ikona – korzenie i owoce wiary. Mistyka dziś”; wybrane wtorki 18:00–20:30; 400 zł/rok; zapisy od września 2026; terminy: 06.10, 10.11, 08.12, 19.01, 16.02, 09.03, 13.04, 11.05, 08.06, 11.06, 12.06 (wernisaż, AGAPA).
+- Wykłady 2026/2027: „Ikona – korzenie i owoce wiary. Mistyka dziś”; wybrane wtorki 18:00–20:30; 400 zł/rok; zapisy do końca września 2026; terminy: 06.10, 10.11, 08.12, 19.01, 16.02, 09.03, 13.04, 11.05, 08.06, 11.06, 12.06 (wernisaż, AGAPA).
 - Letnia Szkoła Światła: plenery tygodniowe sierpień/wrzesień; nabór na 2027 rusza w marcu 2027, kolejność zgłoszeń.
 - Ikony na zamówienie: kontakt jak wyżej; szczegóły procesu i czas realizacji — do potwierdzenia z EJK (nie zgadywać, zostawić placeholder w CMS-owalnym polu).
 - Uwaga prawna (pełne zdanie, wielka litera na początku): „Nauczanie w Akademii Ikony nie niesie za sobą żadnych skutków formalnych.”

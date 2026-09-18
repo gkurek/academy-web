@@ -144,7 +144,7 @@ export const pl = {
         open: {
           mailtoLabel: "Zapisz się mailem",
           telLabel: "Zadzwoń: 601 734 705",
-          note: "Zapisy od września 2026. Roczny dostęp do nagrań po zakończeniu sezonu.",
+          note: "Roczny dostęp do nagrań po zakończeniu sezonu.",
         },
         closed: {
           mailtoLabel: "Zapytaj o miejsce mailem",
@@ -189,6 +189,23 @@ export const pl = {
         ],
       },
     },
+  },
+  lectures: {
+    eyebrow: "Sezon {seasonLabel}",
+    programHeading: "Program sezonu",
+    programLead: "{count} spotkań w sezonie {seasonLabel}.",
+    archiveHeading: "Archiwum sezonów",
+    archiveFullLink: "Pełne archiwum",
+    placeholderMessage: "W trakcie przygotowania",
+    cycleTitlePlaceholder: "[do uzupełnienia]",
+    accordionExpand: "rozwiń",
+    accordionCollapse: "zwiń",
+  },
+  lecturers: {
+    heading: "Wykładowcy",
+    affiliationPlaceholder: "[do uzupełnienia: afiliacja]",
+    expandBio: "Rozwiń notę",
+    collapseBio: "Zwiń notę",
   },
   workshopsHub: {
     title: "Warsztaty pisania ikon",

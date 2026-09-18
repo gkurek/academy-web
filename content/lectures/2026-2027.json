@@ -1,0 +1,65 @@
+{
+  "slug": "2026-2027",
+  "label": "2026/2027",
+  "cycleTitle": "Ikona – korzenie i owoce wiary. Mistyka dziś",
+  "intro": "Cykl „Ikona – korzenie i owoce wiary” szuka odpowiedzi na pytanie, skąd bierze się siła sakralnego obrazu i jak tradycja mistyczna mówi do człowieka dziś. Szesnasty sezon — „Mistyka dziś” — prowadzi od korzeni wiary w Piśmie, liturgii i teologii ikony po jej owoce: świadectwa świętych, doświadczenie modlitwy i spotkanie z obcą tradycją duchową.",
+  "introSecondary": "Wykłady to wieczory otwarte dla każdego, kto chce pogłębić rozumienie ikony i duchowości — bez wymogu przygotowania artystycznego ani akademickiego. Gościmy teologów, historyków sztuki i duchownych: każde spotkanie to dwa wykłady wokół wspólnego wątku. Program uzupełnia pracę w pracowni — uczy patrzeć na obraz święty oczami wędrowca, nie tylko twórcy.",
+  "lectures": [
+    {
+      "date": "2026-10-06",
+      "title": "Maryjna duchowość wg bł. Honorata Koźmińskiego",
+      "lecturerSlugs": ["marek-szymula"]
+    },
+    {
+      "date": "2026-11-10",
+      "title": "„Przyobleczeni w Chrystusa”. Teologiczne znaczenie szat liturgicznych w obrządku rzymskim · W oczach Zachodu. Mistyka buddyjska i hinduistyczna w teologii katolickiej XX wieku",
+      "lecturerSlugs": ["michal-borkowski", "andrzej-persidok"]
+    },
+    {
+      "date": "2026-12-08",
+      "title": "Dyskrecja Boga i mistyka codzienności. Obraz Świętej Rodziny z Nazaretu u Ojców Kościoła · Współczesne objawienia świętych na przykładzie bł. Jerzego Popiełuszki",
+      "lecturerSlugs": ["jozef-naumowicz", "milena-kindziuk"]
+    },
+    {
+      "date": "2027-01-19",
+      "title": "Paweł Florenski cz.1 · Mistyka dziś. Przez ciemność do światła",
+      "lecturerSlugs": ["henryk-paprocki", "aleksandra-szyborska"]
+    },
+    {
+      "date": "2027-02-16",
+      "title": "Teologia ikony wg Jana Damasceńskiego · Ćwiczenia duchowe starożytnych filozofów",
+      "lecturerSlugs": ["magdalena-dylewska", "michal-wojtczyk"]
+    },
+    {
+      "date": "2027-03-09",
+      "title": "Od życia wegetatywnego do prawdziwej egzystencji wg Karla Jaspersa · Mistyka dziś. Pochwała prostoty",
+      "lecturerSlugs": ["michal-wojtczyk", "aleksandra-szyborska"]
+    },
+    {
+      "date": "2027-04-13",
+      "title": "Pojęcie kultu obrazu wg Jana Damasceńskiego · Mistyka w Duchu i prawdzie",
+      "lecturerSlugs": ["magdalena-dylewska", "maciej-biskup"]
+    },
+    {
+      "date": "2027-05-11",
+      "title": "Skąpani w świetle · Oblicza mistyków w ikonach",
+      "lecturerSlugs": ["justyna-sprutta"]
+    },
+    {
+      "date": "2027-06-08",
+      "title": "Klasztor św. Katarzyny na Synaju i jego ikony · Malowidła cerkwi Bukowiny",
+      "lecturerSlugs": ["marek-wojnarowski"]
+    },
+    {
+      "date": "2027-06-11",
+      "title": "Tradycja ikony i sztuki sakralnej w definicjach Kościoła Zachodu",
+      "lecturerSlugs": ["dariusz-klejnowski-rozycki"]
+    },
+    {
+      "date": "2027-06-12",
+      "title": "Piękno w ikonach · Wernisaż wystawy ikon",
+      "lecturerSlugs": ["elzbieta-jackowska-kurek"],
+      "note": "wernisaż, AGAPA"
+    }
+  ]
+}

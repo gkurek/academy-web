@@ -1,6 +1,6 @@
 # Plan 03 — Strony ofertowe
 
-Status: zatwierdzony 2026-09-17
+Status: zamknięty 2026-09-17
 Gałąź: feat/03-oferta
 Makiety: `design/Akademia Ikony - kierunki wizualne.dc.html` — `#1a-oferta` (kurs desktop), `#3b` (kurs mobile), `#2a-warsztaty` (hub), `#3a-plener` (plener, stan zamknięty), `#2a-zamowienie` (ikony na zamówienie); wzór FactsBox wykładów: `#2a-wyklady` (strona `/wyklady` w pod-etapie 4)
 
@@ -79,12 +79,12 @@ Kryterium „gotowe”: strona zgodna z `#2a-zamowienie`; `StepList` z numeracj�
 
 ## Kryteria ukończenia pod-etapu
 
-- [ ] `FactsBox` renderuje oba stany z jednego komponentu, sterowane wyłącznie danymi (`enrollmentOpen` + `pl.factsBox`)
-- [ ] Tematy `mailto:` identyczne ze stringami z brief §7
-- [ ] Cztery pliki `content/offers/*.mdx` z `facts` zgodnymi z `OfferFacts`; `leadTime` puste w zamówieniu
-- [ ] `StepList` używa numeracji typograficznej; reszta strony nie
-- [ ] Brak tekstu redakcyjnego hardkodowanego w JSX (poza notą prawną §8 jeśli w `pl.ts`)
-- [ ] Zgodność z makietą na 390px i desktop dla hubu + trzech stron ofertowych
+- [x] `FactsBox` renderuje oba stany z jednego komponentu, sterowane wyłącznie danymi (`enrollmentOpen` + `pl.factsBox`)
+- [x] Tematy `mailto:` identyczne ze stringami z brief §7
+- [x] Cztery pliki `content/offers/*.mdx` z `facts` zgodnymi z `OfferFacts`; `leadTime` puste w zamówieniu
+- [x] `StepList` używa numeracji typograficznej; reszta strony nie
+- [x] Brak tekstu redakcyjnego hardkodowanego w JSX (poza notą prawną §8 jeśli w `pl.ts`)
+- [x] Zgodność z makietą na 390px i desktop dla hubu + trzech stron ofertowych
 
 ## Ryzyka i pytania otwarte
 
