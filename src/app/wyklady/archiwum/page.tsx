@@ -1,10 +1,21 @@
-import { PagePlaceholder } from "@/components/PagePlaceholder";
-import { sectionNav } from "@/navigation";
+import { LecturesArchivePage } from "@/components/lectures/LecturesArchivePage";
+import { getArchiveIntro, getArchiveSeasons } from "@/content/lectures";
+import { mainNav, sectionNav } from "@/navigation";
 
-const item = sectionNav.wyklady.find((link) => link.href === "/wyklady/archiwum")!;
+const mainNavActive = mainNav.find((item) => item.href === "/wyklady")!.label;
+const sectionActive = sectionNav.wyklady.find((link) => link.href === "/wyklady/archiwum")!.label;
 
-export default function LecturesArchivePage() {
+export default function LecturesArchiveRoutePage() {
+  const seasons = getArchiveSeasons();
+  const intro = getArchiveIntro();
+
   return (
-    <PagePlaceholder title={item.label} active="Wykłady" section="wyklady" sectionActive={item.label} />
+    <LecturesArchivePage
+      seasons={seasons}
+      intro={intro}
+      section="wyklady"
+      sectionActive={sectionActive}
+      active={mainNavActive}
+    />
   );
 }
