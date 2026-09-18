@@ -65,8 +65,8 @@ Statusy: ⬜ nie zaczęty · 🟡 plan w przygotowaniu · 🔵 plan zatwierdzony
 | --- | ---------------------------------------------- | -------------------------------- | -------------------- | ---------- |
 | 1   | Szkielet, design system, warstwa treści        | `docs/plans/01-skeleton.md`      | ✅ zamknięty         | 2026-09-12 |
 | 2   | Strona główna                                  | `docs/plans/02-homepage.md` | ✅ zamknięty         | 2026-09-12 |
-| 3   | Strony ofertowe                                | `docs/plans/03-oferta.md`        | 🔵 plan zatwierdzony | —          |
-| 4   | Wykłady                                        | `docs/plans/04-wyklady.md`       | ⬜                   | —          |
+| 3   | Strony ofertowe                                | `docs/plans/03-oferta.md`        | ✅ zamknięty         | 2026-09-17 |
+| 4   | Wykłady                                        | `docs/plans/04-wyklady.md`       | ✅ zamknięty         | 2026-09-18 |
 | 5   | Galeria ikon                                   | `docs/plans/05-galeria.md`       | ⬜                   | —          |
 | 6   | Strony pozostałe                               | `docs/plans/06-pozostale.md`     | ⬜                   | —          |
 | 7   | Wykończenie: SEO, dane strukturalne, analityka | `docs/plans/07-wykonczenie.md`   | ⬜                   | —          |
@@ -130,28 +130,28 @@ Dla każdego: cel, zakres, kryteria ukończenia (DoD), proponowany podział na k
 
 **DoD:**
 
-- [ ] `FactsBox` renderuje oba stany z jednego komponentu, sterowane wyłącznie danymi;
-- [ ] tematy `mailto:` identyczne ze stringami z briefu §7 (test: kliknięcie na telefonie otwiera klienta z tematem);
-- [ ] cztery `content/offers/*.mdx` z `facts` zgodnymi z `OfferFacts`; wartości niepotwierdzone (czas realizacji zamówień) jako puste pola, nie zmyślone;
-- [ ] `StepList` używa numeracji, reszta strony nie.
+- [x] `FactsBox` renderuje oba stany z jednego komponentu, sterowane wyłącznie danymi;
+- [x] tematy `mailto:` identyczne ze stringami z briefu §7 (test: kliknięcie na telefonie otwiera klienta z tematem);
+- [x] cztery `content/offers/*.mdx` z `facts` zgodnymi z `OfferFacts`; wartości niepotwierdzone (czas realizacji zamówień) jako puste pola, nie zmyślone;
+- [x] `StepList` używa numeracji, reszta strony nie.
 
 **Proponowane kawałki:** (1) `FactsBox` + szablon `Offer` + hub `/warsztaty`; (2) kurs + plener; (3) `/ikony/na-zamowienie` + `StepList`.
 
-**Pytania:** MDX — jaki renderer i jakie komponenty dostępne w body; jak reprezentować program 6 semestrów (MDX z komponentem czy JSON w frontmatter); logika komunikatów `FactsBox` dla stanu zamkniętego — tabela `kind × stan` w `pl.ts`.
+**Pytania:** rozstrzygnięte w sesji planistycznej — patrz K-03 w §4.
 
 ### Pod-etap 4 — Wykłady
 
-**Zakres:** `/wyklady` jako hub + bieżący sezon (`LectureList`: data, tytuł, prowadzący) + „Jak się zapisać” (`FactsBox` w wariancie `wyklady`) + zwinięte archiwum z linkiem „Pełne archiwum”; `/wyklady/archiwum` z `SeasonAccordion` (15 sezonów, jeden rozwinięty); `/wyklady/wykladowcy` z `Lecturer`. Dane: `content/lectures/<season>.json` — na razie 2–3 sezony `sample` w docelowym schemacie, żeby akordeon miał co pokazywać.
+**Zakres:** `/wyklady` jako hub + bieżący sezon (`LectureList`: data, tytuł, prowadzący) + „Jak się zapisać” (`FactsBox` w wariancie `wyklady`, `id="zapisy"`) + sekcja archiwum (lead + link „Pełne archiwum”, bez akordeonu na hubie); `/wyklady/archiwum` z `SeasonAccordion` (15 sezonów archiwalnych, domyślnie zwinięte; bieżący 2026/2027 — szesnasty, na hubie); `/wyklady/wykladowcy` z `LecturerCard`. Dane: `content/lectures/<season>.json` — na razie 2–3 sezony `sample` w docelowym schemacie, żeby akordeon miał co pokazywać.
 
 **DoD:**
 
-- [ ] `SeasonAccordion` dostępny z klawiatury (Enter/Space, fokus, `aria-expanded`), działa bez JS w sensownym stopniu (treść w DOM);
-- [ ] miejsca oznaczone `[do weryfikacji: liczba sezonów]` zaznaczone w treści `sample`, nie w kodzie;
-- [ ] terminy 2026/2027 z briefu §8 wpisane jako prawdziwe dane bieżącego sezonu (tytuły wykładów puste/placeholder).
+- [x] `SeasonAccordion` dostępny z klawiatury (Enter/Space, fokus, `aria-expanded`), działa bez JS w sensownym stopniu (treść w DOM);
+- [x] liczba sezonów (16 łącznie, 15 archiwalnych) wpisana w `content/lectures/archive.json`, nie hardkodowana w kodzie;
+- [x] terminy 2026/2027 z briefu §8 wpisane jako prawdziwe dane bieżącego sezonu; tytuły i prowadzący z WP.
 
 **Proponowane kawałki:** (1) `LectureList` + hub; (2) `SeasonAccordion` + archiwum; (3) wykładowcy.
 
-**Pytania:** czy `Lecture.date` w bieżącym sezonie powinna generować `Event` JSON-LD już tu, czy dopiero w pod-etapie 7 (rekomendacja: dane gotowe tu, emisja w 7); jak łączyć `lecturerSlugs` z brakującymi wykładowcami w archiwum (nazwisko bez strony).
+**Pytania:** rozstrzygnięte w sesji planistycznej — patrz K-17…K-22 w §4 i `docs/plans/04-wyklady.md`. Przed Kawałkiem 1: osobna sesja przygotowania danych (K-22).
 
 ### Pod-etap 5 — Galeria ikon
 
@@ -247,6 +247,12 @@ Dla każdego: cel, zakres, kryteria ukończenia (DoD), proponowany podział na k
 | K-14 | Testimonial vs blok „Prowadząca” na stronie głównej | 2        | **Jedna sekcja** — cytat + podpis Elżbiety Jackowskiej-Kurek, bez portretu/bio/linku, identycznie na desktop i mobile; świadome uproszczenie względem wariantu mobile makiety i `Testimonial.prompt.md` | 2026-09-12 |
 | K-15 | Konwencja zdarzeń analitycznych (`data-event` itp.) | 2        | **Nie dodajemy w pod-etapie 2** — konwencja i podłączenie w całości w pod-etapie 7 | 2026-09-12 |
 | K-16 | `linkLabel` w `SiteSettings.upcoming`            | 2        | **Dodane pole** — osobny `TextLink` per kafel „Najbliższe” (np. „Jak się zapisać”), zgodnie z makietą; `types.ts`, `content/settings.json`, `UpcomingHighlights.tsx` | 2026-09-12 |
+| K-17 | JSON-LD `Event` dla wykładów                     | 4        | **Dane w pod-etapie 4**, emisja `<script type="application/ld+json">` w pod-etapie 7 — patrz `docs/plans/04-wyklady.md` | 2026-09-17 |
+| K-18 | Layout huba `/wyklady`                             | 4        | **Osobny `LecturesHubPage`**, nie `OfferPage`; `wyklady.mdx` tylko pod FactsBox | 2026-09-17 |
+| K-19 | Layout `/wyklady/wykladowcy`                       | 4        | **Zdjęcie + bio jak WP** (akademiaikony.pl), nie kafelki `#3a-wykladowcy` bez zdjęć | 2026-09-17 |
+| K-20 | Podgląd archiwum na hubie                          | 4        | **Lead + link „Pełne archiwum”** (bez `SeasonAccordion` na hubie); pełne archiwum na `/wyklady/archiwum` | 2026-09-18 |
+| K-21 | `lecturerSlugs` bez wpisu w rejestrze              | 4        | Join → `lecturer-directory.json` + `lecturers.json`; brak wpisu → heurystyka ze sluga, bez linku; rozszerzenia `types.ts`: `affiliationFull`, `introSecondary`, `LecturerDirectoryEntry` | 2026-09-17 |
+| K-22 | Przygotowanie danych przed implementacją           | 4        | **Osobna konwersacja** (krok po kroku); pełny pakiet: `2026-2027.json`, 2–3 archiwum `sample`, wykładowcy z WP + zdjęcia | 2026-09-17 |
 
 Decyzje spoza kodu (D-01…D-05 z briefu v2) pozostają w dokumentach ekosystemu; tu wpisujemy tylko ich skutki dla implementacji.
 
@@ -261,12 +267,13 @@ Lista rośnie w każdym pod-etapie. Odhaczana w pod-etapie 8.
 | Cytaty uczestników (Adam, Hania, Iza…) | `content/offers/*`, `content/testimonials.json`    | 3        | cytaty z obecnej strony, dosłownie                | ⬜  |
 | Wpisy aktualności `[przykład]`         | `content/news/sample-*.mdx`                        | 6        | migracja WP                                       | ⬜  |
 | „Rytm dnia” w Letniej Szkole Światła   | `content/offers/plener.mdx`                        | 3        | potwierdzenie z EJK albo usunięcie sekcji         | ⬜  |
-| Tytuł wykładu inauguracyjnego          | `content/lectures/2026-2027.json`                  | 4        | program od sekretariatu                           | ⬜  |
+| Tytuł wykładu inauguracyjnego          | `content/lectures/2026-2027.json`                  | 4        | program od sekretariatu (pobrany z WP `/wyklady/tematy/`) | ✅  |
 | Wymiary ikon `[z podpisu WP]`          | `content/icons.json`                               | 2 (plik + 3–4 wpisy na stronę główną), 5 (pełny zestaw sample galerii) | migracja WP (pod-etap 8)                         | ⬜  |
 | Czas realizacji ikony na zamówienie    | `content/offers/zamowienie.mdx` (`facts.leadTime`) | 3        | potwierdzenie z EJK                               | ⬜  |
-| Liczba sezonów `[do weryfikacji]`      | `content/lectures/*`, `pl.ts`                      | 4        | źródło: archiwum WP                               | ⬜  |
+| Liczba sezonów (16 łącznie)            | `content/lectures/archive.json`                    | 4        | potwierdzone: bieżący 2026/2027 = szesnasty       | ✅  |
 | Zdjęcia z makiet                       | `public/media/sample/`                             | 2        | oryginały z `/wp-content/uploads/` lub nowa sesja | ⬜  |
-| Sezony archiwum `sample` (2–3)         | `content/lectures/sample-*.json`                   | 4        | 15 sezonów z migracji                             | ⬜  |
+| Sezony archiwum `sample` (2–3)         | `content/lectures/sample-*.json`                   | 4        | 16 sezonów z migracji (15 archiwalnych + bieżący) | ✅  |
+| Wykładowcy — bio i zdjęcia z WP | `content/lecturers.json`, `public/media/lecturers/` | 4     | weryfikacja / migracja WP (pod-etap 8)            | ✅  |
 | „Najbliższe” na stronie głównej — 2/3 wpisy zastąpione realną treścią z brief §8 (nabór 2026/2027, pierwszy wykład 6.10.2026); trzeci wpis („Wystawa stała”) pozostaje `[przykład]` — niepotwierdzone w brief §8 | `content/settings.json` (`upcoming`) | 1, uzupełnione w 2 | potwierdzenie z Akademią, czy taka wystawa istnieje | ⬜ |
 | Zdjęcia „Wybrane ikony” — 4 wpisy `sample` na stronę główną | `content/icons.json` (Kawałek 2) | 2 | migracja WP | ⬜ |
 
@@ -285,6 +292,9 @@ Lista rośnie w każdym pod-etapie. Odhaczana w pod-etapie 8.
 | 2026-09-12 | **Pod-etap 2 zamknięty** (OK użytkownika). DoD spełnione w całości (Lighthouse a11y 100/100 mobile+desktop). Otwarta uwaga do sprawdzenia przed wdrożeniem: klawisze Enter/Space na hamburgerze mobilnym (`HeaderMobileMenu.tsx`, kod z pod-etapu 1) nie zadziałały w automatycznym teście klawiatury tej sesji — podejrzenie ograniczenia narzędzia testowego, nie potwierdzony błąd; wymaga sprawdzenia w realnej przeglądarce/na telefonie. |
 | 2026-09-13 | Synchronizacja dokumentacji po audycie planów 01/02: `01-skeleton.md` — status `zamknięty`, usunięcie kopii mediów z zakresu pod-etapu 1 (zawsze był to zakres 02); hamburger Enter/Space potwierdzony w przeglądarce. `plan-claude-code.md` — K-16 w §4, §3 pod-etapu 2 bez błędnego „60% hero”. `brief-claude-code.md` §4 — `linkLabel` w `upcoming`. |
 | 2026-09-17 | Sesja planistyczna pod-etapu 3 zakończona, plan zatwierdzony (`docs/plans/03-oferta.md`). K-03 rozstrzygnięte: `@next/mdx`, `SemesterProgram` + frontmatter, FactsBox UI w `pl.ts`. |
+| 2026-09-17 | **Pod-etap 3 zamknięty** (3/3 kawałki + cleanup, merge PR #3). DoD spełnione: `FactsBox` (open/closed), 4× `content/offers/*.mdx`, tematy `mailto:` z brief §7, `StepList`, hub `/warsztaty`, trasy kurs/plener/zamówienie; `wyklady.mdx` pod szablon (trasa `/wyklady` w pod-etapie 4). Build/lint OK. |
+| 2026-09-17 | Sesja planistyczna pod-etapu 4 zakończona, plan zatwierdzony (`docs/plans/04-wyklady.md`). K-17…K-22: JSON-LD dane tu / emisja w 7; osobny `LecturesHubPage`; wykładowcy layout WP; archiwum hub 3 sezony (najnowszy rozwinięty); join `lecturerSlugs`; pełny pakiet danych w osobnej sesji przed Kawałkiem 1. |
+| 2026-09-18 | **Pod-etap 4 zamknięty** (4/4 kawałki + ewaluacja merytoryczna). DoD spełnione: `/wyklady`, `/wyklady/archiwum`, `/wyklady/wykladowcy`; `LectureList`, `SeasonAccordion`, `LecturerCard`; warstwa `lectures.ts` / `lecturers.ts`; dane sample + `lecturer-directory.json`. Korekty po ewaluacji: K-20 → lead + link (bez akordeonu na hubie); `#zapisy`; `enrollmentDeadline` jako tekst; dokumentacja typów i K-21. Build/lint OK. |
 
 ---
 
