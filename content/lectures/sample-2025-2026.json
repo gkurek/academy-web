@@ -1,0 +1,65 @@
+{
+  "sample": true,
+  "slug": "2025-2026",
+  "label": "2025/2026",
+  "cycleTitle": "Ikona – korzenie i owoce wiary. Mądrość Boża",
+  "intro": "Spotkania odbywają się od godz. 18.00 w Kościele Środowisk Twórczych św. Andrzeja Apostoła i św. Brata Alberta Chmielowskiego w Warszawie. Zapisy: sekretariat.ikony22@gmail.com",
+  "lectures": [
+    {
+      "date": "2025-10-14",
+      "title": "Cnoty teologalne",
+      "lecturerSlugs": ["marek-szymula"]
+    },
+    {
+      "date": "2025-11-18",
+      "title": "Mądrość Ojca Przedwiecznego · Ikona odblaskiem neoplatońskiej metafizyki światła",
+      "lecturerSlugs": ["marcin-bornus-szczycinski", "magdalena-dylewska"]
+    },
+    {
+      "date": "2025-12-09",
+      "title": "Chrystus – Mądrość Boża w ikonografii wschodniej · Mądrość Boża, głupstwo dla świata. Śmieszność i łaska w literaturze i sztuce",
+      "lecturerSlugs": ["jozef-naumowicz", "andrzej-persidok"]
+    },
+    {
+      "date": "2026-01-20",
+      "title": "Dziedzictwo Nicei",
+      "lecturerSlugs": ["henryk-paprocki"]
+    },
+    {
+      "date": "2026-02-17",
+      "title": "Przymierze Boga z Człowiekiem na podstawie współczesnej realizacji kościelnej · Mądrość Boża jako sztuka uważności",
+      "lecturerSlugs": ["aleksandra-szyborska", "maciej-biskup"]
+    },
+    {
+      "date": "2026-03-24",
+      "title": "Caelestis Urbs Jerusalem w Muzycznych Obrazach Mistrzów · Wschodnie kościoły Mądrości Bożej (Hagia Sofia) – komu są dedykowane?",
+      "lecturerSlugs": ["emanuel-baczkowski", "jozef-naumowicz"]
+    },
+    {
+      "date": "2026-04-21",
+      "title": "Teologia ikony św. Jana z Damaszku · Na początku była czułość – por. J 1, 18",
+      "lecturerSlugs": ["magdalena-dylewska", "maciej-biskup"]
+    },
+    {
+      "date": "2026-05-12",
+      "title": "Odsłony Mądrości Bożej w sztuce Bizancjum · Modlitwa jako odnowa relacji z Bogiem",
+      "lecturerSlugs": ["justyna-sprutta", "marek-szymula"]
+    },
+    {
+      "date": "2026-06-09",
+      "title": "Natura i kultura",
+      "lecturerSlugs": ["michal-wojtczyk"]
+    },
+    {
+      "date": "2026-06-12",
+      "title": "Zanim zaistniał wszechświat – powołanie jako marzenie Boga. O Sofii Mądrości Bożej",
+      "lecturerSlugs": ["dariusz-klejnowski-rozycki"]
+    },
+    {
+      "date": "2026-06-13",
+      "title": "Abstrakcja i naturalizm w ikonie · Wernisaż wystawy ikon",
+      "lecturerSlugs": ["elzbieta-jackowska-kurek"],
+      "note": "wernisaż"
+    }
+  ]
+}

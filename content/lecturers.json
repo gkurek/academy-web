@@ -1,0 +1,196 @@
+[
+  {
+    "slug": "henryk-paprocki",
+    "name": "Henryk Paprocki",
+    "titles": "ks. dr",
+    "affiliationFull": "Prawosławne Seminarium Duchowne w Warszawie · Uniwersytet w Białymstoku",
+    "bio": "Wykładowca Teologii Prawosławnej na Uniwersytecie w Białymstoku oraz Teologii Zasadniczej w Prawosławnym Seminarium Duchownym w Warszawie; rzecznik prasowy Kościoła prawosławnego; szef Redakcji Ekumenicznej Telewizji Polskiej; autor licznych prac z zakresu teologii prawosławnej i tłumacz wielu publikacji. Laureat Nagrody im. ks. Romana Indrzejczyka przyznawanej przez Polską Radę Chrześcijan i Żydów. Odznaczony Krzyżem Oficerskim Orderu Odrodzenia Polski za wybitne zasługi w pracy naukowo-publicystycznej i działalności dydaktycznej, za upowszechnianie wiedzy o liturgiach wschodnich.",
+    "photo": {
+      "src": "/media/lecturers/henryk-paprocki.jpg",
+      "alt": "Zdjęcie — Henryk Paprocki",
+      "width": 285,
+      "height": 426
+    }
+  },
+  {
+    "slug": "grzegorz-michalczyk",
+    "name": "Grzegorz Michalczyk",
+    "titles": "ks.",
+    "affiliationFull": "Kościół Środowisk Twórczych, Warszawa",
+    "bio": "Pełni funkcję Krajowego Duszpasterza Środowisk Twórczych, jest rektorem Kościoła Środowisk Twórczych św. Andrzeja Apostoła i św. Brata Alberta Chmielowskiego w Warszawie. Jest wiceprzewodniczącym Polskiej Rady Chrześcijan i Żydów, członkiem Komitetu Episkopatu ds. Dialogu z Judaizmem oraz konsultantem i współautorem programów radiowych i telewizyjnych.",
+    "photo": {
+      "src": "/media/lecturers/grzegorz-michalczyk.jpg",
+      "alt": "Zdjęcie — Grzegorz Michalczyk",
+      "width": 266,
+      "height": 240
+    }
+  },
+  {
+    "slug": "jozef-naumowicz",
+    "name": "Józef Naumowicz",
+    "titles": "ks. prof. dr hab.",
+    "affiliation": "UKSW",
+    "affiliationFull": "Uniwersytet Kardynała Stefana Wyszyńskiego",
+    "bio": "Birytualista, profesor nauk humanistycznych, historyk literatury wczesnochrześcijańskiej, patrolog i znawcza historii wczesnego chrześcijaństwa i późnego antyku a także historii Bizancjum i starożytnej Armenii. Autor wielu publikacji z zakresu chrześcijaństwa antycznego i patrologii. Odznaczony Złotym Krzyżem Zasługi (2011) i Krzyżem Kawalerskim Orderu Odrodzenia Polski (2020) ’ za wybitne zasługi w pracy naukowo-badawczej i dydaktycznej”",
+    "photo": {
+      "src": "/media/lecturers/jozef-naumowicz.jpg",
+      "alt": "Zdjęcie — Józef Naumowicz",
+      "width": 300,
+      "height": 212
+    }
+  },
+  {
+    "slug": "roman-batorski",
+    "name": "Roman Batorski",
+    "titles": "ks.",
+    "affiliationFull": "Parafia św. Marcina w Słubicach",
+    "bio": "Proboszcz parafii św. Marcina w Słubicach, autor artykułów: „Kościół i nauka w obliczu ekologicznych wyzwań”, „Zwierzę, człowiek, Bóg”. Miłośnik ikony, uczestnik wyjazdów studyjnych w obszary objęte Bizancjum.",
+    "photo": {
+      "src": "/media/lecturers/roman-batorski.jpg",
+      "alt": "Zdjęcie — Roman Batorski",
+      "width": 270,
+      "height": 480
+    }
+  },
+  {
+    "slug": "aleksander-jacyniak",
+    "name": "Aleksander Jacyniak",
+    "titles": "o. dr SJ",
+    "affiliationFull": "Towarzystwo Jezusowe",
+    "bio": "Miłośnik ikony – jako pierwszy w Polsce opowiadał o ikonie podczas sesji formacyjnych pt. „Świat ikony” w Kaliszu. Autor wielu książek, m. in. „Świat ludzkich kryzysów”, „Ze świętym Józefem na przełomie tysiącleci”, „Antykryzysowy poradnik biblijny”, „Zrozumieć bliźniego” (skrócona, popularno-naukowa wersja pracy doktorskiej).",
+    "photo": {
+      "src": "/media/lecturers/aleksander-jacyniak.jpg",
+      "alt": "Zdjęcie — Aleksander Jacyniak",
+      "width": 311,
+      "height": 405
+    }
+  },
+  {
+    "slug": "andrzej-persidok",
+    "name": "Andrzej Persidok",
+    "titles": "ks. dr",
+    "affiliationFull": "Akademia Katolicka w Warszawie",
+    "bio": "Ksiądz archidiecezji warszawskiej, doktor teologii, wykładowca teologii fundamentalnej w Akademii Katolickiej w Warszawie. Duszpasterz w kościele św. Marcina przy ul. Piwnej. Członek Komisji ds. dialogu ekumenicznego i międzyreligijnego archidiecezji warszawskiej. Publikował m.in. w kwartalniku Pastores i w portalu Stacja7.",
+    "photo": {
+      "src": "/media/lecturers/andrzej-persidok.jpg",
+      "alt": "Zdjęcie — Andrzej Persidok",
+      "width": 400,
+      "height": 500
+    }
+  },
+  {
+    "slug": "lukasz-leonkiewicz",
+    "name": "Łukasz Leonkiewicz",
+    "titles": "diakon dr",
+    "affiliationFull": "Prawosławne Seminarium Duchowne w Warszawie",
+    "bio": "Absolwent filozofii (2009) oraz teologii w Chrześcijańskiej Akademii Teologicznej w Warszawie (2010). Wykładowca historii filozofii w Prawosławnym Seminarium Duchownym w Warszawie.",
+    "photo": {
+      "src": "/media/lecturers/lukasz-leonkiewicz.jpg",
+      "alt": "Zdjęcie — Łukasz Leonkiewicz",
+      "width": 278,
+      "height": 364
+    }
+  },
+  {
+    "slug": "jerzy-kazimierczak",
+    "name": "Jerzy Kazimierczak",
+    "titles": "dr",
+    "affiliationFull": "Warszawska Droga św. Jakuba",
+    "bio": "Doktorat na wydziale Chemii UW, twórca koncepcji i założyciel Warszawskiej Drogi Świętego Jakuba. Jest członkiem Kongregacji Camino Polonia, pielgrzymem, podróżnikiem, kolekcjonerem, organizatorem wypraw m.in. do Etiopii, które prowadził kilka razy. Autor wielu publikacji na temat kultu Maryjnego oraz obecności ikony w Kościele.",
+    "photo": {
+      "src": "/media/lecturers/jerzy-kazimierczak.jpg",
+      "alt": "Zdjęcie — Jerzy Kazimierczak",
+      "width": 648,
+      "height": 486
+    }
+  },
+  {
+    "slug": "ewa-kocoj",
+    "name": "Ewa Kocój",
+    "titles": "dr hab.",
+    "affiliation": "Instytut Kultury UJ",
+    "affiliationFull": "Instytut Kultury Uniwersytetu Jagiellońskiego",
+    "bio": "Etnografka, antropolożka kultury po studiach na UJ, adiunkt w Instytucie Kultury UJ. Interesuje się niematerialnym dziedzictwem kultury, współczesną religijnością, antropologicznymi interpretacjami wyobrażeń i symboli kulturowych; duchowością prawosławną kręgu Karpat. Ważne miejsce w jej badaniach zajmuje także ikonografia prawosławna, sztuka ludowa oraz problematyka wielokulturowości. Prowadzi badania nad prawosławną kulturą religijną Rumunii na tle innych krajów Europy Środkowej i Południowo-Wschodniej, wschodnimi pograniczami oraz stereotypami narodowymi, etnicznymi i religijnymi. Stypendystka Fundacji im. Lanckorońskich, Fundacji na rzecz Nauki Polskiej, Ministerstwa Edukacji Narodowej w Rumunii i CEEPUS. Laureatka Nagrody im. A. Rojszczaka Fundacji na rzecz Nauki Polskiej. Laureatka nagrody Narodowego Centrum Kultury za najlepszą pracę doktorską z dziedziny nauk o kulturze w latach 2004–2005 w Polsce. Autorka książek: „Pamięć starych wieków. Symbolika czasu w rumuńskim kalendarzu prawosławnym”, „Świątynie, postacie, ikony. Malowane cerkwie i monastery Bukowiny Południowej w wyobrażeniach rumuńskich”; „Święci rumuńscy” oraz licznych artykułów naukowych wydanych w Polsce i zagranicą. Współzałożycielka Towarzystwa Polsko-Rumuńskiego w Krakowie, członkini Komisji Bałkanistyki PAN o/Poznań oraz Polskiego Towarzystwa Ludoznawczego.",
+    "photo": {
+      "src": "/media/lecturers/ewa-kocoj.jpg",
+      "alt": "Zdjęcie — Ewa Kocój",
+      "width": 307,
+      "height": 230
+    }
+  },
+  {
+    "slug": "artur-aleksiejuk",
+    "name": "Artur Aleksiejuk",
+    "titles": "ks. dr",
+    "affiliationFull": "Chrześcijańska Akademia Teologiczna",
+    "bio": "Absolwent Wydziału Mechatroniki Politechniki Warszawskiej o specjalności Biocybernetyka i Inżynieria Biomedyczna (1998), Prawosławnego Seminarium Duchownego (2000), Chrześcijańskiej Akademii Teologicznej w Warszawie (2001) oraz Studium Poradnictwa Psychologicznego (Counselling Study) w Warszawie zorganizowanego przez Stowarzyszenie Psychologów Chrześcijańskich. Doktor nauk teologicznych w zakresie teologii moralnej. Praca doktorska pt. „Problematyka pozyskiwania embrionalnych komórek macierzystych w świetle żydowskiej refleksji religijno-prawnej nad statusem ludzkiego zarodka”. W latach 2007–2011 był członkiem Komisji Dialogu Teologicznego Polskiej Rady Ekumenicznej. Od 2013 roku jest członkiem Komitetu Naczelnego Światowej Rady Kościołów z siedzibą w Genewie. W 2017 roku został zaliczony w poczet członków zwyczajnych Polskiego Towarzystwa Bioetycznego. Zainteresowania naukowe to: bioetyka i etyka medyczna, wschodniochrześcijańska antropologia teologiczna, antropologia i aksjologia pedagogiczna, historia rosyjskiej myśli pedagogicznej, psychologia i pedagogika pastoralna. Więcej na stronie: http://www.ksiadzartur.pl/o-mnie/",
+    "photo": {
+      "src": "/media/lecturers/artur-aleksiejuk.jpg",
+      "alt": "Zdjęcie — Artur Aleksiejuk",
+      "width": 180,
+      "height": 220
+    }
+  },
+  {
+    "slug": "piotr-nikolski",
+    "name": "Piotr Nikolski",
+    "titles": "ks. dr",
+    "affiliationFull": "Parafia św. Mikołaja w Świdnicy",
+    "bio": "Proboszcz parafii prawosławnej św. Mikołaja w Świdnicy, wykładowca na wielu sympozjach i konferencjach naukowych, tłumacz i autor licznych publikacji, doktorat: ” Św. Jan od Krzyża wobec prawosławnej tradycji ascetycznej”.",
+    "photo": {
+      "src": "/media/lecturers/piotr-nikolski.jpg",
+      "alt": "Zdjęcie — Piotr Nikolski",
+      "width": 180,
+      "height": 270
+    }
+  },
+  {
+    "slug": "lukasz-hajduczenia",
+    "name": "Łukasz Hajduczenia",
+    "titles": "dr",
+    "affiliationFull": "Artes Liberales UW",
+    "bio": "Doktorat na Artes Liberales UW: ” Muzyczna forma liturgii prawosławnej. Studium wschodniej tradycji liturgicznej w dyskursie doświadczenia artystycznego.” Absolwent wydz. wokalnego UM (Warszawa), absolwent Guildhall School of Music and Drama (Londyn), magister teologii (Prawosławne Seminarium Duchowne oraz Chrześcijańska Akademia Teologiczna w Warszawie). Laureat wielu konkursów wokalnych. Jego działalność obejmuje koncerty, projekty operowe, pedagogikę oraz pracę z zespołami wokalnymi. Oprócz muzyki klasycznej, specjalizuje się w wykonawstwie muzyki cerkiewnej różnych okresów oraz słowiańskiej muzyki ludowej. Zainteresowania związane z ikonografią: liturgia bizantyjska, ikona.",
+    "photo": {
+      "src": "/media/lecturers/lukasz-hajduczenia.jpg",
+      "alt": "Zdjęcie — Łukasz Hajduczenia",
+      "width": 720,
+      "height": 960
+    }
+  },
+  {
+    "slug": "vitali-michalczuk",
+    "name": "Vitali Michalczuk",
+    "affiliationFull": "Instytut Filozofii UW",
+    "bio": "Absolwent Prawosławnego Seminarium Duchownego, ChAT, archeologii i doktorant filozofii na UW. Prowadzi zajęcia w Instytucie Filozofii i na wydziale Artes Liberales UW. Jego pasją jest filozofia starożytna, myśl patrystyczna, a także kultura i sztuka bizantyjska.",
+    "photo": {
+      "src": "/media/lecturers/vitali-michalczuk.png",
+      "alt": "Zdjęcie — Vitali Michalczuk",
+      "width": 556,
+      "height": 725
+    }
+  },
+  {
+    "slug": "michal-ploski",
+    "name": "Michał Płoski",
+    "affiliationFull": "Ikonograf, publicysta",
+    "bio": "Prawnik, ikonograf, autor tekstów do miesięcznika „Więź” i radomskiego „Miesięcznika Prowincjonalnego”. Napisał książkę „Mała cisza”. Mieszka w Kielcach. Na zboczu Szczytniaka w Paśmie Jeleniowskim wybudował drewnianą chatę i spędza tam z żoną każdą wolną chwilę. Mówi, że pisanie ikon to dla niego „proste zajęcie” i, że przez tę pracę dokłada swoją cegiełkę do pojednania i dialogu ekumenicznego. To jest również jego sposób na propagowanie duchowości Wschodu i teologii ikony.",
+    "photo": {
+      "src": "/media/lecturers/michal-ploski.jpg",
+      "alt": "Zdjęcie — Michał Płoski",
+      "width": 243,
+      "height": 324
+    }
+  },
+  {
+    "slug": "elzbieta-jackowska-kurek",
+    "name": "Elżbieta Jackowska-Kurek",
+    "affiliationFull": "Akademia Ikony · fundacja IKONA DZIŚ",
+    "bio": "Ikonograf. Mentorka, społecznik, kuratorka wystaw. Aktywna, doświadczona malarka ikon. Przyjmuje zamówienia na ikony w kolejności zgłoszeń z około rocznym wyprzedzeniem. Stworzyła autorski program nauczania sztuki ikony. Miłośniczka muzyki klasycznej i ludowej różnych narodów oraz propagatorka rolnictwa biodynamicznego. Organizatorka i kreatorka wydarzeń kulturalnych jak też wyjazdów studyjnych śladami ikon. Spotkała się z kilkoma wspaniałymi ikonografami, z których najbardziej ceni sobie Amirana Goglidze z Gruzjii i Georgija Jakovleva z Litwy. Od ponad trzydziestu lat prowadzi swoją pracownię artystyczną w Warszawie. Prezes fundacji IKONA DZIŚ. Autorka idei i twórca Akademii Ikony w Warszawie. Autorka artykułów o ikonie i roli ikonografa we współczesnym świecie. Brała udział w sesjach i konferencjach o ikonie, między innymi IKONA DZIŚ w 2008 r w Warszawie. Od ponad 10 lat organizuje autorskie sesje z wykładami zaproszonych gości w ramach Akademii Ikony. Jej ikony znajdują się w świątyniach, muzeach, galeriach i kolekcjach prywatnych w Polsce, w Anglii, w Gruzji, na Litwie, w Szwecji, Francji, w Australii, w Stanach Zjednoczonych i Kanadzie. Prowadzi warsztaty pisania ikon w ramach Akademii Ikony w Kościele Środowisk Twórczych św. Andrzeja Apostoła i św. Brata Alberta Chmielowskiego w Warszawie oraz, w ramach Letniej Szkoły Światła w Świętej Lipce, Wesołej i Supraślu jak też w Gruzji i na Litwie.",
+    "photo": {
+      "src": "/media/lecturers/elzbieta-jackowska-kurek.jpg",
+      "alt": "Zdjęcie — Elżbieta Jackowska-Kurek",
+      "width": 243,
+      "height": 324
+    }
+  }
+]
