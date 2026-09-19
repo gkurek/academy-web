@@ -2,17 +2,31 @@
 
 import { useRef, useState } from "react";
 
-import { IconGrid } from "@/components/gallery/IconGrid";
+import { useGalleryLayoutMode } from "@/components/gallery/GalleryLayoutContext";
+import { GallerySection } from "@/components/gallery/GallerySection";
 import { Lightbox } from "@/components/gallery/Lightbox";
+import type { IconSectionId } from "@/content/icons";
 import type { IconWork } from "@/content/types";
 
+/** Everything a section needs to render, prepared on the server. */
+export interface GallerySectionData {
+  id: IconSectionId;
+  title: string;
+  works: IconWork[];
+  names?: string[];
+}
+
 export interface GalleryIconGridProps {
-  items: IconWork[];
+  sections: GallerySectionData[];
   /** Serialized filter state — when it changes, an open lightbox closes. */
   listKey: string;
 }
 
-export function GalleryIconGrid({ items, listKey }: GalleryIconGridProps) {
+/** Leading tiles of the first section loaded eagerly: the first row on desktop, two rows on mobile. */
+const EAGER_TILE_COUNT = 4;
+
+export function GalleryIconGrid({ sections, listKey }: GalleryIconGridProps) {
+  const { layoutMode } = useGalleryLayoutMode();
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
   const [storedListKey, setStoredListKey] = useState(listKey);
   const lastTriggerRef = useRef<HTMLButtonElement | null>(null);
@@ -22,6 +36,8 @@ export function GalleryIconGrid({ items, listKey }: GalleryIconGridProps) {
     setActiveIndex(null);
   }
 
+  // One sequence for the lightbox, in visual order (EJK → students), matching the active filter.
+  const items = sections.flatMap((section) => section.works);
   const activeItem = activeIndex !== null ? items[activeIndex] ?? null : null;
 
   const goPrev = () => {
@@ -54,9 +70,31 @@ export function GalleryIconGrid({ items, listKey }: GalleryIconGridProps) {
     }
   };
 
+  // Each section starts where the previous one ended in the sequence.
+  const startIndexes = sections.map((_, index) =>
+    sections.slice(0, index).reduce((total, section) => total + section.works.length, 0)
+  );
+
   return (
     <>
-      <IconGrid items={items} variant="gallery" onSelect={handleSelect} />
+      {sections.map((section, index) => (
+        <GallerySection
+          key={section.id}
+          id={section.id}
+          title={section.title}
+          items={section.works}
+          startIndex={startIndexes[index]}
+          eagerCount={index === 0 ? EAGER_TILE_COUNT : 0}
+          layoutMode={layoutMode}
+          onSelect={handleSelect}
+          names={section.names}
+          className={
+            index > 0
+              ? "mt-section-gap-mobile md:mt-section-gap border-t border-line-gold pt-space-5 md:pt-space-6"
+              : undefined
+          }
+        />
+      ))}
       <Lightbox
         item={activeItem}
         index={activeIndex}

@@ -1,14 +1,16 @@
-import { TextLink } from "@/components/core/TextLink";
 import { GalleryFilters } from "@/components/gallery/GalleryFilters";
 import { GalleryIconGrid } from "@/components/gallery/GalleryIconGrid";
+import { GalleryLayoutProvider } from "@/components/gallery/GalleryLayoutContext";
 import { GalleryOrderTeaser } from "@/components/gallery/GalleryOrderTeaser";
+import { GalleryLayoutToggle } from "@/components/gallery/GalleryLayoutToggle";
 import { SectionPageShell } from "@/components/layout/SectionPageShell";
+import type { GallerySectionData } from "@/components/gallery/GalleryIconGrid";
 import {
   filterIconWorks,
-  formatIconCount,
-  getIconCounts,
   getIconTags,
   getIconWorks,
+  getStudentNames,
+  groupIconSections,
   parseIconFilters,
 } from "@/content/icons";
 import { pl } from "@/i18n/pl";
@@ -24,32 +26,34 @@ export function GalleryPage({ active, sectionActive, searchParams }: GalleryPage
   const allWorks = getIconWorks();
   const filteredWorks = filterIconWorks(allWorks, filters);
   const tags = getIconTags();
-  const countLabel = formatIconCount(getIconCounts(filteredWorks));
-  const [leadBefore, leadAfter] = pl.gallery.lead.split("{link}");
+  const sections: GallerySectionData[] = groupIconSections(filteredWorks).map(({ id, works }) => ({
+    id,
+    title: pl.gallery.sections[id].title,
+    works,
+    ...(id === "uczniowie" ? { names: getStudentNames(works) } : {}),
+  }));
+  // A `temat` param that did not survive parsing is unknown (or empty/repeated) — GalleryFilters strips it from the URL.
+  const hasInvalidTag = searchParams.temat !== undefined && filters.tag === undefined;
 
   return (
     <SectionPageShell active={active} section="ikony" sectionActive={sectionActive}>
-      <section className="pb-offer-hub-lead-pb">
-        <h1 className="font-serif text-size-h1-m md:text-size-h1 leading-tight text-text-h1 mb-space-5">
-          {pl.gallery.title}
-        </h1>
-        <p className="text-size-lead-m md:text-size-lead leading-body text-text-secondary max-w-measure-lead">
-          {leadBefore}
-          <TextLink href="/ikony/na-zamowienie">{pl.gallery.orderLinkLabel}</TextLink>
-          {leadAfter}
-        </p>
-      </section>
+      <GalleryLayoutProvider>
+        <header className="pb-space-5 mb-space-6 border-b border-line-gold">
+          <h1 className="font-serif text-size-h1-m md:text-size-h1 leading-tight text-text-h1 mb-space-5">
+            {pl.gallery.title}
+          </h1>
+          <GalleryFilters
+            tags={tags}
+            filters={filters}
+            hasInvalidTag={hasInvalidTag}
+            trailing={<GalleryLayoutToggle />}
+          />
+        </header>
 
-      <GalleryFilters tags={tags} filters={filters} />
+        <GalleryIconGrid sections={sections} listKey={filters.tag ?? ""} />
 
-      <p className="text-size-ui text-text-tertiary mb-space-5">{countLabel}</p>
-
-      <GalleryIconGrid
-        items={filteredWorks}
-        listKey={`${filters.author ?? ""}:${filters.tag ?? ""}`}
-      />
-
-      <GalleryOrderTeaser />
+        <GalleryOrderTeaser />
+      </GalleryLayoutProvider>
     </SectionPageShell>
   );
 }

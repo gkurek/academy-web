@@ -76,22 +76,26 @@ Kryterium „gotowe”: DoD pod-etapu spełnione; build/lint OK; meldunek z list
 
 ## Kryteria ukończenia pod-etapu
 
-- [x] Filtry działają jako query string, bez przeładowania strony (K-05)
-- [x] Domyślny widok: wszyscy autorzy, wszystkie tematy (D-02)
-- [x] `Lightbox`: Esc zamyka, strzałki klawiatury, fokus wraca do klikniętego kafla, `prefers-reduced-motion` respektowany
-- [x] Wymiary z podpisów oznaczone jako niezweryfikowane w danych `sample` (brak zmyślonych cm)
-- [x] Zajawka „Ikony na zamówienie” na dole galerii z linkiem do `/ikony/na-zamowienie`
+> **Korekta 2026-09-19 (05b):** statusy ✅ poniżej oparto na build/lint i Lighthouse, bez przeglądu wizualnego. Przegląd stagingu wykazał usterki w punktach oznaczonych ⚠ — naprawione w `docs/plans/05b-review-fixes.md`.
+
+- [x] Filtry działają jako query string, bez przeładowania strony (K-05) — ⚠ `?autor=` wycofane w 05b (K-43), zostaje `?temat=`
+- [x] Domyślny widok: wszyscy autorzy, wszystkie tematy (D-02) — ⚠ zastąpione dwiema sekcjami EJK → uczniowie (K-41)
+- [x] `Lightbox`: Esc zamyka, strzałki klawiatury, fokus wraca do klikniętego kafla, `prefers-reduced-motion` respektowany — ⚠ scroll strony pod dialogiem nie był zablokowany, klik w tło nie zamykał (05b/1)
+- [x] Wymiary z podpisów oznaczone jako niezweryfikowane w danych `sample` (brak zmyślonych cm) — ⚠ w UI wyświetlały się jak fakty; teraz „Wymiary: do weryfikacji” (05b/5)
+- [x] Zajawka „Ikony na zamówienie” na dole galerii z linkiem do `/ikony/na-zamowienie` — ⚠ bez odstępów od siatki i stopki (05b/1); od 05b/5 bez zdjęcia, z przyciskiem
 - [x] `IconGrid` na home bez regresji (podgląd „Wybrane ikony”, bez lightboxa)
-- [x] Lighthouse dostępność na `/ikony` — cel jak w 04b (≥ 95, dążenie do 100)
+- [x] Lighthouse dostępność na `/ikony` — cel jak w 04b (≥ 95, dążenie do 100) — ⚠ wynik nie obejmował przeglądu wizualnego; w 05b audyt ręczny (kontrast, nazwy, nagłówki, fokus), formalny Lighthouse do ponownego uruchomienia
 
 ## Odstępstwa od makiety (świadome)
 
 | Makieta | Implementacja | Powód |
 | ------- | ------------- | ----- |
 | `object-fit: cover` na kafelach | `object-contain` (K-31) | Decyzja 04b |
-| „Pokaż kolejne 24 prace” | Brak paginacji v1 | Zakres sample; ~65 ikon po migracji → etap 7/8 |
+| „Pokaż kolejne 24 prace” | Brak paginacji v1 | Zakres sample; ~52 prace po migracji → etap 7/8 |
 | Akapit opisu w lightboxie | Brak | Brak pola w `IconWork` |
-| Chip autora „Wydarzenia” (literówka HTML) | „Wszyscy” + EJK + Uczniowie | `GalleryScreen.jsx` / sesja planistyczna |
+| Chip autora „Wydarzenia” (literówka HTML) | „Wszyscy” + EJK + Uczniowie | `GalleryScreen.jsx` / sesja planistyczna — **zastąpione w 05b:** filtr autora usunięty, sekcje EJK / uczniowie (K-41, K-43) |
+
+Dalsze odstępstwa od makiety `#2a-ikony` wprowadzone w 05b — patrz sekcja „Odstępstwa od makiety” w `docs/plans/05b-review-fixes.md`.
 
 ## Ryzyka i pytania otwarte
 
@@ -108,3 +112,5 @@ Kryterium „gotowe”: DoD pod-etapu spełnione; build/lint OK; meldunek z list
 | 2 — `/ikony` + filtry + siatka | ✅ | `GalleryIconGrid` — stub `onSelect` pod Kawałek 3 |
 | 3 — Lightbox desktop | ✅ | mobile: podgląd bez przycisków Poprzednia/Następna → Kawałek 4 |
 | 4 — Lightbox mobile + domknięcie | ✅ | Lighthouse a11y mobile /ikony: 100 |
+
+Kawałki 2–4 wymagały korekt po przeglądzie stagingu — zob. `docs/plans/05b-review-fixes.md` (Kawałki 1–6).

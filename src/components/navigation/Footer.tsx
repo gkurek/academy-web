@@ -117,8 +117,8 @@ function FooterMobileLayout({
   contactLink: MainNavItem;
 }) {
   return (
-    <div className="grid grid-cols-2 gap-x-space-6 gap-y-space-6 md:hidden">
-      <div className="grid gap-space-5 content-start text-size-ui leading-loose">
+    <div className="grid grid-cols-2 gap-x-space-6 gap-y-space-6 wrap-anywhere md:hidden">
+      <div className="grid min-w-0 gap-space-5 content-start text-size-ui leading-loose">
         <FooterBrandBlock />
         <Link href={orgLink.href} className={sitemapLinkClass}>
           {orgLink.label}
@@ -131,7 +131,7 @@ function FooterMobileLayout({
         <FooterHubSection group={workshopsLink} />
       </div>
 
-      <div className="grid gap-space-5 content-start text-size-ui leading-loose">
+      <div className="grid min-w-0 gap-space-5 content-start text-size-ui leading-loose">
         <FooterContactBlock />
         <FooterHubSection group={lecturesLink} />
         <FooterHubSection group={iconsLink} />

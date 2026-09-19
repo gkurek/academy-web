@@ -19,6 +19,7 @@ export function FilterChip({
     <a
       href={href}
       onClick={onClick}
+      aria-current={active ? "true" : undefined}
       className={[
         "inline-block rounded-none px-space-5 py-space-3 text-size-ui no-underline",
         "transition-colors duration-150 ease-out",

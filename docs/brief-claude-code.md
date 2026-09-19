@@ -43,7 +43,7 @@ Strona jest częścią szerszego ekosystemu (Akademia + Fundacja + planowana str
 /wyklady                   hub: bieżący sezon + jak się zapisać
 /wyklady/archiwum          15 sezonów archiwalnych, rozwijane (bieżący 2026/2027 — szesnasty)
 /wyklady/wykladowcy
-/ikony                     galeria z filtrami (autor: Elżbieta / uczniowie; temat)
+/ikony                     galeria: sekcje Elżbieta / uczniowie (#ejk, #uczniowie) + filtr tematu
 /ikony/[slug]              pojedyncza ikona (opcjonalnie w v1)
 /ikony/na-zamowienie       strona ofertowa (treść wymienna w przyszłości — nie istotne teraz)
 /wydarzenia                wystawy, poświęcenia, oprowadzania, wyjazdy (kategorie)
@@ -183,7 +183,7 @@ type SiteSettings = {
 
 Być idempotentny, logować nieudane parsowania do `scripts/migrate-report.md`. Bez pętli `for`/`for-of` — `map`/`filter`/`reduce`/`forEach`.
 
-Szacunek ręcznej korekty po migracji: ~10 stron statycznych, 16 sezonów wykładów (nazwiska), ~65 podpisów ikon. ~60 wpisów aktualności bez korekty. Blog (blogspot) — nie migrować, tylko link w stopce.
+Szacunek ręcznej korekty po migracji: ~10 stron statycznych, 16 sezonów wykładów (nazwiska), ~52 podpisy ikon (stan WP 2026-09-19: 23 prace Elżbiety, 3 z nich bez podpisu, + 29 prac uczniów, 10 bez nazwiska). ~60 wpisów aktualności bez korekty. Blog (blogspot) — nie migrować, tylko link w stopce.
 
 ### Tabela przekierowań (kluczowe wpisy)
 

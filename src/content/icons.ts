@@ -3,26 +3,30 @@ import { pl } from "@/i18n/pl";
 import type { IconWork } from "@/content/types";
 
 export const FEATURED_ICON_SLUGS = [
-  "matka-boza-znaku",
-  "przemienienie",
-  "mandylion",
-  "sw-antoni",
+  "matka-boza-krzew-gorejacy",
+  "chrystus-pantokrator",
+  "archaniol-michal",
+  "trojca-swieta",
 ] as const;
 
-export type IconAuthorFilter = "ejk" | "uczniowie";
+/**
+ * Theme taxonomy (K-43): the fixed order of the filter chips; slugs go into `?temat=`.
+ * Every work needs at least one of these tags, every theme at least one work
+ * (checked by validateIconTaxonomy below).
+ */
+export const ICON_THEMES = ["chrystus", "matka-bozy", "aniolowie", "swieci", "sceny-i-swieta"] as const;
 
 export type IconFilters = {
-  author?: IconAuthorFilter;
   tag?: string;
 };
 
-export type IconCounts = {
-  total: number;
-  ejk: number;
-  students: number;
-};
+/** Section ids double as URL hashes (`/ikony#uczniowie`). */
+export type IconSectionId = "ejk" | "uczniowie";
 
-const AUTHOR_QUERY_VALUES: IconAuthorFilter[] = ["ejk", "uczniowie"];
+export type IconSection = {
+  id: IconSectionId;
+  works: IconWork[];
+};
 
 export function getIconWorks(): IconWork[] {
   return iconsData as IconWork[];
@@ -39,12 +43,9 @@ export function getIconWorksBySlugs(slugs: string[]): IconWork[] {
     .filter((icon): icon is IconWork => icon !== undefined);
 }
 
+/** Theme slugs in taxonomy order — safe to render as chips, each has at least one work. */
 export function getIconTags(): string[] {
-  const tags = new Set<string>();
-  getIconWorks().forEach((icon) => {
-    icon.tags?.forEach((tag) => tags.add(tag));
-  });
-  return Array.from(tags).sort((a, b) => a.localeCompare(b, "pl"));
+  return [...ICON_THEMES];
 }
 
 export function getIconTagLabel(tag: string): string {
@@ -56,14 +57,11 @@ export function parseIconFilters(
   params: Record<string, string | string[] | undefined>
 ): IconFilters {
   const filters: IconFilters = {};
-  const autor = params.autor;
 
-  if (typeof autor === "string" && AUTHOR_QUERY_VALUES.includes(autor as IconAuthorFilter)) {
-    filters.author = autor as IconAuthorFilter;
-  }
-
+  // Other params (including the retired `autor`) are ignored.
+  // Unknown slugs are dropped, so the view falls back to "no theme filter".
   const temat = params.temat;
-  if (typeof temat === "string" && temat.length > 0) {
+  if (typeof temat === "string" && getIconTags().includes(temat)) {
     filters.tag = temat;
   }
 
@@ -71,42 +69,57 @@ export function parseIconFilters(
 }
 
 export function filterIconWorks(works: IconWork[], filters: IconFilters): IconWork[] {
-  return works.filter((work) => {
-    if (filters.author === "ejk" && work.author !== "ejk") {
-      return false;
-    }
-
-    if (filters.author === "uczniowie" && work.author !== "student") {
-      return false;
-    }
-
-    if (filters.tag && (!work.tags || !work.tags.includes(filters.tag))) {
-      return false;
-    }
-
-    return true;
-  });
+  const { tag } = filters;
+  if (!tag) {
+    return works;
+  }
+  return works.filter((work) => work.tags?.includes(tag));
 }
 
-export function getIconCounts(works: IconWork[]): IconCounts {
-  return works.reduce<IconCounts>(
-    (counts, work) => {
-      counts.total += 1;
-      if (work.author === "ejk") {
-        counts.ejk += 1;
-      }
-      if (work.author === "student") {
-        counts.students += 1;
-      }
-      return counts;
-    },
-    { total: 0, ejk: 0, students: 0 }
+/**
+ * K-41: the gallery is a fixed split — Elżbieta's works first, then the students'.
+ * Works keep the order they have in icons.json (manual curation); a section with
+ * no works (e.g. under a theme filter) is dropped together with its anchor.
+ */
+export function groupIconSections(works: IconWork[]): IconSection[] {
+  const sections: IconSection[] = [
+    { id: "ejk", works: works.filter((work) => work.author === "ejk") },
+    { id: "uczniowie", works: works.filter((work) => work.author === "student") },
+  ];
+  return sections.filter((section) => section.works.length > 0);
+}
+
+/** K-42: unique student names generated from the works, alphabetical by surname (last word). */
+export function getStudentNames(works: IconWork[]): string[] {
+  const names = new Set(works.flatMap((work) => (work.authorName ? [work.authorName] : [])));
+  const surname = (name: string) => name.split(/\s+/).pop() ?? name;
+  return Array.from(names).sort(
+    (a, b) => surname(a).localeCompare(surname(b), "pl") || a.localeCompare(b, "pl")
   );
 }
 
-export function formatIconCount(counts: IconCounts): string {
-  return pl.gallery.count
-    .replace("{total}", String(counts.total))
-    .replace("{ejk}", String(counts.ejk))
-    .replace("{students}", String(counts.students));
+/**
+ * Fails loudly (at build, and on first import in dev) when icons.json and the
+ * theme taxonomy drift apart: untagged works vanish under every theme filter,
+ * unknown tags and empty themes would render dead chips.
+ */
+function validateIconTaxonomy(works: IconWork[]): void {
+  const themes: readonly string[] = ICON_THEMES;
+  const untagged = works.filter((work) => !work.tags || work.tags.length === 0);
+  const unknown = works.flatMap((work) =>
+    (work.tags ?? []).filter((tag) => !themes.includes(tag)).map((tag) => `${work.slug} → ${tag}`)
+  );
+  const emptyThemes = themes.filter((theme) => !works.some((work) => work.tags?.includes(theme)));
+
+  const problems = [
+    untagged.length > 0 ? `works without tags: ${untagged.map((work) => work.slug).join(", ")}` : null,
+    unknown.length > 0 ? `tags outside the taxonomy: ${unknown.join(", ")}` : null,
+    emptyThemes.length > 0 ? `themes without works: ${emptyThemes.join(", ")}` : null,
+  ].filter((problem): problem is string => problem !== null);
+
+  if (problems.length > 0) {
+    throw new Error(`content/icons.json does not match the theme taxonomy — ${problems.join("; ")}`);
+  }
 }
+
+validateIconTaxonomy(getIconWorks());

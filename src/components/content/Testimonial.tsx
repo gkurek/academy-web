@@ -12,7 +12,7 @@ export interface TestimonialProps {
  */
 export function Testimonial({ quote, author }: TestimonialProps) {
   return (
-    <section className="rule-gold-t rule-gold-b px-page-margin-mobile md:px-testimonial-px py-testimonial-py md:py-space-12 flex flex-col items-center text-center gap-space-5">
+    <section className="rule-gold-t rule-gold-b px-page-margin-mobile md:px-testimonial-px py-testimonial-py flex flex-col items-center text-center gap-space-5">
       <p className="font-serif italic text-size-quote-lg leading-quote text-text-body max-w-measure-quote">
         {quote}
       </p>
