@@ -12,7 +12,7 @@ export function SectionNav({ items, active }: SectionNavProps) {
   return (
     <nav
       aria-label={pl.sectionNav.ariaLabel}
-      className="flex flex-wrap gap-space-6 pb-space-4 mb-space-6 text-size-ui font-sans"
+      className="flex flex-wrap gap-x-space-6 gap-y-space-3 pb-space-4 mb-space-6 text-size-nav font-sans"
     >
       {items.map((item) => {
         const isActive = item.label === active;
@@ -22,9 +22,10 @@ export function SectionNav({ items, active }: SectionNavProps) {
             href={item.href}
             aria-current={isActive ? "page" : undefined}
             className={
-              isActive
+              (isActive
                 ? "nav-link-underline nav-link-underline-section nav-link-underline-active text-accent-text"
-                : "nav-link-underline nav-link-underline-section text-text-secondary hover:text-accent-hover"
+                : "nav-link-underline nav-link-underline-section text-text-secondary hover:text-accent-hover") +
+              " tap-target-nav"
             }
           >
             {item.label}

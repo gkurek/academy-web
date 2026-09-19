@@ -17,7 +17,7 @@ export function StepList() {
     <section aria-labelledby="order-steps-heading" className="not-prose">
       <h2
         id="order-steps-heading"
-        className="font-serif text-size-h2-m md:text-size-h2-sm leading-heading text-text-h2 mt-space-8 mb-space-2 first:mt-0"
+        className="font-serif text-size-role-section-h2-m md:text-size-role-section-h2 leading-heading text-text-h2 mt-space-8 mb-space-2 first:mt-0"
       >
         {pl.offers.orderStepsHeading}
       </h2>
@@ -35,12 +35,12 @@ export function StepList() {
           >
             <span
               aria-hidden="true"
-              className="font-serif text-size-offer-step-num leading-none text-accent shrink-0"
+              className="font-serif text-size-offer-step-num leading-none text-accent-text shrink-0"
             >
               {index + 1}
             </span>
             <div className="min-w-0">
-              <div className="text-size-body-lg leading-body text-text-list-title mb-space-2">
+              <div className="font-serif text-size-role-row-title-m md:text-size-role-row-title leading-heading text-text-list-title mb-space-2">
                 {step.title}
               </div>
               {step.body ? (

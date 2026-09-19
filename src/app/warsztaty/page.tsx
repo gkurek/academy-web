@@ -19,12 +19,12 @@ export default function WorkshopsPage() {
         <h1 className="font-serif text-size-h1-m md:text-size-h1 leading-tight text-text-h1 mb-space-5">
           {pl.workshopsHub.title}
         </h1>
-        <p className="text-size-lead-m md:text-size-lead leading-body text-text-secondary max-w-measure-hub">
+        <p className="text-size-lead-m md:text-size-lead leading-body text-text-secondary max-w-measure-lead">
           {pl.workshopsHub.lead}
         </p>
       </section>
 
-      <section className="pb-space-9 mb-space-8">
+      <section>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-hairline-gap bg-line-gold">
           {offers.map((offer) => {
             const image = pl.workshopsHub.cardImages[offer.slug as keyof typeof pl.workshopsHub.cardImages];

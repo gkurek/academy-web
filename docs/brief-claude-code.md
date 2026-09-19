@@ -62,7 +62,7 @@ Strona jest częścią szerszego ekosystemu (Akademia + Fundacja + planowana str
 3. Stopka z pełną mapą strony (nawigacja ratunkowa + SEO).
 
 Zawartość `SectionNav` per sekcja:
-- Warsztaty: Warsztaty · Kurs roczny i trzyletni · Letnia Szkoła Światła
+- Warsztaty: Przegląd · Kurs roczny i trzyletni · Letnia Szkoła Światła *(pierwsza pozycja = hub, nie nazwa sekcji — K-23)*
 - Wykłady: Bieżący sezon · Archiwum · Wykładowcy
 - Ikony: Galeria · Ikony na zamówienie
 - Wydarzenia: Wszystkie · Wystawy · Poświęcenia · Oprowadzania · Wyjazdy studyjne — kategorie jako **filtry przez query string** na `/wydarzenia` (np. `/wydarzenia?kategoria=wystawa`), bez osobnych tras pod `/wydarzenia/*`
@@ -250,7 +250,7 @@ Telefon jako `tel:+48601734705`.
 
 **Tokeny — typografia:** EB Garamond (H1–H3, cytaty, daty), IBM Plex Sans (tekst, UI). IBM Plex Mono **nie jest tokenem produkcyjnym** — to tylko oznaczenia placeholderów w makiecie.
 
-**Rozmiar tekstu:** minimalny stopień skali dla tekstu czytanego (podpisy, stopka, breadcrumb, etykiety) to 14px desktop / 15px mobile. **13px nie istnieje w skali produkcyjnej** — jeśli coś w handoffie ma 13px, to błąd makiety, zgłosić, nie kopiować.
+**Rozmiar tekstu:** minimalny stopień skali dla tekstu czytanego w **IBM Plex Sans** (podpisy UI, breadcrumb, etykiety) to 14px desktop / 15px mobile. **EB Garamond nie schodzi poniżej 16,5 px** — daty, meta i podpisy ikon: 16,5–17 px; jeśli etykieta ma zostać mniejsza, przechodzi do Plex 14,5 px (wyjątek marki: podtytuł logo 15 px desktop). **13px nie istnieje w skali produkcyjnej** — jeśli coś w handoffie ma 13px, to błąd makiety, zgłosić, nie kopiować.
 
 **Fokus:** obrys 2px złoto `#e8c765`, odstęp 2px, musi być widoczny na ciemnym tle.
 

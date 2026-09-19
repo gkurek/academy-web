@@ -32,9 +32,10 @@ export function Header({ active }: HeaderProps) {
                 href={item.href}
                 aria-current={isActive ? "page" : undefined}
                 className={
-                  isActive
+                  (isActive
                     ? "nav-link-underline nav-link-underline-active text-accent-text"
-                    : "nav-link-underline text-text-body hover:text-text-list-title"
+                    : "nav-link-underline text-text-body hover:text-text-list-title") +
+                  " tap-target-nav"
                 }
               >
                 {item.label}

@@ -114,7 +114,7 @@ Kryterium „gotowe”: strona renderuje wszystkich wykładowców z `content/lec
 | ------------------------------ | ------ | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | 0 — Przygotowanie danych       | ✅      | 2026-2027 + 2 sample sezony, lecturers.json, zdjęcia, archive.json, wyklady.mdx                                                                        |
 | 1 — LectureList + hub          | ✅      | warstwa treści, LectureList, LecturesHubPage, /wyklady, pl.lectures, tokeny CSS                                                                        |
-| 2 — SeasonAccordion + archiwum | ✅      | SeasonAccordion, LecturesArchivePage, /wyklady/archiwum; poprawki UI: cursor-pointer, border-b na przycisku rozwiniętym, lead archiwum pełna szerokość |
+| 2 — SeasonAccordion + archiwum | ✅      | SeasonAccordion, LecturesArchivePage, /wyklady/archiwum; poprawki UI: cursor-pointer, border-b na przycisku rozwiniętym |
 | 3 — Wykładowcy                 | ✅      | LecturerCard, LecturersPage, /wyklady/wykladowcy, lead z makiety (#3a), pl.lecturers, tokeny CSS                                                         |
 
 

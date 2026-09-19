@@ -37,10 +37,10 @@ export function LecturerCard({ lecturer }: LecturerCardProps) {
       ) : null}
 
       <div className="min-w-0">
-        <h3 className="font-serif text-size-h3-m md:text-size-h3 font-medium leading-heading text-text-h2 mb-lecturer-name-mb">
+        <h2 className="font-serif text-size-role-card-title-m md:text-size-role-card-title leading-heading text-text-h2 mb-lecturer-name-mb">
           {displayName}
-        </h3>
-        <p className="font-serif text-size-lecturer-affiliation leading-body text-accent mb-lecturer-affiliation-mb">
+        </h2>
+        <p className="font-serif text-size-lecturer-affiliation leading-body text-accent-text mb-lecturer-affiliation-mb">
           {affiliationFull}
         </p>
         {lecturer.bio ? (

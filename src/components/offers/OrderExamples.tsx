@@ -15,7 +15,7 @@ export function OrderExamples({ items }: OrderExamplesProps) {
     >
       <h2
         id="order-examples-heading"
-        className="font-serif text-size-h2-m md:text-size-h2-sm leading-heading text-text-h2 mb-offer-examples-heading-mb"
+        className="font-serif text-size-role-section-h2-m md:text-size-role-section-h2 leading-heading text-text-h2 mb-offer-examples-heading-mb"
       >
         {pl.offers.orderExamplesHeading}
       </h2>

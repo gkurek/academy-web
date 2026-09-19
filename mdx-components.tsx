@@ -31,7 +31,7 @@ function MdxImage({ src, alt, width, height }: ImgProps) {
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
     h2: ({ children }) => (
-      <h2 className="font-serif text-size-h2-m md:text-size-h2-sm leading-heading text-text-h2 mt-space-8 mb-space-4 first:mt-0">
+      <h2 className="font-serif text-size-role-section-h2-m md:text-size-role-section-h2 leading-heading text-text-h2 mt-space-8 mb-space-4 first:mt-0">
         {children}
       </h2>
     ),
@@ -41,7 +41,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
       </h3>
     ),
     p: ({ children }) => (
-      <p className="text-size-body leading-body text-text-body max-w-measure mb-space-4 last:mb-0 [&:has(>em:only-child)]:font-serif [&:has(>em:only-child)]:italic [&:has(>em:only-child)]:text-size-nav [&:has(>em:only-child)]:text-text-tertiary [&:has(>em:only-child)]:mt-space-3 [&:has(>em:only-child)]:mb-space-7">
+      <p className="text-size-body md:text-size-body-lg leading-body md:leading-prose text-text-body max-w-measure-prose mb-space-4 last:mb-0 [&:has(>em:only-child)]:font-serif [&:has(>em:only-child)]:italic [&:has(>em:only-child)]:text-size-body [&:has(>em:only-child)]:text-text-tertiary [&:has(>em:only-child)]:mt-space-3 [&:has(>em:only-child)]:mb-space-7">
         {children}
       </p>
     ),

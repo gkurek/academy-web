@@ -13,9 +13,9 @@ export interface HeroProps {
 /** Home page variant of Hero — icon image + two CTAs (design/components/content/Hero.jsx). */
 export function Hero({ title, lead, image, children }: HeroProps) {
   return (
-    <section className="md:grid md:grid-cols-hero md:gap-space-9 md:items-center md:px-page-margin md:pt-hero-pt md:pb-hero-pb">
+    <section className="md:grid md:grid-cols-hero md:gap-space-9 md:items-center md:px-page-margin md:pt-hero-pt md:pb-hero-pb md:min-w-0">
       {/* Padding sits on the text block on mobile (not the section) so the image
-          below computes its 62% width against the full viewport, matching the
+          below computes its 72% width against the full viewport, matching the
           resolved mockup DOM — there the <img> is an unpadded sibling of this
           text div, not nested inside its padding. */}
       <div className="px-page-margin-mobile pt-hero-pt-m pb-hero-pb-m md:p-0">
@@ -23,31 +23,34 @@ export function Hero({ title, lead, image, children }: HeroProps) {
           {title}
         </h1>
         {lead && (
-          <p className="text-size-lead-m md:text-size-lead leading-body text-text-secondary max-w-measure mb-space-5 md:mb-0">
+          <p className="text-size-lead-m md:text-size-lead leading-body text-text-secondary max-w-measure-lead mb-space-5 md:mb-0">
             {lead}
           </p>
         )}
         {children}
       </div>
-      <div>
+      <figure className="mx-auto md:ml-auto md:mr-0 md:min-w-0 md:w-full w-hero-image-w-m max-w-full mb-hero-pb-m md:mb-0">
         {/* The source icon is a tall portrait photo — shown whole (contain), not
-            cropped, sized per the resolved mockup DOM: 62% width on mobile,
-            a fixed 760px height on desktop (both centered, width:auto/auto). */}
-        <Image
-          src={image.src}
-          alt={image.alt}
-          width={image.width}
-          height={image.height}
-          priority
-          sizes="(min-width: 768px) 401px, 62vw"
-          className="mx-auto w-hero-image-w-m h-auto md:w-auto md:h-hero-image-h md:max-w-full object-contain shadow-hero-image-m md:shadow-hero-image"
-        />
-        {image.caption && (
-          <p className="font-serif italic text-size-caption-m md:text-size-caption text-text-tertiary text-center md:text-left px-page-margin-mobile md:px-0 mt-space-3 md:mt-space-4 mb-hero-pb-m md:mb-0">
-            {image.caption}
-          </p>
-        )}
-      </div>
+            cropped. Mobile: 72% viewport width (centered). Desktop (md+): width
+            derived from min(920px, 76vh) and aspect ratio, capped by the grid
+            column so the layout never overflows (K-33). */}
+        <div className="w-full md:ml-auto md:w-fit md:max-w-full">
+          <Image
+            src={image.src}
+            alt={image.alt}
+            width={image.width}
+            height={image.height}
+            priority
+            sizes="(min-width: 768px) min(486px, 38vw), 72vw"
+            className="block w-full h-auto md:w-hero-image-w md:max-w-full md:h-auto md:max-h-hero-image-h object-contain shadow-hero-image-m md:shadow-hero-image"
+          />
+          {image.caption && (
+            <figcaption className="font-serif italic text-size-body text-text-tertiary text-center mt-space-3 md:mt-space-4">
+              {image.caption}
+            </figcaption>
+          )}
+        </div>
+      </figure>
     </section>
   );
 }

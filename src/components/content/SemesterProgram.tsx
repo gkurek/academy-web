@@ -17,7 +17,7 @@ export function SemesterProgram() {
     <section aria-labelledby="semester-program-heading" className="not-prose">
       <h2
         id="semester-program-heading"
-        className="font-serif text-size-h2-m md:text-size-h2-sm leading-heading text-text-h2 mt-space-8 mb-space-2 first:mt-0"
+        className="font-serif text-size-role-section-h2-m md:text-size-role-section-h2 leading-heading text-text-h2 mt-space-8 mb-space-2 first:mt-0"
       >
         {pl.offers.semesterProgramHeading}
       </h2>
@@ -32,12 +32,12 @@ export function SemesterProgram() {
           >
             <div
               aria-hidden="true"
-              className="font-serif text-size-offer-semester-num-m md:text-size-offer-semester-num leading-none text-accent shrink-0 min-w-offer-semester-num-m md:min-w-offer-semester-num"
+              className="font-serif text-size-offer-semester-num-m md:text-size-offer-semester-num leading-none text-accent-text shrink-0 w-offer-semester-num-width-m md:w-offer-semester-num-width text-left"
             >
               {ROMAN_NUMERALS[index] ?? String(index + 1)}
             </div>
             <div className="min-w-0">
-              <h3 className="text-size-body-lg leading-body text-text-list-title mb-space-2">
+              <h3 className="font-serif text-size-role-row-title-m md:text-size-role-row-title leading-heading text-text-list-title mb-space-2">
                 {semester.title}
               </h3>
               <p className="text-size-body leading-body text-text-tertiary">{semester.body}</p>

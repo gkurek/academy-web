@@ -15,7 +15,9 @@ export function FeaturedIcons() {
   return (
     <section className="px-page-margin-mobile md:px-page-margin py-space-7 md:py-space-8">
       <div className="flex items-baseline justify-between mb-space-5 md:mb-space-6">
-        <h2 className="font-serif text-size-h2-sm md:text-size-h2 text-text-h2">{pl.home.icons.heading}</h2>
+        <h2 className="font-serif text-size-role-section-h2-m md:text-size-role-section-h2 leading-heading text-text-h2">
+          {pl.home.icons.heading}
+        </h2>
         <TextLink href="/ikony" className="hidden md:inline text-size-body">
           {pl.home.icons.seeAllLabel}
         </TextLink>
