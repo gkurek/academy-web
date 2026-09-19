@@ -11,6 +11,7 @@
       "width": 829,
       "height": 1105
     },
+    "tags": ["matka-bozy"],
     "sample": true
   },
   {
@@ -25,6 +26,7 @@
       "width": 784,
       "height": 1045
     },
+    "tags": ["swieta"],
     "sample": true
   },
   {
@@ -39,6 +41,7 @@
       "width": 540,
       "height": 673
     },
+    "tags": ["chrystus"],
     "sample": true
   },
   {
@@ -46,11 +49,161 @@
     "title": "Św. Antoni",
     "author": "student",
     "authorName": "uczestniczki",
+    "size": { "w": 35, "h": 28 },
     "image": {
       "src": "/media/sample/icons/sw-antoni.jpg",
       "alt": "Ikona Świętego Antoniego",
       "width": 810,
       "height": 1440
+    },
+    "tags": ["swieci"],
+    "sample": true
+  },
+  {
+    "slug": "matka-boza-oranta",
+    "title": "Matka Boża Oranta",
+    "author": "ejk",
+    "authorName": "Elżbieta Jackowska-Kurek",
+    "size": { "w": 40, "h": 30 },
+    "image": {
+      "src": "/media/sample/icons/matka-boza-znaku.jpg",
+      "alt": "Ikona Matka Boża Oranta",
+      "width": 829,
+      "height": 1105
+    },
+    "tags": ["matka-bozy"],
+    "sample": true
+  },
+  {
+    "slug": "matka-boza-uczennica",
+    "title": "Matka Boża",
+    "author": "student",
+    "authorName": "uczestniczka",
+    "size": { "w": 35, "h": 28 },
+    "image": {
+      "src": "/media/sample/icons/matka-boza-znaku.jpg",
+      "alt": "Ikona Matki Bożej",
+      "width": 829,
+      "height": 1105
+    },
+    "tags": ["matka-bozy"],
+    "sample": true
+  },
+  {
+    "slug": "przemienienie-uczennica",
+    "title": "Przemienienie Pańskie",
+    "author": "student",
+    "authorName": "uczestnik",
+    "size": { "w": 35, "h": 28 },
+    "image": {
+      "src": "/media/sample/icons/przemienienie.jpeg",
+      "alt": "Ikona Przemienienia Pańskiego",
+      "width": 784,
+      "height": 1045
+    },
+    "tags": ["swieta"],
+    "sample": true
+  },
+  {
+    "slug": "transfiguracja",
+    "title": "Transfiguracja",
+    "author": "ejk",
+    "authorName": "Elżbieta Jackowska-Kurek",
+    "size": { "w": 60, "h": 45 },
+    "image": {
+      "src": "/media/sample/icons/przemienienie.jpeg",
+      "alt": "Ikona Transfiguracji",
+      "width": 784,
+      "height": 1045
+    },
+    "tags": ["swieta"],
+    "sample": true
+  },
+  {
+    "slug": "mandylion-ucznia",
+    "title": "Mandylion",
+    "author": "student",
+    "authorName": "uczestnik",
+    "size": { "w": 35, "h": 28 },
+    "image": {
+      "src": "/media/sample/icons/mandylion.jpg",
+      "alt": "Ikona Mandylion",
+      "width": 540,
+      "height": 673
+    },
+    "tags": ["chrystus"],
+    "sample": true
+  },
+  {
+    "slug": "oblubieniec",
+    "title": "Chrystus Oblubieniec",
+    "author": "ejk",
+    "authorName": "Elżbieta Jackowska-Kurek",
+    "size": { "w": 35, "h": 28 },
+    "image": {
+      "src": "/media/sample/icons/mandylion.jpg",
+      "alt": "Ikona Chrystusa Oblubieńca",
+      "width": 540,
+      "height": 673
+    },
+    "tags": ["chrystus"],
+    "sample": true
+  },
+  {
+    "slug": "sw-antoni-pustelnik",
+    "title": "Św. Antoni Pustelnik",
+    "author": "ejk",
+    "authorName": "Elżbieta Jackowska-Kurek",
+    "size": { "w": 40, "h": 55 },
+    "image": {
+      "src": "/media/sample/icons/sw-antoni.jpg",
+      "alt": "Ikona Świętego Antoniego Pustelnika",
+      "width": 810,
+      "height": 1440
+    },
+    "tags": ["swieci"],
+    "sample": true
+  },
+  {
+    "slug": "sw-antoni-z-jezusem",
+    "title": "Św. Antoni z Dzieciątkiem",
+    "author": "student",
+    "authorName": "uczestniczka",
+    "size": { "w": 40, "h": 55 },
+    "image": {
+      "src": "/media/sample/icons/sw-antoni.jpg",
+      "alt": "Ikona Świętego Antoniego z Dzieciątkiem",
+      "width": 810,
+      "height": 1440
+    },
+    "tags": ["swieci"],
+    "sample": true
+  },
+  {
+    "slug": "ikona-warsztatowa",
+    "title": "Przemnienienie C",
+    "author": "ejk",
+    "authorName": "Elżbieta Jackowska-Kurek",
+    "size": { "w": 60, "h": 45 },
+    "image": {
+      "src": "/media/sample/icons/przemienienie.jpeg",
+      "alt": "Ikona z pracowni",
+      "width": 784,
+      "height": 1045
+    },
+    "sample": true
+  },
+  {
+    "slug": "praca-uczestnika",
+    "title": "Mandylion B",
+    "author": "student",
+    "authorName": "uczestnik",
+    "size": { "w": 35, "h": 28 },
+    "image": {
+      "src": "/media/sample/icons/mandylion.jpg",
+      "alt": "Ikona napisana na warsztatach",
+      "width": 540,
+      "height": 673
     },
     "sample": true
   }

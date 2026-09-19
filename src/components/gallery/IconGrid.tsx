@@ -1,18 +1,13 @@
 import Image from "next/image";
+
 import type { IconWork } from "@/content/types";
+import { formatIconCaption } from "@/i18n/formatIconCaption";
 
 export interface IconGridProps {
   items: IconWork[];
   /** On mobile, show only the first N items — used for the home page's
    * curated "Wybrane ikony" preview. Omit to show all items. */
   mobileCount?: number;
-}
-
-function formatCaption(item: IconWork): string {
-  if (item.author === "student") {
-    return `${item.title}, pisana ręką ${item.authorName}`;
-  }
-  return item.size ? `${item.title}, ${item.size.w}×${item.size.h} cm` : item.title;
 }
 
 /**
@@ -39,7 +34,7 @@ export function IconGrid({ items, mobileCount }: IconGridProps) {
           </div>
           <figcaption className="font-serif text-size-body text-text-tertiary mt-space-2 md:mt-space-3">
             <span className="md:hidden">{item.title}</span>
-            <span className="hidden md:inline">{formatCaption(item)}</span>
+            <span className="hidden md:inline">{formatIconCaption(item)}</span>
           </figcaption>
         </figure>
       ))}

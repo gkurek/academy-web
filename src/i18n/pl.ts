@@ -210,6 +210,53 @@ export const pl = {
     expandBio: "Rozwiń notę",
     collapseBio: "Zwiń notę",
   },
+  gallery: {
+    title: "Galeria ikon",
+    lead:
+      "Prace Elżbiety Jackowskiej-Kurek i ikony napisane rękami uczestników warsztatów. Część prac można zamówić jako {link}.",
+    orderLinkLabel: "ikonę pisaną na konkretne wezwanie",
+    filters: {
+      authorLabel: "Autor",
+      themeLabel: "Temat",
+      authorAll: "Wszyscy",
+      authorEjk: "Elżbieta Jackowska-Kurek",
+      authorStudents: "Uczniowie",
+    },
+    tagLabels: {
+      chrystus: "Chrystus",
+      "matka-bozy": "Matka Boża",
+      swieci: "Święci",
+      swieta: "Święta",
+    },
+    count: "{total} prac — {ejk} Elżbiety Jackowskiej-Kurek, {students} uczestników warsztatów",
+    caption: {
+      student: "{title}, pisana ręką {authorName}",
+      sized: "{title}, {width}×{height} cm",
+    },
+    lightbox: {
+      close: "Zamknij",
+      closeAria: "Zamknij",
+      previous: "Poprzednia",
+      previousAria: "Poprzednia",
+      next: "Następna",
+      nextAria: "Następna",
+      position: "{index} z {total}",
+      size: "{width}×{height} cm",
+      orderLink: "Zapytaj o podobną ikonę",
+    },
+    orderTeaser: {
+      title: "Ikony na zamówienie",
+      lead:
+        "Piszemy ikony dla parafii i osób prywatnych — na konkretne wezwanie, w ustalonym rozmiarze, w technice temperowej ze złoceniem.",
+      linkLabel: "Jak zamówić ikonę",
+      image: {
+        src: "/media/sample/gallery-order-teaser.jpg",
+        alt: "Pisanie ikony",
+        width: 960,
+        height: 540,
+      },
+    },
+  },
   workshopsHub: {
     title: "Warsztaty pisania ikon",
     lead: "Dwie ścieżki. Kurs w roku akademickim — raz w tygodniu, od października do czerwca. I tygodniowy plener latem, w trybie rekolekcyjnym. Obie prowadzi Elżbieta Jackowska-Kurek, w obu pracuje się indywidualnie.",

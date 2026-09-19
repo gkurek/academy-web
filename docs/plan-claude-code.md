@@ -68,7 +68,7 @@ Statusy: ⬜ nie zaczęty · 🟡 plan w przygotowaniu · 🔵 plan zatwierdzony
 | 3   | Strony ofertowe                                | `docs/plans/03-oferta.md`        | ✅ zamknięty         | 2026-09-17 |
 | 4   | Wykłady                                        | `docs/plans/04-wyklady.md`       | ✅ zamknięty         | 2026-09-18 |
 | 4b  | Korekty po przeglądzie stagingu               | `docs/plans/04b-review-fixes.md` | ✅ zamknięty         | 2026-09-19 |
-| 5   | Galeria ikon                                   | `docs/plans/05-galeria.md`       | ⬜                   | —          |
+| 5   | Galeria ikon                                   | `docs/plans/05-galeria.md`       | 🔵 plan zatwierdzony | —          |
 | 6   | Strony pozostałe                               | `docs/plans/06-pozostale.md`     | ⬜                   | —          |
 | 7   | Wykończenie: SEO, dane strukturalne, analityka | `docs/plans/07-wykonczenie.md`   | ⬜                   | —          |
 | 8   | Migracja treści z WordPressa                   | `docs/plans/08-migracja.md`      | ⬜                   | —          |
@@ -248,8 +248,8 @@ Dla każdego: cel, zakres, kryteria ukończenia (DoD), proponowany podział na k
 | ---- | -------------------------------------------------- | -------- | ------------------------------------------------------------------------------------------- | ---------- |
 | K-02 | Źródło aktywnej pozycji nawigacji (klient/serwer)  | 1        | **Prop `active` ze strony/serwera**, nie `usePathname`; `Header`/`Footer` montują się w `PagePlaceholder` (i docelowo w stronach), nie w root `layout.tsx` — patrz `docs/plans/01-skeleton.md` | 2026-09-12 |
 | K-03 | Renderer MDX i zestaw komponentów w body           | 3        | **`@next/mdx` + `@mdx-js/react`**, mapa tagów w `mdx-components.tsx`, body w `OfferPage` (wrapper `offer-mdx`); program kursu: `<SemesterProgram />` + `semesters[]` w frontmatter (bez zmiany `types.ts`); FactsBox: etykiety + CTA per `kind × enrollmentOpen` w `pl.ts`, tel. jako drugi przycisk tylko mobile — patrz `docs/plans/03-oferta.md` | 2026-09-17 |
-| K-04 | `/ikony/[slug]` w v1                               | 5        | —                                                                                           | —          |
-| K-05 | Filtry galerii: query string vs stan               | 5        | —                                                                                           | —          |
+| K-04 | `/ikony/[slug]` w v1                               | 5        | **Poza v1** — podgląd tylko przez lightbox; trasa `[slug]` nie w tym pod-etapie — patrz `docs/plans/05-galeria.md` | 2026-09-19 |
+| K-05 | Filtry galerii: query string vs stan               | 5        | **Query string** (`?autor=ejk\|uczniowie`, `?temat=<slug-tagu>`), bez przeładowania; domyślnie wszyscy autorzy i wszystkie tematy (D-02) — patrz `docs/plans/05-galeria.md` | 2026-09-19 |
 | K-06 | Paginacja aktualności: trasa vs query              | 6        | —                                                                                           | —          |
 | K-07 | Plausible vs Umami                                 | 7        | —                                                                                           | —          |
 | K-08 | Domena kanoniczna (www / bez)                      | 7        | —                                                                                           | —          |
@@ -282,8 +282,10 @@ Dla każdego: cel, zakres, kryteria ukończenia (DoD), proponowany podział na k
 | K-35 | CTA „Zapisy" w nagłowku desktop (04b)              | 4b       | **Poza 04b** — wrócić w pod-etapie 7 z danymi analityki | 2026-09-19 |
 | K-36 | Design stopki — dopracowanie układu                | 7        | **W pod-etapie 7** — po pełnym zestawie stron i przeglądzie Lighthouse; w 04b wdrożono wariant B funkcjonalny (huby jako linki, mapa kompletna, tap targety 44 px, mobile 2 kolumny); polish: rozkład kolumn desktop/mobile, social, pasek dolny — patrz `docs/plans/04b-review-fixes.md` K-24 | 2026-09-19 |
 | K-37 | Sticky `FactsBox` na stronach ofertowych           | 7        | **Ponowne rozważenie w pod-etapie 7** — odrzucone w 04b (K-32) po prototypie; warunek `min-height: 880px`, dwukolumnowy layout przez całą stronę; opcjonalnie `ClosingCta` — patrz `docs/plans/04b-review-fixes.md` K-32 | 2026-09-19 |
+| K-38 | `Lightbox` — implementacja modalna                 | 5        | **Natywny `<dialog>` + `showModal()`**; fallback do własnego overlay tylko po negatywnym teście Safari/iOS — patrz `docs/plans/05-galeria.md` | 2026-09-19 |
+| K-39 | Obrazy w lightboxie vs. siatka                     | 5        | **Jeden `src`**, większe `sizes` w lightboxie; weryfikacja w pod-etapie 7, ewentualne `imageLarge` w `IconWork` — patrz `docs/plans/05-galeria.md` | 2026-09-19 |
 
-Decyzje spoza kodu (D-01…D-05 z briefu v2) pozostają w dokumentach ekosystemu; tu wpisujemy tylko ich skutki dla implementacji.
+Decyzje spoza kodu (D-01…D-05 z briefu v2) pozostają w dokumentach ekosystemu; tu wpisujemy tylko ich skutki dla implementacji. **D-02 (domyślny filtr galerii):** Wszyscy — skutek implementacyjny w K-05 / `docs/plans/05-galeria.md` (2026-09-19).
 
 ---
 
@@ -298,6 +300,8 @@ Lista rośnie w każdym pod-etapie. Odhaczana w pod-etapie 8.
 | „Rytm dnia” w Letniej Szkole Światła   | `content/offers/plener.mdx`                        | 3        | potwierdzenie z EJK albo usunięcie sekcji         | ⬜  |
 | Tytuł wykładu inauguracyjnego          | `content/lectures/2026-2027.json`                  | 4        | program od sekretariatu (pobrany z WP `/wyklady/tematy/`) | ✅  |
 | Wymiary ikon `[z podpisu WP]`          | `content/icons.json`                               | 2 (plik + 3–4 wpisy na stronę główną), 5 (pełny zestaw sample galerii) | migracja WP (pod-etap 8)                         | ⬜  |
+| Pełny zestaw sample galerii (~14 wpisów, 4 zdjęcia) | `content/icons.json` | 5 (Kawałek 1) | migracja WP (pod-etap 8) | ⬜ |
+| Zdjęcie zajawki zamówienia na dole galerii | `public/media/sample/gallery-order-teaser.jpg` | 5 (Kawałek 1) | oryginał z `design/uploads/` lub nowa sesja | ⬜ |
 | Czas realizacji ikony na zamówienie    | `content/offers/zamowienie.mdx` (`facts.leadTime`) | 3        | potwierdzenie z EJK                               | ⬜  |
 | Liczba sezonów (16 łącznie)            | `content/lectures/archive.json`                    | 4        | potwierdzone: bieżący 2026/2027 = szesnasty       | ✅  |
 | Zdjęcia z makiet                       | `public/media/sample/`                             | 2        | oryginały z `/wp-content/uploads/` lub nowa sesja | ⬜  |
@@ -326,6 +330,7 @@ Lista rośnie w każdym pod-etapie. Odhaczana w pod-etapie 8.
 | 2026-09-18 | **Pod-etap 4 zamknięty** (4/4 kawałki + ewaluacja merytoryczna). DoD spełnione: `/wyklady`, `/wyklady/archiwum`, `/wyklady/wykladowcy`; `LectureList`, `SeasonAccordion`, `LecturerCard`; warstwa `lectures.ts` / `lecturers.ts`; dane sample + `lecturer-directory.json`. Korekty po ewaluacji: K-20 → lead + link (bez akordeonu na hubie); `#zapisy`; `enrollmentDeadline` jako tekst; dokumentacja typów i K-21. Build/lint OK. |
 | 2026-09-19 | Pod-etap 4b — K-33 hero: **opcja A** (zostaje `min(920px, 76vh)` i siatka md+; kafle „Najbliższe" nad foldem przy 1920×917 nie są wymagane). Rejestr §4: K-33. Szczegóły i pomiary: `docs/plans/04b-review-fixes.md` K-33 pkt 1, załącznik. |
 | 2026-09-19 | **Pod-etap 4b zamknięty** (8/8 kawałków zamykających, OK użytkownika). DoD spełnione; Lighthouse a11y 100/100 na 4 trasach; rejestr K-23…K-35 w §4; brief §3 (SectionNav „Przegląd") + K-26 (Garamond min. 16,5 px); `/pracownia` zaślepka; D-1: brak CTA po scrollu (K-32/K-37). Gałąź: `feat/04b-review-fixes`. |
+| 2026-09-19 | Sesja planistyczna pod-etapu 5 zakończona, plan zatwierdzony (`docs/plans/05-galeria.md`). K-04, K-05, K-38, K-39; D-02 → wszyscy autorzy; filtry query string; lightbox bez opisu i bez `[slug]`; paginacja odłożona; tagi dynamiczne z `icons.json`; sample tylko 4 zdjęcia (bez `chrystus`/`deesis`). |
 
 ---
 
