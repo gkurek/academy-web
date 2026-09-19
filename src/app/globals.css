@@ -181,6 +181,7 @@
   --icon-grid-gap: 22px;
   --icon-grid-h: 290px;
   --icon-grid-h-m: 200px;
+  --gallery-grid-h: 300px;
 
   /* Offer pages — FactsBox sidebar, hub OfferCard, quote grid (#2a-warsztaty / #1a-oferta). */
   --offer-sidebar-w: 400px;
@@ -429,6 +430,7 @@
   --spacing-icon-grid-gap: var(--icon-grid-gap);
   --spacing-icon-grid-h: var(--icon-grid-h);
   --spacing-icon-grid-h-m: var(--icon-grid-h-m);
+  --spacing-gallery-grid-h: var(--gallery-grid-h);
 
   /* Offer pages */
   --spacing-offer-sidebar-w: var(--offer-sidebar-w);
