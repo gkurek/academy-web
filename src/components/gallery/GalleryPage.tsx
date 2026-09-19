@@ -44,7 +44,10 @@ export function GalleryPage({ active, sectionActive, searchParams }: GalleryPage
 
       <p className="text-size-ui text-text-tertiary mb-space-5">{countLabel}</p>
 
-      <GalleryIconGrid items={filteredWorks} />
+      <GalleryIconGrid
+        items={filteredWorks}
+        listKey={`${filters.author ?? ""}:${filters.tag ?? ""}`}
+      />
 
       <GalleryOrderTeaser />
     </SectionPageShell>
