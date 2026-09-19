@@ -44,7 +44,7 @@ export type SectionKey = "warsztaty" | "wyklady" | "ikony" | "wydarzenia";
 // breadcrumb (see design/README §4 — Breadcrumb).
 export const sectionNav: Record<SectionKey, NavLink[]> = {
   warsztaty: [
-    { label: "Warsztaty", href: "/warsztaty" },
+    { label: "Przegląd", href: "/warsztaty" },
     { label: "Kurs roczny i trzyletni", href: "/warsztaty/kurs-roczny-i-trzyletni" },
     { label: "Letnia Szkoła Światła", href: "/warsztaty/letnia-szkola-swiatla" },
   ],
@@ -67,13 +67,29 @@ export const sectionNav: Record<SectionKey, NavLink[]> = {
   ],
 };
 
-// Full sitemap for the footer — matches design/components/navigation/Footer.jsx,
-// plus the routes it omits (Aktualności, Publikacje, Polityka prywatności).
+// Full sitemap for the footer — original four-column layout (K-24 variant B).
+// Hub headings link to section routes; children include routes omitted from mainNav.
 export const footerSitemap: MainNavItem[] = [
   mainNav[0], // O Akademii
   mainNav[1], // Warsztaty
-  mainNav[2], // Wykłady
-  mainNav[3], // Ikony
+  {
+    label: "Wykłady",
+    href: "/wyklady",
+    children: [
+      { label: "Bieżący sezon", href: "/wyklady" },
+      { label: "Archiwum", href: "/wyklady/archiwum" },
+      { label: "Wykładowcy", href: "/wyklady/wykladowcy" },
+    ],
+  },
+  {
+    label: "Ikony",
+    href: "/ikony",
+    children: [
+      { label: "Galeria", href: "/ikony" },
+      { label: "Ikony na zamówienie", href: "/ikony/na-zamowienie" },
+    ],
+  },
+  { label: "Pracownia", href: "/pracownia" },
   { label: "Wydarzenia", href: "/wydarzenia" },
   { label: "Aktualności", href: "/aktualnosci" },
   { label: "Publikacje", href: "/publikacje" },

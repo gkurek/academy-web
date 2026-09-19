@@ -13,11 +13,11 @@ export function ReadyIconsNote({ email }: ReadyIconsNoteProps) {
     >
       <h2
         id="ready-icons-heading"
-        className="font-serif text-size-offer-ready-title leading-heading text-text-h2 shrink-0"
+        className="font-serif text-size-role-box-title-m md:text-size-role-box-title leading-heading text-text-h2 shrink-0"
       >
         {pl.offers.readyIconsTitle}
       </h2>
-      <p className="text-size-body leading-body text-text-secondary max-w-measure-ready-note m-0">
+      <p className="text-size-body leading-body text-text-secondary max-w-measure-prose m-0">
         {pl.offers.readyIconsBody}{" "}
         <TextLink href={`mailto:${email}`} className="text-size-body">
           {email}

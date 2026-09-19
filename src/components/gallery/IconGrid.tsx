@@ -27,15 +27,17 @@ export function IconGrid({ items, mobileCount }: IconGridProps) {
           key={item.slug}
           className={mobileCount != null && index >= mobileCount ? "hidden md:block" : undefined}
         >
-          <Image
-            src={item.image.src}
-            alt={item.image.alt}
-            width={item.image.width}
-            height={item.image.height}
-            sizes="(min-width: 768px) 25vw, 50vw"
-            className="w-full h-icon-grid-h-m md:h-icon-grid-h object-cover"
-          />
-          <figcaption className="font-serif text-size-nav text-text-tertiary mt-space-2 md:mt-space-3">
+          <div className="flex h-icon-grid-h-m md:h-icon-grid-h w-full items-center justify-center bg-surface-tile">
+            <Image
+              src={item.image.src}
+              alt={item.image.alt}
+              width={item.image.width}
+              height={item.image.height}
+              sizes="(min-width: 768px) 25vw, 50vw"
+              className="h-full w-full object-contain"
+            />
+          </div>
+          <figcaption className="font-serif text-size-body text-text-tertiary mt-space-2 md:mt-space-3">
             <span className="md:hidden">{item.title}</span>
             <span className="hidden md:inline">{formatCaption(item)}</span>
           </figcaption>

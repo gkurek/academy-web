@@ -21,7 +21,7 @@ export function LectureList({ items }: LectureListProps) {
           <div className="flex flex-col gap-lecture-talk-gap">
             {item.talks.map((talk, index) => (
               <div key={`${item.dateIso}-${index}`}>
-                <h3 className="text-size-tile-title leading-tile-title text-text-list-title mb-lecture-title-mb">
+                <h3 className="font-serif text-size-role-list-title-m md:text-size-role-list-title leading-heading text-text-list-title mb-lecture-title-mb">
                   {talk.title}
                 </h3>
                 {talk.lecturer ? (

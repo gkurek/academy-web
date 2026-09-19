@@ -19,7 +19,7 @@ export function LecturerBio({ bio, collapsible }: LecturerBioProps) {
     <div>
       <p
         className={[
-          "text-size-body leading-body text-text-secondary",
+          "text-size-body leading-body text-text-secondary max-w-measure-prose",
           shouldClamp ? collapsedClass : "",
         ]
           .filter(Boolean)

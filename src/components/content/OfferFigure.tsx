@@ -26,7 +26,7 @@ export function OfferFigure({ src, alt, width, height, caption }: OfferFigurePro
         className="w-full h-offer-figure-h-m md:h-offer-figure-h object-cover"
       />
       {caption && (
-        <figcaption className="font-serif italic text-size-nav text-text-tertiary mt-space-3 px-page-margin-mobile md:px-0 mb-space-7 md:mb-space-8">
+        <figcaption className="font-serif italic text-size-body text-text-tertiary mt-space-3 px-page-margin-mobile md:px-0 mb-space-7 md:mb-space-8">
           {caption}
         </figcaption>
       )}

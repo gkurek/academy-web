@@ -36,7 +36,7 @@ export function LecturesHubPage({
         className="scroll-mt-space-6 grid grid-cols-1 lg:grid-cols-offer-main gap-offer-main-gap items-start mb-space-7"
       >
         <div className="min-w-0">
-          <p className="font-serif text-size-lectures-eyebrow text-accent mb-lectures-eyebrow-mb">
+          <p className="font-serif text-size-lectures-eyebrow text-accent-text mb-lectures-eyebrow-mb">
             {eyebrow}
           </p>
           <h1 className="font-serif text-size-h1-m md:text-size-h1 leading-tight text-text-h1 mb-space-5">
@@ -44,20 +44,20 @@ export function LecturesHubPage({
           </h1>
 
           {season.intro ? (
-            <p className="text-size-lead-m md:text-size-lead leading-body text-text-secondary max-w-measure mb-space-5">
+            <p className="text-size-lead-m md:text-size-lead leading-body text-text-secondary max-w-measure-lead mb-space-5">
               {season.intro}
             </p>
           ) : null}
 
+          <div className="mb-space-5 lg:hidden">
+            <FactsBox facts={facts} kind="wyklady" />
+          </div>
+
           {season.introSecondary ? (
-            <p className="text-size-offer-intro-secondary leading-intro-secondary text-text-secondary max-w-measure">
+            <p className="text-size-body-lg leading-prose text-text-secondary max-w-measure-prose">
               {season.introSecondary}
             </p>
           ) : null}
-
-          <div className="mt-space-6 lg:hidden">
-            <FactsBox facts={facts} kind="wyklady" />
-          </div>
         </div>
 
         <div className="hidden lg:block">
@@ -68,11 +68,11 @@ export function LecturesHubPage({
       <section aria-labelledby="lectures-program-heading">
         <h2
           id="lectures-program-heading"
-          className="font-serif text-size-h2-m md:text-size-h2 leading-heading text-text-h2 mb-lectures-program-heading-mb"
+          className="font-serif text-size-role-section-h2-m md:text-size-role-section-h2 leading-heading text-text-h2 mb-lectures-program-heading-mb"
         >
           {pl.lectures.programHeading}
         </h2>
-        <p className="text-size-body leading-body text-text-secondary mb-lectures-program-lead-mb max-w-measure">
+        <p className="text-size-body leading-body text-text-secondary mb-lectures-program-lead-mb max-w-measure-prose">
           {programLead}
         </p>
         <LectureList items={season.lectures} />
@@ -82,7 +82,7 @@ export function LecturesHubPage({
         <div className="flex flex-wrap items-baseline justify-between gap-x-space-4 gap-y-space-2 mb-space-2">
           <h2
             id="lectures-archive-heading"
-            className="font-serif text-size-h2-m md:text-size-h2 leading-heading text-text-h2"
+            className="font-serif text-size-role-section-h2-m md:text-size-role-section-h2 leading-heading text-text-h2"
           >
             {pl.lectures.archiveHeading}
           </h2>
@@ -90,7 +90,7 @@ export function LecturesHubPage({
             {pl.lectures.archiveFullLink}
           </TextLink>
         </div>
-        <p className="text-size-body leading-body text-text-secondary max-w-measure">
+        <p className="text-size-body leading-body text-text-secondary max-w-measure-prose">
           {archiveIntro}
         </p>
       </section>

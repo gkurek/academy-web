@@ -41,12 +41,13 @@ export const pl = {
       },
     },
     upcomingAriaLabel: "Najbliższe",
+    upcomingHeading: "Najbliższe",
     pillars: [
       {
         title: "Warsztaty",
         body: "Kurs roczny przedwstępny i wstępny oraz trzyletni doskonalący. Materiały na miejscu, praca indywidualna. Osobno Letnia Szkoła Światła — tygodniowe plenery w trybie rekolekcyjnym.",
-        linkLabel: "Kurs roczny i trzyletni",
-        href: "/warsztaty/kurs-roczny-i-trzyletni",
+        linkLabel: "Kurs i plener",
+        href: "/warsztaty",
         image: {
           src: "/media/sample/photos/pracownia.jpg",
           alt: "Praca nad ikoną w pracowni",
@@ -167,6 +168,8 @@ export const pl = {
     },
   },
   offers: {
+    eyebrowKurs: "Warsztaty · sezon {seasonLabel}",
+    eyebrowPlener: "Plener {seasonLabel}",
     enrollmentSectionTitle: "Jak się zapisać",
     // Verbatim from brief-claude-code.md §8.
     legalNote:

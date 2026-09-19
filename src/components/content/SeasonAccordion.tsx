@@ -58,12 +58,12 @@ export function SeasonAccordion({ seasons, defaultExpandedSlug }: SeasonAccordio
                 "gap-x-season-accordion-header-mb gap-y-space-1 lg:gap-y-0 lg:items-baseline",
                 "px-season-accordion-expanded-x pt-season-accordion-expanded-y-top",
                 isExpanded
-                  ? "bg-surface-card pb-season-accordion-header-mb border-b border-line-neutral"
+                  ? "bg-surface-card pb-season-accordion-header-mb border-b border-line-neutral border-l-2 border-l-accent"
                   : "bg-surface-tile hover:bg-surface-card pb-season-accordion-collapsed-y",
               ].join(" ")}
             >
               <span
-                className="col-start-1 row-start-1 self-baseline shrink-0 font-serif text-size-season-accordion-collapsed-label text-text-list-title"
+                className="col-start-1 row-start-1 self-baseline shrink-0 font-serif text-size-season-accordion-collapsed-label text-accent-text"
               >
                 {season.label}
               </span>
@@ -78,7 +78,7 @@ export function SeasonAccordion({ seasons, defaultExpandedSlug }: SeasonAccordio
                 <ChevronIcon expanded={isExpanded} />
               </span>
               <span
-                className="col-span-2 min-w-0 self-baseline font-serif text-size-season-accordion-collapsed-label text-accent lg:col-span-1 lg:col-start-2 lg:row-start-1"
+                className="col-span-2 min-w-0 self-baseline font-serif text-size-season-accordion-collapsed-label text-text-list-title lg:col-span-1 lg:col-start-2 lg:row-start-1"
               >
                 {season.cycleTitle || pl.lectures.cycleTitlePlaceholder}
               </span>
@@ -89,7 +89,7 @@ export function SeasonAccordion({ seasons, defaultExpandedSlug }: SeasonAccordio
               role="region"
               aria-labelledby={triggerId}
               hidden={!isExpanded}
-              className="bg-surface-card"
+              className="bg-surface-card border-l-2 border-l-accent pl-tile-px"
             >
               {season.placeholder ? (
                 <p className="px-lecture-row-x text-size-body leading-body text-text-secondary">

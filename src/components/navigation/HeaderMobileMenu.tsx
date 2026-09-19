@@ -1,6 +1,6 @@
 "use client";
 
-import { useId, useState } from "react";
+import { useCallback, useEffect, useId, useLayoutEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { Button } from "@/components/core/Button";
 import { pl } from "@/i18n/pl";
@@ -59,32 +59,139 @@ function ChevronIcon({ expanded }: { expanded: boolean }) {
   );
 }
 
+function getFocusableElements(container: HTMLElement): HTMLElement[] {
+  return Array.from(
+    container.querySelectorAll<HTMLElement>(
+      'a[href], button:not([disabled]), textarea, input, select, [tabindex]:not([tabindex="-1"])',
+    ),
+  ).filter((element) => !element.hasAttribute("disabled"));
+}
+
 export function HeaderMobileMenu({ active, phone, blogUrl }: HeaderMobileMenuProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [expandedSection, setExpandedSection] = useState<string | null>(null);
+  const [headerBarHeight, setHeaderBarHeight] = useState(0);
   const drawerId = useId();
+  const headerBarRef = useRef<HTMLDivElement>(null);
+  const drawerRef = useRef<HTMLDivElement>(null);
+  const menuButtonRef = useRef<HTMLButtonElement>(null);
+
+  const closeMenu = useCallback(() => {
+    setIsOpen(false);
+    setExpandedSection(null);
+    menuButtonRef.current?.focus();
+  }, []);
+
+  useLayoutEffect(() => {
+    const headerBar = headerBarRef.current;
+    if (!headerBar) {
+      return undefined;
+    }
+
+    const updateHeight = () => {
+      setHeaderBarHeight(headerBar.offsetHeight);
+    };
+
+    updateHeight();
+    const observer = new ResizeObserver(updateHeight);
+    observer.observe(headerBar);
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    if (!isOpen) {
+      return undefined;
+    }
+
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = previousOverflow;
+    };
+  }, [isOpen]);
+
+  useEffect(() => {
+    if (!isOpen) {
+      return undefined;
+    }
+
+    const drawer = drawerRef.current;
+    if (!drawer) {
+      return undefined;
+    }
+
+    const focusable = getFocusableElements(drawer);
+    focusable[0]?.focus();
+
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        event.preventDefault();
+        closeMenu();
+        return;
+      }
+
+      if (event.key !== "Tab") {
+        return;
+      }
+
+      const elements = getFocusableElements(drawer);
+      if (elements.length === 0) {
+        return;
+      }
+
+      const first = elements[0];
+      const last = elements[elements.length - 1];
+      const activeElement = document.activeElement;
+
+      if (event.shiftKey && activeElement === first) {
+        event.preventDefault();
+        last.focus();
+        return;
+      }
+
+      if (!event.shiftKey && activeElement === last) {
+        event.preventDefault();
+        first.focus();
+      }
+    };
+
+    document.addEventListener("keydown", onKeyDown);
+    return () => document.removeEventListener("keydown", onKeyDown);
+  }, [closeMenu, isOpen]);
 
   return (
     <>
-      <div className="flex items-center justify-between gap-space-4 px-page-margin-mobile py-space-5">
+      <div
+        ref={headerBarRef}
+        className="relative z-50 flex items-center justify-between gap-space-4 bg-surface-page px-page-margin-mobile py-space-5"
+      >
         <Link href="/" className="font-serif leading-tight">
           <div className="text-size-logo-m text-text-h2">{pl.meta.orgShortName}</div>
           <div className="text-size-caption-m text-text-tertiary">{pl.meta.orgSubtitle}</div>
         </Link>
         <button
+          ref={menuButtonRef}
           type="button"
           onClick={() => setIsOpen((value) => !value)}
           aria-expanded={isOpen}
           aria-controls={drawerId}
           aria-label={pl.header.menuToggleLabel}
-          className="flex-none w-tap-min-mobile-header h-tap-min-mobile-header flex items-center justify-center border border-border-button text-text-body"
+          className="flex h-tap-min-mobile-header w-tap-min-mobile-header flex-none items-center justify-center border border-border-button text-text-body"
         >
           <MenuIcon open={isOpen} />
         </button>
       </div>
 
       {isOpen && (
-        <div id={drawerId}>
+        <div
+          ref={drawerRef}
+          id={drawerId}
+          role="dialog"
+          aria-modal="true"
+          aria-label={pl.header.menuToggleLabel}
+          className="fixed inset-x-0 bottom-0 z-40 overflow-y-auto bg-surface-page motion-safe:transition-none"
+          style={{ top: headerBarHeight }}
+        >
           <nav className="grid">
             {mainNav.map((item) => {
               if (!item.children) {
@@ -92,6 +199,7 @@ export function HeaderMobileMenu({ active, phone, blogUrl }: HeaderMobileMenuPro
                   <Link
                     key={item.label}
                     href={item.href}
+                    onClick={closeMenu}
                     className={
                       "border-b border-line-neutral px-page-margin-mobile py-space-5 text-size-h3-m " +
                       (item.label === active ? "text-accent-text" : "text-text-list-title")
@@ -110,6 +218,7 @@ export function HeaderMobileMenu({ active, phone, blogUrl }: HeaderMobileMenuPro
                   <div className="flex items-center justify-between">
                     <Link
                       href={item.href}
+                      onClick={closeMenu}
                       className={
                         "flex-1 px-page-margin-mobile py-space-5 text-size-h3-m " +
                         (item.label === active ? "text-accent-text" : "text-text-list-title")
@@ -123,7 +232,7 @@ export function HeaderMobileMenu({ active, phone, blogUrl }: HeaderMobileMenuPro
                       aria-expanded={expanded}
                       aria-controls={sectionId}
                       aria-label={`${expanded ? pl.header.sectionCollapseLabel : pl.header.sectionExpandLabel} ${item.label}`}
-                      className="flex-none mr-space-1 w-tap-min h-tap-min flex items-center justify-center text-text-tertiary"
+                      className="mr-space-1 flex h-tap-min w-tap-min flex-none items-center justify-center text-text-tertiary"
                     >
                       <ChevronIcon expanded={expanded} />
                     </button>
@@ -134,7 +243,8 @@ export function HeaderMobileMenu({ active, phone, blogUrl }: HeaderMobileMenuPro
                         <Link
                           key={child.label}
                           href={child.href}
-                          className="block pl-menu-indent pr-page-margin-mobile py-space-4 text-size-ui-m text-text-secondary"
+                          onClick={closeMenu}
+                          className="block py-space-4 pr-page-margin-mobile pl-menu-indent text-size-ui-m text-text-secondary"
                         >
                           {child.label}
                         </Link>
@@ -146,19 +256,23 @@ export function HeaderMobileMenu({ active, phone, blogUrl }: HeaderMobileMenuPro
             })}
           </nav>
 
-          <div className="px-page-margin-mobile pt-space-6 pb-space-6">
-            <Button block size="lg" href="/warsztaty" className="mb-space-4">
+          <div className="px-page-margin-mobile pb-space-6 pt-space-6">
+            <Button block size="lg" href="/warsztaty" className="mb-space-4" onClick={closeMenu}>
               {pl.header.primaryCta}
             </Button>
-            <Button block size="lg" variant="secondary" href="/kontakt">
+            <Button block size="lg" variant="secondary" href="/kontakt" onClick={closeMenu}>
               {pl.header.contactCta} · {phone}
             </Button>
             <div className="mt-space-6 text-size-ui text-text-tertiary">
-              <Link href="/aktualnosci">{pl.header.newsLink}</Link>
+              <Link href="/aktualnosci" onClick={closeMenu}>
+                {pl.header.newsLink}
+              </Link>
               {" · "}
-              <Link href="/publikacje">{pl.header.publicationsLink}</Link>
+              <Link href="/publikacje" onClick={closeMenu}>
+                {pl.header.publicationsLink}
+              </Link>
               {" · "}
-              <a href={blogUrl} rel="noopener noreferrer">
+              <a href={blogUrl} rel="noopener noreferrer" onClick={closeMenu}>
                 {pl.header.blogLink}
               </a>
             </div>

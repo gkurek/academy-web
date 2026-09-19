@@ -72,9 +72,22 @@
   --size-lead: 19.5px;
   --size-body: 16.5px;
   --size-body-lg: 17.5px;
-  --size-ui: 15.5px;
-  --size-nav: 15px;
+  --size-ui: 16.5px;
+  --size-nav: 16px;
   --size-caption: 14.5px;
+
+  /* K-25 typography roles */
+  --role-section-h2: var(--size-h2);
+  --role-section-h2-m: var(--size-h2-m);
+  --role-card-title: 28px;
+  --role-card-title-m: 24px;
+  --role-box-title: 24px;
+  --role-box-title-m: 22px;
+  --role-row-title: 21px;
+  --role-row-title-m: 19px;
+  --role-list-title: 18.5px;
+  --role-list-title-m: 18px;
+  --leading-prose: 1.7;
   --size-quote: 20px;
   --size-quote-lg: 38px;
 
@@ -84,7 +97,7 @@
   --size-h3-m: 21px;
   --size-lead-m: 17.5px;
   --size-body-m: 16.5px;
-  --size-ui-m: 16px;
+  --size-ui-m: 16.5px;
   --size-caption-m: 15px;
 
   --leading-tight: 1.12;
@@ -102,6 +115,9 @@
   --space-7: 34px;
   --space-8: 52px;
   --space-9: 56px;
+  --space-10: 80px;
+  --space-11: 96px;
+  --space-12: 120px;
 
   --page-margin: 56px;
   --page-margin-mobile: 20px;
@@ -115,7 +131,8 @@
   --tap-min-mobile-header: 44px;
 
   --content-max: 1180px;
-  --measure: 34em;
+  --measure-lead: 680px;
+  --measure-prose: 640px;
 
   /* Home hero — larger than the generic Hero.jsx padding/type scale
      (mirrors --size-h1-home already being a distinct "home" step). */
@@ -123,18 +140,23 @@
   --hero-pb: 60px;
   --hero-pt-m: 26px;
   --hero-pb-m: 34px;
-  /* Exact values from the resolved mockup DOM (design/Akademia Ikony -
-     kierunki wizualne.dc.html, #1a desktop / mobile "strona główna" — the
-     raw .dc.html source only has unresolved {{ heroStyleDesktop/Mobile }}
-     placeholders, confirmed against the live-resolved element). */
-  --hero-image-h: 760px;
-  --hero-image-w-m: 62%;
+  /* K-33 opcja A (04b): larger hero than review recommendation min(760px, 68vh).
+     Mockup #1a had fixed 760px desktop; 920px/76vh keeps icon legibility — fold
+     of "Najbliższe" not required. See docs/plans/04b-review-fixes.md K-33 pkt 1. */
+  --hero-image-h: min(920px, 76vh);
+  --hero-image-w-m: 72%;
+  /* Portrait aspect (360×682 source) — keeps width in sync when the grid column
+     shrinks between md and wide desktop. */
+  --hero-image-w: calc(var(--hero-image-h) * 360 / 682);
+  /* Text column floor on md+ — image column (max 500px) shrinks first. */
+  --hero-text-min: 300px;
 
   /* "Najbliższe" tiles — literals from resolved mockup DOM (#1a desktop). */
   --tile-py: 28px;
   --tile-px: 30px;
   --tile-py-m: 22px;
-  --tile-title-size: 18.5px;
+  --tile-title-size: 21px;
+  --tile-title-size-m: 19px;
   --tile-title-leading: 1.45;
   --tile-link-mt: 14px;
   --tile-link-mt-m: 12px;
@@ -166,21 +188,20 @@
   --offer-facts-x: 32px;
   --offer-facts-y: 30px;
   --offer-facts-pb: 32px;
-  --offer-facts-top: 3px;
-  --offer-facts-heading: 24px;
+  --offer-facts-top: 2px;
+  --offer-facts-heading: var(--role-box-title);
+  --offer-facts-heading-m: var(--role-box-title-m);
   --offer-facts-dd-mt: 2px;
   --offer-facts-dd-mb: 16px;
-  --offer-intro-secondary: 17px;
   --leading-facts: 1.55;
-  --leading-intro-secondary: 1.65;
   --leading-quote-offer: 1.55;
   --offer-card-image-h: 240px;
   --offer-card-x: 34px;
   --offer-card-y: 32px;
   --offer-card-pb: 36px;
-  --offer-card-title: 30px;
+  --offer-card-title: var(--role-card-title);
+  --offer-card-title-m: var(--role-card-title-m);
   --offer-hub-lead-pb: 44px;
-  --measure-hub-lead: 38em;
   --offer-quotes-gap: 22px;
   --offer-quote-x: 30px;
   --offer-quote-y: 28px;
@@ -219,10 +240,9 @@
   --offer-examples-heading-mb: 28px;
   --offer-examples-link-mt: 22px;
   --offer-examples-pb: 56px;
-  --measure-ready-note: 46em;
 
   /* Lectures hub + LectureList (#2a-wyklady). */
-  --lectures-eyebrow: 16px;
+  --lectures-eyebrow: var(--size-body);
   --lectures-eyebrow-mb: 12px;
   --lectures-program-heading-mb: 8px;
   --lectures-program-lead-mb: 26px;
@@ -239,7 +259,7 @@
   --season-accordion-expanded-y-top: 24px;
   --season-accordion-collapsed-y: 22px;
   --season-accordion-collapsed-label: 22px;
-  --season-accordion-toggle: 15px;
+  --season-accordion-toggle: var(--size-caption);
   --season-accordion-header-mb: 18px;
 
   /* LecturerCard + LecturersPage (#3a-wykladowcy layout, WP row with photo). */
@@ -301,9 +321,20 @@
   --text-size-h2-sm: var(--size-h2-sm);
   --text-size-h2-m: var(--size-h2-m);
   --text-size-quote-lg: var(--size-quote-lg);
+  --text-size-role-section-h2: var(--role-section-h2);
+  --text-size-role-section-h2-m: var(--role-section-h2-m);
+  --text-size-role-card-title: var(--role-card-title);
+  --text-size-role-card-title-m: var(--role-card-title-m);
+  --text-size-role-box-title: var(--role-box-title);
+  --text-size-role-box-title-m: var(--role-box-title-m);
+  --text-size-role-row-title: var(--role-row-title);
+  --text-size-role-row-title-m: var(--role-row-title-m);
+  --text-size-role-list-title: var(--role-list-title);
+  --text-size-role-list-title-m: var(--role-list-title-m);
+  --leading-prose: 1.7;
   /* Logo lockup — a fixed brand element, not part of the general type scale. */
   --text-size-logo: 23px;
-  --text-size-logo-subtitle: 14px;
+  --text-size-logo-subtitle: 15px;
   --text-size-logo-m: 18px;
 
   --tracking-logo: .14em;
@@ -332,6 +363,11 @@
   --spacing-space-5: var(--space-5);
   --spacing-space-6: var(--space-6);
   --spacing-space-7: var(--space-7);
+  --spacing-space-10: var(--space-10);
+  --spacing-space-11: var(--space-11);
+  --spacing-space-12: var(--space-12);
+  --spacing-section-gap: var(--section-gap);
+  --spacing-section-gap-mobile: var(--section-gap-mobile);
   --spacing-page-margin: var(--page-margin);
   --spacing-page-margin-mobile: var(--page-margin-mobile);
   --spacing-tap-min: var(--tap-min);
@@ -358,7 +394,8 @@
   --spacing-hero-pb-m: var(--hero-pb-m);
   --spacing-hero-image-h: var(--hero-image-h);
   --spacing-hero-image-w-m: var(--hero-image-w-m);
-  --grid-template-columns-hero: 1fr 420px;
+  --spacing-hero-image-w: var(--hero-image-w);
+  --grid-template-columns-hero: minmax(var(--hero-text-min), 1fr) minmax(0, 500px);
 
   /* "Najbliższe" tiles */
   --spacing-tile-py: var(--tile-py);
@@ -368,6 +405,7 @@
   --spacing-tile-link-mt-m: var(--tile-link-mt-m);
   --spacing-hairline-gap: var(--hairline-gap);
   --text-size-tile-title: var(--tile-title-size);
+  --text-size-tile-title-m: var(--tile-title-size-m);
   --leading-tile-title: var(--tile-title-leading);
 
   /* Three pillars */
@@ -375,8 +413,9 @@
   --spacing-pillar-image-h: var(--pillar-image-h);
   --spacing-pillar-image-h-m: var(--pillar-image-h-m);
 
-  /* Text measure (Hero lead, body copy) — design/README §3 "miara tekstu 34–36 em". */
-  --spacing-measure: var(--measure);
+  /* Text measure — K-28: lead 680 px, prose 640 px. */
+  --max-width-measure-lead: var(--measure-lead);
+  --max-width-measure-prose: var(--measure-prose);
 
   /* Page column — mockup canvas is 1180px (design/README §3 "kolumna treści do 1180 px"). */
   --spacing-content-max: var(--content-max);
@@ -408,12 +447,11 @@
   --spacing-offer-quote-x: var(--offer-quote-x);
   --spacing-offer-quote-y: var(--offer-quote-y);
   --text-size-offer-card-title: var(--offer-card-title);
+  --text-size-offer-card-title-m: var(--offer-card-title-m);
   --text-size-offer-facts-heading: var(--offer-facts-heading);
-  --text-size-offer-intro-secondary: var(--offer-intro-secondary);
+  --text-size-offer-facts-heading-m: var(--offer-facts-heading-m);
   --leading-facts: 1.55;
-  --leading-intro-secondary: 1.65;
   --leading-quote-offer: 1.55;
-  --max-width-measure-hub: var(--measure-hub-lead);
   --border-width-offer-facts-top: var(--offer-facts-top);
   --border-width-offer-quote-top: var(--offer-quote-top);
   --grid-template-columns-offer-main: 1fr var(--offer-sidebar-w);
@@ -451,8 +489,6 @@
   --spacing-offer-examples-pb: var(--offer-examples-pb);
   --text-size-offer-step-num: var(--offer-step-num);
   --text-size-offer-ready-title: var(--offer-ready-title);
-  --max-width-measure-ready-note: var(--measure-ready-note);
-
   /* Lectures hub + LectureList */
   --text-size-lectures-eyebrow: var(--lectures-eyebrow);
   --text-size-lecture-date: var(--lecture-date-size);
@@ -642,6 +678,21 @@
     --nav-underline-color: var(--accent-hover);
   }
 
+  /* Nav/footer tap targets — min 44 px height (K-23, K-24, K-25). */
+  .tap-target-nav {
+    display: inline-flex;
+    align-items: center;
+    min-height: var(--tap-min-mobile-header);
+  }
+
+  /* Stacked footer sitemap links — block row, not inline with siblings. */
+  .tap-target-nav-block {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    min-height: var(--tap-min-mobile-header);
+  }
+
   /* Secondary button — border lines only: top/bottom first, then sides (≤150ms each). */
   .btn-secondary {
     position: relative;
@@ -733,7 +784,32 @@
   }
 }
 
+@media (min-width: 1024px) {
+  :root {
+    --section-gap: 96px;
+  }
+}
+
+@media (min-width: 1600px) {
+  :root {
+    --content-max: 1280px;
+  }
+}
+
 @layer components {
+  .offer-mdx > p {
+    max-width: var(--measure-prose);
+    font-size: var(--size-body-lg);
+    line-height: var(--leading-prose);
+  }
+
+  @media (max-width: 767px) {
+    .offer-mdx > p {
+      font-size: var(--size-body-m);
+      line-height: var(--leading-body);
+    }
+  }
+
   .offer-mdx .offer-day-rhythm-label {
     font-size: var(--size-caption);
     line-height: var(--leading-body);

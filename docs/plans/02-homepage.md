@@ -163,3 +163,13 @@ Przegląd kodu po zamknięciu pod-etapu — implementacja zgodna z planem i udok
 Jedyna drobna luka względem dosłownego DoD: szablon podpisu w `IconGrid.tsx` (nie blokuje pod-etapu; przeniesienie do `pl.ts` zaplanowane w pod-etapie 5).
 
 Dokumentacja zsynchronizowana 2026-09-13: `01-skeleton.md`, `plan-claude-code.md` §3/§4, `brief-claude-code.md` §4 (K-16, hamburger, zakres mediów).
+
+## Korekta 04b — hero (K-33, opcja A, 2026-09-19)
+
+Wartości z „Drugiej poprawki" (760 px desktop / 62% mobile) **zastąpione** w pod-etapie 04b. Obowiązujące tokeny — patrz `docs/plans/04b-review-fixes.md` K-33 pkt 1 i rejestr K-33 w `docs/plan-claude-code.md` §4:
+
+- `--hero-image-h: min(920px, 76vh)` (nie `760px` ani `min(760px, 68vh)`)
+- `--hero-image-w-m: 72%` (makieta 62%)
+- `--hero-text-min: 300px`, kolumna obrazu max 500 px, wyrównanie prawo/desktop
+
+Kafle „Najbliższe" mogą zaczynać się pod foldem przy krótkim oknie (np. 1920×917) — świadoma decyzja właściciela repo.

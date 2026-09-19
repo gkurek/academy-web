@@ -15,10 +15,13 @@ export function OfferQuoteGrid({ heading, quotes, columns = 3 }: OfferQuoteGridP
       : "grid grid-cols-1 md:grid-cols-3 gap-offer-quotes-gap";
 
   return (
-    <section aria-labelledby="offer-quotes-heading" className="pb-space-9">
+    <section
+      aria-labelledby="offer-quotes-heading"
+      className="mt-section-gap-mobile md:mt-section-gap pb-section-gap-mobile md:pb-section-gap"
+    >
       <h2
         id="offer-quotes-heading"
-        className="font-serif text-size-h2 leading-heading text-text-h2 mb-space-2"
+        className="font-serif text-size-role-section-h2-m md:text-size-role-section-h2 leading-heading text-text-h2 mb-space-2"
       >
         {heading}
       </h2>

@@ -7,6 +7,22 @@ import type { LoadedOffer } from "@/content/offers";
 import { pl } from "@/i18n/pl";
 import type { SectionKey } from "@/navigation";
 
+function getOfferEyebrow(kind: LoadedOffer["kind"], seasonLabel?: string): string | null {
+  if (!seasonLabel) {
+    return null;
+  }
+
+  if (kind === "kurs") {
+    return pl.offers.eyebrowKurs.replace("{seasonLabel}", seasonLabel);
+  }
+
+  if (kind === "plener") {
+    return pl.offers.eyebrowPlener.replace("{seasonLabel}", seasonLabel);
+  }
+
+  return null;
+}
+
 export interface OfferPageProps {
   offer: LoadedOffer;
   section: SectionKey;
@@ -37,19 +53,19 @@ function EnrollmentSection({ quoteSlot }: { quoteSlot?: ReactNode }) {
         <div>
           <h2
             id="offer-enrollment-heading"
-            className="font-serif text-size-h2-m md:text-size-h2-sm leading-heading text-text-h2 mb-space-5"
+            className="font-serif text-size-role-section-h2-m md:text-size-role-section-h2 leading-heading text-text-h2 mb-space-5"
           >
             {pl.offers.enrollmentSectionTitle}
           </h2>
           {enrollment.paragraphs.map((paragraph) => (
             <p
               key={paragraph}
-              className="text-size-body-lg leading-loose text-text-secondary max-w-measure mb-space-4 last:mb-space-5"
+              className="text-size-body-lg leading-prose text-text-secondary max-w-measure-prose mb-space-4 last:mb-space-5"
             >
               {paragraph}
             </p>
           ))}
-          <p className="text-size-caption leading-body text-text-tertiary max-w-measure pt-space-5 border-t border-line-neutral">
+          <p className="text-size-caption leading-body text-text-tertiary max-w-measure-prose pt-space-5 border-t border-line-neutral">
             {pl.offers.legalNote}
           </p>
         </div>
@@ -68,6 +84,7 @@ export function OfferPage({
   afterBodySlot,
 }: OfferPageProps) {
   const { Content, title, lead, leadSecondary, facts, kind, semesters, steps } = offer;
+  const eyebrow = getOfferEyebrow(kind, facts.seasonLabel);
   const showEnrollment = kind === "kurs";
   const enrollmentQuoteSlot = showEnrollment ? quoteSlot : undefined;
   const trailingQuoteSlot = !showEnrollment ? quoteSlot : undefined;
@@ -76,18 +93,23 @@ export function OfferPage({
     <SectionPageShell active={active} section={section} sectionActive={sectionActive}>
       <div className="grid grid-cols-1 lg:grid-cols-offer-main gap-offer-main-gap items-start mb-space-7">
         <div className="min-w-0">
+          {eyebrow ? (
+            <p className="font-serif text-size-body text-accent-text mb-lectures-eyebrow-mb">
+              {eyebrow}
+            </p>
+          ) : null}
           <h1 className="font-serif text-size-h1-m md:text-size-h1 leading-tight text-text-h1 mb-space-5">
             {title}
           </h1>
 
           {lead && (
-            <p className="text-size-lead-m md:text-size-lead leading-body text-text-secondary max-w-measure mb-space-5">
+            <p className="text-size-lead-m md:text-size-lead leading-body text-text-secondary max-w-measure-lead mb-space-5">
               {lead}
             </p>
           )}
 
           {leadSecondary && (
-            <p className="text-size-offer-intro-secondary leading-intro-secondary text-text-secondary max-w-measure">
+            <p className="text-size-body-lg leading-prose text-text-secondary max-w-measure-prose">
               {leadSecondary}
             </p>
           )}

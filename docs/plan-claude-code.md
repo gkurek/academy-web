@@ -67,6 +67,7 @@ Statusy: ⬜ nie zaczęty · 🟡 plan w przygotowaniu · 🔵 plan zatwierdzony
 | 2   | Strona główna                                  | `docs/plans/02-homepage.md` | ✅ zamknięty         | 2026-09-12 |
 | 3   | Strony ofertowe                                | `docs/plans/03-oferta.md`        | ✅ zamknięty         | 2026-09-17 |
 | 4   | Wykłady                                        | `docs/plans/04-wyklady.md`       | ✅ zamknięty         | 2026-09-18 |
+| 4b  | Korekty po przeglądzie stagingu               | `docs/plans/04b-review-fixes.md` | ✅ zamknięty         | 2026-09-19 |
 | 5   | Galeria ikon                                   | `docs/plans/05-galeria.md`       | ⬜                   | —          |
 | 6   | Strony pozostałe                               | `docs/plans/06-pozostale.md`     | ⬜                   | —          |
 | 7   | Wykończenie: SEO, dane strukturalne, analityka | `docs/plans/07-wykonczenie.md`   | ⬜                   | —          |
@@ -153,9 +154,22 @@ Dla każdego: cel, zakres, kryteria ukończenia (DoD), proponowany podział na k
 
 **Pytania:** rozstrzygnięte w sesji planistycznej — patrz K-17…K-22 w §4 i `docs/plans/04-wyklady.md`. Przed Kawałkiem 1: osobna sesja przygotowania danych (K-22).
 
+### Pod-etap 4b — Korekty po przeglądzie stagingu
+
+**Cel:** doprowadzić skeleton, home, ofertę i wykłady do spójnego systemu przed pod-etapem 5 (galeria dziedziczy te same komponenty).
+
+**Zakres:** bugi układu, skala typografii i role kolorów, stopka/`SectionNav`, rytm pionowy i szerokość kontenera, home (hero, Najbliższe, filary). Poza zakresem: sticky `FactsBox`, `ClosingCta`, stany czasu w `LectureList` (K-34), CTA „Zapisy" w nagłowku desktop (K-35). Szczegóły: `docs/plans/04b-review-fixes.md`.
+
+**DoD:** wszystkie checkboxy w planie 04b odhaczone (CTA po scrollu — N/A, świadoma decyzja D-1); Lighthouse a11y 100/100 na 4 trasach; rejestr K-23…K-35 w §4.
+
 ### Pod-etap 5 — Galeria ikon
 
 **Zakres:** `/ikony` z `IconGrid`, filtry autor (Elżbieta / uczniowie) i temat (z `tags`), `Lightbox` desktop i mobile (strzałki ≥ 48 px, zamknięcie, klawiatura, blokada scrolla, focus trap); podpisy: tytuł, autor, wymiary, rok; zdanie o zamawianiu z linkiem do `/ikony/na-zamowienie`; zajawka „Ikony na zamówienie” na dole. `/ikony/[slug]` — decyzja w sesji planistycznej (brief: opcjonalnie w v1). **`content/icons.json`** — uzupełnienie do pełnego zestawu `sample` galerii (ten sam plik co w pod-etapie 2; wymiary z podpisów nadal niezweryfikowane).
+
+**Założenia wejściowe z pod-etapu 4b** (szczegóły w `docs/plans/04b-review-fixes.md` §„Założenia wejściowe dla planu 05"):
+- kadrowanie: `object-contain` na `--surface-tile`, stała wysokość kafla (K-31);
+- podpisy: Garamond min. 16,5 px, meta `--accent-text` (K-26);
+- layout: `--content-max: 1280px` od 1600 px (K-30); H2 sekcji wg tabeli ról K-25.
 
 **DoD:**
 
@@ -183,7 +197,7 @@ Dla każdego: cel, zakres, kryteria ukończenia (DoD), proponowany podział na k
 
 ### Pod-etap 7 — Wykończenie: SEO, dane strukturalne, analityka
 
-**Zakres:** `generateMetadata` + Open Graph dla każdej trasy (obraz OG domyślny + per strona); `sitemap.ts`, `robots.ts`; JSON-LD: `Organization` (z `parentOrganization`), `Person` (EJK, `sameAs`), `Event` dla bieżącego sezonu, `Course` dla kursu i pleneru; Plausible lub Umami bez ciasteczek ze zdarzeniami na CTA zapisów, `mailto:`, `tel:`; przegląd Lighthouse (dostępność ≥ 95, wydajność ≥ 90 mobile) i naprawa blokad; przegląd kontrastu i fokusu na wszystkich stanach z ekranu „Komponenty”.
+**Zakres:** `generateMetadata` + Open Graph dla każdej trasy (obraz OG domyślny + per strona); `sitemap.ts`, `robots.ts`; JSON-LD: `Organization` (z `parentOrganization`), `Person` (EJK, `sameAs`), `Event` dla bieżącego sezonu, `Course` dla kursu i pleneru; Plausible lub Umami bez ciasteczek ze zdarzeniami na CTA zapisów, `mailto:`, `tel:`; przegląd Lighthouse (dostępność ≥ 95, wydajność ≥ 90 mobile) i naprawa blokad; przegląd kontrastu i fokusu na wszystkich stanach z ekranu „Komponenty”; **dopracowanie designu stopki** (`Footer`) — układ desktop i mobile, rozkład kolumn, social, pasek dolny (K-36; w 04b wdrożono wariant B funkcjonalny, bez finalnego polishu); **ponowne rozważenie sticky `FactsBox`** (K-37; odrzucone w 04b po prototypie — patrz `docs/plans/04b-review-fixes.md` K-32).
 
 **DoD:**
 
@@ -253,6 +267,21 @@ Dla każdego: cel, zakres, kryteria ukończenia (DoD), proponowany podział na k
 | K-20 | Podgląd archiwum na hubie                          | 4        | **Lead + link „Pełne archiwum”** (bez `SeasonAccordion` na hubie); pełne archiwum na `/wyklady/archiwum` | 2026-09-18 |
 | K-21 | `lecturerSlugs` bez wpisu w rejestrze              | 4        | Join → `lecturer-directory.json` + `lecturers.json`; brak wpisu → heurystyka ze sluga, bez linku; rozszerzenia `types.ts`: `affiliationFull`, `introSecondary`, `LecturerDirectoryEntry` | 2026-09-17 |
 | K-22 | Przygotowanie danych przed implementacją           | 4        | **Osobna konwersacja** (krok po kroku); pełny pakiet: `2026-2027.json`, 2–3 archiwum `sample`, wykładowcy z WP + zdjęcia | 2026-09-17 |
+| K-23 | Pierwsza pozycja `SectionNav` (04b)              | 4b       | **Hub nazwany treścią, nie sekcją** — Warsztaty: „Przegląd"; Wykłady bez zmian; Ikony: „Galeria"; mobile: zawijanie, tap ≥ 44 px | 2026-09-19 |
+| K-24 | Układ stopki (04b)                                 | 4b       | **Wariant B** — 4 kolumny desktop, huby jako linki, `/pracownia` + brakujące pozycje, etykiety kontaktu Plex tertiary, tap 44 px; polish układu → pod-etap 7 (K-36) | 2026-09-19 |
+| K-25 | Skala H2/H3 i tekst (04b)                          | 4b       | **Jedna tabela ról** w `globals.css`, waga 400, tag HTML wg kolejności w dokumencie; `--size-nav` 16 px; tap menu/SectionNav ≥ 44 px | 2026-09-19 |
+| K-26 | Minimalny rozmiar EB Garamond (04b)                | 4b       | **Min. 16,5 px**; mniejsze etykiety → Plex 14,5 px; wyjątek logo: podtytuł 15 px desktop; dopisek w `brief-claude-code.md` §7 | 2026-09-19 |
+| K-27 | Role kolorów i detale spójności (04b)               | 4b       | Złoto = metadane (`--accent-text`); belka 2 px; `SeasonAccordion` role kolorów + stan otwarty; nadtytuły sezonu na ofertach; full-bleed kafli Najbliższe mobile — świadomy wyjątek (makieta `#3b`) | 2026-09-19 |
+| K-28 | Szerokość linii (04b)                              | 4b       | **`--measure-lead` 680 px**, **`--measure-prose` 640 px** na leadach, body MDX i biogramach | 2026-09-19 |
+| K-29 | Skala odstępów i rytm desktop (04b)                | 4b       | **Tokeny `--space-10/11/12`, `--section-gap` 96 px od 1024 px, cytat home 120 px góra/dół.** Świadome odstępstwo: dolna linia cytatu (`rule-gold-b`) **zostaje** — cezura między cytatem a „Wybrane ikony"; pierwotna rekomendacja usunięcia odrzucona po review | 2026-09-19 |
+| K-30 | `content-max` na szerokich ekranach (04b)          | 4b       | **`--content-max: 1280px` od 1600 px**; tekst trzyma K-28; siatki korzystają z szerszego kontenera | 2026-09-19 |
+| K-31 | Kadrowanie ikon w `IconGrid` (04b)                 | 4b       | **`object-contain`** na `--surface-tile`, stała wysokość boksu; reguła wejściowa pod-etapu 5 | 2026-09-19 |
+| K-32 | Sticky `FactsBox` + `ClosingCta` (04b)             | 4b       | **Odrzucono** — layout bez zmian. **Świadoma decyzja D-1:** brak CTA po scrollu; zapis tylko w `FactsBox` w nagłówku; powrót w pod-etapie 7 (K-37) | 2026-09-19 |
+| K-33 | Hero home — rozmiar obrazu i fold (04b)            | 4b       | **Częściowo** — H2 „Najbliższe", filary → huby; `ClosingCta` home odrzucony (K-32). Hero: rekomendacja review `min(760px, 68vh)` **nie wdrożona** — **opcja A (2026-09-19):** zostaje `min(920px, 76vh)`, kolumna obrazu max 500 px, mobile 72%, siatka md+ (`--hero-text-min: 300px`). Kafle „Najbliższe" nad foldem przy 1920×917 **nie są wymagane** (priorytet: czytelność ikony). Patrz `docs/plans/04b-review-fixes.md` K-33 pkt 1 | 2026-09-19 |
+| K-34 | Stan czasu w `LectureList` (04b)                   | 4b       | **Odłożone** — bez zmian; obliczanie po stronie serwera + `revalidate`; powrót po pod-etapie 7 | 2026-09-19 |
+| K-35 | CTA „Zapisy" w nagłowku desktop (04b)              | 4b       | **Poza 04b** — wrócić w pod-etapie 7 z danymi analityki | 2026-09-19 |
+| K-36 | Design stopki — dopracowanie układu                | 7        | **W pod-etapie 7** — po pełnym zestawie stron i przeglądzie Lighthouse; w 04b wdrożono wariant B funkcjonalny (huby jako linki, mapa kompletna, tap targety 44 px, mobile 2 kolumny); polish: rozkład kolumn desktop/mobile, social, pasek dolny — patrz `docs/plans/04b-review-fixes.md` K-24 | 2026-09-19 |
+| K-37 | Sticky `FactsBox` na stronach ofertowych           | 7        | **Ponowne rozważenie w pod-etapie 7** — odrzucone w 04b (K-32) po prototypie; warunek `min-height: 880px`, dwukolumnowy layout przez całą stronę; opcjonalnie `ClosingCta` — patrz `docs/plans/04b-review-fixes.md` K-32 | 2026-09-19 |
 
 Decyzje spoza kodu (D-01…D-05 z briefu v2) pozostają w dokumentach ekosystemu; tu wpisujemy tylko ich skutki dla implementacji.
 
@@ -295,6 +324,8 @@ Lista rośnie w każdym pod-etapie. Odhaczana w pod-etapie 8.
 | 2026-09-17 | **Pod-etap 3 zamknięty** (3/3 kawałki + cleanup, merge PR #3). DoD spełnione: `FactsBox` (open/closed), 4× `content/offers/*.mdx`, tematy `mailto:` z brief §7, `StepList`, hub `/warsztaty`, trasy kurs/plener/zamówienie; `wyklady.mdx` pod szablon (trasa `/wyklady` w pod-etapie 4). Build/lint OK. |
 | 2026-09-17 | Sesja planistyczna pod-etapu 4 zakończona, plan zatwierdzony (`docs/plans/04-wyklady.md`). K-17…K-22: JSON-LD dane tu / emisja w 7; osobny `LecturesHubPage`; wykładowcy layout WP; archiwum hub 3 sezony (najnowszy rozwinięty); join `lecturerSlugs`; pełny pakiet danych w osobnej sesji przed Kawałkiem 1. |
 | 2026-09-18 | **Pod-etap 4 zamknięty** (4/4 kawałki + ewaluacja merytoryczna). DoD spełnione: `/wyklady`, `/wyklady/archiwum`, `/wyklady/wykladowcy`; `LectureList`, `SeasonAccordion`, `LecturerCard`; warstwa `lectures.ts` / `lecturers.ts`; dane sample + `lecturer-directory.json`. Korekty po ewaluacji: K-20 → lead + link (bez akordeonu na hubie); `#zapisy`; `enrollmentDeadline` jako tekst; dokumentacja typów i K-21. Build/lint OK. |
+| 2026-09-19 | Pod-etap 4b — K-33 hero: **opcja A** (zostaje `min(920px, 76vh)` i siatka md+; kafle „Najbliższe" nad foldem przy 1920×917 nie są wymagane). Rejestr §4: K-33. Szczegóły i pomiary: `docs/plans/04b-review-fixes.md` K-33 pkt 1, załącznik. |
+| 2026-09-19 | **Pod-etap 4b zamknięty** (8/8 kawałków zamykających, OK użytkownika). DoD spełnione; Lighthouse a11y 100/100 na 4 trasach; rejestr K-23…K-35 w §4; brief §3 (SectionNav „Przegląd") + K-26 (Garamond min. 16,5 px); `/pracownia` zaślepka; D-1: brak CTA po scrollu (K-32/K-37). Gałąź: `feat/04b-review-fixes`. |
 
 ---
 
