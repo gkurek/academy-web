@@ -12,7 +12,7 @@ export interface IconGridProps {
   mobileCount?: number;
   /** Gallery variant: clickable tiles that invoke onSelect (lightbox in chunk 3). */
   variant?: "preview" | "gallery";
-  onSelect?: (index: number) => void;
+  onSelect?: (index: number, trigger: HTMLButtonElement) => void;
 }
 
 function TileImage({ item, isGallery }: { item: IconWork; isGallery: boolean }) {
@@ -53,7 +53,7 @@ export function IconGrid({ items, mobileCount, variant = "preview", onSelect }: 
             {isGallery ? (
               <button
                 type="button"
-                onClick={() => onSelect?.(index)}
+                onClick={(event) => onSelect?.(index, event.currentTarget)}
                 className="block w-full cursor-pointer border-0 bg-transparent p-0 text-left"
               >
                 <TileImage item={item} isGallery={isGallery} />

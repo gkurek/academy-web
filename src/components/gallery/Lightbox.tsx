@@ -84,6 +84,24 @@ function NavButton({
   );
 }
 
+function MobileNavButton({
+  onClick,
+  children,
+}: {
+  onClick: () => void;
+  children: ReactNode;
+}) {
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      className="flex h-lightbox-mobile-nav-h w-full items-center justify-center gap-space-3 border border-border-button bg-transparent text-size-ui-m text-text-body cursor-pointer font-sans"
+    >
+      {children}
+    </button>
+  );
+}
+
 function LightboxMeta({ item, className }: { item: IconWork; className?: string }) {
   const lines = formatLightboxMeta(item);
 
@@ -154,7 +172,7 @@ export function Lightbox({ item, index, total, onPrev, onNext, onClose }: Lightb
         onClose();
       }}
       onClose={onClose}
-      aria-labelledby={isOpen ? "lightbox-title" : undefined}
+      aria-label={isOpen && item ? item.title : undefined}
       aria-hidden={!isOpen}
     >
       {item && index !== null ? (
@@ -183,10 +201,7 @@ export function Lightbox({ item, index, total, onPrev, onNext, onClose }: Lightb
                   priority
                 />
                 <div className="w-lightbox-meta shrink-0">
-                  <h2
-                    id="lightbox-title"
-                    className="font-serif text-size-role-section-h2 leading-heading text-text-h1 mb-space-3"
-                  >
+                  <h2 className="font-serif text-size-role-section-h2 leading-heading text-text-h1 mb-space-3">
                     {item.title}
                   </h2>
                   <LightboxMeta item={item} className="mb-space-5" />
@@ -208,7 +223,7 @@ export function Lightbox({ item, index, total, onPrev, onNext, onClose }: Lightb
               <button
                 type="button"
                 onClick={onClose}
-                className="flex items-center gap-space-2 border-0 bg-transparent p-0 text-size-body text-text-body cursor-pointer min-h-tap-min"
+                className="flex items-center gap-space-2 border-0 bg-transparent p-0 text-size-body text-text-body cursor-pointer min-h-tap-min min-w-tap-min"
               >
                 {pl.gallery.lightbox.close}
                 <CloseIcon />
@@ -231,6 +246,16 @@ export function Lightbox({ item, index, total, onPrev, onNext, onClose }: Lightb
               <TextLink href="/ikony/na-zamowienie" className="text-size-body">
                 {pl.gallery.lightbox.orderLink}
               </TextLink>
+            </div>
+            <div className="grid grid-cols-2 gap-lightbox-mobile-nav-gap px-page-margin-mobile pt-space-5 pb-space-6">
+              <MobileNavButton onClick={onPrev}>
+                <LightboxArrow direction="prev" />
+                {pl.gallery.lightbox.previous}
+              </MobileNavButton>
+              <MobileNavButton onClick={onNext}>
+                {pl.gallery.lightbox.next}
+                <LightboxArrow direction="next" />
+              </MobileNavButton>
             </div>
           </div>
         </div>

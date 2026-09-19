@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 
 import { IconGrid } from "@/components/gallery/IconGrid";
 import { Lightbox } from "@/components/gallery/Lightbox";
@@ -15,6 +15,7 @@ export interface GalleryIconGridProps {
 export function GalleryIconGrid({ items, listKey }: GalleryIconGridProps) {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
   const [storedListKey, setStoredListKey] = useState(listKey);
+  const lastTriggerRef = useRef<HTMLButtonElement | null>(null);
 
   if (listKey !== storedListKey) {
     setStoredListKey(listKey);
@@ -37,20 +38,32 @@ export function GalleryIconGrid({ items, listKey }: GalleryIconGridProps) {
     setActiveIndex((activeIndex + 1) % items.length);
   };
 
+  const handleSelect = (index: number, trigger: HTMLButtonElement) => {
+    lastTriggerRef.current = trigger;
+    setActiveIndex(index);
+  };
+
+  const handleClose = () => {
+    if (activeIndex === null) {
+      return;
+    }
+    setActiveIndex(null);
+    const trigger = lastTriggerRef.current;
+    if (trigger) {
+      requestAnimationFrame(() => trigger.focus());
+    }
+  };
+
   return (
     <>
-      <IconGrid
-        items={items}
-        variant="gallery"
-        onSelect={(index) => setActiveIndex(index)}
-      />
+      <IconGrid items={items} variant="gallery" onSelect={handleSelect} />
       <Lightbox
         item={activeItem}
         index={activeIndex}
         total={items.length}
         onPrev={goPrev}
         onNext={goNext}
-        onClose={() => setActiveIndex(null)}
+        onClose={handleClose}
       />
     </>
   );
