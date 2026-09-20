@@ -116,15 +116,26 @@ function MobileNavButton({
 }
 
 function LightboxMeta({ item, className }: { item: IconWork; className?: string }) {
-  const lines = formatLightboxMeta(item);
+  const entries = formatLightboxMeta(item);
 
   return (
-    <div className={["text-size-body leading-loose text-text-secondary", className].filter(Boolean).join(" ")}>
-      {lines.map((line, lineIndex) => (
-        <span key={`${line}-${lineIndex}`} className="block">
-          {line}
-        </span>
-      ))}
+    <div className={["leading-loose", className].filter(Boolean).join(" ")}>
+      {entries.map((entry, entryIndex) => {
+        if (entry.kind === "line") {
+          return (
+            <span key={`line-${entryIndex}`} className="block text-size-body text-text-secondary">
+              {entry.text}
+            </span>
+          );
+        }
+
+        return (
+          <div key={`field-${entryIndex}`} className="block">
+            <span className="text-size-caption text-text-tertiary">{entry.label}</span>
+            <span className="block text-size-body text-text-secondary">{entry.value}</span>
+          </div>
+        );
+      })}
     </div>
   );
 }
@@ -278,12 +289,12 @@ export function Lightbox({ item, index, total, onPrev, onNext, onClose }: Lightb
 
             <div
               aria-live="polite"
-              className="px-page-margin-mobile pt-space-5 pb-space-5 lg:w-lightbox-meta lg:shrink-0 lg:p-0"
+              className="px-page-margin-mobile pt-space-5 pb-space-5 lg:min-w-0 lg:p-0"
             >
               <p className="mb-space-3 hidden text-size-ui text-accent-text lg:block">
                 {positionLabel}
               </p>
-              <h2 className="mb-space-2 font-serif text-size-role-card-title leading-heading text-text-h1 lg:mb-space-3 lg:text-size-role-section-h2">
+              <h2 className="mb-space-7 font-serif text-size-role-card-title leading-heading text-text-h1 lg:mb-space-8 lg:text-size-role-section-h2">
                 {item.title}
               </h2>
               <LightboxMeta item={item} className="mb-space-4 lg:mb-space-5" />

@@ -30,7 +30,7 @@
   --surface-card: var(--umbra-800);
   --surface-tile: var(--umbra-850);
   --surface-footer: var(--umbra-950);
-  --surface-lightbox: var(--umbra-1000);
+  --surface-lightbox: rgb(13 10 8 / .85);
 
   /* Text */
   --text-body: var(--bone-400);
@@ -183,15 +183,13 @@
   --icon-grid-h: 290px;
   --icon-grid-h-m: 200px;
   --gallery-grid-h: 300px;
-  /* K-40 B: FooGallery justified on akademiaikony.pl — rowHeight 240, maxRowHeight 350, margins 10. */
+  /* K-40 B: FooGallery justified on akademiaikony.pl — rowHeight 240, maxRowHeight 350; tile gap = shelf (space-4 / icon-grid-gap). */
   --gallery-justified-row-h: 240px;
   --gallery-justified-row-max-h: 350px;
-  --gallery-justified-gap: 10px;
 
   /* Lightbox — desktop panel (design/components/gallery/Lightbox.jsx). */
   --lightbox-image-max-h: 80vh; /* K-45: was 460px, i.e. half the window */
   --lightbox-image-max-h-m: 60svh;
-  --lightbox-meta-w: 280px;
   --lightbox-mobile-nav-h: 56px;
   --lightbox-mobile-nav-gap: 12px;
 
@@ -450,9 +448,7 @@
   --spacing-gallery-grid-h: var(--gallery-grid-h);
   --spacing-gallery-justified-row-h: var(--gallery-justified-row-h);
   --spacing-gallery-justified-row-max-h: var(--gallery-justified-row-max-h);
-  --spacing-gallery-justified-gap: var(--gallery-justified-gap);
   --max-height-lightbox-image: var(--lightbox-image-max-h);
-  --width-lightbox-meta: var(--lightbox-meta-w);
   --spacing-lightbox-mobile-nav-h: var(--lightbox-mobile-nav-h);
   --spacing-lightbox-mobile-nav-gap: var(--lightbox-mobile-nav-gap);
 

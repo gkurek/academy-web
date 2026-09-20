@@ -60,9 +60,16 @@ function PreviewGrid({ items, mobileCount }: Pick<IconGridProps, "items" | "mobi
   );
 }
 
-function GalleryTileCaption({ title }: { title: string }) {
+function GalleryTileCaption({ title, className }: { title: string; className?: string }) {
   return (
-    <figcaption className="font-serif text-size-body text-text-tertiary pb-space-5 md:pb-space-7">
+    <figcaption
+      className={[
+        "font-serif text-size-body text-text-tertiary text-center pb-space-5 md:pb-space-7",
+        className,
+      ]
+        .filter(Boolean)
+        .join(" ")}
+    >
       {title}
     </figcaption>
   );
@@ -157,7 +164,10 @@ function GalleryShelfGrid({
 /** FooGallery justified settings from akademiaikony.pl/ikona/galeria/. */
 const JUSTIFIED_TARGET_ROW_HEIGHT = 240;
 const JUSTIFIED_MAX_ROW_HEIGHT = 350;
-const JUSTIFIED_GAP = 10;
+/** Horizontal tile gap — same tokens as K-40 A shelf (`gap-x-space-4` / `gap-x-icon-grid-gap`). */
+const JUSTIFIED_GAP_MOBILE = 14;
+const JUSTIFIED_GAP_DESKTOP = 22;
+const JUSTIFIED_GAP_BREAKPOINT = 768;
 /** Wide desktop: fewer, larger tiles per row than the WP defaults above. */
 const JUSTIFIED_DESKTOP_MIN_WIDTH = 1024;
 const JUSTIFIED_DESKTOP_TARGET_ROW_HEIGHT = 300;
@@ -193,7 +203,7 @@ const JUSTIFIED_SINGLE_COLUMN_MAX_W = 480;
 
 /**
  * Gallery justified rows (K-40 B): FooGallery algorithm — equal height per row,
- * variable width from photo ratio, rows fill the container, smart last row.
+ * variable width from photo ratio, rows fill the container, smart last row; captions below each tile.
  */
 function GalleryJustifiedGrid({
   items,
@@ -208,6 +218,8 @@ function GalleryJustifiedGrid({
   const singleColumn =
     containerWidth > 0 && containerWidth <= JUSTIFIED_SINGLE_COLUMN_MAX_W;
   const isDesktop = containerWidth >= JUSTIFIED_DESKTOP_MIN_WIDTH;
+  const gap =
+    containerWidth >= JUSTIFIED_GAP_BREAKPOINT ? JUSTIFIED_GAP_DESKTOP : JUSTIFIED_GAP_MOBILE;
 
   const rows = useMemo(
     () =>
@@ -220,13 +232,13 @@ function GalleryJustifiedGrid({
             maxRowHeight: isDesktop
               ? JUSTIFIED_DESKTOP_MAX_ROW_HEIGHT
               : JUSTIFIED_MAX_ROW_HEIGHT,
-            gap: JUSTIFIED_GAP,
+            gap,
             lastRowSmart: true,
             singleColumn,
             maxTilesPerRow: isDesktop ? JUSTIFIED_DESKTOP_MAX_TILES_PER_ROW : undefined,
           })
         : [],
-    [aspectRatios, containerWidth, singleColumn, isDesktop],
+    [aspectRatios, containerWidth, singleColumn, isDesktop, gap],
   );
 
   return (
@@ -234,22 +246,18 @@ function GalleryJustifiedGrid({
       {rows.map((row, rowIndex) => (
         <div
           key={rowIndex}
-          className="mb-gallery-justified-gap flex justify-center gap-gallery-justified-gap last:mb-0"
-          style={{ height: row.height }}
+          className="mb-space-3 flex flex-wrap justify-center gap-x-space-4 md:gap-x-icon-grid-gap last:mb-0"
         >
           {row.tiles.map((tile) => {
             const item = items[tile.index];
 
             return (
-              <figure
-                key={item.slug}
-                className="shrink-0"
-                style={{ width: tile.width, height: tile.height }}
-              >
+              <figure key={item.slug} className="shrink-0" style={{ width: tile.width }}>
                 <button
                   type="button"
                   onClick={(event) => onSelect?.(tile.index, event.currentTarget)}
                   className={[galleryTileButtonClass, "h-full w-full"].join(" ")}
+                  style={{ height: tile.height }}
                 >
                   <div className={[galleryTileFrameClass, "h-full w-full"].join(" ")}>
                     <Image
@@ -268,7 +276,11 @@ function GalleryJustifiedGrid({
                     <GalleryTileHoverOverlay />
                   </div>
                 </button>
-                {/* K-40 B: captions hidden — titles appear in the lightbox, like WP hover overlay. */}
+                {/* K-42: one caption format for every work — the title only. */}
+                <GalleryTileCaption
+                  title={item.title}
+                  className="mt-space-2 md:mt-space-3"
+                />
               </figure>
             );
           })}
