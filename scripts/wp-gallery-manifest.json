@@ -1,0 +1,975 @@
+[
+  {
+    "slug": "do-uzupelnienia-tytul-ikony",
+    "author": "ejk",
+    "authorName": "Elżbieta Jackowska-Kurek",
+    "title": "[do uzupełnienia: tytuł ikony]",
+    "size": null,
+    "caption": "[do uzupełnienia: tytuł ikony]",
+    "wpUrl": "https://www.akademiaikony.pl/wp-content/uploads/2017/09/DSC01704.jpg",
+    "localFile": "do-uzupelnienia-tytul-ikony.jpg",
+    "localPath": "/media/sample/icons/do-uzupelnienia-tytul-ikony.jpg",
+    "image": {
+      "width": 1944,
+      "height": 2592
+    },
+    "sample": true
+  },
+  {
+    "slug": "archaniol-michal",
+    "author": "ejk",
+    "authorName": "Elżbieta Jackowska-Kurek",
+    "title": "Archanioł Michał",
+    "size": {
+      "w": 25,
+      "h": 30
+    },
+    "caption": "Archanioł Michał, 25x30 (cm)",
+    "wpUrl": "https://www.akademiaikony.pl/wp-content/uploads/2017/09/9-1.jpg",
+    "localFile": "archaniol-michal.jpg",
+    "localPath": "/media/sample/icons/archaniol-michal.jpg",
+    "image": {
+      "width": 720,
+      "height": 960
+    },
+    "sample": true
+  },
+  {
+    "slug": "chrystus-eucharystyczny",
+    "author": "ejk",
+    "authorName": "Elżbieta Jackowska-Kurek",
+    "title": "Chrystus Eucharystyczny",
+    "size": {
+      "w": 20,
+      "h": 30
+    },
+    "caption": "Chrystus Eucharystyczny, 20x30 (cm)",
+    "wpUrl": "https://www.akademiaikony.pl/wp-content/uploads/2017/09/5-4.jpg",
+    "localFile": "chrystus-eucharystyczny.jpg",
+    "localPath": "/media/sample/icons/chrystus-eucharystyczny.jpg",
+    "image": {
+      "width": 720,
+      "height": 960
+    },
+    "sample": true
+  },
+  {
+    "slug": "swiety-jozef-z-dzieciatkiem-jezus",
+    "author": "ejk",
+    "authorName": "Elżbieta Jackowska-Kurek",
+    "title": "Święty Józef z Dzieciątkiem Jezus",
+    "size": {
+      "w": 30,
+      "h": 40
+    },
+    "caption": "Święty Józef z Dzieciątkiem Jezus, 30x40 (cm)",
+    "wpUrl": "https://www.akademiaikony.pl/wp-content/uploads/2017/09/2-4.jpg",
+    "localFile": "swiety-jozef-z-dzieciatkiem-jezus.jpg",
+    "localPath": "/media/sample/icons/swiety-jozef-z-dzieciatkiem-jezus.jpg",
+    "image": {
+      "width": 720,
+      "height": 960
+    },
+    "sample": true
+  },
+  {
+    "slug": "matka-boza-krzew-gorejacy",
+    "author": "ejk",
+    "authorName": "Elżbieta Jackowska-Kurek",
+    "title": "Matka Boża Krzew Gorejący",
+    "size": {
+      "w": 30,
+      "h": 40
+    },
+    "caption": "Matka Boża Krzew Gorejący, 30x40 (cm)",
+    "wpUrl": "https://www.akademiaikony.pl/wp-content/uploads/2019/06/5.jpg",
+    "localFile": "matka-boza-krzew-gorejacy.jpg",
+    "localPath": "/media/sample/icons/matka-boza-krzew-gorejacy.jpg",
+    "image": {
+      "width": 829,
+      "height": 1105
+    },
+    "sample": true
+  },
+  {
+    "slug": "matka-boza-sniezna",
+    "author": "ejk",
+    "authorName": "Elżbieta Jackowska-Kurek",
+    "title": "Matka Boża Śnieżna",
+    "size": {
+      "w": 30,
+      "h": 40
+    },
+    "caption": "Matka Boża Śnieżna, 30x40 (cm)",
+    "wpUrl": "https://www.akademiaikony.pl/wp-content/uploads/2019/06/3-1.jpg",
+    "localFile": "matka-boza-sniezna.jpg",
+    "localPath": "/media/sample/icons/matka-boza-sniezna.jpg",
+    "image": {
+      "width": 864,
+      "height": 1152
+    },
+    "sample": true
+  },
+  {
+    "slug": "swiety-andrzej-apostol",
+    "author": "ejk",
+    "authorName": "Elżbieta Jackowska-Kurek",
+    "title": "Święty Andrzej Apostoł",
+    "size": {
+      "w": 30,
+      "h": 40
+    },
+    "caption": "Święty Andrzej Apostoł, 30x40 (cm)",
+    "wpUrl": "https://www.akademiaikony.pl/wp-content/uploads/2019/06/2-1.jpg",
+    "localFile": "swiety-andrzej-apostol.jpg",
+    "localPath": "/media/sample/icons/swiety-andrzej-apostol.jpg",
+    "image": {
+      "width": 864,
+      "height": 1152
+    },
+    "sample": true
+  },
+  {
+    "slug": "trojca-swieta",
+    "author": "ejk",
+    "authorName": "Elżbieta Jackowska-Kurek",
+    "title": "Trójca Święta",
+    "size": {
+      "w": 40,
+      "h": 60
+    },
+    "caption": "Trójca Święta, 40x60 (cm)",
+    "wpUrl": "https://www.akademiaikony.pl/wp-content/uploads/2019/06/2.jpg",
+    "localFile": "trojca-swieta.jpg",
+    "localPath": "/media/sample/icons/trojca-swieta.jpg",
+    "image": {
+      "width": 505,
+      "height": 825
+    },
+    "sample": true
+  },
+  {
+    "slug": "chrystus-emmanuel",
+    "author": "ejk",
+    "authorName": "Elżbieta Jackowska-Kurek",
+    "title": "Chrystus Emmanuel",
+    "size": {
+      "w": 25,
+      "h": 30
+    },
+    "caption": "Chrystus Emmanuel, 25x30 (cm)",
+    "wpUrl": "https://www.akademiaikony.pl/wp-content/uploads/2017/09/zz-2.jpg",
+    "localFile": "chrystus-emmanuel.jpg",
+    "localPath": "/media/sample/icons/chrystus-emmanuel.jpg",
+    "image": {
+      "width": 378,
+      "height": 472
+    },
+    "sample": true
+  },
+  {
+    "slug": "ukrzyzowanie",
+    "author": "ejk",
+    "authorName": "Elżbieta Jackowska-Kurek",
+    "title": "Ukrzyżowanie",
+    "size": {
+      "w": 52,
+      "h": 36
+    },
+    "caption": "Ukrzyżowanie, 52x36 (cm)",
+    "wpUrl": "https://www.akademiaikony.pl/wp-content/uploads/2017/09/zz-10.jpg",
+    "localFile": "ukrzyzowanie.jpg",
+    "localPath": "/media/sample/icons/ukrzyzowanie.jpg",
+    "image": {
+      "width": 972,
+      "height": 1296
+    },
+    "sample": true
+  },
+  {
+    "slug": "archaniol-gabriel",
+    "author": "ejk",
+    "authorName": "Elżbieta Jackowska-Kurek",
+    "title": "Archanioł Gabriel",
+    "size": {
+      "w": 25,
+      "h": 30
+    },
+    "caption": "Archanioł Gabriel, 25x30 (cm)",
+    "wpUrl": "https://www.akademiaikony.pl/wp-content/uploads/2017/09/zz-3.jpg",
+    "localFile": "archaniol-gabriel.jpg",
+    "localPath": "/media/sample/icons/archaniol-gabriel.jpg",
+    "image": {
+      "width": 918,
+      "height": 1224
+    },
+    "sample": true
+  },
+  {
+    "slug": "madonna-advocata",
+    "author": "ejk",
+    "authorName": "Elżbieta Jackowska-Kurek",
+    "title": "Madonna Advocata",
+    "size": {
+      "w": 25,
+      "h": 30
+    },
+    "caption": "Madonna Advocata, 25x30 (cm)",
+    "wpUrl": "https://www.akademiaikony.pl/wp-content/uploads/2017/09/DSC02959JPG.jpg",
+    "localFile": "madonna-advocata.jpg",
+    "localPath": "/media/sample/icons/madonna-advocata.jpg",
+    "image": {
+      "width": 540,
+      "height": 669
+    },
+    "sample": true
+  },
+  {
+    "slug": "madylion",
+    "author": "ejk",
+    "authorName": "Elżbieta Jackowska-Kurek",
+    "title": "Madylion",
+    "size": {
+      "w": 21,
+      "h": 26
+    },
+    "caption": "Madylion, 21x26 (cm)",
+    "wpUrl": "https://www.akademiaikony.pl/wp-content/uploads/2017/09/DSC02954JPG.jpg",
+    "localFile": "madylion.jpg",
+    "localPath": "/media/sample/icons/madylion.jpg",
+    "image": {
+      "width": 540,
+      "height": 723
+    },
+    "sample": true
+  },
+  {
+    "slug": "ukrzyzowanie-2",
+    "author": "ejk",
+    "authorName": "Elżbieta Jackowska-Kurek",
+    "title": "Ukrzyżowanie",
+    "size": {
+      "w": 35,
+      "h": 50
+    },
+    "caption": "Ukrzyżowanie,  35x50 (cm)",
+    "wpUrl": "https://www.akademiaikony.pl/wp-content/uploads/2017/09/DSC02952JPG.jpg",
+    "localFile": "ukrzyzowanie-2.jpg",
+    "localPath": "/media/sample/icons/ukrzyzowanie-2.jpg",
+    "image": {
+      "width": 540,
+      "height": 960
+    },
+    "sample": true
+  },
+  {
+    "slug": "chrystus-milosierny",
+    "author": "ejk",
+    "authorName": "Elżbieta Jackowska-Kurek",
+    "title": "Chrystus Miłosierny",
+    "size": null,
+    "caption": "Chrystus Miłosierny",
+    "wpUrl": "https://www.akademiaikony.pl/wp-content/uploads/2021/08/DSC_0199-2-scaled.jpg",
+    "localFile": "chrystus-milosierny.jpg",
+    "localPath": "/media/sample/icons/chrystus-milosierny.jpg",
+    "image": {
+      "width": 1827,
+      "height": 2560
+    },
+    "sample": true
+  },
+  {
+    "slug": "matka-boza-eleusa",
+    "author": "ejk",
+    "authorName": "Elżbieta Jackowska-Kurek",
+    "title": "Matka Boża Eleusa",
+    "size": {
+      "w": 30,
+      "h": 25
+    },
+    "caption": "Matka Boża Eleusa, 30x25 cm",
+    "wpUrl": "https://www.akademiaikony.pl/wp-content/uploads/2021/08/DSC_0209-2-scaled.jpg",
+    "localFile": "matka-boza-eleusa.jpg",
+    "localPath": "/media/sample/icons/matka-boza-eleusa.jpg",
+    "image": {
+      "width": 1923,
+      "height": 2560
+    },
+    "sample": true
+  },
+  {
+    "slug": "chrystus-eucharystyczny-na-krzyzu",
+    "author": "ejk",
+    "authorName": "Elżbieta Jackowska-Kurek",
+    "title": "Chrystus Eucharystyczny na Krzyżu",
+    "size": null,
+    "caption": "Chrystus Eucharystyczny na Krzyżu",
+    "wpUrl": "https://www.akademiaikony.pl/wp-content/uploads/2026/09/IMG_20220423_121407-3-scaled.jpg",
+    "localFile": "chrystus-eucharystyczny-na-krzyzu.jpg",
+    "localPath": "/media/sample/icons/chrystus-eucharystyczny-na-krzyzu.jpg",
+    "image": {
+      "width": 1920,
+      "height": 2560
+    },
+    "sample": true
+  },
+  {
+    "slug": "mandylion",
+    "author": "ejk",
+    "authorName": "Elżbieta Jackowska-Kurek",
+    "title": "Mandylion",
+    "size": {
+      "w": 30,
+      "h": 33
+    },
+    "caption": "Mandylion, 30x33 (cm)",
+    "wpUrl": "https://www.akademiaikony.pl/wp-content/uploads/2017/09/7-2.jpg",
+    "localFile": "mandylion.jpg",
+    "localPath": "/media/sample/icons/mandylion.jpg",
+    "image": {
+      "width": 720,
+      "height": 960
+    },
+    "sample": true
+  },
+  {
+    "slug": "swiety-mikolaj",
+    "author": "ejk",
+    "authorName": "Elżbieta Jackowska-Kurek",
+    "title": "Święty Mikołaj",
+    "size": {
+      "w": 26,
+      "h": 32
+    },
+    "caption": "Święty Mikołaj, 26x32 (cm)",
+    "wpUrl": "https://www.akademiaikony.pl/wp-content/uploads/2017/09/zz-8.jpg",
+    "localFile": "swiety-mikolaj.jpg",
+    "localPath": "/media/sample/icons/swiety-mikolaj.jpg",
+    "image": {
+      "width": 403,
+      "height": 555
+    },
+    "sample": true
+  },
+  {
+    "slug": "chrystus-pantokrator",
+    "author": "ejk",
+    "authorName": "Elżbieta Jackowska-Kurek",
+    "title": "Chrystus Pantokrator",
+    "size": {
+      "w": 25,
+      "h": 30
+    },
+    "caption": "Chrystus Pantokrator, 25x30 (cm)",
+    "wpUrl": "https://www.akademiaikony.pl/wp-content/uploads/2017/09/DSC02962JPG.jpg",
+    "localFile": "chrystus-pantokrator.jpg",
+    "localPath": "/media/sample/icons/chrystus-pantokrator.jpg",
+    "image": {
+      "width": 540,
+      "height": 673
+    },
+    "sample": true
+  },
+  {
+    "slug": "swiety-symeon",
+    "author": "ejk",
+    "authorName": "Elżbieta Jackowska-Kurek",
+    "title": "Święty Symeon",
+    "size": {
+      "w": 25,
+      "h": 30
+    },
+    "caption": "Święty Symeon, 25x30 (cm)",
+    "wpUrl": "https://www.akademiaikony.pl/wp-content/uploads/2017/09/zz-5.jpg",
+    "localFile": "swiety-symeon.jpg",
+    "localPath": "/media/sample/icons/swiety-symeon.jpg",
+    "image": {
+      "width": 383,
+      "height": 509
+    },
+    "sample": true
+  },
+  {
+    "slug": "matka-boza-niepokalana",
+    "author": "ejk",
+    "authorName": "Elżbieta Jackowska-Kurek",
+    "title": "Matka Boża Niepokalana",
+    "size": {
+      "w": 60,
+      "h": 80
+    },
+    "caption": "Matka Boża Niepokalana 60x80 cm.",
+    "wpUrl": "https://www.akademiaikony.pl/wp-content/uploads/2026/09/16okladka-str-ostatnia-scaled.jpg",
+    "localFile": "matka-boza-niepokalana.jpg",
+    "localPath": "/media/sample/icons/matka-boza-niepokalana.jpg",
+    "image": {
+      "width": 1658,
+      "height": 2560
+    },
+    "sample": true
+  },
+  {
+    "slug": "boze-narodzenie",
+    "author": "ejk",
+    "authorName": "Elżbieta Jackowska-Kurek",
+    "title": "Boże Narodzenie",
+    "size": {
+      "w": 40,
+      "h": 50
+    },
+    "caption": "Boże Narodzenie 40x50 cm.",
+    "wpUrl": "https://www.akademiaikony.pl/wp-content/uploads/2026/09/Boze-Narodzenie-2025-scaled.jpg",
+    "localFile": "boze-narodzenie.jpg",
+    "localPath": "/media/sample/icons/boze-narodzenie.jpg",
+    "image": {
+      "width": 2076,
+      "height": 2560
+    },
+    "sample": true
+  },
+  {
+    "slug": "matka-boza-stolica-madrosci",
+    "author": "student",
+    "authorName": null,
+    "title": "Matka Boża Stolica Mądrości",
+    "size": {
+      "w": 25,
+      "h": 30
+    },
+    "caption": "Matka Boża Stolica Mądrości, 25x30 (cm)",
+    "wpUrl": "https://www.akademiaikony.pl/wp-content/uploads/2017/09/DSC07020JPG.jpg",
+    "localFile": "matka-boza-stolica-madrosci.jpg",
+    "localPath": "/media/sample/icons/matka-boza-stolica-madrosci.jpg",
+    "image": {
+      "width": 972,
+      "height": 1296
+    },
+    "sample": true
+  },
+  {
+    "slug": "zstapienie-ducha-swietego",
+    "author": "student",
+    "authorName": "Justyny Suchenek",
+    "title": "Zstąpienie Ducha Świętego",
+    "size": {
+      "w": 30,
+      "h": 40
+    },
+    "caption": "Zstąpienie Ducha Świętego pisane ręka Justyny Suchenek ( 30x40 cm.)",
+    "wpUrl": "https://www.akademiaikony.pl/wp-content/uploads/2017/09/3-5.jpg",
+    "localFile": "zstapienie-ducha-swietego.jpg",
+    "localPath": "/media/sample/icons/zstapienie-ducha-swietego.jpg",
+    "image": {
+      "width": 720,
+      "height": 960
+    },
+    "sample": true
+  },
+  {
+    "slug": "archaniol-gabriel-2",
+    "author": "student",
+    "authorName": "Mai Kinle",
+    "title": "Archanioł Gabriel",
+    "size": {
+      "w": 25,
+      "h": 30
+    },
+    "caption": "Archanioł Gabriel pisany ręka Mai Kinle ( 25x30 cm)",
+    "wpUrl": "https://www.akademiaikony.pl/wp-content/uploads/2019/06/6.jpg",
+    "localFile": "archaniol-gabriel-2.jpg",
+    "localPath": "/media/sample/icons/archaniol-gabriel-2.jpg",
+    "image": {
+      "width": 864,
+      "height": 1152
+    },
+    "sample": true
+  },
+  {
+    "slug": "chrystus-pantokrator-2",
+    "author": "student",
+    "authorName": "Justyny Suchenek",
+    "title": "Chrystus Pantokrator",
+    "size": {
+      "w": 25,
+      "h": 30
+    },
+    "caption": "Chrystus Pantokrator pisany ręka Justyny Suchenek (25x30 cm.)",
+    "wpUrl": "https://www.akademiaikony.pl/wp-content/uploads/2019/06/5-1.jpg",
+    "localFile": "chrystus-pantokrator-2.jpg",
+    "localPath": "/media/sample/icons/chrystus-pantokrator-2.jpg",
+    "image": {
+      "width": 670,
+      "height": 1191
+    },
+    "sample": true
+  },
+  {
+    "slug": "chrystus-pantokrator-3",
+    "author": "student",
+    "authorName": "Artura Wesołowskiego",
+    "title": "Chrystus Pantokrator",
+    "size": {
+      "w": 25,
+      "h": 30
+    },
+    "caption": "Chrystus Pantokrator pisany ręką Artura Wesołowskiego (25x30 cm.)",
+    "wpUrl": "https://www.akademiaikony.pl/wp-content/uploads/2019/06/4-2.jpg",
+    "localFile": "chrystus-pantokrator-3.jpg",
+    "localPath": "/media/sample/icons/chrystus-pantokrator-3.jpg",
+    "image": {
+      "width": 702,
+      "height": 1248
+    },
+    "sample": true
+  },
+  {
+    "slug": "jezus-chrystus",
+    "author": "student",
+    "authorName": "Agnieszki Kundy",
+    "title": "Jezus Chrystus",
+    "size": null,
+    "caption": "Jezus Chrystus pisany ręką Agnieszki Kundy",
+    "wpUrl": "https://www.akademiaikony.pl/wp-content/uploads/2019/06/3-2.jpg",
+    "localFile": "jezus-chrystus.jpg",
+    "localPath": "/media/sample/icons/jezus-chrystus.jpg",
+    "image": {
+      "width": 680,
+      "height": 1209
+    },
+    "sample": true
+  },
+  {
+    "slug": "archaniol-michal-2",
+    "author": "student",
+    "authorName": "Izabeli Jeleniewskiej",
+    "title": "Archanioł Michał",
+    "size": {
+      "w": 25,
+      "h": 30
+    },
+    "caption": "Archanioł Michał, pisany ręką Izabeli Jeleniewskiej (25x30 cm.)",
+    "wpUrl": "https://www.akademiaikony.pl/wp-content/uploads/2019/06/1-5.jpg",
+    "localFile": "archaniol-michal-2.jpg",
+    "localPath": "/media/sample/icons/archaniol-michal-2.jpg",
+    "image": {
+      "width": 726,
+      "height": 968
+    },
+    "sample": true
+  },
+  {
+    "slug": "nie-oplakuj-mnie-matko",
+    "author": "student",
+    "authorName": "Justyny Suchenek",
+    "title": "NIE OPŁAKUJ MNIE MATKO",
+    "size": {
+      "w": 25,
+      "h": 30
+    },
+    "caption": "NIE OPŁAKUJ MNIE MATKO pisane ręką Justyny Suchenek (25x30 cm.)",
+    "wpUrl": "https://www.akademiaikony.pl/wp-content/uploads/2019/06/1-4.jpg",
+    "localFile": "nie-oplakuj-mnie-matko.jpg",
+    "localPath": "/media/sample/icons/nie-oplakuj-mnie-matko.jpg",
+    "image": {
+      "width": 691,
+      "height": 921
+    },
+    "sample": true
+  },
+  {
+    "slug": "swiety-albert-chmielowski",
+    "author": "student",
+    "authorName": "Maurycego Lubaka",
+    "title": "Święty Albert  Chmielowski",
+    "size": {
+      "w": 30,
+      "h": 40
+    },
+    "caption": "Święty Albert  Chmielowski pisany ręka Maurycego Lubaka (30x40 cm.)",
+    "wpUrl": "https://www.akademiaikony.pl/wp-content/uploads/2019/06/1-3.jpg",
+    "localFile": "swiety-albert-chmielowski.jpg",
+    "localPath": "/media/sample/icons/swiety-albert-chmielowski.jpg",
+    "image": {
+      "width": 760,
+      "height": 1013
+    },
+    "sample": true
+  },
+  {
+    "slug": "matka-boza-nieustajacej-pomocy",
+    "author": "student",
+    "authorName": "Aleksandry Skiery",
+    "title": "Matka Boża Nieustającej Pomocy",
+    "size": {
+      "w": 30,
+      "h": 40
+    },
+    "caption": "Matka Boża Nieustającej Pomocy, pisana ręką Aleksandry Skiery (30x40 cm.)",
+    "wpUrl": "https://www.akademiaikony.pl/wp-content/uploads/2019/06/1-1.jpg",
+    "localFile": "matka-boza-nieustajacej-pomocy.jpg",
+    "localPath": "/media/sample/icons/matka-boza-nieustajacej-pomocy.jpg",
+    "image": {
+      "width": 829,
+      "height": 1105
+    },
+    "sample": true
+  },
+  {
+    "slug": "chrystus-pantokrator-4",
+    "author": "student",
+    "authorName": "Aleksandry Bonieckiej",
+    "title": "Chrystus Pantokrator",
+    "size": {
+      "w": 25,
+      "h": 30
+    },
+    "caption": "Chrystus Pantokrator pisany ręka Aleksandry Bonieckiej (25x30 cm.)",
+    "wpUrl": "https://www.akademiaikony.pl/wp-content/uploads/2017/09/DSC01836JPG.jpg",
+    "localFile": "chrystus-pantokrator-4.jpg",
+    "localPath": "/media/sample/icons/chrystus-pantokrator-4.jpg",
+    "image": {
+      "width": 539,
+      "height": 738
+    },
+    "sample": true
+  },
+  {
+    "slug": "swiety-jerzy",
+    "author": "student",
+    "authorName": "Piotra Janasika",
+    "title": "Święty Jerzy",
+    "size": {
+      "w": 40,
+      "h": 60
+    },
+    "caption": "Święty Jerzy pisany ręką Piotra Janasika (40x60 cm.)",
+    "wpUrl": "https://www.akademiaikony.pl/wp-content/uploads/2017/09/DSC07499JPG.jpg",
+    "localFile": "swiety-jerzy.jpg",
+    "localPath": "/media/sample/icons/swiety-jerzy.jpg",
+    "image": {
+      "width": 972,
+      "height": 1296
+    },
+    "sample": true
+  },
+  {
+    "slug": "matka-boza-sniezna-2",
+    "author": "student",
+    "authorName": "Bożeny Wierzbickiej",
+    "title": "Matka Boża Śnieżna",
+    "size": {
+      "w": 21,
+      "h": 26
+    },
+    "caption": "Matka Boża Śnieżna pisana ręką Bożeny Wierzbickiej  (21x26 cm.)",
+    "wpUrl": "https://www.akademiaikony.pl/wp-content/uploads/2017/09/DSC07552JPG.jpg",
+    "localFile": "matka-boza-sniezna-2.jpg",
+    "localPath": "/media/sample/icons/matka-boza-sniezna-2.jpg",
+    "image": {
+      "width": 972,
+      "height": 1296
+    },
+    "sample": true
+  },
+  {
+    "slug": "chrystus-na-mocach",
+    "author": "student",
+    "authorName": "Mgdaleny Limbach",
+    "title": "Chrystus na Mocach",
+    "size": {
+      "w": 30,
+      "h": 40
+    },
+    "caption": "Chrystus na Mocach pisany ręką Mgdaleny Limbach (30x40 cm.)",
+    "wpUrl": "https://www.akademiaikony.pl/wp-content/uploads/2017/09/DSC07572JPG.jpg",
+    "localFile": "chrystus-na-mocach.jpg",
+    "localPath": "/media/sample/icons/chrystus-na-mocach.jpg",
+    "image": {
+      "width": 972,
+      "height": 1296
+    },
+    "sample": true
+  },
+  {
+    "slug": "mandylion-2",
+    "author": "student",
+    "authorName": "Anny Żymełki",
+    "title": "Mandylion",
+    "size": {
+      "w": 25,
+      "h": 24
+    },
+    "caption": "Mandylion pisany ręką Anny Żymełki (25x24 cm.)",
+    "wpUrl": "https://www.akademiaikony.pl/wp-content/uploads/2017/09/DSC07579JPG.jpg",
+    "localFile": "mandylion-2.jpg",
+    "localPath": "/media/sample/icons/mandylion-2.jpg",
+    "image": {
+      "width": 972,
+      "height": 1211
+    },
+    "sample": true
+  },
+  {
+    "slug": "swiety-jerzy-2",
+    "author": "student",
+    "authorName": "Elżbiety Mireckiej",
+    "title": "Święty Jerzy",
+    "size": {
+      "w": 25,
+      "h": 30
+    },
+    "caption": "Święty Jerzy pisany ręką Elżbiety Mireckiej (25x30 cm.)",
+    "wpUrl": "https://www.akademiaikony.pl/wp-content/uploads/2017/09/praceucz255JPG.jpg",
+    "localFile": "swiety-jerzy-2.jpg",
+    "localPath": "/media/sample/icons/swiety-jerzy-2.jpg",
+    "image": {
+      "width": 412,
+      "height": 535
+    },
+    "sample": true
+  },
+  {
+    "slug": "matka-boza-koptyjska",
+    "author": "student",
+    "authorName": "Elżbiety Mireckiej",
+    "title": "Matka Boża Koptyjska",
+    "size": {
+      "w": 25,
+      "h": 30
+    },
+    "caption": "Matka Boża Koptyjska pisana ręka Elżbiety Mireckiej (25x30 cm.)",
+    "wpUrl": "https://www.akademiaikony.pl/wp-content/uploads/2017/09/elim35.jpg",
+    "localFile": "matka-boza-koptyjska.jpg",
+    "localPath": "/media/sample/icons/matka-boza-koptyjska.jpg",
+    "image": {
+      "width": 374,
+      "height": 631
+    },
+    "sample": true
+  },
+  {
+    "slug": "trojca-swieta-2",
+    "author": "student",
+    "authorName": "Bożeny Wierzbickiej",
+    "title": "Trójca Święta",
+    "size": {
+      "w": 25,
+      "h": 30
+    },
+    "caption": "Trójca Święta pisana ręką Bożeny Wierzbickiej  (25x30 cm.)",
+    "wpUrl": "https://www.akademiaikony.pl/wp-content/uploads/2017/09/Trójcam50.jpg",
+    "localFile": "trojca-swieta-2.jpg",
+    "localPath": "/media/sample/icons/trojca-swieta-2.jpg",
+    "image": {
+      "width": 600,
+      "height": 800
+    },
+    "sample": true
+  },
+  {
+    "slug": "matka-boza-pompejanska",
+    "author": "student",
+    "authorName": "Marii Magdleny  Stacewicz",
+    "title": "Matka Boża Pompejańska",
+    "size": null,
+    "caption": "Matka Boża Pompejańska pisana ręką Marii Magdleny  Stacewicz",
+    "wpUrl": "https://www.akademiaikony.pl/wp-content/uploads/2017/09/1-5.jpg",
+    "localFile": "matka-boza-pompejanska.jpg",
+    "localPath": "/media/sample/icons/matka-boza-pompejanska.jpg",
+    "image": {
+      "width": 720,
+      "height": 960
+    },
+    "sample": true
+  },
+  {
+    "slug": "trojca-swieta-3",
+    "author": "student",
+    "authorName": "Aleksandry Bonieckiej",
+    "title": "Trójca Święta",
+    "size": {
+      "w": 25,
+      "h": 30
+    },
+    "caption": "Trójca Święta pisana ręką Aleksandry Bonieckiej (25x30 cm.)",
+    "wpUrl": "https://www.akademiaikony.pl/wp-content/uploads/2019/06/1-2.jpg",
+    "localFile": "trojca-swieta-3.jpg",
+    "localPath": "/media/sample/icons/trojca-swieta-3.jpg",
+    "image": {
+      "width": 829,
+      "height": 1105
+    },
+    "sample": true
+  },
+  {
+    "slug": "matka-boza",
+    "author": "student",
+    "authorName": null,
+    "title": "Matka Boża",
+    "size": {
+      "w": 22,
+      "h": 16
+    },
+    "caption": "Matka Boża 22x16 cm)",
+    "wpUrl": "https://www.akademiaikony.pl/wp-content/uploads/2021/02/rsz_11_7.jpg",
+    "localFile": "matka-boza.jpg",
+    "localPath": "/media/sample/icons/matka-boza.jpg",
+    "image": {
+      "width": 571,
+      "height": 759
+    },
+    "sample": true
+  },
+  {
+    "slug": "archaniol-gabriel-3",
+    "author": "student",
+    "authorName": null,
+    "title": "Archanioł Gabriel",
+    "size": {
+      "w": 25,
+      "h": 40
+    },
+    "caption": "Archanioł Gabriel, 25x40 cm",
+    "wpUrl": "https://www.akademiaikony.pl/wp-content/uploads/2021/02/rsz_11_6.jpg",
+    "localFile": "archaniol-gabriel-3.jpg",
+    "localPath": "/media/sample/icons/archaniol-gabriel-3.jpg",
+    "image": {
+      "width": 515,
+      "height": 1119
+    },
+    "sample": true
+  },
+  {
+    "slug": "boze-narodzenie-2",
+    "author": "student",
+    "authorName": null,
+    "title": "Boże Narodzenie",
+    "size": {
+      "w": 25,
+      "h": 26
+    },
+    "caption": "Boże Narodzenie, 25x26 cm.",
+    "wpUrl": "https://www.akademiaikony.pl/wp-content/uploads/2021/02/rsz_11_5.jpg",
+    "localFile": "boze-narodzenie-2.jpg",
+    "localPath": "/media/sample/icons/boze-narodzenie-2.jpg",
+    "image": {
+      "width": 872,
+      "height": 721
+    },
+    "sample": true
+  },
+  {
+    "slug": "mandylion-3",
+    "author": "student",
+    "authorName": null,
+    "title": "Mandylion",
+    "size": {
+      "w": 30,
+      "h": 25
+    },
+    "caption": "Mandylion, 30x25 cm.",
+    "wpUrl": "https://www.akademiaikony.pl/wp-content/uploads/2021/02/rsz_11_3.jpg",
+    "localFile": "mandylion-3.jpg",
+    "localPath": "/media/sample/icons/mandylion-3.jpg",
+    "image": {
+      "width": 677,
+      "height": 940
+    },
+    "sample": true
+  },
+  {
+    "slug": "matka-boza-pneumatofora",
+    "author": "student",
+    "authorName": null,
+    "title": "Matka Boża Pneumatofora",
+    "size": {
+      "w": 30,
+      "h": 25
+    },
+    "caption": "Matka Boża Pneumatofora, 30x25 cm.",
+    "wpUrl": "https://www.akademiaikony.pl/wp-content/uploads/2021/02/rsz_11_1.jpg",
+    "localFile": "matka-boza-pneumatofora.jpg",
+    "localPath": "/media/sample/icons/matka-boza-pneumatofora.jpg",
+    "image": {
+      "width": 736,
+      "height": 981
+    },
+    "sample": true
+  },
+  {
+    "slug": "boze-narodzenie-3",
+    "author": "student",
+    "authorName": null,
+    "title": "Boże Narodzenie",
+    "size": {
+      "w": 30,
+      "h": 40
+    },
+    "caption": "Boże Narodzenie, 30x40",
+    "wpUrl": "https://www.akademiaikony.pl/wp-content/uploads/2021/02/rsz_1_8-1.jpg",
+    "localFile": "boze-narodzenie-3.jpg",
+    "localPath": "/media/sample/icons/boze-narodzenie-3.jpg",
+    "image": {
+      "width": 422,
+      "height": 640
+    },
+    "sample": true
+  },
+  {
+    "slug": "przemienienie-panskie",
+    "author": "student",
+    "authorName": null,
+    "title": "Przemienienie Pańskie",
+    "size": {
+      "w": 40,
+      "h": 60
+    },
+    "caption": "Przemienienie Pańskie, 40x60 cm.",
+    "wpUrl": "https://www.akademiaikony.pl/wp-content/uploads/2020/10/3.jpg",
+    "localFile": "przemienienie-panskie.jpg",
+    "localPath": "/media/sample/icons/przemienienie-panskie.jpg",
+    "image": {
+      "width": 999,
+      "height": 1560
+    },
+    "sample": true
+  },
+  {
+    "slug": "matka-boza-advokata",
+    "author": "student",
+    "authorName": null,
+    "title": "Matka Boża Advokata",
+    "size": {
+      "w": 25,
+      "h": 15
+    },
+    "caption": "Matka Boża Advokata, 25x15",
+    "wpUrl": "https://www.akademiaikony.pl/wp-content/uploads/2017/09/4-4.jpg",
+    "localFile": "matka-boza-advokata.jpg",
+    "localPath": "/media/sample/icons/matka-boza-advokata.jpg",
+    "image": {
+      "width": 720,
+      "height": 960
+    },
+    "sample": true
+  },
+  {
+    "slug": "archaniol-gabriel-4",
+    "author": "student",
+    "authorName": null,
+    "title": "Archanioł Gabriel",
+    "size": {
+      "w": 25,
+      "h": 30
+    },
+    "caption": "Archanioł Gabriel, 25x30 cm.",
+    "wpUrl": "https://www.akademiaikony.pl/wp-content/uploads/2019/06/1-8.jpg",
+    "localFile": "archaniol-gabriel-4.jpg",
+    "localPath": "/media/sample/icons/archaniol-gabriel-4.jpg",
+    "image": {
+      "width": 829,
+      "height": 1105
+    },
+    "sample": true
+  }
+]

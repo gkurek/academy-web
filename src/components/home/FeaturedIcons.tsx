@@ -1,7 +1,7 @@
 import { Button } from "@/components/core/Button";
 import { TextLink } from "@/components/core/TextLink";
 import { IconGrid } from "@/components/gallery/IconGrid";
-import { getIconWorks } from "@/content/icons";
+import { getFeaturedIconWorks } from "@/content/icons";
 import { pl } from "@/i18n/pl";
 
 /**
@@ -10,7 +10,7 @@ import { pl } from "@/i18n/pl";
  * (per the resolved mockup DOM) plus a full-width "Cała galeria" button below.
  */
 export function FeaturedIcons() {
-  const icons = getIconWorks();
+  const icons = getFeaturedIconWorks();
 
   return (
     <section className="px-page-margin-mobile md:px-page-margin py-space-7 md:py-space-8">

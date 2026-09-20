@@ -68,7 +68,7 @@ Statusy: ⬜ nie zaczęty · 🟡 plan w przygotowaniu · 🔵 plan zatwierdzony
 | 3   | Strony ofertowe                                | `docs/plans/03-oferta.md`        | ✅ zamknięty         | 2026-09-17 |
 | 4   | Wykłady                                        | `docs/plans/04-wyklady.md`       | ✅ zamknięty         | 2026-09-18 |
 | 4b  | Korekty po przeglądzie stagingu               | `docs/plans/04b-review-fixes.md` | ✅ zamknięty         | 2026-09-19 |
-| 5   | Galeria ikon                                   | `docs/plans/05-galeria.md`       | ⬜                   | —          |
+| 5   | Galeria ikon (+ korekty 05b)                   | `docs/plans/05-galeria.md`, `docs/plans/05b-review-fixes.md` | ✅ zamknięty         | 2026-09-20 |
 | 6   | Strony pozostałe                               | `docs/plans/06-pozostale.md`     | ⬜                   | —          |
 | 7   | Wykończenie: SEO, dane strukturalne, analityka | `docs/plans/07-wykonczenie.md`   | ⬜                   | —          |
 | 8   | Migracja treści z WordPressa                   | `docs/plans/08-migracja.md`      | ⬜                   | —          |
@@ -164,22 +164,18 @@ Dla każdego: cel, zakres, kryteria ukończenia (DoD), proponowany podział na k
 
 ### Pod-etap 5 — Galeria ikon
 
-**Zakres:** `/ikony` z `IconGrid`, filtry autor (Elżbieta / uczniowie) i temat (z `tags`), `Lightbox` desktop i mobile (strzałki ≥ 48 px, zamknięcie, klawiatura, blokada scrolla, focus trap); podpisy: tytuł, autor, wymiary, rok; zdanie o zamawianiu z linkiem do `/ikony/na-zamowienie`; zajawka „Ikony na zamówienie” na dole. `/ikony/[slug]` — decyzja w sesji planistycznej (brief: opcjonalnie w v1). **`content/icons.json`** — uzupełnienie do pełnego zestawu `sample` galerii (ten sam plik co w pod-etapie 2; wymiary z podpisów nadal niezweryfikowane).
+**Cel:** `/ikony` gotowa do pokazania EJK i uczniom na pełnym zestawie prac z WP (`sample`), przed formalną migracją w pod-etapie 8.
+
+**Zakres:** `SectionNav`, H1, filtr **tematu** (`?temat=`, K-43), dwie sztywne sekcje EJK → uczniowie (K-41), `IconGrid` z układem wyrównanych rzędów (K-40 B), `Lightbox` desktop i mobile (K-38, K-45), zajawka „Ikony na zamówienie” (K-46). Podpisy: siatka — tytuł; sekcja uczniów — lista nazwisk; lightbox — autor, wymiary, technika (K-42). **`content/icons.json`** — 52 prace z WP (23 EJK + 29 uczniów), oryginały w `public/media/sample/icons/` (K-47). Poza zakresem: `/ikony/[slug]` (K-04), filtr autora, paginacja, opis dzieła w lightboxie, test lightboxa na fizycznym iOS Safari i formalny Lighthouse a11y (→ pod-etap 7, K-38).
 
 **Założenia wejściowe z pod-etapu 4b** (szczegóły w `docs/plans/04b-review-fixes.md` §„Założenia wejściowe dla planu 05"):
-- kadrowanie: `object-contain` na `--surface-tile`, stała wysokość kafla (K-31);
-- podpisy: Garamond min. 16,5 px, meta `--accent-text` (K-26);
-- layout: `--content-max: 1280px` od 1600 px (K-30); H2 sekcji wg tabeli ról K-25.
+- typografia podpisów: Garamond min. 16,5 px, meta `--accent-text` (K-26);
+- layout strony: `--content-max: 1280px` od 1600 px (K-30); H2 sekcji wg tabeli ról K-25;
+- siatka galerii: wyrównane rzędy, `object-cover`, `justifyGalleryRows` (K-40 B) — **nie** K-31 (`object-contain` zostaje na home „Wybrane ikony”).
 
-**DoD:**
+**DoD:** wszystkie checkboxy w `docs/plans/05-galeria.md` i `docs/plans/05b-review-fixes.md` odhaczone; rejestr K-38…K-47 w §4; build/lint OK. Pozostałe po 05b: weryfikacja merytoryczna treści `sample` (§5) i testy przeniesione do pod-etapu 7.
 
-- [ ] filtry działają jako query string lub stan — ustalone w planie; bez przeładowania strony;
-- [ ] `Lightbox`: Esc zamyka, strzałki klawiatury, fokus wraca do klikniętego kafla, `prefers-reduced-motion` respektowany;
-- [ ] wymiary z podpisów oznaczone jako niezweryfikowane w danych `sample`.
-
-**Proponowane kawałki:** (1) `IconGrid` + filtry; (2) `Lightbox` desktop; (3) `Lightbox` mobile + `[slug]` jeśli w zakresie.
-
-**Pytania:** domyślny filtr (decyzja D-02 z briefu v2 — jeśli nadal otwarta, wpisać jako założenie do zmiany w `SiteSettings`); jakość obrazów w lightboxie vs. wydajność (rozmiary `sizes` dla `next/image`); czy `Lightbox` to `<dialog>` natywny.
+**Kawałki:** plan 05 (4/4) + korekty 05b (6/6) — szczegóły w plikach planów pod-etapu; decyzje w rejestrze §4 (K-38…K-47).
 
 ### Pod-etap 6 — Strony pozostałe
 
@@ -197,14 +193,15 @@ Dla każdego: cel, zakres, kryteria ukończenia (DoD), proponowany podział na k
 
 ### Pod-etap 7 — Wykończenie: SEO, dane strukturalne, analityka
 
-**Zakres:** `generateMetadata` + Open Graph dla każdej trasy (obraz OG domyślny + per strona); `sitemap.ts`, `robots.ts`; JSON-LD: `Organization` (z `parentOrganization`), `Person` (EJK, `sameAs`), `Event` dla bieżącego sezonu, `Course` dla kursu i pleneru; Plausible lub Umami bez ciasteczek ze zdarzeniami na CTA zapisów, `mailto:`, `tel:`; przegląd Lighthouse (dostępność ≥ 95, wydajność ≥ 90 mobile) i naprawa blokad; przegląd kontrastu i fokusu na wszystkich stanach z ekranu „Komponenty”; **dopracowanie designu stopki** (`Footer`) — układ desktop i mobile, rozkład kolumn, social, pasek dolny (K-36; w 04b wdrożono wariant B funkcjonalny, bez finalnego polishu); **ponowne rozważenie sticky `FactsBox`** (K-37; odrzucone w 04b po prototypie — patrz `docs/plans/04b-review-fixes.md` K-32).
+**Zakres:** `generateMetadata` + Open Graph dla każdej trasy (obraz OG domyślny + per strona); `sitemap.ts`, `robots.ts`; JSON-LD: `Organization` (z `parentOrganization`), `Person` (EJK, `sameAs`), `Event` dla bieżącego sezonu, `Course` dla kursu i pleneru; Plausible lub Umami bez ciasteczek ze zdarzeniami na CTA zapisów, `mailto:`, `tel:`; przegląd Lighthouse (dostępność ≥ 95, wydajność ≥ 90 mobile) i naprawa blokad; przegląd kontrastu i fokusu na wszystkich stanach z ekranu „Komponenty”; **test lightboxa galerii na fizycznym iOS Safari** (`/ikony`: `showModal()`, scroll lock, sticky pasek nawigacji, swipe — przeniesione z DoD pod-etapu 5b, K-38); **korekta danych galerii z EJK** — brakujące `size` (5 prac), weryfikacja pozostałych wymiarów, poprawka sluga/tytułu `do-uzupelnienia-tytul-ikony`, jakość tytułów (§5); **uzupełnienie brakujących `authorName` uczniów** (10 prac) i **zgoda Akademii na publikację nazwisk**; **przegląd techniki w lightboxie** — domyślna wartość vs pole `technique` per praca (§5); **dopracowanie designu stopki** (`Footer`) — układ desktop i mobile, rozkład kolumn, social, pasek dolny (K-36; w 04b wdrożono wariant B funkcjonalny, bez finalnego polishu); **ponowne rozważenie sticky `FactsBox`** (K-37; odrzucone w 04b po prototypie — patrz `docs/plans/04b-review-fixes.md` K-32).
 
 **DoD:**
 
 - [ ] walidator schema.org bez błędów dla czterech typów;
 - [ ] podgląd linku (OG) sprawdzony narzędziem debugującym dla strony głównej i jednej ofertowej;
 - [ ] zdarzenia analityczne widoczne w panelu narzędzia w środowisku testowym;
-- [ ] raport Lighthouse dla 5 tras (główna, kurs, wykłady, galeria, aktualności) w `docs/lighthouse/`.
+- [ ] raport Lighthouse dla 5 tras (główna, kurs, wykłady, **galeria `/ikony`** — a11y ≥ 95 mobile, przeniesione z DoD 05b, audyt ręczny w 05b jako zamiennik tymczasowy, aktualności) w `docs/lighthouse/`;
+- [ ] lightbox `/ikony` sprawdzony na fizycznym iOS Safari (K-38; przeniesione z 05b).
 
 **Proponowane kawałki:** (1) metadata + OG + sitemap + robots; (2) JSON-LD; (3) analityka; (4) Lighthouse i poprawki.
 
@@ -248,8 +245,8 @@ Dla każdego: cel, zakres, kryteria ukończenia (DoD), proponowany podział na k
 | ---- | -------------------------------------------------- | -------- | ------------------------------------------------------------------------------------------- | ---------- |
 | K-02 | Źródło aktywnej pozycji nawigacji (klient/serwer)  | 1        | **Prop `active` ze strony/serwera**, nie `usePathname`; `Header`/`Footer` montują się w `PagePlaceholder` (i docelowo w stronach), nie w root `layout.tsx` — patrz `docs/plans/01-skeleton.md` | 2026-09-12 |
 | K-03 | Renderer MDX i zestaw komponentów w body           | 3        | **`@next/mdx` + `@mdx-js/react`**, mapa tagów w `mdx-components.tsx`, body w `OfferPage` (wrapper `offer-mdx`); program kursu: `<SemesterProgram />` + `semesters[]` w frontmatter (bez zmiany `types.ts`); FactsBox: etykiety + CTA per `kind × enrollmentOpen` w `pl.ts`, tel. jako drugi przycisk tylko mobile — patrz `docs/plans/03-oferta.md` | 2026-09-17 |
-| K-04 | `/ikony/[slug]` w v1                               | 5        | —                                                                                           | —          |
-| K-05 | Filtry galerii: query string vs stan               | 5        | —                                                                                           | —          |
+| K-04 | `/ikony/[slug]` w v1                               | 5        | **Poza v1** — podgląd tylko przez lightbox; trasa `[slug]` nie w tym pod-etapie — patrz `docs/plans/05-galeria.md` | 2026-09-19 |
+| K-05 | Filtry galerii: query string vs stan               | 5        | **Query string** (`?temat=<slug-tagu>`), bez przeładowania; domyślnie wszystkie tematy. **`?autor=` wycofane w 05b (K-43)** — podział EJK / uczniowie jest sztywny (sekcje, K-41) — patrz `docs/plans/05-galeria.md`, `docs/plans/05b-review-fixes.md` | 2026-09-19 |
 | K-06 | Paginacja aktualności: trasa vs query              | 6        | —                                                                                           | —          |
 | K-07 | Plausible vs Umami                                 | 7        | —                                                                                           | —          |
 | K-08 | Domena kanoniczna (www / bez)                      | 7        | —                                                                                           | —          |
@@ -282,8 +279,18 @@ Dla każdego: cel, zakres, kryteria ukończenia (DoD), proponowany podział na k
 | K-35 | CTA „Zapisy" w nagłowku desktop (04b)              | 4b       | **Poza 04b** — wrócić w pod-etapie 7 z danymi analityki | 2026-09-19 |
 | K-36 | Design stopki — dopracowanie układu                | 7        | **W pod-etapie 7** — po pełnym zestawie stron i przeglądzie Lighthouse; w 04b wdrożono wariant B funkcjonalny (huby jako linki, mapa kompletna, tap targety 44 px, mobile 2 kolumny); polish: rozkład kolumn desktop/mobile, social, pasek dolny — patrz `docs/plans/04b-review-fixes.md` K-24 | 2026-09-19 |
 | K-37 | Sticky `FactsBox` na stronach ofertowych           | 7        | **Ponowne rozważenie w pod-etapie 7** — odrzucone w 04b (K-32) po prototypie; warunek `min-height: 880px`, dwukolumnowy layout przez całą stronę; opcjonalnie `ClosingCta` — patrz `docs/plans/04b-review-fixes.md` K-32 | 2026-09-19 |
+| K-38 | `Lightbox` — implementacja modalna                 | 5        | **Natywny `<dialog>` + `showModal()`**; fallback do własnego overlay tylko po negatywnym teście Safari/iOS (test fizyczny iOS — **pod-etap 7**); patrz `docs/plans/05-galeria.md` | 2026-09-19 |
+| K-39 | Obrazy w lightboxie vs. siatka                     | 5        | **Jeden `src`**, większe `sizes` w lightboxie (rozmiar obrazu zmieniony w K-45); weryfikacja w pod-etapie 7, ewentualne `imageLarge` w `IconWork` — patrz `docs/plans/05-galeria.md` | 2026-09-19 |
+| K-40 | Układ siatki galerii (05b; zmienia K-31 dla galerii) | 5b | **Opcja B — wyrównane rzędy** (FooGallery / `justifyGalleryRows.ts`): stała wysokość rzędu, zmienna szerokość kafli, `object-cover`, `lastRow: smart`; desktop `rowHeight` 300 / `maxRowHeight` 400, max 4 kafle w rzędzie. Opcja A (półka) odrzucona po ocenie wizualnej na pełnym zestawie WP (52 prace, 2026-09-20); tymczasowy toggle A/B usunięty. „Wybrane ikony” na home zostają przy K-31 — patrz `docs/plans/05b-review-fixes.md` | 2026-09-20 |
+| K-41 | Kolejność: EJK → uczniowie (05b) | 5b | **Dwie sztywne sekcje** z H2 (bez licznika w nagłówku); kolejność w sekcji = kolejność w `icons.json`; sekcja pusta pod filtrem tematu znika razem z nagłówkiem. Doprecyzowuje D-02 | 2026-09-19 |
+| K-42 | Podpisy i atrybucja autorów (05b) | 5b | **Trzy poziomy:** siatka — sam tytuł; sekcja uczniów — lista nazwisk generowana z danych (bez osobnego wstępu); lightbox — pełny autor lub „Praca z warsztatów Akademii”, wymiary („do weryfikacji”), technika (domyślna lub z danych). `authorName?` opcjonalne w `IconWork`; bez pola `year` w `IconWork` | 2026-09-20 |
+| K-43 | Logika filtrów (05b) | 5b | **Jeden filtr — temat:** „Wszystkie”, wybór jednokrotny, `aria-current`, grupa z `aria-label`. **Filtr autora i `?autor=` wycofane** (parametr usuwany z URL). Taksonomia: Chrystus · Matka Boża · Aniołowie · Święci · Sceny i święta (stała lista, kolejność chipów z niej); walidacja przy buildzie (każda praca ≥ 1 tag, każdy temat ≥ 1 praca, tag spoza taksonomii); nieznany `?temat=` usuwany z URL | 2026-09-19 |
+| K-44 | Nagłówek galerii (05b) | 5b | **Jednokolumnowy** na wszystkich szerokościach (H1, pod nim filtr tematu); mobile: poziomy pasek chipów z uciętym ostatnim chipem (świadome odstępstwo od K-23 — filtr to nie nawigacja). Bez układu dwukolumnowego od 1024 px | 2026-09-19 |
+| K-45 | Lightbox — rozmiar obrazu i układ (05b; zmienia K-39) | 5b | Obraz o wysokości 80vh (desktop) / 60svh (mobile) i jawnej szerokości z proporcji; strzałki 48×48 przy krawędziach okna; licznik w kolumnie metadanych; mobile: sticky pasek Poprzednia / licznik / Następna + swipe (próg 50 px); układ desktopowy od `lg` (1024 px), nie `md`; „Zapytaj o podobną ikonę” tylko przy pracach EJK; klik w tło zamyka (tylko desktop); jedno drzewo, jeden `<Image>` | 2026-09-19 |
+| K-46 | Zajawka „Ikony na zamówienie” (05b) | 5b | Zajawka **bez zdjęcia** do sesji zdjęciowej; CTA jako przycisk | 2026-09-19 |
+| K-47 | Treść `sample` galerii (05b) | 5b | **Pełny zestaw WP** — 52 prace (23 EJK + 29 uczniów), oryginały w `public/media/sample/icons/`, wszystkie `sample: true`; tytuły zgodne ze zdjęciami WP. Wymiary z podpisów WP w danych (`size` — 47 z 52; bez `size`: 3 EJK + 2 uczniów), UI pokazuje „Wymiary: do weryfikacji” (bez nowego pola). Z makiety wypadły „Św. Antoni” i „Przemienienie” (brak w galerii WP); dawny „Mandylion” to Chrystus Pantokrator, „Matka Boża Znaku” to Krzew Gorejący | 2026-09-20 |
 
-Decyzje spoza kodu (D-01…D-05 z briefu v2) pozostają w dokumentach ekosystemu; tu wpisujemy tylko ich skutki dla implementacji.
+Decyzje spoza kodu (D-01…D-05 z briefu v2) pozostają w dokumentach ekosystemu; tu wpisujemy tylko ich skutki dla implementacji. **D-02 (domyślny filtr galerii):** galeria pokazuje **obie sekcje, EJK pierwsza, sztywny podział** (K-41), bez filtra autora; pytanie o zakres prac EJK po starcie strony autorskiej zostaje otwarte — skutek w K-05 / K-41 / `docs/plans/05b-review-fixes.md` (2026-09-19).
 
 ---
 
@@ -297,14 +304,22 @@ Lista rośnie w każdym pod-etapie. Odhaczana w pod-etapie 8.
 | Wpisy aktualności `[przykład]`         | `content/news/sample-*.mdx`                        | 6        | migracja WP                                       | ⬜  |
 | „Rytm dnia” w Letniej Szkole Światła   | `content/offers/plener.mdx`                        | 3        | potwierdzenie z EJK albo usunięcie sekcji         | ⬜  |
 | Tytuł wykładu inauguracyjnego          | `content/lectures/2026-2027.json`                  | 4        | program od sekretariatu (pobrany z WP `/wyklady/tematy/`) | ✅  |
-| Wymiary ikon `[z podpisu WP]`          | `content/icons.json`                               | 2 (plik + 3–4 wpisy na stronę główną), 5 (pełny zestaw sample galerii) | migracja WP (pod-etap 8)                         | ⬜  |
+| Wymiary ikon `[z podpisu WP]` (`size`) — 5 prac bez `size` (`do-uzupelnienia-tytul-ikony`, `chrystus-milosierny`, `chrystus-eucharystyczny-na-krzyzu`, `jezus-chrystus`, `matka-boza-pompejanska`); pozostałe 47 — do weryfikacji | `content/icons.json` | 2, 5 (05b/5) | uzupełnienie i potwierdzenie przez EJK, pod-etap 7; do tego czasu UI pokazuje „Wymiary: do weryfikacji” (`pl.gallery.lightbox.sizeUnverified`), liczb nie wyświetla | ⬜  |
+| Slug placeholder `do-uzupelnienia-tytul-ikony` (tytuł tymczasowy „Trójca Święta” — do weryfikacji ze zdjęciem) | `content/icons.json` | 5 (import WP) | poprawka tytułu i sluga przez EJK, pod-etap 7 | ⬜ |
+| Jakość tytułów galerii — artefakty WP (CAPS, podwójne spacje, „Advokata" vs „Advocata", interpunkcja) | `content/icons.json` (`title`) | 5 (import WP) | korekta merytoryczna przez EJK, pod-etap 7 | ⬜ |
+| Zestaw sample galerii — 52 prace z WP (23 EJK + 29 uczniów), oryginały w `public/media/sample/icons/`, kolejność ręczna | `content/icons.json`, `public/media/sample/icons/*` | 5 (05b/5, zastępuje 14 wpisów na 4 zdjęciach) | migracja WP (pod-etap 8) — dane już z WP; weryfikacja i korekta merytoryczna, nie ponowny import | ⬜ |
+| 10 prac uczniów bez `authorName` (fallback „Praca z warsztatów Akademii” w lightboxie) | `content/icons.json` | 7 | uzupełnienie przez Akademię | ⬜ |
+| Zgoda Akademii na publikację nazwisk uczniów w galerii (lista + lightbox) | `content/icons.json` (`authorName`) | 7 | potwierdzenie przez właściciela | ⬜ |
+| Technika w lightboxie — domyślna „tempera jajowa na desce lipowej” (`pl.gallery.lightbox.techniqueDefault`) dla wszystkich prac; brak pola `technique` w `icons.json` | `src/i18n/formatLightboxMeta.ts`, `content/icons.json` | 5 (K-42) | przegląd i ewentualna korekta per praca lub zmiana domyślnej — EJK, pod-etap 7 | ⬜ |
+| Wstęp do sekcji uczniów `[do uzupełnienia]`, etykieta „Autorzy prac:” | `src/i18n/pl.ts` (`gallery.sections`) | 5 (05b/3, 05b/5) | tekst od Akademii | ⬜ |
+| Zajawka „Ikony na zamówienie” bez zdjęcia (K-46) — do sesji zdjęciowej | `src/components/gallery/GalleryOrderTeaser.tsx` | 5 (Kawałek 1), zmiana w 05b/5 | zdjęcie z sesji zdjęciowej | ⬜ |
 | Czas realizacji ikony na zamówienie    | `content/offers/zamowienie.mdx` (`facts.leadTime`) | 3        | potwierdzenie z EJK                               | ⬜  |
 | Liczba sezonów (16 łącznie)            | `content/lectures/archive.json`                    | 4        | potwierdzone: bieżący 2026/2027 = szesnasty       | ✅  |
 | Zdjęcia z makiet                       | `public/media/sample/`                             | 2        | oryginały z `/wp-content/uploads/` lub nowa sesja | ⬜  |
 | Sezony archiwum `sample` (2–3)         | `content/lectures/sample-*.json`                   | 4        | 16 sezonów z migracji (15 archiwalnych + bieżący) | ✅  |
 | Wykładowcy — bio i zdjęcia z WP | `content/lecturers.json`, `public/media/lecturers/` | 4     | weryfikacja / migracja WP (pod-etap 8)            | ✅  |
 | „Najbliższe” na stronie głównej — 2/3 wpisy zastąpione realną treścią z brief §8 (nabór 2026/2027, pierwszy wykład 6.10.2026); trzeci wpis („Wystawa stała”) pozostaje `[przykład]` — niepotwierdzone w brief §8 | `content/settings.json` (`upcoming`) | 1, uzupełnione w 2 | potwierdzenie z Akademią, czy taka wystawa istnieje | ⬜ |
-| Zdjęcia „Wybrane ikony” — 4 wpisy `sample` na stronę główną | `content/icons.json` (Kawałek 2) | 2 | migracja WP | ⬜ |
+| „Wybrane ikony” na stronie głównej i „Przykłady realizacji” w `/ikony/na-zamowienie` — 4 prace z galerii (Krzew Gorejący, Pantokrator, Archanioł Michał, Trójca Święta) | `FEATURED_ICON_SLUGS` w `src/content/icons.ts`, `exampleSlugs` w `content/offers/zamowienie.mdx` | 2, zmiana w 05b/5 | wybór redakcyjny EJK z prac galerii | ⬜ |
 
 ---
 
@@ -326,6 +341,9 @@ Lista rośnie w każdym pod-etapie. Odhaczana w pod-etapie 8.
 | 2026-09-18 | **Pod-etap 4 zamknięty** (4/4 kawałki + ewaluacja merytoryczna). DoD spełnione: `/wyklady`, `/wyklady/archiwum`, `/wyklady/wykladowcy`; `LectureList`, `SeasonAccordion`, `LecturerCard`; warstwa `lectures.ts` / `lecturers.ts`; dane sample + `lecturer-directory.json`. Korekty po ewaluacji: K-20 → lead + link (bez akordeonu na hubie); `#zapisy`; `enrollmentDeadline` jako tekst; dokumentacja typów i K-21. Build/lint OK. |
 | 2026-09-19 | Pod-etap 4b — K-33 hero: **opcja A** (zostaje `min(920px, 76vh)` i siatka md+; kafle „Najbliższe" nad foldem przy 1920×917 nie są wymagane). Rejestr §4: K-33. Szczegóły i pomiary: `docs/plans/04b-review-fixes.md` K-33 pkt 1, załącznik. |
 | 2026-09-19 | **Pod-etap 4b zamknięty** (8/8 kawałków zamykających, OK użytkownika). DoD spełnione; Lighthouse a11y 100/100 na 4 trasach; rejestr K-23…K-35 w §4; brief §3 (SectionNav „Przegląd") + K-26 (Garamond min. 16,5 px); `/pracownia` zaślepka; D-1: brak CTA po scrollu (K-32/K-37). Gałąź: `feat/04b-review-fixes`. |
+| 2026-09-19 | Sesja planistyczna pod-etapu 5 zakończona, plan zatwierdzony (`docs/plans/05-galeria.md`). K-04, K-05, K-38, K-39; D-02 → wszyscy autorzy; filtry query string; lightbox bez opisu i bez `[slug]`; paginacja odłożona; tagi dynamiczne z `icons.json`; sample tylko 4 zdjęcia (bez `chrystus`/`deesis`). |
+| 2026-09-20 | Galeria `/ikony`: K-40 **B** (wyrównane rzędy) jako jedyny układ; usunięto półkę (A), `GalleryLayoutContext`, `GalleryLayoutToggle` i stringi `layoutToggle`. Rejestr §4: K-40. Szczegóły: `docs/plans/05b-review-fixes.md` K-40. |
+| 2026-09-20 | **Pod-etap 5 zamknięty** (05: 4/4 + 05b: 6/6, OK użytkownika). DoD spełnione: `/ikony` z filtrami tematu, sekcjami EJK → uczniowie, siatką wyrównanych rzędów, lightboxem desktop/mobile; 52 prace sample z WP; rejestr K-38…K-47 w §4. Formalny Lighthouse a11y i test iOS Safari — pod-etap 7. Gałąź: `feat/05-gallery`. |
 
 ---
 

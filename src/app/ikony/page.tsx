@@ -1,15 +1,21 @@
-import { PagePlaceholder } from "@/components/PagePlaceholder";
+import { GalleryPage } from "@/components/gallery/GalleryPage";
 import { mainNav, sectionNav } from "@/navigation";
 
-const title = mainNav.find((item) => item.href === "/ikony")!.label;
+const mainNavActive = mainNav.find((item) => item.href === "/ikony")!.label;
+const sectionActive = sectionNav.ikony[0].label;
 
-export default function IconsPage() {
+type IconsPageProps = {
+  searchParams: Promise<Record<string, string | string[] | undefined>>;
+};
+
+export default async function IconsPage({ searchParams }: IconsPageProps) {
+  const params = await searchParams;
+
   return (
-    <PagePlaceholder
-      title={title}
-      active={title}
-      section="ikony"
-      sectionActive={sectionNav.ikony[0].label}
+    <GalleryPage
+      active={mainNavActive}
+      sectionActive={sectionActive}
+      searchParams={params}
     />
   );
 }

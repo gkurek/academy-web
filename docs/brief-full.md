@@ -51,7 +51,7 @@ Stack: WordPress 7.1, darmowy motyw blogowy **Nisarg** (ok. 2015), wtyczka GDPR 
 - **Nieaktualne / sprzeczne dane**: strona główna – zapisy do 24.09.**2026**; strona „Kurs roczny” – nagłówek „2025/2026”, zapisy do 24.09.**2025**. Treść musi być zarządzana w jednym miejscu (CMS: pole `seasonLabel`, `enrollmentDeadline`).
 - **Kontakt rozproszony i niespójny**: `akademiaikony@gmail.com` (warsztaty, ogólny), `sekretariat.ikony22@gmail.com` (wykłady), tel. „601 734 705” raz, „601 734705” gdzie indziej. Strona Kontakt: mapa Google **nie jest osadzona** – widać surowy link `google.com/maps/embed?...`.
 - **Brak zebranych faktów praktycznych**: cena, terminy, godziny, miejsce, jak się zapisać – rozsiane po akapitach. Potrzebna sekcja „W skrócie” na każdej stronie ofertowej.
-- **Galeria**: ~38 ikon Elżbiety + ~28 ikon uczniów jako płaska lista; podpisy w formacie „Tytuł, 25x30 (cm)”, część bez podpisu, jedna z podpisem „opis”, literówki („Madylion”, „Mgdaleny”, „Advokata” vs „Advocata”, „Matyaszczak” vs „Matyaszczyk”). Brak filtrów autor/temat, brak strony pojedynczej ikony.
+- **Galeria**: 23 ikony Elżbiety + 29 ikon uczniów (stan WP 2026-09-19; wcześniej szacowane ~38 + ~28) w dwóch sekcjach; podpisy w formacie „Tytuł, 25x30 (cm)”, część bez podpisu, jedna z podpisem „opis”, literówki („Madylion”, „Mgdaleny”, „Advokata” vs „Advocata”, „Matyaszczak” vs „Matyaszczyk”). Brak filtrów autor/temat, brak strony pojedynczej ikony.
 - **Literówki w treści**: „starcjonarne”, „kreatywnośći”, „zdecydowne”, „wkłady” (zam. wykłady), „Zgłoszenia przyjmujemy do 24 września 2025.” obok „2026”.
 - **Testimoniale z pleneru** (Adam, Hania, Iza, Robert, Maciej, Artur, Emilia) – wartościowe, ale wklejone jako wypunktowanie z półpauzami; zasługują na własny komponent.
 - Zdjęcia głównie z 2017–2021, jedno ze strony głównej z 2017 (`Chrystus212m_n.jpg`). Potrzebna nowa sesja (wspólna dla całego ekosystemu, §10.4) lub przynajmniej selekcja najlepszych ujęć w wysokiej rozdzielczości.
@@ -118,8 +118,7 @@ Media: wszystkie oryginały w `/wp-content/uploads/YYYY/MM/`. Podpisy ikon są w
 /wyklady                   hub: bieżący sezon + jak się zapisać
 /wyklady/archiwum          15 sezonów archiwalnych, rozwijane (bieżący 2026/2027 — szesnasty)
 /wyklady/wykladowcy
-/ikony                     galeria z filtrami (autor: Elżbieta / uczniowie; temat)
-/ikony/[slug]              pojedyncza ikona (opcjonalnie w v1)
+/ikony                     galeria: sekcje EJK → uczniowie, filtr tematu, lightbox
 /ikony/na-zamowienie       strona ofertowa (treść wymienna po starcie strony autorskiej)
 /wydarzenia                wystawy, poświęcenia, oprowadzania, wyjazdy (kategorie)
 /aktualnosci               lista + archiwum
@@ -155,7 +154,7 @@ Struktura ma dwa poziomy; każda podstrona musi być osiągalna w maksymalnie dw
 - Zapisy w v1: przyciski `mailto:` z gotowym, **ujednoliconym tematem** (`Zgłoszenie – kurs roczny 2026/2027`, `Zgłoszenie – Letnia Szkoła Światła 2027`, `Zgłoszenie – wykłady 2026/2027`, `Zapytanie – ikona na zamówienie`) i telefonem. Tematy pozwalają liczyć zgłoszenia w skrzynce bez żadnego systemu. Przygotować miejsce na formularz (v2).
 - Nawigacja wg §4.1: huby sekcji, `SectionNav`, stopka z mapą strony.
 - Program bieżącego sezonu wykładów jako lista wydarzeń (data, tytuł(y), prowadzący), archiwum jako rozwijane sezony.
-- Galeria ikon z filtrami i lightboxem, każde zdjęcie z podpisem (tytuł, autor, wymiary, rok jeśli znany). Zakres prac EJK w galerii Akademii i domyślny filtr – decyzja po sesji 0b (§10.5).
+- Galeria ikon: dwie sztywne sekcje (ikony Elżbiety Jackowskiej-Kurek → ikony uczniów), filtr **tematu** przez query string (`?temat=<slug-tagu>`), bez filtra autora; lightbox. W siatce — sam tytuł; w lightboxie — pełny autor, wymiary i technika. Lista nazwisk uczniów w sekcji uczniów, generowana z danych. Podgląd wyłącznie przez lightbox (bez `/ikony/[slug]` w v1). Zakres prac EJK po starcie strony autorskiej — D-02 (§10.5).
 - Aktualności z paginacją, pojedynczy wpis.
 - Kontakt: adres, osadzona mapa, dwa maile z opisem czego dotyczą, telefon, info o zakrystii.
 - Responsywność mobile-first, dostępność (WCAG AA: kontrast, fokus, alt), `prefers-reduced-motion`.
@@ -310,7 +309,6 @@ type IconWork = {
   authorName: string;
   technique?: string; // „tempera jajowa na desce, złocenie”
   size?: { w: number; h: number };
-  year?: number;
   image: Image;
   tags?: string[];
 };
@@ -363,7 +361,7 @@ type SiteSettings = {
 4. Podpisy galerii → `IconWork`: regex `^(.+?),\s*(\d+)x(\d+)\s*\(cm\)$`, wariant z „pisany/pisana ręką X” → `author: 'student'`, `authorName: X`.
 5. Wygenerować tabelę przekierowań stare→nowe URL-e (§3) i zapisać w `next.config.ts`.
 6. Ręczna korekta: literówki (§2.2), ujednolicenie telefonu i maili, uzupełnienie brakujących podpisów, aktualizacja dat na 2026/2027.
-   Szacunkowo do ręcznej korekty: ~10 stron statycznych, 16 sezonów wykładów (parsowanie automatyczne, korekta nazwisk), ~65 podpisów ikon. Reszta (60 aktualności) – migracja bez korekty. Blogspot: nie migrować.
+   Szacunkowo do ręcznej korekty: ~10 stron statycznych, 16 sezonów wykładów (parsowanie automatyczne, korekta nazwisk), ~52 podpisy ikon. Reszta (60 aktualności) – migracja bez korekty. Blogspot: nie migrować.
 
 ---
 
@@ -428,7 +426,7 @@ Każdy typ treści ma jednego właściciela w danym momencie; pozostałe serwisy
 | #    | Decyzja                                                                                                       | Kiedy                                       |
 | ---- | ------------------------------------------------------------------------------------------------------------- | ------------------------------------------- |
 | D-01 | Architektura marki: nazwa i domena strony autorskiej, relacja do Akademii i Fundacji                          | sesja 0b, przed wyborem kierunku wizualnego |
-| D-02 | Zakres prac EJK w galerii Akademii po starcie strony autorskiej; domyślny filtr galerii (uczniowie / wszyscy) | sesja 0b                                    |
+| D-02 | Zakres prac EJK w galerii Akademii po starcie strony autorskiej                                               | sesja 0b                                    |
 | D-03 | CMS dla obu serwisów (własny / Payload / Sanity)                                                              | przed etapem 2 (panel)                      |
 | D-04 | Monorepo vs osobne repozytoria ze współdzielonymi plikami                                                     | **Osobne repozytoria**; typy/tokeny przez kopiowanie plików (jak `brief-claude-code.md` §2) |
 | D-05 | Czy ikony na zamówienie oferowane z opcją poświęcenia (wpływa na treść `/ikony/na-zamowienie`)                | sesja 0c                                    |

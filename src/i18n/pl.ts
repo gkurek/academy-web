@@ -210,6 +210,57 @@ export const pl = {
     expandBio: "Rozwiń notę",
     collapseBio: "Zwiń notę",
   },
+  gallery: {
+    title: "Galeria ikon",
+    filters: {
+      themeLabel: "Temat",
+      themeGroupAria: "Filtruj według tematu",
+      themeAll: "Wszystkie",
+    },
+    tagLabels: {
+      chrystus: "Chrystus",
+      "matka-bozy": "Matka Boża",
+      aniolowie: "Aniołowie",
+      swieci: "Święci",
+      "sceny-i-swieta": "Sceny i święta",
+    },
+    // K-41: the gallery is split into two fixed sections; ids double as URL hashes.
+    sections: {
+      ejk: {
+        title: "Ikony pisane ręką Elżbiety Jackowskiej-Kurek",
+      },
+      uczniowie: {
+        title: "Ikony uczniów",
+      },
+    },
+    caption: {
+      student: "{title}, pisana ręką {authorName}",
+    },
+    lightbox: {
+      close: "Zamknij",
+      closeAria: "Zamknij",
+      previous: "Poprzednia",
+      previousAria: "Poprzednia",
+      next: "Następna",
+      nextAria: "Następna",
+      position: "{index} z {total}",
+      authorLabel: "Autor:",
+      // Sizes copied from WP captions are unconfirmed (they contradict the photos) — never shown as numbers.
+      sizeLabel: "Wymiary:",
+      sizeUnverified: "do weryfikacji",
+      techniqueLabel: "Technika:",
+      techniqueDefault: "tempera jajowa na desce lipowej",
+      tagsLabel: "Tagi:",
+      orderLink: "Zapytaj o podobną ikonę",
+      authorFallback: "Praca z warsztatów Akademii",
+    },
+    orderTeaser: {
+      title: "Ikony na zamówienie",
+      lead:
+        "Piszemy ikony dla parafii i osób prywatnych — na konkretne wezwanie, w ustalonym rozmiarze, w technice temperowej ze złoceniem.",
+      linkLabel: "Jak zamówić ikonę",
+    },
+  },
   workshopsHub: {
     title: "Warsztaty pisania ikon",
     lead: "Dwie ścieżki. Kurs w roku akademickim — raz w tygodniu, od października do czerwca. I tygodniowy plener latem, w trybie rekolekcyjnym. Obie prowadzi Elżbieta Jackowska-Kurek, w obu pracuje się indywidualnie.",
