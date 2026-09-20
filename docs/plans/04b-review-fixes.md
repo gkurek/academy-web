@@ -2,7 +2,7 @@
 
 Status: zamknięty 2026-09-19
 Gałąź: feat/04b-review-fixes
-Makiety: brak nowych. Ten pod-etap **świadomie odchodzi od makiety** w punktach wymienionych w „Decyzje" — każde odstępstwo ma numer K i po zatwierdzeniu trafia do rejestru w `docs/plan-claude-code.md` §4. Hierarchia dokumentów z `CLAUDE.md` bez zmian (plan pod-etapu > brief > makieta).
+Makiety: brak nowych. Ten etap **świadomie odchodzi od makiety** w punktach wymienionych w „Decyzje" — każde odstępstwo ma numer K i po zatwierdzeniu trafia do rejestru w `docs/plan-claude-code.md` §4. Hierarchia dokumentów z `CLAUDE.md` bez zmian (plan etapu > brief > makieta).
 
 Źródło: przegląd `https://academy-web-lovat.vercel.app/` na 1920×917 (desktop) i 390 px (mobile), trasy: `/`, `/warsztaty`, `/warsztaty/kurs-roczny-i-trzyletni`, `/warsztaty/letnia-szkola-swiatla`, `/wyklady`, `/wyklady/archiwum`, `/wyklady/wykladowcy`. Nie oglądano: `/ikony/na-zamowienie` (ten sam szablon `OfferPage` — sprawdzić przy Kawałku 5).
 
@@ -10,7 +10,7 @@ Makiety: brak nowych. Ten pod-etap **świadomie odchodzi od makiety** w punktach
 
 ## Cel i zakres
 
-Doprowadzić to, co już zbudowane (skeleton, home, oferta, wykłady), do jednego spójnego systemu, zanim pod-etap 5 (galeria) odziedziczy te same komponenty: `IconGrid`, skalę nagłówków, podpisy, rytm sekcji. W zakresie: bugi układu, skala typografii i role kolorów, stopka i `SectionNav`, rytm pionowy i szerokość kontenera, przepływ sprzedażowy (CTA dostępne w całym scrollu, domknięcie stron). Poza zakresem: przebudowa layoutu `/wyklady/wykladowcy` (backlog z planu 04 — tu tylko nagłówki i szerokość biogramu), treść i zdjęcia, `sizes` w `next/image` i wydajność (pod-etap 7), CTA „Zapisy" w nagłówku desktop (patrz K-35), analityka (K-15).
+Doprowadzić to, co już zbudowane (skeleton, home, oferta, wykłady), do jednego spójnego systemu, zanim etap 5 (galeria) odziedziczy te same komponenty: `IconGrid`, skalę nagłówków, podpisy, rytm sekcji. W zakresie: bugi układu, skala typografii i role kolorów, stopka i `SectionNav`, rytm pionowy i szerokość kontenera, przepływ sprzedażowy (CTA dostępne w całym scrollu, domknięcie stron). Poza zakresem: przebudowa layoutu `/wyklady/wykladowcy` (backlog z planu 04 — tu tylko nagłówki i szerokość biogramu), treść i zdjęcia, `sizes` w `next/image` i wydajność (etap 9), CTA „Zapisy" w nagłówku desktop (patrz K-35), analityka (K-15).
 
 ## Decyzje do podjęcia przed startem
 
@@ -28,10 +28,10 @@ Kawałek 1 nie zależy od żadnej decyzji i może ruszyć od razu. Pozostałe ka
 | K-29 | Skala odstępów i rytm desktop                        | Kroki 80/96/120, sekcje co 96 px   | Kawałek 4 | **Przyjęto** — `--space-10/11/12` (80/96/120 px); desktop `--section-gap: 96px`; cytat home 120 px góra/dół; linie full-width tylko nagłówek/stopka/max. jedna cezura na stronę. **Świadome odstępstwo:** dolna linia cytatu (`rule-gold-b`) zostaje — cezura między cytatem a „Wybrane ikony" (odrzucona rekomendacja usunięcia po review) |
 | K-30 | `content-max` na szerokich ekranach                  | 1280 px od 1600 px                 | Kawałek 4 | **Przyjęto** — `--content-max: 1280px` od 1600 px; ostatni krok Kawałka 4, zrzut przed/po; cofnięcie jedną linią jeśli gorzej                                                                                                                                                                                                               |
 | K-31 | Kadrowanie ikon w `IconGrid`                         | `contain` na powierzchni kafla     | Kawałek 4 | **Przyjęto** — `object-contain` na `--surface-tile`, stała wysokość boksu; „Wybrane ikony" teraz; założenie wejściowe planu 05                                                                                                                                                                                                              |
-| K-32 | Sticky `FactsBox` + pasek zamykający                 | Oba                                | Kawałek 5 | **Odrzucono 2026-09-19** — obie opcje (sticky + `ClosingCta`); layout bez zmian. **Świadoma decyzja (D-1, 2026-09-19):** brak CTA po scrollu — zapis tylko w `FactsBox` w nagłówku; sekcja „Jak się zapisać" bez przycisku; znany gap akceptowany. Sticky + opcjonalnie `ClosingCta` → pod-etap 7 (K-37) |
+| K-32 | Sticky `FactsBox` + pasek zamykający                 | Oba                                | Kawałek 5 | **Odrzucono 2026-09-19** — obie opcje (sticky + `ClosingCta`); layout bez zmian. **Świadoma decyzja (D-1, 2026-09-19):** brak CTA po scrollu — zapis tylko w `FactsBox` w nagłówku; sekcja „Jak się zapisać" bez przycisku; znany gap akceptowany. Sticky + opcjonalnie `ClosingCta` → etap 9 (K-37) |
 | K-33 | Home: nagłówek Najbliższe, hero, zakończenie, filary | Wszystkie cztery                   | Kawałek 5 | **Częściowo 2026-09-19** — punkty 1–3 (H2 „Najbliższe", filary → huby; hero: odstępstwo `min(920px, 76vh)` + siatka md+, bez wymogu foldu); punkt 4 (`ClosingCta` home) odrzucony razem z K-32                                                                                                                                                                                        |
 | K-34 | Stan czasu w `LectureList`                           | Po stronie serwera, `revalidate`   | Kawałek 5 | **Odłożone 2026-09-19** — bez zmian; powrót po implementacji K-32 i K-33                                                                                                                                                                                                                                                          |
-| K-35 | CTA „Zapisy" w nagłówku desktop                      | Nie w 04b                          | —         | **Przyjęto 2026-09-19** — poza 04b; backlog pod-etap 7 |
+| K-35 | CTA „Zapisy" w nagłówku desktop                      | Nie w 04b                          | —         | **Przyjęto 2026-09-19** — poza 04b; backlog etap 9 |
 
 
 ### K-23 — pierwsza pozycja `SectionNav` *(decyzja)*
@@ -52,7 +52,7 @@ Skutek dla dokumentów: `brief-claude-code.md` §3 (etykiety Warsztaty/Ikony), `
 
 ### K-24 — układ stopki *(decyzja)*
 
-**Decyzja: przyjęto 2026-09-19, zmieniono na wariant B 2026-09-19** — układ bez zmian (4 kolumny desktop, jedna kolumna mobile); nagłówki grup (Warsztaty, Wykłady, Ikony) jako linki do hubów; brakujące pozycje (`/pracownia`, „Galeria", „Bieżący sezon"); etykiety kontaktu w Plex tertiary zamiast złotego Garamonda; linki min. 44 px; social w pasku dolnym (jak w makiecie). **Design stopki (układ desktop/mobile, rozkład kolumn, social) — do dopracowania w pod-etapie 7** (K-36).
+**Decyzja: przyjęto 2026-09-19, zmieniono na wariant B 2026-09-19** — układ bez zmian (4 kolumny desktop, jedna kolumna mobile); nagłówki grup (Warsztaty, Wykłady, Ikony) jako linki do hubów; brakujące pozycje (`/pracownia`, „Galeria", „Bieżący sezon"); etykiety kontaktu w Plex tertiary zamiast złotego Garamonda; linki min. 44 px; social w pasku dolnym (jak w makiecie). **Design stopki (układ desktop/mobile, rozkład kolumn, social) — do dopracowania w etapie 9** (K-36).
 
 Stan: nagłówki grup „Warsztaty", „Wykłady", „Ikony" to `div`, nie linki → ze stopki nie da się wejść na `/warsztaty`, `/wyklady`, `/ikony`; brak `/pracownia`. Sprzeczne z brief §4.1 („pełna mapa strony"). Ten sam styl (złoty Garamond 15 px) oznacza grupy kontaktu i grupy mapy — „Warsztaty i ikony" stoi obok „Warsztaty". Górny rząd poszarpany (kolumna 3 zaczyna się zwykłym linkiem). Pasek dolny dosunięty do lewej. Mobile: linki 20–27 px wysokości przy `--tap-min: 48px`.
 
@@ -98,13 +98,13 @@ Rekomendacja — jedna tabela ról:
 | Tekst UI i kart     | 16,5 / 1,6 | 16,5   | karty, listy, `FactsBox`                                                                                   |
 
 
-Waga 400 wszędzie. Tag HTML dobierany do kolejności nagłówków, nie do rozmiaru (precedens: `Pillars` w pod-etapie 2).
+Waga 400 wszędzie. Tag HTML dobierany do kolejności nagłówków, nie do rozmiaru (precedens: `Pillars` w etapie 2).
 
 Do tej samej decyzji: `--size-nav` 15 → 16 px i cel kliknięcia linków menu/`SectionNav` ≥ 44 px (dziś 26–27 px).
 
 ### K-26 — minimalny rozmiar EB Garamond *(decyzja; zmiana zapisu w briefie)*
 
-**Decyzja: przyjęto 2026-09-19** — Garamond nie schodzi poniżej 16,5 px; daty, meta i podpisy 16,5–17 px; etykiety, które muszą zostać małe → Plex 14,5 px; wyjątek marki: podtytuł logo 14 → 15 px desktop (mobile bez zmian po sprawdzeniu przy 360 px). Dopisek do `brief-claude-code.md` przy zamknięciu pod-etapu.
+**Decyzja: przyjęto 2026-09-19** — Garamond nie schodzi poniżej 16,5 px; daty, meta i podpisy 16,5–17 px; etykiety, które muszą zostać małe → Plex 14,5 px; wyjątek marki: podtytuł logo 14 → 15 px desktop (mobile bez zmian po sprawdzeniu przy 360 px). Dopisek do `brief-claude-code.md` przy zamknięciu etapu.
 
 Stan: `brief-claude-code.md` dopuszcza 14 px desktop / 15 px mobile. Garamond ma małą wysokość x — 14–15 px wygląda jak 13 px w Plex. Dotyczy: daty w kaflach Najbliższe (15), podpisy ikon (15), etykiety grup w stopce (15), meta w `OfferCard` (15), podtytuł logo (14).
 
@@ -151,9 +151,9 @@ Stan: skala kończy się na 56 px (`space-8` = 52 i `space-9` = 56 to praktyczni
 **Decyzja: przyjęto 2026-09-19** — `--content-max: 1280px` od 1600 px szerokości okna; ostatni krok Kawałka 4, zrzut przed/po w meldunku; cofnięcie jedną linią jeśli wygląda gorzej.
 
 - **Rekomendacja (przyjęta):** `--content-max: 1280px` od 1600 px szerokości okna; tekst trzyma K-28, więc się nie wydłuża — zyskują siatki (filary, ikony, karty, przyszła galeria). Robione jako ostatni krok Kawałka 4, z osobnym zrzutem przed/po w meldunku; jeśli wygląda gorzej — cofamy jedną linią.
-- Alternatywa (odrzucona): zostawić 1180 px i wrócić do tematu po galerii (pod-etap 5), która skorzysta najbardziej.
+- Alternatywa (odrzucona): zostawić 1180 px i wrócić do tematu po galerii (etap 5), która skorzysta najbardziej.
 
-### K-31 — kadrowanie ikon w `IconGrid` *(decyzja — przed pod-etapem 5)*
+### K-31 — kadrowanie ikon w `IconGrid` *(decyzja — przed etapem 5)*
 
 **Decyzja: przyjęto 2026-09-19** — `object-contain` na tle `--surface-tile`, stała wysokość boksu; „Wybrane ikony" na home teraz; ta sama reguła jako założenie wejściowe planu 05.
 
@@ -164,7 +164,7 @@ Stan: boks 251×290 z `object-cover` tnie kompozycje (Przemienienie, Św. Antoni
 
 ### K-32 — sticky `FactsBox` i pasek zamykający *(decyzja; odstępstwo od makiety `#1a-oferta`)*
 
-**Decyzja: odrzucono 2026-09-19** — obie opcje rekomendacji (sticky `FactsBox` + `ClosingCta`); layout ofertowy bez zmian. Po prototypie na stagingu: sticky odrzucone; `ClosingCta` wycofane razem ze sticky. **Świadoma decyzja D-1 (2026-09-19):** brak CTA po scrollu — zapis tylko w `FactsBox` w nagłówku strony; sekcja „Jak się zapisać" bez przycisku; znany gap akceptowany. **Sticky + opcjonalnie `ClosingCta` → ponowne rozważenie w pod-etapie 7** (K-37).
+**Decyzja: odrzucono 2026-09-19** — obie opcje rekomendacji (sticky `FactsBox` + `ClosingCta`); layout ofertowy bez zmian. Po prototypie na stagingu: sticky odrzucone; `ClosingCta` wycofane razem ze sticky. **Świadoma decyzja D-1 (2026-09-19):** brak CTA po scrollu — zapis tylko w `FactsBox` w nagłówku strony; sekcja „Jak się zapisać" bez przycisku; znany gap akceptowany. **Sticky + opcjonalnie `ClosingCta` → ponowne rozważenie w etapie 9** (K-37).
 
 Stan: `FactsBox` ma 700–800 px, lewa kolumna obok niego ok. 300 px → ok. 490 px pustki na kursie i plenerze. Po przewinięciu boksu nie ma CTA: na `/wyklady` przez 1850 px programu aż do stopki; w „Jak się zapisać" na kursie w DOM nie ma przycisku (do potwierdzenia w kodzie).
 
@@ -188,7 +188,7 @@ Do tej samej decyzji — przycisk pleneru w stanie zamkniętym: dziś całe zdan
 
 ### K-34 — stan czasu w programie wykładów *(decyzja; wpływa na K-09 hosting)*
 
-**Decyzja: odłożone 2026-09-19** — bez zmian w tym pod-etapie; powrót po implementacji i obejrzeniu K-32 i K-33.
+**Decyzja: odłożone 2026-09-19** — bez zmian w tym etapie; powrót po implementacji i obejrzeniu K-32 i K-33.
 
 Cel: najbliższe spotkanie wyróżnione (złota belka z lewej, etykieta „najbliższy wykład"), minione przygaszone (`--text-tertiary`), przyszłe bez zmian.
 
@@ -199,12 +199,12 @@ Bez decyzji (zgodne z K-21): nazwisko prowadzącego w `LectureList` jest linkiem
 
 ### K-35 — CTA „Zapisy" w nagłówku desktop *(decyzja)*
 
-Szuflada mobilna ma blok CTA, desktop nie. **Rekomendacja: nie w 04b.** Przycisk musiałby wiedzieć, dokąd prowadzić poza okresem naboru; wrócić do tematu w pod-etapie 7, kiedy będą dane z analityki. Wpisać do backlogu.
+Szuflada mobilna ma blok CTA, desktop nie. **Rekomendacja: nie w 04b.** Przycisk musiałby wiedzieć, dokąd prowadzić poza okresem naboru; wrócić do tematu w etapie 9, kiedy będą dane z analityki. Wpisać do backlogu.
 
 ## Pliki i komponenty
 
 
-| Plik                                                                                      | Nowy/zmiana | Odpowiedzialność w tym pod-etapie                                                                                                                                                            |
+| Plik                                                                                      | Nowy/zmiana | Odpowiedzialność w tym etapie                                                                                                                                                            |
 | ----------------------------------------------------------------------------------------- | ----------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `src/app/globals.css`                                                                     | zmiana      | Tokeny: `--space-10…12`, `--section-gap` desktop, `--measure-lead/-prose`, skala ról z K-25, `--content-max` ≥ 1600, `--hero-image-h` jako `min()`, stała kolumna cyfr semestrów, belka 2 px |
 | `src/navigation.ts`                                                                       | zmiana      | Etykiety pierwszej pozycji `SectionNav` (K-23); mapa stopki: huby jako linki, `/pracownia`, „Galeria", „Bieżący sezon"                                                                       |
@@ -229,7 +229,7 @@ Szuflada mobilna ma blok CTA, desktop nie. **Rekomendacja: nie w 04b.** Przycisk
 | `src/components/content/SeasonAccordion.tsx`                                              | zmiana      | Role kolorów, stan otwarty                                                                                                                                                                   |
 | `src/components/content/LecturerCard.tsx`, `LecturersPage.tsx`, `LecturesArchivePage.tsx` | zmiana      | Tag i waga nagłówka, szerokość biogramu i leadu                                                                                                                                              |
 | `src/app/page.tsx`                                                                        | zmiana      | `ClosingCta` przed stopką                                                                                                                                                                    |
-| `docs/brief-claude-code.md`, `docs/plan-claude-code.md`                                   | zmiana      | Synchronizacja po zamknięciu: §3 etykiety `SectionNav`, zapis o minimalnym rozmiarze tekstu, rejestr K-23…K-35, wiersz 4b w tabeli pod-etapów                                                |
+| `docs/brief-claude-code.md`, `docs/plan-claude-code.md`                                   | zmiana      | Synchronizacja po zamknięciu: §3 etykiety `SectionNav`, zapis o minimalnym rozmiarze tekstu, rejestr K-23…K-35, wiersz 4b w tabeli etapów                                                |
 
 
 ## Kawałki
@@ -272,19 +272,19 @@ Zakres: home — hero `min()`, H2 Najbliższe, filary klikalne w całości → h
 
 Kryterium „gotowe": hero — tokeny K-33 pkt 1 (odstępstwo `min(920px, 76vh)`), pomiar przy 1920×917 w załączniku; **kafle „Najbliższe" nad foldem nie są wymagane** (decyzja A, 2026-09-19). H2 „Najbliższe", filary → huby. **Nieaktualne po odrzuceniu K-32:** sticky CTA w scrollu, `ClosingCta`, tematy `mailto:` w `ClosingCta`. **Odłożone (K-34):** stan „najbliższy wykład". Wszystkie nowe stringi UI w `pl.ts`.
 
-## Dane sample dodawane w tym pod-etapie
+## Dane sample dodawane w tym etapie
 
 Brak nowych plików `sample`. Nowe stringi w `pl.ts` (`ClosingCta`, etykiety, nadtytuły) to UI, nie treść redakcyjna; zdanie o miejscu w `ClosingCta` na home składa się z faktów z `SiteSettings` (brief §8). Jeśli zdanie z ceną/terminem w `ClosingCta` okaże się treścią redakcyjną per oferta — pole w frontmatter `content/offers/*.mdx`, oznaczone `sample`, dopisać do `docs/plan-claude-code.md` §5.
 
-## Kryteria ukończenia pod-etapu
+## Kryteria ukończenia etapu
 
 - [x] wszystkie punkty Kawałka 1 potwierdzone pomiarem
 - [x] jedna skala ról typograficznych w `globals.css`; brak wagi 500 w nagłówkach; brak Garamonda < 16,5 px poza logo
 - [x] każda trasa statyczna osiągalna ze stopki; cele dotyku stopki i `SectionNav` ≥ 44 px na 390 px (w tym `mailto:`/`tel:` — Kawałek 6)
-- [x] szuflada mobilna jako nakładka, obsługa klawiatury sprawdzona w przeglądarce (nie tylko w teście automatycznym — precedens z pod-etapu 2)
-- [x] ~~CTA zapisu dostępne na końcu każdej strony ofertowej i `/wyklady`~~ **N/A** — świadoma decyzja D-1 (2026-09-19): brak CTA po scrollu; zapis tylko w `FactsBox`; powrót do tematu w pod-etapie 7 (K-37)
+- [x] szuflada mobilna jako nakładka, obsługa klawiatury sprawdzona w przeglądarce (nie tylko w teście automatycznym — precedens z etapu 2)
+- [x] ~~CTA zapisu dostępne na końcu każdej strony ofertowej i `/wyklady`~~ **N/A** — świadoma decyzja D-1 (2026-09-19): brak CTA po scrollu; zapis tylko w `FactsBox`; powrót do tematu w etapie 9 (K-37)
 - [x] Lighthouse dostępność ≥ 95 na `/`, `/warsztaty/kurs-roczny-i-trzyletni`, `/wyklady`, `/wyklady/wykladowcy` (mobile) — 100/100 (Kawałek 7)
-- [x] decyzje K-23…K-35 wpisane do `docs/plan-claude-code.md` §4; `brief-claude-code.md` zsynchronizowany; wiersz „4b" w tabeli pod-etapów
+- [x] decyzje K-23…K-35 wpisane do `docs/plan-claude-code.md` §4; `brief-claude-code.md` zsynchronizowany; wiersz „4b" w tabeli etapów
 - [x] założenia dla planu 05 zapisane: reguła kadrowania ikon (K-31), rozmiar podpisów, `content-max`
 
 ## Założenia wejściowe dla planu 05 (z 04b)
@@ -303,7 +303,7 @@ Przenieść do sesji planistycznej `docs/plans/05-galeria.md`:
 - **Zakres.** Pięć kawałków dotyka prawie każdego komponentu. Jeśli sesja się wydłuża — `/clear` między kawałkami 2/3 i 4/5; Kawałki 3 i 4 są od siebie niezależne i można je zamienić kolejnością.
 - **Prawdziwa treść może zmienić ocenę pustki.** Dziura obok `FactsBox` jest mierzona na treściach `sample`. Sticky rozwiązuje ją niezależnie od długości treści, dlatego jest rekomendowany zamiast „poczekajmy na migrację".
 - **Nieobejrzane:** `/ikony/na-zamowienie`, stany hover/fokus nowych celów kliknięcia (filary jako cała karta — fokus ma obejmować kartę, nie sam tytuł), tablet 768–1023 px (żaden przegląd dotąd go nie objął — dodać jeden zrzut na kawałek).
-- **Poza zakresem, do backlogu:** CTA w nagłówku desktop (K-35); **sticky `FactsBox` (+ opcjonalnie `ClosingCta`) — ponowne rozważenie w pod-etapie 7** (K-37); **design stopki — dopracowanie w pod-etapie 7** (K-36); wspólna obróbka zdjęć w filarach (przyciemnienie, proporcje) — razem z sesją zdjęciową;
+- **Poza zakresem, do backlogu:** CTA w nagłówku desktop (K-35); **sticky `FactsBox` (+ opcjonalnie `ClosingCta`) — ponowne rozważenie w etapie 9** (K-37); **design stopki — dopracowanie w etapie 9** (K-36); wspólna obróbka zdjęć w filarach (przyciemnienie, proporcje) — razem z sesją zdjęciową;
 
 ## Postęp
 
@@ -312,9 +312,9 @@ Przenieść do sesji planistycznej `docs/plans/05-galeria.md`:
 | ----------------------------- | ------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | 1 — Bugi układu               | ✅      | OK 2026-09-19. Odstęp kart→H2 i dół cytatów: `--section-gap` (60 px). Semestr: stała kolumna 34 px, cyfry wyrównane do lewej. Waga 400 w kartach/wykładowcach. H2 na `/wykladowcy`. FactsBox mobile pod leadem na `/wyklady`. Brak CTA w „Jak się zapisać" — zgłoszone (Kawałek 5 / `ClosingCta`).                                                                                                                                                                                          |
 | 2 — Typografia i role kolorów | ✅      | OK 2026-09-19. Tokeny ról K-25 w `globals.css`; `--size-nav` 16 px; Garamond min. 16,5 px (etykiety FactsBox → Plex 14,5); `--accent-text` na całym złotym tekście; belka FactsBox 2 px; `SeasonAccordion` role kolorów + stan otwarty; nadtytuły sezonu na kursie/plenerze; tekst ciągły 17,5/1,7.                                                                                                                                                                                         |
-| 3 — Nawigacja                 | ✅      | K-23: „Przegląd" w SectionNav warsztatów. K-24: stopka wariant B — 4 kolumny desktop, huby jako linki, `/pracownia` + „Galeria" + „Bieżący sezon", etykiety kontaktu Plex tertiary; social pod kontaktem (osobne linie); mobile 2 kolumny (marka+akademia+warsztaty | kontakt+wykłady+ikony); pasek dolny lewo/prawo. Design stopki → pod-etap 7 (K-36). SectionNav/Header/Footer: `tap-target-nav` 44 px. Szuflada: fixed overlay, scroll lock, Esc, focus trap, fokus wraca na hamburger. |
+| 3 — Nawigacja                 | ✅      | K-23: „Przegląd" w SectionNav warsztatów. K-24: stopka wariant B — 4 kolumny desktop, huby jako linki, `/pracownia` + „Galeria" + „Bieżący sezon", etykiety kontaktu Plex tertiary; social pod kontaktem (osobne linie); mobile 2 kolumny (marka+akademia+warsztaty | kontakt+wykłady+ikony); pasek dolny lewo/prawo. Design stopki → etap 9 (K-36). SectionNav/Header/Footer: `tap-target-nav` 44 px. Szuflada: fixed overlay, scroll lock, Esc, focus trap, fokus wraca na hamburger. |
 | 4 — Rytm, szerokości, ikony   | ✅      | OK 2026-09-19. Tokeny space-10/11/12, section-gap 96 px ≥1024, measure-lead 680 / measure-prose 640; cytat 120 px desktop; IconGrid object-contain na surface-tile; content-max 1280 px ≥1600 — zostaje. Mobile: home 4683 px, kurs 4440 px (± chunki 1–3). **Świadome odstępstwo K-29:** dolna linia cytatu (`rule-gold-b`) zostaje — cezura cytat → „Wybrane ikony".                                                                                                                      |
-| 5 — Przepływ sprzedażowy      | ✅      | K-32 odrzucone (sticky + `ClosingCta` wycofane; K-37 → pod-etap 7). K-33 częściowo: H2 Najbliższe, filary → huby. **Hero opcja A** (`min(920px, 76vh)`, siatka md+; fold nie wymagany) — patrz K-33 pkt 1. K-34 odłożone. Layout ofertowy przywrócony (boks tylko w nagłówku). Build/lint OK.                                                                                                                                                                                                          |
+| 5 — Przepływ sprzedażowy      | ✅      | K-32 odrzucone (sticky + `ClosingCta` wycofane; K-37 → etap 9). K-33 częściowo: H2 Najbliższe, filary → huby. **Hero opcja A** (`min(920px, 76vh)`, siatka md+; fold nie wymagany) — patrz K-33 pkt 1. K-34 odłożone. Layout ofertowy przywrócony (boks tylko w nagłówku). Build/lint OK.                                                                                                                                                                                                          |
 | 6 — Zamknięcie: trasa + tap targety | ✅  | OK 2026-09-19. `/pracownia` → `PagePlaceholder`; `mailto:`/`tel:` w stopce → `tap-target-nav-block`; komentarz `--hero-image-h` → K-33 opcja A. Build/lint OK. |
 | 7 — Lighthouse mobile       | ✅      | OK 2026-09-19. A11y 100/100 na `/`, `/warsztaty/kurs-roczny-i-trzyletni`, `/wyklady`, `/wyklady/wykladowcy` (mobile, dev :3000, Lighthouse CLI). |
 | 8 — Dokumentacja i zamknięcie | ✅    | OK oczekuje. Rejestr K-23…K-35, brief §3 + K-26, wiersz 4b §2, DoD, założenia planu 05, D-1 zapisana. |

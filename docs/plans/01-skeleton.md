@@ -12,8 +12,8 @@ Makiety: `design/README.md`, `design/tokens/*.css`, `design/components/navigatio
 Fundament pod całą resztę serwisu: tokeny designu i fonty w Tailwind, layout aplikacji,
 `Header`/`Footer`/`SectionNav`/`Breadcrumb`, warstwa odczytu treści `src/content/*` i puste trasy
 dla całej architektury informacji z brief §3 — żeby żaden link z nagłówka, `SectionNav` czy stopki
-nie prowadził do 404 w kolejnych pod-etapach. Poza zakresem: treść i układ konkretnych stron
-(strona główna, oferta, wykłady, galeria itd. — pod-etapy 2–6), custom strona 404 (pod-etap 6).
+nie prowadził do 404 w kolejnych etapach. Poza zakresem: treść i układ konkretnych stron
+(strona główna, oferta, wykłady, galeria itd. — etapy 2–8), custom strona 404 (etap 8).
 
 ## Decyzje podjęte w sesji planistycznej
 
@@ -39,7 +39,7 @@ nie prowadził do 404 w kolejnych pod-etapach. Poza zakresem: treść i układ k
 - Trasy-zaślepki: wspólny komponent `PagePlaceholder` (Header + SectionNav-lub-Breadcrumb-lub-nic +
   H1 z `src/navigation.ts` + tekst „Treść w przygotowaniu” z `pl.ts` + Footer). Zakres ograniczony do
   tras **statycznych** linkowanych z Header/SectionNav/stopki; dynamiczne `[slug]`
-  (`/ikony/[slug]`, `/aktualnosci/[slug]`) i custom 404 poza zakresem tego pod-etapu.
+  (`/ikony/[slug]`, `/aktualnosci/[slug]`) i custom 404 poza zakresem tego etapu.
 - Nazwy plików planu i inne nazwy plików/branchy: po angielsku (`01-skeleton.md`,
   `feat/01-skeleton`) mimo że treść dokumentów jest po polsku — rozszerzenie decyzji K-11 z kodu na
   nazwy plików.
@@ -47,7 +47,7 @@ nie prowadził do 404 w kolejnych pod-etapach. Poza zakresem: treść i układ k
 **Rozbieżność zgłoszona, rozstrzygnięta hierarchią dokumentów z CLAUDE.md (nie własną decyzją):**
 etykiety `SectionNav` dla Wykładów różnią się między brief-claude-code.md §3
 („Bieżący sezon · Archiwum · Wykładowcy”) a makietą (`SectionNav.prompt.md`, `navigation.card.html`:
-„Wykłady · Archiwum · Wykładowcy”). Wg hierarchii „CLAUDE.md > plan pod-etapu > brief-claude-code.md
+„Wykłady · Archiwum · Wykładowcy”). Wg hierarchii „CLAUDE.md > plan etapu > brief-claude-code.md
 > brief-full.md > makieta” brief wygrywa → używamy „Bieżący sezon” jako pierwszej pozycji.
 
 ## Pliki i komponenty
@@ -66,7 +66,7 @@ etykiety `SectionNav` dla Wykładów różnią się między brief-claude-code.md
 | `src/components/navigation/HeaderMobileMenu.tsx` | nowy, Client | Toggle szuflady, akordeon sekcji, stan otwarcia |
 | `src/components/navigation/Footer.tsx` | nowy | Mapa strony z `src/navigation.ts` + kontakty z `SiteSettings` |
 | `src/components/navigation/SectionNav.tsx` | nowy | Listwa drugiego poziomu |
-| `src/components/navigation/Breadcrumb.tsx` | nowy | Tylko pod wpis aktualności (podłączony dopiero w pod-etapie 6) |
+| `src/components/navigation/Breadcrumb.tsx` | nowy | Tylko pod wpis aktualności (podłączony dopiero w etapie 7) |
 | `src/components/PagePlaceholder.tsx` | nowy | Wspólny szkielet trasy-zaślepki: montuje `Header active={...}` + `Footer` + `SectionNav`-lub-`Breadcrumb`-lub-nic + H1 — jedyne miejsce, gdzie `Header`/`Footer` się renderują (patrz „Decyzje” — K-02) |
 | `src/app/**/page.tsx` (~13 tras statycznych) | nowe | Trasy z brief §3 na `PagePlaceholder` |
 
@@ -98,18 +98,18 @@ Kryterium „gotowe”: każda statyczna trasa z brief §3 (poza `[slug]` i 404)
 Header+Footer+H1; żaden link z Header/SectionNav/stopki nie daje 404; `npm run build`/`npm run lint`
 przechodzą.
 
-## Dane sample dodawane w tym pod-etapie
+## Dane sample dodawane w tym etapie
 
 | Treść | Gdzie (plik `sample`) | Zastąpić czym |
 |---|---|---|
-| `upcoming` w `SiteSettings` (2 przykładowe wpisy „Najbliższe”) | `content/settings.json` (pole `upcoming`) | prawdziwa treść „Najbliższe” w pod-etapie 2 |
+| `upcoming` w `SiteSettings` (2 przykładowe wpisy „Najbliższe”) | `content/settings.json` (pole `upcoming`) | prawdziwa treść „Najbliższe” w etapie 2 |
 
 *(Reszta `content/settings.json` — nazwa, adres, maile, telefon, linki ekosystemu — to fakty prawdziwe
 z brief §8, nie dane `sample`.)*
 
-Do przepisania do `docs/plan-claude-code.md` §5 po zamknięciu pod-etapu.
+Do przepisania do `docs/plan-claude-code.md` §5 po zamknięciu etapu.
 
-## Kryteria ukończenia pod-etapu
+## Kryteria ukończenia etapu
 
 - [x] każda statyczna trasa z brief §3 istnieje i renderuje layout z nagłówkiem i stopką (dynamiczne
       `[slug]` i custom 404 poza zakresem — patrz decyzje); zweryfikowane: 15/15 tras zwraca 200,
@@ -127,7 +127,7 @@ Do przepisania do `docs/plan-claude-code.md` §5 po zamknięciu pod-etapu.
 - Rozbieżność etykiet `SectionNav` dla Wykładów (brief vs. makieta) — rozstrzygnięta hierarchią
   dokumentów, patrz „Decyzje” wyżej; tylko do odnotowania, nie wymaga dalszej decyzji.
 - Zakres tras-zaślepek celowo nie obejmuje tras dynamicznych `[slug]` (brak jeszcze slugów do
-  wylinkowania) ani custom 404 (jawnie pod-etap 6) — jeśli to założenie okaże się błędne w trakcie
+  wylinkowania) ani custom 404 (jawnie etap 8) — jeśli to założenie okaże się błędne w trakcie
   implementacji, przerwać i zgłosić przed kontynuacją.
 
 ## Odstępstwa od planu / makiety (z checkpointów)
@@ -140,7 +140,7 @@ Kawałek 1:
   `React.useState` z prototypu `Button.jsx` — ten sam efekt wizualny, zero JS, komponent zostaje
   Server Component. Prop `style` (CSSProperties) z `Button.d.ts` zamieniony na `className`.
 - `globals.css`: pełny zestaw tokenów skopiowany do `:root`, ale `@theme inline` mapuje na klasy
-  Tailwind tylko te tokeny, których już używa kod tego pod-etapu (kolory w całości; rozmiary
+  Tailwind tylko te tokeny, których już używa kod tego etapu (kolory w całości; rozmiary
   typografii i spacing dobierane wg potrzeby, reszta skali dopisywana w kawałkach, które jej
   faktycznie użyją — Header/Footer/itd.).
 
@@ -201,7 +201,7 @@ Kawałek 4:
   Odstęp 12px między CTA w szufladzie (Kawałek 3) i inne drobne zaokrąglenia z poprzednich
   checkpointów pozostają bez zmian.
 - `/wydarzenia` na razie bez podpiętego `SectionNav` w `PagePlaceholder` (hub nie zbudowany) —
-  pięć pozycji jest już w `navigation.ts`; logika filtrów wejdzie w pod-etapie 6.
+  pięć pozycji jest już w `navigation.ts`; logika filtrów wejdzie w etapie 8.
 - Tytuły H1 tras-zaślepek sourced z `src/navigation.ts`: huby (Warsztaty/Wykłady/Ikony) — etykieta z
   `mainNav`; podstrony sekcji — etykieta z `sectionNav[sekcja]`; Aktualności/Publikacje — z
   `footerSitemap`; Polityka prywatności — z `footerLegalLink`. Wyjątek: strona główna (`/`) nie ma
@@ -219,6 +219,6 @@ Kawałek 4:
 | 1 — Tokeny, fonty, layout, pl.ts, Button | gotowe | Pełny zestaw tokenów w `:root`, `@theme inline` mapuje tylko to, co zużywa ten kawałek (kolory w całości; rozmiary/spacing dobierane wg potrzeby). `Button` — fokus/hover przez CSS zamiast `useState` z makiety, prop `style`→`className`. Rozbieżność: `lg` używa `--size-body-lg` (17,5px) zamiast literalnych 17px z `Button.jsx` — zaakceptowane przez użytkownika. |
 | 2 — Warstwa treści i nawigacji | gotowe | `types.ts` skopiowany bez zmian nazw pól. `sectionNav.wydarzenia`: pięć pozycji, filtry przez `?kategoria=` (decyzja 2026-09-12). |
 | 3 — Header (desktop + mobile) | zatwierdzone (OK użytkownika) | Zob. „Odstępstwa” wyżej. Miejsce montażu `Header`/`Footer` rozstrzygnięte na `PagePlaceholder` (nie root layout) — plan zaktualizowany. Tymczasowe podpięcie w stubie strony głównej do usunięcia w Kawałku 4. Weryfikacja UI w tej sesji tylko przez SSR-HTML/CSS (bez przeglądarki) — użytkownik zaakceptował mimo to. |
-| 4 — Footer, Breadcrumb, SectionNav, trasy-zaślepki | zatwierdzone (OK użytkownika) | 15 tras statycznych (nie ~13), wszystkie 200, brak 404 z linków Header/SectionNav/stopki. `Breadcrumb` zbudowany, niepodłączony (zgodnie z planem — dopiero pod-etap 06). Reszta — zob. „Odstępstwa”. |
+| 4 — Footer, Breadcrumb, SectionNav, trasy-zaślepki | zatwierdzone (OK użytkownika) | 15 tras statycznych (nie ~13), wszystkie 200, brak 404 z linków Header/SectionNav/stopki. `Breadcrumb` zbudowany, niepodłączony (zgodnie z planem — dopiero etap 06). Reszta — zob. „Odstępstwa”. |
 
-**Pod-etap 01 zamknięty (OK użytkownika, 2026-09-12).**
+**Etap 01 zamknięty (OK użytkownika, 2026-09-12).**
