@@ -6,7 +6,7 @@ Makiety: `design/Akademia Ikony - kierunki wizualne.dc.html` — `#2a-ikony` (ga
 
 ## Cel i zakres
 
-Strona `/ikony`: `SectionNav`, H1, filtry (autor + temat), licznik prac, interaktywny `IconGrid` z `Lightbox` (desktop i mobile), zajawka „Ikony na zamówienie” na dole. Rozbudowa `content/icons.json` do pełniejszego zestawu `sample`; warstwa `src/content/icons.ts` z filtrowaniem. Komponenty `FilterChip`, `Lightbox`; rozszerzenie `IconGrid` (klik → lightbox, wariant galerii). Poza zakresem: `/ikony/[slug]` (K-04), paginacja „Pokaż kolejne 24” (odłożona do pod-etapu 7/8), opis dzieła w lightboxie, migracja WP (~65 ikon), analityka (K-15), JSON-LD, `deesis.jpg` i `chrystus.jpg` w galerii (`chrystus` wyłącznie w Hero).
+Strona `/ikony`: `SectionNav`, H1, filtry (autor + temat), licznik prac, interaktywny `IconGrid` z `Lightbox` (desktop i mobile), zajawka „Ikony na zamówienie” na dole. Rozbudowa `content/icons.json` do pełniejszego zestawu `sample`; warstwa `src/content/icons.ts` z filtrowaniem. Komponenty `FilterChip`, `Lightbox`; rozszerzenie `IconGrid` (klik → lightbox, wariant galerii). Poza zakresem: `/ikony/[slug]` (K-04), paginacja „Pokaż kolejne 24” (odłożona do etapu 7/8), opis dzieła w lightboxie, migracja WP (~65 ikon), analityka (K-15), JSON-LD, `deesis.jpg` i `chrystus.jpg` w galerii (`chrystus` wyłącznie w Hero).
 
 ## Decyzje podjęte w sesji planistycznej
 
@@ -14,7 +14,7 @@ Strona `/ikony`: `SectionNav`, H1, filtry (autor + temat), licznik prac, interak
 - **K-04:** `/ikony/[slug]` **poza v1** — podgląd wyłącznie przez lightbox.
 - **K-05:** Filtry przez **query string** (`?autor=…&temat=…`), bez przeładowania strony; wartości po polsku (`ejk`, `uczniowie`; slug tagu np. `matka-bozy`).
 - **K-38:** `Lightbox` na **natywnym `<dialog>`** + `showModal()`; Esc przez `cancel`; fallback do własnego overlay tylko jeśli test Safari/iOS wykaże problem.
-- **K-39:** Obrazy — **jeden `src`** per ikona; większe `sizes` w lightboxie (`(min-width: 768px) 460px, 100vw`); weryfikacja wydajności w **pod-etapie 7**, ewentualne `imageLarge` w `IconWork`.
+- **K-39:** Obrazy — **jeden `src`** per ikona; większe `sizes` w lightboxie (`(min-width: 768px) 460px, 100vw`); weryfikacja wydajności w **etapie 7**, ewentualne `imageLarge` w `IconWork`.
 - **Paginacja:** **Brak w v1** — cała przefiltrowana lista w DOM; świadome odstępstwo od makiety (`#2a-ikony`).
 - **Lightbox — treść:** Tylko metadane z `IconWork` (tytuł, autor, wymiary, technika) + link „Zapytaj o podobną ikonę” → `/ikony/na-zamowienie`; **bez akapitu opisu**.
 - **Filtry tematu:** Chipy **dynamicznie** z unikalnych `tags` w `icons.json` (sort alfabetyczny); brak `?temat=` = wszystkie tematy; ikony bez `tags` widoczne tylko bez filtra tematu.
@@ -63,16 +63,16 @@ Kryterium „gotowe”: lightbox desktop na `/ikony`; scroll zablokowany; build/
 
 Zakres: wariant mobile 390px (nagłówek „Zamknij”, przyciski Poprzednia/Następna); `prefers-reduced-motion`; fokus wraca do klikniętego kafla po zamknięciu; przegląd home (`IconGrid` bez regresji); Lighthouse a11y na `/ikony` (mobile).
 
-Kryterium „gotowe”: DoD pod-etapu spełnione; build/lint OK; meldunek z listą odstępstw od makiety.
+Kryterium „gotowe”: DoD etapu spełnione; build/lint OK; meldunek z listą odstępstw od makiety.
 
-## Dane sample dodawane w tym pod-etapie
+## Dane sample dodawane w tym etapie
 
 - `content/icons.json` — pełniejszy zestaw galerii (~12–16 wpisów, 4 unikalne zdjęcia) → `docs/plan-claude-code.md` §5
 - Wymiary w podpisach — nadal niezweryfikowane (istniejący wpis §5)
 
 **Wykluczenia (nie dodawać do galerii):** `chrystus.jpg` (Hero), `deesis.jpg`.
 
-## Kryteria ukończenia pod-etapu
+## Kryteria ukończenia etapu
 
 > **Korekta 2026-09-19 (05b):** statusy ✅ poniżej oparto na build/lint i Lighthouse, bez przeglądu wizualnego. Przegląd stagingu wykazał usterki w punktach oznaczonych ⚠ — naprawione w `docs/plans/05b-review-fixes.md`.
 
@@ -82,7 +82,7 @@ Kryterium „gotowe”: DoD pod-etapu spełnione; build/lint OK; meldunek z list
 - [x] Wymiary z podpisów oznaczone jako niezweryfikowane w danych `sample` (brak zmyślonych cm) — ⚠ w UI wyświetlały się jak fakty; teraz „Wymiary: do weryfikacji” (05b/5)
 - [x] Zajawka „Ikony na zamówienie” na dole galerii z linkiem do `/ikony/na-zamowienie` — ⚠ bez odstępów od siatki i stopki (05b/1); od 05b/5 bez zdjęcia, z przyciskiem
 - [x] `IconGrid` na home bez regresji (podgląd „Wybrane ikony”, bez lightboxa)
-- [x] Lighthouse dostępność na `/ikony` — cel jak w 04b (≥ 95); wynik sprzed 05b (100) nieaktualny po zmianach galerii — formalny Lighthouse **pod-etap 7**; w 05b audyt ręczny (kontrast, nazwy, nagłówki, fokus)
+- [x] Lighthouse dostępność na `/ikony` — cel jak w 04b (≥ 95); wynik sprzed 05b (100) nieaktualny po zmianach galerii — formalny Lighthouse **etap 7**; w 05b audyt ręczny (kontrast, nazwy, nagłówki, fokus)
 
 ## Odstępstwa od makiety (świadome)
 
@@ -98,10 +98,10 @@ Dalsze odstępstwa od makiety `#2a-ikony` wprowadzone w 05b — patrz sekcja „
 
 ## Ryzyka i pytania otwarte
 
-- **Safari `<dialog>`:** test fizyczny iOS Safari — pod-etap 7 (K-38); fallback tylko jeśli test wykaże problem.
+- **Safari `<dialog>`:** test fizyczny iOS Safari — etap 7 (K-38); fallback tylko jeśli test wykaże problem.
 - **4 zdjęcia × 12–16 wpisów:** duplikaty wizualne w sample — akceptowalne do migracji; tytuły niepotwierdzone jako `[do uzupełnienia: …]`.
 - **Tagi dynamiczne:** po migracji lista chipów może rosnąć — UI musi zawijać chipy (jak pasek filtrów w makiecie).
-- **Wydajność obrazów (K-39):** audyt `sizes` i Lighthouse w pod-etapie 7; przejście na `imageLarge` jeśli mobile < 90.
+- **Wydajność obrazów (K-39):** audyt `sizes` i Lighthouse w etapie 7; przejście na `imageLarge` jeśli mobile < 90.
 
 ## Postęp
 
@@ -110,10 +110,10 @@ Dalsze odstępstwa od makiety `#2a-ikony` wprowadzone w 05b — patrz sekcja „
 | 1 — Dane + warstwa treści | ✅ | 14 wpisów sample; `getFeaturedIconWorks()` chroni home |
 | 2 — `/ikony` + filtry + siatka | ✅ | `GalleryIconGrid` — stub `onSelect` pod Kawałek 3 |
 | 3 — Lightbox desktop | ✅ | mobile: podgląd bez przycisków Poprzednia/Następna → Kawałek 4 |
-| 4 — Lightbox mobile + domknięcie | ✅ | Lighthouse a11y sprzed 05b (100); ponowny audyt — pod-etap 7 |
+| 4 — Lightbox mobile + domknięcie | ✅ | Lighthouse a11y sprzed 05b (100); ponowny audyt — etap 7 |
 
 Kawałki 2–4 wymagały korekt po przeglądzie stagingu — zob. `docs/plans/05b-review-fixes.md` (Kawałki 1–6).
 
 **Korekta 2026-09-20:** układ siatki na `/ikony` — K-40 **B** (wyrównane rzędy) jako jedyny wariant; usunięto opcję A (półka) i tymczasowy przełącznik A/B z nagłówka galerii.
 
-**Pod-etap 05 zamknięty (OK użytkownika, 2026-09-20).** Korekty po przeglądzie stagingu — `docs/plans/05b-review-fixes.md` (6/6). Formalny Lighthouse a11y i test iOS Safari lightboxa — pod-etap 7.
+**Etap 05 zamknięty (OK użytkownika, 2026-09-20).** Korekty po przeglądzie stagingu — `docs/plans/05b-review-fixes.md` (6/6). Formalny Lighthouse a11y i test iOS Safari lightboxa — etap 7.

@@ -69,7 +69,7 @@ Statusy: ⬜ nie zaczęty · 🟡 plan w przygotowaniu · 🔵 plan zatwierdzony
 | 4   | Wykłady                                        | `docs/plans/04-wyklady.md`       | ✅ zamknięty         | 2026-09-18 |
 | 4b  | Korekty po przeglądzie stagingu               | `docs/plans/04b-review-fixes.md` | ✅ zamknięty         | 2026-09-19 |
 | 5   | Galeria ikon (+ korekty 05b)                   | `docs/plans/05-galeria.md`, `docs/plans/05b-review-fixes.md` | ✅ zamknięty         | 2026-09-20 |
-| 6   | Strony o akademii i pracownia                  | `docs/plans/06-o-akademii.md`    | ⬜                   | —          |
+| 6   | Strony o akademii i pracownia                  | `docs/plans/06-o-akademii.md`    | 🔵 plan zatwierdzony | —          |
 | 7   | Aktualności                                    | `docs/plans/07-aktualnosci.md`   | ⬜                   | —          |
 | 8   | Strony pozostałe                               | `docs/plans/08-pozostale.md`     | ⬜                   | —          |
 | 9   | Wykończenie: SEO, dane strukturalne, analityka | `docs/plans/09-wykonczenie.md`   | ⬜                   | —          |
@@ -183,17 +183,17 @@ Dla każdego: cel, zakres, kryteria ukończenia (DoD), proponowany podział na k
 
 **Cel:** szablon strony tekstowej z `TocSidebar` i pierwsze dwie treściowe strony informacyjne.
 
-**Zakres:** wspólny szablon strony tekstowej (breadcrumb, H1, lead, body MDX, `TocSidebar` desktop / zwijany na mobile); `/o-akademii` i `/pracownia` z treścią z `content/` (copy wg `docs/copy-o-akademii-pracownia.md` i makiety `Akademia Ikony - O Akademii i Pracownia.dc.html`). Poza zakresem: aktualności (etap 7), kontakt, wydarzenia, publikacje, polityka, 404 (etap 8).
+**Zakres:** wspólny szablon strony tekstowej (breadcrumb, H1, lead, body MDX, `TocSidebar` desktop / `TocCollapse` na mobile); `SectionNav` O Akademii · Pracownia (K-48); `/o-akademii` i `/pracownia` z treścią z `content/` (JSON + MDX, copy wg `docs/copy-o-akademii-pracownia.md`, makieta `Akademia Ikony - O Akademii i Pracownia.dc.html` 6a–6i). Poza zakresem: aktualności (etap 7), kontakt, wydarzenia, publikacje, polityka, 404 (etap 8).
 
 **DoD:**
 
 - [ ] szablon strony tekstowej gotowy do ponownego użycia w etapie 8 bez rozgałęzień w kodzie;
-- [ ] `/o-akademii` i `/pracownia` renderują treść z MDX; `TocSidebar` zbiera nagłówki z body;
-- [ ] zaślepki `/o-akademii` i `/pracownia` zastąpione realną treścią lub `sample`.
+- [ ] `/o-akademii` i `/pracownia` renderują treść z `content/`; `toc[]` w danych strony steruje `TocSidebar`/`TocCollapse` (K-49);
+- [ ] zaślepki zastąpione; `SectionNav` na obu trasach.
 
-**Proponowane kawałki:** (1) szablon tekstowy + `TocSidebar`; (2) `/o-akademii`; (3) `/pracownia`.
+**Kawałki (zatwierdzone):** (1) shell + TOC + SectionNav; (2) komponenty + `/o-akademii`; (3) `Interview` + `/pracownia`; (4) `PhotoGrid` + lightbox + DoD. Szczegóły: `docs/plans/06-o-akademii.md`.
 
-**Pytania:** jak `TocSidebar` zbiera nagłówki z MDX (plugin `rehype` czy własny parser); układ galerii na `/pracownia` (siatka z podpisami vs. prosta lista).
+**Pytania:** rozstrzygnięte w sesji planistycznej 2026-09-20 — patrz K-48, K-49 i `docs/plans/06-o-akademii.md` (D-06-01…07).
 
 ### Etap 7 — Aktualności
 
@@ -323,6 +323,8 @@ Dla każdego: cel, zakres, kryteria ukończenia (DoD), proponowany podział na k
 | K-45 | Lightbox — rozmiar obrazu i układ (05b; zmienia K-39) | 5b | Obraz o wysokości 80vh (desktop) / 60svh (mobile) i jawnej szerokości z proporcji; strzałki 48×48 przy krawędziach okna; licznik w kolumnie metadanych; mobile: sticky pasek Poprzednia / licznik / Następna + swipe (próg 50 px); układ desktopowy od `lg` (1024 px), nie `md`; „Zapytaj o podobną ikonę” tylko przy pracach EJK; klik w tło zamyka (tylko desktop); jedno drzewo, jeden `<Image>` | 2026-09-19 |
 | K-46 | Zajawka „Ikony na zamówienie” (05b) | 5b | Zajawka **bez zdjęcia** do sesji zdjęciowej; CTA jako przycisk | 2026-09-19 |
 | K-47 | Treść `sample` galerii (05b) | 5b | **Pełny zestaw WP** — 52 prace (23 EJK + 29 uczniów), oryginały w `public/media/sample/icons/`, wszystkie `sample: true`; tytuły zgodne ze zdjęciami WP. Wymiary z podpisów WP w danych (`size` — 47 z 52; bez `size`: 3 EJK + 2 uczniów), UI pokazuje „Wymiary: do weryfikacji” (bez nowego pola). Z makiety wypadły „Św. Antoni” i „Przemienienie” (brak w galerii WP); dawny „Mandylion” to Chrystus Pantokrator, „Matka Boża Znaku” to Krzew Gorejący | 2026-09-20 |
+| K-48 | `SectionNav` na `/o-akademii` i `/pracownia`       | 6        | **Dodajemy** — O Akademii · Pracownia, jak makieta 6a–6d; `SectionKey` + `sectionNav` w `navigation.ts`; brief §3 uzupełniony | 2026-09-20 |
+| K-49 | Źródło nagłówków `TocSidebar`                      | 6        | **Jawny `toc[]`** w danych strony (`content/pages/*.json`), nie parser MDX — wymagane dla podpozycji rozmowy (PR-25) | 2026-09-20 |
 
 Decyzje spoza kodu (D-01…D-05 z briefu v2) pozostają w dokumentach ekosystemu; tu wpisujemy tylko ich skutki dla implementacji. **D-02 (domyślny filtr galerii):** galeria pokazuje **obie sekcje, EJK pierwsza, sztywny podział** (K-41), bez filtra autora; pytanie o zakres prac EJK po starcie strony autorskiej zostaje otwarte — skutek w K-05 / K-41 / `docs/plans/05b-review-fixes.md` (2026-09-19).
 
@@ -354,6 +356,12 @@ Lista rośnie w każdym etapie. Odhaczana w etapie 10.
 | Wykładowcy — bio i zdjęcia z WP | `content/lecturers.json`, `public/media/lecturers/` | 4     | weryfikacja / migracja WP (etap 10)            | ✅  |
 | „Najbliższe” na stronie głównej — 2/3 wpisy zastąpione realną treścią z brief §8 (nabór 2026/2027, pierwszy wykład 6.10.2026); trzeci wpis („Wystawa stała”) pozostaje `[przykład]` — niepotwierdzone w brief §8 | `content/settings.json` (`upcoming`) | 1, uzupełnione w 2 | potwierdzenie z Akademią, czy taka wystawa istnieje | ⬜ |
 | „Wybrane ikony” na stronie głównej i „Przykłady realizacji” w `/ikony/na-zamowienie` — 4 prace z galerii (Krzew Gorejący, Pantokrator, Archanioł Michał, Trójca Święta) | `FEATURED_ICON_SLUGS` w `src/content/icons.ts`, `exampleSlugs` w `content/offers/zamowienie.mdx` | 2, zmiana w 05b/5 | wybór redakcyjny EJK z prac galerii | ⬜ |
+| Zdjęcia „Wybrane ikony” — 4 wpisy `sample` na stronę główną | `content/icons.json` (Kawałek 2) | 2 | migracja WP | ⬜ |
+| Wybrane realizacje EJK (6× placeholder) | `content/pages/o-akademii.json` (`works`) | 6 | dane od klientki (copy doc pyt. 2) | ⬜ |
+| Staż pracowni EJK w bio | `content/pages/o-akademii.json` | 6 | potwierdzenie klientki (copy doc pyt. 1) | ⬜ |
+| Rozmowa — redakcja (5 nowych pytań ML, zmiany stylu) | `content/pages/pracownia.json` (`interview`) | 6 | akceptacja EJK | ⬜ |
+| Portret EJK | `public/media/workshop/ejk-portret.jpg` | 6 | zdjęcie od klientki jeśli placeholder nieaktualny | ⬜ |
+| Zdjęcia warsztatowe (hero, galeria, pas) | `public/media/workshop/*` | 6 | opcjonalnie wyższa jakość / nowa sesja | ⬜ |
 
 ---
 
@@ -378,7 +386,8 @@ Lista rośnie w każdym etapie. Odhaczana w etapie 10.
 | 2026-09-19 | Sesja planistyczna etapu 5 zakończona, plan zatwierdzony (`docs/plans/05-galeria.md`). K-04, K-05, K-38, K-39; D-02 → wszyscy autorzy; filtry query string; lightbox bez opisu i bez `[slug]`; paginacja odłożona; tagi dynamiczne z `icons.json`; sample tylko 4 zdjęcia (bez `chrystus`/`deesis`). |
 | 2026-09-20 | Galeria `/ikony`: K-40 **B** (wyrównane rzędy) jako jedyny układ; usunięto półkę (A), `GalleryLayoutContext`, `GalleryLayoutToggle` i stringi `layoutToggle`. Rejestr §4: K-40. Szczegóły: `docs/plans/05b-review-fixes.md` K-40. |
 | 2026-09-20 | **Etap 5 zamknięty** (05: 4/4 + 05b: 6/6, OK użytkownika). DoD spełnione: `/ikony` z filtrami tematu, sekcjami EJK → uczniowie, siatką wyrównanych rzędów, lightboxem desktop/mobile; 52 prace sample z WP; rejestr K-38…K-47 w §4. Formalny Lighthouse a11y i test iOS Safari — etap 9. Gałąź: `feat/05-gallery`. |
-| 2026-09-20 | v0.3 — rozbicie dawnego etapu 6 na etapy 6–8 (o akademii i pracownia · aktualności · pozostałe); wykończenie → 9, migracja → 10, wdrożenie → 11. Słownictwo ujednolicone: „etap" zamiast „pod-etap" w całym `docs/`. |
+| 2026-09-20 | v0.3 — rozbicie dawnego etapu 6 na etapy 6–8 (o akademii i pracownia · aktualności · pozostałe); wykończenie → 9, migracja → 10, wdrożenie → 11. Słownictwo ujednolicone na „etap" w całym repo. |
+| 2026-09-20 | Sesja planistyczna etapu 6 zakończona, plan zatwierdzony (`docs/plans/06-o-akademii.md`). K-48 (`SectionNav` O Akademii · Pracownia), K-49 (`toc[]` jawny). Copy z `docs/copy-o-akademii-pracownia.md` od razu (nie lorem); 4 kawałki; wariant 6e bez linku autorskiego; OA-37 z placeholderami; rozmowa wdrożona z weryfikacją EJK w §5. Makieta 6a–6i zweryfikowana (render + 16 assetów OK). |
 
 ---
 

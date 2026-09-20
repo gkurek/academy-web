@@ -44,7 +44,7 @@ Przy konflikcie: `CLAUDE.md` > plan etapu > `brief-claude-code.md` > `brief-full
 
 **Zasady:**
 - Foldery w `src/app/` są po polsku, bo w App Routerze nazwa folderu = segment URL (brief §3). To nie jest wyjątek od K-11 — to powierzchnia publiczna, nie identyfikator kodu.
-- `SectionKey` (`"warsztaty" | "wyklady" | …`) celowo powiela slugi tras — spójność z routingiem.
+- `SectionKey` (`"o-akademii" | "warsztaty" | "wyklady" | …`) celowo powiela slugi tras — spójność z routingiem; para O Akademii · Pracownia (K-48).
 - Prop `active` w `Header`/`SectionNav` przyjmuje **label z `navigation.ts`** (polski tekst UI), nie własny klucz — na v1 PL-only wystarczy; przy i18n zamienić na stabilny klucz sekcji.
 - Nazwy domyślnych exportów w `page.tsx`: angielski (`WorkshopsPage`, nie `WarsztatyPage`).
 - Nie duplikuj etykiet nawigacji na sztywno w `page.tsx` — czytaj z `mainNav` / `sectionNav` (np. `sectionNav.wydarzenia[0].label`).
