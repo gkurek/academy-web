@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, type MouseEvent, type ReactNode } from "react";
+import { useEffect, type MouseEvent } from "react";
 import { useRouter } from "next/navigation";
 
 import { FilterChip } from "@/components/core/FilterChip";
@@ -11,10 +11,8 @@ import { pl } from "@/i18n/pl";
 export interface GalleryFiltersProps {
   tags: string[];
   filters: IconFilters;
-  /** The URL carries a `temat` value that was ignored — replace it with the clean URL. */
-  hasInvalidTag: boolean;
-  /** Trailing control on the same row as the filter chips (e.g. layout toggle). */
-  trailing?: ReactNode;
+  /** Unknown `temat` or retired `autor` in the URL — replace with the canonical URL. */
+  needsUrlCleanup: boolean;
 }
 
 function buildGalleryUrl(filters: IconFilters): string {
@@ -24,28 +22,25 @@ function buildGalleryUrl(filters: IconFilters): string {
 // Chips never shrink or wrap their label: on mobile the row scrolls sideways.
 const chipClass = "shrink-0 whitespace-nowrap";
 
-function chipRowClass(hasTrailing: boolean): string {
-  // K-44: below md a single scrollable row that bleeds to the screen edge (the cut-off last
-  // chip signals scrolling); from md up the chips wrap. The vertical/left padding with matching
-  // negative margins leaves room for the focus ring, which overflow-x would otherwise clip.
-  // Right bleed is skipped when a trailing control shares the row.
-  return [
-    "flex min-w-0 gap-space-3 overflow-x-auto",
-    "-ml-space-2 pl-space-2 -my-space-2 py-space-2",
-    hasTrailing ? "flex-1" : "-mr-page-margin-mobile pr-page-margin-mobile",
-    "md:mr-0 md:pr-0 md:flex-wrap md:overflow-visible",
-  ].join(" ");
-}
+const chipRowClass = [
+  // K-44 (mobile): below md a single scrollable row that bleeds to the screen edge (the cut-off
+  // last chip signals scrolling); from md up the chips wrap. Padding with negative margins leaves
+  // room for the focus ring, which overflow-x would otherwise clip.
+  "flex min-w-0 gap-space-3 overflow-x-auto",
+  "-ml-space-2 pl-space-2 -my-space-2 py-space-2",
+  "-mr-page-margin-mobile pr-page-margin-mobile",
+  "md:mr-0 md:pr-0 md:flex-wrap md:overflow-visible",
+].join(" ");
 
-export function GalleryFilters({ tags, filters, hasInvalidTag, trailing }: GalleryFiltersProps) {
+export function GalleryFilters({ tags, filters, needsUrlCleanup }: GalleryFiltersProps) {
   const router = useRouter();
   const cleanUrl = buildGalleryUrl(filters);
 
   useEffect(() => {
-    if (hasInvalidTag) {
+    if (needsUrlCleanup) {
       router.replace(`${cleanUrl}${window.location.hash}`, { scroll: false });
     }
-  }, [hasInvalidTag, cleanUrl, router]);
+  }, [needsUrlCleanup, cleanUrl, router]);
 
   // The section hash (`#uczniowie`) survives a change of theme.
   const select = (event: MouseEvent<HTMLAnchorElement>, nextFilters: IconFilters) => {
@@ -61,7 +56,7 @@ export function GalleryFilters({ tags, filters, hasInvalidTag, trailing }: Galle
         {pl.gallery.filters.themeLabel}
       </p>
       <div className="flex flex-wrap items-center justify-between gap-x-space-6 gap-y-space-3">
-        <div className={chipRowClass(Boolean(trailing))}>
+        <div className={chipRowClass}>
           <FilterChip
             href={buildGalleryUrl(allFilters)}
             active={filters.tag === undefined}
@@ -88,7 +83,6 @@ export function GalleryFilters({ tags, filters, hasInvalidTag, trailing }: Galle
             );
           })}
         </div>
-        {trailing}
       </div>
     </div>
   );

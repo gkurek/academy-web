@@ -6,9 +6,7 @@ function formatTagLabels(tags: string[] | undefined): string {
   return (tags ?? []).map((tag) => labels[tag] ?? tag).join(", ");
 }
 
-export type LightboxMetaEntry =
-  | { kind: "line"; text: string }
-  | { kind: "field"; label: string; value: string };
+export type LightboxMetaEntry = { kind: "field"; label: string; value: string };
 
 /** Metadata lines for the lightbox panel — title is rendered separately as H2. */
 export function formatLightboxMeta(item: IconWork): LightboxMetaEntry[] {
@@ -40,10 +38,6 @@ export function formatLightboxMeta(item: IconWork): LightboxMetaEntry[] {
       label: pl.gallery.lightbox.tagsLabel,
       value: tagLabels,
     });
-  }
-
-  if (item.year) {
-    entries.push({ kind: "line", text: String(item.year) });
   }
 
   return entries;

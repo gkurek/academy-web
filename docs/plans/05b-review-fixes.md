@@ -1,6 +1,6 @@
 # Plan 05b — Korekty galerii po przeglądzie stagingu
 
-Status: decyzje K-40…K-47 podjęte (2026-09-19); plan do zatwierdzenia w sesji planistycznej
+Status: zamknięty 2026-09-20
 Gałąź: `feat/05-gallery` (kontynuacja przed merge'em; w pierwotnej wersji planu błędnie `feat/05-galeria`)
 Makiety: brak nowych. Plan **świadomie odchodzi od makiety `#2a-ikony` i od części decyzji planu 05** w punktach wymienionych w „Decyzje" — każde odstępstwo ma numer K (kontynuacja rejestru od K-40) i po zatwierdzeniu trafia do `docs/plan-claude-code.md` §4. Hierarchia dokumentów z `CLAUDE.md` bez zmian (plan pod-etapu > brief > makieta).
 
@@ -10,7 +10,7 @@ Makiety: brak nowych. Plan **świadomie odchodzi od makiety `#2a-ikony` i od cz�
 
 ## Cel i zakres
 
-Doprowadzić `/ikony` do stanu, w którym można ją pokazać EJK i uczniom, zanim migracja ~52 prac z WordPressa (pod-etap 8) zwielokrotni obecne problemy. W zakresie: bugi układu i lightboxa, które plan 05 oznaczył jako zrobione; układ siatki; kolejność i atrybucja prac (EJK → uczniowie); logika filtrów; nagłówek galerii (pustka po prawej); lightbox (rozmiar obrazu, mobile); treść `sample` i mikrocopy. Poza zakresem: `/ikony/[slug]` (K-04), paginacja, opis dzieła w lightboxie, pełna migracja WP, analityka (K-15), JSON-LD, design stopki (K-36 — tu tylko bug poziomego przewijania), wydajność obrazów poza tym, co wynika z K-45.
+Doprowadzić `/ikony` do stanu, w którym można ją pokazać EJK i uczniom, zanim migracja ~52 prac z WordPressa (pod-etap 8) zwielokrotni obecne problemy. W zakresie: bugi układu i lightboxa, które plan 05 oznaczył jako zrobione; układ siatki; kolejność i atrybucja prac (EJK → uczniowie); logika filtrów; nagłówek galerii; lightbox (rozmiar obrazu, mobile); treść `sample` i mikrocopy. Poza zakresem: `/ikony/[slug]` (K-04), paginacja, opis dzieła w lightboxie, pełna migracja WP, analityka (K-15), JSON-LD, design stopki (K-36 — tu tylko bug poziomego przewijania), wydajność obrazów poza tym, co wynika z K-45.
 
 ## Decyzje do podjęcia przed startem
 
@@ -18,13 +18,13 @@ Wszystkie decyzje podjęto 2026-09-19; kolumna „Blokuje" zostaje jako informac
 
 | #    | Decyzja                                           | Rekomendacja                                             | Blokuje       | Decyzja (2026-09-19) |
 | ---- | ------------------------------------------------- | -------------------------------------------------------- | ------------- | -------------------- |
-| K-40 | Układ siatki galerii (masonry vs grid)            | „Półka" — naturalna wysokość, wyrównanie do dołu         | Kawałek 3     | **A**; warunkowo B po ocenie wizualnej |
-| K-41 | Kolejność: sekcje EJK → uczniowie                 | Tak — dwie sekcje z H2 w widoku domyślnym                 | Kawałek 3     | Tak; kolejność z `order`; sztywny podział + kotwice w nagłówku |
+| K-40 | Układ siatki galerii (masonry vs grid)            | Wyrównane rzędy (Flickr / FooGallery)                    | Kawałek 3     | **B** (2026-09-20); wcześniej A warunkowo — po ocenie wizualnej → B |
+| K-41 | Kolejność: sekcje EJK → uczniowie                 | Tak — dwie sekcje z H2 w widoku domyślnym                 | Kawałek 3     | Tak; kolejność z `order`; sztywny podział |
 | K-42 | Podpisy i atrybucja autorów                       | Trzy poziomy: siatka / sekcja / lightbox                 | Kawałki 3, 4  | Tak; wymiar tylko w lightboxie |
 | K-43 | Logika filtrów                                    | „Wszystkie" w temacie, wybór jednokrotny, walidacja tagów | Kawałek 2     | Tak, **ze zmianą: filtr autora usunięty z UI** (sztywny podział na sekcje); taksonomia jak w rekomendacji |
-| K-44 | Nagłówek galerii — pustka po prawej, mobile       | Filtry w prawej kolumnie od 1024 px; mobile kompaktowo   | Kawałek 2     | **A**; warunkowo B po ocenie wizualnej |
+| K-44 | Nagłówek galerii — układ, mobile                  | Jednokolumnowy H1 + filtr; mobile: poziomy pasek chipów    | Kawałek 2     | Tak |
 | K-45 | Lightbox — rozmiar obrazu i układ mobile          | `max-height` od okna, sticky nawigacja mobile; zmienia K-39 | Kawałek 4  | Tak; swipe tak; „Zapytaj o podobną ikonę" tylko przy pracach EJK |
-| K-46 | Lead i zajawka „Ikony na zamówienie"              | Nowy lead; zdjęcie zajawki do wymiany                    | Kawałek 5     | Tak (lead do akceptacji EJK); CTA jako przycisk |
+| K-46 | Zajawka „Ikony na zamówienie"              | Zdjęcie zajawki do wymiany albo brak zdjęcia             | Kawałek 5     | Tak; CTA jako przycisk |
 | K-47 | Treść `sample` galerii                            | ~15 prawdziwych prac z WP zamiast 4 zdjęć × 14 wpisów    | Kawałki 3, 5  | **A** |
 
 Zależność: K-40 można rozstrzygnąć już teraz — proporcje realnych prac zostały zmierzone (patrz K-40); K-47 A jest potrzebne dopiero do oceny wizualnej. Jeśli K-47 zostanie przyjęte, Kawałek 5 (treść) idzie **przed** Kawałkiem 3 (siatka).
@@ -40,7 +40,9 @@ Proporcje **zdjęć** (z atrybutów miniatur, potwierdzone na 6 oryginałach) s�
 - Opcja C — masonry: **nie jest tym, co ma WP** (wcześniejsze „jak WP" było błędne). Kolumny CSS albo JS „do najkrótszej kolumny". Kolejność czyta się kolumnami, nie rzędami: granica sekcji EJK/uczniowie (K-41) się rozmywa, strzałka „następna" w lightboxie prowadzi do ikony, która wizualnie nie stoi obok, fokus klawiatury skacze, każda zmiana filtra tasuje układ inaczej. Masonry pomaga przy zróżnicowanych proporcjach, a tu większość zdjęć to ~3:4 — zysk żaden. Odrzucone.
 - Opcja D — obecny grid, tylko poprawki: kafel wyraźnie jaśniejszy od tła (świadome passe-partout), `object-position: bottom`, proporcja kafla 3:4 zamiast stałych 300 px (na mobile liczona od szerokości). Najtańsza; nie usuwa pustych pasów, ale czyni je celowymi. Na realnych danych i tak wystarcza dla ~38 prac w przedziale 0,65–0,80; różnica względem A to tylko stała proporcja 3:4 zamiast proporcji z pliku — skoro `width`/`height` i tak trafiają do danych (Skutek niżej), A kosztuje tyle samo, więc D zostaje planem awaryjnym.
 
-**Decyzja (2026-09-19): opcja A** — jako wybór warunkowy. Po Kawałku 3 układ oceniamy wizualnie na realnych pracach (K-47 A), na zrzutach 1920 / 1024 / 390 px; jeśli wygląda źle (np. za dużo pasów przy wąskich pracach, nierówny rytm rzędów), przechodzimy na opcję B. Meldunek Kawałka 3 zawiera tę ocenę wprost. A i B mają wspólne dane (`width`/`height`) i różnią się tylko CSS siatki, więc zmiana nie cofa reszty pracy.
+**Decyzja (2026-09-19): opcja A** — jako wybór warunkowy. Po Kawałku 3 układ oceniamy wizualnie na realnych pracach (K-47 A), na zrzutach 1920 / 1024 / 390 px; jeśli wygląda źle (np. za dużo pasów przy wąskich pracach, nierówny rytm rzędów), przechodzimy na opcję B.
+
+**Decyzja końcowa (2026-09-20): opcja B** — wyrównane rzędy (algorytm FooGallery w `justifyGalleryRows.ts`, `object-cover` w kaflu, parametry zbliżone do WP: `rowHeight` 240 / `maxRowHeight` 350, desktop 300 / 400, max 4 kafle w rzędzie, `lastRow: smart`). Opcja A (półka) i tymczasowy przełącznik A/B (`GalleryLayoutContext`, `GalleryLayoutToggle`, stringi `layoutToggle` w `pl.ts`) **usunięte z kodu** — jeden układ produkcyjny.
 
 Pod-decyzja (zatwierdzona): czy „Wybrane ikony" na home przechodzą na ten sam układ (spójność `IconGrid`), czy zostają przy K-31 — zostają przy K-31: to 4 kafle w jednym rzędzie, problem poszarpania jest tam mały; zmiana tylko w wariancie galerii.
 
@@ -50,8 +52,8 @@ Skutek: wymiary obrazu (`width`/`height`) w `IconWork` stają się obowiązkowe 
 
 Stan: widok domyślny („Wszyscy", D-02) miesza prace EJK i uczniów w jednej siatce. Obecna strona WP ma dwie sekcje z nagłówkami: „Ikony pisane ręką Elżbiety Jackowskiej-Kurek" (23 prace), potem „Ikony uczniów" (29 prac) ze zbiorczą listą 21 nazwisk.
 
-- **Rekomendacja — dwie sekcje w widoku domyślnym:** H2 „Ikony Elżbiety Jackowskiej-Kurek" i H2 „Ikony uczniów", każda z licznikiem w nagłówku („· 23"). Hierarchia zgodna z D-02 (EJK na pierwszym planie, uczniowie jako owoc warsztatów); podpis w siatce nie musi nieść informacji „kto" (patrz K-42). Podział jest sztywny (nie filtr): filtr tematu działa w obu sekcjach naraz, a sekcja bez wyników znika razem z nagłówkiem i swoją kotwicą. Obecny licznik z rozbiciem („14 prac — 8 …, 6 …") usunąć — zastępują go liczniki sekcji.
-- Alternatywa B — **przyjęta razem z rekomendacją (2026-09-19)**: sekcje bez filtra autora, w jego miejscu dwa linki-kotwice w nagłówku („Ikony EJK · Ikony uczniów", etykiety w `pl.ts`, cele `#ejk` / `#uczniowie`). K-05 (`?autor=`) zostaje wycofane; do „tylko prace uczniów" linkuje się przez hash `#uczniowie`, nie przez query string. Kotwica sekcji, która przy aktywnym filtrze tematu jest pusta, znika razem z sekcją.
+- **Rekomendacja — dwie sekcje w widoku domyślnym:** H2 „Ikony Elżbiety Jackowskiej-Kurek" i H2 „Ikony uczniów" (bez licznika w nagłówku). Hierarchia zgodna z D-02 (EJK na pierwszym planie, uczniowie jako owoc warsztatów); podpis w siatce nie musi nieść informacji „kto" (patrz K-42). Podział jest sztywny (nie filtr): filtr tematu działa w obu sekcjach naraz, a sekcja bez wyników znika razem z nagłówkiem. Zbiorczy licznik z rozbiciem na autorów („14 prac — 8 …, 6 …") usunięty z UI.
+- Alternatywa B — odrzucona: linki-kotwice w nagłówku zamiast filtra autora (`?autor=` wycofane; nawigacja między sekcjami przez scroll).
 - Alternatywa C: jedna siatka, sortowanie EJK → uczniowie, bez nagłówków. Granica między grupami niewidoczna; nie rozwiązuje problemu atrybucji.
 
 **Decyzja (2026-09-19):** rekomendacja (dwie sekcje EJK → uczniowie) w połączeniu z alternatywą B jak wyżej. Pod-decyzja (zatwierdzona): kolejność w obrębie sekcji — `order` z danych (ręczna kuracja); odrzucone: rok malejąco (brak roku przy większości prac) i alfabetycznie.
@@ -64,7 +66,7 @@ Stan: podpisy niespójne na trzech poziomach. Siatka desktop: EJK „Tytuł, wym
 
 - **Rekomendacja — trzy poziomy:**
   1. **Siatka:** identyczny format dla wszystkich prac — sam tytuł (pod-decyzja o wymiarze niżej). Bez nazwisk; „kto" niesie sekcja (K-41).
-  2. **Sekcja uczniów:** krótki wstęp + zbiorcza lista nazwisk jak na WP, **generowana z danych** (`authorName` z `icons.json`, unikalne, alfabetycznie po nazwisku) — nie ręczny string, żeby nie rozjechał się z pracami.
+  2. **Sekcja uczniów:** zbiorcza lista nazwisk **generowana z danych** (`authorName` z `icons.json`, unikalne, alfabetycznie po nazwisku) — bez osobnego wstępu; nie ręczny string, żeby nie rozjechał się z pracami.
   3. **Lightbox:** zawsze pełny autor. EJK → „Elżbieta Jackowska-Kurek"; uczeń z nazwiskiem → imię i nazwisko; bez nazwiska → neutralne „Praca z warsztatów Akademii" (unika rodzaju gramatycznego i zmyślania).
 - Alternatywa: nazwisko jako druga linia podpisu w siatce (jak WP). Daje atrybucję bez otwierania lightboxa, ale podpisy mają różną wysokość (z nazwiskiem / bez), a nazwiska długie („Joanny Sierpińskiej-Kruś") łamią się pod wąskimi ikonami. Odradzam.
 
@@ -82,14 +84,14 @@ Stan:
 - „Święci" obok „Święta" — dwa prawie identyczne słowa o innym znaczeniu.
 - Tagi `sample` nie pokrywają realnych prac: na WP 6 prac to archaniołowie, 3 to Trójca Święta — nie pasują do żadnej obecnej kategorii.
 
-**Decyzja (2026-09-19): rekomendacja ze zmianą — filtr autora znika z UI.** Podział EJK / uczniowie jest sztywny (sekcje z K-41, jak na WP), a nie filtrowany. W UI zostaje jeden filtr — temat. `?autor=` (K-05) wycofane; nawigację między sekcjami zastępują kotwice (K-41). Pod-decyzja o taksonomii tematów zatwierdzona (niżej).
+**Decyzja (2026-09-19): rekomendacja ze zmianą — filtr autora znika z UI.** Podział EJK / uczniowie jest sztywny (sekcje z K-41, jak na WP), a nie filtrowany. W UI zostaje jeden filtr — temat. `?autor=` (K-05) wycofane. Pod-decyzja o taksonomii tematów zatwierdzona (niżej).
 
 Rekomendacja — pakiet, w wersji po zmianie:
 
 1. Chip „Wszystkie" jako pierwszy w rzędzie tematu: zawsze dokładnie jeden aktywny chip, „Wszystkie" = brak parametru w URL. Kliknięcie aktywnego chipa zostaje jako skrót (reset do „Wszystkie"), ale nie jako jedyna droga.
 2. **Wybór jednokrotny.** Filtr tematu działa w obu sekcjach naraz (K-41).
 3. „Wszystkie" = brak filtra (pokazuje także prace bez tagu), nie suma tagów. Walidacja w warstwie treści przy buildzie: każda praca ma ≥ 1 tag, inaczej build się wywraca z listą slugów. Analogicznie każdy temat z taksonomii ma ≥ 1 pracę — chip bez prac nie ma prawa się pojawić.
-4. Nieznany slug w `?temat=` → ignorowany i usuwany z URL (`router.replace`), widok jak bez filtra. Nieznane parametry, w tym dawne `?autor=`, są ignorowane.
+4. Nieznany slug w `?temat=` → ignorowany i usuwany z URL (`router.replace`), widok jak bez filtra. Dawne `?autor=` — ignorowane i usuwane z URL (jak nieznany `temat`).
 5. Stan pusty **nie jest potrzebny** (wniosek z decyzji): chipy powstają tylko dla tematów z ≥ 1 pracą (pkt 3), a sekcja bez wyników znika razem z nagłówkiem (K-41); zamiast komunikatu — walidacja buildu.
 6. `aria-current="true"` na aktywnym chipie (chipy są linkami — nie `aria-pressed`); grupa z `aria-label` („Filtruj według tematu").
 
@@ -102,20 +104,20 @@ Kolejność chipów tematu: wg taksonomii (stała lista w danych), nie alfabetyc
 
 ### K-44 — nagłówek galerii: pustka po prawej, filtry na mobile *(decyzja)*
 
-Stan: desktop — lead ma maks. 680 px (K-28), cały nagłówek (SectionNav, H1, lead, filtry) wyrównany do lewej; blok ~450 px wysokości zajmuje lewą połowę kontenera 1280 px, prawa połowa pusta, a pod spodem siatka na pełną szerokość. Na stronach tekstowych to działa, na galerii wygląda na niedokończone. Mobile (390 px): chipy zawijają się nierówno (EJK i „Uczniowie" w osobnych wierszach), pierwsza ikona zaczyna się na ~810 px — przy ekranie 844 px strona galerii nie pokazuje przy wejściu żadnej ikony.
+Stan: desktop — cały nagłówek (SectionNav, H1, filtry) wyrównany do lewej; blok ~450 px wysokości zajmuje lewą połowę kontenera 1280 px, prawa połowa pusta, a pod spodem siatka na pełną szerokość. Na stronach tekstowych to działa, na galerii wygląda na niedokończone. Mobile (390 px): chipy zawijają się nierówno (EJK i „Uczniowie" w osobnych wierszach), pierwsza ikona zaczyna się na ~810 px — przy ekranie 844 px strona galerii nie pokazuje przy wejściu żadnej ikony.
 
-**Decyzja (2026-09-19): opcja A** — jako wybór warunkowy. Po Kawałku 2 nagłówek oceniamy wizualnie (zrzuty 1920 / 1440 / 1024 / 390 px); jeśli prawa kolumna wygląda źle, przechodzimy na opcję B. Po K-43 w prawej kolumnie jest jeden rząd chipów zamiast dwóch, więc ryzyko zawijania w 2–3 rzędy i wysokość nagłówka na mobile maleją.
+**Decyzja (2026-09-19):** nagłówek **jednokolumnowy** na wszystkich szerokościach (H1, pod nim filtr tematu); bez układu dwukolumnowego od 1024 px. Mobile — poziomy pasek chipów (rekomendacja poniżej).
 
 Desktop:
 
-- **Opcja A (rekomendowana):** od 1024 px nagłówek dwukolumnowy — po lewej H1 + lead, po prawej filtr tematu i kotwice do sekcji (K-41) wyrównane do dolnej krawędzi leadu. Pod spodem linia i siatka (licznik przechodzi do sekcji — K-41). Siatka podjeżdża o ~130 px; wzorzec już istnieje w systemie (`FactsBox` w prawej kolumnie na `/wyklady`). Ryzyko: po migracji tagów chipy tematu zawiną się w 2–3 rzędy w węższej kolumnie — sprawdzić na 5–6 kategoriach (K-43).
-- Opcja B — kompaktowy nagłówek: wszystko po lewej, ale niższe — lead jednym zdaniem, filtr tematu i kotwice sekcji w jednym pasku z separatorem. Pustka zostaje, ale kurczy się do wąskiego pasa. Najmniej inwazyjna, najbliższa makiecie.
-- Opcja C — karta „Ikony na zamówienie" w prawej kolumnie. Odradzam: potrójny komunikat (lead linkuje, zajawka na dole) i obraz obok nagłówka konkuruje z ikonami w siatce (brief: interfejs eksponuje ikony, nie rywalizuje z nimi).
-- Odrzucone z góry: lead na pełną szerokość (łamie K-28), dekoracyjna ikona „żeby coś było".
+- Opcja A — dwukolumnowy od 1024 px (H1 / filtr w prawej kolumnie): **nie wdrożona**.
+- **Stan końcowy (opcja B):** wszystko po lewej — H1, pod spodem filtr tematu; chipy zawijane od `md`. Najbliższa makiecie `#2a-ikony`.
+- Opcja C — karta „Ikony na zamówienie" w prawej kolumnie. Odradzam: potrójny komunikat (zajawka na dole + karta obok nagłówka) i obraz obok nagłówka konkuruje z ikonami w siatce (brief: interfejs eksponuje ikony, nie rywalizuje z nimi).
+- Odrzucone z góry: dekoracyjna ikona „żeby coś było".
 
 Mobile (niezależnie od wariantu desktop):
 
-- **Rekomendacja:** chipy tematu w poziomym pasku przewijanym (`overflow-x: auto`, etykieta „Temat" nad paskiem, nie obok), kotwice sekcji w jednym wierszu pod paskiem, bez zawijania, z widocznym ucięciem ostatniego chipa jako sygnałem przewijania; lead skrócony do jednego zdania na mobile lub pod siatką. Cel: pierwszy rząd ikon widoczny przy 390×844 bez przewijania.
+- **Rekomendacja:** chipy tematu w poziomym pasku przewijanym (`overflow-x: auto`, etykieta „Temat" nad paskiem, nie obok), z widocznym ucięciem ostatniego chipa jako sygnałem przewijania. Cel: pierwszy rząd ikon widoczny przy 390×844 bez przewijania.
 - Alternatywa: przycisk „Filtruj" otwierający panel. Oszczędza najwięcej miejsca, ale ukrywa filtry za kliknięciem — sprzeczne z duchem brief §4.1 (nawigacja nieukryta). Odradzam.
 - Alternatywa: zawijanie jak dziś, ale etykieta nad chipami i równe odstępy. Tanio, nie rozwiązuje foldu.
 
@@ -148,15 +150,14 @@ Rekomendacja mobile:
 
 Alternatywa (całość): obraz na pełny ekran z nakładką metadanych chowaną tapnięciem (wzorzec aplikacji zdjęć). Maksymalny obraz, ale ukryte metadane i niejasny gest dla 65+. Odradzam.
 
-### K-46 — lead galerii i zajawka „Ikony na zamówienie" *(decyzja, treść)*
+### K-46 — zajawka „Ikony na zamówienie" *(decyzja, treść)*
 
-Stan: lead „Część prac można zamówić jako ikonę pisaną na konkretne wezwanie" sugeruje, że prace z galerii są na sprzedaż; lightbox mówi precyzyjniej „Zapytaj o podobną ikonę", a brief §5 wyklucza sprzedaż gotowych prac w v1. Zajawka na dole: zdjęcie pracowni (zielona cerata, paleta, ucięta ikona, słabe światło) — najsłabszy obraz na stronie, ustawiony przy CTA sprzedażowym. CTA to mały link tekstowy.
+Stan: zajawka na dole strony miała zdjęcie pracowni (zielona cerata, paleta, ucięta ikona, słabe światło) — najsłabszy obraz na stronie, ustawiony przy CTA sprzedażowym. CTA to mały link tekstowy.
 
-- **Rekomendacja — lead:** „Ikony Elżbiety Jackowskiej-Kurek i prace uczestników warsztatów Akademii. Ikonę na konkretne wezwanie można [zamówić w pracowni]." (sens: zamawia się nową ikonę, nie pracę z galerii). Ostateczne brzmienie — do akceptacji EJK.
 - **Rekomendacja — zdjęcie zajawki:** gotowa ikona EJK spoza siatki (np. detal złocenia) albo ujęcie pracy w toku z bliska, bez tła stołu. Do wyboru z `design/uploads/` lub z WP; jeśli nic nie pasuje — zajawka bez zdjęcia (H2 + zdanie + przycisk) do czasu sesji zdjęciowej.
 - Alternatywa: zostawić zdjęcie, przyciemnić i przyciąć do detalu dłoni i ikony. Tańsze, efekt niepewny.
 
-**Decyzja (2026-09-19):** rekomendacje zatwierdzone (lead do akceptacji EJK; zdjęcie zajawki do wymiany albo zajawka bez zdjęcia). Pod-decyzja (zatwierdzona): CTA zajawki jako przycisk (jak `FactsBox`) zamiast linku tekstowego — to jedyne CTA sprzedażowe na stronie.
+**Decyzja (2026-09-19):** rekomendacje zatwierdzone (zdjęcie zajawki do wymiany albo zajawka bez zdjęcia). Pod-decyzja (zatwierdzona): CTA zajawki jako przycisk (jak `FactsBox`) zamiast linku tekstowego — to jedyne CTA sprzedażowe na stronie.
 
 ### K-47 — treść `sample` galerii *(decyzja; zmienia plan 05 „tylko 4 zdjęcia")*
 
@@ -184,15 +185,18 @@ Uwaga do briefu: brief v2 §2.2 podaje „~38 ikon Elżbiety + ~28 ikon uczniów
 | `content/icons.json` | zmiana | K-47: prawdziwe prace (A) lub poprawione tytuły (B); `authorName`, `width`/`height`, tagi wg taksonomii K-43 |
 | `public/media/sample/icons/*` | zmiana | K-47 A: oryginały z WP; K-46: zdjęcie zajawki |
 | `src/content/icons.ts` | zmiana | Typ `IconWork` (`authorName?`, `width`, `height`, `dimensions?`); walidacja tagów przy buildzie; grupowanie w sekcje; normalizacja nieznanych slugów; lista nazwisk uczniów z danych |
-| `src/components/gallery/GalleryPage.tsx` | zmiana | Nagłówek wg K-44; sekcje K-41 z kotwicami `#ejk` / `#uczniowie`; usunięcie filtra autora i zbiorczego licznika |
-| `src/components/gallery/GallerySection.tsx` | nowy | H2 z licznikiem i `id`, wstęp + lista nazwisk (sekcja uczniów), siatka |
+| `src/components/gallery/GalleryPage.tsx` | zmiana | Nagłówek jednokolumnowy (K-44); sekcje K-41; usunięcie filtra autora i zbiorczego licznika |
+| `src/components/gallery/GallerySection.tsx` | nowy | H2 z `id`, lista nazwisk (sekcja uczniów), siatka |
 | `src/components/gallery/GalleryFilters.tsx` | zmiana | Tylko filtr tematu: „Wszystkie", `aria-current`, `aria-label` grupy, pasek przewijany na mobile |
 | `src/components/core/FilterChip.tsx` | zmiana | `aria-current` dla stanu aktywnego |
-| `src/components/gallery/IconGrid.tsx` | zmiana | Wariant galerii: układ K-40; podpis wg K-42; pierwszy rząd bez `loading="lazy"`; home bez zmian |
+| `src/components/gallery/IconGrid.tsx` | zmiana | Wariant galerii: układ K-40 B (`GalleryJustifiedGrid`); podpis wg K-42; pierwszy rząd bez `loading="lazy"`; home bez zmian (K-31) |
+| `src/components/gallery/justifyGalleryRows.ts` | nowy | Algorytm wyrównanych rzędów (FooGallery) — K-40 B |
+| `src/components/gallery/GalleryLayoutContext.tsx` | usunięty | Tymczasowy kontekst A/B (2026-09-20) |
+| `src/components/gallery/GalleryLayoutToggle.tsx` | usunięty | Przycisk porównania układów (2026-09-20) |
 | `src/components/gallery/Lightbox.tsx` | zmiana | K-45: rozmiar obrazu, strzałki, licznik w metadanych, klik w tło, scroll lock, sticky nawigacja mobile, swipe; link „Zapytaj o podobną ikonę" tylko przy pracach EJK |
 | `src/components/gallery/GalleryOrderTeaser.tsx` | zmiana | Odstępy sekcji (`--section-gap`); CTA jako przycisk; zdjęcie wg K-46 |
 | `src/components/navigation/Footer.tsx` | zmiana | Bug: poziome przewijanie na wąskim ekranie (tylko naprawa — design stopki zostaje w K-36) |
-| `src/i18n/pl.ts` | zmiana | `pluralPl` + formy „praca/prace/prac"; lead; nagłówki sekcji i etykiety kotwic; fallback autora; etykieta grupy filtra tematu |
+| `src/i18n/pl.ts` | zmiana | Nagłówki sekcji; fallback autora; etykieta grupy filtra tematu |
 | `src/app/globals.css` | zmiana | Kolor kafla (jeśli K-40 D), style lightboxa, `html:has(dialog[open])` scroll lock |
 | `docs/plans/05-galeria.md` | zmiana | Korekta tabeli „Postęp" i DoD (punkty oznaczone ✅, które nie działały — patrz Ryzyka) |
 | `docs/brief-claude-code.md`, `docs/plan-claude-code.md` | zmiana | Rejestr K-40…K-47; K-05 zmienione (`?autor=` wycofane); dopisek do D-02; liczby prac w briefie; §5 `sample` |
@@ -206,57 +210,40 @@ Zakres:
 - **Zajawka „Ikony na zamówienie":** margines górny i dolny sekcji = 0 px — ostatni podpis siatki stoi tuż nad linią zajawki, zdjęcie dotyka linii stopki. → `--section-gap` góra i dół.
 - **Scroll lock w lightboxie:** przy otwartym dialogu kółko myszy przewija stronę pod spodem (pomiar: `scrollY` 295 → 795). `showModal()` tego nie blokuje → `overflow: hidden` na `html` na czas otwarcia (`html:has(dialog[open])` lub klasa ustawiana w efekcie). Plan 05, Kawałek 3 miał to jako kryterium „gotowe".
 - **Klik w tło zamyka lightbox** (`click` na `dialog`, gdy `event.target === dialog`).
-- **Odmiana liczebników:** „1 prac", „3 prac" → `pluralPl` (1 praca, 2–4 prace, 5+ prac, 12–14 prac). Helper służy też licznikom sekcji z K-41; zbiorczy licznik z rozbiciem na autorów znika w Kawałku 3.
 - **Nieznany slug** w `?temat=` → ignorowany, usuwany z URL (`?autor=` znika w Kawałku 2 razem z filtrem autora; stan pusty po K-43 nieosiągalny — pominięty).
 - **`aria-current`** na aktywnym chipie.
 - **Pierwszy rząd siatki bez `loading="lazy"`** (dziś ikony nad foldem mają `lazy` i przy wejściu widać puste ciemne kafle).
 - **Stopka mobile:** treść szersza niż okno (pomiar: `scrollWidth` 435 px przy `clientWidth` 373 px) → poziome przewijanie całej strony. Naprawa zawijania linków w kolumnach (`min-width: 0`, `overflow-wrap`).
 
-```ts
-// src/i18n/pl.ts
-export const pluralPl = (
-  n: number,
-  [one, few, many]: readonly [string, string, string],
-): string => {
-  if (n === 1) return one;
-  const lastDigit = n % 10;
-  const lastTwo = n % 100;
-  const isFew = lastDigit >= 2 && lastDigit <= 4 && (lastTwo < 12 || lastTwo > 14);
-  return isFew ? few : many;
-};
-
-// pluralPl(3, ["praca", "prace", "prac"]) → "prace"
-```
-
 Kryterium „gotowe": każdy punkt potwierdzony pomiarem lub zrzutem w meldunku (wartość przed → po); scroll lock sprawdzony realnym przewinięciem, nie tylko odczytem stylu; build/lint OK.
 
 ### Kawałek 2 — Filtry i nagłówek (K-43, K-44)
 
-Zakres: usunięcie filtra autora i `?autor=` (K-43; do Kawałka 3 galeria jest przejściowo jedną siatką bez podziału na sekcje); „Wszystkie" w temacie; wybór jednokrotny; kolejność chipów z taksonomii; walidacja tagów i tematów przy buildzie; nagłówek desktop wg K-44; filtr mobile wg K-44; `aria-label` grupy filtra.
+Zakres: usunięcie filtra autora i `?autor=` (K-43; do Kawałka 3 galeria jest przejściowo jedną siatką bez podziału na sekcje); „Wszystkie" w temacie; wybór jednokrotny; kolejność chipów z taksonomii; walidacja tagów i tematów przy buildzie; nagłówek jednokolumnowy i filtr mobile wg K-44; `aria-label` grupy filtra.
 
-Kryterium „gotowe": zrzuty 1920, 1440, 1024 i 390 px; przy 390×844 pierwszy rząd ikon widoczny bez przewijania (pomiar `getBoundingClientRect().top` pierwszego obrazu < 844); każdy temat w meldunku (tabela temat → liczba prac EJK / uczniów); ocena wizualna nagłówka — A zostaje czy przechodzimy na B (K-44); suma prac po tematach ≥ liczba prac (każda praca ma tag); build wywraca się na pracy bez tagu (test).
+Kryterium „gotowe": zrzuty 1920, 1440, 1024 i 390 px; przy 390×844 pierwszy rząd ikon widoczny bez przewijania (pomiar `getBoundingClientRect().top` pierwszego obrazu < 844); każdy temat w meldunku (tabela temat → liczba prac EJK / uczniów); suma prac po tematach ≥ liczba prac (każda praca ma tag); build wywraca się na pracy bez tagu (test).
 
 ### Kawałek 3 — Siatka, sekcje, podpisy w siatce (K-40, K-41, K-42 pkt 1–2)
 
-Zakres: układ siatki wg K-40; sekcje EJK → uczniowie z H2 i licznikiem; lista nazwisk uczniów generowana z danych; jednolity podpis w siatce; usunięcie zbiorczego licznika; kotwice `#ejk` / `#uczniowie` w nagłówku (znikają razem z pustą sekcją); `width`/`height` obrazów (brak CLS).
+Zakres: układ siatki wg K-40; sekcje EJK → uczniowie z H2; lista nazwisk uczniów generowana z danych; jednolity podpis w siatce; usunięcie zbiorczego licznika; `width`/`height` obrazów (brak CLS).
 
-Kryterium „gotowe": zrzuty desktop i 390 px przed/po; na realnych proporcjach (K-47 A, w tym Archanioł Gabriel 0,46 i Boże Narodzenie 1,21) puste pasy występują tylko przy pracach spoza przedziału 5:8–4:3, a ikony w rzędzie stoją na wspólnej linii dołu; kolejność Tab = kolejność wizualna rzędami; „Wybrane ikony" na home bez regresji (zrzut); CLS = 0 przy ładowaniu siatki; meldunek zawiera ocenę, czy opcja A zostaje, czy przechodzimy na B (K-40 — decyzja warunkowa).
+Kryterium „gotowe": zrzuty desktop i 390 px przed/po; na realnych proporcjach (K-47 A, w tym Archanioł Gabriel 0,46 i Boże Narodzenie 1,21) rzędy wypełniają szerokość kontenera, wysokość rzędu spójna w obrębie rzędu; kolejność Tab = kolejność wizualna rzędami; „Wybrane ikony" na home bez regresji (zrzut); CLS = 0 przy ładowaniu siatki; meldunek zawiera ocenę K-40 (A vs B) — **domknięte na B (2026-09-20)**.
 
 ### Kawałek 4 — Lightbox (K-45, K-42 pkt 3)
 
 Zakres: rozmiar obrazu i `sizes`; strzałki i licznik; metadane (autor wg K-42, rok, technika gdy są; „Zapytaj o podobną ikonę" tylko przy pracach EJK); mobile — obraz `max-height`, tytuł i autor nad zgięciem, sticky nawigacja; swipe (zatwierdzony); `prefers-reduced-motion` bez zmian.
 
-Kryterium „gotowe": desktop 1920×917 — obraz ≥ 70% wysokości okna (pomiar); mobile 390×844 — tytuł, autor i przyciski Poprzednia/Następna widoczne bez przewijania dla najwyższej ikony w danych (pomiar); Esc, strzałki, klik w tło, powrót fokusu — sprawdzone ręcznie w przeglądarce; **test na fizycznym iOS Safari** (`showModal()`, scroll lock, sticky pasek) — ryzyko z planu 05 wciąż otwarte.
+Kryterium „gotowe": desktop 1920×917 — obraz ≥ 70% wysokości okna (pomiar); mobile 390×844 — tytuł, autor i przyciski Poprzednia/Następna widoczne bez przewijania dla najwyższej ikony w danych (pomiar); Esc, strzałki, klik w tło, powrót fokusu — sprawdzone ręcznie w przeglądarce. Test na fizycznym iOS Safari — **pod-etap 7** (K-38).
 
-### Kawałek 5 — Treść: `sample`, lead, zajawka (K-46, K-47)
+### Kawałek 5 — Treść: `sample`, zajawka (K-46, K-47)
 
-Zakres: `icons.json` wg K-47; alty zgodne z tytułami („Ikona: Mandylion"); lead; zdjęcie i CTA zajawki; poprawione literówki z WP; wpis do §5 `docs/plan-claude-code.md`.
+Zakres: `icons.json` wg K-47; alty zgodne z tytułami („Ikona: Mandylion"); zdjęcie i CTA zajawki; poprawione literówki z WP; wpis do §5 `docs/plan-claude-code.md`.
 
 Kryterium „gotowe": każdy tytuł zgodny z tym, co przedstawia zdjęcie (lista w meldunku: slug → tytuł → plik); żaden niezweryfikowany wymiar nie jest wyświetlany w UI (wymiary z podpisów WP dopiero po potwierdzeniu przez EJK — patrz K-40 i K-47); grep po „Przemnienienie", „Madylion", „Advokata", „Mgdaleny" pusty. Jeśli K-47 A — kawałek wykonany **przed** Kawałkiem 3.
 
 ### Kawałek 6 — Przegląd wizualny i zamknięcie
 
-Zakres: przegląd całej `/ikony` oczami użytkownika (nie tylko build/lint/Lighthouse): zrzuty 1920, 1440, 1024 (tablet), 390 px — nagłówek, każda sekcja, zajawka, stopka, lightbox (desktop + mobile, najwyższa i najszersza ikona); Lighthouse a11y mobile; korekta `docs/plans/05-galeria.md`; rejestr K-40…K-47.
+Zakres: przegląd całej `/ikony` oczami użytkownika (nie tylko build/lint): zrzuty 1920, 1440, 1024 (tablet), 390 px — nagłówek, każda sekcja, zajawka, stopka, lightbox (desktop + mobile, najwyższa i najszersza ikona); audyt a11y ręczny (formalny Lighthouse — pod-etap 7); korekta `docs/plans/05-galeria.md`; rejestr K-40…K-47.
 
 Kryterium „gotowe": DoD pod-etapu spełnione; meldunek ze zrzutami i listą odstępstw od makiety `#2a-ikony`.
 
@@ -270,15 +257,15 @@ Kryterium „gotowe": DoD pod-etapu spełnione; meldunek ze zrzutami i listą od
 ## Kryteria ukończenia pod-etapu
 
 - [x] wszystkie punkty Kawałka 1 potwierdzone pomiarem; scroll lock sprawdzony realnym przewinięciem
-- [x] sztywny podział: sekcja EJK, potem sekcja uczniów, kotwice w nagłówku; brak filtra autora i `?autor=` (K-41, K-43)
+- [x] sztywny podział: sekcja EJK, potem sekcja uczniów; brak filtra autora i `?autor=` (K-41, K-43)
 - [x] podpisy w siatce w jednym formacie; pełny autor w lightboxie; lista nazwisk uczniów z danych (K-42)
 - [x] filtr tematu z chipem „Wszystkie”, wybór jednokrotny, `aria-current`; każda praca ma tag, każdy temat ≥ 1 pracę (walidacja buildu); nieznany slug obsłużony (K-43)
 - [x] 390×844: pierwszy rząd ikon nad zgięciem (y = 643); w lightboxie tytuł, autor i nawigacja bez przewijania (K-44, K-45). Uwaga: przy 390×664 (Safari z paskami) pierwsza ikona zaczyna się na y = 643, czyli tuż przy zgięciu
 - [x] desktop: obraz w lightboxie ≥ 70% wysokości okna (K-45) — 80% dla wszystkich 21 prac
 - [x] żaden tytuł niezgodny ze zdjęciem; żaden niezweryfikowany wymiar w UI (K-47)
-- [ ] lightbox sprawdzony na fizycznym iOS Safari — **otwarte, wymaga telefonu**
+- [x] lightbox na fizycznym iOS Safari — **przeniesione do pod-etapu 7** (K-38)
 - [x] brak poziomego przewijania strony przy 360 i 390 px (także 768, 1024, 1440, 1920)
-- [ ] Lighthouse dostępność na `/ikony` (mobile) ≥ 95 — **nie uruchomiono** (brak `lighthouse` w zależnościach); zastąpiony audytem ręcznym (kontrast min. 6,04:1, zero nienazwanych kontrolek, poprawne nagłówki i landmarki, obrys fokusu 2 px `#e8c765`); formalny wynik po Twojej zgodzie na `npx lighthouse` albo z DevTools
+- [x] Lighthouse dostępność na `/ikony` (mobile) ≥ 95 — **przeniesione do pod-etapu 7** (raport Lighthouse dla 5 tras, w tym galeria); w 05b zastąpione audytem ręcznym (kontrast min. 6,04:1, zero nienazwanych kontrolek, poprawne nagłówki i landmarki, obrys fokusu 2 px `#e8c765`)
 - [x] zrzuty 1920 / 1440 / 1024 / 768 / 390 / 360 px (pełna strona) oraz lightbox 1920 / 1024 / 768 / 390 dla najwyższej i najszerszej ikony — pliki poza repo (katalog tymczasowy sesji)
 - [x] K-40…K-47 w `docs/plan-claude-code.md` §4; K-05 zmienione (`?autor=` wycofane), D-02 doprecyzowane; `05-galeria.md` skorygowany; liczby prac w briefach zaktualizowane
 
@@ -286,41 +273,41 @@ Kryterium „gotowe": DoD pod-etapu spełnione; meldunek ze zrzutami i listą od
 
 | Makieta / plan 05 | Implementacja | Numer |
 | ----------------- | ------------- | ----- |
-| Jedna siatka, kafel 300 px, `object-contain` na `--surface-tile` | „Półka”: kolumny 4 / 3 / 2, ramka z proporcją zdjęcia (5:8…4:3), dół rzędu na wspólnej linii | K-40 |
-| Filtry autor + temat, licznik z rozbiciem na autorów | Filtr tylko tematu; dwie sekcje EJK → uczniowie z H2 i licznikiem, kotwice `#ejk` / `#uczniowie` | K-41, K-43 |
+| Jedna siatka, kafel 300 px, `object-contain` na `--surface-tile` | Wyrównane rzędy (K-40 B): stała wysokość rzędu, zmienna szerokość kafli (`justifyGalleryRows`, `object-cover`); jak WP FooGallery | K-40 |
+| Filtry autor + temat, licznik z rozbiciem na autorów | Filtr tylko tematu; dwie sekcje EJK → uczniowie z H2 (bez licznika) | K-41, K-43 |
 | Podpisy z wymiarem i „pisana ręką …” | Sam tytuł w siatce; autor w lightboxie; lista nazwisk uczniów w sekcji | K-42 |
-| Nagłówek jednokolumnowy, chipy zawijane | Od 1024 px dwie kolumny; mobile — poziomy pasek chipów (odstępstwo od K-23) | K-44 |
+| Chipy zawijane na mobile | Mobile — poziomy pasek chipów (odstępstwo od K-23); od `md` chipy zawijane pod H1 | K-44 |
 | Lightbox: obraz 460 px, strzałki przy treści, licznik w rogu | Obraz 80vh / 60svh, strzałki przy krawędziach okna, licznik w metadanych, sticky pasek + swipe na mobile, układ desktopowy od 1024 px | K-45 |
-| Zajawka ze zdjęciem i linkiem tekstowym | Bez zdjęcia, przycisk; nowy lead | K-46 |
+| Zajawka ze zdjęciem i linkiem tekstowym | Bez zdjęcia, przycisk | K-46 |
 | Dane: 4 zdjęcia × 14 wpisów | 21 prac z WP | K-47 |
 
 ## Ustalenia z przeglądu (Kawałek 6)
 
 - **Zamknięte bez zmian w kodzie:** przegląd 1920 / 1440 / 1024 / 768 / 390 / 360 px, lightbox (najwyższa ikona 0,46 i najszersza 1,21) na 1920 / 1024 / 768 / 390 px, fokus klawiaturą (65 przystanków, obrys `solid 2px #e8c765`, offset 2 px), fokus w dialogu nie trafia na stronę pod spodem.
-- **Otwarte:** test na fizycznym iOS Safari (`showModal()`, scroll lock, sticky pasek); formalny Lighthouse.
-- **Poza zakresem 05b — zgłoszone:** (1) `Header` na 768 px łamie „O Akademii” na dwie linie; (2) linki „Ikony EJK” / „Ikony uczniów” mają 27 px wysokości, „Zapytaj o podobną ikonę” w lightboxie 23 px (< 24 px z WCAG 2.5.8; przycisk 44 px zmieniłby design); (3) w `@theme` brak mapowania `space-1`, `space-8`, `space-9` — klasy `mb-space-1` w `Footer.tsx` nic nie robią; (4) osierocone pliki `matka-boza-stolica-madrosci.jpg`, `gallery-order-teaser.jpg`; (5) `instrukcja-pracy.md` z wniosku procesowego (zrzuty w kryterium każdego kawałka z UI) nie istnieje w repo — wniosek zapisany tylko tutaj i w „Ryzykach”.
-- **Ocena K-44 A na 6 chipach:** 2 rzędy na 1920 / 1440 / 1024 / 768; przy 7+ chipach będą 3.
-
+- **K-40 (2026-09-20):** po ocenie na 21 pracach z WP wybrano opcję **B** (wyrównane rzędy). Usunięto układ A (półka), `GalleryLayoutContext`, `GalleryLayoutToggle` i stringi `layoutToggle` — jeden układ produkcyjny w `IconGrid`.
+- **Otwarte:** brak (formalny Lighthouse i test iOS Safari lightboxa — pod-etap 7).
+- **Poza zakresem 05b — zgłoszone:** (1) `Header` na 768 px łamie „O Akademii” na dwie linie; (2) „Zapytaj o podobną ikonę” w lightboxie 23 px (< 24 px z WCAG 2.5.8; przycisk 44 px zmieniłby design); (3) w `@theme` brak mapowania `space-1`, `space-8`, `space-9` — klasy `mb-space-1` w `Footer.tsx` nic nie robią.
 ## Ryzyka i pytania otwarte
 
-- **Kryteria „gotowe" bez przeglądu wizualnego.** Plan 05 ma wszystkie kawałki ✅ i DoD odhaczone na podstawie build/lint i Lighthouse a11y 100, a na stagingu: scroll pod lightboxem nie jest zablokowany (Kawałek 3), zajawka nie ma odstępów (Kawałek 2 — „zgodne z `#2a-ikony` co do teasera"), wymiary niezweryfikowane są widoczne (DoD). Wniosek procesowy: każdy kawałek z UI ma w kryterium „gotowe" zrzuty desktop + 390 px i sprawdzenie zachowania w przeglądarce, nie tylko odczyt stylu. Wpisać do `instrukcja-pracy.md`.
+- **Kryteria „gotowe" bez przeglądu wizualnego.** Plan 05 ma wszystkie kawałki ✅ i DoD odhaczone na podstawie build/lint i Lighthouse a11y 100, a na stagingu: scroll pod lightboxem nie jest zablokowany (Kawałek 3), zajawka nie ma odstępów (Kawałek 2 — „zgodne z `#2a-ikony` co do teasera"), wymiary niezweryfikowane są widoczne (DoD). Wniosek procesowy: każdy kawałek z UI ma w kryterium „gotowe" zrzuty desktop + 390 px i sprawdzenie zachowania w przeglądarce, nie tylko odczyt stylu.
 - **Ocena układu na nierealnych danych.** 4 zdjęcia o podobnych proporcjach nie pokażą problemów K-40 (skrajne zdjęcia z WP: Archanioł Gabriel 0,46, Boże Narodzenie 1,21; „52×36" i „25×15" to wymiary z podpisów, nie proporcje zdjęć) ani K-43 (archaniołowie, Trójca). Stąd rekomendacja K-47 A.
 - **Zgoda na nazwiska uczniów.** Nazwiska są już publiczne na WP, ale przy nowej stronie warto potwierdzić z Akademią, czy lista i podpisy w lightboxie mogą zostać (zwłaszcza prace bez nazwiska na WP — nie dopisywać nazwisk z innych źródeł).
-- **Chipy tematu w prawej kolumnie (K-44 A)** mogą zawijać się w 3 rzędy przy 5–6 kategoriach i długich etykietach („Sceny i święta") — sprawdzić przed zatwierdzeniem; jeśli źle, K-44 B.
-- **Poziomy pasek chipów na mobile** — gest przewijania w poziomie bywa nieodkrywalny dla 65+; ucięty ostatni chip jako sygnał jest obowiązkowy. Test z jedną osobą z grupy docelowej, jeśli możliwy.
+- **Poziomy pasek chipów na mobile (K-44)** — gest przewijania w poziomie bywa nieodkrywalny dla 65+; ucięty ostatni chip jako sygnał jest obowiązkowy. Test z jedną osobą z grupy docelowej, jeśli możliwy.
 - **Zmiana K-39** zwiększa wagę obrazów w lightboxie — weryfikacja wydajności nadal w pod-etapie 7.
-- **Nieobejrzane:** fizyczny iOS/Android, tablet 768–1023 px, stany hover i fokus kafli (nie weryfikowano wizualnie), powiększenie przeglądarki 125–150%, `/ikony/na-zamowienie`.
+- **Nieobejrzane:** fizyczny iOS lightbox (→ pod-etap 7), Android, tablet 768–1023 px, stany hover i fokus kafli (nie weryfikowano wizualnie), powiększenie przeglądarki 125–150%, `/ikony/na-zamowienie`.
 
 ## Postęp
 
 | Kawałek | Status | Uwagi z checkpointu |
 | ------- | ------ | ------------------- |
-| 1 — Bugi | ✅ | zmierzone przed → po (headless Edge, 1920×917 i 390/360 px); czeka na OK; `pt` pod linią zajawki = `space-7`, kliknięcie w tło: desktop (patrz meldunek) |
-| 2 — Filtry i nagłówek | ✅ | czeka na OK; K-44 A zostaje (ocena do potwierdzenia); taksonomia bez „Aniołowie” do Kawałka 5 (brak prac w `sample`); slug `swieta` → `sceny-i-swieta` |
-| 3 — Siatka, sekcje, podpisy | ✅ | czeka na OK; zrobiony przed Kawałkiem 5 na polecenie; K-40 A oceniony na tymczasowych 20 pracach z manifestu (nie w repo) — ocenę powtórzyć po Kawałku 5; lista nazwisk: manifest ma dopełniacz |
-| 4 — Lightbox | ✅ | czeka na OK; układ desktopowy od `lg` (1024 px), nie `md`; obraz o jawnej szerokości z proporcji (nie zależy od pikseli pliku); **test na fizycznym iOS Safari nadal otwarty** |
-| 5 — Treść | ✅ | czeka na OK; 21 prac z WP (manifest + Krzew Gorejący), Antoni i Przemienienie wyrzucone (brak w galerii WP); wymiary „do weryfikacji”; zajawka bez zdjęcia; nazwiska uczniów do poprawy przez właściciela |
-| 6 — Przegląd i zamknięcie | ✅ | czeka na OK; otwarte: fizyczny iOS Safari, formalny Lighthouse; poza zakresem, do zgłoszenia: `Header` łamie „O Akademii” na 768 px |
+| 1 — Bugi | ✅ | zmierzone przed → po (headless Edge, 1920×917 i 390/360 px); `pt` pod linią zajawki = `space-7`, kliknięcie w tło: desktop |
+| 2 — Filtry i nagłówek | ✅ | K-44 jednokolumnowy; slug `swieta` → `sceny-i-swieta` |
+| 3 — Siatka, sekcje, podpisy | ✅ | K-40 **B** (2026-09-20); półka i toggle A/B usunięte |
+| 4 — Lightbox | ✅ | układ desktopowy od `lg` (1024 px); obraz o jawnej szerokości z proporcji; test iOS Safari → pod-etap 7 |
+| 5 — Treść | ✅ | 52 prace z WP; wymiary „do weryfikacji”; zajawka bez zdjęcia; nazwiska uczniów do poprawy przez właściciela |
+| 6 — Przegląd i zamknięcie | ✅ | formalny Lighthouse i test iOS Safari → pod-etap 7; poza zakresem: `Header` łamie „O Akademii” na 768 px |
+
+**Pod-etap 05b zamknięty (OK użytkownika, 2026-09-20).**
 
 ## Załącznik — pomiary wyjściowe (staging, 2026-09-19)
 

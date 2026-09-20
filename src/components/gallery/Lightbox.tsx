@@ -120,22 +120,12 @@ function LightboxMeta({ item, className }: { item: IconWork; className?: string 
 
   return (
     <div className={["leading-loose", className].filter(Boolean).join(" ")}>
-      {entries.map((entry, entryIndex) => {
-        if (entry.kind === "line") {
-          return (
-            <span key={`line-${entryIndex}`} className="block text-size-body text-text-secondary">
-              {entry.text}
-            </span>
-          );
-        }
-
-        return (
-          <div key={`field-${entryIndex}`} className="block">
-            <span className="text-size-caption text-text-tertiary">{entry.label}</span>
-            <span className="block text-size-body text-text-secondary">{entry.value}</span>
-          </div>
-        );
-      })}
+      {entries.map((entry, entryIndex) => (
+        <div key={`field-${entryIndex}`} className="block">
+          <span className="text-size-caption text-text-tertiary">{entry.label}</span>
+          <span className="block text-size-body text-text-secondary">{entry.value}</span>
+        </div>
+      ))}
     </div>
   );
 }
@@ -299,7 +289,10 @@ export function Lightbox({ item, index, total, onPrev, onNext, onClose }: Lightb
               </h2>
               <LightboxMeta item={item} className="mb-space-4 lg:mb-space-5" />
               {item.author === "ejk" ? (
-                <TextLink href="/ikony/na-zamowienie" className="text-size-body">
+                <TextLink
+                  href="/ikony/na-zamowienie"
+                  className="inline-flex min-h-tap-min-mobile-header items-center text-size-body"
+                >
                   {pl.gallery.lightbox.orderLink}
                 </TextLink>
               ) : null}

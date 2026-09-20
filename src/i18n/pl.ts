@@ -1,18 +1,3 @@
-/**
- * Polish plural form for a count: 1 → one, 2–4 (except 12–14) → few, else many.
- * pluralPl(3, ["praca", "prace", "prac"]) → "prace"
- */
-export const pluralPl = (
-  n: number,
-  [one, few, many]: readonly [string, string, string],
-): string => {
-  if (n === 1) return one;
-  const lastDigit = n % 10;
-  const lastTwo = n % 100;
-  const isFew = lastDigit >= 2 && lastDigit <= 4 && (lastTwo < 12 || lastTwo > 14);
-  return isFew ? few : many;
-};
-
 // UI strings — extend as later pieces need more (menu, accordion, CTAs).
 export const pl = {
   meta: {
@@ -227,10 +212,6 @@ export const pl = {
   },
   gallery: {
     title: "Galeria ikon",
-    // K-46: the gallery is not a shop — what can be ordered is a new icon. Wording to be approved by EJK.
-    lead:
-      "Ikony Elżbiety Jackowskiej-Kurek i prace uczestników warsztatów Akademii. Ikonę na konkretne wezwanie można {link}.",
-    orderLinkLabel: "zamówić w pracowni",
     filters: {
       themeLabel: "Temat",
       themeGroupAria: "Filtruj według tematu",
@@ -242,18 +223,6 @@ export const pl = {
       aniolowie: "Aniołowie",
       swieci: "Święci",
       "sceny-i-swieta": "Sceny i święta",
-    },
-    workNoun: ["praca", "prace", "prac"],
-    // K-40: temporary A/B toggle for visual comparison during review.
-    layoutToggle: {
-      groupAria: "Układ siatki galerii",
-      switchTo: "Przełącz na:",
-      shelf: "A",
-      justified: "B",
-      titles: {
-        shelf: "Opcja A — półka: stałe kolumny, wspólna linia dołu",
-        justified: "Opcja B — wyrównane rzędy: stała wysokość rzędu, zmienna szerokość",
-      },
     },
     // K-41: the gallery is split into two fixed sections; ids double as URL hashes.
     sections: {

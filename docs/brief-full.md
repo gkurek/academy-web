@@ -118,8 +118,7 @@ Media: wszystkie oryginały w `/wp-content/uploads/YYYY/MM/`. Podpisy ikon są w
 /wyklady                   hub: bieżący sezon + jak się zapisać
 /wyklady/archiwum          15 sezonów archiwalnych, rozwijane (bieżący 2026/2027 — szesnasty)
 /wyklady/wykladowcy
-/ikony                     galeria z filtrami (autor: Elżbieta / uczniowie; temat)
-/ikony/[slug]              pojedyncza ikona (opcjonalnie w v1)
+/ikony                     galeria: sekcje EJK → uczniowie, filtr tematu, lightbox
 /ikony/na-zamowienie       strona ofertowa (treść wymienna po starcie strony autorskiej)
 /wydarzenia                wystawy, poświęcenia, oprowadzania, wyjazdy (kategorie)
 /aktualnosci               lista + archiwum
@@ -155,7 +154,7 @@ Struktura ma dwa poziomy; każda podstrona musi być osiągalna w maksymalnie dw
 - Zapisy w v1: przyciski `mailto:` z gotowym, **ujednoliconym tematem** (`Zgłoszenie – kurs roczny 2026/2027`, `Zgłoszenie – Letnia Szkoła Światła 2027`, `Zgłoszenie – wykłady 2026/2027`, `Zapytanie – ikona na zamówienie`) i telefonem. Tematy pozwalają liczyć zgłoszenia w skrzynce bez żadnego systemu. Przygotować miejsce na formularz (v2).
 - Nawigacja wg §4.1: huby sekcji, `SectionNav`, stopka z mapą strony.
 - Program bieżącego sezonu wykładów jako lista wydarzeń (data, tytuł(y), prowadzący), archiwum jako rozwijane sezony.
-- Galeria ikon z filtrami i lightboxem, każde zdjęcie z podpisem (tytuł, autor, wymiary, rok jeśli znany). Zakres prac EJK w galerii Akademii – decyzja po sesji 0b (§10.5).
+- Galeria ikon: dwie sztywne sekcje (ikony Elżbiety Jackowskiej-Kurek → ikony uczniów), filtr **tematu** przez query string (`?temat=<slug-tagu>`), bez filtra autora; lightbox. W siatce — sam tytuł; w lightboxie — pełny autor, wymiary i technika. Lista nazwisk uczniów w sekcji uczniów, generowana z danych. Podgląd wyłącznie przez lightbox (bez `/ikony/[slug]` w v1). Zakres prac EJK po starcie strony autorskiej — D-02 (§10.5).
 - Aktualności z paginacją, pojedynczy wpis.
 - Kontakt: adres, osadzona mapa, dwa maile z opisem czego dotyczą, telefon, info o zakrystii.
 - Responsywność mobile-first, dostępność (WCAG AA: kontrast, fokus, alt), `prefers-reduced-motion`.
@@ -310,7 +309,6 @@ type IconWork = {
   authorName: string;
   technique?: string; // „tempera jajowa na desce, złocenie”
   size?: { w: number; h: number };
-  year?: number;
   image: Image;
   tags?: string[];
 };

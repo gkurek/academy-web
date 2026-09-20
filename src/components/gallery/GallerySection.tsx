@@ -1,4 +1,3 @@
-import type { GalleryLayoutMode } from "@/components/gallery/GalleryLayoutContext";
 import { IconGrid } from "@/components/gallery/IconGrid";
 import type { IconWork } from "@/content/types";
 
@@ -10,7 +9,6 @@ export interface GallerySectionProps {
   startIndex: number;
   /** Leading tiles that load eagerly — only the first section's first row. */
   eagerCount: number;
-  layoutMode: GalleryLayoutMode;
   onSelect: (index: number, trigger: HTMLButtonElement) => void;
   /** Students' section: names generated from the works. */
   names?: string[];
@@ -23,7 +21,6 @@ export function GallerySection({
   items,
   startIndex,
   eagerCount,
-  layoutMode,
   onSelect,
   names,
   className,
@@ -52,7 +49,6 @@ export function GallerySection({
       <IconGrid
         items={items}
         variant="gallery"
-        layoutMode={layoutMode}
         eagerCount={eagerCount}
         onSelect={(index, trigger) => onSelect(startIndex + index, trigger)}
       />

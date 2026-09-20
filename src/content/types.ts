@@ -85,10 +85,9 @@ export type IconWork = {
   slug: string;
   title: string; // "Chrystus Pantokrator"
   author: "ejk" | "student";
-  authorName?: string; // students only, when the name is known — never a gendered placeholder
+  authorName?: string; // students only, nominative case when known — never a gendered placeholder
   technique?: string; // "tempera jajowa na desce, złocenie"
   size?: { w: number; h: number };
-  year?: number;
   image: Image;
   tags?: string[];
 };

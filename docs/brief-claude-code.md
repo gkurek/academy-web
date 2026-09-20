@@ -43,7 +43,7 @@ Strona jest częścią szerszego ekosystemu (Akademia + Fundacja + planowana str
 /wyklady                   hub: bieżący sezon + jak się zapisać
 /wyklady/archiwum          15 sezonów archiwalnych, rozwijane (bieżący 2026/2027 — szesnasty)
 /wyklady/wykladowcy
-/ikony                     galeria: sekcje Elżbieta / uczniowie (#ejk, #uczniowie) + filtr tematu
+/ikony                     galeria: sekcje Elżbieta / uczniowie + filtr tematu
 /ikony/[slug]              pojedyncza ikona (opcjonalnie w v1)
 /ikony/na-zamowienie       strona ofertowa (treść wymienna w przyszłości — nie istotne teraz)
 /wydarzenia                wystawy, poświęcenia, oprowadzania, wyjazdy (kategorie)
@@ -131,9 +131,10 @@ type LectureSeason = {
 // zgodne celowo, żeby przeniesienie/współdzielenie danych było mechaniczne.
 type IconWork = {
   slug: string; title: string;  // „Chrystus Pantokrator”
-  author: 'ejk' | 'student'; authorName: string;
+  author: 'ejk' | 'student';
+  authorName?: string;          // EJK: pełne imię i nazwisko; uczeń: mianownik, gdy znany (K-42)
   technique?: string;           // „tempera jajowa na desce, złocenie”
-  size?: { w: number; h: number }; year?: number;
+  size?: { w: number; h: number };
   image: Image; tags?: string[];
 };
 
@@ -219,7 +220,7 @@ Szacunek ręcznej korekty po migracji: ~10 stron statycznych, 16 sezonów wykła
 - `/ikony/na-zamowienie` na szablonie strony ofertowej, sekcja „Jak przebiega zamówienie” jako sekwencja 3 kroków (Rozmowa · Zaliczka · Realizacja — makieta `#2a-zamowienie`), „Przykłady realizacji” (3–4 ikony), link do niej z Galerii.
 - Zapisy: przyciski `mailto:` z tematami z §7 poniżej + `tel:`. Przygotować miejsce pod formularz w v2 (nie budować go teraz).
 - Program bieżącego sezonu wykładów jako lista (data, tytuł, prowadzący); archiwum jako rozwijane sezony (`SeasonAccordion`).
-- Galeria z filtrami (autor, temat) i lightboxem; każde zdjęcie z podpisem (tytuł, autor, wymiary, rok jeśli znany).
+- Galeria: dwie sztywne sekcje (ikony Elżbiety Jackowskiej-Kurek → ikony uczniów), filtr **tematu** przez query string (`?temat=<slug-tagu>`), bez filtra autora; lightbox. W siatce — sam tytuł; w lightboxie — pełny autor, wymiary i technika (`IconWork`). Lista nazwisk uczniów w sekcji uczniów, generowana z danych.
 - Aktualności z paginacją + wpis pojedynczy.
 - Kontakt: adres, **osadzona** mapa (nie surowy link; `MapBlock` + `SiteSettings.mapEmbedUrl`), dwa maile z opisem, telefon, info o wejściu od strony zakrystii (treść redakcyjna w MDX), blok „Akademia w sieci” w `MapBlock`.
 - Mobile-first, WCAG AA (kontrast, fokus, alt), `prefers-reduced-motion`.

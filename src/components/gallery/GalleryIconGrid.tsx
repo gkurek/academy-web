@@ -2,7 +2,6 @@
 
 import { useRef, useState } from "react";
 
-import { useGalleryLayoutMode } from "@/components/gallery/GalleryLayoutContext";
 import { GallerySection } from "@/components/gallery/GallerySection";
 import { Lightbox } from "@/components/gallery/Lightbox";
 import type { IconSectionId } from "@/content/icons";
@@ -26,7 +25,6 @@ export interface GalleryIconGridProps {
 const EAGER_TILE_COUNT = 4;
 
 export function GalleryIconGrid({ sections, listKey }: GalleryIconGridProps) {
-  const { layoutMode } = useGalleryLayoutMode();
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
   const [storedListKey, setStoredListKey] = useState(listKey);
   const lastTriggerRef = useRef<HTMLButtonElement | null>(null);
@@ -85,7 +83,6 @@ export function GalleryIconGrid({ sections, listKey }: GalleryIconGridProps) {
           items={section.works}
           startIndex={startIndexes[index]}
           eagerCount={index === 0 ? EAGER_TILE_COUNT : 0}
-          layoutMode={layoutMode}
           onSelect={handleSelect}
           names={section.names}
           className={

@@ -1,8 +1,6 @@
 import { GalleryFilters } from "@/components/gallery/GalleryFilters";
 import { GalleryIconGrid } from "@/components/gallery/GalleryIconGrid";
-import { GalleryLayoutProvider } from "@/components/gallery/GalleryLayoutContext";
 import { GalleryOrderTeaser } from "@/components/gallery/GalleryOrderTeaser";
-import { GalleryLayoutToggle } from "@/components/gallery/GalleryLayoutToggle";
 import { SectionPageShell } from "@/components/layout/SectionPageShell";
 import type { GallerySectionData } from "@/components/gallery/GalleryIconGrid";
 import {
@@ -32,28 +30,22 @@ export function GalleryPage({ active, sectionActive, searchParams }: GalleryPage
     works,
     ...(id === "uczniowie" ? { names: getStudentNames(works) } : {}),
   }));
-  // A `temat` param that did not survive parsing is unknown (or empty/repeated) — GalleryFilters strips it from the URL.
   const hasInvalidTag = searchParams.temat !== undefined && filters.tag === undefined;
+  const hasLegacyAutor = searchParams.autor !== undefined;
+  const needsUrlCleanup = hasInvalidTag || hasLegacyAutor;
 
   return (
     <SectionPageShell active={active} section="ikony" sectionActive={sectionActive}>
-      <GalleryLayoutProvider>
-        <header className="pb-space-5 mb-space-6 border-b border-line-gold">
-          <h1 className="font-serif text-size-h1-m md:text-size-h1 leading-tight text-text-h1 mb-space-5">
-            {pl.gallery.title}
-          </h1>
-          <GalleryFilters
-            tags={tags}
-            filters={filters}
-            hasInvalidTag={hasInvalidTag}
-            trailing={<GalleryLayoutToggle />}
-          />
-        </header>
+      <header className="pb-space-5 mb-space-6 border-b border-line-gold">
+        <h1 className="font-serif text-size-h1-m md:text-size-h1 leading-tight text-text-h1 mb-space-5">
+          {pl.gallery.title}
+        </h1>
+        <GalleryFilters tags={tags} filters={filters} needsUrlCleanup={needsUrlCleanup} />
+      </header>
 
-        <GalleryIconGrid sections={sections} listKey={filters.tag ?? ""} />
+      <GalleryIconGrid sections={sections} listKey={filters.tag ?? ""} />
 
-        <GalleryOrderTeaser />
-      </GalleryLayoutProvider>
+      <GalleryOrderTeaser />
     </SectionPageShell>
   );
 }
