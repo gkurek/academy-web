@@ -12,7 +12,7 @@ export interface BreadcrumbProps {
 }
 
 // Only used on a news entry — never a single item, never alongside SectionNav
-// (design/README §4). Not wired into any route yet; that lands in pod-etap 06.
+// (design/README §4). Not wired into any route yet; that lands in etap 06.
 export function Breadcrumb({ items }: BreadcrumbProps) {
   return (
     <nav

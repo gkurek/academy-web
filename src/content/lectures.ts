@@ -233,7 +233,7 @@ export function getSeason(slug: string): LoadedLectureSeason | undefined {
   return season ? toLoadedSeason(season) : undefined;
 }
 
-/** ISO date and location for future JSON-LD Event emission (pod-etap 7). */
+/** ISO date and location for future JSON-LD Event emission (etap 7). */
 export function getLectureEventData(season: LectureSeason): Array<{
   date: string;
   title: string;

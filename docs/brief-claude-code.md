@@ -62,6 +62,7 @@ Strona jest częścią szerszego ekosystemu (Akademia + Fundacja + planowana str
 3. Stopka z pełną mapą strony (nawigacja ratunkowa + SEO).
 
 Zawartość `SectionNav` per sekcja:
+- O Akademii: O Akademii · Pracownia *(para stron tekstowych; `/o-akademii` = pierwsza pozycja — K-48, makieta 6a–6d)*
 - Warsztaty: Przegląd · Kurs roczny i trzyletni · Letnia Szkoła Światła *(pierwsza pozycja = hub, nie nazwa sekcji — K-23)*
 - Wykłady: Bieżący sezon · Archiwum · Wykładowcy
 - Ikony: Galeria · Ikony na zamówienie

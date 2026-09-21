@@ -436,7 +436,7 @@ Każdy typ treści ma jednego właściciela w danym momencie; pozostałe serwisy
 1. Sesje 0b–0d master planu, decyzje D-01, D-02, D-05 (1–2 spotkania).
 2. Aktualizacja tego briefu (v2.x) i master planu; założenie `ekosystem-ejk.md`.
 3. Claude Design: trzy kierunki dla Akademii + ekran testowy strony autorskiej przy wybranym kierunku.
-4. Implementacja Akademii (`docs/plan-claude-code.md`, pod-etapy 1–9). Równolegle: E1–E3 master planu – research nie blokuje kodu.
+4. Implementacja Akademii (`docs/plan-claude-code.md`, etapy 1–11). Równolegle: E1–E3 master planu – research nie blokuje kodu.
 5. Design i implementacja strony autorskiej z tego samego systemu i repo.
 6. Po starcie strony autorskiej: wymiana treści `/ikony/na-zamowienie`, aktualizacja `ecosystem.personalSiteUrl`, `sameAs`, galerii (D-02).
 

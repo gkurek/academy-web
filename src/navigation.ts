@@ -38,11 +38,15 @@ export const mainNav: MainNavItem[] = [
   { label: "Kontakt", href: "/kontakt" },
 ];
 
-export type SectionKey = "warsztaty" | "wyklady" | "ikony" | "wydarzenia";
+export type SectionKey = "o-akademii" | "warsztaty" | "wyklady" | "ikony" | "wydarzenia";
 
 // Each list's first item is the section hub itself and stands in for the
 // breadcrumb (see design/README §4 — Breadcrumb).
 export const sectionNav: Record<SectionKey, NavLink[]> = {
+  "o-akademii": [
+    { label: "O Akademii", href: "/o-akademii" },
+    { label: "Pracownia", href: "/pracownia" },
+  ],
   warsztaty: [
     { label: "Przegląd", href: "/warsztaty" },
     { label: "Kurs roczny i trzyletni", href: "/warsztaty/kurs-roczny-i-trzyletni" },

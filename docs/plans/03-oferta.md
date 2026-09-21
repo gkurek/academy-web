@@ -2,15 +2,15 @@
 
 Status: zamknięty 2026-09-17
 Gałąź: feat/03-oferta
-Makiety: `design/Akademia Ikony - kierunki wizualne.dc.html` — `#1a-oferta` (kurs desktop), `#3b` (kurs mobile), `#2a-warsztaty` (hub), `#3a-plener` (plener, stan zamknięty), `#2a-zamowienie` (ikony na zamówienie); wzór FactsBox wykładów: `#2a-wyklady` (strona `/wyklady` w pod-etapie 4)
+Makiety: `design/Akademia Ikony - kierunki wizualne.dc.html` — `#1a-oferta` (kurs desktop), `#3b` (kurs mobile), `#2a-warsztaty` (hub), `#3a-plener` (plener, stan zamknięty), `#2a-zamowienie` (ikony na zamówienie); wzór FactsBox wykładów: `#2a-wyklady` (strona `/wyklady` w etapie 4)
 
 ## Cel i zakres
 
-Jeden szablon strony ofertowej (`OfferPage`) obsługujący cztery `kind` z `OfferFacts`; hub `/warsztaty` z `OfferCard`; komponenty `FactsBox` (oba stany naboru), `SemesterProgram`, `StepList`. Treść wyłącznie z `content/offers/*.mdx` przez warstwę `src/content/offers.ts`; renderer MDX (`@next/mdx`). W zakresie: `/warsztaty`, `/warsztaty/kurs-roczny-i-trzyletni`, `/warsztaty/letnia-szkola-swiatla`, `/ikony/na-zamowienie` oraz plik `content/offers/wyklady.mdx` pod gotowy szablon (trasa `/wyklady` nadal placeholder do pod-etapu 4). Poza zakresem: pełna strona `/wyklady`, analityka (K-15, pod-etap 7), JSON-LD `Course` (pod-etap 7).
+Jeden szablon strony ofertowej (`OfferPage`) obsługujący cztery `kind` z `OfferFacts`; hub `/warsztaty` z `OfferCard`; komponenty `FactsBox` (oba stany naboru), `SemesterProgram`, `StepList`. Treść wyłącznie z `content/offers/*.mdx` przez warstwę `src/content/offers.ts`; renderer MDX (`@next/mdx`). W zakresie: `/warsztaty`, `/warsztaty/kurs-roczny-i-trzyletni`, `/warsztaty/letnia-szkola-swiatla`, `/ikony/na-zamowienie` oraz plik `content/offers/wyklady.mdx` pod gotowy szablon (trasa `/wyklady` nadal placeholder do etapu 4). Poza zakresem: pełna strona `/wyklady`, analityka (K-15, etap 9), JSON-LD `Course` (etap 9).
 
 ## Decyzje podjęte w sesji planistycznej
 
-- **K-03:** `@next/mdx` + `@mdx-js/react` — oficjalna integracja Next.js App Router; mapa tagów i komponentów MDX w `mdx-components.tsx` (`useMDXComponents`), rozszerzana w pod-etapach 4–6; body renderowane w `OfferPage` (wrapper `offer-mdx`).
+- **K-03:** `@next/mdx` + `@mdx-js/react` — oficjalna integracja Next.js App Router; mapa tagów i komponentów MDX w `mdx-components.tsx` (`useMDXComponents`), rozszerzana w etapach 4–6; body renderowane w `OfferPage` (wrapper `offer-mdx`).
 - **Program 6 semestrów (kurs):** komponent `<SemesterProgram />` w body MDX + tablica `semesters: { title, body }[]` w frontmatter pliku kursu — **bez zmiany `types.ts`**; frontmatter parsowany w `src/content/offers.ts`.
 - **FactsBox — UI vs dane:** etykiety wierszy (`Kiedy`, `Gdzie`, …) i teksty CTA per `kind × enrollmentOpen` w `pl.ts` (`factsBox`); wartości wierszy z pól `OfferFacts` w MDX; komponent buduje listę wierszy z dostępnych pól (nie każde pole na każdej ofercie).
 - **FactsBox — telefon:** drugi przycisk `tel:+48601734705` tylko na mobile (≤390px); na desktop linia „lub 601 734 705” pod CTA mailto (wg makiety kursu `#1a-oferta` / `#3b`).
@@ -42,7 +42,7 @@ Jeden szablon strony ofertowej (`OfferPage`) obsługujący cztery `kind` z `Offe
 | `content/offers/kurs-roczny-i-trzyletni.mdx` | nowy, `sample` | `kind: kurs`, `enrollmentOpen: true`, facts z brief §8, `semesters` ×6 placeholder |
 | `content/offers/plener.mdx` | nowy, `sample` | `kind: plener`, `enrollmentOpen: false`, „Rytm dnia” sample |
 | `content/offers/zamowienie.mdx` | nowy, `sample` | `kind: zamowienie`, puste `leadTime`, kroki w MDX / frontmatter |
-| `content/offers/wyklady.mdx` | nowy, `sample` | `kind: wyklady` — weryfikacja szablonu; strona `/wyklady` w pod-etapie 4 |
+| `content/offers/wyklady.mdx` | nowy, `sample` | `kind: wyklady` — weryfikacja szablonu; strona `/wyklady` w etapie 4 |
 | `content/testimonials.json` | nowy, `sample` | Cytaty uczestników z makiet (placeholder do migracji WP) |
 | `src/i18n/pl.ts` | zmiana | Sekcja `factsBox`, etykiety sekcji ofertowych, nagłówki hubu |
 | `src/app/globals.css` | zmiana | Tokeny layoutu ofertowego, FactsBox, OfferCard, SemesterProgram, StepList |
@@ -66,9 +66,9 @@ Kryterium „gotowe”: obie strony zgodne z `#1a-oferta` / `#3b` i `#3a-plener`
 
 Zakres: `StepList`; `zamowienie.mdx`; sekcja „Przykłady realizacji” (4 ikony — reuse `content/icons.json` + ewentualnie `deesis` z uploads); nota „Gotowe ikony — zapytaj mailem”; link do `/ikony`.
 
-Kryterium „gotowe”: strona zgodna z `#2a-zamowienie`; `StepList` z numeracją typograficzną (nie odznaki); puste `leadTime`; DoD pod-etapu spełnione; build/lint OK.
+Kryterium „gotowe”: strona zgodna z `#2a-zamowienie`; `StepList` z numeracją typograficzną (nie odznaki); puste `leadTime`; DoD etapu spełnione; build/lint OK.
 
-## Dane sample dodawane w tym pod-etapie
+## Dane sample dodawane w tym etapie
 
 - `content/offers/kurs-roczny-i-trzyletni.mdx` — `sample: true`; semestry placeholder → plan §5 (cytaty)
 - `content/offers/plener.mdx` — `sample: true`; „Rytm dnia” → plan §5
@@ -77,7 +77,7 @@ Kryterium „gotowe”: strona zgodna z `#2a-zamowienie`; `StepList` z numeracj�
 - `content/testimonials.json` — cytaty uczestników (Adam, Hania, Iza, Emilia, Robert, Maciej, Artur…) → plan §5
 - `public/media/sample/*` — nowe kopie per slot makiety → plan §5
 
-## Kryteria ukończenia pod-etapu
+## Kryteria ukończenia etapu
 
 - [x] `FactsBox` renderuje oba stany z jednego komponentu, sterowane wyłącznie danymi (`enrollmentOpen` + `pl.factsBox`)
 - [x] Tematy `mailto:` identyczne ze stringami z brief §7

@@ -113,6 +113,150 @@ export type News = {
 
 export type Testimonial = { quote: string; author: string; role?: string };
 
+export type TocItem = {
+  id: string;
+  label: string;
+  children?: TocItem[];
+};
+
+export type MissionDeclaration = {
+  highlight: string;
+  detail: string;
+};
+
+export type MilestoneItem = {
+  value: string;
+  label: string;
+};
+
+export type ActivityItem = {
+  name: string;
+  note: string;
+};
+
+export type PersonWork = {
+  title: string;
+  place: string;
+  year: string;
+};
+
+export type PersonProfileData = {
+  name: string;
+  role: string;
+  portrait: Image;
+  bio: string[];
+  worksTitle: string;
+  works: PersonWork[];
+  link?: { href: string; label: string };
+};
+
+export type TextPageLink = {
+  href: string;
+  label: string;
+};
+
+/** Text page metadata — body lives in companion MDX; toc drives TocSidebar/TocCollapse when present. */
+export type TextPageData = Page & {
+  toc?: TocItem[];
+  sample?: boolean;
+};
+
+export type LearningFormRow = {
+  title: string;
+  description: string;
+  link?: TextPageLink;
+};
+
+export type InterviewExchange = {
+  q: string;
+  a: string;
+};
+
+export type InterviewPart = {
+  id: string;
+  title: string;
+  exchanges: InterviewExchange[];
+};
+
+export type Interview = {
+  intro: string;
+  initials: { asker: string; answerer: string };
+  parts: InterviewPart[];
+  closing: string;
+  signature: string;
+};
+
+export type WorkshopPageData = TextPageData & {
+  learningForms: {
+    heading: string;
+    rows: LearningFormRow[];
+    contact: {
+      email: string;
+      subject: string;
+      phone: string;
+      phoneDisplay: string;
+    };
+  };
+  interview: Interview & { heading: string };
+  curriculum: {
+    heading: string;
+  };
+  gallery: {
+    heading: string;
+    mobileCaption: string;
+    photos: Image[];
+  };
+};
+
+export type AboutPageData = TextPageData & {
+  hero: Image;
+  mission: {
+    heading: string;
+    declarations: MissionDeclaration[];
+  };
+  audience: {
+    heading: string;
+  };
+  person: {
+    heading: string;
+    profile: PersonProfileData;
+  };
+  approach: {
+    heading: string;
+    quote: string;
+    comment: string;
+    readMore: TextPageLink;
+  };
+  history: {
+    heading: string;
+    milestones: MilestoneItem[];
+    links: TextPageLink[];
+  };
+  activities: {
+    heading: string;
+    lead: string;
+    items: ActivityItem[];
+    links: TextPageLink[];
+  };
+  workshop: {
+    heading: string;
+    accessibility: string;
+    photos: Image[];
+    links: TextPageLink[];
+  };
+  foundation: {
+    beforeLink: string;
+    linkLabel: string;
+    linkHref: string;
+    afterLink: string;
+  };
+  legal: string;
+  startLinks: {
+    intro: string;
+    links: TextPageLink[];
+  };
+};
+
 export type SiteSettings = {
   orgName: string;
   place: string;

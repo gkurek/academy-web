@@ -3,13 +3,13 @@
 ## Dokumenty i kiedy je czytać
 
 - `docs/plan-claude-code.md` – plan całej fazy implementacji; czytaj na starcie każdej sesji planistycznej.
-- `docs/plans/0N-*.md` – plan bieżącego pod-etapu; czytaj na starcie każdej sesji implementacyjnej.
+- `docs/plans/0N-*.md` – plan bieżącego etapu; czytaj na starcie każdej sesji implementacyjnej.
 - `docs/brief-claude-code.md` – wymagania, architektura tras (§3), model treści (§4), fakty stałe (§8); czytaj przy pytaniach „co ma być”.
 - `docs/brief-full.md` – kontekst biznesowy; tylko przy niejasnościach co do treści lub copy, nie przy pytaniach technicznych.
 - `design/README` + `design/*.dc.html` – makiety i tokeny. Obowiązuje kierunek 1a i jego rozwinięcia 2a/3a/3b;
-- `docs/design-mockup-guide.md` – **czytaj zawsze, zanim weźmiesz obraz albo dokładną wartość stylu wprost z `.dc.html`.** Jak znaleźć właściwy plik (`design/uploads/`, nie tylko `design/assets/`) i jak odczytać realne, rozwiązane wartości placeholderów `{{ }}` (lokalny serwer zamiast `file://`) — spisane po dwóch złych zgadnięciach w pod-etapie 2.
+- `docs/design-mockup-guide.md` – **czytaj zawsze, zanim weźmiesz obraz albo dokładną wartość stylu wprost z `.dc.html`.** Jak znaleźć właściwy plik (`design/uploads/`, nie tylko `design/assets/`) i jak odczytać realne, rozwiązane wartości placeholderów `{{ }}` (lokalny serwer zamiast `file://`) — spisane po dwóch złych zgadnięciach w etapie 2.
 
-Przy konflikcie: `CLAUDE.md` > plan pod-etapu > `brief-claude-code.md` > `brief-full.md` > makieta. Rozbieżność zgłaszasz w meldunku, nie rozstrzygasz sam.
+Przy konflikcie: `CLAUDE.md` > plan etapu > `brief-claude-code.md` > `brief-full.md` > makieta. Rozbieżność zgłaszasz w meldunku, nie rozstrzygasz sam.
 
 ## Stack i komendy
 
@@ -44,7 +44,7 @@ Przy konflikcie: `CLAUDE.md` > plan pod-etapu > `brief-claude-code.md` > `brief-
 
 **Zasady:**
 - Foldery w `src/app/` są po polsku, bo w App Routerze nazwa folderu = segment URL (brief §3). To nie jest wyjątek od K-11 — to powierzchnia publiczna, nie identyfikator kodu.
-- `SectionKey` (`"warsztaty" | "wyklady" | …`) celowo powiela slugi tras — spójność z routingiem.
+- `SectionKey` (`"o-akademii" | "warsztaty" | "wyklady" | …`) celowo powiela slugi tras — spójność z routingiem; para O Akademii · Pracownia (K-48).
 - Prop `active` w `Header`/`SectionNav` przyjmuje **label z `navigation.ts`** (polski tekst UI), nie własny klucz — na v1 PL-only wystarczy; przy i18n zamienić na stabilny klucz sekcji.
 - Nazwy domyślnych exportów w `page.tsx`: angielski (`WorkshopsPage`, nie `WarsztatyPage`).
 - Nie duplikuj etykiet nawigacji na sztywno w `page.tsx` — czytaj z `mainNav` / `sectionNav` (np. `sectionNav.wydarzenia[0].label`).
@@ -60,7 +60,7 @@ Przy konflikcie: `CLAUDE.md` > plan pod-etapu > `brief-claude-code.md` > `brief-
 
 ## Rytm pracy (szczegóły: docs/plan-claude-code.md §1)
 
-- Praca idzie pod-etapami; każdy ma plan w `docs/plans/0N-*.md`. Bez zatwierdzonego planu nie piszesz kodu w danym pod-etapie.
+- Praca idzie etapami; każdy ma plan w `docs/plans/0N-*.md`. Bez zatwierdzonego planu nie piszesz kodu w danym etapie.
 - Sesja planistyczna: czytasz, pytasz po jednym pytaniu, proponujesz podział na kawałki. Plan zapisujesz dopiero na „zapisz plan”.
 - Implementujesz jeden kawałek z planu naraz. Po każdym kawałku zatrzymujesz się i składasz meldunek w tym formacie:
   ```
@@ -83,13 +83,13 @@ Przy konflikcie: `CLAUDE.md` > plan pod-etapu > `brief-claude-code.md` > `brief-
 
 ## Git
 
-- Gałąź `feat/0N-nazwa` per pod-etap.
+- Gałąź `feat/0N-nazwa` per etap.
 - Nigdy nie commitujesz sam. Commity, push i merge wykonuje właściciel repo po „OK”. Możesz zaproponować komunikat commita (po angielsku, format `0N/K: short description`).
 - Nie używaj `git commit`, `git push`, `git reset`, `git rebase`, `git checkout -- .` ani `git stash` bez wyraźnej prośby. `git status`, `git diff`, `git log` – zawsze wolno.
 
 ## Nie rób
 
-- Nie dotykaj `.env*`, `next.config.ts` (poza uzgodnionymi przekierowaniami 301 w pod-etapie 8) ani plików w `design/`.
-- Nie uruchamiaj migracji z WordPressa ani żadnych zapytań do `akademiaikony.pl` przed pod-etapem 8.
+- Nie dotykaj `.env*`, `next.config.ts` (poza uzgodnionymi przekierowaniami 301 w etapie 10) ani plików w `design/`.
+- Nie uruchamiaj migracji z WordPressa ani żadnych zapytań do `akademiaikony.pl` przed etapem 10.
 - Nie usuwaj i nie przenoś plików poza zakresem kawałka; nie „porządkuj przy okazji”.
 - Nie dodawaj banera cookies, `localStorage`, zewnętrznych skryptów ani analityki bez planu, w którym to jest zapisane.

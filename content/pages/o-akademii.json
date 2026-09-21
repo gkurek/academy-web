@@ -1,0 +1,178 @@
+{
+  "slug": "o-akademii",
+  "title": "Kształcenie i\u00a0doświadczanie ikony",
+  "lead": "Akademia Ikony skupia tych, którzy chcą pogłębić wiedzę o\u00a0świecie ikony, o\u00a0sztuce, tradycji i\u00a0duchowości chrześcijańskiego Wschodu i\u00a0Zachodu. Jesteśmy grupą twórców, którzy w\u00a0procesie twórczym odkrywają głębię i\u00a0piękno wiary chrześcijańskiej – i\u00a0pomagają odkrywać je innym. Zapraszamy nie tylko ikonografów, ale wszystkich zainteresowanych.",
+  "sample": true,
+  "hero": {
+    "src": "/media/workshop/hero.jpg",
+    "alt": "Uczestnik maluje ikonę przy stole z\u00a0pigmentami i\u00a0lampą",
+    "width": 2048,
+    "height": 1536,
+    "caption": "Wspólna praca przy stole w\u00a0pracowni"
+  },
+  "mission": {
+    "heading": "Czemu służymy",
+    "declarations": [
+      {
+        "highlight": "Odkrywamy i\u00a0pomagamy odkrywać głębię i\u00a0piękno wiary w\u00a0procesie twórczym.",
+        "detail": "Pisanie ikony jest dla nas drogą modlitwy i\u00a0poznania, a\u00a0nie wyłącznie nauką techniki malarskiej."
+      },
+      {
+        "highlight": "Tworzymy przestrzeń, w\u00a0której spotykają się teoretycy i\u00a0praktycy sztuki sakralnej.",
+        "detail": "Zapraszamy zarówno tych, którzy tworzą samodzielnie, jak i\u00a0osoby związane z\u00a0różnymi grupami i\u00a0ośrodkami ikonograficznymi."
+      },
+      {
+        "highlight": "Przez ikonę budujemy naturalną płaszczyznę dialogu między chrześcijanami Wschodu i\u00a0Zachodu.",
+        "detail": "Wśród naszych wykładowców są duchowni i\u00a0teolodzy katoliccy oraz prawosławni, a\u00a0tradycję ikony poznajemy z\u00a0obu stron."
+      },
+      {
+        "highlight": "Chcemy przyczyniać się do podniesienia artystycznego poziomu sztuki w\u00a0Kościele.",
+        "detail": "Nie kształcimy odtwórców, lecz twórców dawnego kunsztu pisania ikon, zakorzenionych w\u00a0Tradycji Kościoła i\u00a0świadomych jej języka."
+      }
+    ]
+  },
+  "audience": {
+    "heading": "Dla kogo jesteśmy"
+  },
+  "person": {
+    "heading": "Prowadząca Akademię",
+    "profile": {
+      "name": "Elżbieta Jackowska-Kurek",
+      "role": "Założycielka Akademii, prowadząca warsztaty",
+      "portrait": {
+        "src": "/media/workshop/ejk-portret.jpg",
+        "alt": "Portret Elżbiety Jackowskiej-Kurek, ikonografki i\u00a0założycielki Akademii Ikony",
+        "width": 768,
+        "height": 1024
+      },
+      "bio": [
+        "Elżbieta Jackowska-Kurek jest ikonografką, autorką idei i\u00a0założycielką Akademii Ikony oraz prezeską fundacji IKONA DZIŚ. Od [DO UZUPEŁNIENIA: liczba lat] prowadzi własną pracownię artystyczną w\u00a0Warszawie. Stworzyła autorski program nauczania sztuki ikony, na którym opiera się nauka w\u00a0Akademii. Warsztaty prowadzi w\u00a0Kościele Środowisk Twórczych na Placu Teatralnym, a\u00a0latem w\u00a0ramach Letniej Szkoły Światła.",
+        "Na swojej drodze spotkała kilku wybitnych ikonografów; najbardziej ceni sobie Amirana Goglidze z\u00a0Gruzji i\u00a0Georgija Jakovleva z\u00a0Litwy. Letnią Szkołę Światła prowadziła w\u00a0Świętej Lipce, Wesołej i\u00a0Supraślu, a\u00a0także w\u00a0Gruzji i\u00a0na Litwie. Jest kuratorką wystaw ikon i\u00a0organizatorką wyjazdów studyjnych śladami ikon, a\u00a0także autorką artykułów o\u00a0ikonie.",
+        "Pisze ikony tablicowe i\u00a0polichromie. Jej prace znajdują się w\u00a0świątyniach, muzeach, galeriach i\u00a0kolekcjach prywatnych w\u00a0Polsce, Anglii, Gruzji, na Litwie, w\u00a0Szwecji, Francji, Australii, Stanach Zjednoczonych i\u00a0Kanadzie. Brała udział w\u00a0sesjach i\u00a0konferencjach poświęconych ikonie, między innymi w\u00a0konferencji IKONA DZIŚ w\u00a0Warszawie w\u00a02008 roku, i\u00a0pisze o\u00a0roli ikonografa we współczesnym świecie."
+      ],
+      "worksTitle": "Wybrane realizacje",
+      "works": [
+        {
+          "title": "[DO UZUPEŁNIENIA: obiekt / ikona]",
+          "place": "[DO UZUPEŁNIENIA: miejscowość]",
+          "year": "[DO UZUPEŁNIENIA: rok]"
+        },
+        {
+          "title": "[DO UZUPEŁNIENIA: obiekt / ikona]",
+          "place": "[DO UZUPEŁNIENIA: miejscowość]",
+          "year": "[DO UZUPEŁNIENIA: rok]"
+        },
+        {
+          "title": "[DO UZUPEŁNIENIA: obiekt / ikona]",
+          "place": "[DO UZUPEŁNIENIA: miejscowość]",
+          "year": "[DO UZUPEŁNIENIA: rok]"
+        },
+        {
+          "title": "[DO UZUPEŁNIENIA: obiekt / ikona]",
+          "place": "[DO UZUPEŁNIENIA: miejscowość]",
+          "year": "[DO UZUPEŁNIENIA: rok]"
+        },
+        {
+          "title": "[DO UZUPEŁNIENIA: obiekt / ikona]",
+          "place": "[DO UZUPEŁNIENIA: miejscowość]",
+          "year": "[DO UZUPEŁNIENIA: rok]"
+        },
+        {
+          "title": "[DO UZUPEŁNIENIA: obiekt / ikona]",
+          "place": "[DO UZUPEŁNIENIA: miejscowość]",
+          "year": "[DO UZUPEŁNIENIA: rok]"
+        }
+      ]
+    }
+  },
+  "approach": {
+    "heading": "Jak rozumiemy ikonę",
+    "quote": "Ikona ma głębię i\u00a0poważny urok. Tam nie ma łez, nie ma zmysłowości. W\u00a0ikonie jest trzeźwość i\u00a0spokój, prawda i\u00a0wytrwałość – ikona obrazuje na ziemi Królestwo Boże.",
+    "comment": "Te słowa pochodzą z\u00a0naszej rozmowy o\u00a0ikonie współczesnej, kopiowaniu i\u00a0eksperymentach w\u00a0ikonografii. Elżbieta Jackowska-Kurek mówi w\u00a0niej, że ikona ma własną logikę rozwoju. Dlatego na pierwszym etapie uczymy przez powtarzanie – tak, by doświadczenie Tradycji stopniowo stawało się doświadczeniem ucznia.",
+    "readMore": {
+      "href": "/pracownia#rozmowa",
+      "label": "Przeczytaj całą rozmowę"
+    }
+  },
+  "history": {
+    "heading": "Nasza historia",
+    "milestones": [
+      { "value": "2010", "label": "Akademia powstaje w\u00a0Warszawie" },
+      { "value": "2012", "label": "Zajęcia w\u00a0Kościele Środowisk Twórczych" },
+      { "value": "15", "label": "sezonów cyklu wykładów o\u00a0ikonie" }
+    ],
+    "links": [
+      { "href": "/wyklady/archiwum", "label": "Archiwum wykładów" },
+      { "href": "/wyklady/wykladowcy", "label": "Wykładowcy" },
+      { "href": "/wydarzenia", "label": "Wydarzenia" }
+    ]
+  },
+  "activities": {
+    "heading": "Spotkania, wyjazdy, modlitwa przed ikoną",
+    "lead": "Oprócz warsztatów i\u00a0wykładów organizujemy spotkania, wyjazdy i\u00a0nabożeństwa, a\u00a0także chętnie przyjmujemy zaproszenia. Wszystkie te działania wyrastają z\u00a0tego samego: z\u00a0ikony.",
+    "items": [
+      {
+        "name": "Wyjazdy studyjne",
+        "note": "Jedziemy szlakiem ikon, między innymi śladami ikon prof. Jerzego Nowosielskiego, łącząc zwiedzanie z\u00a0modlitwą."
+      },
+      {
+        "name": "Spotkania i\u00a0debaty",
+        "note": "Otwarte spotkania tematyczne, debaty i\u00a0koncerty – organizujemy je sami albo przyjeżdżamy na zaproszenie."
+      },
+      {
+        "name": "Konsultacje ikonowe",
+        "note": "Dla osób piszących ikony samodzielnie: rada przy konkretnej pracy, w\u00a0uzgodnionym terminie, z\u00a0prowadzącą Akademii."
+      },
+      {
+        "name": "Ikony do modlitwy",
+        "note": "Udostępniamy ikony do modlitwy i\u00a0zapraszamy do wspólnej modlitwy przed ikonami w\u00a0Kościele Środowisk Twórczych."
+      },
+      {
+        "name": "Poświęcenia ikon",
+        "note": "Ikony napisane podczas warsztatów bywają poświęcane we wspólnocie, na zakończenie wspólnej pracy nad nimi."
+      }
+    ],
+    "links": [
+      { "href": "/wydarzenia", "label": "Wydarzenia" },
+      { "href": "/ikony/na-zamowienie", "label": "Ikony na zamówienie" }
+    ]
+  },
+  "workshop": {
+    "heading": "Pracownia i\u00a0miejsce",
+    "accessibility": "Przestrzeń wolna od barier architektonicznych.",
+    "photos": [
+      {
+        "src": "/media/workshop/workshop-finished-icon.jpg",
+        "alt": "Dwie uczestniczki przy stole w\u00a0pracowni z\u00a0ukończoną ikoną Mandylionu",
+        "width": 800,
+        "height": 600,
+        "caption": "Z\u00a0ukończoną ikoną w\u00a0pracowni"
+      },
+      {
+        "src": "/media/workshop/workshop-boards.jpg",
+        "alt": "Deski pokryte lewkasem i\u00a0słoik z\u00a0pędzlem na drewnianym stole",
+        "width": 800,
+        "height": 600,
+        "caption": "Zagruntowane deski gotowe do pracy"
+      }
+    ],
+    "links": [
+      { "href": "/pracownia", "label": "Pracownia" },
+      { "href": "/kontakt", "label": "Kontakt" }
+    ]
+  },
+  "foundation": {
+    "beforeLink": "Akademia Ikony jest projektem wiodącym fundacji IKONA DZIŚ, która organizuje nasze warsztaty, wykłady i\u00a0wydarzenia: ",
+    "linkLabel": "ikonadzis.org",
+    "linkHref": "https://www.ikonadzis.org",
+    "afterLink": "."
+  },
+  "legal": "Nauczanie w\u00a0Akademii Ikony nie niesie za sobą żadnych skutków formalnych.",
+  "startLinks": {
+    "intro": "Zacznij tutaj:",
+    "links": [
+      { "href": "/warsztaty", "label": "Warsztaty" },
+      { "href": "/wyklady", "label": "Wykłady" }
+    ]
+  }
+}

@@ -2,7 +2,7 @@
 
 Status: zamknięty 2026-09-20
 Gałąź: `feat/05-gallery` (kontynuacja przed merge'em; w pierwotnej wersji planu błędnie `feat/05-galeria`)
-Makiety: brak nowych. Plan **świadomie odchodzi od makiety `#2a-ikony` i od części decyzji planu 05** w punktach wymienionych w „Decyzje" — każde odstępstwo ma numer K (kontynuacja rejestru od K-40) i po zatwierdzeniu trafia do `docs/plan-claude-code.md` §4. Hierarchia dokumentów z `CLAUDE.md` bez zmian (plan pod-etapu > brief > makieta).
+Makiety: brak nowych. Plan **świadomie odchodzi od makiety `#2a-ikony` i od części decyzji planu 05** w punktach wymienionych w „Decyzje" — każde odstępstwo ma numer K (kontynuacja rejestru od K-40) i po zatwierdzeniu trafia do `docs/plan-claude-code.md` §4. Hierarchia dokumentów z `CLAUDE.md` bez zmian (plan etapu > brief > makieta).
 
 Źródło: przegląd `https://academy-web-git-feat-05-gallery-greg-d8fb.vercel.app/ikony` na 1920×917 (desktop) i 390 px (mobile — iframe w Chrome, **nie** fizyczny iOS); wszystkie kombinacje filtrów (`?autor=` × `?temat=`, w tym nieistniejący slug), lightbox desktop i mobile (klik, klawiatura, Esc, powrót fokusu, scroll pod dialogiem). Porównanie z obecną galerią `https://www.akademiaikony.pl/ikona/galeria/` (analiza HTML i pomiary w przeglądarce 2026-09-19 — lista prac, podpisy, struktura sekcji, układ i proporcje zdjęć; układ zweryfikowany: to **nie** masonry, tylko wyrównane rzędy — patrz K-40).
 
@@ -10,7 +10,7 @@ Makiety: brak nowych. Plan **świadomie odchodzi od makiety `#2a-ikony` i od cz�
 
 ## Cel i zakres
 
-Doprowadzić `/ikony` do stanu, w którym można ją pokazać EJK i uczniom, zanim migracja ~52 prac z WordPressa (pod-etap 8) zwielokrotni obecne problemy. W zakresie: bugi układu i lightboxa, które plan 05 oznaczył jako zrobione; układ siatki; kolejność i atrybucja prac (EJK → uczniowie); logika filtrów; nagłówek galerii; lightbox (rozmiar obrazu, mobile); treść `sample` i mikrocopy. Poza zakresem: `/ikony/[slug]` (K-04), paginacja, opis dzieła w lightboxie, pełna migracja WP, analityka (K-15), JSON-LD, design stopki (K-36 — tu tylko bug poziomego przewijania), wydajność obrazów poza tym, co wynika z K-45.
+Doprowadzić `/ikony` do stanu, w którym można ją pokazać EJK i uczniom, zanim migracja ~52 prac z WordPressa (etap 8) zwielokrotni obecne problemy. W zakresie: bugi układu i lightboxa, które plan 05 oznaczył jako zrobione; układ siatki; kolejność i atrybucja prac (EJK → uczniowie); logika filtrów; nagłówek galerii; lightbox (rozmiar obrazu, mobile); treść `sample` i mikrocopy. Poza zakresem: `/ikony/[slug]` (K-04), paginacja, opis dzieła w lightboxie, pełna migracja WP, analityka (K-15), JSON-LD, design stopki (K-36 — tu tylko bug poziomego przewijania), wydajność obrazów poza tym, co wynika z K-45.
 
 ## Decyzje do podjęcia przed startem
 
@@ -170,7 +170,7 @@ Stan: 14 wpisów na 4 zdjęciach, z tytułami, które nie pasują do obrazów:
 
 Wymiary (40×30, 60×45, 35×28, 40×55) wyświetlane jak fakty i powtarzane między różnymi pracami — DoD planu 05 („brak zmyślonych cm") spełnione tylko w danych, nie w UI. Plan 05 (ryzyka) zapowiadał `[do uzupełnienia: …]` — na stronie ich nie ma. EJK zauważy to w pierwszych sekundach.
 
-- **Opcja A (rekomendowana):** ~15 prawdziwych prac z WP jako `sample` — np. 8 EJK + 7 uczniów (w tym 2–3 bez nazwiska, żeby przetestować fallback K-42), oryginały z `/wp-content/uploads/YYYY/MM/`, tytuły, autorzy i wymiary z podpisów WP (poprawione literówki: „Madylion", „Mgdaleny", „Advokata"). Daje realne proporcje do oceny K-40, realne nazwiska do K-42 i realne tematy do K-43. Zestaw musi zawierać skrajne zdjęcia z WP (Archanioł Gabriel 0,46, Boże Narodzenie 1,21, 1–2 prace ~0,56) obok typowych ~3:4. Wymiary z podpisów WP importować jako niezweryfikowane (rozjeżdżają się ze zdjęciami, niespójna kolejność osi — patrz K-40) i wyświetlać dopiero po potwierdzeniu przez EJK. To wyciąg z pod-etapu 8, nie pełna migracja; oznaczone `sample` w `docs/plan-claude-code.md` §5.
+- **Opcja A (rekomendowana):** ~15 prawdziwych prac z WP jako `sample` — np. 8 EJK + 7 uczniów (w tym 2–3 bez nazwiska, żeby przetestować fallback K-42), oryginały z `/wp-content/uploads/YYYY/MM/`, tytuły, autorzy i wymiary z podpisów WP (poprawione literówki: „Madylion", „Mgdaleny", „Advokata"). Daje realne proporcje do oceny K-40, realne nazwiska do K-42 i realne tematy do K-43. Zestaw musi zawierać skrajne zdjęcia z WP (Archanioł Gabriel 0,46, Boże Narodzenie 1,21, 1–2 prace ~0,56) obok typowych ~3:4. Wymiary z podpisów WP importować jako niezweryfikowane (rozjeżdżają się ze zdjęciami, niespójna kolejność osi — patrz K-40) i wyświetlać dopiero po potwierdzeniu przez EJK. To wyciąg z etapu 8, nie pełna migracja; oznaczone `sample` w `docs/plan-claude-code.md` §5.
 - Opcja B: zostać przy 4 zdjęciach, ale tytuły ściśle zgodne z obrazem (duplikaty tytułów dopuszczalne — „Mandylion" ×3), bez wymiarów w UI (flaga `dimensionsVerified: false` → wymiar niewyświetlany). Uczciwe, ale K-40 i K-43 oceniane na nierealnych danych.
 - Opcja C: jak B, z widocznymi znacznikami `[do uzupełnienia]` w podpisach. Szczere na stagingu, ale psuje przegląd wizualny.
 
@@ -180,7 +180,7 @@ Uwaga do briefu: brief v2 §2.2 podaje „~38 ikon Elżbiety + ~28 ikon uczniów
 
 ## Pliki i komponenty
 
-| Plik | Nowy/zmiana | Odpowiedzialność w tym pod-etapie |
+| Plik | Nowy/zmiana | Odpowiedzialność w tym etapie |
 | ---- | ----------- | --------------------------------- |
 | `content/icons.json` | zmiana | K-47: prawdziwe prace (A) lub poprawione tytuły (B); `authorName`, `width`/`height`, tagi wg taksonomii K-43 |
 | `public/media/sample/icons/*` | zmiana | K-47 A: oryginały z WP; K-46: zdjęcie zajawki |
@@ -233,7 +233,7 @@ Kryterium „gotowe": zrzuty desktop i 390 px przed/po; na realnych proporcjach 
 
 Zakres: rozmiar obrazu i `sizes`; strzałki i licznik; metadane (autor wg K-42, rok, technika gdy są; „Zapytaj o podobną ikonę" tylko przy pracach EJK); mobile — obraz `max-height`, tytuł i autor nad zgięciem, sticky nawigacja; swipe (zatwierdzony); `prefers-reduced-motion` bez zmian.
 
-Kryterium „gotowe": desktop 1920×917 — obraz ≥ 70% wysokości okna (pomiar); mobile 390×844 — tytuł, autor i przyciski Poprzednia/Następna widoczne bez przewijania dla najwyższej ikony w danych (pomiar); Esc, strzałki, klik w tło, powrót fokusu — sprawdzone ręcznie w przeglądarce. Test na fizycznym iOS Safari — **pod-etap 7** (K-38).
+Kryterium „gotowe": desktop 1920×917 — obraz ≥ 70% wysokości okna (pomiar); mobile 390×844 — tytuł, autor i przyciski Poprzednia/Następna widoczne bez przewijania dla najwyższej ikony w danych (pomiar); Esc, strzałki, klik w tło, powrót fokusu — sprawdzone ręcznie w przeglądarce. Test na fizycznym iOS Safari — **etap 7** (K-38).
 
 ### Kawałek 5 — Treść: `sample`, zajawka (K-46, K-47)
 
@@ -243,18 +243,18 @@ Kryterium „gotowe": każdy tytuł zgodny z tym, co przedstawia zdjęcie (lista
 
 ### Kawałek 6 — Przegląd wizualny i zamknięcie
 
-Zakres: przegląd całej `/ikony` oczami użytkownika (nie tylko build/lint): zrzuty 1920, 1440, 1024 (tablet), 390 px — nagłówek, każda sekcja, zajawka, stopka, lightbox (desktop + mobile, najwyższa i najszersza ikona); audyt a11y ręczny (formalny Lighthouse — pod-etap 7); korekta `docs/plans/05-galeria.md`; rejestr K-40…K-47.
+Zakres: przegląd całej `/ikony` oczami użytkownika (nie tylko build/lint): zrzuty 1920, 1440, 1024 (tablet), 390 px — nagłówek, każda sekcja, zajawka, stopka, lightbox (desktop + mobile, najwyższa i najszersza ikona); audyt a11y ręczny (formalny Lighthouse — etap 7); korekta `docs/plans/05-galeria.md`; rejestr K-40…K-47.
 
-Kryterium „gotowe": DoD pod-etapu spełnione; meldunek ze zrzutami i listą odstępstw od makiety `#2a-ikony`.
+Kryterium „gotowe": DoD etapu spełnione; meldunek ze zrzutami i listą odstępstw od makiety `#2a-ikony`.
 
-## Dane sample dodawane w tym pod-etapie
+## Dane sample dodawane w tym etapie
 
-- K-47 A: ~15 prac z WP (oryginały, tytuły, autorzy, wymiary z podpisów) → `docs/plan-claude-code.md` §5, oznaczone jako wyciąg z migracji (pod-etap 8 nie importuje ich ponownie).
+- K-47 A: ~15 prac z WP (oryginały, tytuły, autorzy, wymiary z podpisów) → `docs/plan-claude-code.md` §5, oznaczone jako wyciąg z migracji (etap 8 nie importuje ich ponownie).
 - K-47 B: brak nowych plików; poprawione tytuły i `dimensionsVerified: false` w `icons.json`.
 - K-46: nowe zdjęcie zajawki (lub brak zdjęcia) → §5.
 - Lista nazwisk uczniów — nie jest osobną treścią; generowana z `authorName`.
 
-## Kryteria ukończenia pod-etapu
+## Kryteria ukończenia etapu
 
 - [x] wszystkie punkty Kawałka 1 potwierdzone pomiarem; scroll lock sprawdzony realnym przewinięciem
 - [x] sztywny podział: sekcja EJK, potem sekcja uczniów; brak filtra autora i `?autor=` (K-41, K-43)
@@ -263,9 +263,9 @@ Kryterium „gotowe": DoD pod-etapu spełnione; meldunek ze zrzutami i listą od
 - [x] 390×844: pierwszy rząd ikon nad zgięciem (y = 643); w lightboxie tytuł, autor i nawigacja bez przewijania (K-44, K-45). Uwaga: przy 390×664 (Safari z paskami) pierwsza ikona zaczyna się na y = 643, czyli tuż przy zgięciu
 - [x] desktop: obraz w lightboxie ≥ 70% wysokości okna (K-45) — 80% dla wszystkich 21 prac
 - [x] żaden tytuł niezgodny ze zdjęciem; żaden niezweryfikowany wymiar w UI (K-47)
-- [x] lightbox na fizycznym iOS Safari — **przeniesione do pod-etapu 7** (K-38)
+- [x] lightbox na fizycznym iOS Safari — **przeniesione do etapu 7** (K-38)
 - [x] brak poziomego przewijania strony przy 360 i 390 px (także 768, 1024, 1440, 1920)
-- [x] Lighthouse dostępność na `/ikony` (mobile) ≥ 95 — **przeniesione do pod-etapu 7** (raport Lighthouse dla 5 tras, w tym galeria); w 05b zastąpione audytem ręcznym (kontrast min. 6,04:1, zero nienazwanych kontrolek, poprawne nagłówki i landmarki, obrys fokusu 2 px `#e8c765`)
+- [x] Lighthouse dostępność na `/ikony` (mobile) ≥ 95 — **przeniesione do etapu 7** (raport Lighthouse dla 5 tras, w tym galeria); w 05b zastąpione audytem ręcznym (kontrast min. 6,04:1, zero nienazwanych kontrolek, poprawne nagłówki i landmarki, obrys fokusu 2 px `#e8c765`)
 - [x] zrzuty 1920 / 1440 / 1024 / 768 / 390 / 360 px (pełna strona) oraz lightbox 1920 / 1024 / 768 / 390 dla najwyższej i najszerszej ikony — pliki poza repo (katalog tymczasowy sesji)
 - [x] K-40…K-47 w `docs/plan-claude-code.md` §4; K-05 zmienione (`?autor=` wycofane), D-02 doprecyzowane; `05-galeria.md` skorygowany; liczby prac w briefach zaktualizowane
 
@@ -285,7 +285,7 @@ Kryterium „gotowe": DoD pod-etapu spełnione; meldunek ze zrzutami i listą od
 
 - **Zamknięte bez zmian w kodzie:** przegląd 1920 / 1440 / 1024 / 768 / 390 / 360 px, lightbox (najwyższa ikona 0,46 i najszersza 1,21) na 1920 / 1024 / 768 / 390 px, fokus klawiaturą (65 przystanków, obrys `solid 2px #e8c765`, offset 2 px), fokus w dialogu nie trafia na stronę pod spodem.
 - **K-40 (2026-09-20):** po ocenie na 21 pracach z WP wybrano opcję **B** (wyrównane rzędy). Usunięto układ A (półka), `GalleryLayoutContext`, `GalleryLayoutToggle` i stringi `layoutToggle` — jeden układ produkcyjny w `IconGrid`.
-- **Otwarte:** brak (formalny Lighthouse i test iOS Safari lightboxa — pod-etap 7).
+- **Otwarte:** brak (formalny Lighthouse i test iOS Safari lightboxa — etap 7).
 - **Poza zakresem 05b — zgłoszone:** (1) `Header` na 768 px łamie „O Akademii” na dwie linie; (2) „Zapytaj o podobną ikonę” w lightboxie 23 px (< 24 px z WCAG 2.5.8; przycisk 44 px zmieniłby design); (3) w `@theme` brak mapowania `space-1`, `space-8`, `space-9` — klasy `mb-space-1` w `Footer.tsx` nic nie robią.
 ## Ryzyka i pytania otwarte
 
@@ -293,8 +293,8 @@ Kryterium „gotowe": DoD pod-etapu spełnione; meldunek ze zrzutami i listą od
 - **Ocena układu na nierealnych danych.** 4 zdjęcia o podobnych proporcjach nie pokażą problemów K-40 (skrajne zdjęcia z WP: Archanioł Gabriel 0,46, Boże Narodzenie 1,21; „52×36" i „25×15" to wymiary z podpisów, nie proporcje zdjęć) ani K-43 (archaniołowie, Trójca). Stąd rekomendacja K-47 A.
 - **Zgoda na nazwiska uczniów.** Nazwiska są już publiczne na WP, ale przy nowej stronie warto potwierdzić z Akademią, czy lista i podpisy w lightboxie mogą zostać (zwłaszcza prace bez nazwiska na WP — nie dopisywać nazwisk z innych źródeł).
 - **Poziomy pasek chipów na mobile (K-44)** — gest przewijania w poziomie bywa nieodkrywalny dla 65+; ucięty ostatni chip jako sygnał jest obowiązkowy. Test z jedną osobą z grupy docelowej, jeśli możliwy.
-- **Zmiana K-39** zwiększa wagę obrazów w lightboxie — weryfikacja wydajności nadal w pod-etapie 7.
-- **Nieobejrzane:** fizyczny iOS lightbox (→ pod-etap 7), Android, tablet 768–1023 px, stany hover i fokus kafli (nie weryfikowano wizualnie), powiększenie przeglądarki 125–150%, `/ikony/na-zamowienie`.
+- **Zmiana K-39** zwiększa wagę obrazów w lightboxie — weryfikacja wydajności nadal w etapie 7.
+- **Nieobejrzane:** fizyczny iOS lightbox (→ etap 7), Android, tablet 768–1023 px, stany hover i fokus kafli (nie weryfikowano wizualnie), powiększenie przeglądarki 125–150%, `/ikony/na-zamowienie`.
 
 ## Postęp
 
@@ -303,11 +303,11 @@ Kryterium „gotowe": DoD pod-etapu spełnione; meldunek ze zrzutami i listą od
 | 1 — Bugi | ✅ | zmierzone przed → po (headless Edge, 1920×917 i 390/360 px); `pt` pod linią zajawki = `space-7`, kliknięcie w tło: desktop |
 | 2 — Filtry i nagłówek | ✅ | K-44 jednokolumnowy; slug `swieta` → `sceny-i-swieta` |
 | 3 — Siatka, sekcje, podpisy | ✅ | K-40 **B** (2026-09-20); półka i toggle A/B usunięte |
-| 4 — Lightbox | ✅ | układ desktopowy od `lg` (1024 px); obraz o jawnej szerokości z proporcji; test iOS Safari → pod-etap 7 |
+| 4 — Lightbox | ✅ | układ desktopowy od `lg` (1024 px); obraz o jawnej szerokości z proporcji; test iOS Safari → etap 7 |
 | 5 — Treść | ✅ | 52 prace z WP; wymiary „do weryfikacji”; zajawka bez zdjęcia; nazwiska uczniów do poprawy przez właściciela |
-| 6 — Przegląd i zamknięcie | ✅ | formalny Lighthouse i test iOS Safari → pod-etap 7; poza zakresem: `Header` łamie „O Akademii” na 768 px |
+| 6 — Przegląd i zamknięcie | ✅ | formalny Lighthouse i test iOS Safari → etap 7; poza zakresem: `Header` łamie „O Akademii” na 768 px |
 
-**Pod-etap 05b zamknięty (OK użytkownika, 2026-09-20).**
+**Etap 05b zamknięty (OK użytkownika, 2026-09-20).**
 
 ## Załącznik — pomiary wyjściowe (staging, 2026-09-19)
 

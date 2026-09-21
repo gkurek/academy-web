@@ -1,6 +1,6 @@
 # Jak poprawnie czytać `design/*.dc.html`
 
-> Powstało po pod-etapie 2 (Hero na stronie głównej), gdzie dwa razy zgadłem
+> Powstało po etapie 2 (Hero na stronie głównej), gdzie dwa razy zgadłem
 > zamiast odczytać — raz zły plik obrazu, raz zły rozmiar. Czytaj to przed
 > każdym kawałkiem, w którym bierzesz obraz albo dokładną wartość stylu
 > wprost z makiety `Akademia Ikony - kierunki wizualne.dc.html`.
@@ -85,7 +85,7 @@ realnie wyrenderowaną wartość. Jeśli i to nic nie da (bo np. wartość zale�
 treści, której jeszcze nie ma), zgłoś to jako otwarte pytanie w checkpoincie,
 zamiast zgadywać.
 
-## 4. Przykład z tej sesji (Hero na stronie głównej, pod-etap 2)
+## 4. Przykład z tej sesji (Hero na stronie głównej, etap 2)
 
 - **Zły traf:** `design/assets/photos/wystawa-stala.jpg` jako obraz Hero —
   temat (wystawa ikon) pasował skojarzeniowo, ale to nie jest zdjęcie użyte w
