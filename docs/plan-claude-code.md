@@ -1,6 +1,6 @@
 # Plan pracy z Claude Code — Akademia Ikony
 
-> **Wersja:** 0.3 · **Data:** 2026-09-20
+> **Wersja:** 0.4 · **Data:** 2026-09-21
 > **Status:** żywy dokument. Jedyne miejsce, w którym śledzony jest postęp fazy implementacji. Aktualizowany po każdym checkpoincie.
 > **Dokumenty powiązane:** `brief-claude-code.md` (wymagania techniczne, model treści, fakty stałe), `design/README` (handoff z Claude Design).
 > **Miejsce w repo:** `docs/plan-claude-code.md`. Plany etapów: `docs/plans/0N-nazwa.md`.
@@ -197,37 +197,39 @@ Dla każdego: cel, zakres, kryteria ukończenia (DoD), proponowany podział na k
 
 ### Etap 7 — Aktualności
 
-**Cel:** lista wpisów i pojedynczy artykuł z paginacją.
+**Cel:** lista wpisów i pojedynczy artykuł, teraz jako jeden strumień przejmujący archiwum dawnego działu „Wydarzenia” (K-50, K-52, 2026-09-21).
 
-**Zakres:** `/aktualnosci` z `NewsCard` i paginacją; `/aktualnosci/[slug]` z `Breadcrumb`, body MDX; dane `sample` (wygenerować skryptem, nie ręcznie — docelowo 60+ wpisów do testu paginacji). Poza zakresem: pozostałe strony informacyjne (etap 8).
+**Zakres:** `/aktualnosci` z `NewsCard` i etykietą typu wpisu (`kind`), grupowanie wpisów latami; `/aktualnosci/[slug]` z `Breadcrumb`, body MDX, galerią zdjęć i plakatem (`images`, `poster`); dane `sample` z mieszanką typów (`kind`), w tym wpisy archiwalne 2013–2020 (wystawy poza KŚT, oprowadzania, wyjazdy, plenery, spotkania — wygenerować skryptem, nie ręcznie). Poza zakresem: pozostałe strony informacyjne (etap 8); filtry kategorii (świadomie brak w v1 — K-52).
 
 **DoD:**
 
-- [ ] paginacja działa z 60+ wpisami `sample`;
+- [ ] wpisy wszystkich `kind` renderują się w jednym szablonie; brak filtrów kategorii;
+- [ ] grupowanie latami działa z 60+ wpisami `sample` (patrz K-06 — może zastąpić klasyczną paginację, do rozstrzygnięcia w sesji planistycznej);
 - [ ] `Breadcrumb` podłączony na trasie wpisu;
-- [ ] treść wyłącznie z `content/news/*.mdx`.
+- [ ] treść wyłącznie z `content/news/*.mdx`, zgodna z rozszerzonym typem `News` (brief §4: `kind`, `dateEnd`, `images`, `poster`).
 
-**Proponowane kawałki:** (1) warstwa `src/content/news.ts` + generator danych `sample`; (2) lista z paginacją; (3) wpis `[slug]`.
+**Proponowane kawałki:** (1) warstwa `src/content/news.ts` + generator danych `sample`; (2) lista z grupowaniem latami; (3) wpis `[slug]` (galeria, plakat).
 
-**Pytania:** paginacja — trasa `/aktualnosci/strona/2` czy query string (konsekwencje SEO; K-06).
+**Pytania:** K-06 — grupowanie latami zamiast paginacji, czy oba (do rozstrzygnięcia w sesji planistycznej etapu 7).
 
 ### Etap 8 — Strony pozostałe
 
-**Zakres:** `/kontakt` (adres, osadzona mapa, dwa maile z opisem, telefon, zakrystia, „Akademia w sieci”); `/wydarzenia` z `EventCard`, kategorie w `SectionNav` (linki z query string `?kategoria=`, wartości jak `Event.category`: `wystawa`, `poswiecenie`, `oprowadzanie`, `wyjazd`); `/publikacje` na szablonie tekstowym z zakładkami; `/polityka-prywatnosci`; strona 404 w stylu projektu.
+**Zakres:** `/kontakt` (adres, osadzona mapa, dwa maile z opisem, telefon, zakrystia, „Akademia w sieci”); `/ikony/wystawa` — opis stały, bieżąca edycja (`ExhibitionEdition`), oprowadzania kuratorskie, poprzednie edycje (karta z galerią tylko gdy są zdjęcia; brak zdjęć → jedna linijka, K-54), `SectionNav` Ikony z nową pozycją „Wystawa” (K-51); aktualizacja nawigacji i stopki po likwidacji działu „Wydarzenia” (K-50); kafel „Najbliższe” na stronie głównej zależny od stanu wystawy i skrócony opis filaru „Ikony” (K-58); sekcja „Gdzie byliśmy” na `/warsztaty/letnia-szkola-swiatla` (K-57); `/publikacje` na szablonie tekstowym z zakładkami; `/polityka-prywatnosci`; strona 404 w stylu projektu. Trasa `/wydarzenia` **nie powstaje** (K-50).
 
 **DoD:**
 
 - [ ] szablon strony tekstowej użyty na co najmniej trzech trasach bez rozgałęzień w kodzie (łącznie z etapem 6);
 - [ ] wszystkie trasy z briefu §3 mają realną treść lub `sample` — koniec zaślepek;
-- [ ] pełny `MapBlock` na `/kontakt` (K-13).
+- [ ] pełny `MapBlock` na `/kontakt` (K-13);
+- [ ] `/ikony/wystawa` renderuje stan `zapowiedz`/`biezaca` z `ExhibitionEdition` (K-51, K-54).
 
-**Proponowane kawałki:** (1) kontakt + `MapBlock`; (2) wydarzenia; (3) publikacje + polityka + 404.
+**Proponowane kawałki:** (1) kontakt + `MapBlock`; (2) wystawa (`/ikony/wystawa`) + nawigacja + zmiany na stronie głównej i LSŚ; (3) publikacje + polityka + 404 — **uwaga: układ Publikacji (zakładki: artykuły, multimedia, plakaty) do rewizji w osobnej sesji planistycznej**, obecny zakres tylko punktem wyjścia.
 
-**Pytania:** układ zakładek na `/publikacje`; domyślna kategoria na `/wydarzenia`.
+**Pytania:** układ zakładek na `/publikacje` (odłożone do osobnej sesji Publikacji). Pytania do EJK przed/na sesję planistyczną tego etapu (2026-09-21, patrz `docs/plan-aktualizacji-dokumentow-wydarzenia.md` §7): (1) rok początkowy edycji wystawy w KŚT — 2015, 2016 czy 2017; (2) zdjęcia z wernisaży 2018–2025 (Facebook Akademii?); (3) kto i w jakim terminie przesyła materiały po wernisażu; (4) czy Gródek był plenerem LSŚ i czy lista „Gdzie byliśmy” jest pełna; (5) zgoda Roberta Rumina na komentarz z metryczki (K-55).
 
 ### Etap 9 — Wykończenie: SEO, dane strukturalne, analityka
 
-**Zakres:** `generateMetadata` + Open Graph dla każdej trasy (obraz OG domyślny + per strona); `sitemap.ts`, `robots.ts`; JSON-LD: `Organization` (z `parentOrganization`), `Person` (EJK, `sameAs`), `Event` dla bieżącego sezonu, `Course` dla kursu i pleneru; Plausible lub Umami bez ciasteczek ze zdarzeniami na CTA zapisów, `mailto:`, `tel:`; przegląd Lighthouse (dostępność ≥ 95, wydajność ≥ 90 mobile) i naprawa blokad; przegląd kontrastu i fokusu na wszystkich stanach z ekranu „Komponenty”; **test lightboxa galerii na fizycznym iOS Safari** (`/ikony`: `showModal()`, scroll lock, sticky pasek nawigacji, swipe — przeniesione z DoD 05b, K-38); **korekta danych galerii z EJK** — brakujące `size` (5 prac), weryfikacja pozostałych wymiarów, poprawka sluga/tytułu `do-uzupelnienia-tytul-ikony`, jakość tytułów (§5); **uzupełnienie brakujących `authorName` uczniów** (10 prac) i **zgoda Akademii na publikację nazwisk**; **przegląd techniki w lightboxie** — domyślna wartość vs pole `technique` per praca (§5); **dopracowanie designu stopki** (`Footer`) — układ desktop i mobile, rozkład kolumn, social, pasek dolny (K-36; w 04b wdrożono wariant B funkcjonalny, bez finalnego polishu); **ponowne rozważenie sticky `FactsBox`** (K-37; odrzucone w 04b po prototypie — patrz `docs/plans/04b-review-fixes.md` K-32).
+**Zakres:** `generateMetadata` + Open Graph dla każdej trasy (obraz OG domyślny + per strona); `sitemap.ts`, `robots.ts`; JSON-LD: `Organization` (z `parentOrganization`), `Person` (EJK, `sameAs`), `Event` dla bieżącego sezonu, `Course` dla kursu i pleneru; **notatka (bez decyzji):** rozważyć `ExhibitionEvent` dla bieżącej edycji wystawy na `/ikony/wystawa` (K-51, 2026-09-21); Plausible lub Umami bez ciasteczek ze zdarzeniami na CTA zapisów, `mailto:`, `tel:`; przegląd Lighthouse (dostępność ≥ 95, wydajność ≥ 90 mobile) i naprawa blokad; przegląd kontrastu i fokusu na wszystkich stanach z ekranu „Komponenty”; **test lightboxa galerii na fizycznym iOS Safari** (`/ikony`: `showModal()`, scroll lock, sticky pasek nawigacji, swipe — przeniesione z DoD 05b, K-38); **korekta danych galerii z EJK** — brakujące `size` (5 prac), weryfikacja pozostałych wymiarów, poprawka sluga/tytułu `do-uzupelnienia-tytul-ikony`, jakość tytułów (§5); **uzupełnienie brakujących `authorName` uczniów** (10 prac) i **zgoda Akademii na publikację nazwisk**; **przegląd techniki w lightboxie** — domyślna wartość vs pole `technique` per praca (§5); **dopracowanie designu stopki** (`Footer`) — układ desktop i mobile, rozkład kolumn, social, pasek dolny (K-36; w 04b wdrożono wariant B funkcjonalny, bez finalnego polishu); **ponowne rozważenie sticky `FactsBox`** (K-37; odrzucone w 04b po prototypie — patrz `docs/plans/04b-review-fixes.md` K-32).
 
 **DoD:**
 
@@ -246,6 +248,17 @@ Dla każdego: cel, zakres, kryteria ukończenia (DoD), proponowany podział na k
 **Cel:** zastąpić wszystkie dane `sample` prawdziwymi, bez dotykania komponentów.
 
 **Zakres:** sprawdzenie REST API vs WXR; skrypt `scripts/migrate-wp.ts` wg briefu §5 (pages/posts → MDX, oryginały obrazów z `href` nie z `src`, wykłady → `LectureSeason`, galeria → `IconWork`, `docs/redirects.json`); raport `scripts/migrate-report.md`; ręczna korekta (literówki, nazwiska, podpisy ikon, daty 2025 → archiwum lub aktualizacja); usunięcie wszystkich plików i wpisów `sample`; weryfikacja listy z §5; 301 w `next.config.ts`.
+
+**Zasady migracji dawnego działu „Wydarzenia” (K-50…K-58, 2026-09-21 — patrz `docs/plan-aktualizacji-dokumentow-wydarzenia.md` §5 dla pełnego uzasadnienia):**
+
+- Wpis zbiorczy „IKONA – KORZENIE I OWOCE WIARY 2018…2025” → rozbić na rekordy `ExhibitionEdition`, nie migrować tytułu z listą lat 1:1; zdjęcia 2025 przypisać do edycji 2025.
+- „Podsumowanie roku 2019 i 2020 – wystawy” → akapit o aranżacji wystawy jest źródłem opisu stałego na `/ikony/wystawa` (redakcja, nie kopia); pozostałe wydarzenia z tego wpisu (Noc Świątyń, „Ikona okno duszy”, plener w Świętej Lipce) → osobne wpisy Aktualności z właściwym `kind`.
+- Oprowadzania 2017 (4 wpisy) → jeden wpis `kind: 'oprowadzanie'` z krótkimi zredagowanymi opisami + 3–4 zdjęcia. **Serce Jezusa: nie migrować części merytorycznej** (niepodpisana kopia z gotquestions.org) — zachować tylko informację o oprowadzaniu, zdjęcie i komentarz R. Rumina (wyłącznie po jego zgodzie). Trójca Święta: zdanie o „jedynym kanonicznym przedstawieniu” do korekty przez EJK. Ikony emaliowane: usunąć ostatnie zdanie o dzieciach.
+- Wystawy 2013–2018 w KŚT kończące rok → edycje w `editions.json` (od 2015; rok początkowy do potwierdzenia z EJK); wystawy poza KŚT → wpisy Aktualności `kind: 'wystawa'`.
+- Wyjazdy studyjne („Wyjazd śladami ikon prof. Jerzego Nowosielskiego”, „Spotkania z Grzegorzem Zinkiewiczem”) → Aktualności `kind: 'wyjazd'` / `'spotkanie'`. „Wakacyjne wyjazdy studyjne – Gródek” → `kind: 'plener'` jeśli EJK potwierdzi plener LSŚ; miejsce trafia też do „Gdzie byliśmy” (K-57).
+- Poświęcenia (tekst + 6 zdjęć) → materiał artykułu w Publikacjach (K-55), redakcja z EJK.
+- Hub `/wydarzenia/` (akapit „Wydarzeniem jest dla nas coś nieprzewidywalnego…”) — **nie migrować**.
+- Plakaty z `/publikacje/plakaty/` — tylko odnotować do sesji Publikacji (przypisanie do edycji wystaw i wpisów Aktualności); bez decyzji teraz.
 
 **DoD:**
 
@@ -325,6 +338,15 @@ Dla każdego: cel, zakres, kryteria ukończenia (DoD), proponowany podział na k
 | K-47 | Treść `sample` galerii (05b) | 5b | **Pełny zestaw WP** — 52 prace (23 EJK + 29 uczniów), oryginały w `public/media/sample/icons/`, wszystkie `sample: true`; tytuły zgodne ze zdjęciami WP. Wymiary z podpisów WP w danych (`size` — 47 z 52; bez `size`: 3 EJK + 2 uczniów), UI pokazuje „Wymiary: do weryfikacji” (bez nowego pola). Z makiety wypadły „Św. Antoni” i „Przemienienie” (brak w galerii WP); dawny „Mandylion” to Chrystus Pantokrator, „Matka Boża Znaku” to Krzew Gorejący | 2026-09-20 |
 | K-48 | `SectionNav` na `/o-akademii` i `/pracownia`       | 6        | **Dodajemy** — O Akademii · Pracownia, jak makieta 6a–6d; `SectionKey` + `sectionNav` w `navigation.ts`; brief §3 uzupełniony | 2026-09-20 |
 | K-49 | Źródło nagłówków `TocSidebar`                      | 6        | **Jawny `toc[]`** w danych strony (`content/pages/*.json`), nie parser MDX — wymagane dla podpozycji rozmowy (PR-25) | 2026-09-20 |
+| K-50 | Dział „Wydarzenia”                                  | 7, 8     | **Likwidujemy jako sekcję i pozycję menu.** Menu główne: O Akademii · Warsztaty · Wykłady · Ikony · Aktualności · Kontakt. Trasa `/wydarzenia` nie powstaje; stare adresy przekierowane (brief §5). Uzasadnienie: jedyna żywa treść działu to coroczna wystawa; reszta to archiwum 2013–2020, a kategorie „Poświęcenia/Oprowadzania/Wyjazdy” pokazywałyby 1–3 wpisy sprzed dekady | 2026-09-21 |
+| K-51 | Wystawa „Ikona – korzenie i owoce wiary”            | 8        | **Własna strona `/ikony/wystawa`.** `SectionNav` Ikony: Galeria · Wystawa · Ikony na zamówienie. Stan faktyczny (potwierdzone przez EJK 2026-09-21): wystawa jest w kościele na stałe, a zestaw ikon zmienia się co roku (wernisaż na koniec roku akademickiego, w okolicach 17.06). Strona: opis stały → bieżąca edycja → oprowadzania kuratorskie → poprzednie edycje | 2026-09-21 |
+| K-52 | Aktualności jako jeden strumień                     | 7        | **Aktualności przejmują archiwum dawnych wydarzeń.** Każdy wpis ma `kind` wyświetlany jako etykieta typu. Bez filtrów kategorii w v1. Wpisy grupowane latami; K-06 (paginacja) pozostaje otwarte, do rozważenia w sesji etapu 7 | 2026-09-21 |
+| K-53 | Model treści (`Event` → `News`/`ExhibitionEdition`) | 7, 8     | **Typ `Event` usunięty.** `News` dostaje `kind`, `dateEnd?`, `images?`, `poster?`. Nowy typ `ExhibitionEdition` — patrz brief §4 | 2026-09-21 |
+| K-54 | Edycja wystawy bez materiału                        | 8        | **Edycja bez zdjęć = jedna linijka** na liście poprzednich edycji (rok, tytuł/podtytuł), bez pustej karty. Karta z galerią tylko gdy są zdjęcia | 2026-09-21 |
+| K-55 | Poświęcenia ikon                                    | 10 (+ Publikacje) | **Tekst przechodzi do Publikacji jako artykuł** („Podpisanie i poświęcenie ikony”). EJK zgodziła się na przeniesienie i redakcję (2026-09-21); do poprawy: porównanie do chrztu i sakramentów. Układ Publikacji — osobna sesja (odłożone). Wzmianka na `/ikony/na-zamowienie` zależy od D-05 (otwarte) | 2026-09-21 |
+| K-56 | Wyjazdy studyjne                                    | 6, 7     | **Nie są obecnie planowane, ale nie zostały zakończone.** Copy w czasie teraźniejszym zostaje (OA-62 bez zmian, decyzja EJK). Dawne wyjazdy → Aktualności `kind: 'wyjazd'`. Brak osobnej podstrony | 2026-09-21 |
+| K-57 | Historia plenerów                                   | 8        | **Nowa sekcja „Gdzie byliśmy” na `/warsztaty/letnia-szkola-swiatla`**: lista miejsc dotychczasowych plenerów (Święta Lipka, Wesoła, Supraśl, Gruzja, Litwa; Gródek do potwierdzenia). Część „wyjazdów studyjnych” z WP to w rzeczywistości plenery | 2026-09-21 |
+| K-58 | Kafel „Najbliższe” na stronie głównej               | 8        | Kafel 3 „Najbliższe” przestaje być `[przykład]`: wystawa realnie istnieje (K-51). Link → `/ikony/wystawa`. Treść zależna od stanu wystawy (brief §4). Opis filaru „Ikony” skrócony do: galeria, wystawa, ikony na zamówienie (bez poświęceń, oprowadzań, wyjazdów) | 2026-09-21 |
 
 Decyzje spoza kodu (D-01…D-05 z briefu v2) pozostają w dokumentach ekosystemu; tu wpisujemy tylko ich skutki dla implementacji. **D-02 (domyślny filtr galerii):** galeria pokazuje **obie sekcje, EJK pierwsza, sztywny podział** (K-41), bez filtra autora; pytanie o zakres prac EJK po starcie strony autorskiej zostaje otwarte — skutek w K-05 / K-41 / `docs/plans/05b-review-fixes.md` (2026-09-19).
 
@@ -354,7 +376,13 @@ Lista rośnie w każdym etapie. Odhaczana w etapie 10.
 | Zdjęcia z makiet                       | `public/media/sample/`                             | 2        | oryginały z `/wp-content/uploads/` lub nowa sesja | ⬜  |
 | Sezony archiwum `sample` (2–3)         | `content/lectures/sample-*.json`                   | 4        | 16 sezonów z migracji (15 archiwalnych + bieżący) | ✅  |
 | Wykładowcy — bio i zdjęcia z WP | `content/lecturers.json`, `public/media/lecturers/` | 4     | weryfikacja / migracja WP (etap 10)            | ✅  |
-| „Najbliższe” na stronie głównej — 2/3 wpisy zastąpione realną treścią z brief §8 (nabór 2026/2027, pierwszy wykład 6.10.2026); trzeci wpis („Wystawa stała”) pozostaje `[przykład]` — niepotwierdzone w brief §8 | `content/settings.json` (`upcoming`) | 1, uzupełnione w 2 | potwierdzenie z Akademią, czy taka wystawa istnieje | ⬜ |
+| „Najbliższe” na stronie głównej — 2/3 wpisy zastąpione realną treścią z brief §8 (nabór 2026/2027, pierwszy wykład 6.10.2026); trzeci wpis („Wystawa stała”) | `content/settings.json` (`upcoming`) | 1, uzupełnione w 2 | dane bieżącej edycji z `editions.json` (K-58); istnienie wystawy potwierdzone przez EJK 2026-09-21 | ⬜ |
+| Edycje wystawy 2015–2026 — tytuły, podtytuły, daty wernisaży, zdjęcia, liczba ikon | `content/exhibition/editions.json` | 8 | EJK + archiwum WP + Facebook Akademii (K-51) | ⬜ |
+| Opis stały wystawy | `content/exhibition/page.mdx` | 8 | redakcja na bazie wpisu WP „Podsumowanie roku 2019 i 2020” | ⬜ |
+| Lista miejsc „Gdzie byliśmy” (plenery LSŚ) | `content/offers/plener.mdx` | 8 | potwierdzenie EJK, w tym Gródek (K-57) | ⬜ |
+| Zgoda Roberta Rumina na publikację komentarza z metryczki ikony Serca Jezusa | `content/news/*` (migracja) | 10 | zgoda EJK/R. Rumina | ⬜ |
+| Korekta EJK w tekście o Trójcy Świętej (oprowadzania 2017) | `content/news/*` (migracja) | 10 | korekta EJK | ⬜ |
+| Artykuł o poświęceniu ikon po redakcji | `content/publications/*` | 10 / sesja Publikacji | redakcja z EJK (K-55) | ⬜ |
 | „Wybrane ikony” na stronie głównej i „Przykłady realizacji” w `/ikony/na-zamowienie` — 4 prace z galerii (Krzew Gorejący, Pantokrator, Archanioł Michał, Trójca Święta) | `FEATURED_ICON_SLUGS` w `src/content/icons.ts`, `exampleSlugs` w `content/offers/zamowienie.mdx` | 2, zmiana w 05b/5 | wybór redakcyjny EJK z prac galerii | ⬜ |
 | Zdjęcia „Wybrane ikony” — 4 wpisy `sample` na stronę główną | `content/icons.json` (Kawałek 2) | 2 | migracja WP | ⬜ |
 | Wybrane realizacje EJK (6× placeholder) | `content/pages/o-akademii.json` (`works`) | 6 | dane od klientki (copy doc pyt. 2) | ⬜ |
@@ -388,6 +416,7 @@ Lista rośnie w każdym etapie. Odhaczana w etapie 10.
 | 2026-09-20 | **Etap 5 zamknięty** (05: 4/4 + 05b: 6/6, OK użytkownika). DoD spełnione: `/ikony` z filtrami tematu, sekcjami EJK → uczniowie, siatką wyrównanych rzędów, lightboxem desktop/mobile; 52 prace sample z WP; rejestr K-38…K-47 w §4. Formalny Lighthouse a11y i test iOS Safari — etap 9. Gałąź: `feat/05-gallery`. |
 | 2026-09-20 | v0.3 — rozbicie dawnego etapu 6 na etapy 6–8 (o akademii i pracownia · aktualności · pozostałe); wykończenie → 9, migracja → 10, wdrożenie → 11. Słownictwo ujednolicone na „etap" w całym repo. |
 | 2026-09-20 | Sesja planistyczna etapu 6 zakończona, plan zatwierdzony (`docs/plans/06-o-akademii.md`). K-48 (`SectionNav` O Akademii · Pracownia), K-49 (`toc[]` jawny). Copy z `docs/copy-o-akademii-pracownia.md` od razu (nie lorem); 4 kawałki; wariant 6e bez linku autorskiego; OA-37 z placeholderami; rozmowa wdrożona z weryfikacją EJK w §5. Makieta 6a–6i zweryfikowana (render + 16 assetów OK). |
+| 2026-09-21 | v0.4 — **Likwidacja działu Wydarzenia (K-50…K-58).** Wystawa → `/ikony/wystawa`, archiwum wydarzeń → Aktualności z `kind`, poświęcenia → Publikacje, plenery → LSŚ. Odpowiedzi EJK: wystawa stała w kościele z roczną wymianą ikon; wyjazdy obecnie niezaplanowane, copy w czasie teraźniejszym zostaje; zgoda na przeniesienie i redakcję tekstu o poświęceniu. Publikacje odłożone do osobnej sesji. Szczegóły i uzasadnienie: `docs/plan-aktualizacji-dokumentow-wydarzenia.md`. Zmiany w kodzie w etapach 7 i 8 (jeszcze nie wykonane — ta sesja dotyczyła wyłącznie dokumentów). |
 
 ---
 

@@ -148,6 +148,8 @@ Kawałek 2:
 - `src/navigation.ts`, `sectionNav.wydarzenia`: pięć pozycji z brief §3; kategorie jako query string
   `?kategoria=` (wartości `Event.category`), bez tras `/wydarzenia/*` — uzupełnione po decyzji
   w sesji dokumentacyjnej 2026-09-12.
+  **Zastąpione przez K-50/K-51 (2026-09-21)** — dział „Wydarzenia” zlikwidowany; zmiana w kodzie
+  w etapie 8.
 - `content/settings.json`: brief §8 podaje gołe domeny/identyfikatory (`www.ikonadzis.org`,
   `studiumikony.blogspot.com`, `facebook.com/akademiaikony`, `@akademiaikony3822`) — dodany schemat
   `https://` i skonstruowany kanoniczny URL YouTube; to normalizacja formatu pod typ `string` (URL),
