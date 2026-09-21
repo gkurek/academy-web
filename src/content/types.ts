@@ -92,23 +92,28 @@ export type IconWork = {
   tags?: string[];
 };
 
-export type Event = {
-  slug: string;
-  category: "wystawa" | "poswiecenie" | "oprowadzanie" | "wyjazd";
-  title: string;
-  date?: string;
-  dateEnd?: string;
-  body: string;
-  images?: Image[];
-};
+// K-50/K-53 (2026-09-21): typ `Event` usunięty — archiwum „Wydarzeń” to wpisy News z `kind`.
+export type NewsKind =
+  | "aktualnosc"
+  | "wyklady"
+  | "warsztaty"
+  | "plener"
+  | "wystawa"
+  | "oprowadzanie"
+  | "wyjazd"
+  | "spotkanie";
 
 export type News = {
   slug: string;
   title: string;
   date: string;
+  dateEnd?: string;
+  kind: NewsKind;
   excerpt?: string;
   body: string;
   cover?: Image;
+  images?: Image[];
+  poster?: Image;
 };
 
 export type Testimonial = { quote: string; author: string; role?: string };
