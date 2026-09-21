@@ -1,8 +1,13 @@
-import { PagePlaceholder } from "@/components/PagePlaceholder";
-import { mainNav } from "@/navigation";
+import { notFound } from "next/navigation";
 
-const title = mainNav.find((item) => item.href === "/o-akademii")!.label;
+import { AboutPage } from "@/components/text/AboutPage";
+import { getAboutPage } from "@/content/pages";
 
-export default function AboutPage() {
-  return <PagePlaceholder title={title} active={title} />;
+export default function AboutRoutePage() {
+  const page = getAboutPage();
+  if (!page) {
+    notFound();
+  }
+
+  return <AboutPage page={page} />;
 }

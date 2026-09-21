@@ -1,0 +1,216 @@
+{
+  "slug": "pracownia",
+  "title": "Pracownia",
+  "lead": "Pracownia to miejsce, w\u00a0którym nauka pisania ikon nie kończy się na kursie. Przychodzą tu osoby, które chcą rozwinąć warsztat, wrócić do zaczętej ikony, zadać nurtujące pytania albo porozmawiać o\u00a0trudnych tematach. Pracownię prowadzi Elżbieta Jackowska-Kurek.",
+  "sample": true,
+  "toc": [
+    { "id": "formy-nauki", "label": "Formy nauki" },
+    {
+      "id": "rozmowa",
+      "label": "Rozmowa o\u00a0ikonie",
+      "children": [
+        { "id": "rozmowa-1", "label": "Ikona współczesna a\u00a0Tradycja" },
+        { "id": "rozmowa-2", "label": "Post scriptum: praca ikonografa" }
+      ]
+    },
+    { "id": "czego-sie-uczymy", "label": "Czego się uczymy" },
+    { "id": "ze-wspolnej-pracy", "label": "Ze wspólnej pracy" }
+  ],
+  "learningForms": {
+    "heading": "Formy nauki",
+    "rows": [
+      {
+        "title": "Kurs roczny przedwstępny",
+        "description": "Prowadzi przez wszystkie etapy powstawania ikony, od samego początku do końca. Bez względu na trudności przy uczniu jest nauczyciel, który pomaga. Każdy wybiera ikonę, przez którą na tym etapie Bóg przemawia do niego najbardziej – i\u00a0kończy kurs z\u00a0gotową ikoną."
+      },
+      {
+        "title": "Kurs trzyletni doskonalący",
+        "description": "Prowadzi od ikony lica przez półpostać, ikonę całopostaciową i\u00a0wielopostaciową aż do ikon dogmatycznych. Zapraszamy osoby gotowe poświęcić nauce co najmniej trzy lata; na trzecim roku pracujemy nad złożonymi ikonami. Uczestnicy mogą zdobywać doświadczenie zawodowe na bezpłatnych stażach przy dużych zamówieniach.",
+        "link": {
+          "href": "/warsztaty/kurs-roczny-i-trzyletni",
+          "label": "Kurs roczny i\u00a0trzyletni"
+        }
+      },
+      {
+        "title": "Kursy doskonalące i\u00a0mistrzowskie",
+        "description": "Temat wybiera uczestnik, a\u00a0termin lekcji ustalamy tak, by był dogodny. Przykładowe tematy to suchy pędzel i\u00a0pław, sankir od jasnozielonego po ciemnobrązowy czy różnice w\u00a0wyświetlaniu. Nauczanie doskonalące, tak w\u00a0rytmie rocznym, jak i\u00a0na warsztatach wakacyjnych, może trwać dowolnie długo."
+      },
+      {
+        "title": "Pracownia Otwarta i\u00a0konsultacje",
+        "description": "Dla osób, które mają już pewne umiejętności i\u00a0chcą je rozwijać, zadawać pytania albo rozmawiać o\u00a0trudnych tematach. Pomagamy też, gdy praca nad samodzielnie zaczętą ikoną napotyka trudności. Zajęcia tematyczne i\u00a0konsultacyjne odbywają się w\u00a0uzgodnionych terminach."
+      }
+    ],
+    "contact": {
+      "email": "akademiaikony@gmail.com",
+      "subject": "Zapytanie – Pracownia",
+      "phone": "+48601734705",
+      "phoneDisplay": "601 734 705"
+    }
+  },
+  "interview": {
+    "heading": "Rozmowa o\u00a0ikonie",
+    "intro": "O\u00a0ikonie współczesnej, kopiowaniu i\u00a0eksperymentach rozmawiają Maurycy Lubak (ML), sekretarz Akademii, i\u00a0Elżbieta Jackowska-Kurek (EJK). Rozmowę zamyka post scriptum o\u00a0codziennej pracy malarza ikon.",
+    "initials": { "asker": "ML", "answerer": "EJK" },
+    "parts": [
+      {
+        "id": "rozmowa-1",
+        "title": "Ikona współczesna a\u00a0Tradycja",
+        "exchanges": [
+          {
+            "q": "Jak rozumieć termin „współczesna ikona”?",
+            "a": "Określenie „ikona współczesna” funkcjonuje najczęściej jako przeciwieństwo „ikony starożytnej”. Niestety, często również jako odbicie się od ikony tradycyjnej. Słowa „odbicie” używam, żeby zaakcentować dynamizm, a\u00a0więc emocjonalność i\u00a0niestabilność takich ruchów."
+          },
+          {
+            "q": "Często słyszy się dziś o\u00a0wolności w\u00a0pisaniu ikon.",
+            "a": "W\u00a0wielu wypowiedziach podnosi się rangę wolności nie tylko materiałowej i\u00a0technologicznej – co Sobór Nicejski II uznał za dopuszczalne, choć trzeba brać pod uwagę na przykład trwałość materiałów – ale i\u00a0teologicznej. Ogromne zainteresowanie ikoną, zawrotne tempo współczesnego życia oraz brak rzetelnej znajomości i\u00a0umiejętności pisania ikony tradycyjnej odbijają się negatywnie na poziomie artystycznym ikon pisanych obecnie. Nie znaczy to, że nie ma dziś malarzy ikon, którzy dbają o\u00a0poziom swoich prac. Są wśród nich zarówno ci, którzy piszą ikony tradycyjne, jak i\u00a0ci, którzy poszukują nowych form wyrazu."
+          },
+          {
+            "q": "Czy spotkała się Pani z\u00a0pytaniami o\u00a0kopiowanie ikon?",
+            "a": "Nieprzyzwoite jest, gdy artysta pracuje, posługując się szkicami innych ludzi, bez nauki rysowania. Malarza ikon, który wykonuje tylko kopie starożytnych ikon, można porównać do spowiednika, który nie ma osobistego doświadczenia duchowego i\u00a0udziela rad z\u00a0książek. Proces uczenia ma na celu wypracowanie twórczego, żywego podejścia do Tradycji Kościoła."
+          },
+          {
+            "q": "Jaka jest więc ikona współczesna?",
+            "a": "Z\u00a0ikoną jest jak z\u00a0modlitwą. Powtarzamy słowa i\u00a0teksty, które mają już setki lat, a\u00a0kiedy się modlimy, modlitwa staje się nasza – mówimy w\u00a0pierwszej osobie, a\u00a0nie cytujemy autorów modlitw. Inna rzecz, że nasza modlitwa może być bezmyślnym czytaniem i\u00a0powtarzaniem, ale może też być żywa i\u00a0świadoma. Modlitwa jest żywa, gdy nasz umysł i\u00a0serce są zanurzone w\u00a0jej słowach. Tak dzieje się z\u00a0ikoną. Obraz, który przepływa przez serce, przez wizję wypracowaną w\u00a0Tradycji Kościoła, staje się żywy i\u00a0nowoczesny."
+          },
+          {
+            "q": "Na czym opiera się ta tradycja?",
+            "a": "Ikona przetrwała wieki, łączy w\u00a0zachwycie pokolenia i\u00a0jest wpisana w\u00a0rytm liturgiczny. Jej podstawą jest wielowiekowa tradycja – język, który nie jest związany z\u00a0żadną szkołą ani epoką i\u00a0jak każdy język musi zostać przyswojony, by można było się w\u00a0nim wyrażać. Bardzo ważne jest, by mieć zaszczepioną miłość i\u00a0zrozumienie tradycji malowania ikon."
+          },
+          {
+            "q": "Jak w\u00a0takim razie uczyć pisania ikon?",
+            "a": "Na pierwszym etapie nauczania konieczne jest zanurzenie się w\u00a0Tradycji poprzez powtarzanie. Nauczanie opiera się na powtarzaniu – zawsze tak było i\u00a0jest to proces całkowicie naturalny. Trzeba je tak prowadzić, by doświadczenie ortodoksyjnej Tradycji stopniowo stawało się doświadczeniem ucznia."
+          },
+          {
+            "q": "A\u00a0czy ikona powinna iść za sztuką współczesną?",
+            "a": "Ikona nie powinna iść w\u00a0parze z\u00a0tendencjami sztuki współczesnej. Ma własną logikę rozwoju i\u00a0swoją misję – ma świadczyć o\u00a0Wcieleniu Boga i\u00a0Zbawieniu Człowieka."
+          }
+        ]
+      },
+      {
+        "id": "rozmowa-2",
+        "title": "Post scriptum: praca ikonografa",
+        "exchanges": [
+          {
+            "q": "Co jest najważniejsze dla malarza ikon?",
+            "a": "*Mądrość Boża, miłość Boża.* Wiele rzeczy jest ważnych. Wiara, że Bóg mnie kocha, pozwala widzieć Światło."
+          },
+          {
+            "q": "Jakie miejsce ma w\u00a0tym przeszłość?",
+            "a": "Ikonograf nie stoi w\u00a0miejscu. Jednak pamięć o\u00a0Tradycji, o\u00a0ludziach, którzy żyli dawniej, jest ważna, a\u00a0nawet niezbędna. Ludzie w\u00a0przeszłości żyli w\u00a0takich warunkach, w\u00a0których mogli poznać wielką mądrość. Możemy zwrócić się do nich po tę mądrość przez malowanie ikon."
+          },
+          {
+            "q": "Co tak naprawdę sądzi Pani o\u00a0eksperymentach w\u00a0ikonografii?",
+            "a": "To jest droga. Jeśli komuś jest to potrzebne, żeby dojść do prawdy, to jest dobre. Na pierwszy rzut oka poszukiwania mogą się często wydawać pomysłowe, ale nie jestem pod wrażeniem. Czas weryfikuje wartość."
+          },
+          {
+            "q": "Co zatem wyróżnia prawdziwą ikonę?",
+            "a": "Ikona ma głębię i\u00a0poważny urok. Tam nie ma łez, nie ma zmysłowości. W\u00a0ikonie jest trzeźwość i\u00a0spokój, prawda i\u00a0wytrwałość – ikona obrazuje na ziemi Królestwo Boże. Taka jest ikona."
+          },
+          {
+            "q": "Co Pani czuje, gdy ikona jest gotowa?",
+            "a": "Jestem wdzięczna Panu Bogu za możliwość stworzenia ludziom radości. To inspiracja do dalszej pracy."
+          },
+          {
+            "q": "Czy są ikony, z\u00a0którymi trudno się Pani rozstać?",
+            "a": "Nie. Przeważnie przychodzi taki moment, kiedy ikona może już iść w\u00a0świat. Raz wcześniej, raz później, ale przychodzi."
+          },
+          {
+            "q": "Czy coś przeszkadza w\u00a0pracy nad ikonami?",
+            "a": "Po ludzku nic nie przeszkadza tak bardzo jak brak czasu. Jest wiele pomysłów i\u00a0mało czasu, żeby się nad nimi pochylić. Jednak z\u00a0Bożą pomocą można dać radę… Wystarczy iść na liturgię, a\u00a0wtedy czas rośnie tak, że starcza na wszystko, co potrzeba."
+          }
+        ]
+      }
+    ],
+    "closing": "Dziękuję za rozmowę i\u00a0życzę wszystkich potrzebnych łask Bożych.",
+    "signature": "Rozmawiał Maurycy Lubak, sekretarz Akademii"
+  },
+  "curriculum": {
+    "heading": "Czego się uczymy"
+  },
+  "gallery": {
+    "heading": "Ze wspólnej pracy",
+    "mobileCaption": "Od przygotowania deski do gotowej ikony – wspólna praca w pracowni",
+    "photos": [
+      {
+        "src": "/media/workshop/gallery-prep-boards.jpg",
+        "alt": "Deski na ikony, słoik z\u00a0klejem i\u00a0pędzel na stole przy oknie",
+        "width": 526,
+        "height": 701,
+        "caption": "Przygotowanie desek"
+      },
+      {
+        "src": "/media/workshop/gallery-lewkas.jpg",
+        "alt": "Nakładanie lewkasu pędzlem na deskę, obok emaliowane naczynia",
+        "width": 320,
+        "height": 214
+      },
+      {
+        "src": "/media/workshop/gallery-egg-tempera.jpg",
+        "alt": "Żółtko jajka w\u00a0dłoniach nad zlewem, przygotowanie tempery",
+        "width": 320,
+        "height": 214,
+        "caption": "Żółtko do tempery jajowej"
+      },
+      {
+        "src": "/media/workshop/gallery-drawing-transfer.jpg",
+        "alt": "Uczestniczka przenosi rysunek na zagruntowaną deskę, obok wzór ikony",
+        "width": 960,
+        "height": 720,
+        "caption": "Rysunek na zagruntowanej desce"
+      },
+      {
+        "src": "/media/workshop/gallery-first-colors.jpg",
+        "alt": "Ikona na żółtym tle w\u00a0trakcie pracy, obok paleta z\u00a0farbami",
+        "width": 960,
+        "height": 540,
+        "caption": "Pierwsze warstwy koloru"
+      },
+      {
+        "src": "/media/workshop/gallery-painting-christ.jpg",
+        "alt": "Uczestniczka maluje ikonę Chrystusa, obok rozrobiony niebieski pigment",
+        "width": 539,
+        "height": 960
+      },
+      {
+        "src": "/media/workshop/gallery-face-gold.jpg",
+        "alt": "Pisanie twarzy na złoconej desce, obok paleta z\u00a0pigmentami",
+        "width": 450,
+        "height": 800,
+        "caption": "Lico na złotym tle"
+      },
+      {
+        "src": "/media/workshop/gallery-transfiguration.jpg",
+        "alt": "Ikona Przemienienia na złotym tle w\u00a0trakcie malowania",
+        "width": 540,
+        "height": 960,
+        "caption": "Przemienienie w\u00a0trakcie pracy"
+      },
+      {
+        "src": "/media/workshop/gallery-mandylion.jpg",
+        "alt": "Malowanie Mandylionu na złotym tle, pigmenty w\u00a0muszlach",
+        "width": 800,
+        "height": 600
+      },
+      {
+        "src": "/media/workshop/gallery-christ-face.jpg",
+        "alt": "Uczestniczka pisze lico Chrystusa na ikonie ze złotym tłem",
+        "width": 720,
+        "height": 540,
+        "caption": "Praca nad licem Chrystusa"
+      },
+      {
+        "src": "/media/workshop/gallery-madonna.jpg",
+        "alt": "Uczestnik maluje ikonę Matki Bożej, obok wydruk pierwowzoru",
+        "width": 960,
+        "height": 720
+      },
+      {
+        "src": "/media/workshop/gallery-finished-trio.jpg",
+        "alt": "Trzy uczestniczki przy stole z\u00a0ikonami Chrystusa i\u00a0Matki Bożej",
+        "width": 800,
+        "height": 600,
+        "caption": "Ukończone ikony"
+      }
+    ]
+  }
+}

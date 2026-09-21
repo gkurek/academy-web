@@ -187,9 +187,9 @@ Dla każdego: cel, zakres, kryteria ukończenia (DoD), proponowany podział na k
 
 **DoD:**
 
-- [ ] szablon strony tekstowej gotowy do ponownego użycia w etapie 8 bez rozgałęzień w kodzie;
-- [ ] `/o-akademii` i `/pracownia` renderują treść z `content/`; `toc[]` w danych strony steruje `TocSidebar`/`TocCollapse` (K-49);
-- [ ] zaślepki zastąpione; `SectionNav` na obu trasach.
+- [x] szablon strony tekstowej gotowy do ponownego użycia w etapie 8 bez rozgałęzień w kodzie;
+- [x] `/o-akademii` i `/pracownia` renderują treść z `content/`; `toc[]` w danych strony steruje `TocSidebar`/`TocCollapse` (K-49);
+- [x] zaślepki zastąpione; `SectionNav` na obu trasach.
 
 **Kawałki (zatwierdzone):** (1) shell + TOC + SectionNav; (2) komponenty + `/o-akademii`; (3) `Interview` + `/pracownia`; (4) `PhotoGrid` + lightbox + DoD. Szczegóły: `docs/plans/06-o-akademii.md`.
 
@@ -361,7 +361,7 @@ Lista rośnie w każdym etapie. Odhaczana w etapie 10.
 | Staż pracowni EJK w bio | `content/pages/o-akademii.json` | 6 | potwierdzenie klientki (copy doc pyt. 1) | ⬜ |
 | Rozmowa — redakcja (5 nowych pytań ML, zmiany stylu) | `content/pages/pracownia.json` (`interview`) | 6 | akceptacja EJK | ⬜ |
 | Portret EJK | `public/media/workshop/ejk-portret.jpg` | 6 | zdjęcie od klientki jeśli placeholder nieaktualny | ⬜ |
-| Zdjęcia warsztatowe (hero, galeria, pas) | `public/media/workshop/*` | 6 | opcjonalnie wyższa jakość / nowa sesja | ⬜ |
+| Zdjęcia warsztatowe (hero, galeria 12×, pas 2×, portret) | `public/media/workshop/*` | 6 | opcjonalnie wyższa jakość / nowa sesja (etap 10 nie migruje tych stron) | ✅ |
 
 ---
 

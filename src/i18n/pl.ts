@@ -26,6 +26,23 @@ export const pl = {
   breadcrumb: {
     ariaLabel: "Ścieżka",
   },
+  textPage: {
+    tocLabel: "Na tej stronie",
+    tocAriaLabel: "Na tej stronie",
+  },
+  workshop: {
+    contactMailtoLabel: "Napisz do Pracowni",
+    lightbox: {
+      close: "Zamknij",
+      closeAria: "Zamknij",
+      previous: "Poprzednie",
+      previousAria: "Poprzednie zdjęcie",
+      next: "Następne",
+      nextAria: "Następne zdjęcie",
+      position: "{index} z {total}",
+      openPhoto: "Powiększ zdjęcie: {alt}",
+    },
+  },
   home: {
     hero: {
       title: "Uczymy pisania ikon od 2010 roku.",

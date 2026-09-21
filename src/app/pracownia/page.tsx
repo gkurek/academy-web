@@ -1,8 +1,13 @@
-import { PagePlaceholder } from "@/components/PagePlaceholder";
-import { footerSitemap } from "@/navigation";
+import { notFound } from "next/navigation";
 
-const title = footerSitemap.find((item) => item.href === "/pracownia")!.label;
+import { WorkshopPage } from "@/components/text/WorkshopPage";
+import { getWorkshopPage } from "@/content/pages";
 
 export default function StudioPage() {
-  return <PagePlaceholder title={title} />;
+  const page = getWorkshopPage();
+  if (!page) {
+    notFound();
+  }
+
+  return <WorkshopPage page={page} />;
 }
