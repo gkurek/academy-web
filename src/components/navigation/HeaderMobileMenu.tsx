@@ -76,11 +76,18 @@ export function HeaderMobileMenu({ active, phone, blogUrl }: HeaderMobileMenuPro
   const drawerRef = useRef<HTMLDivElement>(null);
   const menuButtonRef = useRef<HTMLButtonElement>(null);
 
+  const iconsNavItem = mainNav.find((item) => item.href === "/ikony");
+
   const closeMenu = useCallback(() => {
     setIsOpen(false);
     setExpandedSection(null);
     menuButtonRef.current?.focus();
   }, []);
+
+  const openMenu = useCallback(() => {
+    setIsOpen(true);
+    setExpandedSection(iconsNavItem?.label ?? null);
+  }, [iconsNavItem?.label]);
 
   useLayoutEffect(() => {
     const headerBar = headerBarRef.current;
@@ -172,7 +179,7 @@ export function HeaderMobileMenu({ active, phone, blogUrl }: HeaderMobileMenuPro
         <button
           ref={menuButtonRef}
           type="button"
-          onClick={() => setIsOpen((value) => !value)}
+          onClick={() => (isOpen ? closeMenu() : openMenu())}
           aria-expanded={isOpen}
           aria-controls={drawerId}
           aria-label={pl.header.menuToggleLabel}

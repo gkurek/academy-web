@@ -5,6 +5,7 @@ import type { ComponentPropsWithoutRef } from "react";
 import { OfferFigure } from "@/components/content/OfferFigure";
 import { SemesterProgram } from "@/components/content/SemesterProgram";
 import { StepList } from "@/components/content/StepList";
+import { NewsCta } from "@/components/news/NewsCta";
 
 type ImgProps = ComponentPropsWithoutRef<"img">;
 
@@ -56,6 +57,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     OfferFigure,
     SemesterProgram,
     StepList,
+    NewsCta,
     ...components,
   };
 }

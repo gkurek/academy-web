@@ -98,7 +98,7 @@ Kryterium „gotowe": galeria 4×3 desktop, 2 kol. mobile (6g lightbox: Esc, str
 
 ## Ryzyka i pytania otwarte
 
-- **Backlog (2026-09-21, K-50):** linki OA-55 i OA-63 (`TextLink → /wydarzenia`) wdrożone w kawałku 2 prowadzą do trasy, która nie powstaje — dział „Wydarzenia” zlikwidowany. Do podmiany na `/aktualnosci` w etapie 8; etykieta do decyzji (patrz `docs/copy-o-akademii-pracownia.md`). Status kawałka 2 bez zmian.
+- **Backlog (2026-09-21, K-50):** linki OA-55 i OA-63 (`TextLink → /wydarzenia`) wdrożone w kawałku 2 prowadzą do trasy, która nie powstaje — dział „Wydarzenia” zlikwidowany. Korekta → `/aktualnosci`, etykieta „Aktualności” (D-07-09) — **etap 7**, kawałek 4 (`docs/plans/07-aktualnosci.md`).
 
 - **Pytania do klientki** w `docs/copy-o-akademii-pracownia.md` (9 pozycji) — nie blokują implementacji; placeholdery lub copy „jak jest" do weryfikacji.
 - **Liczba 15 sezonów (OA-53):** copy zakłada bieżący 2026/2027 w liczbie — do potwierdzenia (pytanie 4); wartości 2010/2012 z briefu §8 wpisujemy jako prawdziwe.

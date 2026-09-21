@@ -104,7 +104,7 @@
     "links": [
       { "href": "/wyklady/archiwum", "label": "Archiwum wykładów" },
       { "href": "/wyklady/wykladowcy", "label": "Wykładowcy" },
-      { "href": "/wydarzenia", "label": "Wydarzenia" }
+      { "href": "/aktualnosci", "label": "Aktualności" }
     ]
   },
   "activities": {
@@ -133,7 +133,7 @@
       }
     ],
     "links": [
-      { "href": "/wydarzenia", "label": "Wydarzenia" },
+      { "href": "/aktualnosci", "label": "Aktualności" },
       { "href": "/ikony/na-zamowienie", "label": "Ikony na zamówienie" }
     ]
   },

@@ -7,7 +7,7 @@ export type NavLink = { label: string; href: string };
 
 export type MainNavItem = NavLink & {
   // Sub-links shown in the mobile menu accordion for this section.
-  // Sections without `children` render as a flat link (O Akademii, Wydarzenia, Kontakt).
+  // Sections without `children` render as a flat link (O Akademii, Aktualności, Kontakt).
   children?: NavLink[];
 };
 
@@ -32,13 +32,17 @@ export const mainNav: MainNavItem[] = [
   {
     label: "Ikony",
     href: "/ikony",
-    children: [{ label: "Ikony na zamówienie", href: "/ikony/na-zamowienie" }],
+    children: [
+      { label: "Galeria", href: "/ikony" },
+      { label: "Wystawa", href: "/ikony/wystawa" },
+      { label: "Ikony na zamówienie", href: "/ikony/na-zamowienie" },
+    ],
   },
-  { label: "Wydarzenia", href: "/wydarzenia" },
+  { label: "Aktualności", href: "/aktualnosci" },
   { label: "Kontakt", href: "/kontakt" },
 ];
 
-export type SectionKey = "o-akademii" | "warsztaty" | "wyklady" | "ikony" | "wydarzenia";
+export type SectionKey = "o-akademii" | "warsztaty" | "wyklady" | "ikony";
 
 // Each list's first item is the section hub itself and stands in for the
 // breadcrumb (see design/README §4 — Breadcrumb).
@@ -59,15 +63,8 @@ export const sectionNav: Record<SectionKey, NavLink[]> = {
   ],
   ikony: [
     { label: "Galeria", href: "/ikony" },
+    { label: "Wystawa", href: "/ikony/wystawa" },
     { label: "Ikony na zamówienie", href: "/ikony/na-zamowienie" },
-  ],
-  // Category filters via query string — no separate /wydarzenia/* routes (brief §3).
-  wydarzenia: [
-    { label: "Wszystkie", href: "/wydarzenia" },
-    { label: "Wystawy", href: "/wydarzenia?kategoria=wystawa" },
-    { label: "Poświęcenia", href: "/wydarzenia?kategoria=poswiecenie" },
-    { label: "Oprowadzania", href: "/wydarzenia?kategoria=oprowadzanie" },
-    { label: "Wyjazdy studyjne", href: "/wydarzenia?kategoria=wyjazd" },
   ],
 };
 
@@ -88,16 +85,12 @@ export const footerSitemap: MainNavItem[] = [
   {
     label: "Ikony",
     href: "/ikony",
-    children: [
-      { label: "Galeria", href: "/ikony" },
-      { label: "Ikony na zamówienie", href: "/ikony/na-zamowienie" },
-    ],
+    children: sectionNav.ikony,
   },
   { label: "Pracownia", href: "/pracownia" },
-  { label: "Wydarzenia", href: "/wydarzenia" },
-  { label: "Aktualności", href: "/aktualnosci" },
+  mainNav[4], // Aktualności
   { label: "Publikacje", href: "/publikacje" },
-  { label: "Kontakt", href: "/kontakt" },
+  mainNav[5], // Kontakt
 ];
 
 export const footerLegalLink: NavLink = {

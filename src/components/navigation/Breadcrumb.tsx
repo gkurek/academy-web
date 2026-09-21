@@ -21,7 +21,7 @@ export function Breadcrumb({ items }: BreadcrumbProps) {
     >
       {items.map((item, index) => (
         <Fragment key={item.label}>
-          {index > 0 && <span aria-hidden="true">·</span>}
+          {index > 0 && <span aria-hidden="true">›</span>}
           {item.href ? (
             <Link href={item.href} className="text-text-tertiary border-b border-border-secondary">
               {item.label}
