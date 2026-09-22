@@ -264,6 +264,40 @@ export type AboutPageData = TextPageData & {
   };
 };
 
+// K-51: permanent exhibition in KŚT — icon set changes yearly (vernissage ~17 June).
+export type ExhibitionEdition = {
+  year: number;
+  title: string;
+  subtitle?: string;
+  vernissage?: string;
+  seasonTheme?: string;
+  iconCount?: number;
+  poster?: Image;
+  photos?: Image[];
+  summary?: string;
+  tours?: { date: string; topic: string }[];
+  newsSlug?: string;
+};
+
+export type ExhibitionState = "zapowiedz" | "biezaca";
+
+/** Before the edition vernissage → zapowiedz; after → biezaca (K-51). */
+export function getExhibitionState(
+  edition: ExhibitionEdition | undefined,
+  now: Date,
+): ExhibitionState {
+  if (!edition?.vernissage) {
+    return "biezaca";
+  }
+
+  const vernissage = new Date(edition.vernissage);
+  return now < vernissage ? "zapowiedz" : "biezaca";
+}
+
+export function editionsWithGallery(editions: ExhibitionEdition[]): ExhibitionEdition[] {
+  return editions.filter((edition) => (edition.photos?.length ?? 0) > 0);
+}
+
 export type SiteSettings = {
   orgName: string;
   place: string;

@@ -74,7 +74,7 @@ Kryterium „gotowe”: osadzona mapa (nie surowy link); dwa maile klikalne (`ma
 
 Zakres: typy i `exhibition.ts`; `editions.json` (2015–2026, sample) + `page.mdx`; komponenty wystawy (WY-*: blok praktyczny, stany 7a/7c/7d, bieżąca edycja, opis stały, `#oprowadzania`, poprzednie edycje z K-54); `/ikony/wystawa`; `UpcomingHighlights` — trzeci kafel z `getExhibitionState()` (D-08-07); skrócony filar „Ikony” w `pl.ts`; usunięcie OA-62 poz. 5; sekcja „Gdzie byliśmy” w `plener.mdx`; czyszczenie `settings.json` (`upcoming` → 2 wpisy).
 
-Kryterium „gotowe”: zgodność z makietą 7a–7d (desktop + 390 px); `SectionNav` „Wystawa” aktywna; stany `zapowiedz`/`biezaca` z danych; edycje bez zdjęć = linijka; kafel home i filar Ikony zgodne z K-58; build/lint OK; nawigacja klawiaturą na galerii/lightboxie edycji.
+Kryterium „gotowe”: zgodność z makietą 7a–7d (desktop + 390 px); `SectionNav` „Wystawa” aktywna, **bez `Breadcrumb`** (jak Galeria i Ikony na zamówienie); stany `zapowiedz`/`biezaca` z danych; edycje bez zdjęć = linijka; kafel home i filar Ikony zgodne z K-58; build/lint OK; nawigacja klawiaturą na galerii/lightboxie edycji.
 
 ### Kawałek 3 — Publikacje (K-76)
 
@@ -131,6 +131,6 @@ Kryterium „gotowe”: polityka renderuje treść z WP (nie placeholder); 404 w
 | Kawałek | Status | Uwagi z checkpointu |
 | ------- | ------ | ------------------- |
 | 1 — Kontakt + MapBlock | ✅ | ContactPage + MapBlock; układ 2×2 (Adres ↔ Organizator); maile wyrównane do dołu mapy; Organizator + Akademia w sieci wg makiety 2a-kontakt; bez `<br>` pod mailem (kontakt + stopka); zakrystia w MDX — weryfikacja EJK |
-| 2 — Wystawa + home + LSŚ + K-77 | ⬜ | |
+| 2 — Wystawa + home + LSŚ + K-77 | ✅ | typy + exhibition.ts; editions.json 2015–2026 + page.mdx/body.mdx; komponenty WY-*; /ikony/wystawa; UpcomingHighlights z getExhibitionUpcomingHighlight(); filar Ikony (K-58); OA-62 poz. 5 usunięta; „Gdzie byliśmy” w letnia-szkola-swiatla.mdx; settings upcoming → 2 wpisy; poprawka: usunięty `Breadcrumb` (SectionNav jak Galeria / Ikony na zamówienie) |
 | 3 — Publikacje (K-76) | ⬜ | |
 | 4 — Polityka + 404 + DoD | ⬜ | |

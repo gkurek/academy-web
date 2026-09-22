@@ -86,7 +86,7 @@ export const pl = {
       },
       {
         title: "Ikony",
-        body: "Prace Elżbiety Jackowskiej-Kurek i uczniów, wystawy, ikony na zamówienie, poświęcenia, oprowadzania kuratorskie i wyjazdy studyjne.",
+        body: "Prace Elżbiety Jackowskiej-Kurek i uczniów, stała wystawa w kościele, ikony na zamówienie.",
         linkLabel: "Galeria",
         href: "/ikony",
         image: {
@@ -195,6 +195,7 @@ export const pl = {
     semesterProgramIntro:
       "Sześć semestrów, każdy zamknięty własnym zadaniem malarskim.",
     plenerQuotesHeading: "Głosy z pleneru",
+    whereWeWereHeading: "Gdzie byliśmy",
     orderStepsHeading: "Jak przebiega zamówienie",
     orderStepsIntro: "Trzy kroki od pierwszego maila do gotowej ikony.",
     orderExamplesHeading: "Przykłady realizacji",
@@ -320,6 +321,77 @@ export const pl = {
         alt: "Plener ikonowy",
         width: 1440,
         height: 810,
+      },
+    },
+  },
+  exhibition: {
+    facts: {
+      srHeading: "Informacje praktyczne o wystawie",
+      where: "Gdzie",
+      when: "Kiedy",
+      whenValue: "W godzinach otwarcia kościoła",
+      admission: "Wstęp",
+      admissionValue: "darmowy",
+      currentEdition: "Bieżąca edycja",
+      newEdition: "Nowa edycja",
+      newEditionValue:
+        "Wernisaż w czerwcu, w okolicach wspomnienia św. Brata Alberta (17 czerwca)",
+      contactLink: "Dojazd i kontakt",
+    },
+    previewBanner: {
+      label: "Zapowiedź",
+      announcement: "Wernisaż nowej edycji: {date}",
+      dateFallback: "[do uzupełnienia: data wernisażu]",
+      newsLink: "Szczegóły w aktualnościach",
+    },
+    currentEdition: {
+      heading: "Bieżąca edycja {year}",
+      heroAlt: "Wernisaż edycji {year}",
+      seasonIntro: "Edycji towarzyszy sezon wykładów „{theme}”.",
+      seasonLink: "Program sezonu",
+      posterCaption: "Plakat edycji {year}",
+      posterPlaceholder: "[do uzupełnienia: plakat edycji {year}]",
+      photoPlaceholder: "[do uzupełnienia: zdjęcia z wernisażu edycji {year}]",
+    },
+    galleryThumbsAria: "Miniatury zdjęć z wystawy",
+    galleryCaption: "Zdjęcia z wernisażu i ekspozycji — kliknięcie otwiera powiększenie.",
+    description: {
+      heading: "Jak wygląda wystawa",
+      photoPlaceholder: "[do uzupełnienia: zdjęcie wnętrza wystawy]",
+    },
+    tours: {
+      title: "Oprowadzania kuratorskie",
+      intro:
+        "Oprowadzanie prowadzi Elżbieta Jackowska-Kurek: opowiada o warsztacie ikonografa, o wybranych ikonach z wystawy i o ich teologii.",
+      currentEditionLabel: "Terminy edycji {year}",
+      newEditionLabel: "Terminy nowej edycji {year}",
+      dateFallback: "[data]",
+      footnote:
+        "Tematy z poprzednich edycji — daty bieżącej edycji [do uzupełnienia].",
+    },
+    previousEdition: {
+      heading: "Poprzednie edycje",
+      lead: "Co roku na wystawie pojawia się nowy zestaw ikon. Poniżej edycje z minionych lat.",
+      viewPhotos: "Zobacz zdjęcia",
+      iconCount: "{count} ikon",
+      photoPlaceholder: "[do uzupełnienia: zdjęcia z edycji {year}]",
+      photoThumbPlaceholder: "[do uzupełnienia]",
+    },
+    footer: {
+      intro: "Zacznij tutaj",
+      galleryLink: "Zobacz ikony w galerii",
+      orderLink: "Chcesz napisać własną ikonę?",
+    },
+    upcoming: {
+      biezaca: {
+        title: "Wystawa ikon · edycja {year}",
+        text: "Czynna w godzinach otwarcia kościoła",
+        linkLabel: "O wystawie",
+      },
+      zapowiedz: {
+        title: "Wernisaż {date}",
+        text: "Zapraszamy na oprowadzenia kuratorskie po nowej edycji",
+        linkLabel: "O wystawie",
       },
     },
   },
