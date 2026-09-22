@@ -54,23 +54,19 @@ function FooterContactBlock() {
       {settings.emails.map((email, index) => (
         <div key={email.address} className={index > 0 ? "mt-space-5" : undefined}>
           <div className={`${contactLabelClass} mb-space-1`}>{email.label}</div>
-          <a href={`mailto:${email.address}`} className={contactLinkClass}>
-            {email.address}
-          </a>
-          {index === 0 && (
-            <>
-              <br />
-              <a href={telHref} className={contactLinkClass}>
+          <div className="grid gap-space-1">
+            <a href={`mailto:${email.address}`} className={`${contactLinkClass} w-fit`}>
+              {email.address}
+            </a>
+            {index === 0 ? (
+              <a href={telHref} className={`${contactLinkClass} w-fit`}>
                 {settings.phone}
               </a>
-            </>
-          )}
-          {email.contactName && (
-            <>
-              <br />
-              <span className="text-text-tertiary">{email.contactName}</span>
-            </>
-          )}
+            ) : null}
+          </div>
+          {email.contactName ? (
+            <span className="mt-space-2 block text-text-tertiary">{email.contactName}</span>
+          ) : null}
         </div>
       ))}
 

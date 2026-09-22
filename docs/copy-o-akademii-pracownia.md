@@ -55,7 +55,7 @@ Wersja 1 · 2026-09-20 · podmiana lorem w makiecie `Akademia Ikony - O Akademii
 | OA-55 | TextLink → /aktualnosci (dawniej `/wydarzenia`, zlikwidowane K-50, 2026-09-21) | 1–2 / 1 | do decyzji: „Aktualności” (mylące, bo link „Wydarzenia” prowadziłby do ogólnego strumienia) czy wariant etykiety „Z życia Akademii” — patrz pytania niżej |
 | OA-60 | H2 „Co jeszcze robimy” | 5 / 5 | Spotkania, wyjazdy, modlitwa przed ikoną |
 | OA-61 | lead sekcji | 22 / 23 | Oprócz warsztatów i wykładów organizujemy spotkania, wyjazdy i nabożeństwa, a także chętnie przyjmujemy zaproszenia. Wszystkie te działania wyrastają z tego samego: z ikony. |
-| OA-62 | `ActivityList`, 5 pozycji | → tabela OA-62 niżej | (K-56: bez zmian w treści — wyjazdy nieplanowane, ale niezakończone, copy w czasie teraźniejszym zostaje) |
+| OA-62 | `ActivityList`, 4 pozycje (poz. 5 do usunięcia, K-77) | → tabela OA-62 niżej | (K-56: bez zmian w treści poz. 1–4 — wyjazdy nieplanowane, ale niezakończone, copy w czasie teraźniejszym zostaje) |
 | OA-63 | TextLink → /aktualnosci (dawniej `/wydarzenia`, zlikwidowane K-50, 2026-09-21) | 1–3 / 1 | do decyzji — patrz uwaga przy OA-55 |
 | OA-63 | TextLink → /ikony/na-zamowienie | 1–3 / 3 | Ikony na zamówienie |
 | OA-70 | H2 „Pracownia i miejsce” | 3 / 3 | Pracownia i miejsce |
@@ -92,7 +92,9 @@ Wersja 1 · 2026-09-20 · podmiana lorem w makiecie `Akademia Ikony - O Akademii
 | 4 | Ikony do modlitwy | Udostępniamy ikony do modlitwy i zapraszamy do wspólnej modlitwy przed ikonami w Kościele Środowisk Twórczych. | 3 / 15 |
 | 5 | Poświęcenia ikon | Ikony napisane podczas warsztatów bywają poświęcane we wspólnocie, na zakończenie wspólnej pracy nad nimi. | 2 / 14 |
 
-Uwaga (K-55, 2026-09-21): docelowo pozycja może linkować do artykułu „Podpisanie i poświęcenie ikony” w Publikacjach (tekst przeniesiony tam po redakcji z EJK); na razie bez linku.
+**[DO USUNIĘCIA — K-77]** Wiersz 5 powyżej — pozycja do usunięcia z `ActivityList` w `content/` (opisuje praktykę jako powtarzalną; poświęcenie było jednorazowym wydarzeniem plenerowym).
+
+Uwaga (K-77, 2026-09-22): pozycja 5 „Poświęcenia ikon” **do usunięcia** z `ActivityList`. Treść o poświęceniu trafia do wpisu Aktualności `kind: 'plener'` po redakcji EJK (nie do Publikacji). *(Zastępuje uwagę K-55 o Publikacjach.)*
 
 Plenery (Letnia Szkoła Światła), wystawy i ikony na zamówienie są pominięte celowo. Plenery należą do filaru Warsztaty, wystawy i zamówienia do filaru Ikony, a zamówienia mają własny link w OA-63.
 

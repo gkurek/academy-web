@@ -1,7 +1,10 @@
+import type { ComponentType } from "react";
+
 import type { AboutPageData, WorkshopPageData } from "@/content/types";
 import oAkademiiMeta from "../../content/pages/o-akademii.json";
 import pracowniaMeta from "../../content/pages/pracownia.json";
 import * as aboutParagraphs from "../../content/pages/o-akademii.mdx";
+import ContactContent from "../../content/pages/kontakt.mdx";
 import * as workshopParagraphs from "../../content/pages/pracownia.mdx";
 
 type AboutParagraphExports = {
@@ -29,6 +32,10 @@ export type LoadedWorkshopPage = WorkshopPageData & {
   curriculumParagraphs: string[];
 };
 
+export type LoadedContactPage = {
+  Content: ComponentType;
+};
+
 const aboutPageMeta = oAkademiiMeta as AboutPageData;
 const workshopPageMeta = pracowniaMeta as WorkshopPageData;
 
@@ -48,4 +55,8 @@ export function getWorkshopPage(): LoadedWorkshopPage | undefined {
     body: "",
     curriculumParagraphs,
   };
+}
+
+export function getContactPage(): LoadedContactPage {
+  return { Content: ContactContent };
 }

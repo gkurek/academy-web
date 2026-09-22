@@ -370,6 +370,14 @@
   --interview-exchange-y: 22px;
   --interview-signature-mt: var(--space-6);
   --interview-signature-mt-m: var(--space-5);
+
+  /* /kontakt — MapBlock embed (mockup 2a-kontakt, MapBlock.jsx). */
+  --contact-map-h: 420px;
+  --contact-map-h-m: 320px;
+  --contact-email-label-mb: 8px;
+  --contact-email-line-mb: 6px;
+  --contact-email-phone-mb: 8px;
+  --contact-aside-offset: var(--space-6);
 }
 
 /* Tailwind utility mappings for the tokens this piece actually consumes.
@@ -642,6 +650,9 @@
   --spacing-text-page-toc-sticky: var(--text-page-toc-sticky-top);
   --grid-template-columns-text-page-section: var(--text-page-heading-col) minmax(0, 1fr);
   --grid-template-columns-text-page-toc: var(--text-page-toc-col) minmax(0, 1fr);
+  --grid-template-columns-map-block: minmax(0, 1.3fr) minmax(0, 1fr);
+  --spacing-contact-map: var(--contact-map-h);
+  --spacing-contact-map-m: var(--contact-map-h-m);
 }
 
 @layer base {
@@ -2461,6 +2472,89 @@
     }
   }
 
+  /* /kontakt — two-row grid aligns Adres with Organizator (mockup 2a-kontakt). */
+  .contact-page-grid {
+    display: grid;
+    gap: var(--space-7);
+  }
+
+  .contact-page-emails {
+    display: grid;
+    gap: var(--hairline-gap);
+    background: var(--line-gold);
+  }
+
+  .contact-email-card {
+    background: var(--surface-card);
+    padding: var(--tile-padding);
+  }
+
+  .contact-email-label {
+    margin-bottom: var(--contact-email-label-mb);
+    font-family: var(--font-serif);
+    font-size: var(--size-nav);
+    color: var(--accent);
+  }
+
+  .contact-email-line {
+    display: block;
+    width: fit-content;
+    font-size: var(--role-row-title-m);
+    line-height: var(--leading-body);
+    color: var(--text-list-title);
+    margin-bottom: var(--contact-email-line-mb);
+  }
+
+  .contact-email-line:last-of-type {
+    margin-bottom: var(--contact-email-phone-mb);
+  }
+
+  .contact-email-name {
+    font-size: var(--size-ui);
+    line-height: var(--leading-body);
+    color: var(--text-tertiary);
+  }
+
+  @media (min-width: 1024px) {
+    .contact-page-grid {
+      grid-template-columns: 1fr 1fr;
+      column-gap: var(--space-8);
+      row-gap: 0;
+      align-items: stretch;
+    }
+
+    .contact-page-top-left {
+      grid-column: 1;
+      grid-row: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .contact-page-emails {
+      margin-top: auto;
+    }
+
+    .contact-page-map {
+      grid-column: 2;
+      grid-row: 1;
+    }
+
+    .contact-page-address {
+      grid-column: 1;
+      grid-row: 2;
+      padding-top: var(--contact-aside-offset);
+    }
+
+    .contact-page-aside {
+      grid-column: 2;
+      grid-row: 2;
+      padding-top: var(--contact-aside-offset);
+    }
+
+    .contact-email-line {
+      font-size: var(--role-row-title);
+    }
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

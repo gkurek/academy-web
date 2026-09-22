@@ -323,6 +323,18 @@ export const pl = {
       },
     },
   },
+  contact: {
+    breadcrumbHome: "Strona główna",
+    addressHeading: "Adres",
+    mapTitle: "Mapa dojazdu",
+    mapPlaceholder: "Mapa — osadzenie zewnętrzne",
+    organizerHeading: "Organizator",
+    organizerLead: "Fundacja IKONA DZIŚ —",
+    organizerLinkLabel: "ikonadzis.org",
+    organizerTail: " Akademia Ikony jest jej projektem wiodącym.",
+    onlineHeading: "Akademia w sieci",
+    blogLinkLabel: "Blog — studiumikony.blogspot.com",
+  },
   news: {
     title: "Aktualności",
     lead:
