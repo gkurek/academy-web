@@ -1,8 +1,12 @@
-import { PagePlaceholder } from "@/components/PagePlaceholder";
-import { footerSitemap } from "@/navigation";
+import type { Metadata } from "next";
 
-const title = footerSitemap.find((item) => item.href === "/publikacje")!.label;
+import { PublicationsHubPage } from "@/components/publications/PublicationsHubPage";
+import { pl } from "@/i18n/pl";
+
+export const metadata: Metadata = {
+  title: pl.publications.title,
+};
 
 export default function PublicationsPage() {
-  return <PagePlaceholder title={title} />;
+  return <PublicationsHubPage />;
 }

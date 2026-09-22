@@ -298,6 +298,39 @@ export function editionsWithGallery(editions: ExhibitionEdition[]): ExhibitionEd
   return editions.filter((edition) => (edition.photos?.length ?? 0) > 0);
 }
 
+// K-76: Publikacje — jeden album jubileuszowy + artykuły (bez zakładek, bez SectionNav).
+export type Author = { name: string; lecturerSlug?: string };
+
+export type Publication = {
+  slug: string;
+  title: string;
+  year: number;
+  publisher: string; // "Fundacja IKONA DZIŚ"
+  isbn?: string;
+  pages: number;
+  format: string; // "23 × 23 cm"
+  price?: number; // PLN; brak = nie w sprzedaży
+  availability: "dostepny" | "wyczerpany";
+  cover: Image;
+  spreads: Image[];
+  toc: { title: string; author: Author; articleSlug?: string }[];
+  sample?: boolean;
+};
+
+export type ArticleSource =
+  | { kind: "album"; publicationSlug: string }
+  | { kind: "media"; outlet: string; date: string; url?: string; excerptOnly?: boolean };
+
+export type Article = {
+  slug: string;
+  title: string;
+  authors: Author[];
+  year: number;
+  excerpt: string;
+  source: ArticleSource;
+  sample?: boolean;
+};
+
 export type SiteSettings = {
   orgName: string;
   place: string;
