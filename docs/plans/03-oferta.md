@@ -6,7 +6,7 @@ Makiety: `design/Akademia Ikony - kierunki wizualne.dc.html` — `#1a-oferta` (k
 
 ## Cel i zakres
 
-Jeden szablon strony ofertowej (`OfferPage`) obsługujący cztery `kind` z `OfferFacts`; hub `/warsztaty` z `OfferCard`; komponenty `FactsBox` (oba stany naboru), `SemesterProgram`, `StepList`. Treść wyłącznie z `content/offers/*.mdx` przez warstwę `src/content/offers.ts`; renderer MDX (`@next/mdx`). W zakresie: `/warsztaty`, `/warsztaty/kurs-roczny-i-trzyletni`, `/warsztaty/letnia-szkola-swiatla`, `/ikony/na-zamowienie` oraz plik `content/offers/wyklady.mdx` pod gotowy szablon (trasa `/wyklady` nadal placeholder do etapu 4). Poza zakresem: pełna strona `/wyklady`, analityka (K-15, etap 9), JSON-LD `Course` (etap 9).
+Jeden szablon strony ofertowej (`OfferPage`) obsługujący cztery `kind` z `OfferFacts`; hub `/warsztaty` z `OfferCard`; komponenty `FactsBox` (oba stany naboru), `SemesterProgram`, `StepList`. Treść wyłącznie z `content/offers/*.mdx` przez warstwę `src/content/offers.ts`; renderer MDX (`@next/mdx`). W zakresie: `/warsztaty`, `/warsztaty/kurs-roczny-i-trzyletni`, `/warsztaty/letnia-szkola-swiatla`, `/ikony/na-zamowienie` oraz plik `content/offers/wyklady.mdx` pod gotowy szablon (trasa `/wyklady` nadal placeholder do etapu 4). Poza zakresem: pełna strona `/wyklady`, analityka (K-15, etap 10), JSON-LD `Course` (etap 10).
 
 ## Decyzje podjęte w sesji planistycznej
 

@@ -1,12 +1,12 @@
 # Plan 06 — Strony o akademii i pracownia
 
-Status: zatwierdzony 2026-09-20
+Status: zamknięty 2026-09-21 (4/4 kawałki, merge PR #7)
 Gałąź: feat/06-about
 Makiety: `design/Akademia Ikony - O Akademii i Pracownia.dc.html` — ekrany 6a–6i; handoff: `design/README-o-akademii-pracownia.md`. Copy: `docs/copy-o-akademii-pracownia.md` (sloty 1:1 z `data-slot` w makiecie).
 
 ## Cel i zakres
 
-Wspólny szablon strony tekstowej z `TocSidebar` (desktop, sticky — 6i) i `TocCollapse` (mobile — 6h/6d) oraz dwie treściowe strony: `/o-akademii` i `/pracownia`. Treść wyłącznie z `content/` (JSON + MDX); copy z `docs/copy-o-akademii-pracownia.md` — **bez loremu z makiet** (lorem zostaje tylko w `.dc.html` jako referencja layoutu). `SectionNav` dla pary O Akademii · Pracownia (K-48). Poza zakresem: aktualności (etap 7), kontakt, wydarzenia, publikacje, polityka, 404 (etap 8); migracja WP (etap 10) — te strony to nowa treść redakcyjna, nie import z WP.
+Wspólny szablon strony tekstowej z `TocSidebar` (desktop, sticky — 6i) i `TocCollapse` (mobile — 6h/6d) oraz dwie treściowe strony: `/o-akademii` i `/pracownia`. Treść wyłącznie z `content/` (JSON + MDX); copy z `docs/copy-o-akademii-pracownia.md` — **bez loremu z makiet** (lorem zostaje tylko w `.dc.html` jako referencja layoutu). `SectionNav` dla pary O Akademii · Pracownia (K-48). Poza zakresem: aktualności (etap 7), kontakt, wydarzenia, publikacje, polityka, 404 (etap 8); migracja WP (etap 9) — te strony to nowa treść redakcyjna, nie import z WP.
 
 ## Decyzje podjęte w sesji planistycznej
 
@@ -85,7 +85,7 @@ Kryterium „gotowe": galeria 4×3 desktop, 2 kol. mobile (6g lightbox: Esc, str
 | Staż pracowni EJK (`[DO UZUPEŁNIENIA: liczba lat]`) | `content/pages/o-akademii.json` (bio) | potwierdzenie klientki (pytanie 1) |
 | Rozmowa — 5 nowych pytań ML + zmiany redakcyjne | `content/pages/pracownia.json` (`interview`) | akceptacja EJK (copy doc §„Zmiany redakcyjne") |
 | Portret EJK | `public/media/workshop/ejk-portret.jpg` | zdjęcie od klientki jeśli obecne nieaktualne |
-| Zdjęcia warsztatowe | `public/media/workshop/*` | opcjonalnie wyższa jakość / nowa sesja (etap 10 nie migruje tych stron) |
+| Zdjęcia warsztatowe | `public/media/workshop/*` | opcjonalnie wyższa jakość / nowa sesja (etap 9 nie migruje tych stron) |
 
 ## Kryteria ukończenia etapu
 

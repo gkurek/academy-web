@@ -6,11 +6,11 @@ Makiety: `design/Akademia Ikony - kierunki wizualne.dc.html` — `#2a-wyklady` (
 
 ## Cel i zakres
 
-Trzy trasy sekcji Wykłady: hub `/wyklady` (program bieżącego sezonu, FactsBox, sekcja archiwum: lead z `archive.json` + link „Pełne archiwum”), `/wyklady/archiwum` (pełna lista sezonów w `SeasonAccordion`), `/wyklady/wykladowcy` (wykładowcy ze zdjęciem i bio jak na akademiaikony.pl). Komponenty `LectureList`, `SeasonAccordion`, `LecturerCard`; warstwa `src/content/lectures.ts` + `src/content/lecturers.ts`; dane w `content/lectures/*.json` i `content/lecturers.json`. Hub to **osobny** `LecturesHubPage` — nie `OfferPage`; `content/offers/wyklady.mdx` zostaje źródłem **FactsBox** (zapisy, „W skrócie”). Poza zakresem: emisja JSON-LD `Event` (K-17 → etap 9), analityka (K-15), migracja pełnych 16 sezonów (etap 10).
+Trzy trasy sekcji Wykłady: hub `/wyklady` (program bieżącego sezonu, FactsBox, sekcja archiwum: lead z `archive.json` + link „Pełne archiwum”), `/wyklady/archiwum` (pełna lista sezonów w `SeasonAccordion`), `/wyklady/wykladowcy` (wykładowcy ze zdjęciem i bio jak na akademiaikony.pl). Komponenty `LectureList`, `SeasonAccordion`, `LecturerCard`; warstwa `src/content/lectures.ts` + `src/content/lecturers.ts`; dane w `content/lectures/*.json` i `content/lecturers.json`. Hub to **osobny** `LecturesHubPage` — nie `OfferPage`; `content/offers/wyklady.mdx` zostaje źródłem **FactsBox** (zapisy, „W skrócie”). Poza zakresem: emisja JSON-LD `Event` (K-17 → etap 10), analityka (K-15), migracja pełnych 16 sezonów (etap 9).
 
 ## Decyzje podjęte w sesji planistycznej
 
-- **K-17:** JSON-LD `Event` — w etapie 4 **dane gotowe** (daty ISO w `Lecture.date`, lokalizacja w warstwie treści); **emisja** `<script type="application/ld+json">` dopiero w etapie 9.
+- **K-17:** JSON-LD `Event` — w etapie 4 **dane gotowe** (daty ISO w `Lecture.date`, lokalizacja w warstwie treści); **emisja** `<script type="application/ld+json">` dopiero w etapie 10.
 - **K-18:** Hub `/wyklady` — **dedykowany** `LecturesHubPage` wg `#2a-wyklady` (H1 = `cycleTitle`, eyebrow sezonu, `LectureList`, sekcja archiwum: lead + link „Pełne archiwum”); `wyklady.mdx` **nie** renderowany przez `OfferPage`.
 - **K-19:** `/wyklady/wykladowcy` — layout **jak obecna strona WP** (wiersz: zdjęcie + imię/nazwisko + bio), nie siatka `#3a-wykladowcy` bez zdjęć; świadome odstępstwo od makiety, zgodne z treścią klienta.
 - **K-21:** `lecturerSlugs` — join z `lecturer-directory.json` (etykiety w programie) i `lecturers.json` (profile na `/wykladowcy`); brak wpisu w obu → heurystyka ze sluga (bez linku). Rozszerzenia `types.ts`: `affiliationFull`, `introSecondary`, `LecturerDirectoryEntry`.
@@ -102,7 +102,7 @@ Kryterium „gotowe”: strona renderuje wszystkich wykładowców z `content/lec
 - **Odstępstwo makieta vs WP (wykładowcy):** K-19 — layout ze zdjęciami, nie kafelki `#3a`.
 - **Brak osobnej makiety mobile wykładów:** responsywność wg wzorców z etapów 2–3 + `#2a-wyklady` desktop.
 - **Źródła zdjęć wykładowców:** mix `wp-content/uploads` i blogspot — w kroku 0 logować URL-e, które wymagają ręcznego pobrania; unikać `/cache/`.
-- **Archiwum sample vs 16 sezonów:** na v1 wystarczą 2–3 pliki `sample`; reszta (15 archiwalnych + bieżący) w migracji WP (etap 10).
+- **Archiwum sample vs 16 sezonów:** na v1 wystarczą 2–3 pliki `sample`; reszta (15 archiwalnych + bieżący) w migracji WP (etap 9).
 - **Goście spoza rejestru wykładowców:** w archiwum mogą występować slugi bez wpisu w `lecturer-directory.json` / `lecturers.json` — K-21 (etykieta ze sluga, bez linku).
 
 

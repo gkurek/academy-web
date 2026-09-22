@@ -89,7 +89,7 @@ Przy konflikcie: `CLAUDE.md` > plan etapu > `brief-claude-code.md` > `brief-full
 
 ## Nie rób
 
-- Nie dotykaj `.env*`, `next.config.ts` (poza uzgodnionymi przekierowaniami 301 w etapie 10) ani plików w `design/`.
+- Nie dotykaj `.env*`, `next.config.ts` (poza uzgodnionymi przekierowaniami 301 w etapie 9) ani plików w `design/`.
 - Nie uruchamiaj migracji z WordPressa ani żadnych zapytań do `akademiaikony.pl` przed etapem 10.
 - Nie usuwaj i nie przenoś plików poza zakresem kawałka; nie „porządkuj przy okazji”.
 - Nie dodawaj banera cookies, `localStorage`, zewnętrznych skryptów ani analityki bez planu, w którym to jest zapisane.
