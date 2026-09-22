@@ -5,8 +5,8 @@ import { SectionPageShell } from "@/components/layout/SectionPageShell";
 import { NewsGallery } from "@/components/news/NewsGallery";
 import { NewsPoster } from "@/components/news/NewsPoster";
 import { Breadcrumb } from "@/components/navigation/Breadcrumb";
+import { NewsDateMeta } from "@/components/news/NewsDateMeta";
 import {
-  formatNewsDate,
   getNewsKindLabel,
   getNewsNeighbors,
   type LoadedNews,
@@ -25,7 +25,6 @@ function formatAriaLabel(template: string, title: string): string {
 export function NewsArticlePage({ entry, active }: NewsArticlePageProps) {
   const { Content } = entry;
   const kindLabel = getNewsKindLabel(entry.kind);
-  const dateLabel = formatNewsDate(entry.date, entry.dateEnd);
   const neighbors = getNewsNeighbors(entry.slug);
   const hasPoster = Boolean(entry.poster);
   const hasGallery = Boolean(entry.images && entry.images.length > 0);
@@ -44,7 +43,12 @@ export function NewsArticlePage({ entry, active }: NewsArticlePageProps) {
           <p className="news-article-meta">
             <span className="text-accent-text">{kindLabel}</span>
             {" · "}
-            <span className="text-text-tertiary">{dateLabel}</span>
+            <NewsDateMeta
+              date={entry.date}
+              dateEnd={entry.dateEnd}
+              withYear
+              className="text-text-tertiary"
+            />
           </p>
           <h1 className="news-article-title">{entry.title}</h1>
         </header>

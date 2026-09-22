@@ -1,19 +1,12 @@
 [
   {
-    "slug": "149",
-    "title": "Wystawa „Ikona – Piękno zanurzone w Tajemnicy”",
-    "date": "2013-05-20",
-    "kind": "wystawa",
-    "sample": true,
-    "excerpt": "IKONA- PIĘKNO ZANURZONE W TAJEMNICY. wystawa ikony współczesnej. Udział wzięli uczestnicy Akademii Ikony, Studium Ikonograficznego, Pracowni św. Andrzeja Apostoła, Drogi Ikony oraz innych grup jak też twórcy indywidualni -na zaproszenie proboszcza parfii pw. bł. Władysława z Giel"
-  },
-  {
     "slug": "dnia-17-lipca-wspomnienie-sw-andrieja-rublowa",
-    "title": "Dnia 17 lipca- wspomnienie św. Andrieja Rublowa.",
+    "title": "Wspomnienie św. Andrieja Rubłowa — finisaż wystawy „Ikona dziś”",
     "date": "2015-07-17",
     "kind": "wystawa",
     "sample": true,
-    "excerpt": "Wspominając dziś św. Andrieja Rublowa spotkaliśmy się na finisażu wystawy IKONA DZIŚ, która miała miejsce w Kościele Środowisk Twórczych w Warszawie, Plac Teatralny 20. W kościele tym znajdują się relikwie św. Andrzeja Apostoła który jest patronem Akademii Ikony i św. brata Alber"
+    "excerpt": "Wspominając dziś św. Andrieja Rublowa spotkaliśmy się na finisażu wystawy IKONA DZIŚ, która miała miejsce w Kościele Środowisk Twórczych w Warszawie, Plac Teatralny 20. W kościele tym znajdują się relikwie św. Andrzeja Apostoła który jest patronem Akademii Ikony i św. brata Alber",
+    "bodyText": "Wspominając dziś św. Andrieja Rublowa spotkaliśmy się na finisażu wystawy IKONA DZIŚ, która miała miejsce w Kościele Środowisk Twórczych w Warszawie, Plac Teatralny 20. W kościele tym znajdują się relikwie św. Andrzeja Apostoła który jest patronem Akademii Ikony i św. brata Alberta, jedynego, jak dotąd, polskiego świętego artysty. Dziękujemy Piotrowi Janasikowi za przedstawienie prezentacji o pielgrzymowaniu do Ziemi Świętej. Ikona Trójcy Świętej pisana ręką Bożeny Wierzbickiej wg. ikony Andrieja Rublowa."
   },
   {
     "slug": "ekumeniczna-droga-krzyzowa-w-warszawie",
@@ -35,39 +28,44 @@
       "alt": "[do uzupełnienia: podpis zdjęcia]",
       "width": 477,
       "height": 208
-    }
+    },
+    "bodyText": "Drogę Krzyżową w Kościele Środowisk Twórczych pw. św. Brata Alberta i św. Andrzeja Apostoła dnia 31. 03. 2017 poprowadzili ikonografowie z Akademii Ikony, Studium Ikonograficznego pw. św. Andrzeja Apostoła, z warsztatów pisania ikon prowadzonych przez Elżbietę Jackowską-Kurek. Modliliśmy się o jedność chrześcijan. Modliliśmy się za wstawiennictwem św. Brata Alberta, którego relikwie są w naszym kościele. Dziękujemy za wspólną modlitwę!"
   },
   {
     "slug": "ikona-dzis-3",
-    "title": "Ikona dziś- jeden dzień wystawy.",
+    "title": "Ikona dziś — jeden dzień wystawy",
     "date": "2015-07-04",
     "kind": "wystawa",
     "sample": true,
-    "excerpt": "To jest dokumentacja jednego dnia. Wystawa, warsztaty, prelekcja dla Stowarzyszenia Inicjatyw Kobiecych. Warszawa, Kościół Środowisk Twórczych. Na zewnątrz upał a tutaj można pooddychać pełną piersią. Miły piątek. Na koniec dnia odwiedziła nas Ekaterina Loladze, której wręczyliśm"
+    "excerpt": "To jest dokumentacja jednego dnia. Wystawa, warsztaty, prelekcja dla Stowarzyszenia Inicjatyw Kobiecych. Warszawa, Kościół Środowisk Twórczych. Na zewnątrz upał a tutaj można pooddychać pełną piersią. Miły piątek. Na koniec dnia odwiedziła nas Ekaterina Loladze, której wręczyliśm",
+    "bodyText": "To jest dokumentacja jednego dnia. Wystawa, warsztaty, prelekcja dla Stowarzyszenia Inicjatyw Kobiecych. Warszawa, Kościół Środowisk Twórczych. Na zewnątrz upał a tutaj można pooddychać pełną piersią. Miły piątek. Na koniec dnia odwiedziła nas Ekaterina Loladze, której wręczyliśmy Dyplom Ambasadora Fundacji IKONA DZIŚ. Gratulujemy!"
   },
   {
     "slug": "ikona-korzenie-i-owoce-wiary-madrosc-boza-wyklady-2025-2026",
-    "title": "Ikona – Korzenie i owoce wiary. Mądrość Boża. Wykłady 2025/2026",
+    "title": "Mądrość Boża — wykłady 2025/2026",
     "date": "2025-07-14",
     "kind": "wyklady",
     "sample": true,
-    "excerpt": "IKONA – KORZENIE I OWOCE WIARY. MĄDROŚĆ BOŻA Wykłady 2025/2026 14.10 Cnoty teologalne, ks. dr Marek Szymula 18.11 Mądrość Ojca Przedwiecznego, Marcin Bornus-SzczycińskiIkona odblaskiem neoplatońskiej metafizyki światła, dr Magda Dylewska 09.12 Chrystus – Mądrość Boża w ikonografi"
+    "excerpt": "Zapraszamy do zapoznania się z programem wykładów na nadchodzący rok akademicki. W tym roku tematem przewodnim będzie Mądrość Boża.",
+    "bodyText": "IKONA – KORZENIE I OWOCE WIARY. MĄDROŚĆ BOŻA Wykłady 2025/2026 14.10 Cnoty teologalne , ks. dr Marek Szymula 18.11 Mądrość Ojca Przedwiecznego , Marcin Bornus-Szczyciński Ikona odblaskiem neoplatońskiej metafizyki światła , dr Magda Dylewska 09.12 Chrystus – Mądrość Boża w ikonografii wschodniej , ks. prof. dr hab. Józef Naumowicz UKSW Mądrość Boża, głupstwo dla świata. Śmieszność i łaska w literaturze i sztuce , ks. dr Andrzej Persidok 20.01 Dziedzictwo Nicei , ks. dr Henryk Paprocki 17.02 Przymierze Boga z Człowiekiem na podstawie współczesnej realizacji kościelnej , s. Aleksandra Szyborska PDDM Mądrość Boża jako sztuka uważności , o. Maciej Biskup OP 24.03 Caelestis Urbs Jerusalem w Muzycznych Obrazach Mistrzów , dr Emanuel Bączkowski Wschodnie kościoły Mądrości Bożej (Hagia Sofia) – komu są dedykowane ?, ks. prof. dr hab. Naumowicz, UKSW 21.04 Teologia ikony św. Jana z Damaszku , dr Magda Dylewska Na początku była czułość – por. J 1, 18 , o. Maciej Biskup OP 12.05 Odsłony Mądrości Bożej w sztuce Bizancjum , dr Justyna Sprutta Modlitwa jako odnowa relacji z Bogiem , ks. dr Marek Szymula 09.06 Natura i kultura , Michał Wojtczyk 12.06 Zanim zaistniał wszechświat – powołanie jako marzenie Boga. O Sofii Mądrości Bożej , ks. dr hab. Dariusz Klejnowski-Różycki, prof. UO 13.06 Abstrakcja i naturalizm w ikonie, Elżbieta Jackowska-Kurek Wernisaż wystawy ikon Spotkania odbywają się od godz. 18.00 w Kościele Środowisk Twórczych św. Andrzeja Apostoła i św. Brata Alberta Chmielowskiego w Warszawie. Zapisy: sekretariat.ikony22@gmail.com"
   },
   {
     "slug": "ikona-korzenie-i-owoce-wiary-mistyka-dzis-wyklady-2026-2027",
-    "title": "Ikona – Korzenie i owoce wiary. Mistyka dziś. Wykłady 2026/2027",
+    "title": "Mistyka dziś — wykłady 2026/2027",
     "date": "2026-08-25",
     "kind": "wyklady",
     "sample": true,
-    "excerpt": "IKONA – KORZENIE I OWOCE WIARY. MISTYKA DZIŚ Wykłady 2026/2027 06.10 Maryjna duchowość bł. Honorata Koźmińskiego, ks. dr Marek Szymula 10.11 „Przyobleczeni w Chrystusa”. Teologiczne znaczenie szat liturgicznych w obrządku rzymskim, Michał Borkowski W oczach Zachodu. Mistyka buddy"
+    "excerpt": "Prezentujemy program najnowszego sezonu wykładów.",
+    "bodyText": "IKONA – KORZENIE I OWOCE WIARY. MISTYKA DZIŚ Wykłady 2026/2027 06.10 Maryjna duchowość bł. Honorata Koźmińskiego, ks. dr Marek Szymula 10.11 „Przyobleczeni w Chrystusa”. Teologiczne znaczenie szat liturgicznych w obrządku rzymskim, Michał Borkowski W oczach Zachodu. Mistyka buddyjska i hinduistyczna w teologii katolickiej XX wieku, ks. dr Andrzej Persidok 08.12 Dyskrecja Boga i mistyka codzienności. Obraz Świętej Rodziny z Nazaretu u Ojców Kościoła, ks. prof. dr hab. Naumowicz, UKSW 19.01 Paweł Florenski cz. 1, ks. dr Henryk Paprocki Mistyka dziś. Przez ciemność do światła, s. Aleksandra Szyborska PDDM 16.02 Teologia ikony wg Jana Damasceńskiego , dr Magdalena Dylewska Ćwiczenia duchowe starożytnych filozofów, Michał Wojtczyk 09.03 Mistyka w sztuce dziś , ks. dr Andrzej Luter Mistyka dziś. Pochwała prostoty, s. Aleksandra Szyborska PDDM 13.04 Pojęcie kultu obrazu wg Jana Damasceńskiego, dr Magdalena Dylewska Od życia wegetatywnego do prawdziwej egzystencji wg Karla Jaspersa, Michał Wojtczyk Mistyka w Duchu i prawdzie, o. dr Maciej Biskup OP 11.05 Skąpani w świetle, dr Justyna Sprutta Oblicza mistyków w ikonach, dr Justyna Sprutta 08.06 Klasztor św. Katarzyny na Synaju i jego ikony, ks. dr Marek Wojnarowski Malowidła cerkwi Bukowiny , ks. dr Marek Wojnarowski 11.06 Tradycja ikony i sztuki sakralnej w definicjach Kościoła Zachodu , dr hab. Dariusz Klejnowski-Różycki, prof. UO 12.06 Piękno Boga w ikonach, Elżbieta Jackowska-Kurek Wernisaż wystawy ikon , AGAPPA Spotkania odbywają się od godz. 18.00 w Kościele Środowisk Twórczych św. Andrzeja Apostoła i św. Brata Alberta Chmielowskiego w Warszawie. Koszt roczny 400 zł. Po otrzymaniu zgłoszenia na adres [sekretariat.ikony22@gmail.com](mailto:sekretariat.ikony22@gmail.com) prześlemy więcej informacji i nr konta do wpłaty."
   },
   {
     "slug": "ikona-okno-duszy-2019",
     "title": "Wystawa „Ikona okno duszy”",
     "date": "2019-10-05",
+    "dateEnd": "2019-10-26",
     "kind": "wystawa",
     "sample": true,
-    "excerpt": "5 października – 26 października wystawa „IKONA OKNO DUSZY”. Dnia 9 października, w czasie trwania wystawy, miała miejsce inauguracja wykładów Akademii Ikony. W tym roku rozważamy o Duchu Świętym. Wykład inaugurujący pt. „DUCH PARAKLET” wygłosił Duszpasterz Środowisk Twórczych ks",
+    "excerpt": "Zapraszamy na wystawę ikon do Kościoła Środowisk Twórczych na Placu Teatralnym w Warszawie. Wystawę będzie można oglądać w dniach 5–26 października.",
     "images": [
       {
         "src": "/media/sample/news/ikona-okno-duszy-2019-0.jpg",
@@ -83,43 +81,50 @@
       "width": 960,
       "height": 602,
       "caption": "Akademia Ikony w Warszawie - wystawa ikon pod tytułem IKONA - OKNO DUSZY 2019"
-    }
+    },
+    "bodyText": "5 października – 26 października wystawa „IKONA OKNO DUSZY”. Dnia 9 października, w czasie trwania wystawy, miała miejsce inauguracja wykładów Akademii Ikony. W tym roku rozważamy o Duchu Świętym. Wykład inaugurujący pt. „DUCH PARAKLET” wygłosił Duszpasterz Środowisk Twórczych ks. rektor [Grzegorz Michalczyk](https://pl.wikipedia.org/wiki/Grzegorz_Michalczyk), nasz opiekun."
   },
   {
     "slug": "ikona-okno-ku-wiecznosci-2",
-    "title": "IKONA – OKNO KU WIECZNOŚCI – wystawa w Izabelinie",
+    "title": "Wystawa „Ikona – okno ku wieczności” w Izabelinie",
     "date": "2013-12-02",
+    "dateEnd": "2014-01-10",
     "kind": "wystawa",
     "sample": true,
-    "excerpt": "Wystawa ikon w Gminnej Bibliotece Publicznej w Izabelinie w dniach 2.12.2013 – 10.01.2014 Elżbieta Jackowska- Kurek, ikony pisane metodą tradycyjną, Krzysztof Sokołowski, Ikona Relikwiarzowa, Wojciech Til, ikony na kamieniu. Dnia 14.grudnia godz. 13.00 spotkanie autorskie z Elżbi"
+    "excerpt": "Wystawa ikon w Gminnej Bibliotece Publicznej w Izabelinie w dniach 2.12.2013 – 10.01.2014 Elżbieta Jackowska- Kurek, ikony pisane metodą tradycyjną, Krzysztof Sokołowski, Ikona Relikwiarzowa, Wojciech Til, ikony na kamieniu. Dnia 14.grudnia godz. 13.00 spotkanie autorskie z Elżbi",
+    "bodyText": "Wystawa ikon w Gminnej Bibliotece Publicznej w Izabelinie w dniach 2.12.2013 – 10.01.2014 Elżbieta Jackowska- Kurek, ikony pisane metodą tradycyjną, Krzysztof Sokołowski, Ikona Relikwiarzowa, Wojciech Til, ikony na kamieniu. Dnia 14.grudnia godz. 13.00 spotkanie autorskie z Elżbietą Jackowską- Kurek i Krzysztofem Sokołowskim,"
   },
   {
     "slug": "ikona-okno-ku-wiecznosci",
     "title": "Wystawa „Ikona – okno ku wieczności”",
-    "date": "2014-05-25",
+    "date": "2014-05-31",
+    "dateEnd": "2014-06-08",
     "kind": "wystawa",
     "sample": true,
-    "excerpt": "Wystawa w Kościele Środowisk Twórczych pw. św Andrzeja Apostoła i św Alberta Chmielowskiego w Warszawie, Plac Teatralny 20 od 31 maja do 8 czerwca 2014."
+    "excerpt": "Wystawa w Kościele Środowisk Twórczych pw. św Andrzeja Apostoła i św Alberta Chmielowskiego w Warszawie, Plac Teatralny 20 od 31 maja do 8 czerwca 2014.",
+    "bodyText": "Wystawa w Kościele Środowisk Twórczych pw. św Andrzeja Apostoła i św Alberta Chmielowskiego w Warszawie, Plac Teatralny 20 od 31 maja do 8 czerwca 2014."
   },
   {
     "slug": "ikona-piekno-zanurzone-w-tajemnicy",
-    "title": "IKONA – PIĘKNO ZANURZONE W TAJEMNICY – wystawa",
+    "title": "Wystawa „Ikona – piękno zanurzone w Tajemnicy” w kościele bł. Władysława",
     "date": "2013-06-25",
     "kind": "wystawa",
     "sample": true,
-    "excerpt": "W kościele bł. Władysława z Gielniowa, patrona Warszawy, miała miejsce wystawa ikony współczesnej. Udział wzięli uczestnicy Akademii Ikony, Studium Ikonograficznego, Pracowni św. Andrzeja Apostoła, innych grup i ośrodków oraz twórcy indywidualni. Owoce roku nauki i pracy 2012/201"
+    "excerpt": "W kościele bł. Władysława z Gielniowa, patrona Warszawy, miała miejsce wystawa ikony współczesnej. Udział wzięli uczestnicy Akademii Ikony, Studium Ikonograficznego, Pracowni św. Andrzeja Apostoła, innych grup i ośrodków oraz twórcy indywidualni. Owoce roku nauki i pracy 2012/201",
+    "bodyText": "IKONA- PIĘKNO ZANURZONE W TAJEMNICY. wystawa ikony współczesnej. Udział wzięli uczestnicy Akademii Ikony, Studium Ikonograficznego, Pracowni św. Andrzeja Apostoła, Drogi Ikony oraz innych grup jak też twórcy indywidualni -na zaproszenie proboszcza parfii pw. bł. Władysława z Gielniowa Ks. Prałata Jacka Kozuba. Dziękujemy! W kościele bł. Władysława z Gielniowa, patrona Warszawy, miała miejsce wystawa ikony współczesnej. Udział wzięli uczestnicy Akademii Ikony, Studium Ikonograficznego, Pracowni św. Andrzeja Apostoła, innych grup i ośrodków oraz twórcy indywidualni. Owoce roku nauki i pracy 2012/2013. Zdjęcia Andrzej Chomczyk i inni"
   },
   {
     "slug": "ikonografia-patronow-pielgrzymow",
-    "title": "Ikonografia patronów pielgrzymów.",
+    "title": "Ikonografia patronów pielgrzymów",
     "date": "2015-10-21",
     "kind": "wystawa",
     "sample": true,
-    "excerpt": "Kontynuując cykl wykładów „Śladami najpiękniejszych ikon świata” dnia 10.11. 2015 r. o godz 18.00 odbyło się otwarte spotkanie z dr. Jerzym Kazimierczakiem, twórcą koncepcji i autorem przewodnika Warszawskiej Drogi św. Jakuba Bogato ilustrowana prelekcja Ikonografia patronów piel"
+    "excerpt": "Kontynuując cykl wykładów „Śladami najpiękniejszych ikon świata” dnia 10.11. 2015 r. o godz 18.00 odbyło się otwarte spotkanie z dr. Jerzym Kazimierczakiem, twórcą koncepcji i autorem przewodnika Warszawskiej Drogi św. Jakuba Bogato ilustrowana prelekcja Ikonografia patronów piel",
+    "bodyText": "Kontynuując cykl wykładów „ Śladami najpiękniejszych ikon świata ” dnia 10.11. 2015 r. o godz 18.00 odbyło się otwarte spotkanie z dr. Jerzym Kazimierczakiem, twórcą koncepcji i autorem przewodnika Warszawskiej Drogi św. Jakuba Bogato ilustrowana prelekcja Ikonografia patronów pielgrzymów zgromadziła liczne grono zainteresowanych."
   },
   {
     "slug": "jestesmy-pielgrzymami",
-    "title": "JESTEŚMY PIELGRZYMAMI – spotkanie z Jerzym Kazimierczakiem",
+    "title": "Jesteśmy pielgrzymami — spotkanie z Jerzym Kazimierczakiem",
     "date": "2014-03-13",
     "kind": "wystawa",
     "sample": true,
@@ -137,12 +142,14 @@
       "alt": "[do uzupełnienia: podpis zdjęcia]",
       "width": 1000,
       "height": 667
-    }
+    },
+    "bodyText": "Normal 0 21 Pielgrzymowanie to doświadczenie obecności Pana, które sprawia, że człowiek rozpoznaje, że został posłany. Pątnik pokonuje trud aby spotkać Boga i poprzez to spotkanie odnaleźć sens swego istnienia, nadać mu nadprzyrodzony wymiar. Pielgrzymowanie jest metaforą życia chrześcijanina. Ta myśl powraca w rozważaniach św. Pawła i św. Piotra. Św. Piotr wprost nazywa człowieka pielgrzymem bez swojej ojczyzny (por. 1 P 2,11). W listach św. Pawła czytamy: „wiemy, że jak długo pozostajemy w ciele, jesteśmy pielgrzymami, z daleka od Pana” (2 Kor 5,6). Pielgrzymując odkrywamy prawdę, która ma moc przemieniania naszej codzienności – na tej ziemi jesteśmy tylko gośćmi z daleka od domu Ojca (por. Hbr 11,13) Dnia 8 kwietnia o godz 17.30 odbyło się spotkanie z Jerzym Kazimierczakiem, który opowiadał o swoim pielgrzymowaniu. Spotkanie miało miejsce w kaplicy prawosławnej pp. św. Grzegorza Peradze w Warszawie. W programie: – św. Jakub w Ewangeliach, apokryfach i ikonografii, – Camino w Europie i Polsce – Camino Warszawskie"
   },
   {
     "slug": "miedzynarodowe-warsztaty-oraz-wystawa-ikon-z-pracowni-akademii-ikony-w-swietej-lipce-19-27-sierpnia-2017",
-    "title": "Międzynarodowe warsztaty pisania ikon. Wystawa ikon „IKONA DRABINĄ DO NIEBA” Święta Lipka 19-27 sierpnia 2017",
-    "date": "2017-08-30",
+    "title": "Międzynarodowe warsztaty pisania ikon. Wystawa ikon „Ikona drabiną do nieba” Święta Lipka 19-27 sierpnia 2017",
+    "date": "2017-08-19",
+    "dateEnd": "2017-08-27",
     "kind": "warsztaty",
     "sample": true,
     "excerpt": "Międzynarodowe warsztaty pisania ikon i towarzysząca im wystawa ikony współczesnej miały miejsce w dniach 19.08- 27.08. 2017 w Sanktuarium Matki Bożej Jedności Chrześcijan w Świętej Lipce. Wystawa cieszyła się dużym powodzeniem, widziało ją tysiące pielgrzymów. Dnia 23 sierpnia o",
@@ -201,7 +208,8 @@
       "alt": "plakat",
       "width": 221,
       "height": 320
-    }
+    },
+    "bodyText": "Międzynarodowe warsztaty pisania ikon i towarzysząca im wystawa ikony współczesnej miały miejsce w dniach 19.08- 27.08. 2017 w Sanktuarium Matki Bożej Jedności Chrześcijan w Świętej Lipce. Wystawa cieszyła się dużym powodzeniem, widziało ją tysiące pielgrzymów. Dnia 23 sierpnia odwiedził nas abp Konrad Krajewski, papieski jałmużnik. Warsztaty prowadziła Elżbieta Jackowska- Kurek, ikonograf i trener pisania ikon. Na wystawie IKONA DRABINĄ DO NIEBA były ikony Pani Elżbiety Jackowskiej-Kurek i jej uczniów oraz jedna ikona Michała Płoskiego. Po Sanktuarium oprowadzał nas i konferencje głosił o. Aleksander Jacyniak SJ, miłośnik ikon i kustosz Sanktuarium. Wyjazdy studyjne do Kętrzyna prowadziła Elżbieta Jackowska- Kurek. Warsztaty zakończyły się obrzędem poświęcenia ikon. WSPÓLNOTA Matka Boża Eleusa Chrystus Pantokrator Matka Boża Dońska POŚWIĘCENIE IKON"
   },
   {
     "slug": "nabor-kursu-2026-2027",
@@ -209,11 +217,20 @@
     "date": "2026-09-01",
     "kind": "warsztaty",
     "sample": true,
-    "excerpt": "Rusza nabór na kurs roczny i trzyletni w sezonie 2026/2027. Zgłoszenia przyjmujemy mailem do 24 września 2026."
+    "featured": true,
+    "featuredUntil": "2026-09-24",
+    "excerpt": "Rusza nabór na kurs roczny i trzyletni w sezonie 2026/2027. Zgłoszenia przyjmujemy mailem do 24 września 2026.",
+    "cover": {
+      "src": "/media/sample/news/nasze-pisanie-ikon-2.jpg",
+      "alt": "[do uzupełnienia: podpis zdjęcia]",
+      "width": 1024,
+      "height": 768
+    },
+    "bodyText": "Zapraszamy do zapisów na kurs roczny i trzyletni w Akademii Ikony. Zajęcia odbywają się raz w tygodniu, od października do czerwca, w grupach wieczornych i dziennych — w Kościele Środowisk Twórczych na Placu Teatralnym w Warszawie."
   },
   {
     "slug": "nasze-pisanie-ikon",
-    "title": "…nasze pisanie ikon…",
+    "title": "Zapisy na warsztaty pisania ikon",
     "date": "2017-06-19",
     "kind": "aktualnosc",
     "sample": true,
@@ -297,7 +314,8 @@
       "alt": "[do uzupełnienia: podpis zdjęcia]",
       "width": 240,
       "height": 320
-    }
+    },
+    "bodyText": "Normal 0 21 Zapraszamy zarówno początkujących jak i już piszących ikony. Więcej informacji: sekretariat.ikony22@gmail.com"
   },
   {
     "slug": "noc-muzeow-2014",
@@ -305,7 +323,8 @@
     "date": "2014-05-18",
     "kind": "wystawa",
     "sample": true,
-    "excerpt": "Już po raz drugi Akademia Ikony brała udział w Nocy Muzeów w Muzeum Ikon w Warszawie. Dziękujemy Michałowi Boguckiemu za zaproszenie, wszystkim gościom za przemiłe spotkania a naszym słuchaczom za pomoc w organizacji. Zdjęcia Aleksandra Kurek"
+    "excerpt": "Już po raz drugi Akademia Ikony brała udział w Nocy Muzeów w Muzeum Ikon w Warszawie. Dziękujemy Michałowi Boguckiemu za zaproszenie, wszystkim gościom za przemiłe spotkania a naszym słuchaczom za pomoc w organizacji. Zdjęcia Aleksandra Kurek",
+    "bodyText": "Już po raz drugi Akademia Ikony brała udział w Nocy Muzeów w Muzeum Ikon w Warszawie. Dziękujemy Michałowi Boguckiemu za zaproszenie, wszystkim gościom za przemiłe spotkania a naszym słuchaczom za pomoc w organizacji. Zdjęcia Aleksandra Kurek"
   },
   {
     "slug": "noc-swiatyn-2019",
@@ -313,7 +332,7 @@
     "date": "2019-09-21",
     "kind": "wystawa",
     "sample": true,
-    "excerpt": "Dnia 21 września odbyła się „[NOC ŚWIĄTYŃ](https://nocswiatyn.pl/)„. Z tej okazji w kościele Środowisk Twórczych zorganizowaliśmy wystawę ikon. Elżbieta Jackowska-Kurek oprowadzała po wystawie i wygłosiła wykład o kondycji współczesnej ikonografii.",
+    "excerpt": "Z okazji Nocy Świątyń 21 września w kościele Środowisk Twórczych odbyło się oprowadzanie po wystawie ikon i wykład Elżbiety Jackowskiej-Kurek o współczesnej ikonografii.",
     "images": [
       {
         "src": "/media/sample/news/noc-swiatyn-2019-0.jpg",
@@ -336,7 +355,8 @@
       "width": 960,
       "height": 540,
       "caption": "Akademia Ikony w Warszawie - wystawa ikon w Noc Świątyń 2019"
-    }
+    },
+    "bodyText": "Dnia 21 września odbyła się „[NOC ŚWIĄTYŃ](https://nocswiatyn.pl/)„. Z tej okazji w kościele Środowisk Twórczych zorganizowaliśmy wystawę ikon. Elżbieta Jackowska-Kurek oprowadzała po wystawie i wygłosiła wykład o kondycji współczesnej ikonografii."
   },
   {
     "slug": "oprowadzania-po-wystawie-2017",
@@ -376,15 +396,17 @@
       "alt": "[do uzupełnienia: podpis zdjęcia]",
       "width": 214,
       "height": 380
-    }
+    },
+    "bodyText": "### Ikona Serca Jezusa Na wystawie IKONA – KORZENIE I OWOCE WIARY wystawiana była ikona SERCE JEZUSA pisana ręka Roberta Rumina. Dnia 23 czerwca, w dniu kiedy Kościół katolicki obchodził uroczystość Najświętszego Serca Pana Jezusa, odbyło się tematyczne oprowadzenie po wystawie. Oto co napisał w metryczce ikony Robert Rumin: „Tytuł i temat odnosi się do tekstu pieśni do Serca Jezusa której część napisana jest na ikonie. To piękna w treści i melodii śpiewana w czasie litanii do Serca Jezusa pieśń którą bardzo lubi moja żona. Ikona powstała specjalnie dla Niej na imieniny. Temat nawiązuje do typu ikony Mandylion Zamiast twarzy Zbawiciela przedstawiłem Jego serce gorejące miłością , przebite na krzyżu do ostatniej kropli krwi ofiarowane i zwycięskie NIKA.” ### Ikona Trójcy Świętej Dnia 30.06 i 2.07. 2017 o godz. 18.00 Elżbieta Jackowska-Kurek oprowadzała po wystawie IKONA – KORZENIE I OWOCE WIARY zatrzymując się na temacie ikony TRÓJCY ŚWIĘTEJ. Duża ilość pytań i poruszanych wątków po wykładzie dowodziła złożoności tematu. Ikona, mówiła pani Elżbieta, jest doświadczeniem mistycznym przelanym na deskę. Jest wiele opisów ukazania się Boga w Starym Testamencie ale temat ikonograficzny „Gościnność Abrahama”, który rozwinął się w ikonę Trójcy Świętej uznano za jedyne kanoniczne przedstawienie Boga. Odniesienie do Starego Testamentu zaznaczone jest również w nazwie tego typu ikonograficznego: Starotestamentowa Trójca Święta. GALERIA: \" style=\"--fg-title-line-clamp: 0; --fg-description-line-clamp: 0;\" > Trójca Święta pisana ręką Bożeny Wierzbickiej (25x30 cm.) ### Ikony emaliowane Dnia 9.07. 2017 w Kościele Środowisk Twórczych św. św. Andrzeja i Alberta w Warszawie na wystawie IKONA – KORZENIE I OWOCE WIARY były wystawione ikony wykonywane techniką emalii komórkowej. Po Mszy św. o godz. 13.00 (dla dzieci) Elżbieta Jackowska-Kurek opowiadała o historii i technice wykonywania tych ikon, jak też o warsztatach prowadzonych z dziećmi w Gruzji, z których to warsztatów niektóre ikony pochodziły."
   },
   {
     "slug": "piekno-boga-piekno-czlowieka-wyklady-2024-2025",
-    "title": "Piękno Boga, piękno człowieka – wykłady 2024/2025",
+    "title": "Piękno Boga, piękno człowieka — wykłady 2024/2025",
     "date": "2024-07-28",
     "kind": "wyklady",
     "sample": true,
-    "excerpt": "IKONA – PIĘKNO ZANURZONE W TAJEMNICY. PIĘKNO BOGA, PIĘKNO CZŁOWIEKA Wykłady 2024/2025 08.10 Piękno Boga, piękno człowieka, ks. dr Andrzej Persidok 12.11 Duccio i złota sztuka Sieny, dr Ewa Korpysz; Sacrum w muzycznych obrazach mistrzów – rozważania, dr Emanuel Bączkowski 10.12 Ko"
+    "excerpt": "Ogłaszamy program wykładów na nadchodzący rok akademicki. W tym roku tematem przewodnim będzie „piękno Boga, piękno człowieka”.",
+    "bodyText": "IKONA – PIĘKNO ZANURZONE W TAJEMNICY. PIĘKNO BOGA, PIĘKNO CZŁOWIEKA Wykłady 2024/2025 08.10 Piękno Boga , piękno człowieka, ks. dr Andrzej Persidok 12.11 Duccio i złota sztuka Sieny , dr Ewa Korpysz; Sacrum w muzycznych obrazach mistrzów – rozważania , dr Emanuel Bączkowski 10.12 Koncepcja piękna według św. Augustyna , ks. prof. dr hab. Józef Naumowicz; Chorał gregoriański jako pieśń tradycyjna , Marcin Bornus Szczyciński 21.01 Sztuka jako wyraz pełni człowieka , ks. dr Henryk Paprocki 18.02 Jezus był piękny czy brzydki? Teorie apologetów wczesnochrześcijańskich, ks. prof. dr hab. Józef Naumowicz; Piękno człowieka na podstawie psalmu 1 , ks. dr Aleksander Jacyniak SJ 25.03 Jakie piękno zbawi świat? Refleksje na bazie listu duszpasterskiego ks. kard. C. M. Martiniego 1999-2000 , ks. dr Aleksander Jacyniak SJ 08.04 Piękno krzyża: Męka Chrystusa w teologii i sztuce od katakumb do wczesnego renesansu , ks. prof. UKSW dr hab. Józef Naumowicz; Dlaczego uczyniono duszę „dzieckiem”, czyli o obrazie Bożym inaczej , dr Justyna Sprutta 06.05 Mistyczne wizje El Greca , dr Ewa Korpysz; Piękno relacji Boga z człowiekiem na podstawie ps. 8 , ks. dr Aleksander Jacyniak SJ 10.06 W widzialnym dostrzec niewidzialne. O pięknie w ikonach , ks. dr Marek Wojnarowski 13.06 „Spes non confundit”, „nadzieja zawieść nie może” (Rz 5, 5) , ks. prof. UO dr hab. Dariusz Klejnowski-Różycki 14.06 Piękno Boga w ikonach , Elżbieta Jackowska-Kurek; Wernisaż wystawy ikon Spotkania odbywają się w godz. 18.00-20.30. w Kościele Środowisk Twórczych św. Andrzeja Apostoła i św. Brata Alberta Chmielowskiego w Warszawie. Koszt roczny 300 zł.. Nr konta do wpłaty i regulaminy przesyłamy po zgłoszeniu się na adres: sekretariat.ikony22@gmail.com"
   },
   {
     "slug": "plener-swietej-lipki-2019",
@@ -393,7 +415,7 @@
     "kind": "plener",
     "sample": true,
     "dateEnd": "2019-08-10",
-    "excerpt": "3 sierpnia – 10 sierpnia w Świętej Lipce miały miejsce warsztaty pisania ikon. Towarzyszyła im wystawa „IKONA – PIĘKNO ZANURZONE W TAJEMNICY”. Dnia 4 sierpnia na mszy św. o godz. 11.00 przeszliśmy z ikonami z wystawy w procesji eucharystycznej. Na zakończenie warsztatów wystawili",
+    "excerpt": "3–10 sierpnia w Świętej Lipce warsztaty pisania ikon z towarzyszącą wystawą. 4 sierpnia procesja eucharystyczna z ikonami z wystawy podczas mszy św. o godz. 11.00.",
     "images": [
       {
         "src": "/media/sample/news/plener-swietej-lipki-2019-0.jpg",
@@ -416,7 +438,8 @@
       "width": 611,
       "height": 815,
       "caption": "Kościół w św. Lipce - wystawa ikon"
-    }
+    },
+    "bodyText": "3 sierpnia – 10 sierpnia w Świętej Lipce miały miejsce warsztaty pisania ikon. Towarzyszyła im wystawa „IKONA – PIĘKNO ZANURZONE W TAJEMNICY”. Dnia 4 sierpnia na mszy św. o godz. 11.00 przeszliśmy z ikonami z wystawy w procesji eucharystycznej. Na zakończenie warsztatów wystawiliśmy w kościele do modlitwy i poświęcenia ikony napisane podczas pleneru w [Świętej Lipce](http://www.swlipka.pl/)."
   },
   {
     "slug": "pracujemy",
@@ -427,35 +450,41 @@
   },
   {
     "slug": "program-na-rok-20152016-zapraszamy-serdecznie",
-    "title": "Program na rok 2015/2016.",
+    "title": "Program Akademii Ikony 2015/2016",
     "date": "2015-10-08",
     "kind": "aktualnosc",
     "sample": true,
-    "excerpt": "Kościół Środowisk Twórczych, Warszawa, Plac Teatralny 20. · DWULETNIE STUDIUM PISANIA IKON Zajęcia warsztatowe- ikona tablicowa i fresk – raz w tygodniu, prowadzi Elżbieta Jackowska – Kurek. Zgłoszenia do dnia 10. 10. 2015 r. · IKONA DZIŚ wykłady – raz w miesiącu we wtorek, godz."
+    "excerpt": "Kościół Środowisk Twórczych, Warszawa, Plac Teatralny 20. · DWULETNIE STUDIUM PISANIA IKON Zajęcia warsztatowe- ikona tablicowa i fresk – raz w tygodniu, prowadzi Elżbieta Jackowska – Kurek. Zgłoszenia do dnia 10. 10. 2015 r. · IKONA DZIŚ wykłady – raz w miesiącu we wtorek, godz.",
+    "bodyText": "Kościół Środowisk Twórczych , Warszawa, Plac Teatralny 20. · DWULETNIE STUDIUM PISANIA IKON Zajęcia warsztatowe- ikona tablicowa i fresk – raz w tygodniu, prowadzi Elżbieta Jackowska – Kurek. Zgłoszenia do dnia 10. 10. 2015 r. · IKONA DZIŚ wykłady – raz w miesiącu we wtorek, godz. 18.00 Można się również zapisać wyłącznie na wykłady, tematy i terminy w zakładce WYKŁADY · TAJEMNICE IKONY spotkania warsztatowe dla dzieci w wieku szkolnym Poprowadzi Elżbieta Jackowska-Kurek, opieka ks. Grzegorz Michalczyk, · OTWARTE PIĄTKI to możliwość konsultacji w każdy piątek w godz. 14.00-16.00, po wcześniejszym umówieniu się · KLUB PIELGRZYMA- „Śladami najpiękniejszych ikon świata” prelekcje raz w miesiącu, wtorek, godz. 18.00 Więcej informacji i zapisy: [sekretariat.ikony22@gmail.com](mailto:sekretariat.ikony22@gmail.com) oraz pod nr tel. 601 734 705"
   },
   {
     "slug": "przyjazn-z-bogiem-bojazn-boza-wolnosc-czlowieka-wyklady-2023-2024",
-    "title": "Przyjaźń z Bogiem. Bojaźń Boża, wolność człowieka – wykłady 2023/2024",
+    "title": "Przyjaźń z Bogiem. Bojaźń Boża, wolność człowieka — wykłady 2023/2024",
     "date": "2023-09-30",
     "kind": "wyklady",
     "sample": true,
-    "excerpt": "IKONA – PIĘKNO ZANURZONE W TAJEMNICY. PRZYJAŹŃ Z BOGIEM – BOJAŹŃ BOŻA, WOLNOŚĆ CZŁOWIEKA. Wykłady 2023/2024 10.10. Ruth i Noemi. Przyjaźń między kobietami, s. dr hab. Judyta Pudełko PDDM 14.11. Bojaźń i radość – spotkania z Panem w Ewangeliach, ks. Roman Batorski; Tradycyjne i ws"
+    "excerpt": "Rozpoczynamy nowy sezon wykładów. W tym roku tematem przewodnim będzie „przyjaźń z Bogiem, bojaźń Boża i wolność człowieka”.",
+    "bodyText": "IKONA – PIĘKNO ZANURZONE W TAJEMNICY. PRZYJAŹŃ Z BOGIEM – BOJAŹŃ BOŻA, WOLNOŚĆ CZŁOWIEKA. Wykłady 2023/2024 10.10. Ruth i Noemi. Przyjaźń między kobietami, s. dr hab. Judyta Pudełko PDDM 14.11. Bojaźń i radość – spotkania z Panem w Ewangeliach, ks. Roman Batorski; Tradycyjne i współczesne spojrzenie na ikonę, ks. protodiakon dr Łukasz Leonkiewicz 12.12. Tradycja chrześcijańskiej choinki , ks. prof. dr hab. Józef Naumowicz; Jurodliwy – głupi dla świata, przyjaciel dla Boga , ks. dr Marek Wojnarowski 23.01. Święty jako symbol świata innego , ks. dr Henryk Paprocki; Cheruby w apologii obrazów Jana Damasceńskiego , ks. prof. dr hab. Józef Naumowicz 13.02. Przyjaźń człowieka z Bogiem na podstawie psalmu 73 (72) , ks. dr Aleksander Jacyniak SJ; Jak rozmawiać z Bogiem? Kilka przykładów ze współczesnej literatury ascetycznej, ks. protodiakon dr Łukasz Leonkiewicz 12.03. Maria Magdalena: Wyzwolona aby głosić , s. dr hab. Judyta Pudełko PDDM; Noli me tangere – Maria Magdalena, ikonografia , ks. dr Marek Wojnarowski 16.04. “Nie nazywam was sługami, ale przyjaciółmi”. Przyjaźń z Panem w Ewangelii św. Jana , ks. Roman Batorski; Wschodnia modlitwa Jezusowa i “Dziewięć sposobów modlitwy” św. Dominika , ks. prof. dr hab. Józef Naumowicz 14.05. Przyroda, przyjaciółka Boga, czyli o mniej znanym obliczu ikony , dr Justyna Sprutta; Lęk i bojaźń Boża na podstawie psalmu 130 (129) , ks. dr Aleksander Jacyniak SJ 11.06. Od ludzkiego strachu do bojaźni Bożej , ks. Grzegorz Michalczyk; “Z bojaźnią i drżeniem zabiegajcie o wasze zbawienie”. Bojaźń Boża w Listach Nowego Testamentu , ks. Roman Batorski 14.06. Ikony Przyjaźni , ks. prof. dr hab. Dariusz Klejnowski-Różycki; 15.06. Tajemnica ikony i wolność ikonografa , Elżbieta Jackowska-Kurek; Wernisaż wystawy ikon Spotkania odbywają się w godz. 18.00-20.30. w Kościele Środowisk Twórczych św. Andrzeja Apostoła i św. Brata Alberta Chmielowskiego w Warszawie. Koszt roczny 300 zł.. Nr konta do wpłaty i regulaminy przesyłamy po zgłoszeniu się na adres: sekretariat.ikony22@gmail.com"
   },
   {
     "slug": "sesja-ikonowa-modlitwa-psalmami-i-wystawa-ikon-w-swietej-lipce-2016",
     "title": "„Sesja ikonowa”, „Modlitwa psalmami” i wystawa ikon w Świętej Lipce 2016",
-    "date": "2016-08-31",
+    "date": "2016-08-17",
+    "dateEnd": "2016-08-28",
     "kind": "warsztaty",
     "sample": true,
-    "excerpt": "W Świętej Lipce, Sanktuarium Matki Bożej Jedności Chrześcijan, byliśmy w dniach 17- 28 sierpnia, o ikonach, modlitwie psalmami i pięknie świętolipskiego regionu mówił o. Aleksander Jacyniak, a warsztaty prowadziła Elżbieta Jackowska- Kurek. W tym czasie, w Muzeum Regionalnym w Św"
+    "excerpt": "W Świętej Lipce, Sanktuarium Matki Bożej Jedności Chrześcijan, byliśmy w dniach 17- 28 sierpnia, o ikonach, modlitwie psalmami i pięknie świętolipskiego regionu mówił o. Aleksander Jacyniak, a warsztaty prowadziła Elżbieta Jackowska- Kurek. W tym czasie, w Muzeum Regionalnym w Św",
+    "bodyText": "W Świętej Lipce, Sanktuarium Matki Bożej Jedności Chrześcijan, byliśmy w dniach 17- 28 sierpnia, o ikonach, modlitwie psalmami i pięknie świętolipskiego regionu mówił o. Aleksander Jacyniak, a warsztaty prowadziła Elżbieta Jackowska- Kurek. W tym czasie, w Muzeum Regionalnym w Świętej Lipce, miała miejsce wystawa ikon Akademii Ikony IKONA PIĘKNO ZANURZONE W TAJEMNICY"
   },
   {
     "slug": "sesja-ikonowa-w-swietej-lipce",
     "title": "Sesja ikonowa w Świętej Lipce",
-    "date": "2015-09-28",
+    "date": "2015-09-17",
+    "dateEnd": "2015-09-27",
     "kind": "wystawa",
     "sample": true,
-    "excerpt": "W dniach 17- 27 września 2015 miała miejsce w Sanktuarium Matki Bożej Świętolipskiej czczonej jako Matka Kościoła Jedności Chrześcijan sesja ikonowa. Przy okazji robiliśmy też wycieczki po okolicy. Byliśmy w Bezławkach, Kętrzynie i Reszlu. Freski prof. Jerzego Nowosielskiego Ikon"
+    "excerpt": "W dniach 17- 27 września 2015 miała miejsce w Sanktuarium Matki Bożej Świętolipskiej czczonej jako Matka Kościoła Jedności Chrześcijan sesja ikonowa. Przy okazji robiliśmy też wycieczki po okolicy. Byliśmy w Bezławkach, Kętrzynie i Reszlu. Freski prof. Jerzego Nowosielskiego Ikon",
+    "bodyText": "W dniach 17- 27 września 2015 miała miejsce w Sanktuarium Matki Bożej Świętolipskiej czczonej jako Matka Kościoła Jedności Chrześcijan sesja ikonowa. Przy okazji robiliśmy też wycieczki po okolicy. Byliśmy w Bezławkach, Kętrzynie i Reszlu. Freski prof. Jerzego Nowosielskiego Ikona prof. Jerzego Nowosielskiego. W cerkwi Narodzenia Najświętszej Maryi Panny w Kętrzynie. Pracowaliśmy w Białym Domku- widać światło w oknach."
   },
   {
     "slug": "sladami-najpiekniejszych-ikon-swiata",
@@ -463,15 +492,17 @@
     "date": "2013-10-02",
     "kind": "wystawa",
     "sample": true,
-    "excerpt": "Zapraszamy na cykl spotkań „Śladami najpiękniejszych ikon świata”: 14.V. 2014: Chrześcijańskie Kościoły w Syrii – dr. Jerzy Kazimierczak 11.VI. 2014: Sztuka Konstantynopola – ks. Roman Batorski Proponowane spotkania są kontynuacją cyklu „Ikona – piękno zanurzone w tajemnicy”. Dot"
+    "excerpt": "Zapraszamy na cykl spotkań „Śladami najpiękniejszych ikon świata”: 14.V. 2014: Chrześcijańskie Kościoły w Syrii – dr. Jerzy Kazimierczak 11.VI. 2014: Sztuka Konstantynopola – ks. Roman Batorski Proponowane spotkania są kontynuacją cyklu „Ikona – piękno zanurzone w tajemnicy”. Dot",
+    "bodyText": "Zapraszamy na cykl spotkań „Śladami najpiękniejszych ikon świata”: 14.V. 2014: Chrześcijańskie Kościoły w Syrii – dr. Jerzy Kazimierczak 11.VI. 2014: Sztuka Konstantynopola – ks. Roman Batorski Proponowane spotkania są kontynuacją cyklu „Ikona – piękno zanurzone w tajemnicy”. Dotychczas staraliśmy się odczytywać przesłanie najwspanialszych ikon świata. W tym roku proponujemy wirtualną pielgrzymkę wiodącą śladami najpiękniejszych ikon świata. Trasa będzie wiodła m. in. przez Grecję, Włochy, Kretę, Cypr, Bałkany, Rosję i Ukrainę. Wstęp wolny. Program 17.30 – Msza św. w Sanktuarium Matki Bożej Łaskawej 18.00 – Konferencja w podziemiach Sanktuarium Matki Bożej Łaskawej, ul. Świętojańska 10"
   },
   {
     "slug": "spotkania-sladami-najpiekniejszych-ikon-swiata",
-    "title": "Spotkania „Śladami najpiękniejszych ikon świata”",
+    "title": "Śladami najpiękniejszych ikon świata — wykłady 2014/2015",
     "date": "2014-09-02",
     "kind": "wyklady",
     "sample": true,
-    "excerpt": "Ikona nie tylko przedstawia, ale i uobecnia przedstawiane Osoby. Pomaga wyciszyć się i skupić na określonym wizerunku, zachęca do więzi z Chrystusem, Matką Najświętszą, świętymi. Odczytywanie ikony, podobnie jak odczytywanie tekstu biblijnego dokonuje się na kilku poziomach. Cele"
+    "excerpt": "Ikona nie tylko przedstawia, ale i uobecnia przedstawiane Osoby. Pomaga wyciszyć się i skupić na określonym wizerunku, zachęca do więzi z Chrystusem, Matką Najświętszą, świętymi. Odczytywanie ikony, podobnie jak odczytywanie tekstu biblijnego dokonuje się na kilku poziomach. Cele",
+    "bodyText": "Ikona nie tylko przedstawia, ale i uobecnia przedstawiane Osoby. Pomaga wyciszyć się i skupić na określonym wizerunku, zachęca do więzi z Chrystusem, Matką Najświętszą, świętymi. Odczytywanie ikony, podobnie jak odczytywanie tekstu biblijnego dokonuje się na kilku poziomach. Celem spotkań jest ukazanie i odczytanie piękna i znaczenia duchowego ikon. Z jednej strony chcemy ukazać piękno, które zachwyca wierzącego człowieka, a z drugiej – odkryć duchową głębię wpisaną w ikonę. Spotkania odbywają się w pierwszą lub drugą środę miesiąca w podziemiach Sanktuarium Matki Bożej Łaskawej przy ul. Świętojańskiej 10 o godz. 18.00. w Centrum Duchowości Świeckich. Tematy spotkań Śladami najpiękniejszych ikon świata : 15 maja 2015 – Ikonografia św. Jakuba, dr Jerzy Kazimierczak 17 kwietnia 2015 – Ikony Matki Bożej Śnieżnej, dr Jerzy Kazimierczak 20 marca 2015 – Ikonografia bizantyjska na Krecie, ks. Roman Batorski 27 lutego 2015 – Święta Góra Athos, o. dr Aleksander Jacyniak SJ i dr Jerzy Kazimierczak 23 stycznia 2015 – Ikonografia bizantyjska na Cyprze, ks. Roman Batorski 14 listopada 2014 – Ikonografia bizantyjska na Bałkanach, ks. Roman Batorski 17 października 2014 – Zapiski z pielgrzymki do Armenii, dr Jerzy Kazimierczak 26 września 2014 – Ikonografia bizantyjska w Grecji, ks. Roman Batorski 11 czerwca 2014 – Sztuka Konstantynopola, ks. Roman Batorski 14 maja 2014 – Chrześcijańskie kościoły w Syrii, dr Jerzy Kazimierczak 12 marca – Śladami ikon na Ukrainie c.d., o. dr Aleksander Jacyniak SJ 2 lutego 2014 – Śladami ikon na Ukrainie, o. dr Aleksander Jacyniak SJ 15 stycznia 2014 – Złoty pierścień Rosjji cd., o. dr Aleksander Jacyniak SJ 4 grudnia 2013 – Złoty pierścień Rosji, o.dr Aleksander Jacyniak SJ 6 listopada 2013 – Ikonografia bizantyjska we Włoszech (cd.), ks. Roman Batorski 23 października 2013 – Ikonografia bizantyjska we Włoszech, ks. Roman Batorski Świat ikony : 22 maja 2013 – Ikona Matki Bożej Orantki, o. dr Aleksander Jacyniak SJ 6 lutego 2013 – Ikona Matki Bożej Włodzimierskiej, o. dr Aleksander Jacyniak SJ 3 października 2012 – Ikona przemienienia Pańskiego, o. dr Aleksander Jacyniak SJ 7 listopada 2012 – Ikona zstąpienia Jezusa do otchłani, o. dr Aleksander Jacyniak SJ 23 stycznia 2013 – Ikona Narodzenia Jezusa Chrystusa, o. dr Aleksander Jacyniak SJ Spotkania są współorganizowane z o. dr Aleksandrem Jacyniakiem SJ, Centrum Duchowości Świeckich. napisali o nas: [Tajemnica zamknięta w obrazie](http://niedziela.pl/artykul/116406/nd/Tajemnica-zamknieta-w-obrazie)"
   },
   {
     "slug": "spotkania-z-grzegorzem-zinkiewiczem",
@@ -554,27 +585,30 @@
       "alt": "[do uzupełnienia: podpis zdjęcia]",
       "width": 225,
       "height": 300
-    }
+    },
+    "bodyText": "Grzegorz Zinkiewicz to doświadczony ikonograf z dyplomem szkoły pisania ikon w Bielsku Podlaskim. Opowiadał o swojej pracy w Kościele Środowisk Twórczych św. św. Andrzeja Apostoła i Brata Alberta Chmielowskiego w Warszawie i na innych spotkaniach w miejscach, gdzie pracował. Zapraszamy do obejrzenia kilku zdjęć ze spotkań: \" style=\"--fg-title-line-clamp: 0; --fg-description-line-clamp: 0;\" > Grzegorz Zinkiewicz"
   },
   {
     "slug": "spotkanie-z-michalem-ploskim",
-    "title": "Spotkanie z Michałem Płoskim.",
+    "title": "Spotkanie z Michałem Płoskim",
     "date": "2016-04-26",
     "kind": "spotkanie",
     "sample": true,
-    "excerpt": "Spotkanie z Michałem Płoskim, ikonografem z Kielc miało miejsce dnia 26 kwietnia o godz 18.00 w Kościele Środowisk Twórczych na Placu Teatralnym w Warszawie. to było niezwykła spotkanie pt. „NA DRABINIE- zapiski z duchowości malarza ikon”. Wykład pana Michała był charytatywny, pi"
+    "excerpt": "Spotkanie z Michałem Płoskim, ikonografem z Kielc miało miejsce dnia 26 kwietnia o godz 18.00 w Kościele Środowisk Twórczych na Placu Teatralnym w Warszawie. to było niezwykła spotkanie pt. „NA DRABINIE- zapiski z duchowości malarza ikon”. Wykład pana Michała był charytatywny, pi",
+    "bodyText": "Spotkanie z Michałem Płoskim, ikonografem z Kielc miało miejsce dnia 26 kwietnia o godz 18.00 w Kościele Środowisk Twórczych na Placu Teatralnym w Warszawie. to było niezwykła spotkanie pt. „NA DRABINIE- zapiski z duchowości malarza ikon”. Wykład pana Michała był charytatywny, pieniądze przeznaczyliśmy na leczenie Marty Chrzan. Pan Michał tak się cieszył z odwiedzin, że zapowiedział swoje następne wizyty u nas. Przemiła atmosfera, ciekawa rozmowa z udziałem przyjaciół pana Michała – to wszystko sprawiło, że wieczór trudno było zakończyć. Na spotkaniu była możliwość nabycia książki Michała Płoskiego „Mała cisza”. Poniżej link do filmu. Kliknij: [Film: Mała cisza Michała Ploskiego](https://www.youtube.com/watch?v=vVllF3dh9g8)"
   },
   {
     "slug": "swiat-ikony-wyklady-rok-20122013",
-    "title": "„Świat Ikony” – program 2012/2013",
+    "title": "Świat Ikony — wykłady 2012/2013",
     "date": "2012-10-12",
     "kind": "wyklady",
     "sample": true,
-    "excerpt": "Spotkania są moderowane przez Elżbietę Jackowską-Kurek a wykłady głoszą: ks. dr Henryk Paprocki -teologia ikony (pierwszy wykład) i ks. dr Piotr Nikolski – sztuka ikony (drugi wykład): 18.X. -Źródła ikony -Kształtowanie teologii i artystycznego języka ikony. Sztuka wczesnochrześc"
+    "excerpt": "Spotkania są moderowane przez Elżbietę Jackowską-Kurek a wykłady głoszą: ks. dr Henryk Paprocki -teologia ikony (pierwszy wykład) i ks. dr Piotr Nikolski – sztuka ikony (drugi wykład): 18.X. -Źródła ikony -Kształtowanie teologii i artystycznego języka ikony. Sztuka wczesnochrześc",
+    "bodyText": "Spotkania są moderowane przez Elżbietę Jackowską-Kurek a wykłady głoszą: ks. dr Henryk Paprocki -t eologia ikony (pierwszy wykład) i k s. dr Piotr Nikolski – sztuka ikony (drugi wykład): 18.X. -Źródła ikony -Kształtowanie teologii i artystycznego języka ikony. Sztuka wczesnochrześcijańska a ikona. 22.XI -Przedstawienia w Starym Testamencie i świecie grecko-rzymskim. -Ikona Trójcy Świętej w świetle prawosławnej teologii trynitarnej. Kształtowanie typu ikonograficznego na przestrzeni wieków od katakumb do Rublowa. 13.XII. godz 17.30 -Ikony Matki Bożej a prawosławna pobożność maryjna. -Ikona Zbawiciela w świetle dogmatu chalcedońskiego i praktyki modlitwy Jezusowej 31.I. – Historia dogmatu kultu ikony. -Interpretacja dogmatu kultu ikony 21.II. -Ikona i jej antynomie -Rok liturgiczny w ikonie cz. 1 14.III. -Ikona i sztuka -Rok liturgiczny w ikonie cz. 2 25.IV. -Teologia piękna – Boski Archetyp -Ikona Sądu Ostatecznego w świetle eschatologii Kościoła Wschodniego. 23.V. -Granice dogmatyczne ikony -Człowiek przebóstwiony – ikony świętych. 20.VI. 17.00 -Kult ikony, ikona a liturgia -Ikonostas i układ świątyni prawosławnej, ikona w liturgii."
   },
   {
     "slug": "tejemnice-ikony",
-    "title": "Tejemnice ikony.",
+    "title": "Tajemnice ikony — warsztaty dla dzieci",
     "date": "2015-10-06",
     "kind": "aktualnosc",
     "sample": true,
@@ -616,7 +650,8 @@
       "alt": "[do uzupełnienia: podpis zdjęcia]",
       "width": 150,
       "height": 150
-    }
+    },
+    "bodyText": "Wychodząc naprzeciw prośbom osób których dzieci chciałyby poznać lepiej ikonę proponujemy warsztaty dla dzieci w wieku szkolnym . Spotkania będą się odbywały w soboty. Przewidujemy 10 spotkań po 3 godziny. Zainteresowanych zapraszamy na spotkanie informacyjne w sobotę, dnia 10 października na godz. 10.00 lub w niedzielę 11.października na godz. 14.00 do Kościoła Środowisk Twórczych pp św Andrzeja Apostoła i św. Alberta Chmielowskiego w Warszawie, Plac Teatralny 20. Poniżej zdjęcia z warsztatów z dziećmi w Warszawie i w Tbilisi prowadzonych przez Elżbietę Jackowską-Kurek."
   },
   {
     "slug": "tworcze-lato-2016",
@@ -624,7 +659,8 @@
     "date": "2016-07-02",
     "kind": "warsztaty",
     "sample": true,
-    "excerpt": "W Warszawie i w Świętej Lipce odbyły się warsztaty pisania ikon dla początkujących i doskonalące: w Warszawie w dniach 4- 10 lipca, w Świętej Lipce w dniach 21- 28 sierpnia ( wykłady o. Aleksandra Jacyniaka SJ „Świat ikony”w dniach 17- 21 sierpnia, warsztaty w dniach 21- 28.08 or"
+    "excerpt": "W Warszawie i w Świętej Lipce odbyły się warsztaty pisania ikon dla początkujących i doskonalące: w Warszawie w dniach 4- 10 lipca, w Świętej Lipce w dniach 21- 28 sierpnia ( wykłady o. Aleksandra Jacyniaka SJ „Świat ikony”w dniach 17- 21 sierpnia, warsztaty w dniach 21- 28.08 or",
+    "bodyText": "W Warszawie i w Świętej Lipce odbyły się warsztaty pisania ikon dla początkujących i doskonalące: w Warszawie w dniach 4- 10 lipca, w Świętej Lipce w dniach 21- 28 sierpnia ( wykłady o. Aleksandra Jacyniaka SJ „Świat ikony”w dniach 17- 21 sierpnia, warsztaty w dniach 21- 28.08 oraz „Modlitwa psalmami” równolegle z warsztatami) Warsztaty prowadziła Elżbieta Jackowska- Kurek, ikonograf z dużym doświadczeniem, każdy uczestnik warsztatów jest prowadzony indywidualnie, w swoim rytmie i na swoim etapie. Był to czas na wyciszenie i kontemplację, możliwość poszerzenia wiedzy, poznania oraz doskonalenia umiejętności praktycznych. Ikony powstałe w czasie warsztatów były poświęcone i wystawione do modlitwy powszechnej. Więcej informacji i zgłoszenia na następne warsztaty wakacyjne: akademiaikony@gmail.com, nr tel. 601 734 705"
   },
   {
     "slug": "wakacyjne-warsztaty-ikonograficzne-w-warszawie",
@@ -632,7 +668,8 @@
     "date": "2014-07-13",
     "kind": "warsztaty",
     "sample": true,
-    "excerpt": "LIPIEC, WRZESIEŃ Warsztaty wakacyjne w Warszawie są przeznaczone zarówno dla osób początkujących, jaki i dla tych, którzy mają już doświadczenie i chcą spędzić tydzień z ikoną. To szansa na poznanie i przypomnienie sobie podstaw oraz rozwinięcie umiejętności. W trakcie każdego wa"
+    "excerpt": "LIPIEC, WRZESIEŃ Warsztaty wakacyjne w Warszawie są przeznaczone zarówno dla osób początkujących, jaki i dla tych, którzy mają już doświadczenie i chcą spędzić tydzień z ikoną. To szansa na poznanie i przypomnienie sobie podstaw oraz rozwinięcie umiejętności. W trakcie każdego wa",
+    "bodyText": "Normal 0 21 LIPIEC, WRZESIEŃ Warsztaty wakacyjne w Warszawie są przeznaczone zarówno dla osób początkujących, jaki i dla tych, którzy mają już doświadczenie i chcą spędzić tydzień z ikoną. To szansa na poznanie i przypomnienie sobie podstaw oraz rozwinięcie umiejętności. W trakcie każdego wakacyjnego warsztatu pracujemy nad wybranymi ikonami Jezusa Chrystusa, Bogurodzicy, Archaniołów i świętych. Powtarzamy wszystkie etapy wykonania ikony. Prowadzenie Uczestników warsztatów jest indywidualne. Można pracować również nad ikonami rozpoczętymi już wcześniej. Prowadzenie- Elżbieta Jackowska-Kurek, doświadczony ikonograf i trener. Ilość miejsc ograniczona, decyduje kolejność zgłoszeń. Więcej informacji i zapisy na kolejne warsztaty: sekretariat.ikony22@gmail.com, nr tel. 601 734 705 Poniżej zdjęcia z warsztatów AD 2014:"
   },
   {
     "slug": "wakacyjne-wyjazdy-studyjne-grodek",
@@ -690,7 +727,8 @@
       "alt": "[do uzupełnienia: podpis zdjęcia]",
       "width": 225,
       "height": 300
-    }
+    },
+    "bodyText": "\" style=\"--fg-title-line-clamp: 0; --fg-description-line-clamp: 0;\" > Nazwa Gródek pochodzi od obronnego grodu, który znajdował się w granicach dzisiejszej miejscowości w XIV w.. Po białorusku i w miejscowej gwarze miejscowość ta nazywa się Haradok i oznacza miasteczko. Świątynię zbudowano w latach 1946–1970 w miejscu, gdzie prawdopodobnie wcześniej była pierwsza w Gródku cerkiew w XV wieku. Do 1943 w miejscu obecnej cerkwi stała świątynia drewniana wybudowana w 1858, która jednak uległa spaleniu. Cerkiew mieści się przy ulicy ks. Metropolity Bazylego Doroszkiewicza, pod numerem 1. Patron ulicy w latach 1946–1960 był proboszczem parafii w Gródku. Autorami polichromii wykonanej w pierwszej połowie lat 50. byli Adam Stalony-Dobrzański oraz Jerzy Nowosielski. Witraże, na których przedstawiono wyobrażenia świętych i scen biblijnych, wykonał Adam Stalony-Dobrzański. Cerkiew została wpisana do rejestru zabytków w r. 2004."
   },
   {
     "slug": "wakacyjne-wyjazdy-studyjne-mielnik-nad-bugiem",
@@ -766,15 +804,17 @@
       "alt": "[do uzupełnienia: podpis zdjęcia]",
       "width": 240,
       "height": 320
-    }
+    },
+    "bodyText": "Na zdjęciach cerkiew Narodzenia Przenajświętszej Bogarodzicy. Mielnik jest najstarszą parafią prawosławną na Podlasiu. Pierwszą historyczną wzmiankę o tutejszej cerkwi i znajdującej się w niej cudownej ikonie Chrystusa Zbawiciela odnotowuje ipatowska kronika w roku 1260. Choć ikona ta nie dotrwała do naszych czasów, pamięć o niej pozostaje wciąż żywa. W latach 1994 – 95 na ścianach cerkwi położono freski. Autorem kompozycji zgodnych z kanonami sztuki ikonograficznej i unikatowych pod względem technologicznym i artystycznym jest rosyjski ikonograf Aleksander Sokołow. Ikonostas ma formę uproszczoną, dwurzędową, bardzo popularną na Podlasiu, które było pod wpływem tradycji synodalnej (Rosji carskiej), z rozbudowaną częścią centralną. Rozplanowanie ściany ikonostasu zostało wykonane na podobieństwo reprezentacyjnej fasady budynku rozdzielonej w poziomie gzymsami, a w pionie pilastrami w kolorze biało-złotym. Niewielki, okrągłe ikony wypełniają miejsca odpowiadające otworom okiennym. Ikonostas oddziela miejsce ołtarzowe (swiatłyszcze, sanktuarium, prezbiterium) i nawę, przeznaczoną dla wiernych. Za ikonostasem w prezbiterium kapłan sprawuje Boską Liturgię, tam znajduje się darochranitielnica. W roku 2017 cerkiew została odnowiona na zewnątrz, autorem projektu i ikon jest ikonopis Jarosław Wiszenko. Obok na cmentarzu znajduje się kaplica Matki Bożej Opiekuńczej (Pokrow), najstarsza czynna budowla w Mielniku (1777 r.) Najprawdopodobniej została postawiona w miejscu, gdzie stała pierwsza cerkiew Bogarodzicy z ikoną Chrystusa Zbawiciela. Kaplica została gruntownie wyremontowana i raczej nie przypomina zabytku. Na cmentarzu można odnaleźć ręcznie kute krzyże nagrobne z XIX. wieku. Zdjęcia Maurycy Lubak i Jarosław Wiszenko(fb)"
   },
   {
     "slug": "warsztaty-pisania-ikon-w-kosciele-srodowisk-tworczych-w-warszawie",
-    "title": "Warsztaty Pisania Ikon w Kościele Środowisk Twórczych w Warszawie",
+    "title": "Warsztaty pisania ikon w Kościele Środowisk Twórczych w Warszawie",
     "date": "2017-09-02",
     "kind": "warsztaty",
     "sample": true,
-    "excerpt": "W warsztatach mogą wziąć udział ci, którzy pragną zaangażować się w pisanie ikon. Zajęcia odbywają się raz w tygodniu w cyklu akademickim od października do czerwca w kościele środowisk twórczych pw. św. św. Andrzeja Apostoła i Brata Alberta w Warszawie: w grupach wieczornych w g"
+    "excerpt": "W warsztatach mogą wziąć udział ci, którzy pragną zaangażować się w pisanie ikon. Zajęcia odbywają się raz w tygodniu w cyklu akademickim od października do czerwca w kościele środowisk twórczych pw. św. św. Andrzeja Apostoła i Brata Alberta w Warszawie: w grupach wieczornych w g",
+    "bodyText": "W warsztatach mogą wziąć udział ci, którzy pragną zaangażować się w pisanie ikon. Zajęcia odbywają się raz w tygodniu w cyklu akademickim od października do czerwca w kościele środowisk twórczych pw. św. św. Andrzeja Apostoła i Brata Alberta w Warszawie : w grupach wieczornych w godz. 17.30- 20.30, w grupie porannej w godz. 11.00-14.00. Zapraszamy do spotkania z ikoną i do pracy twórczej w dialogu z tradycją pisania ikony. Zgłoszenia na warsztaty przyjmujemy do końca września. na adres akademiaikony@gmail.com lub pod nr tel. 601 734 705. Każdy uczestnik warsztatów Akademii Ikony może poszerzać wiedzę na temat świata ikony poprzez uczestnictwo w wykładach. Na wykłady zapraszamy również osoby które piszą ikony w innych ośrodkach jak też tych, którzy nie piszą ikon a są zainteresowani. Koszt roczny wykładów to 120 zł. Wykłady odbywają się w wybrane wtorki każdego miesiąca od 10.10. 2017 do 12.06.2018. Pierwszy wykład 10.10 o godz. 18.30 wygłosi ks. Grzegorz Michalczyk, Krajowy Duszpasterz Środowisk Twórczych. Temat spotkania: „Biblia – Księga chwały Boga „. Zapisy na miejscu przed pierwszym wykładem. Każdy uczestnik Akademii Ikony może kształtować i pogłębiać swoją duchowość biorąc udział w spotkaniach modlitewnych i w życiu liturgicznym Duszpasterstwa Środowisk Twórczych w kościele pw. św. św. Andrzeja Apostoła i Brata Alberta w Warszawie. Ikona jest w swojej istocie przede wszystkim dziełem modlitewnym, dopiero potem artystycznym. Ikona jest tworzona przez modlitwę i dla modlitwy. Ikona jest: „teologią w kolorach” (Leonid Uspienski), „kolorową kontemplacją” (Eugeniusz Trubieckoj), „oknem ku wieczności” (Michel Quenot). Tak jak Biblia tak i ikona jest dla człowieka wiary miejscem spotkania z Bogiem. Patrząc na rzeczywistość przedstawianą na ikonie widzimy świat nadprzyrodzony, świat przemieniony światłem Chrystusa objawiającego się w chwale na górze Tabor. W powstaniu ikon uczestniczy, poprzez materię całe stworzenie: drewno, płótno, kleje zwierzęce, szelak, kreda, pigmenty organiczne i mineralne, jajko, wino, złoto… Ikonograf pracując z tymi materiałami nie zapomina nigdy o radości obdarowywania świata ikonami."
   },
   {
     "slug": "warsztaty-pisania-ikon",
@@ -782,28 +822,32 @@
     "date": "2012-10-27",
     "kind": "warsztaty",
     "sample": true,
-    "excerpt": "Warsztaty pisania ikon są dla tych którzy, oprócz chęci pogłębiania wiedzy i doświadczania ikony poprzez modlitwę, czują się powołani do pisania ikon. Preferujemy pracę indywidualną. Każdy pracuje w swoim rytmie i na swoim etapie. Nasze prace tworzą Galerię Ikony Współczesnej, wy"
+    "excerpt": "Warsztaty pisania ikon są dla tych którzy, oprócz chęci pogłębiania wiedzy i doświadczania ikony poprzez modlitwę, czują się powołani do pisania ikon. Preferujemy pracę indywidualną. Każdy pracuje w swoim rytmie i na swoim etapie. Nasze prace tworzą Galerię Ikony Współczesnej, wy",
+    "bodyText": "Warsztaty pisania ikon są dla tych którzy, oprócz chęci pogłębiania wiedzy i doświadczania ikony poprzez modlitwę, czują się powołani do pisania ikon. Preferujemy pracę indywidualną. Każdy pracuje w swoim rytmie i na swoim etapie. Nasze prace tworzą Galerię Ikony Współczesnej, wystawy odbywają się kilka razy do roku w różnych miejscach w Warszawie, w Polsce i za granicą ( Litwa, Gruzja) Zajęcia mamy raz w tygodniu, w czwartki lub piątki w Kościele Środowisk Twórczych pw. św Andrzeja Apostoła i św Alberta Chmielowskiego w Warszawie plus intensywna praca w domu. Przez cały rok istnieje możliwość umawiania się na konsultacje indywidualne. Informacje i zgłoszenia: sekretariat.ikony22@gmail.om"
   },
   {
     "slug": "warsztaty-w-kosciele-srodowisk-tworczych-pp-sw-andrzeja-apostola-i-sw-brata-alberta-w-warszawie-plac-teatralny-20",
-    "title": "Warsztaty w Kościele Środowisk Twórczych pp. św. Andrzeja Apostoła i św Brata Alberta w Warszawie",
+    "title": "Warsztaty w Kościele Środowisk Twórczych pp. św. Andrzeja Apostoła i św. Brata Alberta w Warszawie",
     "date": "2016-08-29",
     "kind": "warsztaty",
     "sample": true,
-    "excerpt": "Celem działalności Akademii Ikony jest nie tylko kształcenie ale i pomoc w doświadczaniu ikony. Praca malarza ikon to życie w intymnej relacji z Panem Bogiem i świadczenie o tej relacji przez obraz. Dbanie o tę relację, ciągłe dojrzewanie do niej to nieustanne wyzwanie dla ikonog"
+    "excerpt": "Celem działalności Akademii Ikony jest nie tylko kształcenie ale i pomoc w doświadczaniu ikony. Praca malarza ikon to życie w intymnej relacji z Panem Bogiem i świadczenie o tej relacji przez obraz. Dbanie o tę relację, ciągłe dojrzewanie do niej to nieustanne wyzwanie dla ikonog",
+    "bodyText": "Celem działalności Akademii Ikony jest nie tylko kształcenie ale i pomoc w doświadczaniu ikony. Praca malarza ikon to życie w intymnej relacji z Panem Bogiem i świadczenie o tej relacji przez obraz. Dbanie o tę relację, ciągłe dojrzewanie do niej to nieustanne wyzwanie dla ikonografa. Tryb nauki w Akademii Ikony jest nieustający co oznacza, że na warsztaty pisania ikon i towarzyszące im wykłady można uczęszczać dowolnie długo: 1) dwa pierwsze lata nieprzerwanej nauki wstępnej na warsztatach i wykładach Akademii Ikony to kurs podstawowy pisania ikon; każdy uczestnik kursu pracuje w swoim rytmie i na swoim etapie pracy swobodnie, bez narzucania terminów, 2) po minimum dwóch latach kursu wstępnego uczestnik może napisać ikonę wielopostaciową i- jeśli będzie przyjęta- to status uczestnika kursu wstępnego zmienia się w status uczestnika nauk doskonalących, który może trwać dowolnie długo. Warunki przyjęcia do Akademii Ikony: 1) w wykładach może uczestniczyć każdy; na warsztaty może się zgłosić każdy, kto do końca września napisze na adres kontaktowy Akademii Ikony akademiaikony@gmail.com lub złoży formularz w zakrystii Kościoła Środowisk Twórczych. W odpowiedzi na zgłoszenie uzgadniamy e-mailem lub sms-em termin rozmowy wstępnej, na którą prosimy przynieść swoje dotychczasowe prace artystyczne np. szkice lub malarskie z natury. Na rozmowie ustalamy szczegóły."
   },
   {
     "slug": "warsztaty-w-lipcu",
-    "title": "WARSZTATY W LIPCU",
-    "date": "2015-06-27",
+    "title": "Warsztaty w lipcu",
+    "date": "2015-07-06",
+    "dateEnd": "2015-07-13",
     "kind": "warsztaty",
     "sample": true,
-    "excerpt": "Na warsztaty wakacyjne zapraszamy w terminie 6- 13 lipca, do Kościoła Środowisk Twórczych, Warszawa, Plac Teatralny 20. Pracujemy w godz 10-16.00 w kościele, praca indywidualna. Jest jeszcze jedno wolne miejsce. W programie wszystkie etapy pisania ikony, pokaz gruntowania podobra"
+    "excerpt": "Na warsztaty wakacyjne zapraszamy w terminie 6- 13 lipca, do Kościoła Środowisk Twórczych, Warszawa, Plac Teatralny 20. Pracujemy w godz 10-16.00 w kościele, praca indywidualna. Jest jeszcze jedno wolne miejsce. W programie wszystkie etapy pisania ikony, pokaz gruntowania podobra",
+    "bodyText": "Na warsztaty wakacyjne zapraszamy w terminie 6- 13 lipca, do Kościoła Środowisk Twórczych, Warszawa, Plac Teatralny 20. Pracujemy w godz 10-16.00 w kościele, praca indywidualna. Jest jeszcze jedno wolne miejsce. W programie wszystkie etapy pisania ikony, pokaz gruntowania podobrazi i olifowania. Pierwowzory do wyboru : ikona Pantokratora, Matki Bożej z Dzieciątkiem. Po wcześniejszym uzgodnieniu istnieje możliwość pracy nad ikoną inną niż proponowane. Koszt 860 zł. w tym materiały dostępne na miejscu. Więcej informacji i zgłoszenia Elżbieta Jackowska- Kurek studiumikony@gmail.com; Dnia 15 lipca zapraszamy na warsztaty z Marią Osuchowską, ikonografem z Litwy W programie wykład, pokaz i część praktyczna- szkicowanie wybranej ikony. Więcej informacji i zgłoszenia, Elżbieta Jackowska- Kurek nr tel. 601 734 705, studiumikony@gmail.com. miejsce: Kościół Środowisk Twórczych, Warszawa, Plac Teatralny 20."
   },
   {
     "slug": "wyjazd-studyjny-sladami-ikon-prof-jerzego-nowosielskiego",
     "title": "Wyjazd studyjny śladami ikon prof. Jerzego Nowosielskiego",
-    "date": "2017-07-17",
+    "date": "2017-07-16",
     "kind": "wyjazd",
     "sample": true,
     "excerpt": "Dnia 16.07.2017 grupa uczestników Akademii Ikony udała się na Liturgię do cerkwii św. Jana Klimaka na Woli, po której odbyło się spotkanie z o. Pawłem. Rozmawialiśmy o historii i ekumenicznym wymiarze tego miejsca. Tego samego dnia udaliśmy się do kościoła Opatrzności Bożej w Wes",
@@ -838,19 +882,21 @@
       "alt": "[do uzupełnienia: podpis zdjęcia]",
       "width": 960,
       "height": 300
-    }
+    },
+    "bodyText": "Dnia 16.07.2017 grupa uczestników Akademii Ikony udała się na Liturgię do cerkwii św. Jana Klimaka na Woli, po której odbyło się spotkanie z o. Pawłem. Rozmawialiśmy o historii i ekumenicznym wymiarze tego miejsca. Tego samego dnia udaliśmy się do kościoła Opatrzności Bożej w Wesołej na Mszę św., po której spotykaliśmy się z proboszczem o. Mariuszem. Ojciec opowiadał nam o katolickiej wspólnocie o powołaniu ekumenicznym – Chemin Neuf. Każde z tych spotkań nasycone było refleksją i modlitwą przed ikonami prof. Jerzego Nowosielskiego. \" style=\"--fg-title-line-clamp: 0; --fg-description-line-clamp: 0;\" >"
   },
   {
     "slug": "wyklady-20132014",
-    "title": "„Ikona – miejsce spotkania” – program 2013/2014",
+    "title": "Ikona – miejsce spotkania — wykłady 2013/2014",
     "date": "2013-10-23",
     "kind": "wyklady",
     "sample": true,
-    "excerpt": "IKONA- MIEJSCE SPOTKANIA Spotkania moderuje Elżbieta Jackowska-Kurek 24 października, godz. 17.00 Inauguracja, ks. dr Henryk Paprocki Chrześcijański Wschód i Zachód, próba definicji, ks. dr Aleksander Jacyniak SJ Rzeczywistość ikony. Ikona a sztuka starożytna, mgr Witali Michalcz"
+    "excerpt": "IKONA- MIEJSCE SPOTKANIA Spotkania moderuje Elżbieta Jackowska-Kurek 24 października, godz. 17.00 Inauguracja, ks. dr Henryk Paprocki Chrześcijański Wschód i Zachód, próba definicji, ks. dr Aleksander Jacyniak SJ Rzeczywistość ikony. Ikona a sztuka starożytna, mgr Witali Michalcz",
+    "bodyText": "## IKONA- MIEJSCE SPOTKANIA Spotkania moderuje Elżbieta Jackowska-Kurek 24 października, godz. 17.00 Normal 0 21 - Inauguracja, ks. dr Henryk Paprocki - Chrześcijański Wschód i Zachód, próba definicji, ks. dr Aleksander Jacyniak SJ - Rzeczywistość ikony. Ikona a sztuka starożytna, mgr Witali Michalczuk 21 listopada, godz. 17.30 - Umiłowanie Tory w Judaizmie, ks. Grzegorz Michalczyk - Rzeczywistość ikony. Sztuka współczesna w świetle ikony, mgr Witali Michalczuk 19 grudnia, godz. 17.30 - Pentarchia – wschodnie patriarchaty, ks. dr Henryk Paprocki - Święta Góra Atos, mgr Łukasz Leonkiewicz 23 stycznia, godz. 17.30 - godz. 17.30 Ikona Matki Bożej Śnieżnej w Etiopii, dr Jerzy Kazimierczak - Tradycja hezychastyczna w Bizancjum i jej wspołczesna interpretacja, ks. dr Piotr Nikolski 27 lutego, godz. 17.30 - Ikona- obecność i spotkanie, ks. dr Henryk Paprocki - Teologia Imienia Bożego, ks. dr Piotr Nikolski 27 marca, godz 17.30 - Poczęcie w ikonografii i teologii prawosławnej, ks. dr Artur Aleksiejuk. - Założenia i podstawy prawosławnej tradycji ascetycznej, ks. dr Piotr Nikolski 24 kwietnia, godz. 17.30 - Ikona w obrzędowości ludowej, dr Ewa Kocój - Świadomość ikonograficzna w dziejach Kościoła Wschodniego, ks. dr Piotr Nikolski 22 maja, godz. 17.30 - Monastycyzm- pierwsze monastery, reguły, pisarze ascetyczni ks. dr Henryk Paprocki - Ikony w Rzeczpospolitej Obojga Narodów, dr Aleksandra Sulikowska- Gąska 12 czerwca, godz 17.00 - Zakończenie, ks. dr Henryk Paprocki - Teologia Światła, ks. dr Henryk Paprocki - Dogmat i moralność, ks. dr Artur Aleksiejuk"
   },
   {
     "slug": "wyklady-20142015",
-    "title": "„Obraz i kult” – program 2014/2015",
+    "title": "Obraz i kult — wykłady 2014/2015",
     "date": "2014-09-03",
     "kind": "wyklady",
     "sample": true,
@@ -868,19 +914,21 @@
       "alt": "[do uzupełnienia: podpis zdjęcia]",
       "width": 640,
       "height": 905
-    }
+    },
+    "bodyText": "Normal 0 21 false false false PL X-NONE X-NONE OBRAZ I KULT 23.10. 2014. Inauguracja. Obraz i kult, ks. dr Henryk Paprocki, Muzyka i hymnografia jako element obrazu liturgicznego, mgr Witali Michalczuk 27. 11.2014. Kult w świetle antropologii chrześcijańskiej, ks. dr Piotr Nikolski Człowiek kultu. Modyfikacje antropologiczne w przestrzeni kultu, mgr Witali Michalczuk 18.12.2014 Ikony nierukotwornyje, ks. dr Henryk Paprocki Obraz Matki Bożej wyłaniający się z Ewangelii, ks Grzegorz Michalczyk 22.01.2015 Odrodzenie ikony w XX w. , mgr Witali Michalczuk Kult relikwii i święto ść., ks. dr Piotr Nikolski 19.02.2015. Pielgrzymowanie do Starców, ks. dr Piotr Nikolski Rola przewodnictwa duchowego dla jednostki i społeczeństwa, dr Łukasz Leonkiewicz 19.03.2015. Kult ikony w obrzędowości ludowej prawosławia, dr hab. Ewa Kocój Sacrum i ikona. Ikony cudami słynące w tradycji prawosławia, dr hab. Ewa Kocój 16.04.2015 Ikony Pasyjne i Wielkanocne – Pascha Krestowoskresnaja, ks. dr Piotr Nikolski Ikona w przestrzeni sakralnej. Ikona i fresk, ks dr Henryk Paprocki 21.05 Liturgia w kontekście Paschalnym, ks Grzegorz Michalczyk Eksperymenty z przestrzenią sakralną w XX w., mgr Witali Michalczuk 11.06 Zakończenie. Ikony objawione, ks dr Henryk Paprocki, “ Ikonowy performance”. Obrazowość liturgii i ikony. mgr Witali Michalczuk WERNISAŻ WYSTAWY IKON. Spotkania moderuje Elżbieta Jackowska-Kurek Na spotkania zapraszamy nie tylko uczestników warsztatów pisania ikon, zapraszamy na nie również osoby, które chcą uczestniczyć wyłącznie w części teoterychnej Akademii Ikony. Zgłoszenia i pytania: sekretariat.ikony22@gmail.com."
   },
   {
     "slug": "wyklady-20152016-2",
-    "title": "„Ikona dziś” – program wykładów 2015/2016",
+    "title": "Ikona dziś — wykłady 2015/2016",
     "date": "2015-09-26",
     "kind": "wyklady",
     "sample": true,
-    "excerpt": "20. X. Kształtowanie teologii i artystycznego języka ikony, ks. dr Henryk Paprocki 17. XI. Ikona a sztuka abstrakcyjna, Witali Michalczuk 8. XII. Rok liturgiczny w ikonie, dr Łukasz Leonkiewicz 19. I. Jerzy Nowosielski i ikona – droga inspiracji i stworzenie własnej formuły artys"
+    "excerpt": "20. X. Kształtowanie teologii i artystycznego języka ikony, ks. dr Henryk Paprocki 17. XI. Ikona a sztuka abstrakcyjna, Witali Michalczuk 8. XII. Rok liturgiczny w ikonie, dr Łukasz Leonkiewicz 19. I. Jerzy Nowosielski i ikona – droga inspiracji i stworzenie własnej formuły artys",
+    "bodyText": "20. X. Kształtowanie teologii i artystycznego języka ikony, ks. dr Henryk Paprocki 17. XI. Ikona a sztuka abstrakcyjna, Witali Michalczuk 8. XII. Rok liturgiczny w ikonie, dr Łukasz Leonkiewicz 19. I. Jerzy Nowosielski i ikona – droga inspiracji i stworzenie własnej formuły artystycznej, Witali Michalczuk 16. II. Monastery prawosławne w Polsce – historia ikon, dr Łukasz Leonkiewicz 15. III. Freski bizantyjskie w Polsce, dr Ewa Siuzdak 19. IV. Teologia Światła, dr Łukasz Leonkiewicz 17. V. Ikona w myśli XX w, dr Irina Tatarova 14. VI. Ikona dziś, ks. dr Henryk Paprocki Spotkania seminaryjne odbywają się w Kościele Środowisk Twórczych św. św. Andrzeja Apostoła i Alberta Chmielowskiego na Placu Teatralnym w Warszawie, moderuje Elżbieta Jackowska-Kurek"
   },
   {
     "slug": "wyklady-20162017",
-    "title": "„Ikona – niebo na ziemi” – program 2016/2017",
+    "title": "Ikona – niebo na ziemi — wykłady 2016/2017",
     "date": "2016-10-01",
     "kind": "wyklady",
     "sample": true,
@@ -898,79 +946,91 @@
       "alt": "[do uzupełnienia: podpis zdjęcia]",
       "width": 216,
       "height": 300
-    }
+    },
+    "bodyText": "IKONA NIEBO NA ZIEMI 18. października, godz. 18.00 Biblijne znaczenie ciała, ks. Grzegorz Michalczyk 15. listopada, godz.19.00 Monaster w świecie. Hezychazm nie tylko dla mnichów, dr Łukasz Leonkiewicz 13. grudnia, godz. 19.00 Ikonografia ludowa jako wyraz refleksji religijnej, dr Łukasz Leonkiewicz 24. stycznia, godz 19.00 Święta Góra Athos na co dzień, dr Łukasz Leonkiewicz 21. lutego, godz.19.00 Ikona Sądu Ostatecznego, ks. dr Piotr Nikolski 21. marca, godz. 19.00 Współczesna ikonografia świątyń prawosławnych na Podlasiu, dr Łukasz Leonkiewicz 25. kwietnia, godz 19.00 Śmierć w ikonografii prawosławnej, ks. dr Artur Aleksiejuk 16. maja, godz. 19.00 Ikona i twórczość w rosyjskiej myśli XX wieku, dr Irina Tatarova 13. czerwca, godz 19.00 Piękno Boga. ks. dr Henryk Paprocki Cykle wykładowe wieloletnie: O ŚWIĘTYM ANDRZEJU APOSTOLE 29. listopada, godz. 19.00 Święty Andrzej – Apostoł Wschodu i Zachodu. ks. prof. dr hab. Józef Naumowicz ŚLADAMI NAJPIĘKNIEJSZYCH IKON ŚWIATA 25. paźdzernika, godz.19.00 Ikonografia syryjska, dr Jerzy Kazimierczak 22. listopada, godz 19.00 Ikonografia koptyjska, dr Jerzy Kazimierczak 31. stycznia, godz. 19.00. Ikonografia Grecji cz. I, ks. Roman Batorski 28. lutego, godz 19.00, Ikonografia Grecji cz II, ks. Roman Batorski 28. marca, godz. 19.00, Romańskie Madonny Południowej Europy (Francja, Hiszpania) , dr Jerzy Kazimierczak 23. maja, godz 19.00, Słowo i obraz, Łukasz Hajduczenia 30. maja godz. 19.00 Piękno, które zbawia świat, Witali Michalczuk MODLITWA I WARSZTAT – spotkania z ikonografami 17. stycznia, godz. 19.00, Na drabinie- uwagi o duchowości malarza ikon, Michał Płoski 14. lutego, godz.19.00 Piękno ukryte między kartami czyli o średniowiecznym iluminatorstwie, Barbara Bodziony 14. marca, godz.19.00 Słowo Boże w ikonie, Iza Murza 16. czerwca, godz.19.00 Modlitwa i warsztat, Elżbieta Jackowska- Kurek 16.06.2017 godz. 17.30 Wystawa ikon/ Agapa Spotkania moderuje Elżbieta Jackowska-Kurek Akademia Ikony jest skierowana do tych, którzy pragną czerpać z duchowości, sztuki i tradycji chrześcijańskiego Wschodu i Zachodu. Tworzymy przestrzeń spotkania teoretyków i praktyków sztuki sakralnej. Więcej informacji: sekretariat.ikony22@gmail.com. Zapisać się można również przed każdym spotkaniem od godz. 18.00,"
   },
   {
     "slug": "wyklady-20172018",
-    "title": "„Ikona – korzenie i owoce wiary” – program 2017/2018",
+    "title": "O świętości — wykłady 2017/2018",
     "date": "2017-09-13",
     "kind": "wyklady",
     "sample": true,
-    "excerpt": "IKONA – KORZENIE I OWOCE WIARY O ŚWIĘTOŚCI 10.10. Ikonografia św. Andrzeja Apostoła, Elżbieta Jackowska-Kurek. 17.10. Ikona Sądu Ostatecznego, ks. Marek Wojnarowski. 24.10. Ikonografia Przemienienia Pańskiego – tajemnica światła, ks. diakon dr Łukasz Leonkiewicz. 14.11. Sztuka wc"
+    "excerpt": "IKONA – KORZENIE I OWOCE WIARY O ŚWIĘTOŚCI 10.10. Ikonografia św. Andrzeja Apostoła, Elżbieta Jackowska-Kurek. 17.10. Ikona Sądu Ostatecznego, ks. Marek Wojnarowski. 24.10. Ikonografia Przemienienia Pańskiego – tajemnica światła, ks. diakon dr Łukasz Leonkiewicz. 14.11. Sztuka wc",
+    "bodyText": "IKONA – KORZENIE I OWOCE WIARY O ŚWIĘTOŚCI 10.10. Ikonografia św. Andrzeja Apostoła , Elżbieta Jackowska-Kurek. 17.10. Ikona Sądu Ostatecznego , ks. Marek Wojnarowski. 24.10. Ikonografia Przemienienia Pańskiego – tajemnica światła , ks. diakon dr Łukasz Leonkiewicz. 14.11. Sztuka wczesnochrześcijańska cz. I , ks Roman Batorski. 21.11. Etiopia – fenomen afrykański, dr Jerzy Kazimierczak 28.11. „Objawię moją chwałę wśród narodów” (Ez 39.21) , ks. Grzegorz Michalczyk. 12.12. Ewangelia w dźwiękach – doświadczenie religijne a muzyka, Łukasz Hajduczenia. 19.12. Nieustanne Bogu dziękczynienie , Elżbieta Jackowska-Kurek i Maria Osuchowska-Marcelleti. 16.01. Ikona i Imię, spotkanie z Pierwowzorem w modlitwie , ks. dr Piotr Nikolski. 23.01. Doświadczenie sztuki a formuła człowieka , Witali Michalczuk. 30.01. Sztuka wczesnochrześcijańska cz. II , ks. Roman Batorski. 13.02. Wielkie ikony „narodowe” , dr hab. Ewa Kocój. 20.02. Ikony wielkopostne i wielkanocne , Elżbieta Jackowska-Kurek. 27.02. Trójca Święta w teologii i ikonografii , ks. diakon dr Łukasz Leonkiewicz. 13.03. Świat w którym rodzi się ikona , ks. dr Henryk Paprocki. 20.03. Kanoniczność i obecność łaski w ikonie , ks. Piotr Nikolski. 10.04. Sztuka Neosakralna , Krzysztof Sokołowski. 17.04. Śmierć w ikonografii prawosławnej , ks. dr Artur Aleksiejuk. 24.04. Liturgiczna wizja człowieka w języku muzyki , Łukasz Hajduczenia. 15.05. Filokalia – umiłowanie piękna , ks. prof. Józef Naumowicz. 22.05. Nieporozumienia wokół ikony w XX-XXI wieku , dr Irina Tatarowa. 29.05. Sztuka w doświadczeniu religijnym, Witali Michalczuk . 12.06. Dwie natury Chrystusa , dr Barbara Strzałkowska. 15.06. Ikona – sztuka i modlitwa . Elżbieta Jackowska-Kurek. Wystawa ikon, wernisaż. Spotkania seminaryjne odbywają się w Kościele Środowisk Twórczych św. św. Andrzeja Apostoła i Alberta Chmielowskiego na Placu Teatralnym w Warszawie, moderuje Elżbieta Jackowska-Kurek"
   },
   {
     "slug": "wyklady-20182019",
-    "title": "„Ikona – korzenie i owoce wiary” – program spotkań 2018/2019",
+    "title": "O świętości — wykłady 2018/2019",
     "date": "2018-09-15",
     "kind": "wyklady",
     "sample": true,
-    "excerpt": "O ŚWIĘTOŚCI 09.10. „Bądźcie świętymi, bo Ja jestem święty, Pan, Bóg wasz” (Kpł 2,19), ks. Grzegorz Michalczyk 16.10. Droga do świętości. Przypadki z życia świętych, ks. diakon dr Łukasz Leonkiewicz 23.10. Święte miejsca na Bałkanach, ks. Roman Batorski 30.10. „Świętych obcowanie”"
+    "excerpt": "Zapraszamy na kolejny rok wykładów w Akademii Ikony. W tym roku tematem przewodnim będzie „O świętości”.",
+    "bodyText": "O ŚWIĘTOŚCI 09.10. „Bądźcie świętymi, bo Ja jestem święty, Pan, Bóg wasz” (Kpł 2,19), ks. Grzegorz Michalczyk 16.10. Droga do świętości. Przypadki z życia świętych , ks. diakon dr Łukasz Leonkiewicz 23.10. Święte miejsca na Bałkanach , ks. Roman Batorski 30.10. „Świętych obcowanie”- freski w kaplicy Trójcy Świętej w Lublinie , dr Ewa Siuzdak 13.11. Fenomenologia świętości w prawosławiu , Witali Michalczuk 20.11. Sztuka bizantyjska w Palermo , ks. Marek Wojnarowski 27.11. Święty Jan Damasceński obrońca obrazów , ks. prof Józef Naumowicz 11.12. Ikonografia Bożego Narodzenia i Teofanii , ks. diakon dr Łukasz Leonkiewicz 08.01. Czarni święci , dr Jerzy Kazimierczak 15.01. Nowe ciało. Szaty w doświadczeniu sztuki wschodnio chrześcijańskiej , Witali Michalczuk 22.01. Eucharystia w życiu chrześcijan , ks. dr Henryk Paprocki 29.01. Święty Jakub i pielgrzymowanie , dr Jerzy Kazimierczak 12.02. Sposób przedstawiania Chrystusa, Bogurodzicy i świętych w Bizancjum – analiza historyczna , ks. diakon dr Łukasz Leonkiewicz 19.02. Prawosławny barok – fenomen stylu i duchowości , Witali Michalczuk 26.02. Możliwości myśli teologicznej w badaniu form sztuki liturgii wschodniego chrześcijaństwa , dr Łukasz Hajduczenia 12.03. Ikonografia bizantyjska na Cyprze , ks. Roman Batorski 19.03. „Okrucieństwo” świętych przedstawiane na ikonie , dr Justyna Spruth 26.03. Cudowne ikony w Bizancjum, ks. prof. dr hab. Józef Naumowicz 09.04 . Nowe oblicza. Ikonografia świętych XX wieku , dr Irina Tatarova 23.04. Ikonografia św. Jerzego , dr Jerzy Kazimierczak 30.04. Aniołowie i święci. Hierarchia niebiańska i kościelna Pseudo-Dionizego Areopagity , ks. diakon dr Łukasz Leonkiewicz 14.05. Rola szaleńców Bożych w dziejach Kościoła , ks. dr Piotr Nikolski 21.05. Święci książęta i cesarze – ikonograficzne typy prawowiernych władców , ks. dr Artur Aleksiejuk 28.05. Pojęcie sakralności w odniesieniu do muzyki liturgicznej i pozaliturgicznej , dr Łukasz Hajduczenia 11.06. Świętość w rozumieniu biblijnym , dr hah. Barbara Strzałkowska prof UKSW 14.06. Ikona – przejmująca delikatność , Elżbieta Jackowska-Kurek. Wernisaż wystawy ikon Spotkania w Kościele Środowisk Twórczych św. św. Andrzeja Apostoła i Alberta Chmielowskiego na Placu Teatralnym w Warszawie, moderuje Elżbieta Jackowska-Kurek"
   },
   {
     "slug": "wyklady-2019-2020",
-    "title": "IKONA – KORZENIE i OWOCE WIARY",
+    "title": "O Duchu Świętym — wykłady 2019/2020",
     "date": "2019-09-01",
     "kind": "wyklady",
     "sample": true,
-    "excerpt": "O DUCHU ŚWIĘTYM Program spotkań 2019/2020 8.10Duch Paraklet, ks. Grzegorz Michalczyk 19.11.Wędrówka duszy po zaświatach, ks. Marek Wojnarowski,Duch Święty w Apokalipsie św. Jana, ks. Roman Batorski 10.12.Św. Mikołaj z Myry – rozwój kultu i ikonografii, ks. prof. dr hab. Józef Nau"
+    "excerpt": "Zapraszamy na kolejny rok wykładów w Akademii Ikony. W tym roku tematem przewodnim będzie „O Duchu Świętym”.",
+    "bodyText": "O DUCHU ŚWIĘTYM Program spotkań 2019/2020 8.10 Duch Paraklet, ks. Grzegorz Michalczyk 19.11. Wędrówka duszy po zaświatach, ks. Marek Wojnarowski, Duch Święty w Apokalipsie św. Jana, ks. Roman Batorski 10.12. Św. Mikołaj z Myry – rozwój kultu i ikonografii, ks. prof. dr hab. Józef Naumowicz, Nauka o Duchu Świętym w teologii kapadockiej a koncepcja energii św. Grzegorza Palamasa, ks. diakon dr Łukasz Leonkiewicz 14.01. Doświadczenie liturgii w tradycji Janowej – Duch Święty i sztuka w Eucharystii, Witali Michalczuk, Tradycja prawosławnego śpiewu liturgicznego w Rzeczypospolitej, Łukasz Hajduczenia 21.01. Na skrzyżowaniu czasu i wieczności, ks. dr Henryk Paprocki 18.02. Duch Święty w Starym Testamencie? prof. dr hab. Barbara Strzałkowska, Wiara – Doświadczenie – Tradycja: Działanie Ducha Świętego , ks. dr Piotr Nikolski 17.03. Św. Józef – człowiek wielkiego ducha , ks. prof. dr hab. Józef Naumowicz, Sztuka epoki Ducha Świętego – ponadhistoryczne doświadczenie liturgii prawosławnej , Łukasz Hajduczenia 28.04. Dosłowne i symboliczne oblicza Ducha Świętego w malarstwie ikonowym , dr Justyna Sprutta, Pneumatologia Ojców Kościoła i problem Filioque , ks. diakon dr Łukasz Leonkiewicz 19.05. Jerzy Nowosielski w gronie myślicieli o ikonie XX wieku , dr Irina Tatarova, Sztuka jako Tradycja – kwestia sztuki w mistycznym życiu Kościoła, Witali Michalczuk 16.06. Kim jest Duch Święty? – perspektywa nowotestamentalna , prof. dr hab. Barbara Strzałkowska 19.06. Ikona – korzenie i owoce wiary , Elżbieta Jackowska-Kurek, Wernisaż wystawy ikon Na spotkania zapraszamy wszystkich zainteresowanych, nie tylko osoby piszące ikony. Spotkania odbywają się w Kościele Środowisk Twórczych św. Andrzeja Apostoła i św. Alberta Chmielowskiego na Placu Teatralnym w Warszawie, moderuje Elżbieta Jackowska-Kurek"
   },
   {
     "slug": "wyklady-2020-2021",
-    "title": "„O Bożej Obecności” – wykłady 2020/2021",
+    "title": "O Bożej Obecności — wykłady 2020/2021",
     "date": "2020-09-09",
     "kind": "wyklady",
     "sample": true,
-    "excerpt": "PROGRAM WYKŁADÓW 2020/2021 Zapraszamy na kolejny rok wykładów w Akademii Ikony. Tegoroczny program prezentujemy poniżej: 13.10. Szechina…, ks. Grzegorz Michalczyk 27.10. Ikona a mistyka, ks. diakon dr Łukasz Leonkiewicz, Ikona Trójcy Przenajświętszej, ks. prof dr hab. Józef Naumo"
+    "excerpt": "Zapraszamy na kolejny rok wykładów w Akademii Ikony. W tym roku tematem przewodnim będzie „O Bożej Obecności”.",
+    "bodyText": "PROGRAM WYKŁADÓW 2020/2021 Zapraszamy na kolejny rok wykładów w Akademii Ikony. Tegoroczny program prezentujemy poniżej: 13.10. Szechina …, ks. Grzegorz Michalczyk 27.10. Ikona a mistyka, ks. diakon dr Łukasz Leonkiewicz, Ikona Trójcy Przenajświętszej, ks. prof dr hab. Józef Naumowicz 17.11. Symbole Bożej obecności w ikonach Sądu Ostatecznego, ks. Marek Wojnarowski, Modlitwa Jezusowa, ks. prof. dr hab. Józef Naumowicz 08.12. Ikona Bożego Narodzenia – spotkanie z Bogiem, ks. diakon dr Łukasz Leonkiewicz, Przedstawienia Matki Bożej, ks. Roman Batorski 19.01. Na obraz i podobieństwo (istota sztuki ikony), ks. dr Henryk Paprocki, “Widzieć Boga, jakim jest” – współczesne świadectwa życia duchowego, ks. diakon dr Łukasz Leonkiewicz 16.02. Korzenie biblijnej tradycji żydowskiej ikony Misterium Przemienia Pańskiego w kontekście szalosz regali , ks. prof. dr hab. Dariusz Klejnowski-Różycki, Święci o doświadczaniu Boga w życiu codziennym, ks. diakon dr Łukasz Leonkiewicz, 16.03. Św. Józef – człowiek wielkiego ducha , ks. prof. dr hab. Józef Naumowicz, Sztuka epoki Ducha Świętego – ponadhistoryczne doświadczenie liturgii prawosławnej , Łukasz Hajduczenia 13.04. Przedstawienia Ukrzyżowania, ks. Roman Batorski, Angelologia Pseudo-Dionizego Areopagity, ks. diakon dr Łukasz Leonkiewicz 18.05. Miejsce ikony w kulturze, dr Irina Tatarova, Sztuka jako tradycja – kwestia sztuki w mistycznym życiu kościoła, Witali Michalczuk 15.06. Kim jest Duch Święty? – perspektywa nowotestamentalna , prof. dr hab. Barbara Strzałkowska 18.06. Ikona – korzenie i owoce wiary, Elżbieta Jackowska-Kurek, Wernisaż wystawy ikon Na wykłady zapraszamy wszystkich zainteresowanych, nie tylko osoby piszące ikony. Zajęcia odbywają się w wybrane wtorki każdego miesiąca w godz. 18.00 – 20.30 w Kościele Środowisk Twórczych pw. św. św. Brata Alberta i Andrzeja Apostoła na Placu Teatralnym w Warszawie."
   },
   {
     "slug": "wyklady-2021-2022",
-    "title": "„Światłość Prawdziwa” – wykłady 2021/2022",
+    "title": "Światłość Prawdziwa — wykłady 2021/2022",
     "date": "2021-09-12",
     "kind": "wyklady",
     "sample": true,
-    "excerpt": "IKONA – PIĘKNO ZANURZONE W TAJEMNICY. ŚWIATŁOŚĆ PRAWDZIWA PROGRAM WYKŁADÓW 2021/2022 Zapraszamy na kolejny rok wykładów w Akademii Ikony. Tegoroczny program prezentujemy poniżej: 12.10. „Było światło prawdziwe…” (J 1,9), ks. Grzegorz Michalczyk 16.11. Światło w listach św. Pawła,"
+    "excerpt": "Zapraszamy na kolejny rok wykładów w Akademii Ikony. W tym roku tematem przewodnim będzie „Światłość Prawdziwa”.",
+    "bodyText": "IKONA – PIĘKNO ZANURZONE W TAJEMNICY. ŚWIATŁOŚĆ PRAWDZIWA PROGRAM WYKŁADÓW 2021/2022 Zapraszamy na kolejny rok wykładów w Akademii Ikony. Tegoroczny program prezentujemy poniżej: 12.10. „Było światło prawdziwe…” (J 1,9), ks. Grzegorz Michalczyk 16.11. Światło w listach św. Pawła, ks. Marek Wojnarowski, Wskrzeszenie Łazarza – życie nie ma końca, ks. prof. dr hab. Józef Naumowicz 14.12. Symeona Nowego-Teologa nauka o boskiej światłości, ks. diakon dr Łukasz Leonkiewicz, Przedświąteczna wystawa ikon, kiermasz świąteczny 18.01. O miłosierdziu Bożym, ks. dr Henryk Paprocki, Nowa Jerozolima w ujęciu biblijnym, prof. dr hab. Barbara Strzałkowska 15.02. O złocie w malarstwie ikonowym, dr Justyna Sprutta, Światłość, która nie rani, czyli o symbolice światła i jego kategoriach w tradycji wschodniej, dr Justyna Sprutta 15.03. „Źródło Jego Światła podobne do kamienia drogocennego, jakby do jaspisu o przejrzystości kryształu” (Ap 21,11) – o mozaikach bizantyjskich pełnych blasku, ks. Marek Wojnarowski, „Spokój, który przewyższa wszelkie rozumienie” (Rudolf Otto), Krzysztof Sokolovski 19.04. Światło w pismach Janowych, ks. Roman Batorski, Hezychastyczna światłość i modlitwa Jezusowa, ks. prof. dr hab. Józef Naumowicz 17.05. Ból i cierpienie w ikonie, ks. dr Artur Aleksiejuk, Ogień na ikonach starowierców, dr Dorota Walczak 14.06. Jerozolima w wybranych tekstach wspomnień z Ziemi Świętej XIX-wiecznych polskich pielgrzymów, prof. dr hab. Barbara Strzałkowska 17.06. Widzieć światłość, Elżbieta Jackowska-Kurek Wernisaż wystawy ikon Na wykłady zapraszamy wszystkich zainteresowanych, nie tylko osoby piszące ikony. Zajęcia odbywają się w wybrane wtorki każdego miesiąca w godz. 18.00 – 20.30 w Kościele Środowisk Twórczych pw. św. św. Brata Alberta i Andrzeja Apostoła na Placu Teatralnym w Warszawie."
   },
   {
     "slug": "wyklady-2022-2023",
-    "title": "Piękno zanurzone w Tajemnicy. Widzieć Niewidzialnego – wykłady 2022/2023",
+    "title": "Widzieć Niewidzialnego — wykłady 2022/2023",
     "date": "2022-09-06",
     "kind": "wyklady",
     "sample": true,
-    "excerpt": "IKONA – PIĘKNO ZANURZONE W TAJEMNICY. WIDZIEĆ NIEWIDZIALNEGO. Wykłady 2022/2023 Z radością otwieramy nowy cykl spotkań seminaryjnych – konferencji o chrześcijańskiej duchowości, teologii i sztuce sakralnej. W ramach trzyletniego cyklu będziemy w tym roku rozważać temat: WIDZIEĆ N"
+    "excerpt": "Z radością otwieramy nowy cykl wykładów o chrześcijańskiej duchowości, teologii i sztuce sakralnej. W tym roku tematem przewodnim będzie „widzieć Niewidzialnego”.",
+    "bodyText": "IKONA – PIĘKNO ZANURZONE W TAJEMNICY. WIDZIEĆ NIEWIDZIALNEGO. Wykłady 2022/2023 Z radością otwieramy nowy cykl spotkań seminaryjnych – konferencji o chrześcijańskiej duchowości, teologii i sztuce sakralnej. W ramach trzyletniego cyklu będziemy w tym roku rozważać temat: WIDZIEĆ NIEWIDZIALNEGO. Więcej informacji i zgłoszenia przyjmujemy na adres: sekretariat.ikony22@gmail.com 11.10. Zobaczyć Niewidzialnego. Biblijne znaki obecności Ducha Świętego, s. dr hab. Judyta Pudełko PDDM 15.11. „Wpatrujemy się w to, co niewidzialne” (2 Kor 4,18). Duchowość św. Pawła, ks. Roman Batorski, Odwieczny Dniami na ikonach Sądu Ostatecznego, ks. Marek Wojnarowski 13.12. Scena Zwiastowania w interpretacji Ojców Kościoła i w ikonografii, ks. prof. dr hab. Józef Naumowicz, Wystawa ikon – oprowadzanie, kiermasz świąteczny 17.01. Zobaczyć Niewidzialnego – powrót do Raju?, ks. dr Henryk Paprocki, Ikona i jej kult w ujęciu Jana Damasceńskiego, ks. prof. dr hab. Józef Naumowicz 14.02. Ikona i tajemnica wolności, ks. dr Artur Aleksiejuk Nowe oblicza. Ikonografia świętych XX wieku, Witali Michalczuk 14.03. „Zobaczyliśmy Pana” (J 20, 25). Duchowość Ewangelii według św. Jana, ks. Roman Batorski Nowe ciało. Szaty w doświadczeniu sztuki wschodnio-chrześcijańskiej, Witali Michalczuk 18.04. O ikonach ze Szkoły Rybotyckiej rozpowszechnionych na terenie Galicji w XVIII w., ks. Marek Wojnarowski, Wierzenia i zwyczaje związane z kultem ikon w religijności przeżywanym w Karpatach, dr hab. Ewa Kocój, prof. UJ 16.05. Oblicze, które jest światłem, czyli o niedocenionym pięknie Boga, dr Justyna Sprutta, Niepoznawalność Boga w ikonografii, ks. dr Piotr Nikolski 13.06. Zobaczyć Zmartwychwstałego, ks. Grzegorz Michalczyk 17.06. Przemienienie Pańskie, Elżbieta Jackowska-Kurek Wernisaż wystawy ikon Na wykłady zapraszamy wszystkich zainteresowanych, nie tylko osoby piszące ikony. Zajęcia odbywają się w wybrane wtorki każdego miesiąca w godz. 18.00 – 20.30 w Kościele Środowisk Twórczych św. św. Brata Alberta i Andrzeja Apostoła na Placu Teatralnym w Warszawie. Koszt roczny 300 zł., zgłosić się można pisząc do końca października na adres: sekretariat.ikony22@gmail.com"
   },
   {
     "slug": "wystawa-ikon-w-kosciele-bl-wladyslawa-z-gielniowa-patrona-warszwy",
     "title": "Wystawa „Ikona – Okno ku wieczności” w kościele bł. Władysława z Gielniowa w Warszawie",
-    "date": "2014-06-20",
+    "date": "2014-06-22",
     "kind": "wystawa",
     "sample": true,
-    "excerpt": "IKONA – OKNO KU WIECZNOŚCI -wystawa, która miała miejsce dnia 22 czerwca 2014 w kościele bł. Władysława z Gielniowa w Warszawie zgromadziła nie nie tylko ikony wielu ikonografów ale też skupiła uwagę niezwykłych odbiorców ikon."
+    "excerpt": "IKONA – OKNO KU WIECZNOŚCI -wystawa, która miała miejsce dnia 22 czerwca 2014 w kościele bł. Władysława z Gielniowa w Warszawie zgromadziła nie nie tylko ikony wielu ikonografów ale też skupiła uwagę niezwykłych odbiorców ikon.",
+    "bodyText": "IKONA – OKNO KU WIECZNOŚCI -wystawa, która miała miejsce dnia 22 czerwca 2014 w kościele bł. Władysława z Gielniowa w Warszawie zgromadziła nie nie tylko ikony wielu ikonografów ale też skupiła uwagę niezwykłych odbiorców ikon."
   },
   {
     "slug": "wystawa-ikon-w-kosciele-srodowisk-tworczych-warszawa-plac-teatralny-20",
-    "title": "Wystawa ikon w Kościele Środowisk Twórczych, św.św. Andrzeja i Alberta, Warszawa.",
-    "date": "2016-07-25",
+    "title": "Wystawa „Ikona – niebo na ziemi” w Kościele Środowisk Twórczych",
+    "date": "2016-06-17",
+    "dateEnd": "2016-07-24",
     "kind": "wystawa",
     "sample": true,
-    "excerpt": "Wystawa IKONA – NIEBO NA ZIEMI miała miejsce w Kościele Środowisk Twórczych w Warszawie i była czynna w dniach 17.06- 24.07.2016 w godzinach otwarcia kościoła. Na otwarciu wystawy tematem oprowadzenia, który przedstawiła Elżbieta Jackowska – Kurek, ikonograf i kurator wystawy, by"
+    "excerpt": "Wystawa IKONA – NIEBO NA ZIEMI miała miejsce w Kościele Środowisk Twórczych w Warszawie i była czynna w dniach 17.06- 24.07.2016 w godzinach otwarcia kościoła. Na otwarciu wystawy tematem oprowadzenia, który przedstawiła Elżbieta Jackowska – Kurek, ikonograf i kurator wystawy, by",
+    "bodyText": "Wystawa IKONA – NIEBO NA ZIEMI miała miejsce w Kościele Środowisk Twórczych w Warszawie i była czynna w dniach 17.06- 24.07.2016 w godzinach otwarcia kościoła. Na otwarciu wystawy tematem oprowadzenia, który przedstawiła Elżbieta Jackowska – Kurek, ikonograf i kurator wystawy, był temat: Ikona – warsztat i modlitwa. Oprowadzania po wystawie Elżbiety Jackowskiej – Kurek oraz jej uczniów cieszyły się dużym powodzeniem. Poniżej zdjęcia z otwarcia wystawy. Finisaż wystawy IKONA NIEBO NA ZIEMI odbył się dnia 22 lipca Dr Jerzy Kazimierczak przedstawił bogato ilustrowaną prezentację ikony Matki Bożej Śnieżnej Ikona ta jest jednym z symboli Światowych Dni Młodzieży, poniżej oryginał z Rzymu i dwie ikona powstała w Akademii Ikony."
   },
   {
     "slug": "wystawa-ikon-w-swidnicy-czynna-w-dniach-4-07-25-08-2014-zapraszamy",
-    "title": "Wystawa ikon w Świdnicy.",
+    "title": "Wystawa ikon w Świdnicy",
     "date": "2014-07-04",
+    "dateEnd": "2014-08-25",
     "kind": "wystawa",
     "sample": true,
-    "excerpt": "Parafia Prawosławna św. Mikołaja w Świdnicy oraz Biblioteka Miejska im C.K. Norwida w Świdnicy zorganizowały w Bibliotece Miejskiej w Świdnicy połączoną wystawę prac powstałych na warsztatach malowania ikon prowadzonych w 2014 r przez Michała Boguckiego w Świdnicy i ikon powstały"
+    "excerpt": "Parafia Prawosławna św. Mikołaja w Świdnicy oraz Biblioteka Miejska im C.K. Norwida w Świdnicy zorganizowały w Bibliotece Miejskiej w Świdnicy połączoną wystawę prac powstałych na warsztatach malowania ikon prowadzonych w 2014 r przez Michała Boguckiego w Świdnicy i ikon powstały",
+    "bodyText": "Normal 0 21 Parafia Prawosławna św. Mikołaja w Świdnicy oraz Biblioteka Miejska im C.K. Norwida w Świdnicy zorganizowały w Bibliotece Miejskiej w Świdnicy połączoną wystawę prac powstałych na warsztatach malowania ikon prowadzonych w 2014 r przez Michała Boguckiego w Świdnicy i ikon powstałych w ramach Akademii Ikony, Studium św Andrzeja Apostoła w Warszawie pod kierunkiem Elżbiety Jackowskiej-Kurek. Wystawa była otwarta w dniach 4.07- 25 08 2014."
   },
   {
     "slug": "wystawa-ikon-w-wilnie",
@@ -1028,15 +1088,17 @@
       "alt": "[do uzupełnienia: podpis zdjęcia]",
       "width": 400,
       "height": 590
-    }
+    },
+    "bodyText": "Dnia 4 października w Domu Kultury Polskiej w Wilnie miało miejsce uroczyste otwarcie wystawy „ Ikona i jej konteksty”. Wystawę zorganizowali, na zaproszenie Domu Kultury Polskiej i pani Ireny Brazis, Elżbieta Jackowska-Kurek, ikonograf i prowadząca warsztaty pisania ikon w Akademii Ikony, prezes Akademii Ikony i Studium Ikonograficznego pp. Św. Andrzeja Apostoła oraz Krzysztof Sokołowski, student piątego roku ASP w Warszawie. W pięknej, nowoczesnej, dużej hali została zaaranżowana intymna przestrzeń, pomieszczenie do którego trzeba wejść, żeby doświadczyć ikony. Umieszczone na ścianach, jak okna w domu, wpuszczają światłość, która wszystko przenika. Otwierają świat skończony na nieskończoność, rzeczywistość doczesną na wieczność. Taki był też temat wykładu Pani Elżbiety: „Ikona – okno ku wieczności” . „Ikona, mówiła Pani Elżbieta, podobnie jak muzyka sakralna, nadaje ciężar gatunkowy słowom, które bez niej tej głębi byłyby pozbawione”. Wernisaż uświetnił śpiew zespołu „Słudzy kantyku”. Ikony prezentowane na wystawie pisane są ręką Elżbiety Jackowskaiej-Kurek i jej uczniów oraz zaproszonych ikonografów z Polski (między innymi: Robert Rumin, Urszula Żakowska, Maria Podleśna) oraz z Litwy: (Olga Kiriczenko, Aleksander Osin, Dovile Sabaliauskiene, Birute Elana Taujanskaite) Krzysztof Sokołowski zaprezentował swoje prace zatytułowane „ Ikona relikwiarzowa” odnoszące się w swej wymowie do ikony i do relikwii, co na wernisażu, licznie zgromadzonym przybyłym wyjaśniał. Prace Krzysztofa Sokołowskiego na wystawie były umieszczone na ścianach zewnętrznych przestrzeni, w której były wystawione ikony, co sprawiało wrażenie, że pełnią rolę osobną. Był to zamysł zamierzony w celu ukazania granicy między doczesnością a wiecznością. Każdy artysta a szczególnie malarz ikon, tak samo jak przed wiekami tak i dziś pragnie dzielić się z innymi swoim osobistym doświadczeniem Bożej obecności. Dziękujemy Gospodarzom za wspaniałe przyjęcie, będziemy pamiętać nastrój, światło płynące przez ikony, śpiew, smak i zapach litewskiego chleba i wina…. serdeczność i ciepło ludzkich serc."
   },
   {
-    "slug": "wystawa-ikona-dzis-2",
-    "title": "Wystawa IKONA DZIŚ",
-    "date": "2015-06-12",
+    "slug": "wystawa-ikona-dzis",
+    "title": "Wystawa „Ikona dziś”",
+    "date": "2015-06-19",
+    "dateEnd": "2015-07-19",
     "kind": "wystawa",
     "sample": true,
-    "excerpt": "Wystawa IKONA DZIŚ miała miejsce w Kościele Środowisk Twórczych w Warszawie w dniach od 19 czerwca do 19 lipca 2015. Dziękujemy wszystkim którzy przyczynili się do możliwości powstania tych ikon, tym którzy je napisali i tym którzy nas tak licznie odwiedzili w czasie wernisażu. D",
+    "excerpt": "Dnia 19 czerwca 2015 na Mszy św. o godz 17.00 ks. Grzegorz Michalczyk, Duszpasterz Środowisk Twórczych i Rektor kościoła pw. św. Andrzeja Apostoła i św. Brata Alberta pobłogosławił wszystkim ikonografom którzy napisali ikony wystawione w kościele i tym samym otworzył wystawę IKON",
     "images": [
       {
         "src": "/media/sample/news/wystawa-ikona-dzis-2-0.jpg",
@@ -1050,23 +1112,17 @@
       "alt": "[do uzupełnienia: podpis zdjęcia]",
       "width": 309,
       "height": 232
-    }
-  },
-  {
-    "slug": "wystawa-ikona-dzis",
-    "title": "Wystawa IKONA DZIŚ",
-    "date": "2015-06-19",
-    "kind": "wystawa",
-    "sample": true,
-    "excerpt": "Dnia 19 czerwca 2015 na Mszy św. o godz 17.00 ks. Grzegorz Michalczyk, Duszpasterz Środowisk Twórczych i Rektor kościoła pw. św. Andrzeja Apostoła i św. Brata Alberta pobłogosławił wszystkim ikonografom którzy napisali ikony wystawione w kościele i tym samym otworzył wystawę IKON"
+    },
+    "bodyText": "Dnia 19 czerwca 2015 na Mszy św. o godz 17.00 ks. Grzegorz Michalczyk, Duszpasterz Środowisk Twórczych i Rektor kościoła pw. św. Andrzeja Apostoła i św. Brata Alberta pobłogosławił wszystkim ikonografom którzy napisali ikony wystawione w kościele i tym samym otworzył wystawę IKONA DZIŚ. Elżbieta Jackowska – Kurek podziękowała wszystkim, którzy się przyczynili do powstania tej wystawy i ogłosiła powołanie do życia fundacji IKONA DZIŚ. Z inicjatywy grupy osób związanych z Fundacją Pomocy Matematykom i Informatykom Niesprawnym Ruchowo na czele z Ewą Jarochomską , poproszono Elżbietę Jackowską – Kurek, prowadząca warsztaty w Kościele Środowisk Twórczych, o wygłoszenie wykładu na temat „Ikona dziś”. Pani Elżbieta przychyliła się do prośby i na zakończenie wernisażu odbyło się spotkanie. Wystawa IKONA DZIŚ miała miejsce w Kościele Środowisk Twórczych w Warszawie w dniach od 19 czerwca do 19 lipca 2015. Dziękujemy wszystkim którzy przyczynili się do możliwości powstania tych ikon, tym którzy je napisali i tym którzy nas tak licznie odwiedzili w czasie wernisażu. Dziękujemy wszystkim za życzenia z okazji naszego małego jubileuszu- Akademia Ikony, Studium św Andrzeja Apostoła ma już trzy lata! Dziękujemy Michałowi Boguckiemu za udostępnienie nam miejsca w pomieszczeniach przy Muzeum Ikon, a ks. Grzegorzowi Michalczykowi za zaproszenie nas do Duszpasterstwa Środowisk Twórczych w Warszawie. Dziękujemy wykładowcom i prowadzącym warsztaty jak też tym, którzy nam pomagają, wspierają i sympatyzują z nami. Dyplomy Ambasadora Fundacji IKONA DZIŚ przyjęli: prof. Paweł Stanisław Sysa, Maria Helena Osuchowska- Marcewetti i Ekaterina Loladze. Order Łyżeczki został przyznany ks. Grzegorzowi Michalczykowi, Piotrowi Janasikowi, Jackowi Poręckiemu, Klaudii Świerżawskiej, Magdalenie Limbach, Maurycemu Lubak oraz 20 innym osobom. Nazwiska wszystkich, którzy wspierają nasze dzieła wymienione są w są w naszej Księdze Pamiątkowej udostępnianej na każdej wystawie. Gratuluje i dziękuję. Elżbieta Jackowska- Kurek Aleksandra Kurek- zdjęcia z wernisażu wystawy IKONA DZIŚ ."
   },
   {
     "slug": "wystawa-ikona-korzenie-i-owoce-wiary-2018",
-    "title": "Wystawa „IKONA – KORZENIE I OWOCE WIARY” 2018",
-    "date": "2018-07-23",
+    "title": "Wystawa „Ikona – korzenie i owoce wiary” 2018",
+    "date": "2018-06-15",
+    "dateEnd": "2018-07-22",
     "kind": "wystawa",
     "sample": true,
-    "excerpt": "Kończąca kolejny rok akademicki Akademii Ikony wystawa IKONA – KORZENIE I OWOCE WIARY odbyła się w dniach 15.06-22.07.2018 w Kościele Środowisk Twórczych w Warszawie. W tym okresie wystawę obejrzało ponad tysiąc osób. Ikony zgromadzone na niej zostały napisane ręką Elżbiety Jacko",
+    "excerpt": "Wystawa kończąca rok akademicki Akademii — od 15 czerwca do 22 lipca w Kościele Środowisk Twórczych w Warszawie. Ikony Elżbiety Jackowskiej-Kurek i jej uczniów, z oprowadzaniami kuratorskimi.",
     "images": [
       {
         "src": "/media/sample/news/wystawa-ikona-korzenie-i-owoce-wiary-2018-0.jpg",
@@ -1243,11 +1299,12 @@
       "width": 127,
       "height": 225,
       "caption": "Akademia Ikony Warszawa - wystawa IKONA - KORZENIE OWOCY I WIARY 2018"
-    }
+    },
+    "bodyText": "Kończąca kolejny rok akademicki Akademii Ikony wystawa IKONA – KORZENIE I OWOCE WIARY odbyła się w dniach 15.06-22.07.2018 w Kościele Środowisk Twórczych w Warszawie. W tym okresie wystawę obejrzało ponad tysiąc osób. Ikony zgromadzone na niej zostały napisane ręką Elżbiety Jackowskiej-Kurek oraz jej uczniów. W trakcie wystawy odbyły się także oprowadzania kuratorskie Elżbiety Jackowską-Kurek „Ikona – modlitwa i sztuka” oraz „Ikona współczesna – analiza na przykładzie wybranych przedstawień”. Zapraszamy do obejrzenia fotorelacji z wystawy: \" style=\"--fg-title-line-clamp: 0; --fg-description-line-clamp: 0;\" > Akademia Ikony Warszawa - wystawa IKONA - KORZENIE OWOCY I WIARY 2018 Akademia Ikony Warszawa - wystawa IKONA - KORZENIE OWOCY I WIARY 2018 Akademia Ikony Warszawa - wystawa IKONA - KORZENIE OWOCY I WIARY 2018 Akademia Ikony Warszawa - wystawa IKONA - KORZENIE OWOCY I WIARY 2018 Akademia Ikony Warszawa - wystawa IKONA - KORZENIE OWOCY I WIARY 2018 Akademia Ikony Warszawa - wystawa IKONA - KORZENIE OWOCY I WIARY 2018 Akademia Ikony Warszawa - wystawa IKONA - KORZENIE OWOCY I WIARY 2018 Akademia Ikony Warszawa - wystawa IKONA - KORZENIE OWOCY I WIARY 2018 Akademia Ikony Warszawa - wystawa IKONA - KORZENIE OWOCY I WIARY 2018 Akademia Ikony Warszawa - wystawa IKONA - KORZENIE OWOCY I WIARY 2018 Akademia Ikony Warszawa - wystawa IKONA - KORZENIE OWOCY I WIARY 2018 Akademia Ikony Warszawa - wystawa IKONA - KORZENIE OWOCY I WIARY 2018 Akademia Ikony Warszawa - wystawa IKONA - KORZENIE OWOCY I WIARY 2018 Akademia Ikony Warszawa - wystawa IKONA - KORZENIE OWOCY I WIARY 2018 św. Krzysztof, ikona pisana ręką Larysy, 30x40 cm. Trójca Święta Akademia Ikony Warszawa - wystawa IKONA - KORZENIE OWOCY I WIARY 2018 Akademia Ikony Warszawa - wystawa IKONA - KORZENIE OWOCY I WIARY 2018 Akademia Ikony Warszawa - wystawa IKONA - KORZENIE OWOCY I WIARY 2018 Akademia Ikony Warszawa - wystawa IKONA - KORZENIE OWOCY I WIARY 2018 Akademia Ikony Warszawa - wystawa IKONA - KORZENIE OWOCY I WIARY 2018 Akademia Ikony Warszawa - wystawa IKONA - KORZENIE OWOCY I WIARY 2018 Akademia Ikony Warszawa - wystawa IKONA - KORZENIE OWOCY I WIARY 2018 Akademia Ikony Warszawa - wystawa IKONA - KORZENIE OWOCY I WIARY 2018"
   },
   {
     "slug": "wystawa-ikona-korzenie-i-owoce-wiary-oprowadzania-kuratorskie",
-    "title": "Wystawa „Ikona- korzenie i owoce wiary” – oprowadzania kuratorskie.",
+    "title": "Wystawa „Ikona – korzenie i owoce wiary” — oprowadzania kuratorskie",
     "date": "2017-06-21",
     "kind": "oprowadzanie",
     "sample": true,
@@ -1271,12 +1328,14 @@
       "alt": "[do uzupełnienia: podpis zdjęcia]",
       "width": 225,
       "height": 400
-    }
+    },
+    "bodyText": "Oprowadzania kuratorskie po wystawie ikon w Kościele Środowisk Twórczych w Warszawie odbyły się: 23.06 o godz. 18.00, 25.06. o godz 14.00. dnia 2.07 o godz 14.00 i 18.00, 9.07 o godz. 14.00. Prowadziła Elżbieta Jackowska- Kurek. Każde spotkanie miało swój temat: Serce Chrystusa, Trójca Święta, Ikona pisana emalią komórkową. Rozmowy były tak ciekawe, że postanowiliśmy je spisać i niebawem udostępnimy!"
   },
   {
     "slug": "wystawa-ikona-piekno-zanurzone-w-tajemnicy",
-    "title": "Wystawa „IKONA, PIĘKNO ZANURZONE W TAJEMNICY”",
+    "title": "Wystawa „Ikona – piękno zanurzone w Tajemnicy”",
     "date": "2015-12-13",
+    "dateEnd": "2016-01-16",
     "kind": "wystawa",
     "sample": true,
     "excerpt": "W ponad stuletniej plebani kościoła pw. św. Elżbiety, sanktuarium Matki Bożej Tęskniącej w Powsinie, w dniach 13.XII.2015-16.I.2016 odbyła się zorganizowana przez Akademię Ikony wystawa ikon. W plebanii dziś mieści się Dom Pracy Twórczej Centrum Kultury Wilanów. Na wystawie można",
@@ -1341,15 +1400,16 @@
       "alt": "[do uzupełnienia: podpis zdjęcia]",
       "width": 217,
       "height": 300
-    }
+    },
+    "bodyText": "W ponad stuletniej plebani kościoła pw. św. Elżbiety, sanktuarium Matki Bożej Tęskniącej w Powsinie, w dniach 13.XII.2015-16.I.2016 odbyła się zorganizowana przez Akademię Ikony wystawa ikon. W plebanii dziś mieści się [Dom Pracy Twórczej Centrum Kultury Wilanów](http://www.kulturawilanow.pl/index.php/dom-pracy-tworczej/409-dom-pracy-tworczej.html). Na wystawie można było zobaczyć ikony pisane ręką Elżbiety Jackowskiej-Kurek oraz poznać prace sztuki neosakralnej Krzysztofa Sokołowskiego pochodzącego z Litwy a mieszkającego w Polsce i prace Marii Osuchowskiej urodzonej w Polsce i mieszkającej na Litwie. Na wernisażu, po oprowadzeniu po wystawie, Elżbieta Jackowska-Kurek wygłosiła wykład o rozczytywaniu ikon i zaprosiła do doświadczania ikony w tym historycznym miejscu. W czasie trwania wystawy miały miejsce oprowadzania kuratorskie Elżbiety Jackowskiej-Kurek. Poniżej kilka zdjęć z wernisażu wystawy: \" style=\"--fg-title-line-clamp: 0; --fg-description-line-clamp: 0;\" >"
   },
   {
     "slug": "wystawa-ikona-sztuka-i-modlitwa",
-    "title": "Wystawa „IKONA – SZTUKA I MODLITWA”",
-    "date": "2018-03-25",
+    "title": "Wystawa „Ikona – sztuka i modlitwa”",
+    "date": "2018-03-04",
     "kind": "wystawa",
     "sample": true,
-    "excerpt": "W trzecią niedzielę Wielkiego Postu 2018, w podziemiach Bazyliki Katedralnej pw. św. Michała Archanioła i św. Floriana Męczennika w Warszawie miała miejsce wystawa ikon pisanych ręką Elżbiety Jackowskiej-Kurek i słuchaczy Akademii Ikony. Temat wystawy IKONA – SZTUKA I MODLITWA by",
+    "excerpt": "W trzecią niedzielę Wielkiego Postu wystawa ikon Elżbiety Jackowskiej-Kurek i słuchaczy Akademii w podziemiach katedry św. Michała i św. Floriana w Warszawie. Wykład kuratorki i oprowadzania po wystawie.",
     "images": [
       {
         "src": "/media/sample/news/wystawa-ikona-sztuka-i-modlitwa-0.jpg",
@@ -1417,7 +1477,8 @@
       "alt": "[do uzupełnienia: podpis zdjęcia]",
       "width": 257,
       "height": 300
-    }
+    },
+    "bodyText": "W trzecią niedzielę Wielkiego Postu 2018, w podziemiach Bazyliki Katedralnej pw. św. Michała Archanioła i św. Floriana Męczennika w Warszawie miała miejsce wystawa ikon pisanych ręką Elżbiety Jackowskiej-Kurek i słuchaczy Akademii Ikony. Temat wystawy IKONA – SZTUKA I MODLITWA był też tematem wykładu Elżbiety Jackowskiej – Kurek, kuratorki wystawy. Dziękujemy proboszczowi ks. Bogusławowi Kowalskiemu za zaproszenie oraz licznie przybyłym odwiedzającym i biorącym udział w wykładzie oraz oprowadzaniach po wystawie. \" style=\"--fg-title-line-clamp: 0; --fg-description-line-clamp: 0;\" > Święty Szarbel, 25x30 (cm) Matka Boża Advokata pisana ręką Agnieszki Kundy (15x30 cm.) Pani Elżbieta Jackowska-Kurek oprowadza po wystawie w podziemiach katedry św. Michała Archanioła i św. Floriana Chrystus Pantokrator, 30x40 (cm) Wystawa w podziemiach Katedry św. Michała i św. Floriana w Warszawie Chrystus Emmanuel, 25x30 (cm)"
   },
   {
     "slug": "wystawa-w-kosciele-pw-sw-andrzeja-apostola",
@@ -1425,6 +1486,7 @@
     "date": "2013-12-01",
     "kind": "wystawa",
     "sample": true,
-    "excerpt": "W sobotę dnia 30.11. przypada święto św. Andrzeja Apostoła, Patrona Studium Ikonograficznego św. Andrzeja Apostoła . Tego dnia zaproszono nas z wystawą ikon do kościoła św. Andrzeja Apostoła, w Warszawie, ul. Chłodna 9. Po Mszy św. o godz 18.00 było otwarcie wystawy, koncert Chór"
+    "excerpt": "W sobotę dnia 30.11. przypada święto św. Andrzeja Apostoła, Patrona Studium Ikonograficznego św. Andrzeja Apostoła . Tego dnia zaproszono nas z wystawą ikon do kościoła św. Andrzeja Apostoła, w Warszawie, ul. Chłodna 9. Po Mszy św. o godz 18.00 było otwarcie wystawy, koncert Chór",
+    "bodyText": "Normal 0 21 W sobotę dnia 30.11. przypada święto św. Andrzeja Apostoła, Patrona Studium Ikonograficznego św. Andrzeja Apostoła . Tego dnia zaproszono nas z wystawą ikon do kościoła św. Andrzeja Apostoła, w Warszawie, ul. Chłodna 9. Po Mszy św. o godz 18.00 było otwarcie wystawy, koncert Chóru Międzyuczelnianego a od Parafian – piernikowe serce dla każdego:) Co za parafia!"
   }
 ]

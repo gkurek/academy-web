@@ -114,6 +114,8 @@ export type News = {
   cover?: Image;
   images?: Image[];
   poster?: Image;
+  featured?: boolean;
+  featuredUntil?: string;
 };
 
 export type Testimonial = { quote: string; author: string; role?: string };

@@ -1,16 +1,10 @@
-import { SectionNav } from "@/components/navigation/SectionNav";
-import { pl } from "@/i18n/pl";
-import type { NavLink } from "@/navigation";
+import { YearNavClient } from "@/components/news/YearNavClient";
 
 export interface YearNavProps {
   years: string[];
+  archiveYears: string[];
 }
 
-export function YearNav({ years }: YearNavProps) {
-  const items: NavLink[] = years.map((year) => ({
-    label: year,
-    href: `#${year}`,
-  }));
-
-  return <SectionNav items={items} ariaLabel={pl.news.yearNavAriaLabel} />;
+export function YearNav({ years, archiveYears }: YearNavProps) {
+  return <YearNavClient years={years} archiveYears={archiveYears} />;
 }

@@ -68,7 +68,7 @@ Zawartość `SectionNav` per sekcja:
 - Warsztaty: Przegląd · Kurs roczny i trzyletni · Letnia Szkoła Światła *(pierwsza pozycja = hub, nie nazwa sekcji — K-23)*
 - Wykłady: Bieżący sezon · Archiwum · Wykładowcy
 - Ikony: Galeria · Wystawa · Ikony na zamówienie (K-51)
-- Aktualności: bez `SectionNav` — jedna lista wpisów grupowana latami, bez filtrów kategorii w v1 (K-52)
+- Aktualności: bez `SectionNav` — jedna chronologiczna lista wpisów z nawigacją po latach (K-70), bez filtrów kategorii w v1 (K-52)
 
 Menu główne (desktop): **płaska lista 6 linków** — bez dropdownu; drugi poziom wyłącznie przez `SectionNav` na stronach sekcji (zgodnie z makietą). W menu mobilnym: akordeon per sekcja, nagłówek sekcji zawsze też linkiem do huba.
 
@@ -164,7 +164,11 @@ type News = {
   cover?: Image;
   images?: Image[];
   poster?: Image;
+  featured?: boolean;
+  featuredUntil?: string;       // YYYY-MM-DD; tylko przy featured: true; po dacie wpis traci wyróżnienie przy buildzie (K-73)
 };
+// K-72: na liście (`NewsCard`) wyświetlana jest tylko `date` z rokiem — bez zakresu `dateEnd`.
+// We wpisie pojedynczym i w wyróżnionym: `formatDateRange` z `dateEnd` gdy jest.
 
 // K-51: wystawa „Ikona – korzenie i owoce wiary” jest w kościele na stałe,
 // zestaw ikon zmienia się co roku (nowa edycja z wernisażem na koniec roku
@@ -272,6 +276,8 @@ Szacunek ręcznej korekty po migracji: ~10 stron statycznych, 16 sezonów wykła
 | `/ikona-korzenie-i-owoce-wiary-2/` i wpisy wystaw z lat 2015–2018 | `/ikony/wystawa` |
 | pojedyncze wpisy oprowadzań 2017 (`/ikony-emaliowane/`, `/ikona-trojcy-swietej/`, `/ikona-serca-jezusa/`, `/wystawa-ikona-korzenie-i-owoce-wiary-oprowadzania-kuratorskie/`) | jeden połączony wpis w `/aktualnosci/[slug]` |
 | pozostałe wpisy wystaw i wyjazdów | odpowiadające wpisy `/aktualnosci/[slug]` |
+| `/aktualnosci/wystawa-ikona-dzis-2` | `/aktualnosci/wystawa-ikona-dzis` (K-67, scalenie duplikatów) |
+| `/aktualnosci/149` | `/aktualnosci/ikona-piekno-zanurzone-w-tajemnicy` (K-67, scalenie duplikatów) |
 | `/publikacje/`, `/publikacje/artykuly/`, `/multimedia/`, `/plakaty/` | `/publikacje` z zakładkami |
 
 **Zasada ogólna (K-50):** brak osobnej trasy dla wydarzeń; wydarzenia to wpisy Aktualności z `kind`.
@@ -288,7 +294,7 @@ Szacunek ręcznej korekty po migracji: ~10 stron statycznych, 16 sezonów wykła
 - Zapisy: przyciski `mailto:` z tematami z §7 poniżej + `tel:`. Przygotować miejsce pod formularz w v2 (nie budować go teraz).
 - Program bieżącego sezonu wykładów jako lista (data, tytuł, prowadzący); archiwum jako rozwijane sezony (`SeasonAccordion`).
 - Galeria: dwie sztywne sekcje (ikony Elżbiety Jackowskiej-Kurek → ikony uczniów), filtr **tematu** przez query string (`?temat=<slug-tagu>`), bez filtra autora; lightbox. W siatce — sam tytuł; w lightboxie — pełny autor, wymiary i technika (`IconWork`). Lista nazwisk uczniów w sekcji uczniów, generowana z danych.
-- Aktualności: jeden strumień wpisów z etykietą typu (`kind`), grupowanie latami, wpis pojedynczy; bez filtrów kategorii w v1 (K-50, K-52).
+- Aktualności: jeden strumień wpisów z etykietą typu (`kind`), jedna chronologiczna lista z nawigacją po latach (K-70), wpis pojedynczy; bez filtrów kategorii w v1 (K-50, K-52).
 - Kontakt: adres, **osadzona** mapa (nie surowy link; `MapBlock` + `SiteSettings.mapEmbedUrl`), dwa maile z opisem, telefon, info o wejściu od strony zakrystii (treść redakcyjna w MDX), blok „Akademia w sieci” w `MapBlock`.
 - Mobile-first, WCAG AA (kontrast, fokus, alt), `prefers-reduced-motion`.
 - SEO: metadata + Open Graph per strona, sitemap, 301 ze starych URL.

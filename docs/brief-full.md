@@ -160,7 +160,7 @@ Struktura ma dwa poziomy; każda podstrona musi być osiągalna w maksymalnie dw
 - Nawigacja wg §4.1: huby sekcji, `SectionNav`, stopka z mapą strony.
 - Program bieżącego sezonu wykładów jako lista wydarzeń (data, tytuł(y), prowadzący), archiwum jako rozwijane sezony.
 - Galeria ikon: dwie sztywne sekcje (ikony Elżbiety Jackowskiej-Kurek → ikony uczniów), filtr **tematu** przez query string (`?temat=<slug-tagu>`), bez filtra autora; lightbox. W siatce — sam tytuł; w lightboxie — pełny autor, wymiary i technika. Lista nazwisk uczniów w sekcji uczniów, generowana z danych. Podgląd wyłącznie przez lightbox (bez `/ikony/[slug]` w v1). Zakres prac EJK po starcie strony autorskiej — D-02 (§10.5).
-- Aktualności z paginacją, pojedynczy wpis.
+- Aktualności: jeden strumień wpisów bez paginacji (K-06, K-66), nawigacja po latach (K-70), pojedynczy wpis.
 - Kontakt: adres, osadzona mapa, dwa maile z opisem czego dotyczą, telefon, info o zakrystii.
 - Responsywność mobile-first, dostępność (WCAG AA: kontrast, fokus, alt), `prefers-reduced-motion`.
 - Metadane SEO + Open Graph dla każdej strony, sitemap, przekierowania 301 ze starych URL-i (tabela w §3).

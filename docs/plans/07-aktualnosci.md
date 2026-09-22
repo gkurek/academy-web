@@ -1,12 +1,12 @@
 # Plan 07 — Aktualności
 
-Status: zatwierdzony 2026-09-21 (5/5 kawałków zaimplementowanych)
+Status: zamknięty 2026-09-22 (5/5 kawałków + korekty 07b i 07c)
 Gałąź: feat/07-news
 Makiety: `design/Akademia Ikony - Wystawa i Aktualności.dc.html` — ekrany **7e–7j** (lista + wpisy); handoff: `design/README-wystawa-aktualnosci.md` §1 sloty AK-* / WP-*. Ekrany 7a–7d (`/ikony/wystawa`) — **etap 8**.
 
 ## Cel i zakres
 
-Jeden strumień wpisów z etykietą typu (`kind`), grupowanie latami na `/aktualnosci` i pojedynczy artykuł na `/aktualnosci/[slug]` z `Breadcrumb`, body MDX, galerią (`images`), plakatem (`poster`) i opcjonalnym blokiem CTA w treści. Archiwum dawnego działu „Wydarzenia” trafia tu jako wpisy `sample` (generator z WP, K-50, K-52). **Pełna aktualizacja nawigacji** (K-50): menu, stopka, `SectionNav` Ikony z „Wystawa”, usunięcie `/wydarzenia` — przeniesione z etapu 8 (D-07-02). Poza zakresem: strona `/ikony/wystawa` (treść — etap 8; w kawałku 4 tylko zaślepka trasy, żeby linki z nawigacji nie prowadziły do 404); filtry kategorii (K-52); miniatury na liście w pierwszej iteracji (przegląd w kawałku 5, D-07-03); migracja prawdziwych danych (etap 10).
+Jeden strumień wpisów z etykietą typu (`kind`), lista chronologiczna z paskiem lat na `/aktualnosci` i pojedynczy artykuł na `/aktualnosci/[slug]` z `Breadcrumb`, body MDX, galerią (`images`), plakatem (`poster`) i opcjonalnym blokiem CTA w treści. Archiwum dawnego działu „Wydarzenia” trafia tu jako wpisy `sample` (generator z WP, K-50, K-52). **Pełna aktualizacja nawigacji** (K-50): menu, stopka, `SectionNav` Ikony z „Wystawa”, usunięcie `/wydarzenia` — przeniesione z etapu 8 (D-07-02). Poza zakresem: strona `/ikony/wystawa` (treść — etap 8; w kawałku 4 tylko zaślepka trasy, żeby linki z nawigacji nie prowadziły do 404); filtry kategorii (K-52); miniatury na liście w pierwszej iteracji (przegląd w kawałku 5, D-07-03); migracja prawdziwych danych (etap 10).
 
 ## Decyzje podjęte w sesji planistycznej
 
@@ -15,7 +15,7 @@ Jeden strumień wpisów z etykietą typu (`kind`), grupowanie latami na `/aktual
 - **D-07-03:** `NewsCard` **bez miniatury** w v1 — **zostaje** (kawałek 5); rekomendacja na przyszłość: miniatura z `cover` → `poster` → pierwsze `images` (pole `cover` w typie gotowe, generator na razie nie wypełnia).
 - **D-07-04:** Blok CTA (makieta C2, WP-14) — komponent MDX w body, np. `<NewsCta href="…" label="…" />`; bez nowego pola w `types.ts`.
 - **D-07-05:** Generator **`scripts/generate-news-sample.ts`**: pełny zestaw z WP (aktualności + przekształcone wydarzenia wg zasad migracji z planu §3 etapu 10); `"sample": true`; obrazy w `public/media/sample/news/`.
-- **D-07-06:** Prev/next po `date` **malejąco** (jak lista): etykiety **„Nowszy wpis: {tytuł}”** / **„Starszy wpis: {tytuł}”** (makieta 7g–7j, chevrony ‹ ›); brak linku na skraju listy zamiast pętli.
+- **D-07-06:** Prev/next po `date` **malejąco** (jak lista): etykiety **„Poprzedni”** / **„Następny”** (chevrony ‹ ›); brak linku na skraju listy zamiast pętli.
 - **D-07-11:** `YearNav` — **jeden link na każdy rok z wpisami**, bez grupowania zakresów (np. bez „2020–2024”); tylko lata obecne w danych, malejąco.
 - **D-07-07:** `Breadcrumb` — separator **`›`** (globalnie w komponencie).
 - **D-07-08:** Lead listy (`AK-02`) w **`pl.ts`**, nie w `content/`.
@@ -50,7 +50,7 @@ Jeden strumień wpisów z etykietą typu (`kind`), grupowanie latami na `/aktual
 | `src/app/aktualnosci/[slug]/page.tsx` | nowy | `NewsArticlePage` + `generateStaticParams` |
 | `src/app/ikony/wystawa/page.tsx` | nowy | Zaślepka `PagePlaceholder` do etapu 8 |
 | `src/app/wydarzenia/page.tsx` | usunięcie | Trasa nie powstaje (K-50) |
-| `src/i18n/pl.ts` | zmiana | `news.*`: lead, etykiety `kind`, „Nowszy/Starszy wpis” + tytuł (D-07-06), galeria, YearNav |
+| `src/i18n/pl.ts` | zmiana | `news.*`: lead, etykiety `kind`, „Poprzedni/Następny” (D-07-06), galeria, YearNav |
 | `mdx-components.tsx` | zmiana | Mapa: `<NewsCta />` dla wpisów aktualności |
 | `src/app/globals.css` | zmiana | Style listy, karty, wpisu, CTA, galerii (tokeny z makiet 7e–7j) |
 
@@ -70,9 +70,9 @@ Kryterium „gotowe”: zgodność z makietą 7e/7f (desktop + 390 px); H1 → H
 
 ### Kawałek 3 — Wpis `/aktualnosci/[slug]`
 
-Zakres: `[slug]/page.tsx`, `NewsArticlePage`, `Breadcrumb` (`›`), meta WP-01, body MDX, `NewsPoster`, `NewsGallery` + lightbox, `NewsCta` w mapie MDX; nawigacja prev/next z tytułem sąsiada (D-07-06); link „Wszystkie aktualności”. Przykłady: C1 (Wilno) i C2 (nabór z `<NewsCta />`).
+Zakres: `[slug]/page.tsx`, `NewsArticlePage`, `Breadcrumb` (`›`), meta WP-01, body MDX, `NewsPoster`, `NewsGallery` + lightbox, `NewsCta` w mapie MDX; nawigacja prev/next „Poprzedni/Następny” (D-07-06); link „Wszystkie aktualności”. Przykłady: C1 (Wilno) i C2 (nabór z `<NewsCta />`).
 
-Kryterium „gotowe”: zgodność z 7g–7j; treść tylko z `content/news/`; galeria klawiaturowo dostępna; „Nowszy/Starszy wpis: {tytuł}” poprawne na skraju listy (brak linku zamiast pętli); build/lint OK.
+Kryterium „gotowe”: zgodność z 7g–7j; treść tylko z `content/news/`; galeria klawiaturowo dostępna; „Poprzedni/Następny” poprawne na skraju listy (brak linku zamiast pętli); build/lint OK.
 
 ### Kawałek 4 — Nawigacja (K-50) + korekty linków
 
@@ -92,14 +92,14 @@ Kryterium „gotowe”: wszystkie checkboxy DoD poniżej; build/lint OK; meldune
 
 | Treść | Gdzie | Zastąpić czym |
 | ----- | ----- | ------------- |
-| Wpisy aktualności + archiwum wydarzeń (~60+) | `content/news/sample-*.mdx`, `public/media/sample/news/` | migracja WP (etap 10) |
+| Wpisy aktualności + archiwum wydarzeń (59, po scaleniach K-67) | `content/news/sample-*.mdx`, `public/media/sample/news/` | migracja WP (etap 10) |
 | Plakaty wystaw (brak plików z WP) | frontmatter `poster` w wybranych wpisach | archiwum WP / Publikacje (sesja) |
 | Treści `[przykład]` z makiet | — | **nie kopiować**; generator bierze z WP |
 
 ## Kryteria ukończenia etapu
 
 - [x] Wpisy wszystkich `kind` renderują się w jednym szablonie; brak filtrów kategorii
-- [x] Grupowanie latami działa z 60+ wpisami `sample` (K-06: jedna strona, YearNav — pojedyncze lata, bez „Pokaż starsze lata”)
+- [x] Lista chronologiczna z 59 wpisami `sample` (K-06: jedna strona, archiwum zwinięte K-66; pasek lat + kotwice na kartach K-70)
 - [x] `Breadcrumb` na `/aktualnosci/[slug]` z separatorem `›`
 - [x] Treść wyłącznie z `content/news/*.mdx`; typ `News` zgodny z brief §4
 - [x] Nawigacja K-50: Aktualności w menu, Wystawa w Ikony, brak `/wydarzenia`
@@ -119,8 +119,9 @@ Kryterium „gotowe”: wszystkie checkboxy DoD poniżej; build/lint OK; meldune
 
 | Kawałek | Status | Uwagi z checkpointu |
 | ------- | ------ | ------------------- |
-| 1 — Fundament + generator | ✅ | 61 wpisów sample, 8 kind; raport w `scripts/generate-news-report.json` |
+| 1 — Fundament + generator | ✅ | 61 wpisów sample, 8 kind (przed scaleniami K-67; po korektach 07b — 59); raport w `scripts/generate-news-report.json` |
 | 2 — Lista `/aktualnosci` | ✅ | NewsCard, YearHeading, YearNav, NewsListPage; lead + YearNav w pl.ts; style 7e/7f |
 | 3 — Wpis `[slug]` | ✅ | NewsArticlePage, NewsPoster, NewsGallery, NewsCta; Breadcrumb ›; registry MDX; fix CSS w sample-tejemnice-ikony |
 | 4 — Nawigacja K-50 | ✅ | navigation.ts, HeaderMobileMenu (Ikony rozwinięte), Footer, zaślepka /ikony/wystawa, usunięcie /wydarzenia, OA-55/OA-63 |
 | 5 — Przegląd miniatur + DoD | ✅ | D-07-03: bez miniatur v1; przegląd 390 px + desktop; DoD odhaczone |
+| korekty po stagingu | ✅ | K-59…K-75; szczegóły: `docs/plans/07b-review-fixes.md` |

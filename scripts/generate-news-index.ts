@@ -27,6 +27,8 @@ export type NewsManifestEntry = {
   kind: string;
   excerpt?: string;
   sample?: boolean;
+  featured?: boolean;
+  bodyText?: string;
   cover?: {
     src: string;
     alt: string;
@@ -66,6 +68,39 @@ function readFrontmatterFromMdx(filePath: string): NewsManifestEntry {
   }
 
   return JSON.parse(source.slice(jsonStart, jsonEnd)) as NewsManifestEntry;
+}
+
+function extractBodyText(source: string): string {
+  const start = source.indexOf(FRONTMATTER_MARKER);
+  if (start === -1) {
+    return "";
+  }
+
+  const jsonStart = start + FRONTMATTER_MARKER.length;
+  const jsonEnd = source.indexOf(";\n", jsonStart);
+  if (jsonEnd === -1) {
+    return "";
+  }
+
+  return source
+    .slice(jsonEnd + 2)
+    .replace(/<[^>]+>/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+function validateFeaturedEntries(entries: NewsManifestEntry[]): void {
+  const featuredEntries = entries.filter((entry) => entry.featured);
+
+  if (featuredEntries.length > 1) {
+    const slugs = featuredEntries.map((entry) => entry.slug).join(", ");
+    throw new Error(`At most one news entry may have featured: true (found: ${slugs})`);
+  }
+
+  const featured = featuredEntries[0];
+  if (featured && !featured.cover) {
+    throw new Error(`Featured news entry "${featured.slug}" must have a cover image`);
+  }
 }
 
 type MdxFileEntry = {
@@ -111,12 +146,23 @@ export function generateNewsManifest(): number {
     .filter((name) => name.endsWith(".mdx"))
     .sort((a, b) => a.localeCompare(b));
 
-  const files = filenames.map((filename) => ({
-    filename,
-    frontmatter: readFrontmatterFromMdx(join(NEWS_DIR, filename)),
-  }));
+  const files = filenames.map((filename) => {
+    const filePath = join(NEWS_DIR, filename);
+    const source = readFileSync(filePath, "utf8");
+    const frontmatter = readFrontmatterFromMdx(filePath);
+    const bodyText = extractBodyText(source);
+
+    return {
+      filename,
+      frontmatter: {
+        ...frontmatter,
+        ...(bodyText ? { bodyText } : {}),
+      },
+    };
+  });
 
   const entries = files.map(({ frontmatter }) => frontmatter);
+  validateFeaturedEntries(entries);
 
   writeFileSync(OUTPUT_PATH, `${JSON.stringify(entries, null, 2)}\n`, "utf8");
   generateNewsRegistry(files);
