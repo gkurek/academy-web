@@ -105,15 +105,15 @@ Kryterium „gotowe”: polityka renderuje treść z WP (nie placeholder); 404 w
 
 ## Kryteria ukończenia etapu
 
-- [ ] Szablon strony tekstowej użyty na ≥3 trasach bez rozgałęzień (z etapem 6: m.in. album, artykuł, polityka)
-- [ ] Wszystkie trasy z brief §3 mają realną treść lub `sample` — koniec `PagePlaceholder`
-- [ ] Pełny `MapBlock` na `/kontakt` (K-13)
-- [ ] `/ikony/wystawa` renderuje stany `zapowiedz`/`biezaca` z `ExhibitionEdition` (K-51, K-54)
-- [ ] Kafel „Najbliższe” o wystawie wyliczany z danych edycji (K-58, D-08-07)
+- [x] Szablon strony tekstowej użyty na ≥3 trasach bez rozgałęzień (z etapem 6: m.in. album, artykuł, polityka)
+- [x] Wszystkie trasy z brief §3 mają realną treść lub `sample` — koniec `PagePlaceholder`
+- [x] Pełny `MapBlock` na `/kontakt` (K-13)
+- [x] `/ikony/wystawa` renderuje stany `zapowiedz`/`biezaca` z `ExhibitionEdition` (K-51, K-54)
+- [x] Kafel „Najbliższe” o wystawie wyliczany z danych edycji (K-58, D-08-07)
 - [x] `/publikacje` i podstrony zgodne z K-76 i makietą 8a–8j
-- [ ] OA-62 poz. 5 usunięta (K-77)
-- [ ] Custom 404 z mapą ratunkową `mainNav` (D-08-10)
-- [ ] Build/lint OK; interakcje (lightbox, `mailto:`, mapa) dostępne z klawiatury
+- [x] OA-62 poz. 5 usunięta (K-77)
+- [x] Custom 404 z mapą ratunkową `mainNav` (D-08-10)
+- [x] Build/lint OK; interakcje (lightbox, `mailto:`, mapa) dostępne z klawiatury
 
 ## Ryzyka i pytania otwarte
 
@@ -133,4 +133,4 @@ Kryterium „gotowe”: polityka renderuje treść z WP (nie placeholder); 404 w
 | 1 — Kontakt + MapBlock | ✅ | ContactPage + MapBlock; układ 2×2 (Adres ↔ Organizator); maile wyrównane do dołu mapy; Organizator + Akademia w sieci wg makiety 2a-kontakt; bez `<br>` pod mailem (kontakt + stopka); zakrystia w MDX — weryfikacja EJK |
 | 2 — Wystawa + home + LSŚ + K-77 | ✅ | typy + exhibition.ts; editions.json 2015–2026 + page.mdx/body.mdx; komponenty WY-*; /ikony/wystawa; UpcomingHighlights z getExhibitionUpcomingHighlight(); filar Ikony (K-58); OA-62 poz. 5 usunięta; „Gdzie byliśmy” w letnia-szkola-swiatla.mdx; settings upcoming → 2 wpisy; poprawka: usunięty `Breadcrumb` (SectionNav jak Galeria / Ikony na zamówienie) |
 | 3 — Publikacje (K-76) | ✅ | typy + publications.ts/articles.ts + walidacja slugów; hub 8a/8b, album 8c/8d, artykuły 8e–8h; ikona-dzis.mdx + 5 artykułów sample; placeholdery mediów; mailto z brief §7; build/lint OK; poprawka review: okładka z `design/uploads/pasted-1790094969650-0.png`, metryczka 2 kolumny (hub + album), tytuły listy artykułów 25px/21px (osobna klasa), „Zobacz też” w jednym rzędzie (desktop), usunięta notka sample pod listą, wymiary rozkładówek w frontmatter zgodne z plikami (lightbox bez rozciągania) |
-| 4 — Polityka + 404 + DoD | ⬜ | |
+| 4 — Polityka + 404 + DoD | ✅ | `not-found.tsx` (D-08-10); koniec `PagePlaceholder`; DoD odhaczone; **poprawka:** polityka wg makiety **3a** (`kierunki wizualne.dc.html`) — `TextPageShell` + TOC, sekcje H2, lead, cookies, kontakt z brief §8, `lastUpdated`; treść prawna z WP w `polityka-prywatnosci.json` |

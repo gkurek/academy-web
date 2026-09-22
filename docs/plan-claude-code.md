@@ -71,7 +71,7 @@ Statusy: ⬜ nie zaczęty · 🟡 plan w przygotowaniu · 🔵 plan zatwierdzony
 | 5   | Galeria ikon (+ korekty 05b)                   | `docs/plans/05-galeria.md`, `docs/plans/05b-review-fixes.md` | ✅ zamknięty         | 2026-09-20 |
 | 6   | Strony o akademii i pracownia                  | `docs/plans/06-o-akademii.md`    | ✅ zamknięty         | 2026-09-21 |
 | 7   | Aktualności (+ korekty)                        | `docs/plans/07-aktualnosci.md`, `docs/plans/07b-review-fixes.md` | ✅ zamknięty         | 2026-09-22 |
-| 8   | Strony pozostałe                               | `docs/plans/08-pozostale.md`     | 🔵 plan zatwierdzony | —          |
+| 8   | Strony pozostałe                               | `docs/plans/08-pozostale.md`     | 🟠 w implementacji (4/4) | —          |
 | 9   | Migracja treści z WordPressa                   | `docs/plans/09-migracja.md`      | ⬜                   | —          |
 | 10  | Wykończenie: ewaluacja serwisu, poprawki po prezentacji, SEO, optymalizacja | `docs/plans/10-wykonczenie.md`   | ⬜                   | —          |
 | 11  | Wdrożenie                                      | `docs/plans/11-wdrozenie.md`     | ⬜                   | —          |
@@ -221,10 +221,10 @@ Dla każdego: cel, zakres, kryteria ukończenia (DoD), proponowany podział na k
 
 **DoD:**
 
-- [ ] szablon strony tekstowej użyty na co najmniej trzech trasach bez rozgałęzień w kodzie (łącznie z etapem 6);
-- [ ] wszystkie trasy z briefu §3 mają realną treść lub `sample` — koniec zaślepek;
-- [ ] pełny `MapBlock` na `/kontakt` (K-13);
-- [ ] `/ikony/wystawa` renderuje stan `zapowiedz`/`biezaca` z `ExhibitionEdition` (K-51, K-54).
+- [x] szablon strony tekstowej użyty na co najmniej trzech trasach bez rozgałęzień w kodzie (łącznie z etapem 6);
+- [x] wszystkie trasy z briefu §3 mają realną treść lub `sample` — koniec zaślepek;
+- [x] pełny `MapBlock` na `/kontakt` (K-13);
+- [x] `/ikony/wystawa` renderuje stan `zapowiedz`/`biezaca` z `ExhibitionEdition` (K-51, K-54).
 
 **Kawałki (zatwierdzone 2026-09-22):** (1) kontakt + `MapBlock`; (2) wystawa (`/ikony/wystawa`) + zmiany na stronie głównej i LSŚ + K-77; (3) publikacje (K-76); (4) polityka + 404 + DoD. Szczegóły: `docs/plans/08-pozostale.md`.
 
@@ -412,10 +412,14 @@ Lista rośnie w każdym etapie. Odhaczana w etapie 9 (migracja).
 | Zdjęcia z makiet                       | `public/media/sample/`                             | 2        | oryginały z `/wp-content/uploads/` lub nowa sesja | ⬜  |
 | Sezony archiwum `sample` (2–3)         | `content/lectures/sample-*.json`                   | 4        | 16 sezonów z migracji (15 archiwalnych + bieżący) | ✅  |
 | Wykładowcy — bio i zdjęcia z WP | `content/lecturers.json`, `public/media/lecturers/` | 4     | weryfikacja / migracja WP (etap 9)             | ✅  |
-| „Najbliższe” na stronie głównej — 2/3 wpisy zastąpione realną treścią z brief §8 (nabór 2026/2027, pierwszy wykład 6.10.2026); trzeci wpis („Wystawa stała”) | `content/settings.json` (`upcoming`) | 1, uzupełnione w 2 | dane bieżącej edycji z `editions.json` (K-58); istnienie wystawy potwierdzone przez EJK 2026-09-21 | ⬜ |
-| Edycje wystawy 2015–2026 — tytuły, podtytuły, daty wernisaży, 0–5 zdjęć (K-80), liczba ikon | `content/exhibition/editions.json` | 8 | od **2015** (K-79); tytuły/dat z WP; zdjęcia i placeholdery — EJK, uzupełnienie po wdrożeniu | ⬜ |
-| Opis stały wystawy | `content/exhibition/page.mdx` | 8 | redakcja na bazie wpisu WP „Podsumowanie roku 2019 i 2020” | ⬜ |
-| Lista miejsc „Gdzie byliśmy” (plenery LSŚ) | `content/offers/plener.mdx` | 8 | sample: Święta Lipka, Wesoła, Supraśl, Gruzja, Litwa (D-08-04); **Gródek** — do potwierdzenia EJK | ⬜ |
+| „Najbliższe” na stronie głównej — 2/3 wpisy zastąpione realną treścią z brief §8 (nabór 2026/2027, pierwszy wykład 6.10.2026); trzeci kafel wyliczany z `editions.json` | `content/settings.json` (`upcoming`), `UpcomingHighlights` | 1, uzupełnione w 8/2 | dane bieżącej edycji z `editions.json` (K-58); istnienie wystawy potwierdzone przez EJK 2026-09-21 | ✅ |
+| Edycje wystawy 2015–2026 — tytuły, podtytuły, daty wernisaży, 0–5 zdjęć (K-80), liczba ikon | `content/exhibition/editions.json` | 8 | od **2015** (K-79); tytuły/dat z WP; zdjęcia i placeholdery — EJK, uzupełnienie po wdrożeniu | ✅ |
+| Opis stały wystawy | `content/exhibition/page.mdx` | 8 | redakcja na bazie wpisu WP „Podsumowanie roku 2019 i 2020” | ✅ |
+| Lista miejsc „Gdzie byliśmy” (plenery LSŚ) | `content/offers/plener.mdx` | 8 | sample: Święta Lipka, Wesoła, Supraśl, Gruzja, Litwa (D-08-04); **Gródek** — do potwierdzenia EJK | ✅ |
+| Treść kontaktu (zakrystia) | `content/pages/kontakt.mdx` | 8 | weryfikacja EJK | ✅ |
+| Album + rozkładówki | `content/publications/`, `public/media/sample/publications/` | 8 | skany i spis treści od EJK | ✅ |
+| Artykuły sample (5) | `content/articles/*.mdx` | 8 | wybór tekstów EJK (etap 9) | ✅ |
+| Polityka prywatności | `content/pages/polityka-prywatnosci.json` (layout makieta 3a; treść prawna z WP) | 8 | aktualizacja prawna po wdrożeniu analityki (etap 10); `scripts/fetch-privacy-policy.ts` — podgląd surowego HTML z WP | ✅ |
 | Zgoda Roberta Rumina na publikację komentarza z metryczki ikony Serca Jezusa | `content/news/*` (migracja) | 9 | zgoda EJK/R. Rumina | ⬜ |
 | Korekta EJK w tekście o Trójcy Świętej (oprowadzania 2017) | `content/news/*` (migracja) | 9 | korekta EJK | ⬜ |
 | Wpis o poświęceniu ikon po redakcji | `content/news/*.mdx` | 9 | wpis Aktualności `kind: 'plener'`, redakcja EJK; miejsce i data pleneru do podania (K-77) | ⬜ |

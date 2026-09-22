@@ -11,9 +11,12 @@ export interface TextPageShellProps {
   toc?: TocItem[];
   children: ReactNode;
   /** Main nav item to underline gold in the Header — read from navigation.ts. */
-  active: string;
-  section: SectionKey;
-  sectionActive: string;
+  active?: string;
+  section?: SectionKey;
+  /** Label of the current SectionNav item — see SectionNavProps["active"]. */
+  sectionActive?: string;
+  /** Optional id on the page header — for in-page TOC anchors (mockup 3a). */
+  headerId?: string;
   /** When true, AboutPage (or similar) renders its own hero header. */
   hideHeader?: boolean;
 }
@@ -47,6 +50,7 @@ export function TextPageShell({
   active,
   section,
   sectionActive,
+  headerId,
   hideHeader = false,
 }: TextPageShellProps) {
   const hasToc = Boolean(toc && toc.length > 0);
@@ -60,7 +64,7 @@ export function TextPageShell({
               <TextPageTocNav items={toc!} variant="sidebar" />
             </div>
             <div className="min-w-0">
-              {!hideHeader ? <TextPageHeader title={title} lead={lead} /> : null}
+              {!hideHeader ? <TextPageHeader id={headerId} title={title} lead={lead} /> : null}
               <div className="mb-space-5 lg:hidden">
                 <TextPageTocNav items={toc!} variant="collapse" />
               </div>
@@ -69,7 +73,7 @@ export function TextPageShell({
           </div>
         ) : (
           <>
-            {!hideHeader ? <TextPageHeader title={title} lead={lead} /> : null}
+            {!hideHeader ? <TextPageHeader id={headerId} title={title} lead={lead} /> : null}
             {children}
           </>
         )}
@@ -78,9 +82,9 @@ export function TextPageShell({
   );
 }
 
-function TextPageHeader({ title, lead }: { title: string; lead?: string }) {
+function TextPageHeader({ id, title, lead }: { id?: string; title: string; lead?: string }) {
   return (
-    <header className="mb-space-6">
+    <header id={id} className="mb-space-6 scroll-mt-space-6">
       <h1 className="mb-space-5 font-serif text-size-h1-m leading-tight text-text-h1 md:text-size-h1">
         {title}
       </h1>

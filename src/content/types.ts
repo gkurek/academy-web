@@ -168,6 +168,19 @@ export type TextPageData = Page & {
   sample?: boolean;
 };
 
+export type PrivacyPolicySection = {
+  id: string;
+  paragraphs: string[];
+  list?: string[];
+};
+
+export type PrivacyPolicyPageData = TextPageData & {
+  lastUpdated: string;
+  sections: PrivacyPolicySection[];
+  contactEmail: string;
+  contactPhone: string;
+};
+
 export type LearningFormRow = {
   title: string;
   description: string;

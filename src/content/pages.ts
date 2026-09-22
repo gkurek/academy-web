@@ -1,7 +1,6 @@
-import type { ComponentType } from "react";
-
-import type { AboutPageData, WorkshopPageData } from "@/content/types";
+import type { AboutPageData, PrivacyPolicyPageData, WorkshopPageData } from "@/content/types";
 import oAkademiiMeta from "../../content/pages/o-akademii.json";
+import privacyPolicyMeta from "../../content/pages/polityka-prywatnosci.json";
 import pracowniaMeta from "../../content/pages/pracownia.json";
 import * as aboutParagraphs from "../../content/pages/o-akademii.mdx";
 import ContactContent from "../../content/pages/kontakt.mdx";
@@ -33,11 +32,14 @@ export type LoadedWorkshopPage = WorkshopPageData & {
 };
 
 export type LoadedContactPage = {
-  Content: ComponentType;
+  Content: typeof ContactContent;
 };
+
+export type LoadedPrivacyPolicyPage = PrivacyPolicyPageData;
 
 const aboutPageMeta = oAkademiiMeta as AboutPageData;
 const workshopPageMeta = pracowniaMeta as WorkshopPageData;
+const privacyPolicyPageMeta = privacyPolicyMeta as PrivacyPolicyPageData;
 
 export function getAboutPage(): LoadedAboutPage | undefined {
   return {
@@ -59,4 +61,11 @@ export function getWorkshopPage(): LoadedWorkshopPage | undefined {
 
 export function getContactPage(): LoadedContactPage {
   return { Content: ContactContent };
+}
+
+export function getPrivacyPolicyPage(): LoadedPrivacyPolicyPage {
+  return {
+    ...privacyPolicyPageMeta,
+    body: "",
+  };
 }

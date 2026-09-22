@@ -498,6 +498,18 @@ export const pl = {
       openSpread: "Powiększ rozkładówkę: {alt}",
     },
   },
+  privacy: {
+    lastUpdatedLabel: "Ostatnia aktualizacja:",
+    phonePrefix: "tel.",
+  },
+  notFound: {
+    title: "Nie znaleziono strony",
+    lead:
+      "Adres może być nieaktualny lub wpisany z błędem. Skorzystaj z linków poniżej, aby wrócić do serwisu.",
+    homeLink: "Strona główna",
+    sitemapHeading: "Mapa strony",
+    sitemapAriaLabel: "Mapa ratunkowa",
+  },
   contact: {
     breadcrumbHome: "Strona główna",
     addressHeading: "Adres",
