@@ -22,7 +22,7 @@ Przy konflikcie: `CLAUDE.md` > plan etapu > `brief-claude-code.md` > `brief-full
 ## Konwencje kodu
 
 - Bez pętli `for` / `for-of`; używaj `map` / `filter` / `reduce` / `forEach`.
-- Jeden plik = jeden komponent, nazwane eksporty, props typowane. Nazwy komponentów dokładnie jak w `design/README` (`Header`, `Footer`, `SectionNav`, `Breadcrumb`, `Hero`, `FactsBox`, `OfferCard`, `LectureList`, `SeasonAccordion`, `IconGrid`, `Lightbox`, `NewsCard`, `Testimonial`, `MapBlock`, `EventCard`, `StepList`, `TocSidebar`).
+- Jeden plik = jeden komponent, nazwane eksporty, props typowane. Nazwy komponentów dokładnie jak w `design/README` (`Header`, `Footer`, `SectionNav`, `Breadcrumb`, `Hero`, `FactsBox`, `OfferCard`, `LectureList`, `SeasonAccordion`, `IconGrid`, `Lightbox`, `NewsCard`, `Testimonial`, `MapBlock`, `StepList`, `TocSidebar`). Dział „Wydarzenia” i `EventCard` zlikwidowane (K-50, 2026-09-21) — wydarzenia to teraz wpisy `NewsCard` z etykietą `kind`.
 - Stringi UI w `src/i18n/pl.ts` – nie hardkodować w JSX.
 - Obrazy tylko przez `next/image` z podanymi wymiarami. Fonty przez `next/font`, subsety `latin` + `latin-ext`.
 - Dostępność: każdy interaktywny element ma widoczny fokus (obrys 2px `#e8c765`, odstęp 2px); `alt` obowiązkowy; respektuj `prefers-reduced-motion`.
@@ -38,8 +38,8 @@ Przy konflikcie: `CLAUDE.md` > plan etapu > `brief-claude-code.md` > `brief-full
 | Stringi UI | polski w `src/i18n/pl.ts` | `pl.header.contactCta` |
 | Etykiety nawigacji | polski w `src/navigation.ts` | `label: "Wykłady"` — dane UI, nie identyfikatory |
 | Segmenty tras w `src/app/` | polski (= publiczny URL) | `warsztaty/page.tsx` → `/warsztaty` |
-| Query stringi w URL | polski | `?kategoria=wystawa` |
-| Wartości enumów w `src/content/types.ts` | polski (zamrożone, brief §4) | `kind: "kurs"`, `category: "wystawa"` |
+| Query stringi w URL | polski | `?temat=trojca-swieta` |
+| Wartości enumów w `src/content/types.ts` | polski (zamrożone, brief §4) | `kind: "kurs"`, `kind: "wystawa"` (News) |
 | Treść redakcyjna | polski w `content/` | `settings.json`, MDX |
 
 **Zasady:**
@@ -47,7 +47,7 @@ Przy konflikcie: `CLAUDE.md` > plan etapu > `brief-claude-code.md` > `brief-full
 - `SectionKey` (`"o-akademii" | "warsztaty" | "wyklady" | …`) celowo powiela slugi tras — spójność z routingiem; para O Akademii · Pracownia (K-48).
 - Prop `active` w `Header`/`SectionNav` przyjmuje **label z `navigation.ts`** (polski tekst UI), nie własny klucz — na v1 PL-only wystarczy; przy i18n zamienić na stabilny klucz sekcji.
 - Nazwy domyślnych exportów w `page.tsx`: angielski (`WorkshopsPage`, nie `WarsztatyPage`).
-- Nie duplikuj etykiet nawigacji na sztywno w `page.tsx` — czytaj z `mainNav` / `sectionNav` (np. `sectionNav.wydarzenia[0].label`).
+- Nie duplikuj etykiet nawigacji na sztywno w `page.tsx` — czytaj z `mainNav` / `sectionNav` (np. `sectionNav.ikony[0].label`).
 
 ## Treść
 

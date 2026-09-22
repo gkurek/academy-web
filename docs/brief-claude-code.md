@@ -46,18 +46,20 @@ Strona jest częścią szerszego ekosystemu (Akademia + Fundacja + planowana str
 /ikony                     galeria: sekcje Elżbieta / uczniowie + filtr tematu
 /ikony/[slug]              pojedyncza ikona (opcjonalnie w v1)
 /ikony/na-zamowienie       strona ofertowa (treść wymienna w przyszłości — nie istotne teraz)
-/wydarzenia                wystawy, poświęcenia, oprowadzania, wyjazdy (kategorie)
-/aktualnosci               lista + archiwum
+/ikony/wystawa             stała wystawa w kościele, edycje roczne, oprowadzania (K-51)
+/aktualnosci               lista z typem wpisu (`kind`), w tym archiwum wystaw, oprowadzań, wyjazdów, plenerów (K-50, K-52)
 /aktualnosci/[slug]
 /publikacje                artykuły, multimedia, plakaty (szablon strony tekstowej z zakładkami)
 /kontakt
 /polityka-prywatnosci
 ```
 
-**Menu główne (max 6 pozycji):** O Akademii · Warsztaty · Wykłady · Ikony · Wydarzenia · Kontakt.
+**Menu główne (max 6 pozycji):** O Akademii · Warsztaty · Wykłady · Ikony · Aktualności · Kontakt.
+
+> **K-50 (2026-09-21):** dział „Wydarzenia” zlikwidowany jako sekcja i pozycja menu. Trasa `/wydarzenia` nie powstaje; stare adresy przekierowane (§5). Uzasadnienie: jedyna żywa treść działu to coroczna wystawa (→ `/ikony/wystawa`, K-51); reszta to archiwum 2013–2020, które trafia do Aktualności jako wpisy z `kind` (K-52).
 
 **Wzorzec nawigacji drugiego poziomu (obowiązkowy, zaimplementowany w makietach jako `SectionNav`):**
-1. Strona sekcji (`/warsztaty`, `/wyklady`, `/ikony`, `/wydarzenia`) jest hubem z dużymi klikalnymi blokami podstron, nie tylko opisem.
+1. Strona sekcji (`/warsztaty`, `/wyklady`, `/ikony`) jest hubem z dużymi klikalnymi blokami podstron, nie tylko opisem.
 2. `SectionNav` — pozioma listwa linków drugiego poziomu pod nagłówkiem, na każdej podstronie sekcji. Na mobile: zwykła zawijana lista, nie select, nie skryta.
 3. Stopka z pełną mapą strony (nawigacja ratunkowa + SEO).
 
@@ -65,8 +67,8 @@ Zawartość `SectionNav` per sekcja:
 - O Akademii: O Akademii · Pracownia *(para stron tekstowych; `/o-akademii` = pierwsza pozycja — K-48, makieta 6a–6d)*
 - Warsztaty: Przegląd · Kurs roczny i trzyletni · Letnia Szkoła Światła *(pierwsza pozycja = hub, nie nazwa sekcji — K-23)*
 - Wykłady: Bieżący sezon · Archiwum · Wykładowcy
-- Ikony: Galeria · Ikony na zamówienie
-- Wydarzenia: Wszystkie · Wystawy · Poświęcenia · Oprowadzania · Wyjazdy studyjne — kategorie jako **filtry przez query string** na `/wydarzenia` (np. `/wydarzenia?kategoria=wystawa`), bez osobnych tras pod `/wydarzenia/*`
+- Ikony: Galeria · Wystawa · Ikony na zamówienie (K-51)
+- Aktualności: bez `SectionNav` — jedna chronologiczna lista wpisów z nawigacją po latach (K-70), bez filtrów kategorii w v1 (K-52)
 
 Menu główne (desktop): **płaska lista 6 linków** — bez dropdownu; drugi poziom wyłącznie przez `SectionNav` na stronach sekcji (zgodnie z makietą). W menu mobilnym: akordeon per sekcja, nagłówek sekcji zawsze też linkiem do huba.
 
@@ -139,10 +141,70 @@ type IconWork = {
   image: Image; tags?: string[];
 };
 
-type Event = { slug: string; category: 'wystawa' | 'poswiecenie' | 'oprowadzanie' | 'wyjazd';
-  title: string; date?: string; dateEnd?: string; body: string; images?: Image[] };
+// K-50/K-53 (2026-09-21): typ `Event` usunięty. „Wydarzenia” to teraz wpisy
+// Aktualności z `kind`; wystawa ma własny model `ExhibitionEdition` niżej.
+type NewsKind =
+  | 'aktualnosc'
+  | 'wyklady'
+  | 'warsztaty'
+  | 'plener'
+  | 'wystawa'
+  | 'oprowadzanie'
+  | 'wyjazd'
+  | 'spotkanie';
 
-type News = { slug: string; title: string; date: string; excerpt?: string; body: string; cover?: Image };
+type News = {
+  slug: string;
+  title: string;
+  date: string;
+  dateEnd?: string;
+  kind: NewsKind;
+  excerpt?: string;
+  body: string;
+  cover?: Image;
+  images?: Image[];
+  poster?: Image;
+  featured?: boolean;
+  featuredUntil?: string;       // YYYY-MM-DD; tylko przy featured: true; po dacie wpis traci wyróżnienie przy buildzie (K-73)
+};
+// K-72: na liście (`NewsCard`) wyświetlana jest tylko `date` z rokiem — bez zakresu `dateEnd`.
+// We wpisie pojedynczym i w wyróżnionym: `formatDateRange` z `dateEnd` gdy jest.
+
+// K-51: wystawa „Ikona – korzenie i owoce wiary” jest w kościele na stałe,
+// zestaw ikon zmienia się co roku (nowa edycja z wernisażem na koniec roku
+// akademickiego, w okolicach 17.06). Strona `/ikony/wystawa` łączy opis
+// stały, bieżącą edycję, oprowadzania kuratorskie i poprzednie edycje.
+type ExhibitionEdition = {
+  year: number;
+  title: string;                 // „Ikona – korzenie i owoce wiary”
+  subtitle?: string;             // np. „Świętych obcowanie” (2019)
+  vernissage?: string;           // ISO; data wernisażu
+  seasonTheme?: string;          // temat sezonu wykładów, np. „Mistyka dziś”
+  iconCount?: number;
+  poster?: Image;
+  photos?: Image[];              // brak lub [] → edycja jako linijka, bez karty (K-54)
+  summary?: string;              // 2–3 zdania: co nowego w tej edycji
+  tours?: { date: string; topic: string }[];
+  newsSlug?: string;             // opcjonalny wpis w Aktualnościach z relacją
+};
+
+// Wystawa jest w kościele stale (K-51), więc nie ma stanu „po wystawie”.
+type ExhibitionState = 'zapowiedz' | 'biezaca';
+
+const getExhibitionState = (next: ExhibitionEdition | undefined, now: Date): ExhibitionState =>
+  next?.vernissage && now < new Date(next.vernissage) ? 'zapowiedz' : 'biezaca';
+
+const editionsWithGallery = (editions: ExhibitionEdition[]) =>
+  editions.filter((e) => (e.photos?.length ?? 0) > 0);
+```
+
+Źródło danych wystawy: `content/exhibition/editions.json` (lista `ExhibitionEdition`) + treść stała `content/exhibition/page.mdx`. Implementacja w etapie 8.
+
+Kafel „Najbliższe” na stronie głównej (K-58) zależy od stanu wystawy:
+- stan `biezaca`: „Wystawa ikon · edycja {rok}”, tekst „Czynna w godzinach otwarcia kościoła”;
+- stan `zapowiedz`: „Wernisaż {data}” z nową edycją, tekst o oprowadzaniach.
+
+```ts
 
 type Testimonial = { quote: string; author: string; role?: string };
 
@@ -205,10 +267,20 @@ Szacunek ręcznej korekty po migracji: ~10 stron statycznych, 16 sezonów wykła
 | `/wyklady/wykladowcy/` | `/wyklady/wykladowcy` |
 | `/wyklady/zapisy-na-wyklady/` | scalone w `/wyklady#zapisy` |
 | `/ikona/`, `/ikona/galeria/` | `/ikony` |
-| `/ikona/wystawy/`, `/wernisaze/` | `/wydarzenia?kategoria=wystawa` |
+| `/ikona/wystawy/`, `/wernisaze/` | `/ikony/wystawa` |
 | `/ikona/ikony-na-zamowienie/` | `/ikony/na-zamowienie` |
-| `/wydarzenia/`, `/poswiecenia-ikon/`, `/oprowadzania-kuratorskie/`, `/wyjazdy-studyjne/` | `/wydarzenia` z kategoriami |
+| `/oprowadzania-kuratorskie/` | `/ikony/wystawa#oprowadzania` |
+| `/wydarzenia/` | `/aktualnosci` |
+| `/wyjazdy-studyjne/` | `/aktualnosci` |
+| `/poswiecenia-ikon/` | docelowy artykuł w `/publikacje` (slug ustalony w sesji Publikacji); do tego czasu `/publikacje` |
+| `/ikona-korzenie-i-owoce-wiary-2/` i wpisy wystaw z lat 2015–2018 | `/ikony/wystawa` |
+| pojedyncze wpisy oprowadzań 2017 (`/ikony-emaliowane/`, `/ikona-trojcy-swietej/`, `/ikona-serca-jezusa/`, `/wystawa-ikona-korzenie-i-owoce-wiary-oprowadzania-kuratorskie/`) | jeden połączony wpis w `/aktualnosci/[slug]` |
+| pozostałe wpisy wystaw i wyjazdów | odpowiadające wpisy `/aktualnosci/[slug]` |
+| `/aktualnosci/wystawa-ikona-dzis-2` | `/aktualnosci/wystawa-ikona-dzis` (K-67, scalenie duplikatów) |
+| `/aktualnosci/149` | `/aktualnosci/ikona-piekno-zanurzone-w-tajemnicy` (K-67, scalenie duplikatów) |
 | `/publikacje/`, `/publikacje/artykuly/`, `/multimedia/`, `/plakaty/` | `/publikacje` z zakładkami |
+
+**Zasada ogólna (K-50):** brak osobnej trasy dla wydarzeń; wydarzenia to wpisy Aktualności z `kind`.
 
 ---
 
@@ -222,7 +294,7 @@ Szacunek ręcznej korekty po migracji: ~10 stron statycznych, 16 sezonów wykła
 - Zapisy: przyciski `mailto:` z tematami z §7 poniżej + `tel:`. Przygotować miejsce pod formularz w v2 (nie budować go teraz).
 - Program bieżącego sezonu wykładów jako lista (data, tytuł, prowadzący); archiwum jako rozwijane sezony (`SeasonAccordion`).
 - Galeria: dwie sztywne sekcje (ikony Elżbiety Jackowskiej-Kurek → ikony uczniów), filtr **tematu** przez query string (`?temat=<slug-tagu>`), bez filtra autora; lightbox. W siatce — sam tytuł; w lightboxie — pełny autor, wymiary i technika (`IconWork`). Lista nazwisk uczniów w sekcji uczniów, generowana z danych.
-- Aktualności z paginacją + wpis pojedynczy.
+- Aktualności: jeden strumień wpisów z etykietą typu (`kind`), jedna chronologiczna lista z nawigacją po latach (K-70), wpis pojedynczy; bez filtrów kategorii w v1 (K-50, K-52).
 - Kontakt: adres, **osadzona** mapa (nie surowy link; `MapBlock` + `SiteSettings.mapEmbedUrl`), dwa maile z opisem, telefon, info o wejściu od strony zakrystii (treść redakcyjna w MDX), blok „Akademia w sieci” w `MapBlock`.
 - Mobile-first, WCAG AA (kontrast, fokus, alt), `prefers-reduced-motion`.
 - SEO: metadata + Open Graph per strona, sitemap, 301 ze starych URL.
@@ -246,7 +318,7 @@ Szacunek ręcznej korekty po migracji: ~10 stron statycznych, 16 sezonów wykła
 Telefon jako `tel:+48601734705`.
 
 **Nazwy komponentów (użyć tych nazw w kodzie, żeby zgadzały się z design/README):**
-`Header`, `Footer`, `SectionNav`, `Breadcrumb`, `Hero`, `FactsBox`, `OfferCard`, `LectureList`, `SeasonAccordion`, `IconGrid`, `Lightbox`, `NewsCard`, `Testimonial`, `MapBlock`, `EventCard`, `StepList` (proces zamówienia), `TocSidebar` (strona tekstowa).
+`Header`, `Footer`, `SectionNav`, `Breadcrumb`, `Hero`, `FactsBox`, `OfferCard`, `LectureList`, `SeasonAccordion`, `IconGrid`, `Lightbox`, `NewsCard`, `Testimonial`, `MapBlock`, `StepList` (proces zamówienia), `TocSidebar` (strona tekstowa). `EventCard` usunięty (K-50, 2026-09-21) — dział „Wydarzenia” zlikwidowany, wpisy renderują się przez `NewsCard`.
 
 **Tokeny — kolory:** kolor `#8d7d69` był w makietach niedostatecznie kontrastowy (4,3:1 na tłach kart) i został **zamieniony na `#a2917c`** w całym systemie. `#8d7d69` może zostać wyłącznie w placeholderach makietowych (IBM Plex Mono) — **nie kopiować go do produkcji.**
 

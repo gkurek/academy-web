@@ -6,12 +6,14 @@ export interface SectionNavProps {
   items: NavLink[];
   /** Label of the current item, e.g. "Archiwum" — the first item stands in for the hub itself. */
   active?: string;
+  /** Overrides the default section nav aria-label when reused (e.g. YearNav). */
+  ariaLabel?: string;
 }
 
-export function SectionNav({ items, active }: SectionNavProps) {
+export function SectionNav({ items, active, ariaLabel }: SectionNavProps) {
   return (
     <nav
-      aria-label={pl.sectionNav.ariaLabel}
+      aria-label={ariaLabel ?? pl.sectionNav.ariaLabel}
       className="flex flex-wrap gap-x-space-6 gap-y-space-3 pb-space-4 mb-space-6 text-size-nav font-sans"
     >
       {items.map((item) => {

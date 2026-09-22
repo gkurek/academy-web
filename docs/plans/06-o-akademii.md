@@ -98,6 +98,8 @@ Kryterium „gotowe": galeria 4×3 desktop, 2 kol. mobile (6g lightbox: Esc, str
 
 ## Ryzyka i pytania otwarte
 
+- **Backlog (2026-09-21, K-50):** linki OA-55 i OA-63 — korekta → `/aktualnosci`, etykieta „Aktualności” (D-07-09) **zrobiona w etapie 7**, kawałek 4 (`docs/plans/07-aktualnosci.md`).
+
 - **Pytania do klientki** w `docs/copy-o-akademii-pracownia.md` (9 pozycji) — nie blokują implementacji; placeholdery lub copy „jak jest" do weryfikacji.
 - **Liczba 15 sezonów (OA-53):** copy zakłada bieżący 2026/2027 w liczbie — do potwierdzenia (pytanie 4); wartości 2010/2012 z briefu §8 wpisujemy jako prawdziwe.
 - **Lightbox galerii ikon (etap 5):** na gałęzi `feat/06-about` może nie być — kawałek 4 implementuje `WorkshopLightbox` wg 6g; przy merge etapu 5 rozważyć współdzielenie kodu (bez scope creep w 06).
