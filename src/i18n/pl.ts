@@ -205,6 +205,14 @@ export const pl = {
     semesterProgramHeading: "Program kursu trzyletniego",
     semesterProgramIntro:
       "Sześć semestrów, każdy zamknięty własnym zadaniem malarskim.",
+    semesterTileHeadings: [
+      "Semestr pierwszy",
+      "Semestr drugi",
+      "Semestr trzeci",
+      "Semestr czwarty",
+      "Semestr piąty",
+      "Semestr szósty",
+    ],
     plenerQuotesHeading: "Głosy z pleneru",
     whereWeWereHeading: "Gdzie byliśmy",
     orderStepsHeading: "Jak przebiega zamówienie",
@@ -216,8 +224,8 @@ export const pl = {
     enrollmentByKind: {
       kurs: {
         paragraphs: [
-          "Zgłoszenie wysyłamy mailem na adres akademiaikony@gmail.com do 24 września 2026. Potem zapraszamy na krótką rozmowę wstępną, około trzydziestu minut, żeby ustalić grupę i punkt wyjścia.",
-          "Pierwsze spotkanie sezonu odbywa się 6 października 2026 o 18:00.",
+          "Zgłoszenie wysyłamy mailem na adres akademiaikony@gmail.com do 24 września 2026. Potem zapraszamy na krótką rozmowę wstępną, około trzydziestu minut — ma na celu wzajemne poznanie się i dobór grupy. Chętnie zobaczymy wcześniejsze prace artystyczne, ale to nie jest warunek przyjęcia.",
+          "Pierwsze spotkanie sezonu odbywa się 6 października 2026 o 18:00. Dokumenty zgłoszeniowe są dostępne na miejscu.",
         ],
       },
     },
@@ -292,13 +300,15 @@ export const pl = {
   },
   workshopsHub: {
     title: "Warsztaty pisania ikon",
-    lead: "Dwie ścieżki. Kurs w roku akademickim – raz w tygodniu, od października do czerwca. I tygodniowy plener latem, w trybie rekolekcyjnym. Obie prowadzi Elżbieta Jackowska-Kurek, w obu pracuje się indywidualnie.",
+    lead: "Praca malarza ikon to życie w intymnej relacji z Panem Bogiem i świadczenie o tej relacji przez obraz. Dbanie o nią i ciągłe dojrzewanie do niej to nieustanne wyzwanie ikonografa.",
+    leadSecondary:
+      "Proponujemy dwie ścieżki: kurs w roku akademickim — raz w tygodniu, od października do czerwca — i tygodniowy plener latem, w trybie rekolekcyjnym. W obu pracuje się indywidualnie. Prowadzi je Elżbieta Jackowska-Kurek, praktykująca malarka ikon, od ponad dwudziestu lat z własną pracownią w Warszawie. Jej ikony tablicowe i polichromie znajdują się w świątyniach i kolekcjach prywatnych w kraju i za granicą.",
     quotesHeading: "Głosy uczestników",
     cards: {
       "kurs-roczny-i-trzyletni": {
         eyebrow: "Sezon 2026/2027 · zgłoszenia do 24 września 2026",
         excerpt:
-          "Rok przedwstępny i wstępny wprowadza w technikę i kanon. Kurs trzyletni doskonalący prowadzi dalej, semestr po semestrze. Grupy wieczorne i dzienne, materiały na miejscu.",
+          "Kurs roczny prowadzi przez wszystkie etapy powstawania ikony i pomaga rozeznać, czy pisanie ikon jest modlitwą dla mnie. Kurs trzyletni prowadzi dalej — od ikony lica po ikony dogmatyczne. Grupy wieczorne i dzienne, materiały na miejscu.",
         bullets: [
           "Raz w tygodniu, październik–czerwiec",
           "Pierwsze spotkanie 6 października 2026, 18:00",
@@ -310,9 +320,9 @@ export const pl = {
       "letnia-szkola-swiatla": {
         eyebrow: "Nabór na 2027 od marca 2027 · kolejność zgłoszeń",
         excerpt:
-          "Tygodniowe plenery ikonowe w sierpniu i wrześniu. Dzień ma rytm rekolekcyjny: modlitwa, praca przy desce, wspólny posiłek, rozmowa o tym, co powstaje.",
+          "Tygodniowe plenery ikonowe od lipca do września, w trybie rekolekcyjnym: praca przy ikonie, modlitwa, wykłady i wyjścia do miejsc związanych z kultem ikon. Dla osób, które mają już za sobą pierwsze ikony.",
         bullets: [
-          "Tydzień, sierpień lub wrzesień",
+          "Tydzień, lipiec–wrzesień",
           "Miejsce i termin 2027 [pole CMS]",
           "Koszt [pole CMS]",
         ],

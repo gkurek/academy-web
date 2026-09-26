@@ -31,6 +31,8 @@ export interface OfferPageProps {
   active: string;
   quoteSlot?: ReactNode;
   afterBodySlot?: ReactNode;
+  /** Extra heading + copy rendered in the left column, below leadSecondary — fills tall FactsBox columns. */
+  leadExtraSlot?: ReactNode;
 }
 
 function EnrollmentSection({ quoteSlot }: { quoteSlot?: ReactNode }) {
@@ -82,6 +84,7 @@ export function OfferPage({
   active,
   quoteSlot,
   afterBodySlot,
+  leadExtraSlot,
 }: OfferPageProps) {
   const { Content, title, lead, leadSecondary, facts, kind, semesters, steps } = offer;
   const eyebrow = getOfferEyebrow(kind, facts.seasonLabel);
@@ -113,6 +116,8 @@ export function OfferPage({
               {leadSecondary}
             </p>
           )}
+
+          {leadExtraSlot && <div className="mt-space-6">{leadExtraSlot}</div>}
 
           <div className="mt-space-6 lg:hidden">
             <FactsBox facts={facts} kind={kind} />

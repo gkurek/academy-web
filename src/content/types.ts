@@ -119,7 +119,13 @@ export type News = {
   featuredUntil?: string;
 };
 
-export type Testimonial = { quote: string; author: string; role?: string };
+export type Testimonial = {
+  quote: string;
+  author: string;
+  role?: string;
+  /** When set, quote is shown on the summer school (plener) page, not the workshops hub. */
+  scope?: "plener";
+};
 
 export type TocItem = {
   id: string;

@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 
 import { OfferPage } from "@/components/content/OfferPage";
+import { OfferLeadExtra } from "@/components/offers/OfferLeadExtra";
 import { OfferQuote } from "@/components/offers/OfferQuote";
 import { getOffer } from "@/content/offers";
 import { mainNav, sectionNav } from "@/navigation";
@@ -31,6 +32,7 @@ export default function AnnualAndThreeYearCoursePage() {
       sectionActive={sectionItem.label}
       active={mainNavActive}
       quoteSlot={quoteSlot}
+      leadExtraSlot={offer.leadExtra ? <OfferLeadExtra leadExtra={offer.leadExtra} /> : undefined}
     />
   );
 }

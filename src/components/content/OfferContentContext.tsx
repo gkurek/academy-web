@@ -4,7 +4,9 @@ import { createContext, useContext } from "react";
 
 export type SemesterItem = {
   title: string;
-  body: string;
+  /** Short paragraph when there is no bullet list (e.g. semesters V–VI). */
+  body?: string;
+  topics?: string[];
 };
 
 export type StepItem = {

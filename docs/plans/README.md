@@ -7,7 +7,7 @@ Do zrobienia:
 
 | Plik | Etap | Status |
 | --- | --- | --- |
-| `09-migracja.md` | 9 — migracja treści z WordPressa | ⬜ plan nie powstał |
+| `09-migration.md` | 9 — migracja treści z WordPressa | 🔵 plan zatwierdzony 2026-09-26 (K-08, K-121, K-122) |
 | `10-wykonczenie.md` | 10 — ewaluacja, poprawki, SEO, optymalizacja | ⬜ plan nie powstał |
 | `11-wdrozenie.md` | 11 — wdrożenie | ⬜ plan nie powstał |
 

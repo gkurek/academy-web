@@ -27,7 +27,7 @@ export function SemesterProgram() {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-hairline-gap bg-line-gold">
         {semesters.map((semester, index) => (
           <article
-            key={semester.title}
+            key={`${index}-${semester.title}`}
             className="bg-surface-tile flex gap-offer-semester-gap-m md:gap-offer-semester-gap px-offer-semester-x-m py-offer-semester-y-m md:px-offer-semester-x md:py-offer-semester-y"
           >
             <div
@@ -38,9 +38,18 @@ export function SemesterProgram() {
             </div>
             <div className="min-w-0">
               <h3 className="font-serif text-size-role-row-title-m md:text-size-role-row-title leading-heading text-text-list-title mb-space-2">
-                {semester.title}
+                {pl.offers.semesterTileHeadings[index] ?? `Semestr ${index + 1}`}
               </h3>
-              <p className="text-size-body leading-body text-text-tertiary">{semester.body}</p>
+              <p className="text-size-body leading-body text-text-secondary mb-space-2">{semester.title}</p>
+              {semester.topics && semester.topics.length > 0 ? (
+                <ul className="text-size-body leading-body text-text-tertiary list-disc ps-space-5 space-y-space-1">
+                  {semester.topics.map((topic) => (
+                    <li key={topic}>{topic}</li>
+                  ))}
+                </ul>
+              ) : semester.body ? (
+                <p className="text-size-body leading-body text-text-tertiary">{semester.body}</p>
+              ) : null}
             </div>
           </article>
         ))}

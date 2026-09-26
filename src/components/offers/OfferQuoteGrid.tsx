@@ -26,9 +26,9 @@ export function OfferQuoteGrid({ heading, quotes, columns = 3 }: OfferQuoteGridP
         {heading}
       </h2>
       <div className={gridClass}>
-        {quotes.map((item) => (
+        {quotes.map((item, index) => (
           <blockquote
-            key={item.author}
+            key={`${item.author}-${index}`}
             className="bg-surface-card px-offer-quote-x py-offer-quote-y border-t-offer-quote-top border-accent"
           >
             <p className="font-serif italic text-size-quote leading-quote-offer text-text-body mb-space-4">
