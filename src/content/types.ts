@@ -114,6 +114,7 @@ export type News = {
   cover?: Image;
   images?: Image[];
   poster?: Image;
+  venue?: string;
   featured?: boolean;
   featuredUntil?: string;
 };
@@ -166,6 +167,19 @@ export type TextPageLink = {
 export type TextPageData = Page & {
   toc?: TocItem[];
   sample?: boolean;
+};
+
+export type PrivacyPolicySection = {
+  id: string;
+  paragraphs: string[];
+  list?: string[];
+  paragraphsAfterList?: string[];
+};
+
+export type PrivacyPolicyPageData = TextPageData & {
+  lastUpdated: string;
+  sections: PrivacyPolicySection[];
+  contactEmail: string;
 };
 
 export type LearningFormRow = {
@@ -262,6 +276,59 @@ export type AboutPageData = TextPageData & {
     intro: string;
     links: TextPageLink[];
   };
+};
+
+// K-82…K-84: daily permanent display + annual exhibitions in KŚT.
+export type PermanentExhibition = {
+  title: string;
+  lead: string;
+  iconCount: { from: number; to: number };
+  interiorPhotos: Image[];
+  sample?: boolean;
+};
+
+export type AnnualExhibition = {
+  seasonSlug: string;
+  title: string;
+  vernissage?: string;
+  dateEnd?: string;
+  iconCount?: number;
+  summary?: string;
+  photos?: Image[];
+  newsSlug?: string;
+};
+
+// K-76: Publikacje — jeden album jubileuszowy + artykuły (bez zakładek, bez SectionNav).
+export type Author = { name: string; lecturerSlug?: string };
+
+export type Publication = {
+  slug: string;
+  title: string;
+  year: number;
+  publisher: string; // "Fundacja IKONA DZIŚ"
+  isbn?: string;
+  pages: number;
+  format: string; // "23 × 23 cm"
+  price?: number; // PLN; brak = nie w sprzedaży
+  availability: "dostepny" | "wyczerpany";
+  cover: Image;
+  spreads: Image[];
+  toc: { title: string; author: Author; articleSlug?: string }[];
+  sample?: boolean;
+};
+
+export type ArticleSource =
+  | { kind: "album"; publicationSlug: string }
+  | { kind: "media"; outlet: string; date: string; url?: string; excerptOnly?: boolean };
+
+export type Article = {
+  slug: string;
+  title: string;
+  authors: Author[];
+  year: number;
+  excerpt: string;
+  source: ArticleSource;
+  sample?: boolean;
 };
 
 export type SiteSettings = {

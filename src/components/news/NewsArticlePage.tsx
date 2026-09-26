@@ -7,6 +7,10 @@ import { NewsPoster } from "@/components/news/NewsPoster";
 import { Breadcrumb } from "@/components/navigation/Breadcrumb";
 import { NewsDateMeta } from "@/components/news/NewsDateMeta";
 import {
+  getAnnualExhibitionByNewsSlug,
+  getAnnualExhibitionYear,
+} from "@/content/exhibition";
+import {
   getNewsKindLabel,
   getNewsNeighbors,
   type LoadedNews,
@@ -28,6 +32,11 @@ export function NewsArticlePage({ entry, active }: NewsArticlePageProps) {
   const neighbors = getNewsNeighbors(entry.slug);
   const hasPoster = Boolean(entry.poster);
   const hasGallery = Boolean(entry.images && entry.images.length > 0);
+  const annualExhibition =
+    entry.kind === "wystawa" ? getAnnualExhibitionByNewsSlug(entry.slug) : undefined;
+  const annualExhibitionYear = annualExhibition
+    ? getAnnualExhibitionYear(annualExhibition.seasonSlug)
+    : undefined;
 
   return (
     <SectionPageShell active={active}>
@@ -61,6 +70,14 @@ export function NewsArticlePage({ entry, active }: NewsArticlePageProps) {
         </div>
 
         {hasGallery ? <NewsGallery images={entry.images!} /> : null}
+
+        {annualExhibitionYear ? (
+          <p className="news-article-related">
+            <TextLink href={`/ikony/wystawy#wystawa-${annualExhibitionYear}`}>
+              {pl.news.backToExhibition.replace("{year}", String(annualExhibitionYear))}
+            </TextLink>
+          </p>
+        ) : null}
 
         <nav className="news-article-nav" aria-label={pl.news.articleNavAriaLabel}>
           <div className="news-article-nav-links">

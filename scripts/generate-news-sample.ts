@@ -4,7 +4,7 @@
  * Usage: npx tsx scripts/generate-news-sample.ts
  *
  * Fetches posts from akademiaikony.pl, applies migration rules from
- * docs/plan-claude-code.md §3 etap 10 and docs/plan-aktualizacji-dokumentow-wydarzenia.md §5:
+ * docs/plan-claude-code.md §3 etap 9 and docs/plan-aktualizacji-dokumentow-wydarzenia.md §5:
  * - aktualności + archiwum „Wydarzeń” → wpisy News z `kind`
  * - bez hubu `/wydarzenia`, bez poświęceń (→ Publikacje, K-55)
  * - oprowadzania 2017 (4 wpisy) → jeden wpis scalony

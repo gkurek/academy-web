@@ -20,7 +20,7 @@ export function SectionPageShell({ children, active, section, sectionActive }: S
   return (
     <>
       <Header active={active} />
-      <main className="flex-1 px-page-margin-mobile py-space-6 md:px-page-margin">
+      <main id="main-content" className="flex-1 px-page-margin-mobile py-space-6 md:px-page-margin">
         {section && <SectionNav items={sectionNav[section]} active={sectionActive} />}
         {children}
       </main>

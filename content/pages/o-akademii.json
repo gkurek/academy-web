@@ -104,6 +104,7 @@
     "links": [
       { "href": "/wyklady/archiwum", "label": "Archiwum wykładów" },
       { "href": "/wyklady/wykladowcy", "label": "Wykładowcy" },
+      { "href": "/publikacje", "label": "Publikacje" },
       { "href": "/aktualnosci", "label": "Aktualności" }
     ]
   },
@@ -126,10 +127,6 @@
       {
         "name": "Ikony do modlitwy",
         "note": "Udostępniamy ikony do modlitwy i\u00a0zapraszamy do wspólnej modlitwy przed ikonami w\u00a0Kościele Środowisk Twórczych."
-      },
-      {
-        "name": "Poświęcenia ikon",
-        "note": "Ikony napisane podczas warsztatów bywają poświęcane we wspólnocie, na zakończenie wspólnej pracy nad nimi."
       }
     ],
     "links": [

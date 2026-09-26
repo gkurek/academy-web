@@ -1,4 +1,9 @@
+"use client";
+
+import { useId } from "react";
+
 import { Button } from "@/components/core/Button";
+import { TextLink } from "@/components/core/TextLink";
 import type { OfferFacts } from "@/content/types";
 import { pl } from "@/i18n/pl";
 import { buildMailtoHref } from "@/lib/mailto";
@@ -63,6 +68,7 @@ function getDesktopContactLine(
 }
 
 export function FactsBox({ facts, kind }: FactsBoxProps) {
+  const headingId = useId();
   const { factsBox } = pl;
   const enrollmentState = facts.enrollmentOpen ? "open" : "closed";
   const cta = factsBox.ctaByKind[kind][enrollmentState];
@@ -97,11 +103,11 @@ export function FactsBox({ facts, kind }: FactsBoxProps) {
 
   return (
     <aside
-      aria-labelledby="facts-box-heading"
+      aria-labelledby={headingId}
       className="bg-surface-card px-offer-facts-x pt-offer-facts-y pb-offer-facts-pb border-t-offer-facts-top border-accent"
     >
       <h2
-        id="facts-box-heading"
+        id={headingId}
         className="font-serif text-size-role-box-title-m md:text-size-role-box-title leading-heading text-text-h2 mb-space-5"
       >
         {getHeading(kind, facts.seasonLabel)}
@@ -118,6 +124,14 @@ export function FactsBox({ facts, kind }: FactsBoxProps) {
           <div>
             <dt className="text-size-caption text-text-tertiary">{contactRow.label}</dt>
             <dd className="mt-offer-facts-dd-mt mb-0 text-text-body">{contactRow.value}</dd>
+          </div>
+        ) : null}
+        {kind === "wyklady" ? (
+          <div>
+            <dt className="text-size-caption text-text-tertiary">{factsBox.publicationsRowLabel}</dt>
+            <dd className="mt-offer-facts-dd-mt pb-space-6 text-text-body">
+              <TextLink href="/publikacje">{factsBox.publicationsLink}</TextLink>
+            </dd>
           </div>
         ) : null}
       </dl>

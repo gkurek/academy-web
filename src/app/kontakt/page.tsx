@@ -1,8 +1,15 @@
-import { PagePlaceholder } from "@/components/PagePlaceholder";
+import { ContactPage } from "@/components/contact/ContactPage";
+import { getContactPage } from "@/content/pages";
 import { mainNav } from "@/navigation";
 
-const title = mainNav.find((item) => item.href === "/kontakt")!.label;
+const contactLabel = mainNav.find((item) => item.href === "/kontakt")!.label;
 
-export default function ContactPage() {
-  return <PagePlaceholder title={title} active={title} />;
+export default function ContactRoutePage() {
+  const { Content } = getContactPage();
+
+  return <ContactPage Content={Content} />;
 }
+
+export const metadata = {
+  title: contactLabel,
+};

@@ -16,7 +16,10 @@ const ibmPlexSans = IBM_Plex_Sans({
 });
 
 export const metadata: Metadata = {
-  title: pl.meta.siteName,
+  title: {
+    default: pl.meta.siteName,
+    template: `%s · ${pl.meta.titleBrand}`,
+  },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
@@ -26,6 +29,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={`${ebGaramond.variable} ${ibmPlexSans.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
+        <a href="#main-content" className="skip-link">
+          {pl.a11y.skipToContent}
+        </a>
         <div className="mx-auto flex min-h-full w-full max-w-content-max flex-1 flex-col">
           {children}
         </div>

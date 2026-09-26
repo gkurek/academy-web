@@ -46,17 +46,18 @@ Strona jest częścią szerszego ekosystemu (Akademia + Fundacja + planowana str
 /ikony                     galeria: sekcje Elżbieta / uczniowie + filtr tematu
 /ikony/[slug]              pojedyncza ikona (opcjonalnie w v1)
 /ikony/na-zamowienie       strona ofertowa (treść wymienna w przyszłości — nie istotne teraz)
-/ikony/wystawa             stała wystawa w kościele, edycje roczne, oprowadzania (K-51)
+/ikony/wystawy             trzy formy wystaw w KŚT: ekspozycja codzienna, doroczna, wyjazdowe (K-82…K-90; historia K-51)
 /aktualnosci               lista z typem wpisu (`kind`), w tym archiwum wystaw, oprowadzań, wyjazdów, plenerów (K-50, K-52)
 /aktualnosci/[slug]
-/publikacje                artykuły, multimedia, plakaty (szablon strony tekstowej z zakładkami)
+/publikacje                album Akademii + artykuły (K-76)
+/publikacje/[slug]         album lub artykuł (wspólna przestrzeń slugów)
 /kontakt
 /polityka-prywatnosci
 ```
 
 **Menu główne (max 6 pozycji):** O Akademii · Warsztaty · Wykłady · Ikony · Aktualności · Kontakt.
 
-> **K-50 (2026-09-21):** dział „Wydarzenia” zlikwidowany jako sekcja i pozycja menu. Trasa `/wydarzenia` nie powstaje; stare adresy przekierowane (§5). Uzasadnienie: jedyna żywa treść działu to coroczna wystawa (→ `/ikony/wystawa`, K-51); reszta to archiwum 2013–2020, które trafia do Aktualności jako wpisy z `kind` (K-52).
+> **K-50 (2026-09-21):** dział „Wydarzenia” zlikwidowany jako sekcja i pozycja menu. Trasa `/wydarzenia` nie powstaje; stare adresy przekierowane (§5). Uzasadnienie: coroczna wystawa w kościele ma własną stronę (→ `/ikony/wystawy`, K-90; wcześniej K-51 `/ikony/wystawa`); reszta to archiwum 2013–2020 w Aktualnościach jako wpisy z `kind` (K-52).
 
 **Wzorzec nawigacji drugiego poziomu (obowiązkowy, zaimplementowany w makietach jako `SectionNav`):**
 1. Strona sekcji (`/warsztaty`, `/wyklady`, `/ikony`) jest hubem z dużymi klikalnymi blokami podstron, nie tylko opisem.
@@ -67,7 +68,7 @@ Zawartość `SectionNav` per sekcja:
 - O Akademii: O Akademii · Pracownia *(para stron tekstowych; `/o-akademii` = pierwsza pozycja — K-48, makieta 6a–6d)*
 - Warsztaty: Przegląd · Kurs roczny i trzyletni · Letnia Szkoła Światła *(pierwsza pozycja = hub, nie nazwa sekcji — K-23)*
 - Wykłady: Bieżący sezon · Archiwum · Wykładowcy
-- Ikony: Galeria · Wystawa · Ikony na zamówienie (K-51)
+- Ikony: Galeria · Wystawy · Ikony na zamówienie (K-90; wcześniej „Wystawa”, K-51)
 - Aktualności: bez `SectionNav` — jedna chronologiczna lista wpisów z nawigacją po latach (K-70), bez filtrów kategorii w v1 (K-52)
 
 Menu główne (desktop): **płaska lista 6 linków** — bez dropdownu; drugi poziom wyłącznie przez `SectionNav` na stronach sekcji (zgodnie z makietą). W menu mobilnym: akordeon per sekcja, nagłówek sekcji zawsze też linkiem do huba.
@@ -142,7 +143,7 @@ type IconWork = {
 };
 
 // K-50/K-53 (2026-09-21): typ `Event` usunięty. „Wydarzenia” to teraz wpisy
-// Aktualności z `kind`; wystawa ma własny model `ExhibitionEdition` niżej.
+// Aktualności z `kind`; wystawy w KŚT mają model `PermanentExhibition` + `AnnualExhibition` niżej.
 type NewsKind =
   | 'aktualnosc'
   | 'wyklady'
@@ -166,39 +167,74 @@ type News = {
   poster?: Image;
   featured?: boolean;
   featuredUntil?: string;       // YYYY-MM-DD; tylko przy featured: true; po dacie wpis traci wyróżnienie przy buildzie (K-73)
+  venue?: string;               // wystawy wyjazdowe — wiersz na `/ikony/wystawy#wyjazdowe` (K-87)
 };
 // K-72: na liście (`NewsCard`) wyświetlana jest tylko `date` z rokiem — bez zakresu `dateEnd`.
 // We wpisie pojedynczym i w wyróżnionym: `formatDateRange` z `dateEnd` gdy jest.
 
-// K-51: wystawa „Ikona – korzenie i owoce wiary” jest w kościele na stałe,
-// zestaw ikon zmienia się co roku (nowa edycja z wernisażem na koniec roku
-// akademickiego, w okolicach 17.06). Strona `/ikony/wystawa` łączy opis
-// stały, bieżącą edycję, oprowadzania kuratorskie i poprzednie edycje.
-type ExhibitionEdition = {
-  year: number;
-  title: string;                 // „Ikona – korzenie i owoce wiary”
-  subtitle?: string;             // np. „Świętych obcowanie” (2019)
-  vernissage?: string;           // ISO; data wernisażu
-  seasonTheme?: string;          // temat sezonu wykładów, np. „Mistyka dziś”
-  iconCount?: number;
-  poster?: Image;
-  photos?: Image[];              // brak lub [] → edycja jako linijka, bez karty (K-54)
-  summary?: string;              // 2–3 zdania: co nowego w tej edycji
-  tours?: { date: string; topic: string }[];
-  newsSlug?: string;             // opcjonalny wpis w Aktualnościach z relacją
+// K-82…K-90 (08b): w KŚT są trzy formy wystawy — ekspozycja codzienna (6–10 ikon EJK),
+// wystawa doroczna (40–50 ikon, wernisaż na ostatnim wykładzie sezonu), wystawy wyjazdowe
+// (wpisy Aktualności `kind: 'wystawa'` z `venue`). Strona `/ikony/wystawy`, H1 „Wystawy ikon”.
+// Szczegóły merytoryczne i układ: `docs/plans/08b-review-fixes.md` §1–§2. K-51: historia wydzielenia
+// wystawy z Aktualności (2026-09-21); model `ExhibitionEdition` zastąpiony w 08b.
+type PermanentExhibition = {
+  title: string;
+  lead: string;
+  iconCount: { from: number; to: number };
+  interiorPhotos: Image[];
+  sample?: boolean;
 };
 
-// Wystawa jest w kościele stale (K-51), więc nie ma stanu „po wystawie”.
-type ExhibitionState = 'zapowiedz' | 'biezaca';
-
-const getExhibitionState = (next: ExhibitionEdition | undefined, now: Date): ExhibitionState =>
-  next?.vernissage && now < new Date(next.vernissage) ? 'zapowiedz' : 'biezaca';
-
-const editionsWithGallery = (editions: ExhibitionEdition[]) =>
-  editions.filter((e) => (e.photos?.length ?? 0) > 0);
+type AnnualExhibition = {
+  seasonSlug: string;           // „2026-2027” → walidacja `LectureSeason` przy buildzie
+  title: string;                // osobne pole (K-84), np. „Mistyka dziś”
+  vernissage?: string;          // domyślnie data ostatniego wykładu sezonu
+  dateEnd?: string;             // domyślnie 31 sierpnia roku wernisażu
+  iconCount?: number;
+  summary?: string;
+  photos?: Image[];
+  newsSlug?: string;            // relacja doroczna ↔ wpis Aktualności (K-103)
+};
 ```
 
-Źródło danych wystawy: `content/exhibition/editions.json` (lista `ExhibitionEdition`) + treść stała `content/exhibition/page.mdx`. Implementacja w etapie 8.
+Źródło danych wystawy: `content/exhibition/page.mdx` (frontmatter `PermanentExhibition`) + `content/exhibition/body.mdx` + `content/exhibition/annual.json` (`AnnualExhibition[]`, 15 sezonów od 2012/2013). Stan wystawy dorocznej wyliczany z dat (`vernissage`…`dateEnd`); ISR `revalidate` na `/` i `/ikony/wystawy` (K-85). Trasa `/ikony/wystawa` → `/ikony/wystawy` (redirect w aplikacji; 301 w etapie 9).
+
+```ts
+// K-76: Publikacje — jeden album jubileuszowy + artykuły (bez zakładek, bez SectionNav).
+type Author = { name: string; lecturerSlug?: string };
+
+type Publication = {
+  slug: string;
+  title: string;
+  year: number;
+  publisher: string;              // „Fundacja IKONA DZIŚ”
+  isbn?: string;                  // do podania
+  pages: number;
+  format: string;                 // „23 × 23 cm”
+  price?: number;                 // PLN; brak = nie w sprzedaży
+  availability: 'dostepny' | 'wyczerpany';
+  cover: Image;
+  spreads: Image[];               // 8–12
+  toc: { title: string; author: Author; articleSlug?: string }[];
+  sample?: boolean;
+};
+
+type ArticleSource =
+  | { kind: 'album'; publicationSlug: string }
+  | { kind: 'media'; outlet: string; date: string; url?: string; excerptOnly?: boolean };
+
+type Article = {
+  slug: string;
+  title: string;
+  authors: Author[];
+  year: number;
+  excerpt: string;
+  source: ArticleSource;
+  sample?: boolean;
+};
+```
+
+Lista autorów na podstronie albumu jest wyliczana z `toc` (unikalne nazwiska, podział wg `lecturerSlug`), nie przechowywana osobno. Źródła: `content/publications/*.mdx` (frontmatter = `Publication`, body = opis, fragmenty, „Jak powstał album”), `content/articles/*.mdx` (frontmatter = `Article`, body = tekst lub zajawka). Walidacje przy buildzie (K-76): `toc[].articleSlug` → istniejący artykuł; `source.publicationSlug` → istniejący album; artykuł `kind: 'album'` bez pozycji w `toc` — ostrzeżenie; kolizja slugów album/artykuł — błąd buildu.
 
 Kafel „Najbliższe” na stronie głównej (K-58) zależy od stanu wystawy:
 - stan `biezaca`: „Wystawa ikon · edycja {rok}”, tekst „Czynna w godzinach otwarcia kościoła”;
@@ -267,18 +303,22 @@ Szacunek ręcznej korekty po migracji: ~10 stron statycznych, 16 sezonów wykła
 | `/wyklady/wykladowcy/` | `/wyklady/wykladowcy` |
 | `/wyklady/zapisy-na-wyklady/` | scalone w `/wyklady#zapisy` |
 | `/ikona/`, `/ikona/galeria/` | `/ikony` |
-| `/ikona/wystawy/`, `/wernisaze/` | `/ikony/wystawa` |
+| `/ikona/wystawy/`, `/wernisaze/` | `/ikony/wystawy` (K-90) |
 | `/ikona/ikony-na-zamowienie/` | `/ikony/na-zamowienie` |
-| `/oprowadzania-kuratorskie/` | `/ikony/wystawa#oprowadzania` |
+| `/oprowadzania-kuratorskie/` | `/ikony/wystawy#oprowadzania` (K-90) |
+| `/ikony/wystawa` (adres z etapu 7–8) | `/ikony/wystawy` (301 w etapie 9) |
 | `/wydarzenia/` | `/aktualnosci` |
 | `/wyjazdy-studyjne/` | `/aktualnosci` |
-| `/poswiecenia-ikon/` | docelowy artykuł w `/publikacje` (slug ustalony w sesji Publikacji); do tego czasu `/publikacje` |
-| `/ikona-korzenie-i-owoce-wiary-2/` i wpisy wystaw z lat 2015–2018 | `/ikony/wystawa` |
+| `/poswiecenia-ikon/` | wpis Aktualności (K-77; slug w migracji) |
+| `/publikacje/` | `/publikacje` |
+| `/publikacje/artykuly/` | `/publikacje#artykuly` |
+| `/publikacje/multimedia/` | `/publikacje` |
+| `/publikacje/plakaty/` | `/aktualnosci` |
+| `/ikona-korzenie-i-owoce-wiary-2/` i wpisy wystaw z lat 2015–2018 | `/ikony/wystawy` (kotwice `#wystawa-{rok}` gdy relacja doroczna) |
 | pojedyncze wpisy oprowadzań 2017 (`/ikony-emaliowane/`, `/ikona-trojcy-swietej/`, `/ikona-serca-jezusa/`, `/wystawa-ikona-korzenie-i-owoce-wiary-oprowadzania-kuratorskie/`) | jeden połączony wpis w `/aktualnosci/[slug]` |
 | pozostałe wpisy wystaw i wyjazdów | odpowiadające wpisy `/aktualnosci/[slug]` |
 | `/aktualnosci/wystawa-ikona-dzis-2` | `/aktualnosci/wystawa-ikona-dzis` (K-67, scalenie duplikatów) |
 | `/aktualnosci/149` | `/aktualnosci/ikona-piekno-zanurzone-w-tajemnicy` (K-67, scalenie duplikatów) |
-| `/publikacje/`, `/publikacje/artykuly/`, `/multimedia/`, `/plakaty/` | `/publikacje` z zakładkami |
 
 **Zasada ogólna (K-50):** brak osobnej trasy dla wydarzeń; wydarzenia to wpisy Aktualności z `kind`.
 
@@ -295,6 +335,7 @@ Szacunek ręcznej korekty po migracji: ~10 stron statycznych, 16 sezonów wykła
 - Program bieżącego sezonu wykładów jako lista (data, tytuł, prowadzący); archiwum jako rozwijane sezony (`SeasonAccordion`).
 - Galeria: dwie sztywne sekcje (ikony Elżbiety Jackowskiej-Kurek → ikony uczniów), filtr **tematu** przez query string (`?temat=<slug-tagu>`), bez filtra autora; lightbox. W siatce — sam tytuł; w lightboxie — pełny autor, wymiary i technika (`IconWork`). Lista nazwisk uczniów w sekcji uczniów, generowana z danych.
 - Aktualności: jeden strumień wpisów z etykietą typu (`kind`), jedna chronologiczna lista z nawigacją po latach (K-70), wpis pojedynczy; bez filtrów kategorii w v1 (K-50, K-52).
+- Publikacje (K-76): `/publikacje` — sekcja albumu + lista artykułów; podstrona albumu z blokiem metryczki/zakupu (`dostepny` / `wyczerpany`, wzorowany na `FactsBox`), zakup przez `mailto:` na sekretariat i na wykładach w KŚT; artykuły ze blokiem źródła (album / media / tylko zajawka + link); linki spis treści ↔ artykuł (`toc[].articleSlug`). Terminologia UI: **album**, nie „książka” ani „katalog”.
 - Kontakt: adres, **osadzona** mapa (nie surowy link; `MapBlock` + `SiteSettings.mapEmbedUrl`), dwa maile z opisem, telefon, info o wejściu od strony zakrystii (treść redakcyjna w MDX), blok „Akademia w sieci” w `MapBlock`.
 - Mobile-first, WCAG AA (kontrast, fokus, alt), `prefers-reduced-motion`.
 - SEO: metadata + Open Graph per strona, sitemap, 301 ze starych URL.
@@ -314,6 +355,7 @@ Szacunek ręcznej korekty po migracji: ~10 stron statycznych, 16 sezonów wykła
 - `Zgłoszenie – Letnia Szkoła Światła 2027`
 - `Zgłoszenie – wykłady 2026/2027`
 - `Zapytanie – ikona na zamówienie`
+- `Zamówienie – album „Ikona dziś. Akademia Ikony 2010–2025”` (K-76; zapis do potwierdzenia razem z tytułem albumu)
 
 Telefon jako `tel:+48601734705`.
 
@@ -341,7 +383,8 @@ Telefon jako `tel:+48601734705`.
 
 **Decyzje strukturalne z handoffu:**
 - `/wyklady` = hub + bieżący sezon + zwinięte archiwum; `/wyklady/archiwum` = osobna trasa z pełną listą.
-- `/publikacje` używa szablonu strony tekstowej (jak polityka prywatności) z zakładkami Artykuły · Multimedia · Plakaty jako `SectionNav`.
+- `/publikacje` — układ wg K-76: album + artykuły, bez `SectionNav` i bez zakładek; podstrony albumu i artykułu na szablonie strony tekstowej. Makieta oczekiwana: `design/Akademia Ikony - Publikacje.dc.html` + `design/README-publikacje.md` (sloty `PU-*`).
+- Terminologia wydawnicza: w treści, UI, CTA i `mailto:` używamy słowa **„album”**; nie „książka” ani „katalog” (wyjątek: nazwy plików ze starej strony WP).
 
 ---
 
@@ -358,6 +401,7 @@ Telefon jako `tel:+48601734705`.
 - Wykłady 2026/2027: „Ikona – korzenie i owoce wiary. Mistyka dziś”; wybrane wtorki 18:00–20:30; 400 zł/rok; zapisy do końca września 2026; terminy: 06.10, 10.11, 08.12, 19.01, 16.02, 09.03, 13.04, 11.05, 08.06, 11.06, 12.06 (wernisaż, AGAPA).
 - Letnia Szkoła Światła: plenery tygodniowe sierpień/wrzesień; nabór na 2027 rusza w marcu 2027, kolejność zgłoszeń.
 - Ikony na zamówienie: kontakt jak wyżej; szczegóły procesu i czas realizacji — do potwierdzenia z EJK (nie zgadywać, zostawić placeholder w CMS-owalnym polu).
+- Album jubileuszowy (K-76): tytuł **„IKONA DZIŚ. AKADEMIA IKONY 2010–2025”** (zapis do potwierdzenia; na starej stronie WP był z przecinkiem). Wydawca: Fundacja IKONA DZIŚ (self-publishing), rok **2025**. **132** strony, format **23 × 23 cm**, cena **140 zł**. Dostępny; wysyłka pocztą; sprzedaż na wykładach w KŚT. ISBN: **do podania**. Zamówienie: `mailto:` na sekretariat (`sekretariat.ikony22@gmail.com`) z tematem jak w §7; koszt wysyłki i dane do przelewu — w odpowiedzi mailowej, nie na stronie.
 - Uwaga prawna (pełne zdanie, wielka litera na początku): „Nauczanie w Akademii Ikony nie niesie za sobą żadnych skutków formalnych.”
 
 ---

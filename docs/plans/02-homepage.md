@@ -6,13 +6,13 @@ Makiety: design/Akademia Ikony - kierunki wizualne.dc.html — #1a (desktop, lin
 
 ## Cel i zakres
 
-Pierwsza pełna strona serwisu — strona główna. Ustala rytm sekcji i wzorzec czytania treści z `content/` przez `src/content/*`. W zakresie: Hero, sekcja „Najbliższe” (SiteSettings.upcoming), trzy filary, Testimonial (cytat EJK), „Wybrane ikony” (IconGrid, 4 wpisy sample). Poza zakresem (świadomie, po weryfikacji z makietą — patrz K-13): MapBlock i sekcja kontakt na stronie głównej — te trafiają do etapu 8 (/kontakt). Poza zakresem też: analityka/zdarzenia (K-15, etap 9), Lightbox i /ikony/[slug] (etap 5).
+Pierwsza pełna strona serwisu — strona główna. Ustala rytm sekcji i wzorzec czytania treści z `content/` przez `src/content/*`. W zakresie: Hero, sekcja „Najbliższe” (SiteSettings.upcoming), trzy filary, Testimonial (cytat EJK), „Wybrane ikony” (IconGrid, 4 wpisy sample). Poza zakresem (świadomie, po weryfikacji z makietą — patrz K-13): MapBlock i sekcja kontakt na stronie głównej — te trafiają do etapu 8 (/kontakt). Poza zakresem też: analityka/zdarzenia (K-15, etap 10), Lightbox i /ikony/[slug] (etap 5).
 
 ## Decyzje podjęte w sesji planistycznej
 
 - K-13: Homepage bez MapBlock/kontaktu — rozbieżność opis etapu vs makieta rozstrzygnięta na korzyść makiety; kontakt zostaje w stopce.
 - K-14: Testimonial to jedna sekcja (cytat + podpis EJK), bez portretu/bio/linku, identyczna na desktop i mobile — uproszczenie względem wariantu mobile makiety i względem `Testimonial.prompt.md`.
-- K-15: Brak atrybutów/zdarzeń analitycznych w etapie 2 — całość do etapu 9.
+- K-15: Brak atrybutów/zdarzeń analitycznych w etapie 2 — całość do etapu 10.
 - Tytuły sample w `content/icons.json`: nazwy kanoniczne z podpisów makiety (Matka Boża Znaku, Przemienienie, Mandylion, Św. Antoni), autor „ejk” poza Św. Antonim („student”).
 - Sekcje „Najbliższe” i „trzy filary” nie mają nazw w design/README — lokalne komponenty (`UpcomingHighlights`, `Pillars`), nazwy angielskie.
 - K-16 (po Kawałku 1): `SiteSettings.upcoming` rozszerzone o pole `linkLabel` — osobny `TextLink` per kafel („Jak się zapisać”/„Program sezonu”/„Wystawy”), zgodnie z makietą; zmiana w `types.ts`, `content/settings.json` i `UpcomingHighlights.tsx` (decyzja użytkownika, nie cały kafel jako `<Link>`).

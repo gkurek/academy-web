@@ -1,0 +1,179 @@
+{
+  "sample": true,
+  "exhibitions": [
+    {
+      "seasonSlug": "2026-2027",
+      "title": "Mistyka dziś",
+      "vernissage": "2027-06-12",
+      "summary": "[do uzupełnienia: 2–3 zdania o wystawie 2027 — co nowego w zestawie ikon, okoliczności wernisażu]",
+      "photos": [
+        {
+          "src": "/media/sample/news/wystawa-ikona-korzenie-i-owoce-wiary-2018-0.jpg",
+          "alt": "Wernisaż wystawy ikon w Kościele Środowisk Twórczych",
+          "width": 1200,
+          "height": 800
+        },
+        {
+          "src": "/media/sample/news/wystawa-ikona-korzenie-i-owoce-wiary-2018-1.jpg",
+          "alt": "Ekspozycja ikon w lewej nawie kościoła",
+          "width": 1200,
+          "height": 800
+        },
+        {
+          "src": "/media/sample/news/wystawa-ikona-korzenie-i-owoce-wiary-2018-2.jpg",
+          "alt": "Ikony na wystawie — zbliżenie",
+          "width": 1200,
+          "height": 800
+        },
+        {
+          "src": "/media/sample/icons/chrystus.jpg",
+          "alt": "Ikona Chrystusa na wystawie",
+          "width": 360,
+          "height": 682
+        },
+        {
+          "src": "/media/sample/photos/wystawa.jpg",
+          "alt": "Zwiedzający przy wystawie ikon",
+          "width": 1000,
+          "height": 714
+        }
+      ]
+    },
+    {
+      "seasonSlug": "2025-2026",
+      "title": "Mądrość Boża",
+      "newsSlug": "wystawa-madrosc-boza-2026",
+      "photos": [
+        {
+          "src": "/media/sample/icons/boze-narodzenie-3.jpg",
+          "alt": "Ikona Bożego Narodzenia z wystawy 2026",
+          "width": 800,
+          "height": 1200
+        },
+        {
+          "src": "/media/sample/icons/mandylion-3.jpg",
+          "alt": "Ikona Mandylionu z wystawy 2026",
+          "width": 800,
+          "height": 1200
+        },
+        {
+          "src": "/media/sample/icons/matka-boza-sniezna.jpg",
+          "alt": "Ikona Matki Bożej Śnieżnej z wystawy 2026",
+          "width": 800,
+          "height": 1200
+        }
+      ]
+    },
+    {
+      "seasonSlug": "2024-2025",
+      "title": "Piękno Boga, piękno człowieka",
+      "newsSlug": "wystawa-piekno-boga-piekno-czlowieka-2025"
+    },
+    {
+      "seasonSlug": "2023-2024",
+      "title": "Przyjaźń z Bogiem"
+    },
+    {
+      "seasonSlug": "2022-2023",
+      "title": "Piękno zanurzone w Tajemnicy"
+    },
+    {
+      "seasonSlug": "2021-2022",
+      "title": "Światłość prawdziwa"
+    },
+    {
+      "seasonSlug": "2020-2021",
+      "title": "O Bożej obecności"
+    },
+    {
+      "seasonSlug": "2019-2020",
+      "title": "O Duchu Świętym"
+    },
+    {
+      "seasonSlug": "2018-2019",
+      "title": "O świętości",
+      "iconCount": 44,
+      "photos": [
+        {
+          "src": "/media/sample/icons/chrystus.jpg",
+          "alt": "Ikona Chrystusa z wystawy 2019",
+          "width": 360,
+          "height": 682
+        },
+        {
+          "src": "/media/sample/icons/swiety-symeon.jpg",
+          "alt": "Ikona świętego Symeona z wystawy 2019",
+          "width": 800,
+          "height": 1200
+        }
+      ]
+    },
+    {
+      "seasonSlug": "2017-2018",
+      "title": "O świętości",
+      "photos": [
+        {
+          "src": "/media/sample/news/wystawa-ikona-korzenie-i-owoce-wiary-2018-3.jpg",
+          "alt": "Wystawa „O świętości” 2018",
+          "width": 400,
+          "height": 225
+        },
+        {
+          "src": "/media/sample/news/wystawa-ikona-korzenie-i-owoce-wiary-2018-4.jpg",
+          "alt": "Wystawa „O świętości” 2018",
+          "width": 400,
+          "height": 225
+        },
+        {
+          "src": "/media/sample/news/wystawa-ikona-korzenie-i-owoce-wiary-2018-5.jpg",
+          "alt": "Wystawa „O świętości” 2018",
+          "width": 400,
+          "height": 225
+        }
+      ],
+      "newsSlug": "wystawa-ikona-korzenie-i-owoce-wiary-2018"
+    },
+    {
+      "seasonSlug": "2016-2017",
+      "title": "Ikona – niebo na ziemi",
+      "newsSlug": "wystawa-ikon-w-kosciele-srodowisk-tworczych-warszawa-plac-teatralny-20",
+      "photos": [
+        {
+          "src": "/media/sample/news/wystawa-ikona-korzenie-i-owoce-wiary-oprowadzania-kuratorskie-0.jpg",
+          "alt": "Oprowadzanie kuratorskie po wystawie 2017",
+          "width": 800,
+          "height": 600
+        },
+        {
+          "src": "/media/sample/news/ikony-emaliowane-0.jpg",
+          "alt": "Ikony emaliowane na wystawie 2017",
+          "width": 800,
+          "height": 600
+        },
+        {
+          "src": "/media/sample/news/ikona-trojcy-swietej-0.jpg",
+          "alt": "Ikona Trójcy Świętej na wystawie 2017",
+          "width": 800,
+          "height": 600
+        }
+      ]
+    },
+    {
+      "seasonSlug": "2015-2016",
+      "title": "Ikona dziś"
+    },
+    {
+      "seasonSlug": "2014-2015",
+      "title": "Obraz i kult",
+      "newsSlug": "wystawa-ikona-dzis"
+    },
+    {
+      "seasonSlug": "2013-2014",
+      "title": "Ikona – miejsce spotkania"
+    },
+    {
+      "seasonSlug": "2012-2013",
+      "title": "Świat ikony"
+    }
+  ]
+}

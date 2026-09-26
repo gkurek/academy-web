@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 
 import { OfferPage } from "@/components/content/OfferPage";
 import { OfferQuoteGrid } from "@/components/offers/OfferQuoteGrid";
+import { PlenerWhereWeWereSection } from "@/components/offers/PlenerWhereWeWereSection";
 import { getOffer } from "@/content/offers";
 import { getPlenerTestimonials } from "@/content/testimonials";
 import { pl } from "@/i18n/pl";
@@ -20,11 +21,16 @@ export default function SummerSchoolOfLightPage() {
   const quotes = getPlenerTestimonials();
 
   const quoteSlot = (
-    <OfferQuoteGrid
-      heading={pl.offers.plenerQuotesHeading}
-      quotes={quotes}
-      columns={2}
-    />
+    <>
+      <OfferQuoteGrid
+        heading={pl.offers.plenerQuotesHeading}
+        quotes={quotes}
+        columns={2}
+      />
+      {offer.whereWeWere.length > 0 ? (
+        <PlenerWhereWeWereSection entries={offer.whereWeWere} />
+      ) : null}
+    </>
   );
 
   return (

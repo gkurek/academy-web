@@ -6,7 +6,7 @@ Makiety: `design/Akademia Ikony - Wystawa i Aktualności.dc.html` — ekrany **7
 
 ## Cel i zakres
 
-Jeden strumień wpisów z etykietą typu (`kind`), lista chronologiczna z paskiem lat na `/aktualnosci` i pojedynczy artykuł na `/aktualnosci/[slug]` z `Breadcrumb`, body MDX, galerią (`images`), plakatem (`poster`) i opcjonalnym blokiem CTA w treści. Archiwum dawnego działu „Wydarzenia” trafia tu jako wpisy `sample` (generator z WP, K-50, K-52). **Pełna aktualizacja nawigacji** (K-50): menu, stopka, `SectionNav` Ikony z „Wystawa”, usunięcie `/wydarzenia` — przeniesione z etapu 8 (D-07-02). Poza zakresem: strona `/ikony/wystawa` (treść — etap 8; w kawałku 4 tylko zaślepka trasy, żeby linki z nawigacji nie prowadziły do 404); filtry kategorii (K-52); miniatury na liście w pierwszej iteracji (przegląd w kawałku 5, D-07-03); migracja prawdziwych danych (etap 10).
+Jeden strumień wpisów z etykietą typu (`kind`), lista chronologiczna z paskiem lat na `/aktualnosci` i pojedynczy artykuł na `/aktualnosci/[slug]` z `Breadcrumb`, body MDX, galerią (`images`), plakatem (`poster`) i opcjonalnym blokiem CTA w treści. Archiwum dawnego działu „Wydarzenia” trafia tu jako wpisy `sample` (generator z WP, K-50, K-52). **Pełna aktualizacja nawigacji** (K-50): menu, stopka, `SectionNav` Ikony z „Wystawa”, usunięcie `/wydarzenia` — przeniesione z etapu 8 (D-07-02). Poza zakresem: strona `/ikony/wystawa` (treść — etap 8; w kawałku 4 tylko zaślepka trasy, żeby linki z nawigacji nie prowadziły do 404); filtry kategorii (K-52); miniatury na liście w pierwszej iteracji (przegląd w kawałku 5, D-07-03); migracja prawdziwych danych (etap 9).
 
 ## Decyzje podjęte w sesji planistycznej
 
@@ -14,7 +14,7 @@ Jeden strumień wpisów z etykietą typu (`kind`), lista chronologiczna z paskie
 - **D-07-02:** Pełna aktualizacja nawigacji w etapie 7 — `mainNav` „Aktualności” zamiast „Wydarzenia”, stopka, `sectionNav.ikony`: Galeria · Wystawa · Ikony na zamówienie; usunięcie `sectionNav.wydarzenia` i trasy `/wydarzenia`.
 - **D-07-03:** `NewsCard` **bez miniatury** w v1 — **zostaje** (kawałek 5); rekomendacja na przyszłość: miniatura z `cover` → `poster` → pierwsze `images` (pole `cover` w typie gotowe, generator na razie nie wypełnia).
 - **D-07-04:** Blok CTA (makieta C2, WP-14) — komponent MDX w body, np. `<NewsCta href="…" label="…" />`; bez nowego pola w `types.ts`.
-- **D-07-05:** Generator **`scripts/generate-news-sample.ts`**: pełny zestaw z WP (aktualności + przekształcone wydarzenia wg zasad migracji z planu §3 etapu 10); `"sample": true`; obrazy w `public/media/sample/news/`.
+- **D-07-05:** Generator **`scripts/generate-news-sample.ts`**: pełny zestaw z WP (aktualności + przekształcone wydarzenia wg zasad migracji z planu §3 etapu 9); `"sample": true`; obrazy w `public/media/sample/news/`.
 - **D-07-06:** Prev/next po `date` **malejąco** (jak lista): etykiety **„Poprzedni”** / **„Następny”** (chevrony ‹ ›); brak linku na skraju listy zamiast pętli.
 - **D-07-11:** `YearNav` — **jeden link na każdy rok z wpisami**, bez grupowania zakresów (np. bez „2020–2024”); tylko lata obecne w danych, malejąco.
 - **D-07-07:** `Breadcrumb` — separator **`›`** (globalnie w komponencie).
@@ -29,7 +29,7 @@ Jeden strumień wpisów z etykietą typu (`kind`), lista chronologiczna z paskie
 | ---- | ----------- | ---------------- |
 | `src/content/types.ts` | zmiana | `NewsKind`, rozszerzony `News` (`kind`, `dateEnd?`, `images?`, `poster?`); usunięcie `Event` |
 | `src/content/news.ts` | nowy | `getNews()`, `getNewsBySlug()`, `getNewsGroupedByYear()`, sąsiedzi prev/next, mapowanie etykiet `kind` |
-| `scripts/generate-news-sample.ts` | nowy | Import WP → `content/news/*.mdx` + media; reguły K-50 / plan etapu 10 §3 |
+| `scripts/generate-news-sample.ts` | nowy | Import WP → `content/news/*.mdx` + media; reguły K-50 / plan etapu 9 §3 |
 | `content/news/*.mdx` | nowe | Wpisy `sample` z frontmatter zgodnym z `News` |
 | `public/media/sample/news/*` | nowe | Obrazy z generatora |
 | `src/components/news/NewsCard.tsx` | nowy | Karta wpisu na liście: etykieta typu + data (jedna linia), tytuł (link H3), excerpt; **bez miniatury** (D-07-03) |
@@ -92,7 +92,7 @@ Kryterium „gotowe”: wszystkie checkboxy DoD poniżej; build/lint OK; meldune
 
 | Treść | Gdzie | Zastąpić czym |
 | ----- | ----- | ------------- |
-| Wpisy aktualności + archiwum wydarzeń (59, po scaleniach K-67) | `content/news/sample-*.mdx`, `public/media/sample/news/` | migracja WP (etap 10) |
+| Wpisy aktualności + archiwum wydarzeń (59, po scaleniach K-67) | `content/news/sample-*.mdx`, `public/media/sample/news/` | migracja WP (etap 9) |
 | Plakaty wystaw (brak plików z WP) | frontmatter `poster` w wybranych wpisach | archiwum WP / Publikacje (sesja) |
 | Treści `[przykład]` z makiet | — | **nie kopiować**; generator bierze z WP |
 
@@ -108,11 +108,11 @@ Kryterium „gotowe”: wszystkie checkboxy DoD poniżej; build/lint OK; meldune
 
 ## Ryzyka i pytania otwarte
 
-- **Generator WP:** REST API może wymagać mapowania kategorii WP → `kind`; edge cases (poświęcenia, wpis zbiorczy wystawy) — reguły z planu etapu 10; meldunek z raportem skryptu.
+- **Generator WP:** REST API może wymagać mapowania kategorii WP → `kind`; edge cases (poświęcenia, wpis zbiorczy wystawy) — reguły z planu etapu 9; meldunek z raportem skryptu.
 - **Plakaty:** jeśli WP nie ma pliku — placeholder w UI (ramka jak makieta), bez blokowania buildu.
 - **Link „Nowa edycja wystawy”** na liście (makieta 2026) → `/ikony/wystawa` (zaślepka do etapu 8).
 - **Miniatury (D-07-03):** świadomie odłożone do kawałka 5; rekomendacja z sesji na przyszłość: `cover` → `poster` → pierwsze `images`.
-- **Lighthouse iOS lightbox `/ikony`:** etap 9 (K-38), nie 7.
+- **Lighthouse iOS lightbox `/ikony`:** etap 10 (K-38), nie 7.
 - **Etap 8:** treść `/ikony/wystawa` i zmiany home/LSŚ — bez zmian w zakresie nawigacji (zrobione w 07).
 
 ## Postęp

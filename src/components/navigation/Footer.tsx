@@ -1,4 +1,6 @@
 import Link from "next/link";
+
+import { ExternalLink } from "@/components/core/ExternalLink";
 import { getSiteSettings } from "@/content/settings";
 import { pl } from "@/i18n/pl";
 import { footerLegalLink, footerSitemap, type MainNavItem } from "@/navigation";
@@ -35,11 +37,11 @@ function FooterBrandBlock() {
       <div className="font-serif text-size-lead tracking-logo-footer text-text-list-title mb-space-3">
         {pl.meta.orgShortName}
       </div>
-      <p className="text-size-ui leading-body text-text-secondary mb-space-3">
+      <address className="mb-space-3 block not-italic text-size-ui leading-body text-text-secondary">
         {settings.place}
         <br />
         {settings.address}
-      </p>
+      </address>
       <p className="text-size-caption text-text-tertiary">{pl.footer.accessibilityNote}</p>
     </>
   );
@@ -54,48 +56,38 @@ function FooterContactBlock() {
       {settings.emails.map((email, index) => (
         <div key={email.address} className={index > 0 ? "mt-space-5" : undefined}>
           <div className={`${contactLabelClass} mb-space-1`}>{email.label}</div>
-          <a href={`mailto:${email.address}`} className={contactLinkClass}>
-            {email.address}
-          </a>
-          {index === 0 && (
-            <>
-              <br />
-              <a href={telHref} className={contactLinkClass}>
+          <div className="grid gap-space-1">
+            <a href={`mailto:${email.address}`} className={`${contactLinkClass} w-fit`}>
+              {email.address}
+            </a>
+            {index === 0 ? (
+              <a href={telHref} className={`${contactLinkClass} w-fit`}>
                 {settings.phone}
               </a>
-            </>
-          )}
-          {email.contactName && (
-            <>
-              <br />
-              <span className="text-text-tertiary">{email.contactName}</span>
-            </>
-          )}
+            ) : null}
+          </div>
+          {email.contactName ? (
+            <span className="mt-space-2 block text-text-tertiary">{email.contactName}</span>
+          ) : null}
         </div>
       ))}
 
       <div className="mt-space-6">
-        <a
+        <ExternalLink
           href={settings.ecosystem.social.facebook}
           className={`tap-target-nav-block ${socialLinkClass}`}
-          rel="noopener noreferrer"
         >
           {pl.footer.facebookLabel}
-        </a>
-        <a
+        </ExternalLink>
+        <ExternalLink
           href={settings.ecosystem.social.youtube}
           className={`tap-target-nav-block ${socialLinkClass}`}
-          rel="noopener noreferrer"
         >
           {pl.footer.youtubeLabel}
-        </a>
-        <a
-          href={settings.blogUrl}
-          className={`tap-target-nav-block ${socialLinkClass}`}
-          rel="noopener noreferrer"
-        >
-          {pl.footer.blogLabel} ↗
-        </a>
+        </ExternalLink>
+        <ExternalLink href={settings.blogUrl} className={`tap-target-nav-block ${socialLinkClass}`}>
+          {pl.footer.blogLabel}
+        </ExternalLink>
       </div>
     </>
   );
@@ -199,9 +191,13 @@ export function Footer() {
             <span>{pl.footer.copyright}</span>
             <span>
               {pl.footer.organizerLabel}:{" "}
-              <a href={settings.ecosystem.foundationUrl} className={organizerLinkClass}>
+              <ExternalLink
+                href={settings.ecosystem.foundationUrl}
+                className={organizerLinkClass}
+                showIcon={false}
+              >
                 {pl.footer.organizerName}
-              </a>
+              </ExternalLink>
             </span>
           </div>
           <Link href={footerLegalLink.href} className={bottomLinkClass}>

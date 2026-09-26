@@ -11,7 +11,7 @@ Długie archiwum (58+ wpisów, docelowo więcej po migracji) czyta się jak kron
 
 W zakresie: karta wpisu (`NewsCard`), wyróżniony wpis, etykiety typu, formatowanie dat, zapasowe generowanie zajawek, nawigacja po latach (sticky pasek), zwinięte archiwum (rozstrzygnięcie K-06), porządki w danych `sample`, ręczne zajawki 15 najnowszych wpisów, spójne tytuły wpisów wykładowych.
 
-Poza zakresem: **funkcja strony Aktualności — zapowiedzi vs kronika (K-69, otwarte)**, strona wpisu `/aktualnosci/[slug]` (poza formatem dat), `/ikony/wystawa` i `editions.json` (etap 8), pełna migracja WP (etap 10), filtry kategorii (K-52 — świadomie brak), JSON-LD (etap 9).
+Poza zakresem: **funkcja strony Aktualności — zapowiedzi vs kronika (K-69, otwarte)**, strona wpisu `/aktualnosci/[slug]` (poza formatem dat), `/ikony/wystawa` i `editions.json` (etap 8), pełna migracja WP (etap 9), filtry kategorii (K-52 — świadomie brak), JSON-LD (etap 10).
 
 ## Rejestr decyzji
 
@@ -138,7 +138,7 @@ Jedna nawigacja po latach — sticky pasek; żadnych nagłówków sekcji lat i �
 
 ### K-67 — porządki w danych `sample`
 
-Dotyczy `content/news/*`. Te same reguły obowiązują przy migracji etapu 10 (`docs/plan-claude-code.md` §3, etap 10).
+Dotyczy `content/news/*`. Te same reguły obowiązują przy migracji etapu 9 (`docs/plan-claude-code.md` §3, etap 9).
 
 1. **Tytuły:** wersaliki → zapis zdaniowy, z zachowaniem wielkich liter w nazwach i tytułach wystaw w cudzysłowie; usunięte kropki na końcu tytułów; poprawione literówki; tytuły nieinformacyjne zamienione na opisowe.
 2. **Duplikaty i prawie duplikaty** scalone (np. dwa wpisy „Wystawa IKONA DZIŚ” z 2015, dwa warianty „Ikona – okno ku wieczności” z 2014, dwa wpisy „Piękno zanurzone w Tajemnicy” z 2013); przy scaleniu stary slug trafił do tabeli przekierowań (brief §5).
@@ -188,7 +188,7 @@ Wpisy dorocznych wystaw w Kościele Środowisk Twórczych (KŚT) — docelowo `c
 
 - **K-69** — funkcja strony (zapowiedzi vs kronika) może w przyszłości unieważnić część tej pracy (np. wyróżniony wpis). Świadomie odłożone do przeglądu całości serwisu.
 - Wygaszanie `featuredUntil` bez codziennego rebuildu działa dopiero przy następnym deployu — pytanie do etapu 11.
-- Lighthouse a11y `/aktualnosci` ≥ 95 mobile — odłożone do etapu 9 (jak inne strony).
+- Lighthouse a11y `/aktualnosci` ≥ 95 mobile — odłożone do etapu 10 (jak inne strony).
 
 ## Pliki i komponenty
 
@@ -217,7 +217,7 @@ Stan zweryfikowany w repo. Komponenty aktualności są w `src/components/news/` 
 | `src/i18n/pl.ts` | etykiety `kind` (K-61); `featuredLabel`, `readMoreFeatured`, `showArchiveLabel`, „Galeria · N zdjęć”, „Przejdź do roku” |
 | `scripts/generate-news-index.ts` | pole `featured`/`featuredUntil` w manifeście; walidacja max. jeden `featured` + wymagany `cover` |
 | `content/news/*` | tytuły, duplikaty, daty wydarzeń, `featured`/`featuredUntil`, ręczne `excerpt` (K-67, K-68), tytuły wykładowe (K-75) |
-| `docs/plan-claude-code.md` | §4: rejestr K-59…K-75 (K-69 otwarte); §3 etap 10: reguły z K-67; §6 dziennik |
+| `docs/plan-claude-code.md` | §4: rejestr K-59…K-75 (K-69 otwarte); §3 etap 9: reguły z K-67; §6 dziennik |
 | `docs/brief-claude-code.md` | §4: `featured`, `featuredUntil`; §5: przekierowania ze scaleń K-67 |
 
 ## Definition of Done
@@ -233,5 +233,5 @@ Stan zweryfikowany w repo. Komponenty aktualności są w `src/components/news/` 
 - [x] 15 najnowszych wpisów ma zatwierdzone ręczne zajawki.
 - [x] Tytuły wszystkich wpisów wykładowych według wzoru „Temat — wykłady RRRR/RRRR”; slugi bez zmian.
 - [x] Wysokość strony `/aktualnosci` przy zwiniętym archiwum: **3 222 px** desktop (1920 px), **5 141 px** mobile (390 px).
-- [ ] Lighthouse a11y `/aktualnosci` ≥ 95 mobile — odłożone do etapu 9.
+- [ ] Lighthouse a11y `/aktualnosci` ≥ 95 mobile — odłożone do etapu 10.
 - [x] `npm run build` + `npm run lint` OK; rejestr K i dziennik w `docs/plan-claude-code.md` zaktualizowane.

@@ -23,7 +23,7 @@ export function Header({ active }: HeaderProps) {
             {pl.meta.orgSubtitle}
           </div>
         </Link>
-        <nav className="flex gap-space-6 text-size-nav font-sans">
+        <nav aria-label={pl.header.mainNavAriaLabel} className="flex gap-space-6 text-size-nav font-sans">
           {mainNav.map((item) => {
             const isActive = item.label === active;
             return (

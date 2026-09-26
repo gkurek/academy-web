@@ -26,6 +26,7 @@ export type NewsManifestEntry = {
   dateEnd?: string;
   kind: string;
   excerpt?: string;
+  venue?: string;
   sample?: boolean;
   featured?: boolean;
   bodyText?: string;
@@ -61,7 +62,8 @@ function readFrontmatterFromMdx(filePath: string): NewsManifestEntry {
   }
 
   const jsonStart = start + FRONTMATTER_MARKER.length;
-  const jsonEnd = source.indexOf(";\n", jsonStart);
+  const lineEnd = source.indexOf(";\r\n", jsonStart);
+  const jsonEnd = lineEnd !== -1 ? lineEnd : source.indexOf(";\n", jsonStart);
 
   if (jsonEnd === -1) {
     throw new Error(`Malformed frontmatter export in ${filePath}`);
@@ -77,13 +79,16 @@ function extractBodyText(source: string): string {
   }
 
   const jsonStart = start + FRONTMATTER_MARKER.length;
-  const jsonEnd = source.indexOf(";\n", jsonStart);
+  const lineEnd = source.indexOf(";\r\n", jsonStart);
+  const jsonEnd = lineEnd !== -1 ? lineEnd : source.indexOf(";\n", jsonStart);
   if (jsonEnd === -1) {
     return "";
   }
 
+  const bodyStart = lineEnd !== -1 ? jsonEnd + 3 : jsonEnd + 2;
+
   return source
-    .slice(jsonEnd + 2)
+    .slice(bodyStart)
     .replace(/<[^>]+>/g, " ")
     .replace(/\s+/g, " ")
     .trim();

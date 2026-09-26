@@ -1,7 +1,7 @@
 {
   "orgName": "AKADEMIA IKONY – Studium Ikonograficzne św. Andrzeja Apostoła",
   "place": "Kościół Środowisk Twórczych pw. św. Andrzeja Apostoła i św. Brata Alberta Chmielowskiego",
-  "address": "Plac Teatralny, Warszawa",
+  "address": "Plac Teatralny 20, 00-950 Warszawa",
   "emails": [
     { "label": "Warsztaty i ikony", "address": "akademiaikony@gmail.com", "contactName": "Elżbieta Jackowska-Kurek" },
     { "label": "Wykłady i sekretariat", "address": "sekretariat.ikony22@gmail.com", "contactName": "Maurycy Lubak" }
@@ -28,12 +28,6 @@
       "text": "6 października 2026, 18:00",
       "href": "/wyklady",
       "linkLabel": "Program sezonu"
-    },
-    {
-      "title": "[przykład] Wystawa stała",
-      "text": "[do potwierdzenia z Akademią]",
-      "href": "/wydarzenia?kategoria=wystawa",
-      "linkLabel": "Wystawy"
     }
   ]
 }
