@@ -153,7 +153,9 @@ Dla każdego: cel, zakres, kryteria ukończenia (DoD), proponowany podział na k
 - [ ] GSC potwierdza sitemap;
 - [ ] `docs/runbook.md`: jak wdrożyć, jak zmienić treść, gdzie są logi.
 
-## **Pytania:** wybór hostingu; kiedy przełączać DNS (poza sezonem zapisów — termin 24.09.2026 jest blisko, patrz §4).
+**Pytania:** wybór hostingu; kiedy przełączać DNS (poza sezonem zapisów — termin 24.09.2026 jest blisko, patrz §4).
+
+---
 
 ## 4. Rejestr decyzji
 

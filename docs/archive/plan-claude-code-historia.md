@@ -186,6 +186,7 @@ Szablon planu etapu (Załącznik A) **został w żywym dokumencie** — jest pot
 **Kawałki:** infrastruktura serwisowa → model wystawy → strona wystawy + home → Aktualności ↔ wystawa → publikacje → kontakt/LSŚ/404 → polityka i copy pass — kolejność w `08b-review-fixes.md` §5.
 
 **Etap 8 w całości (08 + 08b):** ✅ zamknięty **2026-09-26**. Następny etap wiążący: **9** (migracja WP).
+
 ---
 
 ## §4H. Rejestr decyzji — wiersze zamknięte
