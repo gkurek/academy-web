@@ -17,11 +17,18 @@ export type NewsFrontmatter = {
   cover?: Image;
   images?: Image[];
   poster?: Image;
+  /** Traveling exhibition venue — drives the #wyjazdowe list (K-87). */
+  venue?: string;
   featured?: boolean;
   /** After this date (YYYY-MM-DD) the entry loses featured status at build time (K-73). */
   featuredUntil?: string;
   /** Stripped MDX body — manifest only, for fallback excerpts (K-63). */
   bodyText?: string;
+};
+
+export type TravelingExhibitionEntry = {
+  label: string;
+  newsSlug: string;
 };
 
 export type NewsListEntry = NewsFrontmatter & {
@@ -311,4 +318,14 @@ export function getNewsNeighbors(slug: string): NewsNeighbors {
 /** UI label for a news `kind` — keys from `pl.news.kind`. */
 export function getNewsKindLabel(kind: NewsKind): string {
   return pl.news.kind[kind];
+}
+
+/** Traveling exhibitions for `#wyjazdowe` — `kind: "wystawa"` with `venue` (K-87). */
+export function getTravelingExhibitions(): TravelingExhibitionEntry[] {
+  return getNews()
+    .filter((entry) => entry.kind === "wystawa" && entry.venue)
+    .map((entry) => ({
+      label: `${entry.venue} · ${entry.date.slice(0, 4)}`,
+      newsSlug: entry.slug,
+    }));
 }

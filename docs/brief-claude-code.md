@@ -46,7 +46,7 @@ Strona jest częścią szerszego ekosystemu (Akademia + Fundacja + planowana str
 /ikony                     galeria: sekcje Elżbieta / uczniowie + filtr tematu
 /ikony/[slug]              pojedyncza ikona (opcjonalnie w v1)
 /ikony/na-zamowienie       strona ofertowa (treść wymienna w przyszłości — nie istotne teraz)
-/ikony/wystawa             stała wystawa w kościele, edycje roczne, oprowadzania (K-51)
+/ikony/wystawy             trzy formy wystaw w KŚT: ekspozycja codzienna, doroczna, wyjazdowe (K-82…K-90; historia K-51)
 /aktualnosci               lista z typem wpisu (`kind`), w tym archiwum wystaw, oprowadzań, wyjazdów, plenerów (K-50, K-52)
 /aktualnosci/[slug]
 /publikacje                album Akademii + artykuły (K-76)
@@ -57,7 +57,7 @@ Strona jest częścią szerszego ekosystemu (Akademia + Fundacja + planowana str
 
 **Menu główne (max 6 pozycji):** O Akademii · Warsztaty · Wykłady · Ikony · Aktualności · Kontakt.
 
-> **K-50 (2026-09-21):** dział „Wydarzenia” zlikwidowany jako sekcja i pozycja menu. Trasa `/wydarzenia` nie powstaje; stare adresy przekierowane (§5). Uzasadnienie: jedyna żywa treść działu to coroczna wystawa (→ `/ikony/wystawa`, K-51); reszta to archiwum 2013–2020, które trafia do Aktualności jako wpisy z `kind` (K-52).
+> **K-50 (2026-09-21):** dział „Wydarzenia” zlikwidowany jako sekcja i pozycja menu. Trasa `/wydarzenia` nie powstaje; stare adresy przekierowane (§5). Uzasadnienie: coroczna wystawa w kościele ma własną stronę (→ `/ikony/wystawy`, K-90; wcześniej K-51 `/ikony/wystawa`); reszta to archiwum 2013–2020 w Aktualnościach jako wpisy z `kind` (K-52).
 
 **Wzorzec nawigacji drugiego poziomu (obowiązkowy, zaimplementowany w makietach jako `SectionNav`):**
 1. Strona sekcji (`/warsztaty`, `/wyklady`, `/ikony`) jest hubem z dużymi klikalnymi blokami podstron, nie tylko opisem.
@@ -68,7 +68,7 @@ Zawartość `SectionNav` per sekcja:
 - O Akademii: O Akademii · Pracownia *(para stron tekstowych; `/o-akademii` = pierwsza pozycja — K-48, makieta 6a–6d)*
 - Warsztaty: Przegląd · Kurs roczny i trzyletni · Letnia Szkoła Światła *(pierwsza pozycja = hub, nie nazwa sekcji — K-23)*
 - Wykłady: Bieżący sezon · Archiwum · Wykładowcy
-- Ikony: Galeria · Wystawa · Ikony na zamówienie (K-51)
+- Ikony: Galeria · Wystawy · Ikony na zamówienie (K-90; wcześniej „Wystawa”, K-51)
 - Aktualności: bez `SectionNav` — jedna chronologiczna lista wpisów z nawigacją po latach (K-70), bez filtrów kategorii w v1 (K-52)
 
 Menu główne (desktop): **płaska lista 6 linków** — bez dropdownu; drugi poziom wyłącznie przez `SectionNav` na stronach sekcji (zgodnie z makietą). W menu mobilnym: akordeon per sekcja, nagłówek sekcji zawsze też linkiem do huba.
@@ -143,7 +143,7 @@ type IconWork = {
 };
 
 // K-50/K-53 (2026-09-21): typ `Event` usunięty. „Wydarzenia” to teraz wpisy
-// Aktualności z `kind`; wystawa ma własny model `ExhibitionEdition` niżej.
+// Aktualności z `kind`; wystawy w KŚT mają model `PermanentExhibition` + `AnnualExhibition` niżej.
 type NewsKind =
   | 'aktualnosc'
   | 'wyklady'
@@ -167,39 +167,37 @@ type News = {
   poster?: Image;
   featured?: boolean;
   featuredUntil?: string;       // YYYY-MM-DD; tylko przy featured: true; po dacie wpis traci wyróżnienie przy buildzie (K-73)
+  venue?: string;               // wystawy wyjazdowe — wiersz na `/ikony/wystawy#wyjazdowe` (K-87)
 };
 // K-72: na liście (`NewsCard`) wyświetlana jest tylko `date` z rokiem — bez zakresu `dateEnd`.
 // We wpisie pojedynczym i w wyróżnionym: `formatDateRange` z `dateEnd` gdy jest.
 
-// K-51: wystawa „Ikona – korzenie i owoce wiary” jest w kościele na stałe,
-// zestaw ikon zmienia się co roku (nowa edycja z wernisażem na koniec roku
-// akademickiego, w okolicach 17.06). Strona `/ikony/wystawa` łączy opis
-// stały, bieżącą edycję, oprowadzania kuratorskie i poprzednie edycje.
-type ExhibitionEdition = {
-  year: number;
-  title: string;                 // „Ikona – korzenie i owoce wiary”
-  subtitle?: string;             // np. „Świętych obcowanie” (2019)
-  vernissage?: string;           // ISO; data wernisażu
-  seasonTheme?: string;          // temat sezonu wykładów, np. „Mistyka dziś”
-  iconCount?: number;
-  poster?: Image;                // plakaty edycji po weryfikacji EJK (K-78)
-  photos?: Image[];              // brak lub [] → edycja jako linijka, bez karty (K-54)
-  summary?: string;              // 2–3 zdania: co nowego w tej edycji
-  tours?: { date: string; topic: string }[];
-  newsSlug?: string;             // opcjonalny wpis w Aktualnościach z relacją
+// K-82…K-90 (08b): w KŚT są trzy formy wystawy — ekspozycja codzienna (6–10 ikon EJK),
+// wystawa doroczna (40–50 ikon, wernisaż na ostatnim wykładzie sezonu), wystawy wyjazdowe
+// (wpisy Aktualności `kind: 'wystawa'` z `venue`). Strona `/ikony/wystawy`, H1 „Wystawy ikon”.
+// Szczegóły merytoryczne i układ: `docs/plans/08b-review-fixes.md` §1–§2. K-51: historia wydzielenia
+// wystawy z Aktualności (2026-09-21); model `ExhibitionEdition` zastąpiony w 08b.
+type PermanentExhibition = {
+  title: string;
+  lead: string;
+  iconCount: { from: number; to: number };
+  interiorPhotos: Image[];
+  sample?: boolean;
 };
 
-// Wystawa jest w kościele stale (K-51), więc nie ma stanu „po wystawie”.
-type ExhibitionState = 'zapowiedz' | 'biezaca';
-
-const getExhibitionState = (next: ExhibitionEdition | undefined, now: Date): ExhibitionState =>
-  next?.vernissage && now < new Date(next.vernissage) ? 'zapowiedz' : 'biezaca';
-
-const editionsWithGallery = (editions: ExhibitionEdition[]) =>
-  editions.filter((e) => (e.photos?.length ?? 0) > 0);
+type AnnualExhibition = {
+  seasonSlug: string;           // „2026-2027” → walidacja `LectureSeason` przy buildzie
+  title: string;                // osobne pole (K-84), np. „Mistyka dziś”
+  vernissage?: string;          // domyślnie data ostatniego wykładu sezonu
+  dateEnd?: string;             // domyślnie 31 sierpnia roku wernisażu
+  iconCount?: number;
+  summary?: string;
+  photos?: Image[];
+  newsSlug?: string;            // relacja doroczna ↔ wpis Aktualności (K-103)
+};
 ```
 
-Źródło danych wystawy: `content/exhibition/editions.json` (lista `ExhibitionEdition`) + treść stała `content/exhibition/page.mdx`. Implementacja w etapie 8.
+Źródło danych wystawy: `content/exhibition/page.mdx` (frontmatter `PermanentExhibition`) + `content/exhibition/body.mdx` + `content/exhibition/annual.json` (`AnnualExhibition[]`, 15 sezonów od 2012/2013). Stan wystawy dorocznej wyliczany z dat (`vernissage`…`dateEnd`); ISR `revalidate` na `/` i `/ikony/wystawy` (K-85). Trasa `/ikony/wystawa` → `/ikony/wystawy` (redirect w aplikacji; 301 w etapie 9).
 
 ```ts
 // K-76: Publikacje — jeden album jubileuszowy + artykuły (bez zakładek, bez SectionNav).
@@ -305,9 +303,10 @@ Szacunek ręcznej korekty po migracji: ~10 stron statycznych, 16 sezonów wykła
 | `/wyklady/wykladowcy/` | `/wyklady/wykladowcy` |
 | `/wyklady/zapisy-na-wyklady/` | scalone w `/wyklady#zapisy` |
 | `/ikona/`, `/ikona/galeria/` | `/ikony` |
-| `/ikona/wystawy/`, `/wernisaze/` | `/ikony/wystawa` |
+| `/ikona/wystawy/`, `/wernisaze/` | `/ikony/wystawy` (K-90) |
 | `/ikona/ikony-na-zamowienie/` | `/ikony/na-zamowienie` |
-| `/oprowadzania-kuratorskie/` | `/ikony/wystawa#oprowadzania` |
+| `/oprowadzania-kuratorskie/` | `/ikony/wystawy#oprowadzania` (K-90) |
+| `/ikony/wystawa` (adres z etapu 7–8) | `/ikony/wystawy` (301 w etapie 9) |
 | `/wydarzenia/` | `/aktualnosci` |
 | `/wyjazdy-studyjne/` | `/aktualnosci` |
 | `/poswiecenia-ikon/` | wpis Aktualności (K-77; slug w migracji) |
@@ -315,7 +314,7 @@ Szacunek ręcznej korekty po migracji: ~10 stron statycznych, 16 sezonów wykła
 | `/publikacje/artykuly/` | `/publikacje#artykuly` |
 | `/publikacje/multimedia/` | `/publikacje` |
 | `/publikacje/plakaty/` | `/aktualnosci` |
-| `/ikona-korzenie-i-owoce-wiary-2/` i wpisy wystaw z lat 2015–2018 | `/ikony/wystawa` |
+| `/ikona-korzenie-i-owoce-wiary-2/` i wpisy wystaw z lat 2015–2018 | `/ikony/wystawy` (kotwice `#wystawa-{rok}` gdy relacja doroczna) |
 | pojedyncze wpisy oprowadzań 2017 (`/ikony-emaliowane/`, `/ikona-trojcy-swietej/`, `/ikona-serca-jezusa/`, `/wystawa-ikona-korzenie-i-owoce-wiary-oprowadzania-kuratorskie/`) | jeden połączony wpis w `/aktualnosci/[slug]` |
 | pozostałe wpisy wystaw i wyjazdów | odpowiadające wpisy `/aktualnosci/[slug]` |
 | `/aktualnosci/wystawa-ikona-dzis-2` | `/aktualnosci/wystawa-ikona-dzis` (K-67, scalenie duplikatów) |

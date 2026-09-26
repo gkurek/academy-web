@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 
 import { TextLink } from "@/components/core/TextLink";
@@ -6,27 +7,26 @@ import { Header } from "@/components/navigation/Header";
 import { pl } from "@/i18n/pl";
 import { mainNav } from "@/navigation";
 
-export default function NotFound() {
-  const contactItem = mainNav.find((item) => item.href === "/kontakt");
+export const metadata: Metadata = {
+  title: pl.notFound.documentTitle,
+};
 
+export default function NotFound() {
   return (
     <>
       <Header />
-      <main className="flex-1 px-page-margin-mobile py-space-6 md:px-page-margin">
+      <main id="main-content" className="flex-1 px-page-margin-mobile py-space-6 md:px-page-margin">
         <div className="mx-auto w-full max-w-content-max">
           <h1 className="mb-space-5 font-serif text-size-h1-m leading-tight text-text-h1 md:text-size-h1">
             {pl.notFound.title}
           </h1>
 
-          <p className="mb-space-6 max-w-measure-prose text-size-body leading-body text-text-secondary md:text-size-body-lg md:leading-prose">
+          <p className="mb-space-8 max-w-measure-prose text-size-body leading-body text-text-secondary md:text-size-body-lg md:leading-prose">
             {pl.notFound.lead}
           </p>
 
-          <div className="mb-space-8 flex flex-col gap-space-3 sm:flex-row sm:flex-wrap sm:gap-space-6">
+          <div className="mb-space-8">
             <TextLink href="/">{pl.notFound.homeLink}</TextLink>
-            {contactItem ? (
-              <TextLink href={contactItem.href}>{contactItem.label}</TextLink>
-            ) : null}
           </div>
 
           <nav aria-label={pl.notFound.sitemapAriaLabel}>

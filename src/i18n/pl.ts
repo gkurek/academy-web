@@ -3,6 +3,7 @@ export const pl = {
   meta: {
     // Site name, verbatim from brief-claude-code.md §8.
     siteName: "AKADEMIA IKONY – Studium Ikonograficzne św. Andrzeja Apostoła",
+    titleBrand: "Akademia Ikony",
     // Same name split into the two lines the logo lockup uses.
     orgShortName: "AKADEMIA IKONY",
     orgSubtitle: "Studium Ikonograficzne św. Andrzeja Apostoła",
@@ -10,7 +11,13 @@ export const pl = {
   common: {
     contentInProgress: "Treść w przygotowaniu",
   },
+  a11y: {
+    skipToContent: "Przejdź do treści",
+    externalLinkIcon: "↗",
+    externalLinkNewTab: "(otwiera się w nowej karcie)",
+  },
   header: {
+    mainNavAriaLabel: "Menu główne",
     menuToggleLabel: "Menu",
     sectionExpandLabel: "Rozwiń sekcję",
     sectionCollapseLabel: "Zwiń sekcję",
@@ -62,7 +69,7 @@ export const pl = {
     pillars: [
       {
         title: "Warsztaty",
-        body: "Kurs roczny przedwstępny i wstępny oraz trzyletni doskonalący. Materiały na miejscu, praca indywidualna. Osobno Letnia Szkoła Światła — tygodniowe plenery w trybie rekolekcyjnym.",
+        body: "Kurs roczny przedwstępny i wstępny oraz trzyletni doskonalący. Materiały na miejscu, praca indywidualna. Osobno Letnia Szkoła Światła – tygodniowe plenery w trybie rekolekcyjnym.",
         linkLabel: "Kurs i plener",
         href: "/warsztaty",
         image: {
@@ -86,9 +93,11 @@ export const pl = {
       },
       {
         title: "Ikony",
-        body: "Prace Elżbiety Jackowskiej-Kurek i uczniów, stała wystawa w kościele, ikony na zamówienie.",
+        body: "Prace Elżbiety Jackowskiej-Kurek i uczniów, ekspozycja codzienna i wystawa doroczna w kościele, ikony na zamówienie.",
         linkLabel: "Galeria",
         href: "/ikony",
+        secondaryLinkLabel: "Galeria i wystawa",
+        secondaryHref: "/ikony/wystawy",
         image: {
           src: "/media/sample/photos/wystawa.jpg",
           alt: "Zwiedzający na wystawie ikon",
@@ -134,6 +143,8 @@ export const pl = {
     phoneOr: "lub 601 734 705",
     contactClosedPlener: "{email} · 601 734 705",
     phoneTel: "tel:+48601734705",
+    publicationsRowLabel: "Publikacje",
+    publicationsLink: "Album i artykuły Akademii",
     ctaByKind: {
       kurs: {
         open: {
@@ -174,7 +185,7 @@ export const pl = {
         open: {
           mailtoLabel: "Zapytaj o ikonę",
           telLabel: "Zadzwoń: 601 734 705",
-          note: "Opisz zamówienie — odpowiemy z propozycją terminu i wyceny.",
+          note: "Opisz zamówienie – odpowiemy z propozycją terminu i wyceny.",
         },
         closed: {
           mailtoLabel: "Zapytaj o ikonę",
@@ -199,7 +210,7 @@ export const pl = {
     orderStepsHeading: "Jak przebiega zamówienie",
     orderStepsIntro: "Trzy kroki od pierwszego maila do gotowej ikony.",
     orderExamplesHeading: "Przykłady realizacji",
-    readyIconsTitle: "Gotowe ikony — zapytaj mailem",
+    readyIconsTitle: "Gotowe ikony – zapytaj mailem",
     readyIconsBody:
       "Część prac z galerii jest dostępna od ręki. Napisz, którą masz na myśli:",
     enrollmentByKind: {
@@ -275,13 +286,13 @@ export const pl = {
     orderTeaser: {
       title: "Ikony na zamówienie",
       lead:
-        "Piszemy ikony dla parafii i osób prywatnych — na konkretne wezwanie, w ustalonym rozmiarze, w technice temperowej ze złoceniem.",
+        "Piszemy ikony dla parafii i osób prywatnych – na konkretne wezwanie, w ustalonym rozmiarze, w technice temperowej ze złoceniem.",
       linkLabel: "Jak zamówić ikonę",
     },
   },
   workshopsHub: {
     title: "Warsztaty pisania ikon",
-    lead: "Dwie ścieżki. Kurs w roku akademickim — raz w tygodniu, od października do czerwca. I tygodniowy plener latem, w trybie rekolekcyjnym. Obie prowadzi Elżbieta Jackowska-Kurek, w obu pracuje się indywidualnie.",
+    lead: "Dwie ścieżki. Kurs w roku akademickim – raz w tygodniu, od października do czerwca. I tygodniowy plener latem, w trybie rekolekcyjnym. Obie prowadzi Elżbieta Jackowska-Kurek, w obu pracuje się indywidualnie.",
     quotesHeading: "Głosy uczestników",
     cards: {
       "kurs-roczny-i-trzyletni": {
@@ -325,73 +336,109 @@ export const pl = {
     },
   },
   exhibition: {
-    facts: {
-      srHeading: "Informacje praktyczne o wystawie",
-      where: "Gdzie",
-      when: "Kiedy",
-      whenValue: "W godzinach otwarcia kościoła",
-      admission: "Wstęp",
-      admissionValue: "darmowy",
-      currentEdition: "Bieżąca edycja",
-      newEdition: "Nowa edycja",
-      newEditionValue:
-        "Wernisaż w czerwcu, w okolicach wspomnienia św. Brata Alberta (17 czerwca)",
-      contactLink: "Dojazd i kontakt",
+    page: {
+      eyebrow: "Ikony · Kościół Środowisk Twórczych",
+      title: "Wystawy ikon",
+      lead:
+        "Przez rok akademicki w lewej nawie kościoła wisi ekspozycja codzienna – ikony Elżbiety Jackowskiej-Kurek. W czerwcu zastępuje ją wystawa doroczna z ikonami napisanymi w mijającym roku przez uczestników Akademii; wisi do końca wakacji. Ikony Elżbiety Jackowskiej-Kurek pokazujemy też na wystawach wyjazdowych, w Warszawie i poza nią.",
+      toc: [
+        { id: "ekspozycja", label: "Ekspozycja codzienna" },
+        { id: "doroczna", label: "Wystawa doroczna" },
+        { id: "oprowadzania", label: "Oprowadzania" },
+        { id: "poprzednie", label: "Poprzednie wystawy doroczne" },
+        { id: "wyjazdowe", label: "Wystawy wyjazdowe" },
+      ],
+      startHere: "Zacznij tutaj",
+      galleryLink: "Zobacz ikony w galerii",
+      workshopsLink: "Chcesz napisać własną ikonę?",
     },
-    previewBanner: {
-      label: "Zapowiedź",
-      announcement: "Wernisaż nowej edycji: {date}",
-      dateFallback: "[do uzupełnienia: data wernisażu]",
-      newsLink: "Szczegóły w aktualnościach",
+    permanent: {
+      sectionId: "ekspozycja",
+      eyebrow: "Ekspozycja codzienna",
+      iconCountLabel: "Na ekspozycji",
+      iconCountValue:
+        "{from}–{to} ikon Elżbiety Jackowskiej-Kurek, wymienianych co kilka tygodni",
     },
-    currentEdition: {
-      heading: "Bieżąca edycja {year}",
-      heroAlt: "Wernisaż edycji {year}",
-      seasonIntro: "Edycji towarzyszy sezon wykładów „{theme}”.",
-      seasonLink: "Program sezonu",
-      posterCaption: "Plakat edycji {year}",
-      posterPlaceholder: "[do uzupełnienia: plakat edycji {year}]",
-      photoPlaceholder: "[do uzupełnienia: zdjęcia z wernisażu edycji {year}]",
-    },
-    galleryThumbsAria: "Miniatury zdjęć z wystawy",
-    galleryCaption: "Zdjęcia z wernisażu i ekspozycji — kliknięcie otwiera powiększenie.",
-    description: {
-      heading: "Jak wygląda wystawa",
-      photoPlaceholder: "[do uzupełnienia: zdjęcie wnętrza wystawy]",
+    annual: {
+      sectionId: "doroczna",
+      title: "Wystawa doroczna",
+      intro1:
+        "Na wystawę doroczną trafia 40–50 ikon napisanych w mijającym roku akademickim przez uczestników Akademii i Elżbietę Jackowską-Kurek. Wernisaż jest częścią ostatniego wykładu sezonu – wykład wygłasza Elżbieta Jackowska-Kurek, po wernisażu jest agapa.",
+      intro2:
+        "Z każdej wystawy piszemy relację w Aktualnościach – tam są zdjęcia i opis.",
+      vernissageLabel: "Najbliższy wernisaż",
+      activeLabel: "Teraz w kościele",
+      openUntilLabel: "Czynna",
+      admissionLabel: "Wstęp",
+      admissionValue: "Wolny",
+      onDisplayLabel: "Na wystawie",
+      onDisplayValue:
+        "{from}–{to} ikon uczestników Akademii i Elżbiety Jackowskiej-Kurek",
+      lecturesLink: "Program wykładów",
+      vernissageNewsLink: "Relacja z wernisażu {year}",
+      archivePhotosNote: "[przykład: kadry z wystawy {year}]",
+      photoPlaceholder: "[przykład]",
     },
     tours: {
-      title: "Oprowadzania kuratorskie",
+      sectionId: "oprowadzania",
+      title: "Oprowadzania",
       intro:
         "Oprowadzanie prowadzi Elżbieta Jackowska-Kurek: opowiada o warsztacie ikonografa, o wybranych ikonach z wystawy i o ich teologii.",
-      currentEditionLabel: "Terminy edycji {year}",
-      newEditionLabel: "Terminy nowej edycji {year}",
-      dateFallback: "[data]",
-      footnote:
-        "Tematy z poprzednich edycji — daty bieżącej edycji [do uzupełnienia].",
+      scheduleNoteBefore:
+        "Oprowadzania odbywają się nieregularnie, bez stałego kalendarza. Terminy ogłaszamy w ",
+      scheduleNewsLink: "Aktualnościach",
+      scheduleNoteAfter: " i na Facebooku.",
+      ctaIntro: "Napisz jeśli chcesz przyjść z grupą",
+      mailtoLabel: "Zapytaj o oprowadzanie",
+      mailtoSubject: "Oprowadzanie po wystawie – grupa",
     },
-    previousEdition: {
-      heading: "Poprzednie edycje",
-      lead: "Co roku na wystawie pojawia się nowy zestaw ikon. Poniżej edycje z minionych lat.",
-      viewPhotos: "Zobacz zdjęcia",
-      iconCount: "{count} ikon",
-      photoPlaceholder: "[do uzupełnienia: zdjęcia z edycji {year}]",
-      photoThumbPlaceholder: "[do uzupełnienia]",
+    previous: {
+      sectionId: "poprzednie",
+      heading: "Poprzednie wystawy doroczne",
+      lead: "Od 2013 roku każdy rocznik Akademii kończył się wystawą w kościele. Poniżej pełna lista.",
+      expandLabel: "Wcześniejsze wystawy: {range}",
+      expandLabelShort: "Wcześniejsze: {range}",
+      expandAction: "Rozwiń",
+      photosLink: "Zdjęcia",
+      lastExhibitionLabel: "Ostatnia wystawa: {year}, „{title}”",
+      photoPlaceholder: "[przykład]",
     },
-    footer: {
-      intro: "Zacznij tutaj",
-      galleryLink: "Zobacz ikony w galerii",
-      orderLink: "Chcesz napisać własną ikonę?",
+    traveling: {
+      sectionId: "wyjazdowe",
+      heading: "Wystawy wyjazdowe",
+      intro:
+        "Poza kościołem pokazujemy ikony Elżbiety Jackowskiej-Kurek. Wystawy odbywają się nieregularnie, w Warszawie i poza nią.",
+      relationLink: "Relacja",
+      inviteCta: "Chcesz zaprosić wystawę do swojego miejsca?",
+      mailtoLabel: "Napisz do nas",
+      mailtoSubject: "Zaproszenie – wystawa wyjazdowa",
+      photoAlt: "Wnętrze podczas wystawy wyjazdowej",
+      photoCaption: "Wnętrze podczas wystawy wyjazdowej",
+      photoCaptionNote: "[przykład: wystawa wyjazdowa, wnętrze]",
+      pendingRow: "[kolejne miejsca i lata: do uzupełnienia]",
+    },
+    facts: {
+      srHeading: "Informacje praktyczne",
+      where: "Gdzie",
+      when: "Kiedy",
+      whenValue: "Od września do połowy czerwca, w godzinach otwarcia kościoła",
+      admission: "Wstęp",
+      admissionValue: "Wolny",
+      contactLink: "Dojazd i kontakt",
+    },
+    lightbox: {
+      openPhoto: "Powiększ zdjęcie: {alt}",
     },
     upcoming: {
       biezaca: {
-        title: "Wystawa ikon · edycja {year}",
+        title: "Wystawa „{title}”",
         text: "Czynna w godzinach otwarcia kościoła",
-        linkLabel: "O wystawie",
+        linkLabel: "O wystawach",
       },
       zapowiedz: {
         title: "Wernisaż {date}",
         text: "Zapraszamy na oprowadzenia kuratorskie po nowej edycji",
-        linkLabel: "O wystawie",
+        linkLabel: "O wystawach",
       },
     },
   },
@@ -400,7 +447,7 @@ export const pl = {
     title: "Publikacje",
     lead:
       "Na piętnaste urodziny Akademii wydaliśmy album podsumowujący piętnaście lat pracy. W tym dziale publikujemy też wybrane teksty z albumu i artykuły Elżbiety Jackowskiej-Kurek.",
-    albumEyebrow: "Wydawnictwo Akademii",
+    albumEyebrow: "Fundacja IKONA DZIŚ",
     imprint: "Album jubileuszowy, Fundacja IKONA DZIŚ, {year}",
     albumFallback: "albumu",
     coverCaption: "Zdjęcie albumu",
@@ -413,12 +460,9 @@ export const pl = {
     orderSpreadMailto: "Zamów album",
     mailtoSubject: "Zamówienie – album „Ikona dziś. Akademia Ikony 2010–2025”",
     spreadsHeading: "Rozkładówki",
-    spreadsIntro:
-      "Album ma format 23 × 23 cm — pojedyncza strona jest kwadratem, rozkładówka ma proporcje 2:1. Kliknięcie otwiera powiększenie.",
-    spreadsIntroHub:
-      "Kliknięcie otwiera powiększenie. Pełna galeria rozkładówek jest na stronie albumu.",
+    spreadsIntroHub: "Pełna galeria rozkładówek jest na stronie albumu.",
     spreadsIntroMobile:
-      "Rozkładówka ma proporcje 2:1 — na telefonie stoi w jednej kolumnie, w całości. Powiększenie otwiera się poziomo.",
+      "Rozkładówka ma proporcje 2:1 – na telefonie stoi w jednej kolumnie, w całości. Powiększenie otwiera się poziomo.",
     spreadsFootnote: "Docelowo 8–12 rozkładówek. Skany w proporcji 2:1, pokazywane w całości.",
     showAllSpreads: "Pokaż wszystkie rozkładówki",
     spreadKindLabel: "rozkładówka",
@@ -449,7 +493,7 @@ export const pl = {
     sourceFromAlbum: "Z albumu {title} · {year}",
     sourceFromMedia: "{outlet} · {year}",
     sourceAlbumMeta: "Z albumu",
-    sourcePressMeta: "Pierwodruk:",
+    sourcePressFirstPrint: "Pierwodruk: «{title}», {date}",
     aboutHeading: "O albumie",
     tocHeading: "Spis treści",
     tocLead:
@@ -458,35 +502,28 @@ export const pl = {
       "Na telefonie lista stoi w jednej kolumnie; pozycje z opublikowanym tekstem mają złotą krechę z lewej i etykietę. Przy 20+ pozycjach pokazujemy pierwsze dziesięć i przycisk „Pokaż pełny spis”.",
     tocReadOnline: "Czytaj na stronie",
     tocShowFull: "Pokaż pełny spis ({count})",
-    tocFootnote: "Pozycje z ciemniejszym tłem, złotą krechą z lewej i etykietą „Czytaj na stronie” mają opublikowany artykuł. Pełny spis liczy {count} tekstów.",
     authorsHeading: "Autorzy tekstów",
     authorsLecturers: "Wykładowcy",
     authorsParticipants: "Uczestnicy warsztatów i wykładów",
     lecturersLink: "Noty wykładowców",
     roles: {
       lecturer: "wykładowca",
-      participant: "uczestnik",
+      participant: "z warsztatów",
     },
-    excerptsHeading: "Fragmenty",
     originHeading: "Jak powstał album",
     seeAlsoHeading: "Zobacz też",
     seeAlsoLabel: "Zobacz też",
     allPublications: "Wszystkie publikacje",
-    exhibitionLink: "Wystawa ikon w kościele",
+    exhibitionLink: "Wystawy",
     lecturesLinkFooter: "Cykl wykładów",
     lecturesScheduleLink: "Terminy wykładów",
     articleSourceHeading: "Źródło tekstu",
     articleSourceAlbumSentence:
       "Ten tekst pochodzi z albumu {title} wydanego przez Fundację IKONA DZIŚ.",
-    articleSourceAlbumFacts: "{pages} stron · {format} · {price}",
+    articleSourceAlbumFacts: "{pages} {pageWord} · {format} · {price}",
     articleSourceViewAlbum: "Zobacz album",
     articleSourceOrder: "Zamów",
-    articlePressNote:
-      "Tekst ukazał się pierwotnie w {outlet} ({date}). Poniżej publikujemy go za zgodą redakcji.",
-    articlePressReadOriginal: "Przeczytaj w {outlet}",
-    articlePressTeaser:
-      "Całość ukazała się w {outlet} ({date}). Poniżej zamieszczamy zajawkę.",
-    articlePressTeaserLink: "Przeczytaj w {outlet}",
+    articlePressReadPublisher: "Czytaj w serwisie wydawcy",
     lightbox: {
       close: "Zamknij",
       closeAria: "Zamknij",
@@ -500,32 +537,34 @@ export const pl = {
   },
   privacy: {
     lastUpdatedLabel: "Ostatnia aktualizacja:",
-    phonePrefix: "tel.",
   },
   notFound: {
+    documentTitle: "Nie znaleziono strony",
     title: "Nie znaleziono strony",
     lead:
       "Adres może być nieaktualny lub wpisany z błędem. Skorzystaj z linków poniżej, aby wrócić do serwisu.",
     homeLink: "Strona główna",
     sitemapHeading: "Mapa strony",
-    sitemapAriaLabel: "Mapa ratunkowa",
+    sitemapAriaLabel: "Działy serwisu",
   },
   contact: {
     breadcrumbHome: "Strona główna",
     addressHeading: "Adres",
     mapTitle: "Mapa dojazdu",
-    mapPlaceholder: "Mapa — osadzenie zewnętrzne",
+    mapPlaceholder: "Mapa – osadzenie zewnętrzne",
+    mapOpenInGoogle: "Otwórz w Mapach Google",
+    mapGetDirections: "Wyznacz trasę",
     organizerHeading: "Organizator",
-    organizerLead: "Fundacja IKONA DZIŚ —",
+    organizerLead: "Fundacja IKONA DZIŚ –",
     organizerLinkLabel: "ikonadzis.org",
     organizerTail: " Akademia Ikony jest jej projektem wiodącym.",
     onlineHeading: "Akademia w sieci",
-    blogLinkLabel: "Blog — studiumikony.blogspot.com",
+    blogLinkLabel: "Blog – studiumikony.blogspot.com",
   },
   news: {
     title: "Aktualności",
     lead:
-      "Wykłady, warsztaty, plenery, wystawy i spotkania w Akademii Ikony — oraz archiwum od 2012 roku, w jednym strumieniu wpisów.",
+      "Wykłady, warsztaty, plenery, wystawy i spotkania w Akademii Ikony – oraz archiwum od 2012 roku, w jednym strumieniu wpisów.",
     yearNavAriaLabel: "Przejdź do roku",
     yearNavLabel: "Przejdź do roku",
     featuredLabel: "Wyróżnione",
@@ -554,6 +593,7 @@ export const pl = {
       many: "zdjęć",
     },
     breadcrumbHome: "Aktualności",
+    backToExhibition: "Wystawa {year}",
     allNewsLink: "Wszystkie aktualności",
     previousEntry: "Poprzedni",
     nextEntry: "Następny",
@@ -571,7 +611,7 @@ export const pl = {
     // Verbatim from brief-claude-code.md §8.
     accessibilityNote: "Przestrzeń bez barier architektonicznych",
     organizerLabel: "Organizator",
-    organizerName: "fundacja IKONA DZIŚ",
+    organizerName: "Fundacja IKONA DZIŚ",
     blogLabel: "Blog",
     facebookLabel: "Facebook",
     youtubeLabel: "YouTube",

@@ -1,12 +1,11 @@
 {
   "sample": true,
-  "editions": [
+  "exhibitions": [
     {
-      "year": 2026,
-      "title": "Ikona – korzenie i owoce wiary",
-      "vernissage": "2026-06-17",
-      "seasonTheme": "Mistyka dziś",
-      "summary": "[do uzupełnienia: 2–3 zdania o edycji 2026 — co nowego w zestawie ikon, okoliczności wernisażu]",
+      "seasonSlug": "2026-2027",
+      "title": "Mistyka dziś",
+      "vernissage": "2027-06-12",
+      "summary": "[do uzupełnienia: 2–3 zdania o wystawie 2027 — co nowego w zestawie ikon, okoliczności wernisażu]",
       "photos": [
         {
           "src": "/media/sample/news/wystawa-ikona-korzenie-i-owoce-wiary-2018-0.jpg",
@@ -38,106 +37,96 @@
           "width": 1000,
           "height": 714
         }
-      ],
-      "tours": [
-        { "date": "", "topic": "Ikona – modlitwa i sztuka" },
-        { "date": "", "topic": "Ikona współczesna – analiza na przykładzie wybranych przedstawień" },
-        { "date": "", "topic": "Serce Jezusa" },
-        { "date": "", "topic": "Trójca Święta" },
-        { "date": "", "topic": "Ikony pisane emalią komórkową" }
       ]
     },
     {
-      "year": 2025,
-      "title": "Ikona – korzenie i owoce wiary",
-      "vernissage": "2025-06-17",
+      "seasonSlug": "2025-2026",
+      "title": "Mądrość Boża",
+      "newsSlug": "wystawa-madrosc-boza-2026",
       "photos": [
         {
           "src": "/media/sample/icons/boze-narodzenie-3.jpg",
-          "alt": "Ikona Bożego Narodzenia z edycji 2025",
+          "alt": "Ikona Bożego Narodzenia z wystawy 2026",
           "width": 800,
           "height": 1200
         },
         {
           "src": "/media/sample/icons/mandylion-3.jpg",
-          "alt": "Ikona Mandylionu z edycji 2025",
+          "alt": "Ikona Mandylionu z wystawy 2026",
           "width": 800,
           "height": 1200
         },
         {
           "src": "/media/sample/icons/matka-boza-sniezna.jpg",
-          "alt": "Ikona Matki Bożej Śnieżnej z edycji 2025",
+          "alt": "Ikona Matki Bożej Śnieżnej z wystawy 2026",
           "width": 800,
           "height": 1200
         }
       ]
     },
     {
-      "year": 2024,
-      "title": "Ikona – korzenie i owoce wiary",
-      "vernissage": "2024-06-17"
+      "seasonSlug": "2024-2025",
+      "title": "Piękno Boga, piękno człowieka",
+      "newsSlug": "wystawa-piekno-boga-piekno-czlowieka-2025"
     },
     {
-      "year": 2023,
-      "title": "Ikona – korzenie i owoce wiary",
-      "vernissage": "2023-06-17"
+      "seasonSlug": "2023-2024",
+      "title": "Przyjaźń z Bogiem"
     },
     {
-      "year": 2022,
-      "title": "Ikona – korzenie i owoce wiary",
-      "vernissage": "2022-06-17"
+      "seasonSlug": "2022-2023",
+      "title": "Piękno zanurzone w Tajemnicy"
     },
     {
-      "year": 2021,
-      "title": "Ikona – korzenie i owoce wiary",
-      "vernissage": "2021-06-17"
+      "seasonSlug": "2021-2022",
+      "title": "Światłość prawdziwa"
     },
     {
-      "year": 2020,
-      "title": "Ikona – korzenie i owoce wiary",
-      "vernissage": "2020-06-17"
+      "seasonSlug": "2020-2021",
+      "title": "O Bożej obecności"
     },
     {
-      "year": 2019,
-      "title": "Ikona – korzenie i owoce wiary",
-      "subtitle": "Świętych obcowanie",
-      "vernissage": "2019-06-17",
+      "seasonSlug": "2019-2020",
+      "title": "O Duchu Świętym"
+    },
+    {
+      "seasonSlug": "2018-2019",
+      "title": "O świętości",
       "iconCount": 44,
       "photos": [
         {
           "src": "/media/sample/icons/chrystus.jpg",
-          "alt": "Ikona Chrystusa z edycji 2019",
+          "alt": "Ikona Chrystusa z wystawy 2019",
           "width": 360,
           "height": 682
         },
         {
           "src": "/media/sample/icons/swiety-symeon.jpg",
-          "alt": "Ikona świętego Symeona z edycji 2019",
+          "alt": "Ikona świętego Symeona z wystawy 2019",
           "width": 800,
           "height": 1200
         }
       ]
     },
     {
-      "year": 2018,
-      "title": "Ikona – korzenie i owoce wiary",
-      "vernissage": "2018-06-15",
+      "seasonSlug": "2017-2018",
+      "title": "O świętości",
       "photos": [
         {
           "src": "/media/sample/news/wystawa-ikona-korzenie-i-owoce-wiary-2018-3.jpg",
-          "alt": "Wystawa „Ikona – korzenie i owoce wiary” 2018",
+          "alt": "Wystawa „O świętości” 2018",
           "width": 400,
           "height": 225
         },
         {
           "src": "/media/sample/news/wystawa-ikona-korzenie-i-owoce-wiary-2018-4.jpg",
-          "alt": "Wystawa „Ikona – korzenie i owoce wiary” 2018",
+          "alt": "Wystawa „O świętości” 2018",
           "width": 400,
           "height": 225
         },
         {
           "src": "/media/sample/news/wystawa-ikona-korzenie-i-owoce-wiary-2018-5.jpg",
-          "alt": "Wystawa „Ikona – korzenie i owoce wiary” 2018",
+          "alt": "Wystawa „O świętości” 2018",
           "width": 400,
           "height": 225
         }
@@ -145,9 +134,9 @@
       "newsSlug": "wystawa-ikona-korzenie-i-owoce-wiary-2018"
     },
     {
-      "year": 2017,
-      "title": "Ikona – korzenie i owoce wiary",
-      "vernissage": "2017-06-17",
+      "seasonSlug": "2016-2017",
+      "title": "Ikona – niebo na ziemi",
+      "newsSlug": "wystawa-ikon-w-kosciele-srodowisk-tworczych-warszawa-plac-teatralny-20",
       "photos": [
         {
           "src": "/media/sample/news/wystawa-ikona-korzenie-i-owoce-wiary-oprowadzania-kuratorskie-0.jpg",
@@ -170,17 +159,21 @@
       ]
     },
     {
-      "year": 2016,
-      "title": "Ikona – korzenie i owoce wiary",
-      "subtitle": "Ikona – niebo na ziemi",
-      "vernissage": "2016-06-17"
+      "seasonSlug": "2015-2016",
+      "title": "Ikona dziś"
     },
     {
-      "year": 2015,
-      "title": "Ikona – korzenie i owoce wiary",
-      "subtitle": "Ikona dziś",
-      "vernissage": "2015-06-19",
+      "seasonSlug": "2014-2015",
+      "title": "Obraz i kult",
       "newsSlug": "wystawa-ikona-dzis"
+    },
+    {
+      "seasonSlug": "2013-2014",
+      "title": "Ikona – miejsce spotkania"
+    },
+    {
+      "seasonSlug": "2012-2013",
+      "title": "Świat ikony"
     }
   ]
 }

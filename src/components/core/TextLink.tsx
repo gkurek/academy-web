@@ -1,6 +1,8 @@
 import Link from "next/link";
 import type { AnchorHTMLAttributes, ReactNode } from "react";
 
+import { ExternalLink } from "@/components/core/ExternalLink";
+
 export interface TextLinkProps extends AnchorHTMLAttributes<HTMLAnchorElement> {
   href: string;
   /** Appends ↗ and opens in a new tab — external links only (blog, social). */
@@ -16,9 +18,9 @@ export function TextLink({ href, external = false, children, className, ...rest 
 
   if (external) {
     return (
-      <a href={href} target="_blank" rel="noreferrer" className={classes} {...rest}>
-        {children} ↗
-      </a>
+      <ExternalLink href={href} className={classes} {...rest}>
+        {children}
+      </ExternalLink>
     );
   }
 

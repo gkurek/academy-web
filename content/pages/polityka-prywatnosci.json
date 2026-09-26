@@ -1,10 +1,9 @@
 {
   "slug": "polityka-prywatnosci",
   "title": "Polityka prywatności",
-  "lead": "Administratorem danych jest fundacja IKONA DZIŚ, organizator Akademii Ikony. Dane podane w zgłoszeniu na warsztaty lub wykłady wykorzystujemy wyłącznie do prowadzenia zapisów i kontaktu w sprawach organizacyjnych.",
+  "lead": "Administratorem danych jest Fundacja IKONA DZIŚ, organizator Akademii Ikony. Dane podane w zgłoszeniu na warsztaty lub wykłady wykorzystujemy wyłącznie do prowadzenia zapisów i kontaktu w sprawach organizacyjnych.",
   "lastUpdated": "2026-01-04",
   "contactEmail": "akademiaikony@gmail.com",
-  "contactPhone": "601 734 705",
   "toc": [
     { "id": "administrator-danych", "label": "Administrator danych" },
     { "id": "jakie-dane-zbieramy", "label": "Jakie dane zbieramy" },
@@ -15,42 +14,51 @@
   ],
   "sections": [
     {
+      "id": "administrator-danych",
+      "paragraphs": [
+        "Fundacja IKONA DZIŚ przestrzega przepisów prawa i dobrych obyczajów. Poniższe informacje dotyczą przetwarzania danych osobowych wymagane Ustawą o ochronie danych osobowych z dnia 10 maja 2018 r. (Dz. U. 2018, poz. 1000) oraz Rozporządzeniem Parlamentu Europejskiego i Rady (UE) 2016/679 z dnia 27 kwietnia 2016 roku w sprawie ochrony osób fizycznych w związku z przetwarzaniem danych osobowych i w sprawie swobodnego przepływu takich danych oraz uchylenia dyrektywy 95/46/WE (RODO).",
+        "Administratorem danych osobowych jest Fundacja IKONA DZIŚ z siedzibą w Warszawie, przy ul. Pod Lipą 2/6, 00-798, wpisana do rejestru stowarzyszeń Krajowego Rejestru Sądowego pod numerem KRS 0000549483."
+      ]
+    },
+    {
       "id": "jakie-dane-zbieramy",
       "paragraphs": [
-        "Fundacja IKONA DZIŚ przestrzegając przepisów prawa i dobrych obyczajów przedstawia informacje dotyczące przetwarzania danych osobowych wymagane Ustawą o ochronie danych osobowych z dnia 10 maja 2018 r. (Dz. U. 2018, poz. 1000) oraz Rozporządzeniem Parlamentu Europejskiego i Rady (UE) 2016/679 z dnia 27 kwietnia 2016 roku w sprawie ochrony osób fizycznych w związku z przetwarzaniem danych osobowych i w sprawie swobodnego przepływu takich danych oraz uchylenia dyrektywy 95/46/WE (RODO).",
-        "Administratorem danych osobowych jest fundacja IKONA DZIŚ z siedzibą w Warszawie, przy ul. Pod Lipą 2/6, 00-798, wpisana do rejestru stowarzyszeń Krajowego Rejestru Sądowego pod numerem KRS 0000549483. W zależności od czynności podjętych przez właściciela danych osobowych może zbierać następujące dane osobowe:"
+        "W zależności od formy kontaktu z Akademią Ikony możemy zbierać następujące dane osobowe:"
       ],
       "list": [
-        "adres poczty elektronicznej i IP osoby przesyłającej dane drogą elektroniczną;",
-        "imię, nazwisko, adres, nr telefonu osoby podającej te dane do kontaktu."
+        "imię i nazwisko;",
+        "adres e-mail;",
+        "numer telefonu."
       ]
     },
     {
       "id": "cel-przetwarzania",
       "paragraphs": [
-        "Dane osobowe mogą być przetwarzane, w zależności od czynności podjętych przez właściciela tych danych, na podstawie:",
-        "Podanie danych osobowych jest dobrowolne, jednakże jest niezbędne do nawiązania kontaktu oraz dokonania innych czynności na żądanie osoby, której dotyczą dane.",
-        "Dane osobowe będą przetwarzane do czasu wygaśnięcia roszczeń.",
-        "Dane osobowe mogą zostać przekazane do odbiorców: współpracowników fundacji IKONA DZIŚ, podmiotów świadczących na rzecz fundacji IKONA DZIŚ obsługę informatyczną, księgową, prawną, doradczą tylko w celu realizacji celów podania danych osobowych.",
-        "Dane osobowe nie są przekazywane do państw trzecich oraz nie podlegają zautomatyzowanemu podejmowaniu decyzji, w tym profilowaniu."
+        "Dane osobowe przetwarzamy w zależności od podjętej formy kontaktu. Podstawą przetwarzania jest:"
       ],
       "list": [
         "art. 6 ust. 1 lit. a RODO – zgoda na przetwarzanie danych osobowych w przypadku kontaktu pocztą elektroniczną inicjowanego przez właściciela danych osobowych w celu umożliwienia dwustronnego kontaktu;",
-        "art. 6 ust. 1 lit. b) RODO – niezbędność do podjęcia działań na żądanie osoby, której dane dotyczą, przed zawarciem umowy oraz po zawarciu umowy w celu wykonywania umowy;",
-        "art. 6 ust. 1 lit. f) RODO – prawnie uzasadnione interesy realizowane przez Finansującego oraz Partnerów w postaci utrzymywania kontaktu i wymiany informacji o działaniach objętych celami działalności."
+        "art. 6 ust. 1 lit. b RODO – niezbędność do podjęcia działań na żądanie osoby, której dane dotyczą, przed zawarciem umowy oraz po zawarciu umowy w celu wykonywania umowy;",
+        "art. 6 ust. 1 lit. f RODO – prawnie uzasadnione interesy Fundacji IKONA DZIŚ w postaci utrzymywania kontaktu i wymiany informacji o działaniach objętych celami działalności."
+      ],
+      "paragraphsAfterList": [
+        "Podanie danych osobowych jest dobrowolne, jednakże jest niezbędne do nawiązania kontaktu oraz dokonania innych czynności na żądanie osoby, której dotyczą dane.",
+        "Dane osobowe będą przetwarzane do czasu wygaśnięcia roszczeń.",
+        "Dane osobowe mogą zostać przekazane do odbiorców: współpracowników Fundacji IKONA DZIŚ, podmiotów świadczących na rzecz Fundacji IKONA DZIŚ obsługę informatyczną, księgową, prawną, doradczą tylko w celu realizacji celów podania danych osobowych.",
+        "Dane osobowe nie są przekazywane do państw trzecich oraz nie podlegają zautomatyzowanemu podejmowaniu decyzji, w tym profilowaniu."
       ]
     },
     {
       "id": "twoje-prawa",
       "paragraphs": [
-        "Masz prawo żądać od fundacji IKONA DZIŚ dostępu do danych osobowych, ich sprostowania, usunięcia lub ograniczenia przetwarzania, prawo do wniesienia sprzeciwu wobec przetwarzania, prawo do przenoszenia danych oraz prawo wniesienia skargi do organu nadzorczego.",
+        "Masz prawo żądać od Fundacji IKONA DZIŚ dostępu do danych osobowych, ich sprostowania, usunięcia lub ograniczenia przetwarzania, prawo do wniesienia sprzeciwu wobec przetwarzania, prawo do przenoszenia danych oraz prawo wniesienia skargi do organu nadzorczego.",
         "Masz prawo do cofnięcia zgody w dowolnym momencie bez wpływu na zgodność z prawem przetwarzania, którego dokonano na podstawie zgody przed jej cofnięciem."
       ]
     },
     {
       "id": "cookies",
       "paragraphs": [
-        "Strona korzysta z analityki bez ciasteczek (Plausible / Umami), która nie identyfikuje użytkowników. Nie używamy ciasteczek marketingowych."
+        "Serwis nie używa ciasteczek marketingowych ani narzędzi analitycznych opartych na plikach cookies. Na stronie kontaktu osadzamy mapę Google Maps; Google może przetwarzać dane techniczne zgodnie z własną polityką prywatności."
       ]
     }
   ]

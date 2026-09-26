@@ -114,6 +114,7 @@ export type News = {
   cover?: Image;
   images?: Image[];
   poster?: Image;
+  venue?: string;
   featured?: boolean;
   featuredUntil?: string;
 };
@@ -172,13 +173,13 @@ export type PrivacyPolicySection = {
   id: string;
   paragraphs: string[];
   list?: string[];
+  paragraphsAfterList?: string[];
 };
 
 export type PrivacyPolicyPageData = TextPageData & {
   lastUpdated: string;
   sections: PrivacyPolicySection[];
   contactEmail: string;
-  contactPhone: string;
 };
 
 export type LearningFormRow = {
@@ -277,39 +278,25 @@ export type AboutPageData = TextPageData & {
   };
 };
 
-// K-51: permanent exhibition in KŚT — icon set changes yearly (vernissage ~17 June).
-export type ExhibitionEdition = {
-  year: number;
+// K-82…K-84: daily permanent display + annual exhibitions in KŚT.
+export type PermanentExhibition = {
   title: string;
-  subtitle?: string;
-  vernissage?: string;
-  seasonTheme?: string;
-  iconCount?: number;
-  poster?: Image;
-  photos?: Image[];
-  summary?: string;
-  tours?: { date: string; topic: string }[];
-  newsSlug?: string;
+  lead: string;
+  iconCount: { from: number; to: number };
+  interiorPhotos: Image[];
+  sample?: boolean;
 };
 
-export type ExhibitionState = "zapowiedz" | "biezaca";
-
-/** Before the edition vernissage → zapowiedz; after → biezaca (K-51). */
-export function getExhibitionState(
-  edition: ExhibitionEdition | undefined,
-  now: Date,
-): ExhibitionState {
-  if (!edition?.vernissage) {
-    return "biezaca";
-  }
-
-  const vernissage = new Date(edition.vernissage);
-  return now < vernissage ? "zapowiedz" : "biezaca";
-}
-
-export function editionsWithGallery(editions: ExhibitionEdition[]): ExhibitionEdition[] {
-  return editions.filter((edition) => (edition.photos?.length ?? 0) > 0);
-}
+export type AnnualExhibition = {
+  seasonSlug: string;
+  title: string;
+  vernissage?: string;
+  dateEnd?: string;
+  iconCount?: number;
+  summary?: string;
+  photos?: Image[];
+  newsSlug?: string;
+};
 
 // K-76: Publikacje — jeden album jubileuszowy + artykuły (bez zakładek, bez SectionNav).
 export type Author = { name: string; lecturerSlug?: string };

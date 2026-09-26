@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useId, useLayoutEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { Button } from "@/components/core/Button";
+import { ExternalLink } from "@/components/core/ExternalLink";
 import { pl } from "@/i18n/pl";
 import { mainNav } from "@/navigation";
 
@@ -279,9 +280,9 @@ export function HeaderMobileMenu({ active, phone, blogUrl }: HeaderMobileMenuPro
                 {pl.header.publicationsLink}
               </Link>
               {" · "}
-              <a href={blogUrl} rel="noopener noreferrer" onClick={closeMenu}>
+              <ExternalLink href={blogUrl} showIcon={false} onClick={closeMenu}>
                 {pl.header.blogLink}
-              </a>
+              </ExternalLink>
             </div>
           </div>
         </div>

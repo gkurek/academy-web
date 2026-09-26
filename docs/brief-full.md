@@ -1,6 +1,6 @@
 # Akademia Ikony – brief odświeżenia strony
 
-> **Wersja:** 2.2 · **Data:** 2026-09-22
+> **Wersja:** 2.3 · **Data:** 2026-09-26
 > **Status:** żywy dokument, aktualizowany po każdej sesji decyzyjnej. Dziennik zmian na końcu.
 > **Dokumenty powiązane:** `plan-claude-code.md` (implementacja), `brief-claude-code.md` (wymagania techniczne), `ikony-ejk-master-plan.md` (strona autorska EJK, poza repo), `ekosystem-ejk.md` (dokument nadrzędny ekosystemu, poza repo).
 
@@ -17,7 +17,7 @@ Trzy filary działalności:
 
 1. **Warsztaty pisania ikon** – kurs roczny (przedwstępny/wstępny) i trzyletni (doskonalący), raz w tygodniu, październik–czerwiec, praca indywidualna z każdym uczestnikiem. Plus **Letnia Szkoła Światła** – tygodniowe plenery ikonowe w sierpniu/wrześniu, w trybie rekolekcyjnym.
 2. **Wykłady** – cykl „Ikona – korzenie i owoce wiary”, wybrane wtorki miesiąca 18:00–20:30, październik–czerwiec, 400 zł/rok, możliwy roczny dostęp do nagrań. Prowadzą teolodzy, historycy sztuki, duchowni (UKSW, UO, dominikanie, prawosławni). 16 sezonów łącznie (od 2012/2013); bieżący 2026/2027 to szesnasty; archiwum — 15 sezonów archiwalnych.
-3. **Ikony** – galeria prac Elżbiety Jackowskiej-Kurek i uczniów, wystawa stała „Ikona – korzenie i owoce wiary” w kościele (z coroczną wymianą ikon, oprowadzaniami kuratorskimi), ikony na zamówienie. Archiwalne poświęcenia i wyjazdy studyjne — patrz Aktualności (K-50).
+3. **Ikony** – galeria prac Elżbiety Jackowskiej-Kurek i uczniów; w kościele trzy formy wystawy (ekspozycja codzienna, wystawa doroczna uczestników, wystawy wyjazdowe — opis na `/ikony/wystawy`, K-82…K-90); ikony na zamówienie. Archiwalne poświęcenia i wyjazdy studyjne — patrz Aktualności (K-50).
    **Cele nowej strony (w kolejności ważności):**
 4. Wizerunek i prestiż – strona ma odpowiadać randze instytucji z 15-letnim dorobkiem i zapleczem akademickim.
 5. Zapisy na warsztaty roczne i plener.
@@ -41,7 +41,7 @@ Stack: WordPress 7.1, darmowy motyw blogowy **Nisarg** (ok. 2015), wtyczka GDPR 
 | Brak strony głównej                  | `/` to lista wpisów „Aktualności”; brak hero, brak zdania „czym jesteśmy”, brak CTA                                                                                             | Nowy użytkownik nie wie, co Akademia oferuje i co ma zrobić        |
 | Sidebar blogowy na każdej podstronie | „Ostatnie wpisy” + archiwum miesięczne 2012–2026                                                                                                                                | Szum wizualny, zawęża kolumnę treści, na mobile ląduje pod treścią |
 | Nawigacja przeładowana               | 7 pozycji głównych, 22 podstrony; „Strona główna” ma własne podmenu (O nas, Pracownia, Aktualności→`/`, Blog→blogspot, Polityka prywatności); Kontakt w podmenu „Strona główna” | Brak hierarchii; użytkownik nie znajduje kontaktu                  |
-| Duplikaty w nawigacji                | Ikony › Wystawy **i** Wydarzenia › Wystawy ikon; Wykłady › Tematy **i** wpisy z programem jako osobne posty — **rozwiązane K-50/K-51** (2026-09-21): dział „Wydarzenia” zlikwidowany, wystawa ma jedną stronę `/ikony/wystawa`                                                                      | Niejasne, gdzie jest aktualna informacja                           |
+| Duplikaty w nawigacji                | Ikony › Wystawy **i** Wydarzenia › Wystawy ikon; Wykłady › Tematy **i** wpisy z programem jako osobne posty — **rozwiązane K-50/K-90** (2026-09-21 / 08b): dział „Wydarzenia” zlikwidowany; wystawy w KŚT → `/ikony/wystawy` (wcześniej K-51 `/ikony/wystawa`)                                                                      | Niejasne, gdzie jest aktualna informacja                           |
 | Brzydkie URL-e                       | Slug „O nas” to całe zdanie: `/strona-glowna/celem-dzialalnosci-akademii-ikony-studium-ikonograficznego-sw-andrzeja-apostola-jest-ksztalcenie-...`                              | Nieudostępnialne, słabe SEO                                        |
 | Blog poza domeną                     | studiumikony.blogspot.com; galeria „ikon na sprzedaż” tylko tam; zdjęcia w „O nas” hotlinkowane z blogspot                                                                      | Rozproszenie treści, ryzyko martwych obrazków                      |
 | Social media                         | Sprawdzić, czy i gdzie strona linkuje do facebook.com/akademiaikony i YouTube @akademiaikony3822                                                                                | Docelowo: stopka + dane strukturalne (§5)                          |
@@ -95,10 +95,10 @@ Stack: WordPress 7.1, darmowy motyw blogowy **Nisarg** (ok. 2015), wtyczka GDPR 
 | `/wyklady/zapisy-na-wyklady/`                                                            | page         | scalić w `/wyklady#zapisy`                                                                                                                                                                               |
 | posty `wyklady-YYYY-YYYY`, `ikona-korzenie-...`                                          | post         | kolekcja `LectureSeason` (15 rekordów)                                                                                                                                                                   |
 | `/ikona/`, `/ikona/galeria/`                                                             | page         | `/ikony` (galeria z filtrami)                                                                                                                                                                            |
-| `/ikona/wystawy/`, `/wernisaze/`                                                         | page         | `/ikony/wystawa` (K-51)                                                                                                                                                                                  |
+| `/ikona/wystawy/`, `/wernisaze/`                                                         | page         | `/ikony/wystawy` (K-90)                                                                                                                                                                                  |
 | `/ikona/ikony-na-zamowienie/`                                                            | page         | `/ikony/na-zamowienie` – **pełna strona ofertowa w v1, treść wymienna** (§5, §10.2)                                                                                                                      |
 | `/wydarzenia/`, `/wyjazdy-studyjne/`                                                     | page         | `/aktualnosci` (K-50)                                                                                                                                                                                    |
-| `/oprowadzania-kuratorskie/`                                                             | page         | `/ikony/wystawa#oprowadzania` (K-51)                                                                                                                                                                     |
+| `/oprowadzania-kuratorskie/`                                                             | page         | `/ikony/wystawy#oprowadzania` (K-90)                                                                                                                                                                     |
 | `/poswiecenia-ikon/`                                                                     | page         | wpis `/aktualnosci/[slug]` (K-77; slug w migracji)                                                                                                                                                       |
 | `/publikacje/`                                                                           | page         | `/publikacje`                                                                                                                                                                                            |
 | `/publikacje/artykuly/`                                                                  | page         | `/publikacje#artykuly`                                                                                                                                                                                   |
@@ -125,7 +125,7 @@ Media: wszystkie oryginały w `/wp-content/uploads/YYYY/MM/`. Podpisy ikon są w
 /wyklady/wykladowcy
 /ikony                     galeria: sekcje EJK → uczniowie, filtr tematu, lightbox
 /ikony/na-zamowienie       strona ofertowa (treść wymienna po starcie strony autorskiej)
-/ikony/wystawa             stała wystawa w kościele, edycje roczne, oprowadzania (K-51)
+/ikony/wystawy             ekspozycja codzienna, wystawa doroczna, oprowadzania, archiwum lat, wyjazdowe (K-82…K-90)
 /aktualnosci               lista z typem wpisu, w tym archiwum wystaw, oprowadzań, wyjazdów, plenerów (K-50, K-52)
 /aktualnosci/[slug]
 /publikacje                album Akademii, artykuły (K-76)
@@ -136,7 +136,7 @@ Media: wszystkie oryginały w `/wp-content/uploads/YYYY/MM/`. Podpisy ikon są w
 
 **Menu główne (max 6 pozycji):** O Akademii · Warsztaty · Wykłady · Ikony · Aktualności · Kontakt.
 
-> **K-50 (2026-09-21):** dział „Wydarzenia” zlikwidowany jako sekcja i pozycja menu — jedyna żywa treść (coroczna wystawa) przenosi się do `/ikony/wystawa` (K-51), archiwum (2013–2020) do Aktualności jako wpisy z `kind` (K-52).
+> **K-50 (2026-09-21):** dział „Wydarzenia” zlikwidowany jako sekcja i pozycja menu — coroczna wystawa w kościele ma stronę `/ikony/wystawy` (K-90; wcześniej K-51 `/ikony/wystawa`); archiwum (2013–2020) do Aktualności jako wpisy z `kind` (K-52).
 
 **Stopka:** adres, maile, telefon, Aktualności, Publikacje, Blog (zewn.), fundacja IKONA DZIŚ, Facebook, YouTube, polityka prywatności, **pełna mapa strony** (wszystkie podstrony drugiego poziomu pod nagłówkami sekcji).
 
@@ -179,7 +179,7 @@ Struktura ma dwa poziomy; każda podstrona musi być osiągalna w maksymalnie dw
 ### Panel CMS (etap 2, po uruchomieniu strony)
 
 - Logowanie dla 2–3 osób nietechnicznych.
-- Edycja: aktualności (w tym wpisy `kind: 'wystawa' | 'oprowadzanie' | 'wyjazd' | 'plener' | 'spotkanie'`), edycje wystawy (`ExhibitionEdition`), „Najbliższe” na stronie głównej, pola „W skrócie” (terminy, ceny), program sezonu wykładów, galeria (upload + podpis), treść strony zamówień. (K-50/K-53, 2026-09-21)
+- Edycja: aktualności (w tym wpisy `kind: 'wystawa' | 'oprowadzanie' | 'wyjazd' | 'plener' | 'spotkanie'`, pole `venue` na wyjazdowych), wystawy KŚT (`PermanentExhibition` + `annual.json`), „Najbliższe” na stronie głównej, pola „W skrócie” (terminy, ceny), program sezonu wykładów, galeria (upload + podpis), treść strony zamówień. (K-50/K-53, K-82…K-90)
 - Podgląd przed publikacją. Bez edycji layoutu.
 
 ---
@@ -323,7 +323,7 @@ type IconWork = {
 };
 
 // K-50/K-53 (2026-09-21): typ `Event` usunięty. „Wydarzenia” to teraz wpisy
-// Aktualności z `kind`; wystawa ma własny model `ExhibitionEdition` niżej.
+// Aktualności z `kind`; wystawy w KŚT — `PermanentExhibition` + `AnnualExhibition` niżej (K-82…K-90).
 type NewsKind =
   | "aktualnosc"
   | "wyklady"
@@ -345,28 +345,28 @@ type News = {
   cover?: Image;
   images?: Image[];
   poster?: Image;
+  venue?: string; // wystawy wyjazdowe (K-87)
 };
 
-// K-51: wystawa „Ikona – korzenie i owoce wiary” jest w kościele na stałe,
-// zestaw ikon zmienia się co roku (nowa edycja z wernisażem na koniec roku
-// akademickiego, w okolicach 17.06). Strona `/ikony/wystawa` łączy opis
-// stały, bieżącą edycję, oprowadzania kuratorskie i poprzednie edycje.
-type ExhibitionEdition = {
-  year: number;
-  title: string; // „Ikona – korzenie i owoce wiary”
-  subtitle?: string; // np. „Świętych obcowanie” (2019)
-  vernissage?: string; // ISO; data wernisażu
-  seasonTheme?: string; // temat sezonu wykładów, np. „Mistyka dziś”
+// K-82…K-90 (08b): trzy formy wystawy w KŚT; strona `/ikony/wystawy`. Szczegóły: `docs/plans/08b-review-fixes.md`.
+type PermanentExhibition = {
+  title: string;
+  lead: string;
+  iconCount: { from: number; to: number };
+  interiorPhotos: Image[];
+  sample?: boolean;
+};
+
+type AnnualExhibition = {
+  seasonSlug: string;
+  title: string;
+  vernissage?: string;
+  dateEnd?: string;
   iconCount?: number;
-  poster?: Image;
-  photos?: Image[]; // brak lub [] → edycja jako linijka, bez karty (K-54)
-  summary?: string; // 2–3 zdania: co nowego w tej edycji
-  tours?: { date: string; topic: string }[];
-  newsSlug?: string; // opcjonalny wpis w Aktualnościach z relacją
+  summary?: string;
+  photos?: Image[];
+  newsSlug?: string;
 };
-
-// Wystawa jest w kościele stale (K-51), więc nie ma stanu „po wystawie”.
-type ExhibitionState = "zapowiedz" | "biezaca";
 
 type Testimonial = { quote: string; author: string; role?: string };
 
@@ -488,5 +488,6 @@ Każdy typ treści ma jednego właściciela w danym momencie; pozostałe serwisy
 | ---------- | ------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | 2026-09    | 1.0    | Pierwsza wersja: audyt, inwentaryzacja, architektura, wymagania v1, brief dla Claude Design, decyzje techniczne, migracja, fakty stałe.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
 | 2026-09-06 | 2.0    | §1: strona jako pełnoprawna strona sprzedażowa oferty edukacyjnej. §2: social media, brak analityki. §3: `/ikony/na-zamowienie` jako pełna strona ofertowa z treścią wymienną; bez importu ikon na sprzedaż z blogspota. §4.1: wzorzec nawigacji drugiego poziomu (huby, `SectionNav`, mapa strony w stopce, dropdown tylko na klik). §5: ujednolicone tematy `mailto:`, dane strukturalne z `sameAs`, analityka bez ciasteczek od v1, prowadząca na stronie głównej bez dominacji. §6: warunek wstępny (sesja 0b), rozszerzalność na rodzinę serwisów + ekran testowy, czwarty wariant strony ofertowej, hub sekcji jako szablon. §7: stack jako decyzja ekosystemu, monorepo, `SiteSettings.ecosystem`, `IconWork` bez `forSale`, z `technique`, `OfferFacts.enrollmentSubject`. §9: FB, YT, kontakt ws. zamówień. §10 nowy: ekosystem, macierz własności treści, lejki, wspólne zasoby, decyzje otwarte, kolejność prac. |
-| 2026-09-21 | 2.1    | Likwidacja działu „Wydarzenia” (K-50…K-58, patrz `plan-claude-code.md` §4). Menu główne: Aktualności zamiast Wydarzenia. Wystawa „Ikona – korzenie i owoce wiary” → własna strona `/ikony/wystawa` (K-51): stała w kościele, zestaw ikon zmienia się co roku (wernisaż ok. 17.06), nowy typ `ExhibitionEdition`. Archiwum dawnych wydarzeń (wystawy poza KŚT, oprowadzania, wyjazdy, plenery, spotkania) → Aktualności jako wpisy z `kind`; typ `Event` usunięty, `News` rozszerzony (`kind`, `dateEnd`, `images`, `poster`). Poświęcenia ikon → artykuł w Publikacji (K-55, zgoda EJK na przeniesienie i redakcję) — **zastąpione w 2.2 przez K-77** (wpis Aktualności). Wyjazdy studyjne: brak nowych, copy w czasie teraźniejszym zostaje (K-56); dawne wyjazdy → Aktualności. Historia plenerów → nowa sekcja „Gdzie byliśmy” na `/warsztaty/letnia-szkola-swiatla` (K-57). Zasady migracji archiwum WP zapisane w §3/§8 (patrz `plan-aktualizacji-dokumentow-wydarzenia.md` §5). Nowe otwarte pytania do EJK: rok początkowy edycji wystawy, materiały z wernisaży 2018–2025, obieg materiałów po wernisażu, status Gródka jako pleneru LSŚ, zgoda R. Rumina na komentarz. |
+| 2026-09-21 | 2.1    | *(Model wystawy z tego wpisu zastąpiony w 2.3 / etapie 08b — K-82…K-102, `/ikony/wystawy`, `annual.json`; poniżej zapis historyczny.)* Likwidacja działu „Wydarzenia” (K-50…K-58, patrz `plan-claude-code.md` §4). Menu główne: Aktualności zamiast Wydarzenia. Wystawa „Ikona – korzenie i owoce wiary” → własna strona `/ikony/wystawa` (K-51): stała w kościele, zestaw ikon zmienia się co roku (wernisaż ok. 17.06), nowy typ `ExhibitionEdition`. Archiwum dawnych wydarzeń (wystawy poza KŚT, oprowadzania, wyjazdy, plenery, spotkania) → Aktualności jako wpisy z `kind`; typ `Event` usunięty, `News` rozszerzony (`kind`, `dateEnd`, `images`, `poster`). Poświęcenia ikon → artykuł w Publikacji (K-55, zgoda EJK na przeniesienie i redakcję) — **zastąpione w 2.2 przez K-77** (wpis Aktualności). Wyjazdy studyjne: brak nowych, copy w czasie teraźniejszym zostaje (K-56); dawne wyjazdy → Aktualności. Historia plenerów → nowa sekcja „Gdzie byliśmy” na `/warsztaty/letnia-szkola-swiatla` (K-57). Zasady migracji archiwum WP zapisane w §3/§8 (patrz `plan-aktualizacji-dokumentow-wydarzenia.md` §5). Nowe otwarte pytania do EJK: rok początkowy edycji wystawy, materiały z wernisaży 2018–2025, obieg materiałów po wernisażu, status Gródka jako pleneru LSŚ, zgoda R. Rumina na komentarz. |
 | 2026-09-22 | 2.2    | Publikacje (K-76…K-78, D-06): `/publikacje` = album jubileuszowy + artykuły, bez zakładek; typy `Publication`/`Article`; brak katalogu 2020 i materiałów medialnych o Akademii; poświęcenie → Aktualności `kind: 'plener'` (K-77); plakaty → `News.poster` / `ExhibitionEdition.poster` (K-78). Szczegóły: `docs/plan-aktualizacji-dokumentow-publikacje.md`. |
+| 2026-09-26 | 2.3    | Wystawy po przeglądzie 08b (K-82…K-90): trasa `/ikony/wystawy`, model `PermanentExhibition` + `AnnualExhibition` (`annual.json`), `News.venue` na wyjazdowe; przekierowania §3 na nowy adres; K-51 pozostaje w historii decyzji. Implementacja: `docs/plans/08b-review-fixes.md`. |

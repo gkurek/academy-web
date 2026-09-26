@@ -1,16 +1,11 @@
 import type { ComponentType } from "react";
 
 import type { Author, Image, Publication } from "@/content/types";
+import { assertLecturerSlugExists } from "@/content/authors";
 import { articleModules } from "@/content/articles-registry";
 import { publicationModules } from "@/content/publications-registry";
 import { validatePublicationSlugCollisions } from "@/content/publication-slugs";
 import * as ikonaDzisBody from "../../content/publications/ikona-dzis-body.mdx";
-
-export type PublicationExcerpt = {
-  quote: string;
-  author: string;
-  title: string;
-};
 
 export type PublicationFrontmatter = Publication & {
   lead: string;
@@ -21,7 +16,6 @@ export type PublicationFrontmatter = Publication & {
 
 export type LoadedPublication = PublicationFrontmatter & {
   aboutParagraphs: string[];
-  excerpts: PublicationExcerpt[];
   Content: ComponentType;
 };
 
@@ -32,7 +26,6 @@ export type PublicationAuthorGroups = {
 
 type PublicationBodyExports = {
   aboutParagraphs: string[];
-  excerpts: PublicationExcerpt[];
 };
 
 const bodyBySlug: Record<string, PublicationBodyExports> = {
@@ -53,6 +46,11 @@ function validatePublicationToc(publication: PublicationFrontmatter): void {
         `Publication "${publication.slug}" toc references missing article "${item.articleSlug}"`,
       );
     }
+
+    assertLecturerSlugExists(
+      item.author,
+      `Publication "${publication.slug}" toc entry "${item.title}"`,
+    );
   });
 }
 
@@ -99,7 +97,6 @@ export function loadPublicationBySlug(slug: string): LoadedPublication | undefin
   return {
     ...publicationModule.frontmatter,
     aboutParagraphs: body.aboutParagraphs,
-    excerpts: body.excerpts,
     Content: publicationModule.Content,
   };
 }
@@ -109,8 +106,13 @@ export function getPublicationAuthorGroups(publication: Publication): Publicatio
   const participants = new Map<string, Author>();
 
   publication.toc.forEach((item) => {
-    const bucket = item.author.lecturerSlug ? lecturers : participants;
-    bucket.set(item.author.name, item.author);
+    const { author } = item;
+    if (author.lecturerSlug) {
+      lecturers.set(author.lecturerSlug, author);
+      return;
+    }
+
+    participants.set(author.name, author);
   });
 
   return {

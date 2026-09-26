@@ -34,17 +34,20 @@ function PrivacyPolicySectionBlock({
             ))}
           </ul>
         ) : null}
+        {section.paragraphsAfterList?.map((paragraph) => (
+          <p key={paragraph.slice(0, 48)}>{paragraph}</p>
+        ))}
       </div>
     </section>
   );
 }
 
 export function PrivacyPolicyPage({ page }: PrivacyPolicyPageProps) {
-  const { title, lead, toc, sections, lastUpdated, contactEmail, contactPhone } = page;
+  const { title, lead, toc, sections, lastUpdated, contactEmail } = page;
   const lastUpdatedLabel = formatDateRange(lastUpdated, undefined, { withYear: true });
 
   return (
-    <TextPageShell title={title} lead={lead} toc={toc} headerId="administrator-danych">
+    <TextPageShell title={title} lead={lead} toc={toc}>
       <div className="privacy-policy-content">
         {sections.map((section) => (
           <PrivacyPolicySectionBlock key={section.id} section={section} toc={toc ?? []} />
@@ -56,9 +59,6 @@ export function PrivacyPolicyPage({ page }: PrivacyPolicyPageProps) {
           </h2>
           <p className="privacy-policy-contact text-size-body leading-body text-text-secondary md:text-size-body-lg md:leading-prose">
             <TextLink href={`mailto:${contactEmail}`}>{contactEmail}</TextLink>
-            {", "}
-            <TextLink href={pl.factsBox.phoneTel}>{pl.privacy.phonePrefix} {contactPhone}</TextLink>
-            .
           </p>
         </section>
 

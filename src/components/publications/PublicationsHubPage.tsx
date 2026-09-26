@@ -5,7 +5,6 @@ import { TextLink } from "@/components/core/TextLink";
 import { SectionPageShell } from "@/components/layout/SectionPageShell";
 import { ArticleList } from "@/components/publications/ArticleList";
 import { PublicationSpreadStrip } from "@/components/publications/PublicationSpreadStrip";
-import { Breadcrumb } from "@/components/navigation/Breadcrumb";
 import { getArticles } from "@/content/articles";
 import {
   formatPublicationPrice,
@@ -14,6 +13,7 @@ import {
 } from "@/content/publications";
 import { getSiteSettings } from "@/content/settings";
 import { pl } from "@/i18n/pl";
+import { pluralize } from "@/i18n/pluralize";
 import { buildMailtoHref } from "@/lib/mailto";
 import { footerSitemap } from "@/navigation";
 
@@ -33,21 +33,15 @@ export function PublicationsHubPage() {
   const priceLabel = formatPublicationPrice(publication.price);
   const availabilityLabel =
     publication.availability === "dostepny"
-      ? pl.publications.facts.availabilityAvailable
+      ? pl.publications.facts.availabilityAvailableShort
       : pl.publications.facts.availabilitySoldOut;
+  const pageWord = pluralize(publication.pages, ["strona", "strony", "stron"]);
   const imprint = pl.publications.imprint.replace("{year}", String(publication.year));
   const hubSpreads = getHubSpreadPreview(publication.spreads, 4);
 
   return (
     <SectionPageShell active={publicationsLabel}>
       <div className="mx-auto w-full max-w-content-max publication-page">
-        <Breadcrumb
-          items={[
-            { label: pl.publications.breadcrumbHome, href: "/" },
-            { label: publicationsLabel },
-          ]}
-        />
-
         <header className="publication-page-header">
           <h1 className="publication-page-title">{pl.publications.title}</h1>
           <p className="publication-page-lead">{pl.publications.lead}</p>
@@ -86,8 +80,10 @@ export function PublicationsHubPage() {
                   <dd>{publication.year}</dd>
                 </div>
                 <div className="publication-hub-facts-row">
-                  <dt>{pl.publications.facts.pages}</dt>
-                  <dd>{pl.publications.facts.pagesValue.replace("{count}", String(publication.pages))}</dd>
+                  <dt>{pl.publications.facts.pageCount}</dt>
+                  <dd>
+                    {publication.pages} {pageWord}
+                  </dd>
                 </div>
                 <div className="publication-hub-facts-row">
                   <dt>{pl.publications.facts.format}</dt>
@@ -123,7 +119,11 @@ export function PublicationsHubPage() {
           </div>
         </section>
 
-        <section className="publication-articles-section" aria-labelledby="publication-articles-heading">
+        <section
+          id="artykuly"
+          className="publication-articles-section"
+          aria-labelledby="publication-articles-heading"
+        >
           <h2 id="publication-articles-heading" className="publication-section-heading">
             {pl.publications.articlesHeading}
           </h2>
@@ -134,7 +134,7 @@ export function PublicationsHubPage() {
         <footer className="publication-see-also">
           <div className="publication-see-also-row">
             <span className="publication-see-also-label">{pl.publications.seeAlsoLabel}</span>
-            <TextLink href="/ikony/wystawa">{pl.publications.exhibitionLink}</TextLink>
+            <TextLink href="/ikony/wystawy">{pl.publications.exhibitionLink}</TextLink>
             <TextLink href="/wyklady">{pl.publications.lecturesLinkFooter}</TextLink>
           </div>
         </footer>

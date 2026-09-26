@@ -1,5 +1,6 @@
 import Image from "next/image";
 
+import { ExternalLink } from "@/components/core/ExternalLink";
 import { TextLink } from "@/components/core/TextLink";
 import {
   formatArticleAuthors,
@@ -9,6 +10,7 @@ import type { PublicationFrontmatter } from "@/content/publications";
 import { formatPublicationPrice } from "@/content/publications";
 import { getSiteSettings } from "@/content/settings";
 import { pl } from "@/i18n/pl";
+import { pluralize } from "@/i18n/pluralize";
 import { buildMailtoHref } from "@/lib/mailto";
 import { formatDateRange } from "@/lib/formatDateRange";
 
@@ -28,7 +30,7 @@ export function ArticleSourceBlock({ article, publication, variant }: ArticleSou
   }
 
   if (article.source.kind === "media") {
-    return <PressNote article={article} />;
+    return <PressFooter article={article} />;
   }
 
   return null;
@@ -51,12 +53,17 @@ function ArticleSourceMeta({
       {article.source.kind === "album" && publication ? (
         <p className="publication-article-meta-source">
           {pl.publications.sourceAlbumMeta}{" "}
-          <em className="publication-album-short-title">{publication.title}</em>
+          <em className="publication-album-short-title">{publication.shortTitle}</em>
         </p>
       ) : null}
       {article.source.kind === "media" ? (
         <p className="publication-article-meta-source">
-          {pl.publications.sourcePressMeta} {article.source.outlet}
+          {pl.publications.sourcePressFirstPrint
+            .replace("{title}", article.title)
+            .replace(
+              "{date}",
+              formatDateRange(article.source.date, undefined, { withYear: true }),
+            )}
         </p>
       ) : null}
     </div>
@@ -69,8 +76,10 @@ function AlbumBackref({ publication }: { publication: PublicationFrontmatter }) 
     ?.address ?? settings.emails[1]?.address ?? settings.emails[0].address;
   const mailtoHref = buildMailtoHref(secretariatEmail, pl.publications.mailtoSubject);
   const priceLabel = formatPublicationPrice(publication.price);
+  const pageWord = pluralize(publication.pages, ["strona", "strony", "stron"]);
   const factsLine = pl.publications.articleSourceAlbumFacts
     .replace("{pages}", String(publication.pages))
+    .replace("{pageWord}", pageWord)
     .replace("{format}", publication.format)
     .replace("{price}", priceLabel ?? "");
 
@@ -102,43 +111,17 @@ function AlbumBackref({ publication }: { publication: PublicationFrontmatter }) 
   );
 }
 
-function PressNote({ article }: { article: LoadedArticle }) {
+function PressFooter({ article }: { article: LoadedArticle }) {
   const { source } = article;
-  if (source.kind !== "media") {
+  if (source.kind !== "media" || !source.url) {
     return null;
-  }
-
-  const dateLabel = formatDateRange(source.date, undefined, { withYear: true });
-
-  if (source.excerptOnly) {
-    return (
-      <aside className="publication-press-note">
-        <p className="publication-press-note-text">
-          {pl.publications.articlePressTeaser
-            .replace("{outlet}", source.outlet)
-            .replace("{date}", dateLabel)}
-        </p>
-        {source.url ? (
-          <TextLink href={source.url} external>
-            {pl.publications.articlePressTeaserLink.replace("{outlet}", source.outlet)}
-          </TextLink>
-        ) : null}
-      </aside>
-    );
   }
 
   return (
     <aside className="publication-press-note">
-      <p className="publication-press-note-text">
-        {pl.publications.articlePressNote
-          .replace("{outlet}", source.outlet)
-          .replace("{date}", dateLabel)}
-      </p>
-      {source.url ? (
-        <TextLink href={source.url} external>
-          {pl.publications.articlePressReadOriginal.replace("{outlet}", source.outlet)}
-        </TextLink>
-      ) : null}
+      <ExternalLink href={source.url} className="publication-press-note-link">
+        {pl.publications.articlePressReadPublisher}
+      </ExternalLink>
     </aside>
   );
 }

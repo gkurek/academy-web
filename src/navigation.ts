@@ -34,7 +34,7 @@ export const mainNav: MainNavItem[] = [
     href: "/ikony",
     children: [
       { label: "Galeria", href: "/ikony" },
-      { label: "Wystawa", href: "/ikony/wystawa" },
+      { label: "Wystawy", href: "/ikony/wystawy" },
       { label: "Ikony na zamówienie", href: "/ikony/na-zamowienie" },
     ],
   },
@@ -63,7 +63,7 @@ export const sectionNav: Record<SectionKey, NavLink[]> = {
   ],
   ikony: [
     { label: "Galeria", href: "/ikony" },
-    { label: "Wystawa", href: "/ikony/wystawa" },
+    { label: "Wystawy", href: "/ikony/wystawy" },
     { label: "Ikony na zamówienie", href: "/ikony/na-zamowienie" },
   ],
 };

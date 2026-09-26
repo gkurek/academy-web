@@ -1,9 +1,10 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useId, useState } from "react";
 
 import { TextLink } from "@/components/core/TextLink";
+import { getAuthorDisplayName, getAuthorProfileHref } from "@/content/authors";
 import type { Publication } from "@/content/types";
 import { pl } from "@/i18n/pl";
 
@@ -14,8 +15,8 @@ export interface PublicationTocListProps {
 const TOC_PREVIEW_LIMIT = 10;
 
 export function PublicationTocList({ items }: PublicationTocListProps) {
+  const listId = useId();
   const [expanded, setExpanded] = useState(items.length <= TOC_PREVIEW_LIMIT);
-  const visibleItems = expanded ? items : items.slice(0, TOC_PREVIEW_LIMIT);
   const hasHiddenItems = items.length > TOC_PREVIEW_LIMIT;
 
   return (
@@ -30,23 +31,27 @@ export function PublicationTocList({ items }: PublicationTocListProps) {
         {pl.publications.tocLeadMobile}
       </p>
 
-      <ul className="publication-toc-list">
-        {visibleItems.map((item) => {
+      <ol id={listId} className="publication-toc-list">
+        {items.map((item, index) => {
           const roleLabel = item.author.lecturerSlug
             ? pl.publications.roles.lecturer
             : pl.publications.roles.participant;
-          const authorHref = item.author.lecturerSlug
-            ? `/wyklady/wykladowcy#${item.author.lecturerSlug}`
-            : undefined;
+          const authorHref = getAuthorProfileHref(item.author);
+          const authorName = getAuthorDisplayName(item.author);
+          const isCollapsed = hasHiddenItems && !expanded && index >= TOC_PREVIEW_LIMIT;
 
           return (
             <li
-              key={`${item.title}-${item.author.name}`}
-              className={
+              key={`${item.title}-${item.author.lecturerSlug ?? item.author.name}`}
+              data-index={index}
+              className={[
                 item.articleSlug
                   ? "publication-toc-item publication-toc-item-linked"
-                  : "publication-toc-item"
-              }
+                  : "publication-toc-item",
+                isCollapsed ? "publication-toc-item-collapsed" : "",
+              ]
+                .filter(Boolean)
+                .join(" ")}
             >
               {item.articleSlug ? (
                 <p className="publication-toc-read-label">{pl.publications.tocReadOnline}</p>
@@ -62,9 +67,9 @@ export function PublicationTocList({ items }: PublicationTocListProps) {
                   )}
                   <p className="publication-toc-author">
                     {authorHref ? (
-                      <TextLink href={authorHref}>{item.author.name}</TextLink>
+                      <TextLink href={authorHref}>{authorName}</TextLink>
                     ) : (
-                      item.author.name
+                      authorName
                     )}
                     {" · "}
                     {roleLabel}
@@ -79,21 +84,19 @@ export function PublicationTocList({ items }: PublicationTocListProps) {
             </li>
           );
         })}
-      </ul>
+      </ol>
 
       {hasHiddenItems && !expanded ? (
         <button
           type="button"
           className="publication-toc-expand btn-secondary"
+          aria-expanded={expanded}
+          aria-controls={listId}
           onClick={() => setExpanded(true)}
         >
           {pl.publications.tocShowFull.replace("{count}", String(items.length))}
         </button>
       ) : null}
-
-      <p className="publication-toc-footnote">
-        {pl.publications.tocFootnote.replace("{count}", String(items.length))}
-      </p>
     </section>
   );
 }

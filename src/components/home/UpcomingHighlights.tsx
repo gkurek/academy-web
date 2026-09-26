@@ -3,11 +3,11 @@ import { getExhibitionUpcomingHighlight } from "@/content/exhibition";
 import { getSiteSettings } from "@/content/settings";
 import { pl } from "@/i18n/pl";
 
-/** "Najbliższe" — two tiles from SiteSettings.upcoming plus exhibition tile from edition data (D-08-07). */
+/** "Najbliższe" — two tiles from SiteSettings.upcoming plus optional exhibition tile (D-08-07, K-85). */
 export function UpcomingHighlights() {
   const { upcoming } = getSiteSettings();
   const exhibitionTile = getExhibitionUpcomingHighlight();
-  const tiles = [...upcoming, exhibitionTile];
+  const tiles = exhibitionTile ? [...upcoming, exhibitionTile] : upcoming;
 
   return (
     <section aria-labelledby="upcoming-heading" className="md:px-page-margin">
@@ -17,7 +17,9 @@ export function UpcomingHighlights() {
       >
         {pl.home.upcomingHeading}
       </h2>
-      <div className="grid gap-hairline-gap bg-line-gold md:grid-cols-3">
+      <div
+        className={`grid gap-hairline-gap bg-line-gold ${tiles.length === 3 ? "md:grid-cols-3" : "md:grid-cols-2"}`}
+      >
         {tiles.map((item) => (
           <div
             key={item.href + item.title}

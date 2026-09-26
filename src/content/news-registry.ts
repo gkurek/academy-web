@@ -61,7 +61,9 @@ import NewsContent54, { frontmatter as frontmatter54 } from "../../content/news/
 import NewsContent55, { frontmatter as frontmatter55 } from "../../content/news/sample-wystawa-ikona-korzenie-i-owoce-wiary-oprowadzania-kuratorskie.mdx";
 import NewsContent56, { frontmatter as frontmatter56 } from "../../content/news/sample-wystawa-ikona-piekno-zanurzone-w-tajemnicy.mdx";
 import NewsContent57, { frontmatter as frontmatter57 } from "../../content/news/sample-wystawa-ikona-sztuka-i-modlitwa.mdx";
-import NewsContent58, { frontmatter as frontmatter58 } from "../../content/news/sample-wystawa-w-kosciele-pw-sw-andrzeja-apostola.mdx";
+import NewsContent58, { frontmatter as frontmatter58 } from "../../content/news/sample-wystawa-madrosc-boza-2026.mdx";
+import NewsContent59, { frontmatter as frontmatter59 } from "../../content/news/sample-wystawa-piekno-boga-piekno-czlowieka-2025.mdx";
+import NewsContent60, { frontmatter as frontmatter60 } from "../../content/news/sample-wystawa-w-kosciele-pw-sw-andrzeja-apostola.mdx";
 
 type NewsModule = {
   Content: ComponentType;
@@ -127,5 +129,7 @@ export const newsModules: Record<string, NewsModule> = {
   "wystawa-ikona-korzenie-i-owoce-wiary-oprowadzania-kuratorskie": { Content: NewsContent55, frontmatter: frontmatter55 as NewsFrontmatter },
   "wystawa-ikona-piekno-zanurzone-w-tajemnicy": { Content: NewsContent56, frontmatter: frontmatter56 as NewsFrontmatter },
   "wystawa-ikona-sztuka-i-modlitwa": { Content: NewsContent57, frontmatter: frontmatter57 as NewsFrontmatter },
-  "wystawa-w-kosciele-pw-sw-andrzeja-apostola": { Content: NewsContent58, frontmatter: frontmatter58 as NewsFrontmatter },
+  "wystawa-madrosc-boza-2026": { Content: NewsContent58, frontmatter: frontmatter58 as NewsFrontmatter },
+  "wystawa-piekno-boga-piekno-czlowieka-2025": { Content: NewsContent59, frontmatter: frontmatter59 as NewsFrontmatter },
+  "wystawa-w-kosciele-pw-sw-andrzeja-apostola": { Content: NewsContent60, frontmatter: frontmatter60 as NewsFrontmatter },
 };

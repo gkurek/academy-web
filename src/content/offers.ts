@@ -19,6 +19,7 @@ export type OfferFrontmatter = {
   steps?: StepItem[];
   quote?: Testimonial & { image?: Image };
   exampleSlugs?: string[];
+  whereWeWere?: { place: string; year: string }[];
 };
 
 export type LoadedOffer = Offer & {
@@ -27,6 +28,7 @@ export type LoadedOffer = Offer & {
   steps: StepItem[];
   exampleSlugs: string[];
   quote?: Testimonial & { image?: Image };
+  whereWeWere: { place: string; year: string }[];
   Content: ComponentType;
 };
 
@@ -70,6 +72,7 @@ function toOffer(offerModule: OfferModule): LoadedOffer {
     steps: frontmatter.steps ?? [],
     exampleSlugs: frontmatter.exampleSlugs ?? [],
     quote: frontmatter.quote,
+    whereWeWere: frontmatter.whereWeWere ?? [],
     body: "",
     Content,
   };

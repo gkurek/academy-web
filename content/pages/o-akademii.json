@@ -104,6 +104,7 @@
     "links": [
       { "href": "/wyklady/archiwum", "label": "Archiwum wykładów" },
       { "href": "/wyklady/wykladowcy", "label": "Wykładowcy" },
+      { "href": "/publikacje", "label": "Publikacje" },
       { "href": "/aktualnosci", "label": "Aktualności" }
     ]
   },

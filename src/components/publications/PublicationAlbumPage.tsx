@@ -1,6 +1,7 @@
 import Image from "next/image";
 
 import { TextLink } from "@/components/core/TextLink";
+import { getAuthorDisplayName, getAuthorProfileHref } from "@/content/authors";
 import { SectionPageShell } from "@/components/layout/SectionPageShell";
 import { NewsCard } from "@/components/news/NewsCard";
 import { PublicationMetricsBox } from "@/components/publications/PublicationMetricsBox";
@@ -74,9 +75,6 @@ export function PublicationAlbumPage({ publication }: PublicationAlbumPageProps)
           <h2 id="publication-spreads-heading" className="publication-section-heading">
             {pl.publications.spreadsHeading}
           </h2>
-          <p className="publication-section-lead publication-spreads-lead-desktop">
-            {pl.publications.spreadsIntro}
-          </p>
           <p className="publication-section-lead publication-spreads-lead-mobile">
             {pl.publications.spreadsIntroMobile}
           </p>
@@ -110,18 +108,23 @@ export function PublicationAlbumPage({ publication }: PublicationAlbumPageProps)
             <div>
               <p className="publication-authors-group-label">{pl.publications.authorsLecturers}</p>
               <p className="publication-authors-list">
-                {authorGroups.lecturers.map((author, index) => (
-                  <span key={author.name}>
-                    {author.lecturerSlug ? (
-                      <TextLink href={`/wyklady/wykladowcy#${author.lecturerSlug}`}>
-                        {author.name}
+                {authorGroups.lecturers.map((author, index) => {
+                  const profileHref = getAuthorProfileHref(author);
+                  const displayName = getAuthorDisplayName(author);
+
+                  return (
+                  <span key={author.lecturerSlug ?? author.name}>
+                    {profileHref ? (
+                      <TextLink href={profileHref}>
+                        {displayName}
                       </TextLink>
                     ) : (
-                      author.name
+                      displayName
                     )}
                     {index < authorGroups.lecturers.length - 1 ? " · " : ""}
                   </span>
-                ))}
+                  );
+                })}
               </p>
               <TextLink href="/wyklady/wykladowcy" className="publication-authors-link">
                 {pl.publications.lecturersLink}
@@ -132,28 +135,12 @@ export function PublicationAlbumPage({ publication }: PublicationAlbumPageProps)
               <p className="publication-authors-list">
                 {authorGroups.participants.map((author, index) => (
                   <span key={author.name}>
-                    {author.name}
+                    {getAuthorDisplayName(author)}
                     {index < authorGroups.participants.length - 1 ? " · " : ""}
                   </span>
                 ))}
               </p>
             </div>
-          </div>
-        </section>
-
-        <section className="publication-excerpts-section" aria-labelledby="publication-excerpts-heading">
-          <h2 id="publication-excerpts-heading" className="publication-section-heading">
-            {pl.publications.excerptsHeading}
-          </h2>
-          <div className="publication-excerpts-list">
-            {publication.excerpts.map((excerpt) => (
-              <blockquote key={`${excerpt.author}-${excerpt.title}`} className="publication-excerpt">
-                <p className="publication-excerpt-quote">{excerpt.quote}</p>
-                <footer className="publication-excerpt-footer">
-                  {excerpt.author}, <em>{excerpt.title}</em>
-                </footer>
-              </blockquote>
-            ))}
           </div>
         </section>
 

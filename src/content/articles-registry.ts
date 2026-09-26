@@ -3,11 +3,10 @@ import type { ComponentType } from "react";
 
 import type { ArticleFrontmatter } from "./articles";
 
-import ArticleContent0, { frontmatter as ArticleFrontmatter0 } from "../../content/articles/ikona-jako-okno.mdx";
-import ArticleContent1, { frontmatter as ArticleFrontmatter1 } from "../../content/articles/ikona-na-nowo.mdx";
-import ArticleContent2, { frontmatter as ArticleFrontmatter2 } from "../../content/articles/ikona-w-kosciele-dzis.mdx";
-import ArticleContent3, { frontmatter as ArticleFrontmatter3 } from "../../content/articles/modlitwa-przed-ikona.mdx";
-import ArticleContent4, { frontmatter as ArticleFrontmatter4 } from "../../content/articles/pisanie-ikony-jako-droga.mdx";
+import ArticleContent0, { frontmatter as ArticleFrontmatter0 } from "../../content/articles/cisza-ikony.mdx";
+import ArticleContent1, { frontmatter as ArticleFrontmatter1 } from "../../content/articles/ikona-przejmujaca-delikatnosc.mdx";
+import ArticleContent2, { frontmatter as ArticleFrontmatter2 } from "../../content/articles/piekno-ikony-perspektywa-i-swiatlo.mdx";
+import ArticleContent3, { frontmatter as ArticleFrontmatter3 } from "../../content/articles/pietnasta-rocznica.mdx";
 
 type ArticleModule = {
   Content: ComponentType;
@@ -15,9 +14,8 @@ type ArticleModule = {
 };
 
 export const articleModules: Record<string, ArticleModule> = {
-  "ikona-jako-okno": { Content: ArticleContent0, frontmatter: ArticleFrontmatter0 as ArticleFrontmatter },
-  "ikona-na-nowo": { Content: ArticleContent1, frontmatter: ArticleFrontmatter1 as ArticleFrontmatter },
-  "ikona-w-kosciele-dzis": { Content: ArticleContent2, frontmatter: ArticleFrontmatter2 as ArticleFrontmatter },
-  "modlitwa-przed-ikona": { Content: ArticleContent3, frontmatter: ArticleFrontmatter3 as ArticleFrontmatter },
-  "pisanie-ikony-jako-droga": { Content: ArticleContent4, frontmatter: ArticleFrontmatter4 as ArticleFrontmatter },
+  "cisza-ikony": { Content: ArticleContent0, frontmatter: ArticleFrontmatter0 as ArticleFrontmatter },
+  "ikona-przejmujaca-delikatnosc": { Content: ArticleContent1, frontmatter: ArticleFrontmatter1 as ArticleFrontmatter },
+  "piekno-ikony-perspektywa-i-swiatlo": { Content: ArticleContent2, frontmatter: ArticleFrontmatter2 as ArticleFrontmatter },
+  "pietnasta-rocznica": { Content: ArticleContent3, frontmatter: ArticleFrontmatter3 as ArticleFrontmatter },
 };

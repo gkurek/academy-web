@@ -51,7 +51,7 @@ function ArticleSourceLabel({ sourceLabel }: { sourceLabel: string }) {
     return (
       <>
         {albumPrefix}
-        <em className="publication-album-short-title">{title}</em>
+        <span className="publication-album-short-title">«{title}»</span>
         {year ? ` · ${year}` : null}
       </>
     );

@@ -1,6 +1,8 @@
 # Plan 08 — Strony pozostałe
 
-Status: zatwierdzony 2026-09-22
+> **Dokument historyczny.** Plan pierwszej implementacji etapu 8 (zamknięty 2026-09-22). Opis **wystawy** w tym pliku (`/ikony/wystawa`, `ExhibitionEdition`, `editions.json`, makiety 7a–7d) został **zastąpiony** w etapie **8b** — stan docelowy, decyzje K-82…K-118 i kawałki: [`08b-review-fixes.md`](./08b-review-fixes.md). Trasy kontakt, publikacje, polityka i 404 z tego planu pozostają aktualne; wystawa i home w zakresie wystawy — wyłącznie według 08b. Master plan: `docs/plan-claude-code.md` (etap 8 + 8b).
+
+Status: zamknięty (historyczny) 2026-09-22 · wystawa przebudowana w 08b (2026-09-26)
 Gałąź: feat/08-pozostale
 Makiety: `design/Akademia Ikony - Wystawa i Aktualności.dc.html` — ekrany **7a–7d** (`/ikony/wystawa`; handoff: `design/README-wystawa-aktualnosci.md`, sloty WY-*); `design/Akademia Ikony - Publikacje.dc.html` — ekrany **8a–8j** (`/publikacje` + podstrony; handoff: `design/README-publikacje.md`, sloty PU-*). **Kontakt** i **404** — bez dedykowanej makiety; układ wg brief §6 i tokenów projektu (`design/README`).
 

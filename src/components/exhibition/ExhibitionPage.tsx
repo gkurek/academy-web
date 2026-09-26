@@ -1,175 +1,271 @@
-import Image from "next/image";
+import type { ReactNode } from "react";
 
 import { TextLink } from "@/components/core/TextLink";
-import { ExhibitionEditionCard } from "@/components/exhibition/ExhibitionEditionCard";
-import { ExhibitionEditionGallery } from "@/components/exhibition/ExhibitionEditionGallery";
-import { ExhibitionPhotoPlaceholder } from "@/components/exhibition/ExhibitionPhotoPlaceholder";
-import { ExhibitionFacts } from "@/components/exhibition/ExhibitionFacts";
-import { ExhibitionPoster } from "@/components/exhibition/ExhibitionPoster";
-import { ExhibitionPreviewBanner } from "@/components/exhibition/ExhibitionPreviewBanner";
-import { ExhibitionTourList } from "@/components/exhibition/ExhibitionTourList";
+import { ExhibitionFactsPanel } from "@/components/exhibition/ExhibitionFactsPanel";
+import { ExhibitionLightboxProvider } from "@/components/exhibition/ExhibitionLightboxProvider";
+import { ExhibitionPageNav } from "@/components/exhibition/ExhibitionPageNav";
+import { ExhibitionPhotoGrid } from "@/components/exhibition/ExhibitionPhotoGrid";
+import { ExhibitionPreviousSection } from "@/components/exhibition/ExhibitionPreviousSection";
+import {
+  ExhibitionToursSection,
+  ExhibitionTravelingSection,
+} from "@/components/exhibition/ExhibitionToursSection";
 import { SectionPageShell } from "@/components/layout/SectionPageShell";
 import {
-  getCurrentEdition,
+  getAnnualExhibitions,
+  getAnnualExhibitionYear,
+  getAnnualIconCountLabel,
+  getAnnualOpenPeriodLabel,
+  getExhibitionArchiveBlock,
   getExhibitionPage,
-  getPreviousEditions,
-  resolveExhibitionState,
+  getLatestAnnualExhibition,
+  isAnnualExhibitionActive,
+  resolveAnnualVernissage,
 } from "@/content/exhibition";
+import { getTravelingExhibitions } from "@/content/news";
+import { getSiteSettings } from "@/content/settings";
 import { pl } from "@/i18n/pl";
-import { filterExistingPhotos, mediaFileExists } from "@/lib/mediaFileExists";
+import { formatDateRange } from "@/lib/formatDateRange";
+import { buildMailtoHref } from "@/lib/mailto";
+import { filterExistingPhotos } from "@/lib/mediaFileExists";
 
 export interface ExhibitionPageProps {
   active: string;
   sectionActive: string;
 }
 
+function ExhibitionSectionLayout({
+  sectionId,
+  eyebrow,
+  heading,
+  headingId,
+  copy,
+  facts,
+  photos,
+}: {
+  sectionId: string;
+  eyebrow?: string;
+  heading: string;
+  headingId: string;
+  copy: ReactNode;
+  facts: ReactNode;
+  photos: ReactNode;
+}) {
+  return (
+    <section id={sectionId} className="exhibition-section scroll-mt-space-6" aria-labelledby={headingId}>
+      {eyebrow ? (
+        <p className="text-size-caption uppercase tracking-caption-wide text-text-tertiary mb-space-3">
+          {eyebrow}
+        </p>
+      ) : null}
+      <h2
+        id={headingId}
+        className="font-serif text-size-role-section-h2-m md:text-size-role-section-h2 leading-heading text-text-h2 mb-space-5"
+      >
+        {heading}
+      </h2>
+
+      <div className="grid grid-cols-1 lg:grid-cols-offer-main gap-offer-main-gap items-start mb-space-6">
+        <div className="min-w-0">{copy}</div>
+        <div className="hidden lg:block">{facts}</div>
+      </div>
+
+      <div className="mb-space-6 lg:hidden">{facts}</div>
+      {photos}
+    </section>
+  );
+}
+
 export function ExhibitionPage({ active, sectionActive }: ExhibitionPageProps) {
   const page = getExhibitionPage();
-  const currentEdition = getCurrentEdition();
-  const previousEditions = getPreviousEditions();
-  const state = resolveExhibitionState();
-  const photos = filterExistingPhotos(currentEdition.photos);
+  const settings = getSiteSettings();
+  const latestAnnual = getLatestAnnualExhibition();
+  const allAnnual = getAnnualExhibitions();
+  const annualActive = isAnnualExhibitionActive(latestAnnual);
+  const vernissage = resolveAnnualVernissage(latestAnnual);
+  const latestYear = getAnnualExhibitionYear(latestAnnual.seasonSlug);
+  const archiveBlock = getExhibitionArchiveBlock();
+  const interiorPhotos = filterExistingPhotos(page.interiorPhotos);
+  const { page: pageCopy, permanent, annual, previous, facts, tours, traveling } = pl.exhibition;
+  const enrollmentEmail = settings.emails[0]?.address ?? "akademiaikony@gmail.com";
 
-  const currentHeading = pl.exhibition.currentEdition.heading.replace(
-    "{year}",
-    String(currentEdition.year),
+  const permanentFactRows = [
+    {
+      label: facts.where,
+      value: `${settings.place}, ${settings.address}`,
+    },
+    {
+      label: facts.when,
+      value: facts.whenValue,
+    },
+    {
+      label: facts.admission,
+      value: facts.admissionValue,
+    },
+    {
+      label: permanent.iconCountLabel,
+      value: permanent.iconCountValue
+        .replace("{from}", String(page.iconCount.from))
+        .replace("{to}", String(page.iconCount.to)),
+    },
+  ];
+
+  const annualFactRows = annualActive
+    ? [
+        {
+          label: annual.activeLabel,
+          value: `„${latestAnnual.title}"`,
+        },
+        {
+          label: annual.openUntilLabel,
+          value: getAnnualOpenPeriodLabel(latestAnnual),
+        },
+      ]
+    : [
+        {
+          label: annual.vernissageLabel,
+          value: vernissage
+            ? formatDateRange(vernissage, undefined, { withYear: true })
+            : "[do uzupełnienia: data wernisażu]",
+        },
+        {
+          label: annual.openUntilLabel,
+          value: getAnnualOpenPeriodLabel(latestAnnual),
+        },
+        {
+          label: annual.admissionLabel,
+          value: annual.admissionValue,
+        },
+        {
+          label: annual.onDisplayLabel,
+          value: getAnnualIconCountLabel(latestAnnual),
+        },
+      ];
+
+  const annualFooterLink = annualActive ? (
+    latestAnnual.newsSlug ? (
+      <TextLink href={`/aktualnosci/${latestAnnual.newsSlug}`}>
+        {annual.vernissageNewsLink.replace("{year}", String(latestYear))}
+      </TextLink>
+    ) : (
+      <TextLink href="/aktualnosci">
+        {annual.vernissageNewsLink.replace("{year}", String(latestYear))}
+      </TextLink>
+    )
+  ) : (
+    <TextLink href="/wyklady">{annual.lecturesLink}</TextLink>
   );
+
+  const annualPhotos = annualActive
+    ? filterExistingPhotos(latestAnnual.photos)
+    : filterExistingPhotos(archiveBlock?.photos ?? []);
+
+  const previousExhibitions = allAnnual.map((exhibition) => ({
+    seasonSlug: exhibition.seasonSlug,
+    year: getAnnualExhibitionYear(exhibition.seasonSlug),
+    title: exhibition.title,
+    newsSlug: exhibition.newsSlug,
+    photos: filterExistingPhotos(exhibition.photos),
+  }));
+
+  const toursMailtoHref = buildMailtoHref(enrollmentEmail, tours.mailtoSubject);
+  const travelingMailtoHref = buildMailtoHref(enrollmentEmail, traveling.mailtoSubject);
+  const travelingItems = getTravelingExhibitions();
 
   return (
     <SectionPageShell active={active} section="ikony" sectionActive={sectionActive}>
-      <div className="mx-auto w-full max-w-content-max">
-        <header>
-          <h1 className="font-serif text-size-h1-m md:text-size-h1 leading-tight text-text-h1 mb-space-4 md:mb-space-5">
-            {page.title}
-          </h1>
-          <p className="text-size-lead-m md:text-size-lead leading-body text-text-secondary max-w-measure-lead">
-            {page.lead}
-          </p>
-        </header>
+      <header className="mb-space-6">
+        <p className="text-size-caption uppercase tracking-caption-wide text-text-tertiary mb-lectures-eyebrow-mb">
+          {pageCopy.eyebrow}
+        </p>
+        <h1 className="font-serif text-size-h1-m md:text-size-h1 leading-tight text-text-h1 mb-space-5">
+          {pageCopy.title}
+        </h1>
+        <p className="text-size-lead-m md:text-size-lead leading-body text-text-secondary max-w-measure-lead">
+          {pageCopy.lead}
+        </p>
+        <ExhibitionPageNav />
+      </header>
 
-        <div className="exhibition-facts-wrap">
-          {state === "zapowiedz" ? <ExhibitionPreviewBanner edition={currentEdition} /> : null}
-          <ExhibitionFacts currentEdition={currentEdition} />
-        </div>
-
-        <section className="exhibition-section" aria-labelledby="exhibition-current-heading">
-          <h2
-            id="exhibition-current-heading"
-            className="font-serif text-size-role-section-h2-m md:text-size-role-section-h2 leading-heading text-text-h2 mb-space-5"
-          >
-            {currentHeading}
-          </h2>
-
-          <div className="exhibition-current-grid">
-            <div className="exhibition-current-main">
-              <ExhibitionEditionGallery
-                photos={photos}
-                placeholderLabel={pl.exhibition.currentEdition.photoPlaceholder.replace(
-                  "{year}",
-                  String(currentEdition.year),
-                )}
-                heroAlt={pl.exhibition.currentEdition.heroAlt.replace(
-                  "{year}",
-                  String(currentEdition.year),
-                )}
-              >
-                {currentEdition.summary ? (
-                  <p className="text-size-body md:text-size-body-lg leading-body md:leading-prose text-text-secondary mb-space-4">
-                    {currentEdition.summary}
-                  </p>
-                ) : null}
-
-                {currentEdition.seasonTheme ? (
-                  <p className="text-size-body md:text-size-body-lg leading-body md:leading-prose text-text-secondary">
-                    {pl.exhibition.currentEdition.seasonIntro.replace(
-                      "{theme}",
-                      currentEdition.seasonTheme,
-                    )}{" "}
-                    <TextLink href="/wyklady">{pl.exhibition.currentEdition.seasonLink}</TextLink>
-                  </p>
-                ) : null}
-              </ExhibitionEditionGallery>
-            </div>
-
-            <ExhibitionPoster edition={currentEdition} />
-          </div>
-        </section>
-
-        <section className="exhibition-section" aria-labelledby="exhibition-description-heading">
-          <h2
-            id="exhibition-description-heading"
-            className="font-serif text-size-role-section-h2-m md:text-size-role-section-h2 leading-heading text-text-h2 mb-space-5"
-          >
-            {pl.exhibition.description.heading}
-          </h2>
-          <div className="exhibition-description-grid">
-            <div className="exhibition-description-copy">
+      <ExhibitionLightboxProvider>
+        <ExhibitionSectionLayout
+          sectionId={permanent.sectionId}
+          eyebrow={permanent.eyebrow}
+          heading={page.title}
+          headingId="exhibition-permanent-heading"
+          copy={
+            <>
               {page.descriptionParagraphs.map((paragraph) => (
-                <p
-                  key={paragraph}
-                  className="text-size-body md:text-size-body-lg leading-body md:leading-prose text-text-secondary mb-space-4 last:mb-0"
-                >
+                <p key={paragraph} className="exhibition-section-copy mb-space-4 last:mb-0">
                   {paragraph}
                 </p>
               ))}
-            </div>
-            <div className="exhibition-description-photos">
-              {page.interiorPhotos.map((photo) => (
-                <figure key={photo.src} className="exhibition-interior-figure">
-                  {mediaFileExists(photo.src) ? (
-                    <span className="exhibition-interior-frame">
-                      <Image
-                        src={photo.src}
-                        alt={photo.alt}
-                        fill
-                        sizes="(min-width: 768px) 50vw, 100vw"
-                        className="exhibition-interior-image"
-                      />
-                    </span>
-                  ) : (
-                    <ExhibitionPhotoPlaceholder
-                      className="exhibition-interior-placeholder"
-                      label={pl.exhibition.description.photoPlaceholder}
-                    />
-                  )}
-                  {photo.caption ? (
-                    <figcaption className="exhibition-interior-caption">{photo.caption}</figcaption>
+            </>
+          }
+          facts={
+            <ExhibitionFactsPanel
+              rows={permanentFactRows}
+              footerLink={<TextLink href="/kontakt#dojazd">{facts.contactLink}</TextLink>}
+            />
+          }
+          photos={
+            <ExhibitionPhotoGrid
+              photos={interiorPhotos}
+              layout="pair"
+              showCaptionNote
+            />
+          }
+        />
+
+        <ExhibitionSectionLayout
+          sectionId={annual.sectionId}
+          heading={annual.title}
+          headingId="exhibition-annual-heading"
+          copy={
+            <>
+              <p className="exhibition-section-copy mb-space-4">{annual.intro1}</p>
+              <p className="exhibition-section-copy">{annual.intro2}</p>
+            </>
+          }
+          facts={<ExhibitionFactsPanel rows={annualFactRows} footerLink={annualFooterLink} />}
+          photos={
+            <>
+              {!annualActive && archiveBlock ? (
+                <p className="exhibition-archive-label mb-space-4">
+                  {previous.lastExhibitionLabel
+                    .replace("{year}", String(archiveBlock.year))
+                    .replace("{title}", archiveBlock.title)}
+                </p>
+              ) : null}
+              <ExhibitionPhotoGrid photos={annualPhotos} layout="quad" maxCount={4} />
+              {!annualActive && archiveBlock ? (
+                <div className="exhibition-archive-footer">
+                  <p className="exhibition-archive-note">
+                    {annual.archivePhotosNote.replace("{year}", String(archiveBlock.year))}
+                  </p>
+                  {archiveBlock.newsSlug ? (
+                    <TextLink href={`/aktualnosci/${archiveBlock.newsSlug}`}>
+                      {annual.vernissageNewsLink.replace("{year}", String(archiveBlock.year))}
+                    </TextLink>
                   ) : null}
-                </figure>
-              ))}
-            </div>
-          </div>
-        </section>
+                </div>
+              ) : null}
+            </>
+          }
+        />
 
-        <ExhibitionTourList edition={currentEdition} state={state} />
+        <ExhibitionToursSection mailtoHref={toursMailtoHref} />
 
-        <section className="exhibition-section" aria-labelledby="exhibition-previous-heading">
-          <h2
-            id="exhibition-previous-heading"
-            className="font-serif text-size-role-section-h2-m md:text-size-role-section-h2 leading-heading text-text-h2 mb-space-5"
-          >
-            {pl.exhibition.previousEdition.heading}
-          </h2>
-          <p className="text-size-body md:text-size-body-lg leading-body md:leading-prose text-text-secondary max-w-measure-prose mb-space-6">
-            {pl.exhibition.previousEdition.lead}
-          </p>
-          <ul className="exhibition-edition-list">
-            {previousEditions.map((edition) => (
-              <ExhibitionEditionCard
-                key={edition.year}
-                edition={edition}
-                photos={filterExistingPhotos(edition.photos)}
-              />
-            ))}
-          </ul>
-        </section>
+        <ExhibitionPreviousSection exhibitions={previousExhibitions} />
+      </ExhibitionLightboxProvider>
 
-        <footer className="exhibition-footer-links">
-          <span className="text-size-body text-text-secondary">{pl.exhibition.footer.intro}</span>
-          <TextLink href="/ikony">{pl.exhibition.footer.galleryLink}</TextLink>
-          <TextLink href="/ikony/na-zamowienie">{pl.exhibition.footer.orderLink}</TextLink>
-        </footer>
-      </div>
+      <ExhibitionTravelingSection mailtoHref={travelingMailtoHref} items={travelingItems} />
+
+      <footer className="exhibition-page-footer">
+        <span className="exhibition-page-footer-label">{pageCopy.startHere}</span>
+        <TextLink href="/ikony">{pageCopy.galleryLink}</TextLink>
+        <TextLink href="/warsztaty">{pageCopy.workshopsLink}</TextLink>
+      </footer>
     </SectionPageShell>
   );
 }

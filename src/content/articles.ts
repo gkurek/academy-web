@@ -1,6 +1,7 @@
 import type { ComponentType } from "react";
 
 import type { Article, ArticleSource, Author } from "@/content/types";
+import { assertLecturerSlugExists, getAuthorDisplayName } from "@/content/authors";
 import { articleModules } from "@/content/articles-registry";
 import { getPublicationBySlug } from "@/content/publications";
 import { pl } from "@/i18n/pl";
@@ -12,6 +13,12 @@ export type LoadedArticle = ArticleFrontmatter & {
 };
 
 const articleEntries = Object.values(articleModules).map((module) => module.frontmatter);
+
+articleEntries.forEach((article) => {
+  article.authors.forEach((author) => {
+    assertLecturerSlugExists(author, `Article "${article.slug}"`);
+  });
+});
 
 function compareByYearDesc(a: ArticleFrontmatter, b: ArticleFrontmatter): number {
   return b.year - a.year;
@@ -48,7 +55,7 @@ export function loadArticleBySlug(slug: string): LoadedArticle | undefined {
 }
 
 export function formatArticleAuthors(authors: Author[]): string {
-  return authors.map((author) => author.name).join(", ");
+  return authors.map((author) => getAuthorDisplayName(author)).join(", ");
 }
 
 export function formatArticleSourceLabel(source: ArticleSource): string {
