@@ -12,6 +12,17 @@ Utworzone 2026-09-26, po zamknięciu etapu 8b, przed sesją planistyczną etapu 
 Pliki zostały **przeniesione** (`git mv`), nie skopiowane — nie istnieje ich druga, „odchudzona"
 wersja w `docs/`. Treść jest bajt w bajt taka, jak w dniu zamknięcia.
 
+## Zapis historyczny planu głównego — `plan-claude-code-historia.md`
+
+Wydzielony z `docs/plan-claude-code.md` v0.6 (638 linii) przy rozcięciu na wersję żywą (350 linii)
+i historyczną (383 linie). Zawiera §3H opisy etapów 1–8b, §4H **65 zamkniętych** decyzji,
+§5H odhaczone pozycje treści makietowych, §6H dziennik 2026-09-11…2026-09-26, załączniki B i C.
+
+Rejestr decyzji jest **podzielony rozłącznie**: 53 wiersze żywe dla etapów 9–11 zostały
+w `docs/plan-claude-code.md` §4, pozostałe 65 jest tutaj. Numeracja `K-xx` jest globalna,
+więc każdy numer leży w dokładnie jednym z dwóch plików — żaden wiersz nie jest powtórzony.
+Szablon planu etapu (Załącznik A) został w żywym dokumencie, bo jest potrzebny do planów 9–11.
+
 ## Plany zamkniętych etapów — `archive/plans/`
 
 Poprzednia ścieżka: `docs/plans/`. W `docs/plans/` zostają wyłącznie plany etapów **9, 10, 11**.
