@@ -1,6 +1,6 @@
 # Plan pracy z Claude Code — Akademia Ikony
 
-> **Wersja:** 0.5 · **Data:** 2026-09-22
+> **Wersja:** 0.6 · **Data:** 2026-09-26
 > **Status:** żywy dokument. Jedyne miejsce, w którym śledzony jest postęp fazy implementacji. Aktualizowany po każdym checkpoincie.
 > **Dokumenty powiązane:** `brief-claude-code.md` (wymagania techniczne, model treści, fakty stałe), `design/README` (handoff z Claude Design).
 > **Miejsce w repo:** `docs/plan-claude-code.md`. Plany etapów: `docs/plans/0N-nazwa.md`.
@@ -71,12 +71,13 @@ Statusy: ⬜ nie zaczęty · 🟡 plan w przygotowaniu · 🔵 plan zatwierdzony
 | 5   | Galeria ikon (+ korekty 05b)                   | `docs/plans/05-galeria.md`, `docs/plans/05b-review-fixes.md` | ✅ zamknięty         | 2026-09-20 |
 | 6   | Strony o akademii i pracownia                  | `docs/plans/06-o-akademii.md`    | ✅ zamknięty         | 2026-09-21 |
 | 7   | Aktualności (+ korekty)                        | `docs/plans/07-aktualnosci.md`, `docs/plans/07b-review-fixes.md` | ✅ zamknięty         | 2026-09-22 |
-| 8   | Strony pozostałe                               | `docs/plans/08-pozostale.md`     | 🟠 w implementacji (4/4) | —          |
+| 8   | Strony pozostałe                               | `docs/plans/08-pozostale.md`     | ✅ zamknięty         | 2026-09-22 |
+| 8b  | Korekty po przeglądzie etapu 08                | `docs/plans/08b-review-fixes.md` | ✅ zamknięty         | 2026-09-26 |
 | 9   | Migracja treści z WordPressa                   | `docs/plans/09-migracja.md`      | ⬜                   | —          |
 | 10  | Wykończenie: ewaluacja serwisu, poprawki po prezentacji, SEO, optymalizacja | `docs/plans/10-wykonczenie.md`   | ⬜                   | —          |
 | 11  | Wdrożenie                                      | `docs/plans/11-wdrozenie.md`     | ⬜                   | —          |
 
-Kolejność jest wiążąca dla 1 → 2 → 3 (szablon ofertowy i `FactsBox` są potrzebne dalej). Etapy 4, 5, 6–8 można przestawiać. 9 (migracja) wymaga wszystkich stron. 10 (ewaluacja, poprawki i wykończenie na prawdziwych danych) wymaga 9. 11 po 10.
+Kolejność jest wiążąca dla 1 → 2 → 3 (szablon ofertowy i `FactsBox` są potrzebne dalej). Etapy 4, 5, 6–8 można przestawiać. **Etap 8 zamknięty 2026-09-26** (implementacja 08 + korekty 08b). 9 (migracja) wymaga wszystkich stron. 10 (ewaluacja, poprawki i wykończenie na prawdziwych danych) wymaga 9. 11 po 10.
 
 ---
 
@@ -242,9 +243,11 @@ Dla każdego: cel, zakres, kryteria ukończenia (DoD), proponowany podział na k
 - [x] `npm run build` i `npm run lint` OK;
 - [x] K-82…K-118 w §4;
 - [x] trasy: `/ikony/wystawy`, `/kontakt`, `/publikacje`, polityka, 404, home (desktop + 390 px);
-- [ ] lista pytań prawnych polityki dla fundacji (K-115) — przekazana poza repo / do EJK (ewaluacja 08, E08-05: **bez pliku w repo**).
+- [x] treść prawna polityki — rozstrzygnięcia K-119 (pytania K-115; bez osobnego pliku w repo, E08-05).
 
 **Kawałki:** infrastruktura serwisowa → model wystawy → strona wystawy + home → Aktualności ↔ wystawa → publikacje → kontakt/LSŚ/404 → polityka i copy pass — kolejność w `08b-review-fixes.md` §5.
+
+**Etap 8 w całości (08 + 08b):** ✅ zamknięty **2026-09-26**. Następny etap wiążący: **9** (migracja WP).
 
 ### Etap 9 — Migracja treści z WordPressa
 
@@ -432,10 +435,11 @@ Dla każdego: cel, zakres, kryteria ukończenia (DoD), proponowany podział na k
 | K-112 | Skip link                                             | 8b       | `#main-content` w `layout.tsx` | 2026-09-26 |
 | K-113 | `ExternalLink`                                        | 8b       | Jeden komponent dla linków zewnętrznych | 2026-09-26 |
 | K-114 | Szablon tytułu dokumentu                              | 8b       | `title.template` `%s · Akademia Ikony`; `generateMetadata` na trasach etapu 08 | 2026-09-26 |
-| K-115 | Polityka prywatności — struktura                      | 8b       | H2 = TOC; cookies bez Plausible/Umami; treść prawna — fundacja | 2026-09-26 |
+| K-115 | Polityka prywatności — struktura                      | 8b       | H2 = TOC; cookies bez Plausible/Umami; treść prawna — patrz **K-119** | 2026-09-26 |
 | K-116 | Nazwa fundacji                                        | 8b       | „Fundacja IKONA DZIŚ” | 2026-09-26 |
 | K-117 | Kontakt — adres i mapa                                | 8b       | Adres §8; `tel:`; `#dojazd`; `<address>` | 2026-09-26 |
 | K-118 | LSŚ „Gdzie byliśmy”                                   | 8b       | Format miejsca · rok; sekcja pod cytatami | 2026-09-26 |
+| K-119 | Polityka prywatności — treść prawna (pytania K-115)   | 8b, 10   | **Zatwierdzenie treści** (`content/pages/polityka-prywatnosci.json`): administrator Fundacja IKONA DZIŚ (dane jak w pliku) — OK; `lastUpdated` **bez zmian** (`2026-01-04`); lead — OK. Zakres danych: imię, nazwisko, e-mail, telefon — wystarczający; **bez** dopisków (faktury, PESEL, marketing) i **bez** osobnej sekcji o zdjęciach. Podstawy art. 6 ust. 1 lit. a/b/f — zatwierdzone; okres „do wygaśnięcia roszczeń” — zostaje; lista odbiorców — kompletna; brak państw trzecich i profilowania — nadal prawda. Prawa osób — wystarczające; kontakt RODO: `akademiaikony@gmail.com`; **bez** IOD w polityce. Cookies (brak marketingu/analityki; Google Maps) — OK; analityka bez cookies — **aktualizacja w etapie 10**; brak innych osadzeń do opisania. **Może obowiązywać na produkcji**; formalne zatwierdzenie dokumentu: **EJK**. Odpowiedzi: właściciel repo, 2026-09-26. | 2026-09-26 |
 
 Decyzje spoza kodu (D-01…D-06 z briefu v2) pozostają w dokumentach ekosystemu; tu wpisujemy tylko ich skutki dla implementacji. **D-02 (domyślny filtr galerii):** galeria pokazuje **obie sekcje, EJK pierwsza, sztywny podział** (K-41), bez filtra autora; pytanie o zakres prac EJK po starcie strony autorskiej zostaje otwarte — skutek w K-05 / K-41 / `docs/plans/05b-review-fixes.md` (2026-09-19).
 
@@ -536,6 +540,8 @@ Lista rośnie w każdym etapie. Odhaczana w etapie 9 (migracja).
 | 2026-09-22 | **Sesja dokumentacyjna Publikacje (K-76…K-78, D-06).** Układ `/publikacje`: album jubileuszowy + artykuły, bez zakładek. Jedyne wydawnictwo: „IKONA DZIŚ. AKADEMIA IKONY 2010–2025” (tytuł i temat `mailto:` do potwierdzenia). Katalog 2020 nieistniejący; brak materiałów medialnych o Akademii. Poświęcenie → Aktualności `kind: 'plener'` (K-77, zastępuje K-55). Plakaty → `News.poster` / `ExhibitionEdition.poster` (K-78). Terminologia: „album”, nie „książka”/„katalog”. Szczegóły: `docs/plan-aktualizacji-dokumentow-publikacje.md`. Zmiany w kodzie — etapy 8–10. Sprzeczności z zamkniętymi planami (np. 07: poświęcenia → publikacje) i wpisem v0.4 o poświęceniach → Publikacje — zastąpione przez K-77; `docs/plan-aktualizacji-dokumentow-wydarzenia.md` pozostaje zapisem sesji 2026-09-21 bez przepisywania. |
 | 2026-09-22 | Sesja planistyczna etapu 8 zakończona, plan zatwierdzony (`docs/plans/08-pozostale.md`). **4 kawałki** (kontakt · wystawa+home · publikacje · polityka+404). Rejestr §4: K-79…K-81. Decyzje D-08-01…10 (m.in. kafel wystawy z `editions.json`, polityka z WP, 404 z `mainNav`, makiety 7a–7d i 8a–8j). |
 | 2026-09-26 | **Etap 8b zamknięty** (7/7 kawałków, `docs/plans/08b-review-fixes.md`). Wystawa przebudowana: `/ikony/wystawy`, `annual.json`, K-82…K-118. Briefy v2.3 / `brief-claude-code.md` zsynchronizowane. Master plan: sekcje etap 8 + **etap 8b**, migracja §9 bez `editions.json`. |
+| 2026-09-26 | **Etap 8 zamknięty** (08: 4/4 + 08b: 7/7). Tabela §2: wiersze 8 i 8b → ✅; data domknięcia całości 2026-09-26. |
+| 2026-09-26 | **K-119** — odpowiedzi na pytania prawne polityki (K-115); DoD 8b domknięty; treść `polityka-prywatnosci.json` może obowiązywać; formalnie zatwierdza EJK. |
 
 ---
 

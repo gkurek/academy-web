@@ -1,6 +1,6 @@
 # Przegląd etapu 08 na stagingu — ocena merytoryczna i techniczna
 
-> **Archiwum (ewaluacja E08-11).** Opisuje staging i `/ikony/wystawa` sprzed etapu **08b** (2026-09-22). Stan docelowy wystawy, kontaktu, publikacji i pozostałych tras z przeglądu: [`docs/plans/08b-review-fixes.md`](plans/08b-review-fixes.md). Rejestr rozstrzygnięć docs vs kod: ten plan §10.
+> **Archiwum (ewaluacja E08-11).** Opisuje staging i `/ikony/wystawa` sprzed etapu **08b** (2026-09-22). Stan docelowy wystawy, kontaktu, publikacji i pozostałych tras z przeglądu: [`docs/plans/08b-review-fixes.md`](plans/08b-review-fixes.md). Rejestr rozstrzygnięć docs vs kod: ten plan §10. **Etap 8 zamknięty** 2026-09-26 (`docs/plan-claude-code.md` §2).
 
 Status: materiał wejściowy do `08b-review-fixes.md` (zamknięty po 08b — nie aktualizować jako plan docelowy)
 Data: 2026-09-22

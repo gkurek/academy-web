@@ -1,5 +1,7 @@
 # Plan 08b — Korekty po przeglądzie etapu 08
 
+> **Etap 8 zamknięty** (implementacja `08-pozostale` + ten plan 08b): **2026-09-26** — `docs/plan-claude-code.md` §2.
+
 Status: zamknięty (7/7 kawałków, 2026-09-26)
 Gałąź: `feat/08b-review-fixes`
 Wsad: `docs/08-review-staging.md`
@@ -425,7 +427,7 @@ Punkty **pominięte** (materiały, nie struktura): `[do uzupełnienia]`, `[przyk
 - [x] Przegląd wizualny: `/ikony/wystawy`, `/kontakt`, `/publikacje`, `/polityka-prywatnosci`, 404, home — desktop + 390 px
 - [x] `mailto:` przetestowany (temat bez `+`)
 - [x] Brak notatek projektowych C1 w UI
-- [ ] Lista pytań prawnych polityki przekazana (K-115) — poza repo / do EJK (E08-05: bez pliku w docs)
+- [x] Pytania prawne polityki (K-115) — rozstrzygnięte **K-119** w `plan-claude-code.md` §4 (2026-09-26; bez pliku w repo, E08-05)
 
 ---
 
@@ -434,7 +436,7 @@ Punkty **pominięte** (materiały, nie struktura): `[do uzupełnienia]`, `[przyk
 - **ISR wystawy:** `revalidate: 86400` — stan zmienia się do 24 h po dacie; akceptowalne (jak `featuredUntil`). Alternatywa: krótszy interwał — decyzja przy implementacji kawałka 3.
 - **Stara trasa `/ikony/wystawa`:** linki zewnętrzne i WP mogą wskazywać stary URL — 301 w etapie 9.
 - **Profile Szymuła/Biskup:** minimalne — EJK może uzupełnić bio później (etap 9/10).
-- **Polityka:** struktura w kodzie; treść prawna wymaga fundacji — nie generujemy. EJK potwierdziła strukturę i zakres danych (2026-09-26); sekcja kontaktu — tylko e-mail; po wdrożeniu analityki (etap 10) — aktualizacja cookies/RODO.
+- **Polityka:** treść zatwierdzona do publikacji (**K-119**); formalnie dokument zatwierdza **EJK**. Analityka bez cookies — aktualizacja sekcji Cookies w **etapie 10**.
 - **K-69** (funkcja Aktualności) — poza 08b; otwarte do przeglądu całości.
 
 ---
