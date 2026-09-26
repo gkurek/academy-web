@@ -1,7 +1,7 @@
 // Single source of truth for the main menu, SectionNav per section, and the
 // footer sitemap — labels and hrefs come verbatim from brief-claude-code.md §3,
 // with the Wykłady/SectionNav label resolved per the document hierarchy in
-// CLAUDE.md (brief wins over the makieta — see docs/plans/01-skeleton.md).
+// CLAUDE.md (brief wins over the makieta — see docs/archive/plans/01-skeleton.md).
 
 export type NavLink = { label: string; href: string };
 

@@ -2,14 +2,15 @@
 
 ## Dokumenty i kiedy je czytać
 
-- `docs/plan-claude-code.md` – plan całej fazy implementacji; czytaj na starcie każdej sesji planistycznej.
-- `docs/plans/0N-*.md` – plan bieżącego etapu; czytaj na starcie każdej sesji implementacyjnej.
+- `docs/plan-claude-code.md` – plan żywy: rytm pracy, tabela postępu, etapy **9–11**, decyzje wiążące, otwarte pozycje treści; czytaj na starcie każdej sesji planistycznej.
+- `docs/plans/0N-*.md` – plan bieżącego etapu; czytaj na starcie każdej sesji implementacyjnej. Są tu wyłącznie plany **09, 10, 11**.
+- `docs/archive/` – **nie czytaj w normalnej sesji.** Zamknięte plany etapów 1–8b, zamknięte sesje dokumentacyjne i `plan-claude-code-historia.md` (opisy etapów 1–8b, 65 decyzji zamkniętych, dziennik do 2026-09-26). Sięgaj tam tylko po rekonstrukcję zamkniętej decyzji — mapa „szukasz → idź do" jest w `docs/plan-claude-code.md` §7, spis w `docs/archive/README.md`. Pliki w archiwum cytują dawne ścieżki `docs/plans/0N-*.md`; dziś to `docs/archive/plans/0N-*.md` — nie przepisujemy ich, żeby zachować treść z dnia zamknięcia.
 - `docs/brief-claude-code.md` – wymagania, architektura tras (§3), model treści (§4), fakty stałe (§8); czytaj przy pytaniach „co ma być”.
 - `docs/brief-full.md` – kontekst biznesowy; tylko przy niejasnościach co do treści lub copy, nie przy pytaniach technicznych.
 - `design/README` + `design/*.dc.html` – makiety i tokeny. Obowiązuje kierunek 1a i jego rozwinięcia 2a/3a/3b;
 - `docs/design-mockup-guide.md` – **czytaj zawsze, zanim weźmiesz obraz albo dokładną wartość stylu wprost z `.dc.html`.** Jak znaleźć właściwy plik (`design/uploads/`, nie tylko `design/assets/`) i jak odczytać realne, rozwiązane wartości placeholderów `{{ }}` (lokalny serwer zamiast `file://`) — spisane po dwóch złych zgadnięciach w etapie 2.
 
-Przy konflikcie: `CLAUDE.md` > plan etapu > `brief-claude-code.md` > `brief-full.md` > makieta. Rozbieżność zgłaszasz w meldunku, nie rozstrzygasz sam.
+Przy konflikcie: `CLAUDE.md` > plan etapu > `brief-claude-code.md` > `brief-full.md` > makieta. Archiwum przegrywa z każdym z nich — zapisuje stan na dzień zamknięcia, nie stan docelowy. Rozbieżność zgłaszasz w meldunku, nie rozstrzygasz sam.
 
 ## Stack i komendy
 
@@ -31,18 +32,19 @@ Przy konflikcie: `CLAUDE.md` > plan etapu > `brief-claude-code.md` > `brief-full
 
 ### Język w kodzie vs. polski w produkcie (K-11)
 
-| Warstwa | Język | Przykład |
-|---|---|---|
-| Pliki, komponenty, funkcje, zmienne, typy | angielski | `WorkshopsPage`, `workshopsLink`, `SectionKey` |
-| Komentarze, commity, PR | angielski | — |
-| Stringi UI | polski w `src/i18n/pl.ts` | `pl.header.contactCta` |
-| Etykiety nawigacji | polski w `src/navigation.ts` | `label: "Wykłady"` — dane UI, nie identyfikatory |
-| Segmenty tras w `src/app/` | polski (= publiczny URL) | `warsztaty/page.tsx` → `/warsztaty` |
-| Query stringi w URL | polski | `?temat=trojca-swieta` |
-| Wartości enumów w `src/content/types.ts` | polski (zamrożone, brief §4) | `kind: "kurs"`, `kind: "wystawa"` (News) |
-| Treść redakcyjna | polski w `content/` | `settings.json`, MDX |
+| Warstwa                                   | Język                        | Przykład                                         |
+| ----------------------------------------- | ---------------------------- | ------------------------------------------------ |
+| Pliki, komponenty, funkcje, zmienne, typy | angielski                    | `WorkshopsPage`, `workshopsLink`, `SectionKey`   |
+| Komentarze, commity, PR                   | angielski                    | —                                                |
+| Stringi UI                                | polski w `src/i18n/pl.ts`    | `pl.header.contactCta`                           |
+| Etykiety nawigacji                        | polski w `src/navigation.ts` | `label: "Wykłady"` — dane UI, nie identyfikatory |
+| Segmenty tras w `src/app/`                | polski (= publiczny URL)     | `warsztaty/page.tsx` → `/warsztaty`              |
+| Query stringi w URL                       | polski                       | `?temat=trojca-swieta`                           |
+| Wartości enumów w `src/content/types.ts`  | polski (zamrożone, brief §4) | `kind: "kurs"`, `kind: "wystawa"` (News)         |
+| Treść redakcyjna                          | polski w `content/`          | `settings.json`, MDX                             |
 
 **Zasady:**
+
 - Foldery w `src/app/` są po polsku, bo w App Routerze nazwa folderu = segment URL (brief §3). To nie jest wyjątek od K-11 — to powierzchnia publiczna, nie identyfikator kodu.
 - `SectionKey` (`"o-akademii" | "warsztaty" | "wyklady" | …`) celowo powiela slugi tras — spójność z routingiem; para O Akademii · Pracownia (K-48).
 - Prop `active` w `Header`/`SectionNav` przyjmuje **label z `navigation.ts`** (polski tekst UI), nie własny klucz — na v1 PL-only wystarczy; przy i18n zamienić na stabilny klucz sekcji.
@@ -83,13 +85,14 @@ Przy konflikcie: `CLAUDE.md` > plan etapu > `brief-claude-code.md` > `brief-full
 
 ## Git
 
-- Gałąź `feat/0N-nazwa` per etap.
+- Gałąź `feat/0N-nazwa` per etap. Zadania nieetapowe (porządki w dokumentach, pojedyncza poprawka, konfiguracja) – `chore/krotki-opis`; format komunikatu wtedy `docs:` / `chore:` zamiast `0N/K:`.
 - Nigdy nie commitujesz sam. Commity, push i merge wykonuje właściciel repo po „OK”. Możesz zaproponować komunikat commita (po angielsku, format `0N/K: short description`).
+- **Wyjątek dla sesji cloud (K-120, 2026-09-26):** w Claude Code on the web kontener jest ulotny, więc tam commitujesz i pushujesz sam na wskazaną gałąź roboczą, po „OK” na każdy kawałek. Merge do `main` nadal wyłącznie właściciel repo. W sesjach lokalnych bez zmian – nie commitujesz.
 - Nie używaj `git commit`, `git push`, `git reset`, `git rebase`, `git checkout -- .` ani `git stash` bez wyraźnej prośby. `git status`, `git diff`, `git log` – zawsze wolno.
 
 ## Nie rób
 
 - Nie dotykaj `.env*`, `next.config.ts` (poza uzgodnionymi przekierowaniami 301 w etapie 9) ani plików w `design/`.
-- Nie uruchamiaj migracji z WordPressa ani żadnych zapytań do `akademiaikony.pl` przed etapem 10.
+- Nie uruchamiaj migracji z WordPressa ani żadnych zapytań do `akademiaikony.pl` przed etapem 9 (migracja to etap 9 od zamiany etapów 2026-09-22; wcześniej ten punkt mówił „etapem 10”).
 - Nie usuwaj i nie przenoś plików poza zakresem kawałka; nie „porządkuj przy okazji”.
 - Nie dodawaj banera cookies, `localStorage`, zewnętrznych skryptów ani analityki bez planu, w którym to jest zapisane.

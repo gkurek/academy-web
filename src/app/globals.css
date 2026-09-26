@@ -143,7 +143,7 @@
   --hero-pb-m: 34px;
   /* K-33 opcja A (04b): larger hero than review recommendation min(760px, 68vh).
      Mockup #1a had fixed 760px desktop; 920px/76vh keeps icon legibility — fold
-     of "Najbliższe" not required. See docs/plans/04b-review-fixes.md K-33 pkt 1. */
+     of "Najbliższe" not required. See docs/archive/plans/04b-review-fixes.md K-33 pkt 1. */
   --hero-image-h: min(920px, 76vh);
   --hero-image-w-m: 72%;
   /* Portrait aspect (360×682 source) — keeps width in sync when the grid column
