@@ -175,7 +175,7 @@ type News = {
 // K-82…K-90 (08b): w KŚT są trzy formy wystawy — ekspozycja codzienna (6–10 ikon EJK),
 // wystawa doroczna (40–50 ikon, wernisaż na ostatnim wykładzie sezonu), wystawy wyjazdowe
 // (wpisy Aktualności `kind: 'wystawa'` z `venue`). Strona `/ikony/wystawy`, H1 „Wystawy ikon”.
-// Szczegóły merytoryczne i układ: `docs/plans/08b-review-fixes.md` §1–§2. K-51: historia wydzielenia
+// Szczegóły merytoryczne i układ: `docs/archive/plans/08b-review-fixes.md` §1–§2. K-51: historia wydzielenia
 // wystawy z Aktualności (2026-09-21); model `ExhibitionEdition` zastąpiony w 08b.
 type PermanentExhibition = {
   title: string;

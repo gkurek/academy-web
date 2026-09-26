@@ -9,6 +9,14 @@
 > zapisuje stan na dzień zamknięcia, nie stan docelowy.
 
 Utworzone 2026-09-26, po zamknięciu etapu 8b, przed sesją planistyczną etapu 9.
+
+**Ścieżki wewnątrz archiwum nie są przepisywane.** Pliki tutaj cytują dawne adresy
+(`docs/plans/0N-*.md`, `docs/copy-o-akademii-pracownia.md`) — 79 takich odwołań. Dziś prowadzą
+do `docs/archive/...`, wystarczy dopisać `archive/`. Zostawione świadomie: przepisanie oznaczałoby
+edycję treści zamkniętej, a obietnica „bajt w bajt" jest warta więcej niż klikalność linku
+w dokumencie, którego w normalnej sesji nie czytamy. Odwołania do plików, które zniknęły w trakcie
+budowy (`content/exhibition/editions.json`, `content/offers/wyklady.mdx` w dawnym kształcie),
+zostają jako zapis stanu z dnia zamknięcia.
 Pliki zostały **przeniesione** (`git mv`), nie skopiowane — nie istnieje ich druga, „odchudzona"
 wersja w `docs/`. Treść jest bajt w bajt taka, jak w dniu zamknięcia.
 

@@ -5,7 +5,7 @@ description: >-
   Reads the stage plan file, git diff vs main, CLAUDE.md and brief-claude-code.md,
   runs build/lint, and returns a structured verdict with refactor priorities.
   Use when the user invokes evaluate-chunk or asks for technical evaluation of an
-  etap before closing it, e.g. with @docs/plans/04-wyklady.md.
+  etap before closing it, e.g. with @docs/plans/09-migracja.md.
 disable-model-invocation: true
 ---
 
@@ -15,7 +15,7 @@ Technical evaluation of one etap implementation **before commit / stage closure*
 
 ## Input
 
-User provides **one argument**: path to the stage plan file, e.g. `docs/plans/04-wyklady.md`.
+User provides **one argument**: path to the stage plan file, e.g. `docs/plans/09-migracja.md`.
 
 If missing, ask for it. Do not guess the stage.
 
@@ -156,11 +156,11 @@ Refactor list priority: **remove dead code → reuse existing → token instead 
 ## Example invocation
 
 ```
-/evaluate-chunk @docs/plans/04-wyklady.md
+/evaluate-chunk @docs/plans/09-migracja.md
 ```
 
 or:
 
 ```
-evaluate-chunk docs/plans/03-oferta.md
+evaluate-chunk docs/plans/10-wykonczenie.md
 ```
