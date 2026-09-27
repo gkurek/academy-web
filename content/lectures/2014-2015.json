@@ -1,0 +1,80 @@
+{
+  "slug": "2014-2015",
+  "label": "2014/2015",
+  "cycleTitle": "Obraz i kult",
+  "lectures": [
+    {
+      "date": "2014-10-23",
+      "title": "Obraz i kult · Muzyka i hymnografia jako element obrazu liturgicznego",
+      "lecturerSlugs": [
+        "henryk-paprocki",
+        "vitali-michalczuk"
+      ]
+    },
+    {
+      "date": "2014-11-27",
+      "title": "Kult w świetle antropologii chrześcijańskiej · Człowiek kultu. Modyfikacje antropologiczne w przestrzeni kultu",
+      "lecturerSlugs": [
+        "piotr-nikolski",
+        "vitali-michalczuk"
+      ]
+    },
+    {
+      "date": "2014-12-18",
+      "title": "Ikony nierukotwornyje · Obraz Matki Bożej wyłaniający się z Ewangelii",
+      "lecturerSlugs": [
+        "henryk-paprocki",
+        "grzegorz-michalczyk"
+      ]
+    },
+    {
+      "date": "2015-01-22",
+      "title": "Odrodzenie ikony w XX w. · Kult relikwii i świętość",
+      "lecturerSlugs": [
+        "vitali-michalczuk",
+        "piotr-nikolski"
+      ]
+    },
+    {
+      "date": "2015-02-19",
+      "title": "Pielgrzymowanie do Starców · Rola przewodnictwa duchowego dla jednostki i społeczeństwa",
+      "lecturerSlugs": [
+        "piotr-nikolski",
+        "lukasz-leonkiewicz"
+      ]
+    },
+    {
+      "date": "2015-03-19",
+      "title": "Kult ikony w obrzędowości ludowej prawosławia · Sacrum i ikona. Ikony cudami słynące w tradycji prawosławia",
+      "lecturerSlugs": [
+        "ewa-kocoj",
+        "ewa-kocoj"
+      ]
+    },
+    {
+      "date": "2015-04-16",
+      "title": "Ikony Pasyjne i Wielkanocne – Pascha Krestowoskresnaja · Ikona w przestrzeni sakralnej. Ikona i fresk",
+      "lecturerSlugs": [
+        "piotr-nikolski",
+        "henryk-paprocki"
+      ]
+    },
+    {
+      "date": "2015-05-21",
+      "title": "Liturgia w kontekście Paschalnym · Eksperymenty z przestrzenią sakralną w XX w.",
+      "lecturerSlugs": [
+        "grzegorz-michalczyk",
+        "vitali-michalczuk"
+      ]
+    },
+    {
+      "date": "2015-06-11",
+      "title": "Ikony objawione · „Ikonowy performance”. Obrazowość liturgii i ikony · Wernisaż wystawy ikon",
+      "lecturerSlugs": [
+        "henryk-paprocki",
+        "vitali-michalczuk",
+        "elzbieta-jackowska-kurek"
+      ]
+    }
+  ]
+}

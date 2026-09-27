@@ -1,0 +1,191 @@
+{
+  "slug": "2018-2019",
+  "label": "2018/2019",
+  "cycleTitle": "Ikona – korzenie i owoce wiary. O świętości",
+  "intro": "Zapraszamy na kolejny rok wykładów w Akademii Ikony. W tym roku tematem przewodnim będzie „O świętości”.",
+  "lectures": [
+    {
+      "date": "2018-10-09",
+      "title": "„Bądźcie świętymi, bo Ja jestem święty, Pan, Bóg wasz” (Kpł 2,19)",
+      "lecturerSlugs": [
+        "grzegorz-michalczyk"
+      ]
+    },
+    {
+      "date": "2018-10-16",
+      "title": "Droga do świętości. Przypadki z życia świętych",
+      "lecturerSlugs": [
+        "lukasz-leonkiewicz"
+      ]
+    },
+    {
+      "date": "2018-10-23",
+      "title": "Święte miejsca na Bałkanach",
+      "lecturerSlugs": [
+        "roman-batorski"
+      ]
+    },
+    {
+      "date": "2018-10-30",
+      "title": "„Świętych obcowanie”- freski w kaplicy Trójcy Świętej w Lublinie",
+      "lecturerSlugs": [
+        "ewa-siuzdak"
+      ]
+    },
+    {
+      "date": "2018-11-13",
+      "title": "Fenomenologia świętości w prawosławiu",
+      "lecturerSlugs": [
+        "vitali-michalczuk"
+      ]
+    },
+    {
+      "date": "2018-11-20",
+      "title": "Sztuka bizantyjska w Palermo",
+      "lecturerSlugs": [
+        "marek-wojnarowski"
+      ]
+    },
+    {
+      "date": "2018-11-27",
+      "title": "Święty Jan Damasceński obrońca obrazów",
+      "lecturerSlugs": [
+        "jozef-naumowicz"
+      ]
+    },
+    {
+      "date": "2018-12-11",
+      "title": "Ikonografia Bożego Narodzenia i Teofanii",
+      "lecturerSlugs": [
+        "lukasz-leonkiewicz"
+      ]
+    },
+    {
+      "date": "2019-01-08",
+      "title": "Czarni święci",
+      "lecturerSlugs": [
+        "jerzy-kazimierczak"
+      ]
+    },
+    {
+      "date": "2019-01-15",
+      "title": "Nowe ciało. Szaty w doświadczeniu sztuki wschodnio chrześcijańskiej",
+      "lecturerSlugs": [
+        "vitali-michalczuk"
+      ]
+    },
+    {
+      "date": "2019-01-22",
+      "title": "Eucharystia w życiu chrześcijan",
+      "lecturerSlugs": [
+        "henryk-paprocki"
+      ]
+    },
+    {
+      "date": "2019-01-29",
+      "title": "Święty Jakub i pielgrzymowanie",
+      "lecturerSlugs": [
+        "jerzy-kazimierczak"
+      ]
+    },
+    {
+      "date": "2019-02-12",
+      "title": "Sposób przedstawiania Chrystusa, Bogurodzicy i świętych w Bizancjum – analiza historyczna",
+      "lecturerSlugs": [
+        "lukasz-leonkiewicz"
+      ]
+    },
+    {
+      "date": "2019-02-19",
+      "title": "Prawosławny barok – fenomen stylu i duchowości",
+      "lecturerSlugs": [
+        "vitali-michalczuk"
+      ]
+    },
+    {
+      "date": "2019-02-26",
+      "title": "Możliwości myśli teologicznej w badaniu form sztuki liturgii wschodniego chrześcijaństwa",
+      "lecturerSlugs": [
+        "lukasz-hajduczenia"
+      ]
+    },
+    {
+      "date": "2019-03-12",
+      "title": "Ikonografia bizantyjska na Cyprze",
+      "lecturerSlugs": [
+        "roman-batorski"
+      ]
+    },
+    {
+      "date": "2019-03-19",
+      "title": "„Okrucieństwo” świętych przedstawiane na ikonie",
+      "lecturerSlugs": [
+        "justyna-sprutta"
+      ]
+    },
+    {
+      "date": "2019-03-26",
+      "title": "Cudowne ikony w Bizancjum",
+      "lecturerSlugs": [
+        "jozef-naumowicz"
+      ]
+    },
+    {
+      "date": "2019-04-09",
+      "title": "Nowe oblicza. Ikonografia świętych XX wieku",
+      "lecturerSlugs": [
+        "irina-tatarova"
+      ]
+    },
+    {
+      "date": "2019-04-23",
+      "title": "Ikonografia św. Jerzego",
+      "lecturerSlugs": [
+        "jerzy-kazimierczak"
+      ]
+    },
+    {
+      "date": "2019-04-30",
+      "title": "Aniołowie i święci. Hierarchia niebiańska i kościelna Pseudo-Dionizego Areopagity",
+      "lecturerSlugs": [
+        "lukasz-leonkiewicz"
+      ]
+    },
+    {
+      "date": "2019-05-14",
+      "title": "Rola szaleńców Bożych w dziejach Kościoła",
+      "lecturerSlugs": [
+        "piotr-nikolski"
+      ]
+    },
+    {
+      "date": "2019-05-21",
+      "title": "Święci książęta i cesarze – ikonograficzne typy prawowiernych władców",
+      "lecturerSlugs": [
+        "artur-aleksiejuk"
+      ]
+    },
+    {
+      "date": "2019-05-28",
+      "title": "Pojęcie sakralności w odniesieniu do muzyki liturgicznej i pozaliturgicznej",
+      "lecturerSlugs": [
+        "lukasz-hajduczenia"
+      ]
+    },
+    {
+      "date": "2019-06-11",
+      "title": "Świętość w rozumieniu biblijnym",
+      "lecturerSlugs": [
+        "barbara-strzalkowska"
+      ]
+    },
+    {
+      "date": "2019-06-14",
+      "title": "Ikona – przejmująca delikatność · Wernisaż wystawy ikon, oprowadzanie, agapa",
+      "lecturerSlugs": [
+        "elzbieta-jackowska-kurek",
+        ""
+      ]
+    }
+  ]
+}

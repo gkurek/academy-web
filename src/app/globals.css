@@ -2422,6 +2422,25 @@
     height: auto;
   }
 
+  .lecturer-photo-placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    aspect-ratio: var(--lecturer-photo-aspect);
+    border: 1px solid var(--line-gold);
+    background: var(--surface-tile);
+  }
+
+  .lecturer-photo-placeholder-text {
+    margin: 0;
+    padding: var(--space-4);
+    font-size: var(--size-caption);
+    line-height: var(--leading-body);
+    color: var(--text-tertiary);
+    text-align: center;
+  }
+
   .news-poster-placeholder {
     display: flex;
     align-items: center;

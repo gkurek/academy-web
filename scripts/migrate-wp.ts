@@ -9,6 +9,7 @@
  */
 
 import { parseMigrateCli, resolveDomains, type MigrateDomain } from "./migrate-wp/cli";
+import { runLecturesDomain } from "./migrate-wp/domains/lectures";
 import { runStaticDomain } from "./migrate-wp/domains/static";
 import { runStubDomain } from "./migrate-wp/domains/stub";
 import { probeWpRest } from "./migrate-wp/wp-client";
@@ -16,6 +17,10 @@ import { probeWpRest } from "./migrate-wp/wp-client";
 const runDomain = async (domain: MigrateDomain, options: ReturnType<typeof parseMigrateCli>) => {
   if (domain === "static") {
     await runStaticDomain(options);
+    return;
+  }
+  if (domain === "lectures") {
+    await runLecturesDomain(options);
     return;
   }
   await runStubDomain(domain, options);

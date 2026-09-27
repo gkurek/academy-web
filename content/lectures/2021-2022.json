@@ -1,0 +1,86 @@
+{
+  "slug": "2021-2022",
+  "label": "2021/2022",
+  "cycleTitle": "Ikona – piękno zanurzone w tajemnicy. Światłość prawdziwa",
+  "intro": "Zapraszamy na kolejny rok wykładów w Akademii Ikony.",
+  "lectures": [
+    {
+      "date": "2021-10-12",
+      "title": "„Było światło prawdziwe…” (J 1,9)",
+      "lecturerSlugs": [
+        "grzegorz-michalczyk"
+      ]
+    },
+    {
+      "date": "2021-11-16",
+      "title": "Światło w listach św. Pawła · Wskrzeszenie Łazarza – życie nie ma końca",
+      "lecturerSlugs": [
+        "marek-wojnarowski",
+        "jozef-naumowicz"
+      ]
+    },
+    {
+      "date": "2021-12-14",
+      "title": "Symeona Nowego-Teologa nauka o boskiej światłości · Przedświąteczna wystawa ikon – oprowadzanie, kiermasz świąteczny",
+      "lecturerSlugs": [
+        "lukasz-leonkiewicz",
+        "elzbieta-jackowska-kurek"
+      ]
+    },
+    {
+      "date": "2022-01-18",
+      "title": "O miłosierdziu Bożym · Nowa Jerozolima w ujęciu biblijnym",
+      "lecturerSlugs": [
+        "henryk-paprocki",
+        "barbara-strzalkowska"
+      ]
+    },
+    {
+      "date": "2022-02-15",
+      "title": "O złocie w malarstwie ikonowym · Światłość, która nie rani, czyli o symbolice światła i jego kategoriach w tradycji wschodniej",
+      "lecturerSlugs": [
+        "justyna-sprutta",
+        "justyna-sprutta"
+      ]
+    },
+    {
+      "date": "2022-03-15",
+      "title": "„Źródło Jego Światła podobne do kamienia drogocennego, jakby do jaspisu o przejrzystości kryształu” (Ap 21,11) – o mozaikach bizantyjskich pełnych blasku · „Spokój, który przewyższa wszelkie rozumienie” (Rudolf Otto)",
+      "lecturerSlugs": [
+        "marek-wojnarowski",
+        "krzysztof-sokolowski"
+      ]
+    },
+    {
+      "date": "2022-04-19",
+      "title": "Światło w pismach Janowych · Hezychastyczna światłość i modlitwa Jezusowa",
+      "lecturerSlugs": [
+        "roman-batorski",
+        "jozef-naumowicz"
+      ]
+    },
+    {
+      "date": "2022-05-17",
+      "title": "Ból i cierpienie w ikonie · Ogień na ikonach starowierców",
+      "lecturerSlugs": [
+        "artur-aleksiejuk",
+        "dorota-walczak"
+      ]
+    },
+    {
+      "date": "2022-06-14",
+      "title": "Jerozolima w wybranych tekstach wspomnień z Ziemi Świętej XIX-wiecznych polskich pielgrzymów",
+      "lecturerSlugs": [
+        "barbara-strzalkowska"
+      ]
+    },
+    {
+      "date": "2022-06-17",
+      "title": "Widzieć światłość · Wernisaż wystawy ikon, oprowadzanie, agapa",
+      "lecturerSlugs": [
+        "elzbieta-jackowska-kurek",
+        ""
+      ]
+    }
+  ]
+}

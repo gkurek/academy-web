@@ -1,0 +1,70 @@
+{
+  "slug": "2015-2016",
+  "label": "2015/2016",
+  "cycleTitle": "Ikona dziś",
+  "lectures": [
+    {
+      "date": "2015-10-20",
+      "title": "Kształtowanie teologii i artystycznego języka ikony",
+      "lecturerSlugs": [
+        "henryk-paprocki"
+      ]
+    },
+    {
+      "date": "2015-11-17",
+      "title": "Ikona a sztuka abstrakcyjna",
+      "lecturerSlugs": [
+        "vitali-michalczuk"
+      ]
+    },
+    {
+      "date": "2015-12-08",
+      "title": "Rok liturgiczny w ikonie",
+      "lecturerSlugs": [
+        "lukasz-leonkiewicz"
+      ]
+    },
+    {
+      "date": "2016-01-19",
+      "title": "Jerzy Nowosielski i ikona – droga inspiracji i stworzenie własnej formuły artystycznej",
+      "lecturerSlugs": [
+        "vitali-michalczuk"
+      ]
+    },
+    {
+      "date": "2016-02-16",
+      "title": "Monastery prawosławne w Polsce – historia ikon",
+      "lecturerSlugs": [
+        "lukasz-leonkiewicz"
+      ]
+    },
+    {
+      "date": "2016-03-15",
+      "title": "Freski bizantyjskie w Polsce",
+      "lecturerSlugs": [
+        "ewa-siuzdak"
+      ]
+    },
+    {
+      "date": "2016-04-19",
+      "title": "Teologia Światła",
+      "lecturerSlugs": [
+        "lukasz-leonkiewicz"
+      ]
+    },
+    {
+      "date": "2016-05-17",
+      "title": "Ikona w myśli XX wieku",
+      "lecturerSlugs": [
+        "irina-tatarova"
+      ]
+    },
+    {
+      "date": "2016-06-14",
+      "title": "Ikona dziś",
+      "lecturerSlugs": [
+        "henryk-paprocki"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,177 @@
+{
+  "slug": "2017-2018",
+  "label": "2017/2018",
+  "cycleTitle": "Ikona – korzenie i owoce wiary. O świętości",
+  "intro": "Zapraszamy na kolejny rok wykładów w Akademii Ikony. W tym roku tematem przewodnim będzie „O świętości”.",
+  "lectures": [
+    {
+      "date": "2017-10-10",
+      "title": "Ikonografia św. Andrzeja Apostoła",
+      "lecturerSlugs": [
+        "elzbieta-jackowska-kurek"
+      ]
+    },
+    {
+      "date": "2017-10-17",
+      "title": "Ikona Sądu Ostatecznego",
+      "lecturerSlugs": [
+        "marek-wojnarowski"
+      ]
+    },
+    {
+      "date": "2017-10-24",
+      "title": "Ikonografia Przemienienia Pańskiego – tajemnica światła",
+      "lecturerSlugs": [
+        "lukasz-leonkiewicz"
+      ]
+    },
+    {
+      "date": "2017-11-14",
+      "title": "Sztuka wczesnochrześcijańska cz. I",
+      "lecturerSlugs": [
+        "roman-batorski"
+      ]
+    },
+    {
+      "date": "2017-11-21",
+      "title": "Etiopia – fenomen afrykański",
+      "lecturerSlugs": [
+        "jerzy-kazimierczak"
+      ]
+    },
+    {
+      "date": "2017-11-28",
+      "title": "„Objawię moją chwałę wśród narodów” (Ez 39.21)",
+      "lecturerSlugs": [
+        "grzegorz-michalczyk"
+      ]
+    },
+    {
+      "date": "2017-12-12",
+      "title": "Ewangelia w dźwiękach – doświadczenie religijne a muzyka",
+      "lecturerSlugs": [
+        "lukasz-hajduczenia"
+      ]
+    },
+    {
+      "date": "2017-12-19",
+      "title": "Nieustanne Bogu dziękczynienie",
+      "lecturerSlugs": [
+        "elzbieta-jackowska-kurek"
+      ]
+    },
+    {
+      "date": "2018-01-16",
+      "title": "Ikona i Imię, spotkanie z Pierwowzorem w modlitwie",
+      "lecturerSlugs": [
+        "piotr-nikolski"
+      ]
+    },
+    {
+      "date": "2018-01-23",
+      "title": "Doświadczenie sztuki a formuła człowieka",
+      "lecturerSlugs": [
+        "vitali-michalczuk"
+      ]
+    },
+    {
+      "date": "2018-01-30",
+      "title": "Sztuka wczesnochrześcijańska cz. II",
+      "lecturerSlugs": [
+        "roman-batorski"
+      ]
+    },
+    {
+      "date": "2018-02-13",
+      "title": "Wielkie ikony „narodowe”",
+      "lecturerSlugs": [
+        "ewa-kocoj"
+      ]
+    },
+    {
+      "date": "2018-02-20",
+      "title": "Ikony wielkopostne i wielkanocne",
+      "lecturerSlugs": [
+        "elzbieta-jackowska-kurek"
+      ]
+    },
+    {
+      "date": "2018-02-27",
+      "title": "Trójca Święta w teologii i ikonografii",
+      "lecturerSlugs": [
+        "lukasz-leonkiewicz"
+      ]
+    },
+    {
+      "date": "2018-03-13",
+      "title": "Świat w którym rodzi się ikona",
+      "lecturerSlugs": [
+        "henryk-paprocki"
+      ]
+    },
+    {
+      "date": "2018-03-20",
+      "title": "Kanoniczność i obecność łaski w ikonie",
+      "lecturerSlugs": [
+        "piotr-nikolski"
+      ]
+    },
+    {
+      "date": "2018-04-10",
+      "title": "Sztuka Neosakralna",
+      "lecturerSlugs": [
+        "krzysztof-sokolowski"
+      ]
+    },
+    {
+      "date": "2018-04-17",
+      "title": "Śmierć w ikonografii prawosławnej",
+      "lecturerSlugs": [
+        "artur-aleksiejuk"
+      ]
+    },
+    {
+      "date": "2018-04-24",
+      "title": "Liturgiczna wizja człowieka w języku muzyki",
+      "lecturerSlugs": [
+        "lukasz-hajduczenia"
+      ]
+    },
+    {
+      "date": "2018-05-15",
+      "title": "Filokalia – umiłowanie piękna",
+      "lecturerSlugs": [
+        "jozef-naumowicz"
+      ]
+    },
+    {
+      "date": "2018-05-22",
+      "title": "Nieporozumienia wokół ikony w XX-XXI wieku",
+      "lecturerSlugs": [
+        "irina-tatarova"
+      ]
+    },
+    {
+      "date": "2018-05-29",
+      "title": "Sztuka w doświadczeniu religijnym",
+      "lecturerSlugs": [
+        "vitali-michalczuk"
+      ]
+    },
+    {
+      "date": "2018-06-12",
+      "title": "Dwie natury Chrystusa",
+      "lecturerSlugs": [
+        "barbara-strzalkowska"
+      ]
+    },
+    {
+      "date": "2018-06-15",
+      "title": "Ikona – sztuka i modlitwa · Wernisaż wystawy ikon, oprowadzanie, agapa",
+      "lecturerSlugs": [
+        "elzbieta-jackowska-kurek",
+        ""
+      ]
+    }
+  ]
+}

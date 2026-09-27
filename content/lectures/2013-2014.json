@@ -1,0 +1,80 @@
+{
+  "slug": "2013-2014",
+  "label": "2013/2014",
+  "cycleTitle": "Ikona – miejsce spotkania",
+  "intro": "Spotkania moderuje Elżbieta Jackowska-Kurek.",
+  "lectures": [
+    {
+      "date": "2013-10-24",
+      "title": "Chrześcijański Wschód i Zachód, próba definicji · Rzeczywistość ikony. Ikona a sztuka starożytna",
+      "lecturerSlugs": [
+        "aleksander-jacyniak",
+        "vitali-michalczuk"
+      ]
+    },
+    {
+      "date": "2013-11-21",
+      "title": "Umiłowanie Tory w Judaizmie · Rzeczywistość ikony. Sztuka współczesna w świetle ikony",
+      "lecturerSlugs": [
+        "grzegorz-michalczyk",
+        "vitali-michalczuk"
+      ]
+    },
+    {
+      "date": "2013-12-19",
+      "title": "Pentarchia – wschodnie patriarchaty · Święta Góra Atos",
+      "lecturerSlugs": [
+        "henryk-paprocki",
+        "lukasz-leonkiewicz"
+      ]
+    },
+    {
+      "date": "2014-01-23",
+      "title": "Ikona Matki Bożej Śnieżnej w Etiopii · Tradycja hezychastyczna w Bizancjum i jej współczesna interpretacja",
+      "lecturerSlugs": [
+        "jerzy-kazimierczak",
+        "piotr-nikolski"
+      ]
+    },
+    {
+      "date": "2014-02-27",
+      "title": "Ikona – obecność i spotkanie · Teologia Imienia Bożego",
+      "lecturerSlugs": [
+        "henryk-paprocki",
+        "piotr-nikolski"
+      ]
+    },
+    {
+      "date": "2014-03-27",
+      "title": "Poczęcie w ikonografii i teologii prawosławnej · Założenia i podstawy prawosławnej tradycji ascetycznej",
+      "lecturerSlugs": [
+        "artur-aleksiejuk",
+        "piotr-nikolski"
+      ]
+    },
+    {
+      "date": "2014-04-24",
+      "title": "Ikona w obrzędowości ludowej · Świadomość ikonograficzna w dziejach Kościoła Wschodniego",
+      "lecturerSlugs": [
+        "ewa-kocoj",
+        "piotr-nikolski"
+      ]
+    },
+    {
+      "date": "2014-05-22",
+      "title": "Monastycyzm – pierwsze monastery, reguły, pisarze ascetyczni · Ikony w Rzeczpospolitej Obojga Narodów",
+      "lecturerSlugs": [
+        "henryk-paprocki",
+        "aleksandra-sulikowska-gaska"
+      ]
+    },
+    {
+      "date": "2014-06-12",
+      "title": "Teologia Światła · Dogmat i moralność",
+      "lecturerSlugs": [
+        "henryk-paprocki",
+        "artur-aleksiejuk"
+      ]
+    }
+  ]
+}

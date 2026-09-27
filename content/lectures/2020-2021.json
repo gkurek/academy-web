@@ -1,0 +1,94 @@
+{
+  "slug": "2020-2021",
+  "label": "2020/2021",
+  "cycleTitle": "O Bożej obecności",
+  "intro": "Zapraszamy na kolejny rok wykładów w Akademii Ikony.",
+  "lectures": [
+    {
+      "date": "2020-10-13",
+      "title": "Szechina …",
+      "lecturerSlugs": [
+        "grzegorz-michalczyk"
+      ]
+    },
+    {
+      "date": "2020-10-27",
+      "title": "Ikona a mistyka · Ikona Trójcy Przenajświętszej",
+      "lecturerSlugs": [
+        "lukasz-leonkiewicz",
+        "jozef-naumowicz"
+      ]
+    },
+    {
+      "date": "2020-11-17",
+      "title": "Symbole Bożej obecności w ikonach Sądu Ostatecznego · Modlitwa Jezusowa",
+      "lecturerSlugs": [
+        "marek-wojnarowski",
+        "jozef-naumowicz"
+      ]
+    },
+    {
+      "date": "2020-12-08",
+      "title": "Ikona Bożego Narodzenia – spotkanie z Bogiem · Przedstawienia Matki Bożej",
+      "lecturerSlugs": [
+        "lukasz-leonkiewicz",
+        "roman-batorski"
+      ]
+    },
+    {
+      "date": "2021-01-19",
+      "title": "Na obraz i podobieństwo (istota sztuki ikony) · „Widzieć Boga, jakim jest” – współczesne świadectwa życia duchowego",
+      "lecturerSlugs": [
+        "henryk-paprocki",
+        "lukasz-leonkiewicz"
+      ]
+    },
+    {
+      "date": "2021-02-16",
+      "title": "Korzenie biblijnej tradycji żydowskiej ikony Misterium Przemienia Pańskiego w kontekście szalosz regali · Święci o doświadczaniu Boga w życiu codziennym",
+      "lecturerSlugs": [
+        "dariusz-klejnowski-rozycki",
+        "lukasz-leonkiewicz"
+      ]
+    },
+    {
+      "date": "2021-03-16",
+      "title": "Św. Józef – człowiek wielkiego ducha · Sztuka epoki Ducha Świętego – ponadhistoryczne doświadczenie liturgii prawosławnej",
+      "lecturerSlugs": [
+        "jozef-naumowicz",
+        "lukasz-hajduczenia"
+      ]
+    },
+    {
+      "date": "2021-04-13",
+      "title": "Przedstawienia Ukrzyżowania · Angelologia Pseudo-Dionizego Areopagity",
+      "lecturerSlugs": [
+        "roman-batorski",
+        "lukasz-leonkiewicz"
+      ]
+    },
+    {
+      "date": "2021-05-18",
+      "title": "Miejsce ikony w kulturze · Sztuka jako tradycja – kwestia sztuki w mistycznym życiu kościoła",
+      "lecturerSlugs": [
+        "irina-tatarova",
+        "vitali-michalczuk"
+      ]
+    },
+    {
+      "date": "2021-06-15",
+      "title": "Kim jest Duch Święty? – perspektywa nowotestamentalna",
+      "lecturerSlugs": [
+        "barbara-strzalkowska"
+      ]
+    },
+    {
+      "date": "2021-06-18",
+      "title": "Ikona – korzenie i owoce wiary · Wernisaż wystawy ikon, oprowadzanie, agapa",
+      "lecturerSlugs": [
+        "elzbieta-jackowska-kurek",
+        ""
+      ]
+    }
+  ]
+}

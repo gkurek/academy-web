@@ -115,8 +115,8 @@
     "photo": {
       "src": "/media/lecturers/ewa-kocoj.jpg",
       "alt": "Zdjęcie — Ewa Kocój",
-      "width": 307,
-      "height": 230
+      "width": 400,
+      "height": 500
     }
   },
   {
@@ -199,6 +199,34 @@
     }
   },
   {
+    "slug": "dariusz-klejnowski-rozycki",
+    "name": "Dariusz Klejnowski-Różycki",
+    "titles": "ks. prof. dr hab.",
+    "affiliation": "UO",
+    "affiliationFull": "Uniwersytet Opolski",
+    "bio": "Prezbiter diecezji gliwickiej, sinolog, pianista, ikonograf, profesor Uniwersytetu Opolskiego, doktor habilitowany nauk teologicznych w zakresie dogmatyki i ekumenizmu, rektor Śląskiej Szkoły Ikonograficznej, dyrektor Instytutu Badań nad Teologią i Duchowością Dalekiego Wschodu, kierownik studiów doktoranckich nauk teologicznych Wydziału Teologicznego UO, współzałożyciel Stowarzyszenia Sinicum im. Michała Boyma SJ, kurator międzynarodowego think-tanku Catechetical Difinitions, cenzor kościelny diecezji gliwickiej. Studiował w Lublinie, Krakowie, Paryżu, Londynie, Pekinie i Tajpej. Jego zainteresowania badawcze i publikacje dotyczą głównie teologii dogmatycznej (chrystologii), teologii ikony, teologii sztuki, teologii chińskiej i azjatyckiej.",
+    "photo": {
+      "src": "/media/lecturers/dariusz-klejnowski-rozycki.jpg",
+      "alt": "Zdjęcie — Dariusz Klejnowski-Różycki",
+      "width": 398,
+      "height": 507
+    }
+  },
+  {
+    "slug": "judyta-pudelko",
+    "name": "Judyta Pudełko",
+    "titles": "s. dr hab.",
+    "affiliation": "PDDM",
+    "affiliationFull": "Akademia Katolicka w Warszawie · Zakon Pobożnych Uczennic Boskiego Mistrza (PDDM)",
+    "bio": "Biblistka, członkini Zgromadzenia Sióstr Uczennic Boskiego Mistrza. Absolwentka Uniwersytetu Kardynała Stefana Wyszyńskiego w Warszawie (2006). W latach 2007–2010 studiowała w Studium Biblicum Franciscanum w Jerozolimie, uzyskując licencjat z nauk biblijnych i archeologii. Doktor habilitowany nauk teologicznych (Akademia Katolicka w Warszawie, 2021), profesor nadzwyczajny AKW (2024). Wykładowczyni Pisma Świętego na Akademii Katolickiej w Warszawie oraz wykładowca Papieskiego Wydziału Teologicznego w Warszawie. Zaangażowana w duszpasterstwo biblijne i popularyzowanie Lectio divina. Członkini zwyczajna Stowarzyszenia Biblistów Polskich, przewodniczka grup pielgrzymkowych w Ziemi Świętej. Autorka m.in. książek „Wierny przyjaciel lekarstwem życia (Syr 6,16). Koncepcja przyjaźni w Księdze Syracydesa”, „Profetyzm w Księdze Syracha” i „Nie za blisko nie za daleko. Z Rut i Noemi o dobrych relacjach” oraz kilkudziesięciu artykułów naukowych i popularnonaukowych. Prowadzi stronę „Biblia w pudełku”.",
+    "photo": {
+      "src": "/media/lecturers/judyta-pudelko.jpg",
+      "alt": "Zdjęcie — Judyta Pudełko",
+      "width": 290,
+      "height": 405
+    }
+  },
+  {
     "slug": "maciej-biskup",
     "name": "Maciej Biskup",
     "titles": "o. dr",
@@ -229,28 +257,12 @@
     "bio": "Biblistka, doktor habilitowany nauk teologicznych, profesor uczelni Wydziału Teologicznego UKSW. Kierownik Katedry Egzegezy Starego Testamentu, wicedyrektor Instytutu Nauk Teologicznych. Specjalizuje się w badaniach nad księgami mądrościowymi Starego Testamentu oraz Septuagintą – greckim przekładem Biblii hebrajskiej – i popularyzacją Biblii w Polsce i za granicą. Jako pierwsza kobieta w Warszawie objęła funkcję prodziekana ds. kształcenia Wydziału Teologicznego UKSW. Wykłada m.in. jako visiting professor w Pontificia Università Urbaniana w Rzymie i w Jordan University College w Marogoro w Tanzanii. Członek komitetu redakcyjnego czasopisma „La Revue Biblique”. Konsultant Konferencji Episkopatu Polski ds. pielgrzymowania i turystyki oraz zespołu Laudato Si przy Radzie ds. społecznych KEP. Przewodniczka po Ziemi Świętej i krajach biblijnych. Na UKSW stworzyła w 2022 r. kierunek studiów Chrześcijańska turystyka religijna."
   },
   {
-    "slug": "dariusz-klejnowski-rozycki",
-    "name": "Dariusz Klejnowski-Różycki",
-    "titles": "ks. prof. dr hab.",
-    "affiliation": "UO",
-    "affiliationFull": "Uniwersytet Opolski",
-    "bio": "Prezbiter diecezji gliwickiej, sinolog, pianista, ikonograf, profesor Uniwersytetu Opolskiego, doktor habilitowany nauk teologicznych w zakresie dogmatyki i ekumenizmu, rektor Śląskiej Szkoły Ikonograficznej, dyrektor Instytutu Badań nad Teologią i Duchowością Dalekiego Wschodu, kierownik studiów doktoranckich nauk teologicznych Wydziału Teologicznego UO, współzałożyciel Stowarzyszenia Sinicum im. Michała Boyma SJ, kurator międzynarodowego think-tanku Catechetical Difinitions, cenzor kościelny diecezji gliwickiej. Studiował w Lublinie, Krakowie, Paryżu, Londynie, Pekinie i Tajpej. Jego zainteresowania badawcze i publikacje dotyczą głównie teologii dogmatycznej (chrystologii), teologii ikony, teologii sztuki, teologii chińskiej i azjatyckiej."
-  },
-  {
     "slug": "irina-tatarova",
     "name": "Irina Tatarova",
     "titles": "dr",
     "affiliation": "UW",
     "affiliationFull": "Wydział „Artes Liberales”, Uniwersytet Warszawski",
     "bio": "Teatrolog, filmolog, teolog i bizantynolog. Doktorat w Instytucie Historii Sztuki Uniwersytetu Warszawskiego u prof. Wiesława Juszczaka; praca doktorska stała się podstawą książki „Ergo sum. Poszukiwania sensu istnienia w polskim i radzieckim filmie 1960–1990”. Studiowała teologię na Papieskim Wydziale Teologicznym w Warszawie. Od 2004 r. związana z Wydziałem „Artes Liberales” UW (wcześniej Ośrodek Badań nad Tradycją Antyczną); wykładała historię sztuki bizantyńskiej oraz prowadziła seminaria i wykłady o filmie, teatrze i sztuce sakralnej. Współzałożycielka Studium Chrześcijańskiego Wschodu przy klasztorze Dominikanów na Służewie. Założycielka komisji „Speculum Byzantinum” przy Wydziale „Artes Liberales” UW. Zmarła 30 października 2021 r."
-  },
-  {
-    "slug": "judyta-pudelko",
-    "name": "Judyta Pudełko",
-    "titles": "s. dr hab.",
-    "affiliation": "PDDM",
-    "affiliationFull": "Akademia Katolicka w Warszawie · Zakon Pobożnych Uczennic Boskiego Mistrza (PDDM)",
-    "bio": "Biblistka, członkini Zgromadzenia Sióstr Uczennic Boskiego Mistrza. Absolwentka Uniwersytetu Kardynała Stefana Wyszyńskiego w Warszawie (2006). W latach 2007–2010 studiowała w Studium Biblicum Franciscanum w Jerozolimie, uzyskując licencjat z nauk biblijnych i archeologii. Doktor habilitowany nauk teologicznych (Akademia Katolicka w Warszawie, 2021), profesor nadzwyczajny AKW (2024). Wykładowczyni Pisma Świętego na Akademii Katolickiej w Warszawie oraz wykładowca Papieskiego Wydziału Teologicznego w Warszawie. Zaangażowana w duszpasterstwo biblijne i popularyzowanie Lectio divina. Członkini zwyczajna Stowarzyszenia Biblistów Polskich, przewodniczka grup pielgrzymkowych w Ziemi Świętej. Autorka m.in. książek „Wierny przyjaciel lekarstwem życia (Syr 6,16). Koncepcja przyjaźni w Księdze Syracydesa”, „Profetyzm w Księdze Syracha” i „Nie za blisko nie za daleko. Z Rut i Noemi o dobrych relacjach” oraz kilkudziesięciu artykułów naukowych i popularnonaukowych. Prowadzi stronę „Biblia w pudełku”."
   },
   {
     "slug": "justyna-sprutta",

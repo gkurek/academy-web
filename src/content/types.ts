@@ -298,7 +298,6 @@ export type AnnualExhibition = {
   title: string;
   vernissage?: string;
   dateEnd?: string;
-  iconCount?: number;
   summary?: string;
   photos?: Image[];
   newsSlug?: string;

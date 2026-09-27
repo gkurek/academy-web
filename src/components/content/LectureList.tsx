@@ -1,3 +1,4 @@
+import { TextLink } from "@/components/core/TextLink";
 import type { LectureListItem } from "@/content/lectures";
 
 export interface LectureListProps {
@@ -25,7 +26,13 @@ export function LectureList({ items }: LectureListProps) {
                   {talk.title}
                 </h3>
                 {talk.lecturer ? (
-                  <p className="text-size-ui text-text-tertiary">{talk.lecturer}</p>
+                  <p className="text-size-ui text-text-tertiary">
+                    {talk.lecturerHref ? (
+                      <TextLink href={talk.lecturerHref}>{talk.lecturer}</TextLink>
+                    ) : (
+                      talk.lecturer
+                    )}
+                  </p>
                 ) : null}
               </div>
             ))}

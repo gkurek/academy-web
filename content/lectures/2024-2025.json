@@ -1,5 +1,4 @@
 {
-  "sample": true,
   "slug": "2024-2025",
   "label": "2024/2025",
   "cycleTitle": "Ikona – piękno zanurzone w tajemnicy. Piękno Boga, piękno człowieka",
@@ -57,9 +56,8 @@
     },
     {
       "date": "2025-06-14",
-      "title": "Piękno Boga w ikonach · Wernisaż wystawy ikon",
-      "lecturerSlugs": ["elzbieta-jackowska-kurek"],
-      "note": "wernisaż"
+      "title": "Piękno Boga w ikonach · Wernisaż wystawy ikon, oprowadzanie, agapa",
+      "lecturerSlugs": ["elzbieta-jackowska-kurek", ""]
     }
   ]
 }

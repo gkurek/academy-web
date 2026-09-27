@@ -1,0 +1,93 @@
+{
+  "slug": "2019-2020",
+  "label": "2019/2020",
+  "cycleTitle": "O Duchu Świętym",
+  "intro": "Zapraszamy na kolejny rok wykładów w Akademii Ikony. W tym roku tematem przewodnim będzie „O Duchu Świętym”.",
+  "lectures": [
+    {
+      "date": "2019-10-08",
+      "title": "Duch Paraklet",
+      "lecturerSlugs": [
+        "grzegorz-michalczyk"
+      ]
+    },
+    {
+      "date": "2019-11-19",
+      "title": "Wędrówka duszy po zaświatach · Duch Święty w Apokalipsie św. Jana",
+      "lecturerSlugs": [
+        "marek-wojnarowski",
+        "roman-batorski"
+      ]
+    },
+    {
+      "date": "2019-12-10",
+      "title": "Św. Mikołaj z Myry – rozwój kultu i ikonografii · Nauka o Duchu Świętym w teologii kapadockiej a koncepcja energii św. Grzegorza Palamasa",
+      "lecturerSlugs": [
+        "jozef-naumowicz",
+        "lukasz-leonkiewicz"
+      ]
+    },
+    {
+      "date": "2020-01-14",
+      "title": "Doświadczenie liturgii w tradycji Janowej – Duch Święty i sztuka w Eucharystii · Tradycja prawosławnego śpiewu liturgicznego w Rzeczypospolitej",
+      "lecturerSlugs": [
+        "vitali-michalczuk",
+        "lukasz-hajduczenia"
+      ]
+    },
+    {
+      "date": "2020-01-21",
+      "title": "Na skrzyżowaniu czasu i wieczności",
+      "lecturerSlugs": [
+        "henryk-paprocki"
+      ]
+    },
+    {
+      "date": "2020-02-18",
+      "title": "Duch Święty w Starym Testamencie? · Wiara – Doświadczenie – Tradycja: Działanie Ducha Świętego",
+      "lecturerSlugs": [
+        "barbara-strzalkowska",
+        "piotr-nikolski"
+      ]
+    },
+    {
+      "date": "2020-03-17",
+      "title": "Św. Józef – człowiek wielkiego ducha · Sztuka epoki Ducha Świętego – ponadhistoryczne doświadczenie liturgii prawosławnej",
+      "lecturerSlugs": [
+        "jozef-naumowicz",
+        "lukasz-hajduczenia"
+      ]
+    },
+    {
+      "date": "2020-04-28",
+      "title": "Dosłowne i symboliczne oblicza Ducha Świętego w malarstwie ikonowym · Pneumatologia Ojców Kościoła i problem Filioque",
+      "lecturerSlugs": [
+        "justyna-sprutta",
+        "lukasz-leonkiewicz"
+      ]
+    },
+    {
+      "date": "2020-05-19",
+      "title": "Jerzy Nowosielski w gronie myślicieli o ikonie XX wieku · Sztuka jako Tradycja – kwestia sztuki w mistycznym życiu Kościoła",
+      "lecturerSlugs": [
+        "irina-tatarova",
+        "vitali-michalczuk"
+      ]
+    },
+    {
+      "date": "2020-06-16",
+      "title": "Kim jest Duch Święty? – perspektywa nowotestamentalna",
+      "lecturerSlugs": [
+        "barbara-strzalkowska"
+      ]
+    },
+    {
+      "date": "2020-06-19",
+      "title": "Ikona – korzenie i owoce wiary · Wernisaż wystawy ikon, oprowadzanie, agapa",
+      "lecturerSlugs": [
+        "elzbieta-jackowska-kurek",
+        ""
+      ]
+    }
+  ]
+}
