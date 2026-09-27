@@ -2,9 +2,9 @@
   {
     "slug": "henryk-paprocki",
     "name": "Henryk Paprocki",
-    "titles": "ks. dr",
-    "affiliationFull": "Prawosławne Seminarium Duchowne w Warszawie · Uniwersytet w Białymstoku",
-    "bio": "Wykładowca Teologii Prawosławnej na Uniwersytecie w Białymstoku oraz Teologii Zasadniczej w Prawosławnym Seminarium Duchownym w Warszawie; rzecznik prasowy Kościoła prawosławnego; szef Redakcji Ekumenicznej Telewizji Polskiej; autor licznych prac z zakresu teologii prawosławnej i tłumacz wielu publikacji. Laureat Nagrody im. ks. Romana Indrzejczyka przyznawanej przez Polską Radę Chrześcijan i Żydów. Odznaczony Krzyżem Oficerskim Orderu Odrodzenia Polski za wybitne zasługi w pracy naukowo-publicystycznej i działalności dydaktycznej, za upowszechnianie wiedzy o liturgiach wschodnich.",
+    "titles": "ks. mitrat dr",
+    "affiliationFull": "Prawosławne Seminarium Duchowne w Warszawie",
+    "bio": "Wykładowca teologii zasadniczej w Prawosławnym Seminarium Duchownym w Warszawie. W przeszłości wykładał na Katedrze Teologii Prawosławnej Uniwersytetu w Białymstoku. Był rzecznikiem prasowym Polskiego Autokefalicznego Kościoła Prawosławnego oraz założycielem i wieloletnim kierownikiem Redakcji Audycji Ekumenicznych Telewizji Polskiej. Autor licznych prac z zakresu teologii prawosławnej; tłumacz wielu publikacji. Laureat Nagrody im. ks. Romana Indrzejczyka (Polska Rada Chrześcijan i Żydów, rok 2015). Odznaczony Krzyżem Oficerskim Orderu Odrodzenia Polski (2013) za wybitne zasługi w pracy naukowo-publicystycznej i działalności dydaktycznej oraz za upowszechnianie wiedzy o liturgiach wschodnich.",
     "photo": {
       "src": "/media/lecturers/henryk-paprocki.jpg",
       "alt": "Zdjęcie — Henryk Paprocki",
@@ -15,8 +15,8 @@
   {
     "slug": "grzegorz-michalczyk",
     "name": "Grzegorz Michalczyk",
-    "titles": "ks.",
-    "affiliationFull": "Kościół Środowisk Twórczych, Warszawa",
+    "titles": "ks. prałat",
+    "affiliationFull": "Duszpasterstwo Środowisk Twórczych · Kościół św. Andrzeja Apostoła i św. Brata Alberta Chmielowskiego, Warszawa",
     "bio": "Pełni funkcję Krajowego Duszpasterza Środowisk Twórczych, jest rektorem Kościoła Środowisk Twórczych św. Andrzeja Apostoła i św. Brata Alberta Chmielowskiego w Warszawie. Jest wiceprzewodniczącym Polskiej Rady Chrześcijan i Żydów, członkiem Komitetu Episkopatu ds. Dialogu z Judaizmem oraz konsultantem i współautorem programów radiowych i telewizyjnych.",
     "photo": {
       "src": "/media/lecturers/grzegorz-michalczyk.jpg",
@@ -31,7 +31,7 @@
     "titles": "ks. prof. dr hab.",
     "affiliation": "UKSW",
     "affiliationFull": "Uniwersytet Kardynała Stefana Wyszyńskiego",
-    "bio": "Birytualista, profesor nauk humanistycznych, historyk literatury wczesnochrześcijańskiej, patrolog i znawcza historii wczesnego chrześcijaństwa i późnego antyku a także historii Bizancjum i starożytnej Armenii. Autor wielu publikacji z zakresu chrześcijaństwa antycznego i patrologii. Odznaczony Złotym Krzyżem Zasługi (2011) i Krzyżem Kawalerskim Orderu Odrodzenia Polski (2020) ’ za wybitne zasługi w pracy naukowo-badawczej i dydaktycznej”",
+    "bio": "Birytualista, profesor nauk humanistycznych, historyk literatury wczesnochrześcijańskiej, patrolog i znawca historii wczesnego chrześcijaństwa i późnego antyku oraz historii Bizancjum i starożytnej Armenii. Wykładowca Akademii Katolickiej w Warszawie. Redaktor naczelny serii Biblioteka Ojców Kościoła oraz Biblioteka Bizantyńska. Duszpasterz Ormian w Polsce. Autor wielu publikacji z zakresu chrześcijaństwa antycznego i patrologii. Odznaczony Złotym Krzyżem Zasługi (2011) i Krzyżem Kawalerskim Orderu Odrodzenia Polski (2020) za wybitne zasługi w pracy naukowo-badawczej i dydaktycznej.",
     "photo": {
       "src": "/media/lecturers/jozef-naumowicz.jpg",
       "alt": "Zdjęcie — Józef Naumowicz",
@@ -43,8 +43,8 @@
     "slug": "roman-batorski",
     "name": "Roman Batorski",
     "titles": "ks.",
-    "affiliationFull": "Parafia św. Marcina w Słubicach",
-    "bio": "Proboszcz parafii św. Marcina w Słubicach, autor artykułów: „Kościół i nauka w obliczu ekologicznych wyzwań”, „Zwierzę, człowiek, Bóg”. Miłośnik ikony, uczestnik wyjazdów studyjnych w obszary objęte Bizancjum.",
+    "affiliationFull": "Parafia św. Marcina biskupa w Słubicach",
+    "bio": "Biblista, wykładowca Wyższego Seminarium Duchownego w Łowiczu. Proboszcz parafii św. Marcina biskupa w Słubicach. Autor rozdziału „Encyklika Laudato si’ czytana przez biblistę” w publikacji Kościół i nauka w obliczu ekologicznych wyzwań (Wydawnictwo WAM, Kraków 2016). Miłośnik ikony, uczestnik wyjazdów studyjnych na tereny Bizancjum.",
     "photo": {
       "src": "/media/lecturers/roman-batorski.jpg",
       "alt": "Zdjęcie — Roman Batorski",
@@ -56,8 +56,9 @@
     "slug": "aleksander-jacyniak",
     "name": "Aleksander Jacyniak",
     "titles": "o. dr SJ",
-    "affiliationFull": "Towarzystwo Jezusowe",
-    "bio": "Miłośnik ikony – jako pierwszy w Polsce opowiadał o ikonie podczas sesji formacyjnych pt. „Świat ikony” w Kaliszu. Autor wielu książek, m. in. „Świat ludzkich kryzysów”, „Ze świętym Józefem na przełomie tysiącleci”, „Antykryzysowy poradnik biblijny”, „Zrozumieć bliźniego” (skrócona, popularno-naukowa wersja pracy doktorskiej).",
+    "affiliation": "AKW",
+    "affiliationFull": "Parafia św. Stanisława Kostki w Wasilkowie · Akademia Katolicka w Warszawie – Collegium Bobolanum",
+    "bio": "Miłośnik ikony – opowiadał o ikonie podczas sesji formacyjnych pt. „Świat ikony” w Kaliszu. Autor wielu książek, m.in. „Świat ludzkich kryzysów” (wspólnie z Zenomeną Płużek), „Ze świętym Józefem na przełomie tysiącleci”, „Antykryzysowy poradnik biblijny. Refleksje na trudny czas”, „Zrozumieć bliźniego”.",
     "photo": {
       "src": "/media/lecturers/aleksander-jacyniak.jpg",
       "alt": "Zdjęcie — Aleksander Jacyniak",
@@ -69,8 +70,8 @@
     "slug": "andrzej-persidok",
     "name": "Andrzej Persidok",
     "titles": "ks. dr",
-    "affiliationFull": "Akademia Katolicka w Warszawie",
-    "bio": "Ksiądz archidiecezji warszawskiej, doktor teologii, wykładowca teologii fundamentalnej w Akademii Katolickiej w Warszawie. Duszpasterz w kościele św. Marcina przy ul. Piwnej. Członek Komisji ds. dialogu ekumenicznego i międzyreligijnego archidiecezji warszawskiej. Publikował m.in. w kwartalniku Pastores i w portalu Stacja7.",
+    "affiliationFull": "Akademia Katolicka w Warszawie · Kościół św. Marcina, Warszawa",
+    "bio": "Ksiądz archidiecezji warszawskiej, doktor teologii, wykładowca teologii fundamentalnej w Akademii Katolickiej w Warszawie. Rezydent w kościele św. Marcina przy ul. Piwnej. Członek Komisji ds. dialogu ekumenicznego i międzyreligijnego archidiecezji warszawskiej. Publikował m.in. w kwartalniku Pastores i w portalu Stacja7.",
     "photo": {
       "src": "/media/lecturers/andrzej-persidok.jpg",
       "alt": "Zdjęcie — Andrzej Persidok",
@@ -81,9 +82,9 @@
   {
     "slug": "lukasz-leonkiewicz",
     "name": "Łukasz Leonkiewicz",
-    "titles": "diakon dr",
-    "affiliationFull": "Prawosławne Seminarium Duchowne w Warszawie",
-    "bio": "Absolwent filozofii (2009) oraz teologii w Chrześcijańskiej Akademii Teologicznej w Warszawie (2010). Wykładowca historii filozofii w Prawosławnym Seminarium Duchownym w Warszawie.",
+    "titles": "ks. protodiakon dr",
+    "affiliationFull": "Prawosławne Seminarium Duchowne w Warszawie · Instytut Filozofii Uniwersytetu Warszawskiego",
+    "bio": "Absolwent Instytutu Filozofii Uniwersytetu Warszawskiego (magisterium 2009, doktorat 2014) oraz teologii w Chrześcijańskiej Akademii Teologicznej w Warszawie (2010). Wykładowca historii filozofii starożytnej i średniowiecznej w Prawosławnym Seminarium Duchownym w Warszawie oraz filozofii w Instytucie Filozofii UW.",
     "photo": {
       "src": "/media/lecturers/lukasz-leonkiewicz.jpg",
       "alt": "Zdjęcie — Łukasz Leonkiewicz",
@@ -107,10 +108,10 @@
   {
     "slug": "ewa-kocoj",
     "name": "Ewa Kocój",
-    "titles": "dr hab.",
+    "titles": "prof. dr hab.",
     "affiliation": "Instytut Kultury UJ",
     "affiliationFull": "Instytut Kultury Uniwersytetu Jagiellońskiego",
-    "bio": "Etnografka, antropolożka kultury po studiach na UJ, adiunkt w Instytucie Kultury UJ. Interesuje się niematerialnym dziedzictwem kultury, współczesną religijnością, antropologicznymi interpretacjami wyobrażeń i symboli kulturowych; duchowością prawosławną kręgu Karpat. Ważne miejsce w jej badaniach zajmuje także ikonografia prawosławna, sztuka ludowa oraz problematyka wielokulturowości. Prowadzi badania nad prawosławną kulturą religijną Rumunii na tle innych krajów Europy Środkowej i Południowo-Wschodniej, wschodnimi pograniczami oraz stereotypami narodowymi, etnicznymi i religijnymi. Stypendystka Fundacji im. Lanckorońskich, Fundacji na rzecz Nauki Polskiej, Ministerstwa Edukacji Narodowej w Rumunii i CEEPUS. Laureatka Nagrody im. A. Rojszczaka Fundacji na rzecz Nauki Polskiej. Laureatka nagrody Narodowego Centrum Kultury za najlepszą pracę doktorską z dziedziny nauk o kulturze w latach 2004–2005 w Polsce. Autorka książek: „Pamięć starych wieków. Symbolika czasu w rumuńskim kalendarzu prawosławnym”, „Świątynie, postacie, ikony. Malowane cerkwie i monastery Bukowiny Południowej w wyobrażeniach rumuńskich”; „Święci rumuńscy” oraz licznych artykułów naukowych wydanych w Polsce i zagranicą. Współzałożycielka Towarzystwa Polsko-Rumuńskiego w Krakowie, członkini Komisji Bałkanistyki PAN o/Poznań oraz Polskiego Towarzystwa Ludoznawczego.",
+    "bio": "Etnografka, antropolożka kultury, profesor Instytutu Kultury Uniwersytetu Jagiellońskiego, kierowniczka Katedry Kultury Współczesnej. Interesuje się niematerialnym dziedzictwem kultury, współczesną religijnością, antropologicznymi interpretacjami wyobrażeń i symboli kulturowych; duchowością prawosławną kręgu Karpat. Ważne miejsce w jej badaniach zajmuje także ikonografia prawosławna, sztuka ludowa oraz problematyka wielokulturowości. Prowadzi badania nad prawosławną kulturą religijną Rumunii na tle innych krajów Europy Środkowej i Południowo-Wschodniej, wschodnimi pograniczami oraz stereotypami narodowymi, etnicznymi i religijnymi. Stypendystka Fundacji im. Lanckorońskich, Fundacji na rzecz Nauki Polskiej, Ministerstwa Edukacji Narodowej w Rumunii i CEEPUS. Laureatka Nagrody im. A. Rojszczaka Fundacji na rzecz Nauki Polskiej. Laureatka nagrody Narodowego Centrum Kultury za najlepszą pracę doktorską z dziedziny nauk o kulturze w latach 2004–2005 w Polsce. Autorka książek: „Pamięć starych wieków. Symbolika czasu w rumuńskim kalendarzu prawosławnym”, „Świątynie, postacie, ikony. Malowane cerkwie i monastyry Bukowiny Południowej w wyobrażeniach rumuńskich”; „Rumuńscy święci” oraz licznych artykułów naukowych wydanych w Polsce i zagranicą. Współzałożycielka Towarzystwa Polsko-Rumuńskiego w Krakowie, członkini Komisji Bałkanistyki PAN o/Poznań oraz Polskiego Towarzystwa Ludoznawczego.",
     "photo": {
       "src": "/media/lecturers/ewa-kocoj.jpg",
       "alt": "Zdjęcie — Ewa Kocój",
@@ -122,8 +123,9 @@
     "slug": "artur-aleksiejuk",
     "name": "Artur Aleksiejuk",
     "titles": "ks. dr",
-    "affiliationFull": "Chrześcijańska Akademia Teologiczna",
-    "bio": "Absolwent Wydziału Mechatroniki Politechniki Warszawskiej o specjalności Biocybernetyka i Inżynieria Biomedyczna (1998), Prawosławnego Seminarium Duchownego (2000), Chrześcijańskiej Akademii Teologicznej w Warszawie (2001) oraz Studium Poradnictwa Psychologicznego (Counselling Study) w Warszawie zorganizowanego przez Stowarzyszenie Psychologów Chrześcijańskich. Doktor nauk teologicznych w zakresie teologii moralnej. Praca doktorska pt. „Problematyka pozyskiwania embrionalnych komórek macierzystych w świetle żydowskiej refleksji religijno-prawnej nad statusem ludzkiego zarodka”. W latach 2007–2011 był członkiem Komisji Dialogu Teologicznego Polskiej Rady Ekumenicznej. Od 2013 roku jest członkiem Komitetu Naczelnego Światowej Rady Kościołów z siedzibą w Genewie. W 2017 roku został zaliczony w poczet członków zwyczajnych Polskiego Towarzystwa Bioetycznego. Zainteresowania naukowe to: bioetyka i etyka medyczna, wschodniochrześcijańska antropologia teologiczna, antropologia i aksjologia pedagogiczna, historia rosyjskiej myśli pedagogicznej, psychologia i pedagogika pastoralna. Więcej na stronie: http://www.ksiadzartur.pl/o-mnie/",
+    "affiliation": "ChAT",
+    "affiliationFull": "Chrześcijańska Akademia Teologiczna w Warszawie · Prawosławne Seminarium Duchowne w Warszawie",
+    "bio": "Adiunkt w Katedrze Pedagogiki Religii i Teorii Wychowania na Wydziale Nauk Społecznych ChAT w Warszawie oraz wykładowca teologii moralnej i bioetyki w Prawosławnym Seminarium Duchownym. Absolwent Wydziału Mechatroniki Politechniki Warszawskiej o specjalności Biocybernetyka i Inżynieria Biomedyczna (1998), Prawosławnego Seminarium Duchownego (2000), Chrześcijańskiej Akademii Teologicznej w Warszawie (2001) oraz Studium Poradnictwa Psychologicznego (Counselling Study) w Warszawie zorganizowanego przez Stowarzyszenie Psychologów Chrześcijańskich. Doktor nauk teologicznych w zakresie teologii moralnej. Praca doktorska pt. „Problematyka pozyskiwania embrionalnych komórek macierzystych w świetle żydowskiej refleksji religijno-prawnej nad statusem ludzkiego zarodka”. W latach 2007–2011 był członkiem Komisji Dialogu Teologicznego Polskiej Rady Ekumenicznej. Od 2013 roku jest członkiem Komitetu Naczelnego Światowej Rady Kościołów z siedzibą w Genewie. W 2017 roku został zaliczony w poczet członków zwyczajnych Polskiego Towarzystwa Bioetycznego. Zainteresowania naukowe to: bioetyka i etyka medyczna, wschodniochrześcijańska antropologia teologiczna, antropologia i aksjologia pedagogiczna, historia rosyjskiej myśli pedagogicznej, psychologia i medycyna pastoralna. Więcej na stronie: http://www.ksiadzartur.pl/o-mnie/",
     "photo": {
       "src": "/media/lecturers/artur-aleksiejuk.jpg",
       "alt": "Zdjęcie — Artur Aleksiejuk",
@@ -135,8 +137,8 @@
     "slug": "piotr-nikolski",
     "name": "Piotr Nikolski",
     "titles": "ks. dr",
-    "affiliationFull": "Parafia św. Mikołaja w Świdnicy",
-    "bio": "Proboszcz parafii prawosławnej św. Mikołaja w Świdnicy, wykładowca na wielu sympozjach i konferencjach naukowych, tłumacz i autor licznych publikacji, doktorat: ” Św. Jan od Krzyża wobec prawosławnej tradycji ascetycznej”.",
+    "affiliationFull": "Parafia prawosławna św. Mikołaja w Świdnicy",
+    "bio": "Proboszcz parafii prawosławnej św. Mikołaja w Świdnicy (diecezja wrocławsko-szczecińska), wykładowca na wielu sympozjach i konferencjach naukowych, tłumacz i autor licznych publikacji. Doktorat (2003): „Tradycja prawosławna w mistyce Zachodu. Św. Jan od Krzyża w świetle tradycji ascetycznej Wschodu”; książka „Św. Jan od Krzyża wobec prawosławnej tradycji ascetycznej” (2006).",
     "photo": {
       "src": "/media/lecturers/piotr-nikolski.jpg",
       "alt": "Zdjęcie — Piotr Nikolski",
@@ -145,22 +147,12 @@
     }
   },
   {
-    "slug": "maciej-biskup",
-    "name": "Maciej Biskup",
-    "titles": "o. dr",
-    "affiliationFull": "Zakon Kaznodziejski (OP)"
-  },
-  {
-    "slug": "marek-szymula",
-    "name": "Marek Szymuła",
-    "titles": "ks. dr"
-  },
-  {
     "slug": "lukasz-hajduczenia",
     "name": "Łukasz Hajduczenia",
     "titles": "dr",
-    "affiliationFull": "Artes Liberales UW",
-    "bio": "Doktorat na Artes Liberales UW: ” Muzyczna forma liturgii prawosławnej. Studium wschodniej tradycji liturgicznej w dyskursie doświadczenia artystycznego.” Absolwent wydz. wokalnego UM (Warszawa), absolwent Guildhall School of Music and Drama (Londyn), magister teologii (Prawosławne Seminarium Duchowne oraz Chrześcijańska Akademia Teologiczna w Warszawie). Laureat wielu konkursów wokalnych. Jego działalność obejmuje koncerty, projekty operowe, pedagogikę oraz pracę z zespołami wokalnymi. Oprócz muzyki klasycznej, specjalizuje się w wykonawstwie muzyki cerkiewnej różnych okresów oraz słowiańskiej muzyki ludowej. Zainteresowania związane z ikonografią: liturgia bizantyjska, ikona.",
+    "affiliation": "UW",
+    "affiliationFull": "Wydział „Artes Liberales”, Uniwersytet Warszawski",
+    "bio": "Doktor nauk na Wydziale „Artes Liberales” Uniwersytetu Warszawskiego (2024); rozprawa: „Muzyczna forma liturgii prawosławnej. Studium wschodniej tradycji liturgicznej w dyskursie doświadczenia artystycznego”. Absolwent wydz. wokalnego UM (Warszawa), absolwent Guildhall School of Music and Drama (Londyn), magister teologii (Prawosławne Seminarium Duchowne oraz Chrześcijańska Akademia Teologiczna w Warszawie). Laureat wielu konkursów wokalnych. Jego działalność obejmuje koncerty, projekty operowe, pedagogikę oraz pracę z zespołami wokalnymi. Oprócz muzyki klasycznej, specjalizuje się w wykonawstwie muzyki cerkiewnej różnych okresów oraz słowiańskiej muzyki ludowej. Zainteresowania związane z ikonografią: liturgia bizantyjska, ikona.",
     "photo": {
       "src": "/media/lecturers/lukasz-hajduczenia.jpg",
       "alt": "Zdjęcie — Łukasz Hajduczenia",
@@ -170,12 +162,14 @@
   },
   {
     "slug": "vitali-michalczuk",
-    "name": "Vitali Michalczuk",
-    "affiliationFull": "Instytut Filozofii UW",
-    "bio": "Absolwent Prawosławnego Seminarium Duchownego, ChAT, archeologii i doktorant filozofii na UW. Prowadzi zajęcia w Instytucie Filozofii i na wydziale Artes Liberales UW. Jego pasją jest filozofia starożytna, myśl patrystyczna, a także kultura i sztuka bizantyjska.",
+    "name": "Witali Michalczuk",
+    "titles": "dr",
+    "affiliation": "UW",
+    "affiliationFull": "Muzeum Ikon w Warszawie · Wydział „Artes Liberales”, Uniwersytet Warszawski",
+    "bio": "Dyrektor Muzeum Ikon w Warszawie (od 2019), wykładowca na Wydziale „Artes Liberales” Uniwersytetu Warszawskiego. Absolwent Prawosławnego Seminarium Duchownego, Chrześcijańskiej Akademii Teologicznej w Warszawie, archeologii i filozofii na UW. Zajmuje się patrystyką, filozofią starożytną oraz kulturą i sztuką bizantyjską.",
     "photo": {
       "src": "/media/lecturers/vitali-michalczuk.png",
-      "alt": "Zdjęcie — Vitali Michalczuk",
+      "alt": "Zdjęcie — Witali Michalczuk",
       "width": 556,
       "height": 725
     }
@@ -184,7 +178,7 @@
     "slug": "michal-ploski",
     "name": "Michał Płoski",
     "affiliationFull": "Ikonograf, publicysta",
-    "bio": "Prawnik, ikonograf, autor tekstów do miesięcznika „Więź” i radomskiego „Miesięcznika Prowincjonalnego”. Napisał książkę „Mała cisza”. Mieszka w Kielcach. Na zboczu Szczytniaka w Paśmie Jeleniowskim wybudował drewnianą chatę i spędza tam z żoną każdą wolną chwilę. Mówi, że pisanie ikon to dla niego „proste zajęcie” i, że przez tę pracę dokłada swoją cegiełkę do pojednania i dialogu ekumenicznego. To jest również jego sposób na propagowanie duchowości Wschodu i teologii ikony.",
+    "bio": "Prawnik, ikonograf, autor tekstów do miesięcznika „Więź” i radomskiego „Miesięcznika Prowincjonalnego”. Napisał książkę „Mała cisza”. Mieszka w Kielcach. Na zboczu Szczytniaka w Paśmie Jeleniowskim wybudował drewnianą chatę i spędza tam z żoną każdą wolną chwilę. Mówi, że pisanie ikon to dla niego „proste zajęcie” i, że przez tę pracę dokłada swoją cegiełkę do pojednania i dialogu ekumenicznego.",
     "photo": {
       "src": "/media/lecturers/michal-ploski.jpg",
       "alt": "Zdjęcie — Michał Płoski",
@@ -195,13 +189,98 @@
   {
     "slug": "elzbieta-jackowska-kurek",
     "name": "Elżbieta Jackowska-Kurek",
-    "affiliationFull": "Akademia Ikony · Fundacja IKONA DZIŚ",
-    "bio": "Ikonograf. Mentorka, społecznik, kuratorka wystaw. Aktywna, doświadczona malarka ikon. Przyjmuje zamówienia na ikony w kolejności zgłoszeń z około rocznym wyprzedzeniem. Stworzyła autorski program nauczania sztuki ikony. Miłośniczka muzyki klasycznej i ludowej różnych narodów oraz propagatorka rolnictwa biodynamicznego. Organizatorka i kreatorka wydarzeń kulturalnych jak też wyjazdów studyjnych śladami ikon. Spotkała się z kilkoma wspaniałymi ikonografami, z których najbardziej ceni sobie Amirana Goglidze z Gruzjii i Georgija Jakovleva z Litwy. Od ponad trzydziestu lat prowadzi swoją pracownię artystyczną w Warszawie. Prezes fundacji IKONA DZIŚ. Autorka idei i twórca Akademii Ikony w Warszawie. Autorka artykułów o ikonie i roli ikonografa we współczesnym świecie. Brała udział w sesjach i konferencjach o ikonie, między innymi IKONA DZIŚ w 2008 r w Warszawie. Od ponad 10 lat organizuje autorskie sesje z wykładami zaproszonych gości w ramach Akademii Ikony. Jej ikony znajdują się w świątyniach, muzeach, galeriach i kolekcjach prywatnych w Polsce, w Anglii, w Gruzji, na Litwie, w Szwecji, Francji, w Australii, w Stanach Zjednoczonych i Kanadzie. Prowadzi warsztaty pisania ikon w ramach Akademii Ikony w Kościele Środowisk Twórczych św. Andrzeja Apostoła i św. Brata Alberta Chmielowskiego w Warszawie oraz, w ramach Letniej Szkoły Światła w Świętej Lipce, Wesołej i Supraślu jak też w Gruzji i na Litwie.",
+    "affiliationFull": "Założycielka i prowadząca Akademię Ikony · Fundacja IKONA DZIŚ",
+    "bio": "Ikonografka, autorka idei i założycielka Akademii Ikony oraz prezeska fundacji IKONA DZIŚ. Od ponad dwudziestu lat prowadzi własną pracownię artystyczną w Warszawie; stworzyła autorski program nauczania sztuki ikony, na którym opiera się nauka w Akademii. Warsztaty prowadzi w Kościele Środowisk Twórczych przy Placu Teatralnym, a latem w ramach Letniej Szkoły Światła — m.in. w Świętej Lipce, Wesołej i Supraślu, a także w Gruzji i na Litwie. Kuratorka wystaw, organizatorka wyjazdów studyjnych śladami ikon oraz cyklu wykładów z zaproszonymi gośćmi; autorka artykułów o ikonie. Na swojej drodze spotkała kilku wybitnych ikonografów; najbardziej ceni sobie Amirana Goglidze z Gruzji i Georgija Jakovleva z Litwy. Pisze ikony tablicowe i polichromie; jej prace są w świątyniach, muzeach, galeriach i kolekcjach prywatnych w Polsce, Anglii, Gruzji, na Litwie, w Szwecji, Francji, Australii, Stanach Zjednoczonych i Kanadzie.",
     "photo": {
       "src": "/media/lecturers/elzbieta-jackowska-kurek.jpg",
       "alt": "Zdjęcie — Elżbieta Jackowska-Kurek",
       "width": 243,
       "height": 324
     }
+  },
+  {
+    "slug": "maciej-biskup",
+    "name": "Maciej Biskup",
+    "titles": "o. dr",
+    "affiliationFull": "Zakon Kaznodziejski (OP) · Konwent bł. Piotra Jerzego Frassatiego w Łodzi",
+    "bio": "Dominikanin (ur. 1972 r.). Do Zakonu wstąpił w 1991 roku, święcenia kapłańskie przyjął w 1998 roku. Doktor teologii dogmatyczno-fundamentalnej (studia doktoranckie na UAM). Był m.in. magistrem braci nowicjuszy i studentów, redaktorem naczelnym oficyny „W drodze”, przeorem i proboszczem w Szczecinie. Od marca 2022 roku przeorem Konwentu bł. Piotra Jerzego Frassatiego w Łodzi. Pełni funkcję promotora świeckich dominikanów; związany z Dominikańskim Ośrodkiem Kaznodziejskim. Duszpasterz i rekolekcjonista, zaangażowany w dialog ekumeniczny i dialog z judaizmem. Publikował m.in. w „W drodze”, „Więzi”, „Tygodniku Powszechnym”, „Znaku”, „Liście” i „Biblii”. Autor książek m.in. „Zaskoczony wiarą. Między Jerychem a Jerozolimą”, „Ocalić w sercu”, „Nieostatnie kuszenie. Jak przetrwać noc Kościoła”, „Chrześcijaństwo spotkania”."
+  },
+  {
+    "slug": "marek-szymula",
+    "name": "Marek Szymuła",
+    "titles": "ks. dr",
+    "affiliationFull": "Archidiecezja Warszawska · UKSW",
+    "bio": "Święcenia kapłańskie przyjął 28 maja 1988 r. w bazylice archikatedralnej św. Jana Chrzciciela w Warszawie z rąk kard. Józefa Glempa. Był wikariuszem w parafiach w Gliniance, Michałowicach-Opaczy i parafii św. Karola Boromeusza na Powązkach. W 1998 r. doktoryzował się na Akademii Teologii Katolickiej w Warszawie w zakresie teologii duchowości, przedstawiając pracę nt. „Duchowość zakonna według pism bł. Honorata Koźmińskiego”. Od 1995 r. był ojcem duchownym alumnów Wyższego Metropolitalnego Seminarium Duchownego św. Jana Chrzciciela w Warszawie i wykładowcą teologii duchowości na Papieskim Wydziale Teologicznym w Warszawie, od 1998 r. także na UKSW (wcześniej ATK). Przez siedem lat był wicerektorem Wyższego Metropolitalnego Seminarium Duchownego w Warszawie oraz moderatorem Domu Formacji Propedeutycznej Archidiecezji Warszawskiej i Diecezji Warszawsko-Praskiej w Urlach. W latach 2017–2022 proboszczem parafii Niepokalanego Poczęcia NMP na Wrzecionie. W latach 2022–2024 wikariuszem biskupim ds. formacji duchowej księży w archidiecezji warszawskiej. Od lutego 2025 r. proboszcz parafii św. Ojca Pio na Ursynowie."
+  },
+  {
+    "slug": "aleksandra-szyborska",
+    "name": "Aleksandra Szyborska",
+    "titles": "s.",
+    "affiliation": "PDDM",
+    "affiliationFull": "Zakon Pobożnych Uczennic Boskiego Mistrza (Piae Discipulae Divini Magistri, PDDM)",
+    "bio": "Siostra Zgromadzenia Sióstr Uczennic Boskiego Mistrza, dziennikarka. W latach 2015–2022 posługiwała w Radiu Jasna Góra; wśród prowadzonych przez nią audycji znalazły się m.in. „Piękno zbawia świat”, „Misyjny budzik”, „Nawigator”, „Kotwica”, „Radość konsekracji” i „Eucharystia daje życie”. Współpracuje z Radiem Jasna Góra; jest autorką i redaktorką cyklu „Refidim” o modlitwie wstawienniczej za kapłanów."
+  },
+  {
+    "slug": "barbara-strzalkowska",
+    "name": "Barbara Strzałkowska",
+    "titles": "prof. dr hab.",
+    "affiliation": "UKSW",
+    "affiliationFull": "Uniwersytet Kardynała Stefana Wyszyńskiego",
+    "bio": "Biblistka, doktor habilitowany nauk teologicznych, profesor uczelni Wydziału Teologicznego UKSW. Kierownik Katedry Egzegezy Starego Testamentu, wicedyrektor Instytutu Nauk Teologicznych. Specjalizuje się w badaniach nad księgami mądrościowymi Starego Testamentu oraz Septuagintą – greckim przekładem Biblii hebrajskiej – i popularyzacją Biblii w Polsce i za granicą. Jako pierwsza kobieta w Warszawie objęła funkcję prodziekana ds. kształcenia Wydziału Teologicznego UKSW. Wykłada m.in. jako visiting professor w Pontificia Università Urbaniana w Rzymie i w Jordan University College w Marogoro w Tanzanii. Członek komitetu redakcyjnego czasopisma „La Revue Biblique”. Konsultant Konferencji Episkopatu Polski ds. pielgrzymowania i turystyki oraz zespołu Laudato Si przy Radzie ds. społecznych KEP. Przewodniczka po Ziemi Świętej i krajach biblijnych. Na UKSW stworzyła w 2022 r. kierunek studiów Chrześcijańska turystyka religijna."
+  },
+  {
+    "slug": "dariusz-klejnowski-rozycki",
+    "name": "Dariusz Klejnowski-Różycki",
+    "titles": "ks. prof. dr hab.",
+    "affiliation": "UO",
+    "affiliationFull": "Uniwersytet Opolski",
+    "bio": "Prezbiter diecezji gliwickiej, sinolog, pianista, ikonograf, profesor Uniwersytetu Opolskiego, doktor habilitowany nauk teologicznych w zakresie dogmatyki i ekumenizmu, rektor Śląskiej Szkoły Ikonograficznej, dyrektor Instytutu Badań nad Teologią i Duchowością Dalekiego Wschodu, kierownik studiów doktoranckich nauk teologicznych Wydziału Teologicznego UO, współzałożyciel Stowarzyszenia Sinicum im. Michała Boyma SJ, kurator międzynarodowego think-tanku Catechetical Difinitions, cenzor kościelny diecezji gliwickiej. Studiował w Lublinie, Krakowie, Paryżu, Londynie, Pekinie i Tajpej. Jego zainteresowania badawcze i publikacje dotyczą głównie teologii dogmatycznej (chrystologii), teologii ikony, teologii sztuki, teologii chińskiej i azjatyckiej."
+  },
+  {
+    "slug": "irina-tatarova",
+    "name": "Irina Tatarova",
+    "titles": "dr",
+    "affiliation": "UW",
+    "affiliationFull": "Wydział „Artes Liberales”, Uniwersytet Warszawski",
+    "bio": "Teatrolog, filmolog, teolog i bizantynolog. Doktorat w Instytucie Historii Sztuki Uniwersytetu Warszawskiego u prof. Wiesława Juszczaka; praca doktorska stała się podstawą książki „Ergo sum. Poszukiwania sensu istnienia w polskim i radzieckim filmie 1960–1990”. Studiowała teologię na Papieskim Wydziale Teologicznym w Warszawie. Od 2004 r. związana z Wydziałem „Artes Liberales” UW (wcześniej Ośrodek Badań nad Tradycją Antyczną); wykładała historię sztuki bizantyńskiej oraz prowadziła seminaria i wykłady o filmie, teatrze i sztuce sakralnej. Współzałożycielka Studium Chrześcijańskiego Wschodu przy klasztorze Dominikanów na Służewie. Założycielka komisji „Speculum Byzantinum” przy Wydziale „Artes Liberales” UW. Zmarła 30 października 2021 r."
+  },
+  {
+    "slug": "judyta-pudelko",
+    "name": "Judyta Pudełko",
+    "titles": "s. dr hab.",
+    "affiliation": "PDDM",
+    "affiliationFull": "Akademia Katolicka w Warszawie · Zakon Pobożnych Uczennic Boskiego Mistrza (PDDM)",
+    "bio": "Biblistka, członkini Zgromadzenia Sióstr Uczennic Boskiego Mistrza. Absolwentka Uniwersytetu Kardynała Stefana Wyszyńskiego w Warszawie (2006). W latach 2007–2010 studiowała w Studium Biblicum Franciscanum w Jerozolimie, uzyskując licencjat z nauk biblijnych i archeologii. Doktor habilitowany nauk teologicznych (Akademia Katolicka w Warszawie, 2021), profesor nadzwyczajny AKW (2024). Wykładowczyni Pisma Świętego na Akademii Katolickiej w Warszawie oraz wykładowca Papieskiego Wydziału Teologicznego w Warszawie. Zaangażowana w duszpasterstwo biblijne i popularyzowanie Lectio divina. Członkini zwyczajna Stowarzyszenia Biblistów Polskich, przewodniczka grup pielgrzymkowych w Ziemi Świętej. Autorka m.in. książek „Wierny przyjaciel lekarstwem życia (Syr 6,16). Koncepcja przyjaźni w Księdze Syracydesa”, „Profetyzm w Księdze Syracha” i „Nie za blisko nie za daleko. Z Rut i Noemi o dobrych relacjach” oraz kilkudziesięciu artykułów naukowych i popularnonaukowych. Prowadzi stronę „Biblia w pudełku”."
+  },
+  {
+    "slug": "justyna-sprutta",
+    "name": "Justyna Sprutta",
+    "titles": "dr",
+    "affiliation": "UAM",
+    "affiliationFull": "Uniwersytet im. Adama Mickiewicza w Poznaniu",
+    "bio": "Doktor nauk teologicznych w zakresie teologii dogmatycznej o specjalizacji teologia ikony (KUL) i doktor nauk humanistycznych w zakresie historii o specjalizacji historia sztuki (UKSW), magister filologii polskiej o specjalizacji dziennikarstwo i kreowanie wizerunku (UAM). Wykładowczyni na Wydziale Teologicznym Uniwersytetu im. Adama Mickiewicza w Poznaniu, w Akademii Humanistycznej im. Aleksandra Gieysztora w Pułtusku (filia warszawskiej Akademii Vistula) i w Prymasowskim Instytucie Kultury Chrześcijańskiej w Bydgoszczy, a także bibliotekarka w strzyżewskiej filii Gminnej Biblioteki Publicznej w Sieroszewicach. Członkini Polskiego Instytutu Studiów nad Sztuką Świata i Poznańskiego Towarzystwa Przyjaciół Nauk."
+  },
+  {
+    "slug": "magdalena-dylewska",
+    "name": "Magdalena Dylewska",
+    "titles": "dr",
+    "affiliation": "KUL",
+    "affiliationFull": "Katolicki Uniwersytet Lubelski Jana Pawła II",
+    "bio": "Doktor filozofii, malarka ikon. Studia z zakresu filozofii ukończyła na Katolickim Uniwersytecie Lubelskim, zaś z zakresu malowania ikon – w ośrodku prawosławnym w Saint-Jean-en-Royans we Francji. Uznana jako ikonopisarka w Kościele prawosławnym. Od 1986 r. prowadzi w Lublinie prywatną Pracownię Malowania Ikon im. św. Jana z Damaszku. Od 1998 współpracownik Międzyzakładowej Komisji Badań nad Antykiem Chrześcijańskim KUL. Odbyła liczne podróże i staże doskonalące warsztat pracy: Rosja, Ukraina, Grecja, Bliski Wschód. Najważniejsze wystawy indywidualne: Lublin, Warszawa, Gorzów Wlkp., Wiedeń (Austria), La Cote St.Andre, Rueil Malmaison, Gyf-sur-Yvette (Francja), Passau, Monachium, Bad Reichenhall (Niemcy). Autorka ikon do ołtarzy w kościele Świętego Brata Alberta w Puławach, w kościele Trójcy Świętej w Lublinie, w kościele Chrystusa Zbawiciela w Gdańsku-Osowie, kościoła św. Wojciecha w Wisznicy k/Chełma, a także ikon dla klasztoru Sióstr Syjońskich (Ecce-Homo) i klasztoru benedyktyńskiego na Górze Syjon w Jerozolimie oraz kościoła św. Pawła w Londynie. Tłumaczka starochrześcijańskich tekstów dotyczących ikon i sporów ikonoklastycznych, w szczególności Jana Damasceńskiego i Epifaniusza z Salaminy."
+  },
+  {
+    "slug": "marek-wojnarowski",
+    "name": "Marek Wojnarowski",
+    "titles": "ks. dr",
+    "affiliation": "UW",
+    "affiliationFull": "Wydział „Artes Liberales”, Uniwersytet Warszawski · Muzeum Archidiecezjalne w Przemyślu",
+    "bio": "Urodzony w Sanoku. Ukończył Wyższe Seminarium Duchowne w Przemyślu. Interesuje się sztuką cerkiewną, swoje zainteresowania koncentruje na tematyce przedstawień Sądu Ostatecznego. Od 2006 r. pełni funkcję dyrektora Muzeum Archidiecezjalnego w Przemyślu. Aktywnie uczestniczył w przygotowaniu nowej siedziby dla Muzeum. Od 2007 r. pełni funkcję Archidiecezjalnego Konserwatora Zabytków i Przewodniczącego Komisji Artystyczno – Budowlanej. W latach 2007-2013 r. wykładał także historię sztuki i zagadnienia dotyczące sztuki sakralnej w Państwowej Wyższej Szkole Wschodnioeuropejskiej w Przemyślu. Od 2006 r. prowadzi zajęcia z historii sztuki kościelnej i symboliki ikon dla kleryków WSD w Przemyślu. Stara się systematycznie uczestniczyć w sesjach i konferencjach naukowych z dziedziny sztuki cerkiewnej czy też muzealnictwa."
+  },
+  {
+    "slug": "michal-wojtczyk",
+    "name": "Michał Wojtczyk",
+    "affiliation": "UKSW",
+    "affiliationFull": "Uniwersytet Kardynała Stefana Wyszyńskiego w Warszawie",
+    "bio": "Doktorant Szkoły Doktorskiej Uniwersytetu Kardynała Stefana Wyszyńskiego w Warszawie w dyscyplinie filozofia. Publikował w „Ruchu Filozoficznym”."
   }
 ]
