@@ -10,7 +10,7 @@ import { fileURLToPath } from "node:url";
 import { pipeline } from "node:stream/promises";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
-const OUT_DIR = join(ROOT, "public/media/sample/icons");
+const OUT_DIR = join(ROOT, "public/media/import/icons");
 const MANIFEST_PATH = join(ROOT, "scripts/wp-gallery-manifest.json");
 
 const EJK_AUTHOR_NAME = "Elżbieta Jackowska-Kurek";
@@ -297,7 +297,7 @@ const ensureUniqueSlugs = (items) => {
       ...item,
       slug,
       localFile,
-      localPath: `/media/sample/icons/${localFile}`,
+      localPath: `/media/import/icons/${localFile}`,
     };
   });
 };
@@ -352,7 +352,7 @@ const buildDownloadManifest = (allItems, existingManifest) => {
       ...item,
       slug,
       localFile,
-      localPath: `/media/sample/icons/${localFile}`,
+      localPath: `/media/import/icons/${localFile}`,
     };
   });
 };

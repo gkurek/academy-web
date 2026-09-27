@@ -1,10 +1,25 @@
 [
   {
+    "slug": "do-uzupelnienia-tytul-ikony",
+    "title": "[do uzupełnienia: tytuł ikony]",
+    "author": "ejk",
+    "image": {
+      "src": "/media/import/icons/do-uzupelnienia-tytul-ikony.jpg",
+      "alt": "Ikona: [do uzupełnienia: tytuł ikony]",
+      "width": 1944,
+      "height": 2592
+    },
+    "tags": [
+      "sceny-i-swieta"
+    ],
+    "authorName": "Elżbieta Jackowska-Kurek"
+  },
+  {
     "slug": "archaniol-michal",
     "title": "Archanioł Michał",
     "author": "ejk",
     "image": {
-      "src": "/media/sample/icons/archaniol-michal.jpg",
+      "src": "/media/import/icons/archaniol-michal.jpg",
       "alt": "Ikona: Archanioł Michał",
       "width": 720,
       "height": 960
@@ -12,7 +27,6 @@
     "tags": [
       "aniolowie"
     ],
-    "sample": true,
     "size": {
       "w": 25,
       "h": 30
@@ -24,7 +38,7 @@
     "title": "Chrystus Eucharystyczny",
     "author": "ejk",
     "image": {
-      "src": "/media/sample/icons/chrystus-eucharystyczny.jpg",
+      "src": "/media/import/icons/chrystus-eucharystyczny.jpg",
       "alt": "Ikona: Chrystus Eucharystyczny",
       "width": 720,
       "height": 960
@@ -32,7 +46,6 @@
     "tags": [
       "chrystus"
     ],
-    "sample": true,
     "size": {
       "w": 20,
       "h": 30
@@ -44,7 +57,7 @@
     "title": "Święty Józef z Dzieciątkiem Jezus",
     "author": "ejk",
     "image": {
-      "src": "/media/sample/icons/swiety-jozef-z-dzieciatkiem-jezus.jpg",
+      "src": "/media/import/icons/swiety-jozef-z-dzieciatkiem-jezus.jpg",
       "alt": "Ikona: Święty Józef z Dzieciątkiem Jezus",
       "width": 720,
       "height": 960
@@ -52,7 +65,6 @@
     "tags": [
       "swieci"
     ],
-    "sample": true,
     "size": {
       "w": 30,
       "h": 40
@@ -64,7 +76,7 @@
     "title": "Matka Boża Krzew Gorejący",
     "author": "ejk",
     "image": {
-      "src": "/media/sample/icons/matka-boza-krzew-gorejacy.jpg",
+      "src": "/media/import/icons/matka-boza-krzew-gorejacy.jpg",
       "alt": "Ikona: Matka Boża Krzew Gorejący",
       "width": 829,
       "height": 1105
@@ -72,7 +84,6 @@
     "tags": [
       "matka-bozy"
     ],
-    "sample": true,
     "size": {
       "w": 30,
       "h": 40
@@ -84,7 +95,7 @@
     "title": "Matka Boża Śnieżna",
     "author": "ejk",
     "image": {
-      "src": "/media/sample/icons/matka-boza-sniezna.jpg",
+      "src": "/media/import/icons/matka-boza-sniezna.jpg",
       "alt": "Ikona: Matka Boża Śnieżna",
       "width": 864,
       "height": 1152
@@ -92,7 +103,6 @@
     "tags": [
       "matka-bozy"
     ],
-    "sample": true,
     "size": {
       "w": 30,
       "h": 40
@@ -104,7 +114,7 @@
     "title": "Święty Andrzej Apostoł",
     "author": "ejk",
     "image": {
-      "src": "/media/sample/icons/swiety-andrzej-apostol.jpg",
+      "src": "/media/import/icons/swiety-andrzej-apostol.jpg",
       "alt": "Ikona: Święty Andrzej Apostoł",
       "width": 864,
       "height": 1152
@@ -112,7 +122,6 @@
     "tags": [
       "swieci"
     ],
-    "sample": true,
     "size": {
       "w": 30,
       "h": 40
@@ -120,27 +129,11 @@
     "authorName": "Elżbieta Jackowska-Kurek"
   },
   {
-    "slug": "do-uzupelnienia-tytul-ikony",
-    "title": "Trójca Święta",
-    "author": "ejk",
-    "image": {
-      "src": "/media/sample/icons/do-uzupelnienia-tytul-ikony.jpg",
-      "alt": "Ikona: Trójca Święta",
-      "width": 1944,
-      "height": 2592
-    },
-    "tags": [
-      "sceny-i-swieta"
-    ],
-    "sample": true,
-    "authorName": "Elżbieta Jackowska-Kurek"
-  },
-  {
     "slug": "trojca-swieta",
     "title": "Trójca Święta",
     "author": "ejk",
     "image": {
-      "src": "/media/sample/icons/trojca-swieta.jpg",
+      "src": "/media/import/icons/trojca-swieta.jpg",
       "alt": "Ikona: Trójca Święta",
       "width": 505,
       "height": 825
@@ -148,7 +141,6 @@
     "tags": [
       "sceny-i-swieta"
     ],
-    "sample": true,
     "size": {
       "w": 40,
       "h": 60
@@ -160,7 +152,7 @@
     "title": "Chrystus Emmanuel",
     "author": "ejk",
     "image": {
-      "src": "/media/sample/icons/chrystus-emmanuel.jpg",
+      "src": "/media/import/icons/chrystus-emmanuel.jpg",
       "alt": "Ikona: Chrystus Emmanuel",
       "width": 378,
       "height": 472
@@ -168,7 +160,6 @@
     "tags": [
       "chrystus"
     ],
-    "sample": true,
     "size": {
       "w": 25,
       "h": 30
@@ -180,7 +171,7 @@
     "title": "Ukrzyżowanie",
     "author": "ejk",
     "image": {
-      "src": "/media/sample/icons/ukrzyzowanie.jpg",
+      "src": "/media/import/icons/ukrzyzowanie.jpg",
       "alt": "Ikona: Ukrzyżowanie",
       "width": 972,
       "height": 1296
@@ -188,7 +179,6 @@
     "tags": [
       "sceny-i-swieta"
     ],
-    "sample": true,
     "size": {
       "w": 52,
       "h": 36
@@ -200,7 +190,7 @@
     "title": "Archanioł Gabriel",
     "author": "ejk",
     "image": {
-      "src": "/media/sample/icons/archaniol-gabriel.jpg",
+      "src": "/media/import/icons/archaniol-gabriel.jpg",
       "alt": "Ikona: Archanioł Gabriel",
       "width": 918,
       "height": 1224
@@ -208,7 +198,6 @@
     "tags": [
       "aniolowie"
     ],
-    "sample": true,
     "size": {
       "w": 25,
       "h": 30
@@ -220,7 +209,7 @@
     "title": "Madonna Advocata",
     "author": "ejk",
     "image": {
-      "src": "/media/sample/icons/madonna-advocata.jpg",
+      "src": "/media/import/icons/madonna-advocata.jpg",
       "alt": "Ikona: Madonna Advocata",
       "width": 540,
       "height": 669
@@ -228,7 +217,6 @@
     "tags": [
       "matka-bozy"
     ],
-    "sample": true,
     "size": {
       "w": 25,
       "h": 30
@@ -240,7 +228,7 @@
     "title": "Madylion",
     "author": "ejk",
     "image": {
-      "src": "/media/sample/icons/madylion.jpg",
+      "src": "/media/import/icons/madylion.jpg",
       "alt": "Ikona: Madylion",
       "width": 540,
       "height": 723
@@ -248,7 +236,6 @@
     "tags": [
       "chrystus"
     ],
-    "sample": true,
     "size": {
       "w": 21,
       "h": 26
@@ -260,7 +247,7 @@
     "title": "Ukrzyżowanie",
     "author": "ejk",
     "image": {
-      "src": "/media/sample/icons/ukrzyzowanie-2.jpg",
+      "src": "/media/import/icons/ukrzyzowanie-2.jpg",
       "alt": "Ikona: Ukrzyżowanie",
       "width": 540,
       "height": 960
@@ -268,7 +255,6 @@
     "tags": [
       "sceny-i-swieta"
     ],
-    "sample": true,
     "size": {
       "w": 35,
       "h": 50
@@ -280,7 +266,7 @@
     "title": "Chrystus Miłosierny",
     "author": "ejk",
     "image": {
-      "src": "/media/sample/icons/chrystus-milosierny.jpg",
+      "src": "/media/import/icons/chrystus-milosierny.jpg",
       "alt": "Ikona: Chrystus Miłosierny",
       "width": 1827,
       "height": 2560
@@ -288,7 +274,6 @@
     "tags": [
       "chrystus"
     ],
-    "sample": true,
     "authorName": "Elżbieta Jackowska-Kurek"
   },
   {
@@ -296,7 +281,7 @@
     "title": "Matka Boża Eleusa",
     "author": "ejk",
     "image": {
-      "src": "/media/sample/icons/matka-boza-eleusa.jpg",
+      "src": "/media/import/icons/matka-boza-eleusa.jpg",
       "alt": "Ikona: Matka Boża Eleusa",
       "width": 1923,
       "height": 2560
@@ -304,7 +289,6 @@
     "tags": [
       "matka-bozy"
     ],
-    "sample": true,
     "size": {
       "w": 30,
       "h": 25
@@ -316,7 +300,7 @@
     "title": "Chrystus Eucharystyczny na Krzyżu",
     "author": "ejk",
     "image": {
-      "src": "/media/sample/icons/chrystus-eucharystyczny-na-krzyzu.jpg",
+      "src": "/media/import/icons/chrystus-eucharystyczny-na-krzyzu.jpg",
       "alt": "Ikona: Chrystus Eucharystyczny na Krzyżu",
       "width": 1920,
       "height": 2560
@@ -324,7 +308,6 @@
     "tags": [
       "chrystus"
     ],
-    "sample": true,
     "authorName": "Elżbieta Jackowska-Kurek"
   },
   {
@@ -332,7 +315,7 @@
     "title": "Mandylion",
     "author": "ejk",
     "image": {
-      "src": "/media/sample/icons/mandylion.jpg",
+      "src": "/media/import/icons/mandylion.jpg",
       "alt": "Ikona: Mandylion",
       "width": 720,
       "height": 960
@@ -340,7 +323,6 @@
     "tags": [
       "chrystus"
     ],
-    "sample": true,
     "size": {
       "w": 30,
       "h": 33
@@ -352,7 +334,7 @@
     "title": "Święty Mikołaj",
     "author": "ejk",
     "image": {
-      "src": "/media/sample/icons/swiety-mikolaj.jpg",
+      "src": "/media/import/icons/swiety-mikolaj.jpg",
       "alt": "Ikona: Święty Mikołaj",
       "width": 403,
       "height": 555
@@ -360,7 +342,6 @@
     "tags": [
       "swieci"
     ],
-    "sample": true,
     "size": {
       "w": 26,
       "h": 32
@@ -372,7 +353,7 @@
     "title": "Chrystus Pantokrator",
     "author": "ejk",
     "image": {
-      "src": "/media/sample/icons/chrystus-pantokrator.jpg",
+      "src": "/media/import/icons/chrystus-pantokrator.jpg",
       "alt": "Ikona: Chrystus Pantokrator",
       "width": 540,
       "height": 673
@@ -380,7 +361,6 @@
     "tags": [
       "chrystus"
     ],
-    "sample": true,
     "size": {
       "w": 25,
       "h": 30
@@ -392,7 +372,7 @@
     "title": "Święty Symeon",
     "author": "ejk",
     "image": {
-      "src": "/media/sample/icons/swiety-symeon.jpg",
+      "src": "/media/import/icons/swiety-symeon.jpg",
       "alt": "Ikona: Święty Symeon",
       "width": 383,
       "height": 509
@@ -400,7 +380,6 @@
     "tags": [
       "swieci"
     ],
-    "sample": true,
     "size": {
       "w": 25,
       "h": 30
@@ -412,7 +391,7 @@
     "title": "Matka Boża Niepokalana",
     "author": "ejk",
     "image": {
-      "src": "/media/sample/icons/matka-boza-niepokalana.jpg",
+      "src": "/media/import/icons/matka-boza-niepokalana.jpg",
       "alt": "Ikona: Matka Boża Niepokalana",
       "width": 1658,
       "height": 2560
@@ -420,7 +399,6 @@
     "tags": [
       "matka-bozy"
     ],
-    "sample": true,
     "size": {
       "w": 60,
       "h": 80
@@ -432,7 +410,7 @@
     "title": "Boże Narodzenie",
     "author": "ejk",
     "image": {
-      "src": "/media/sample/icons/boze-narodzenie.jpg",
+      "src": "/media/import/icons/boze-narodzenie.jpg",
       "alt": "Ikona: Boże Narodzenie",
       "width": 2076,
       "height": 2560
@@ -440,7 +418,6 @@
     "tags": [
       "sceny-i-swieta"
     ],
-    "sample": true,
     "size": {
       "w": 40,
       "h": 50
@@ -452,7 +429,7 @@
     "title": "Matka Boża Stolica Mądrości",
     "author": "student",
     "image": {
-      "src": "/media/sample/icons/matka-boza-stolica-madrosci.jpg",
+      "src": "/media/import/icons/matka-boza-stolica-madrosci.jpg",
       "alt": "Ikona: Matka Boża Stolica Mądrości",
       "width": 972,
       "height": 1296
@@ -460,7 +437,6 @@
     "tags": [
       "matka-bozy"
     ],
-    "sample": true,
     "size": {
       "w": 25,
       "h": 30
@@ -471,7 +447,7 @@
     "title": "Zstąpienie Ducha Świętego",
     "author": "student",
     "image": {
-      "src": "/media/sample/icons/zstapienie-ducha-swietego.jpg",
+      "src": "/media/import/icons/zstapienie-ducha-swietego.jpg",
       "alt": "Ikona: Zstąpienie Ducha Świętego",
       "width": 720,
       "height": 960
@@ -479,7 +455,6 @@
     "tags": [
       "sceny-i-swieta"
     ],
-    "sample": true,
     "size": {
       "w": 30,
       "h": 40
@@ -491,7 +466,7 @@
     "title": "Archanioł Gabriel",
     "author": "student",
     "image": {
-      "src": "/media/sample/icons/archaniol-gabriel-2.jpg",
+      "src": "/media/import/icons/archaniol-gabriel-2.jpg",
       "alt": "Ikona: Archanioł Gabriel",
       "width": 864,
       "height": 1152
@@ -499,7 +474,6 @@
     "tags": [
       "aniolowie"
     ],
-    "sample": true,
     "size": {
       "w": 25,
       "h": 30
@@ -511,7 +485,7 @@
     "title": "Chrystus Pantokrator",
     "author": "student",
     "image": {
-      "src": "/media/sample/icons/chrystus-pantokrator-2.jpg",
+      "src": "/media/import/icons/chrystus-pantokrator-2.jpg",
       "alt": "Ikona: Chrystus Pantokrator",
       "width": 670,
       "height": 1191
@@ -519,7 +493,6 @@
     "tags": [
       "chrystus"
     ],
-    "sample": true,
     "size": {
       "w": 25,
       "h": 30
@@ -531,7 +504,7 @@
     "title": "Chrystus Pantokrator",
     "author": "student",
     "image": {
-      "src": "/media/sample/icons/chrystus-pantokrator-3.jpg",
+      "src": "/media/import/icons/chrystus-pantokrator-3.jpg",
       "alt": "Ikona: Chrystus Pantokrator",
       "width": 702,
       "height": 1248
@@ -539,7 +512,6 @@
     "tags": [
       "chrystus"
     ],
-    "sample": true,
     "size": {
       "w": 25,
       "h": 30
@@ -551,7 +523,7 @@
     "title": "Jezus Chrystus",
     "author": "student",
     "image": {
-      "src": "/media/sample/icons/jezus-chrystus.jpg",
+      "src": "/media/import/icons/jezus-chrystus.jpg",
       "alt": "Ikona: Jezus Chrystus",
       "width": 680,
       "height": 1209
@@ -559,7 +531,6 @@
     "tags": [
       "chrystus"
     ],
-    "sample": true,
     "authorName": "Agnieszka Kunda"
   },
   {
@@ -567,7 +538,7 @@
     "title": "Archanioł Michał",
     "author": "student",
     "image": {
-      "src": "/media/sample/icons/archaniol-michal-2.jpg",
+      "src": "/media/import/icons/archaniol-michal-2.jpg",
       "alt": "Ikona: Archanioł Michał",
       "width": 726,
       "height": 968
@@ -575,7 +546,6 @@
     "tags": [
       "aniolowie"
     ],
-    "sample": true,
     "size": {
       "w": 25,
       "h": 30
@@ -587,7 +557,7 @@
     "title": "NIE OPŁAKUJ MNIE MATKO",
     "author": "student",
     "image": {
-      "src": "/media/sample/icons/nie-oplakuj-mnie-matko.jpg",
+      "src": "/media/import/icons/nie-oplakuj-mnie-matko.jpg",
       "alt": "Ikona: NIE OPŁAKUJ MNIE MATKO",
       "width": 691,
       "height": 921
@@ -595,7 +565,6 @@
     "tags": [
       "sceny-i-swieta"
     ],
-    "sample": true,
     "size": {
       "w": 25,
       "h": 30
@@ -607,7 +576,7 @@
     "title": "Święty Albert  Chmielowski",
     "author": "student",
     "image": {
-      "src": "/media/sample/icons/swiety-albert-chmielowski.jpg",
+      "src": "/media/import/icons/swiety-albert-chmielowski.jpg",
       "alt": "Ikona: Święty Albert  Chmielowski",
       "width": 760,
       "height": 1013
@@ -615,7 +584,6 @@
     "tags": [
       "swieci"
     ],
-    "sample": true,
     "size": {
       "w": 30,
       "h": 40
@@ -627,7 +595,7 @@
     "title": "Matka Boża Nieustającej Pomocy",
     "author": "student",
     "image": {
-      "src": "/media/sample/icons/matka-boza-nieustajacej-pomocy.jpg",
+      "src": "/media/import/icons/matka-boza-nieustajacej-pomocy.jpg",
       "alt": "Ikona: Matka Boża Nieustającej Pomocy",
       "width": 829,
       "height": 1105
@@ -635,7 +603,6 @@
     "tags": [
       "matka-bozy"
     ],
-    "sample": true,
     "size": {
       "w": 30,
       "h": 40
@@ -647,7 +614,7 @@
     "title": "Chrystus Pantokrator",
     "author": "student",
     "image": {
-      "src": "/media/sample/icons/chrystus-pantokrator-4.jpg",
+      "src": "/media/import/icons/chrystus-pantokrator-4.jpg",
       "alt": "Ikona: Chrystus Pantokrator",
       "width": 539,
       "height": 738
@@ -655,7 +622,6 @@
     "tags": [
       "chrystus"
     ],
-    "sample": true,
     "size": {
       "w": 25,
       "h": 30
@@ -667,7 +633,7 @@
     "title": "Święty Jerzy",
     "author": "student",
     "image": {
-      "src": "/media/sample/icons/swiety-jerzy.jpg",
+      "src": "/media/import/icons/swiety-jerzy.jpg",
       "alt": "Ikona: Święty Jerzy",
       "width": 972,
       "height": 1296
@@ -675,7 +641,6 @@
     "tags": [
       "swieci"
     ],
-    "sample": true,
     "size": {
       "w": 40,
       "h": 60
@@ -687,7 +652,7 @@
     "title": "Matka Boża Śnieżna",
     "author": "student",
     "image": {
-      "src": "/media/sample/icons/matka-boza-sniezna-2.jpg",
+      "src": "/media/import/icons/matka-boza-sniezna-2.jpg",
       "alt": "Ikona: Matka Boża Śnieżna",
       "width": 972,
       "height": 1296
@@ -695,7 +660,6 @@
     "tags": [
       "matka-bozy"
     ],
-    "sample": true,
     "size": {
       "w": 21,
       "h": 26
@@ -707,7 +671,7 @@
     "title": "Chrystus na Mocach",
     "author": "student",
     "image": {
-      "src": "/media/sample/icons/chrystus-na-mocach.jpg",
+      "src": "/media/import/icons/chrystus-na-mocach.jpg",
       "alt": "Ikona: Chrystus na Mocach",
       "width": 972,
       "height": 1296
@@ -715,7 +679,6 @@
     "tags": [
       "chrystus"
     ],
-    "sample": true,
     "size": {
       "w": 30,
       "h": 40
@@ -727,7 +690,7 @@
     "title": "Mandylion",
     "author": "student",
     "image": {
-      "src": "/media/sample/icons/mandylion-2.jpg",
+      "src": "/media/import/icons/mandylion-2.jpg",
       "alt": "Ikona: Mandylion",
       "width": 972,
       "height": 1211
@@ -735,7 +698,6 @@
     "tags": [
       "chrystus"
     ],
-    "sample": true,
     "size": {
       "w": 25,
       "h": 24
@@ -747,7 +709,7 @@
     "title": "Święty Jerzy",
     "author": "student",
     "image": {
-      "src": "/media/sample/icons/swiety-jerzy-2.jpg",
+      "src": "/media/import/icons/swiety-jerzy-2.jpg",
       "alt": "Ikona: Święty Jerzy",
       "width": 412,
       "height": 535
@@ -755,7 +717,6 @@
     "tags": [
       "swieci"
     ],
-    "sample": true,
     "size": {
       "w": 25,
       "h": 30
@@ -767,7 +728,7 @@
     "title": "Matka Boża Koptyjska",
     "author": "student",
     "image": {
-      "src": "/media/sample/icons/matka-boza-koptyjska.jpg",
+      "src": "/media/import/icons/matka-boza-koptyjska.jpg",
       "alt": "Ikona: Matka Boża Koptyjska",
       "width": 374,
       "height": 631
@@ -775,7 +736,6 @@
     "tags": [
       "matka-bozy"
     ],
-    "sample": true,
     "size": {
       "w": 25,
       "h": 30
@@ -787,7 +747,7 @@
     "title": "Trójca Święta",
     "author": "student",
     "image": {
-      "src": "/media/sample/icons/trojca-swieta-2.jpg",
+      "src": "/media/import/icons/trojca-swieta-2.jpg",
       "alt": "Ikona: Trójca Święta",
       "width": 600,
       "height": 800
@@ -795,7 +755,6 @@
     "tags": [
       "sceny-i-swieta"
     ],
-    "sample": true,
     "size": {
       "w": 25,
       "h": 30
@@ -807,7 +766,7 @@
     "title": "Matka Boża Pompejańska",
     "author": "student",
     "image": {
-      "src": "/media/sample/icons/matka-boza-pompejanska.jpg",
+      "src": "/media/import/icons/matka-boza-pompejanska.jpg",
       "alt": "Ikona: Matka Boża Pompejańska",
       "width": 720,
       "height": 960
@@ -815,7 +774,6 @@
     "tags": [
       "matka-bozy"
     ],
-    "sample": true,
     "authorName": "Maria Magdalena Stacewicz"
   },
   {
@@ -823,7 +781,7 @@
     "title": "Trójca Święta",
     "author": "student",
     "image": {
-      "src": "/media/sample/icons/trojca-swieta-3.jpg",
+      "src": "/media/import/icons/trojca-swieta-3.jpg",
       "alt": "Ikona: Trójca Święta",
       "width": 829,
       "height": 1105
@@ -831,7 +789,6 @@
     "tags": [
       "sceny-i-swieta"
     ],
-    "sample": true,
     "size": {
       "w": 25,
       "h": 30
@@ -843,7 +800,7 @@
     "title": "Matka Boża",
     "author": "student",
     "image": {
-      "src": "/media/sample/icons/matka-boza.jpg",
+      "src": "/media/import/icons/matka-boza.jpg",
       "alt": "Ikona: Matka Boża",
       "width": 571,
       "height": 759
@@ -851,7 +808,6 @@
     "tags": [
       "matka-bozy"
     ],
-    "sample": true,
     "size": {
       "w": 22,
       "h": 16
@@ -862,7 +818,7 @@
     "title": "Archanioł Gabriel",
     "author": "student",
     "image": {
-      "src": "/media/sample/icons/archaniol-gabriel-3.jpg",
+      "src": "/media/import/icons/archaniol-gabriel-3.jpg",
       "alt": "Ikona: Archanioł Gabriel",
       "width": 515,
       "height": 1119
@@ -870,7 +826,6 @@
     "tags": [
       "aniolowie"
     ],
-    "sample": true,
     "size": {
       "w": 25,
       "h": 40
@@ -881,7 +836,7 @@
     "title": "Boże Narodzenie",
     "author": "student",
     "image": {
-      "src": "/media/sample/icons/boze-narodzenie-2.jpg",
+      "src": "/media/import/icons/boze-narodzenie-2.jpg",
       "alt": "Ikona: Boże Narodzenie",
       "width": 872,
       "height": 721
@@ -889,7 +844,6 @@
     "tags": [
       "sceny-i-swieta"
     ],
-    "sample": true,
     "size": {
       "w": 25,
       "h": 26
@@ -900,7 +854,7 @@
     "title": "Mandylion",
     "author": "student",
     "image": {
-      "src": "/media/sample/icons/mandylion-3.jpg",
+      "src": "/media/import/icons/mandylion-3.jpg",
       "alt": "Ikona: Mandylion",
       "width": 677,
       "height": 940
@@ -908,7 +862,6 @@
     "tags": [
       "chrystus"
     ],
-    "sample": true,
     "size": {
       "w": 30,
       "h": 25
@@ -919,7 +872,7 @@
     "title": "Matka Boża Pneumatofora",
     "author": "student",
     "image": {
-      "src": "/media/sample/icons/matka-boza-pneumatofora.jpg",
+      "src": "/media/import/icons/matka-boza-pneumatofora.jpg",
       "alt": "Ikona: Matka Boża Pneumatofora",
       "width": 736,
       "height": 981
@@ -927,7 +880,6 @@
     "tags": [
       "matka-bozy"
     ],
-    "sample": true,
     "size": {
       "w": 30,
       "h": 25
@@ -938,7 +890,7 @@
     "title": "Boże Narodzenie",
     "author": "student",
     "image": {
-      "src": "/media/sample/icons/boze-narodzenie-3.jpg",
+      "src": "/media/import/icons/boze-narodzenie-3.jpg",
       "alt": "Ikona: Boże Narodzenie",
       "width": 422,
       "height": 640
@@ -946,7 +898,6 @@
     "tags": [
       "sceny-i-swieta"
     ],
-    "sample": true,
     "size": {
       "w": 30,
       "h": 40
@@ -957,7 +908,7 @@
     "title": "Przemienienie Pańskie",
     "author": "student",
     "image": {
-      "src": "/media/sample/icons/przemienienie-panskie.jpg",
+      "src": "/media/import/icons/przemienienie-panskie.jpg",
       "alt": "Ikona: Przemienienie Pańskie",
       "width": 999,
       "height": 1560
@@ -965,7 +916,6 @@
     "tags": [
       "sceny-i-swieta"
     ],
-    "sample": true,
     "size": {
       "w": 40,
       "h": 60
@@ -976,7 +926,7 @@
     "title": "Matka Boża Advokata",
     "author": "student",
     "image": {
-      "src": "/media/sample/icons/matka-boza-advokata.jpg",
+      "src": "/media/import/icons/matka-boza-advokata.jpg",
       "alt": "Ikona: Matka Boża Advokata",
       "width": 720,
       "height": 960
@@ -984,7 +934,6 @@
     "tags": [
       "matka-bozy"
     ],
-    "sample": true,
     "size": {
       "w": 25,
       "h": 15
@@ -995,7 +944,7 @@
     "title": "Archanioł Gabriel",
     "author": "student",
     "image": {
-      "src": "/media/sample/icons/archaniol-gabriel-4.jpg",
+      "src": "/media/import/icons/archaniol-gabriel-4.jpg",
       "alt": "Ikona: Archanioł Gabriel",
       "width": 829,
       "height": 1105
@@ -1003,7 +952,6 @@
     "tags": [
       "aniolowie"
     ],
-    "sample": true,
     "size": {
       "w": 25,
       "h": 30

@@ -83,7 +83,6 @@ const manifestToIconWork = (entry, existingBySlug) => {
       height: entry.image.height,
     },
     tags: [tag],
-    sample: true,
   };
 
   if (entry.size) {
