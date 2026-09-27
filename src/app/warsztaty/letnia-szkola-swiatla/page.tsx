@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 
 import { OfferPage } from "@/components/content/OfferPage";
+import { OfferLeadExtra } from "@/components/offers/OfferLeadExtra";
 import { OfferQuoteGrid } from "@/components/offers/OfferQuoteGrid";
 import { PlenerWhereWeWereSection } from "@/components/offers/PlenerWhereWeWereSection";
 import { getOffer } from "@/content/offers";
@@ -40,6 +41,7 @@ export default function SummerSchoolOfLightPage() {
       sectionActive={sectionItem.label}
       active={mainNavActive}
       quoteSlot={quoteSlot}
+      leadExtraSlot={offer.leadExtra ? <OfferLeadExtra leadExtra={offer.leadExtra} /> : undefined}
     />
   );
 }

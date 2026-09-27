@@ -138,7 +138,7 @@ export function ExhibitionPage({ active, sectionActive }: ExhibitionPageProps) {
         },
         {
           label: annual.onDisplayLabel,
-          value: getAnnualIconCountLabel(latestAnnual),
+          value: getAnnualIconCountLabel(),
         },
       ];
 

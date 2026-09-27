@@ -1,36 +1,55 @@
-{
-  "sample": true,
-  "items": [
-    {
-      "quote": "[cytat z obecnej strony – Adam]",
-      "author": "Adam",
-      "role": "uczestnik pleneru"
-    },
-    {
-      "quote": "[cytat z obecnej strony – Hania]",
-      "author": "Hania",
-      "role": "uczestniczka pleneru"
-    },
-    {
-      "quote": "[cytat z obecnej strony – Iza]",
-      "author": "Iza",
-      "role": "uczestniczka pleneru"
-    },
-    {
-      "quote": "[cytat z obecnej strony – Emilia]",
-      "author": "Emilia"
-    },
-    {
-      "quote": "[cytat z obecnej strony – Robert]",
-      "author": "Robert"
-    },
-    {
-      "quote": "[cytat z obecnej strony – Maciej]",
-      "author": "Maciej"
-    },
-    {
-      "quote": "[cytat z obecnej strony – Artur]",
-      "author": "Artur"
-    }
-  ]
-}
+{
+  "items": [
+    {
+      "quote": "O pisaniu ikon myślałem od dawna, od roku jestem w Akademii Ikony i teraz już wiem, że będę ikony pisał do końca życia. W czasie wakacji jest więcej czasu i poczucie spełnienia może być wzmocnione większym wysiłkiem.",
+      "author": "Adam",
+      "role": "uczestnik warsztatów"
+    },
+    {
+      "quote": "Cztery lata temu po raz pierwszy wziąłem udział w warsztatach wakacyjnych i od tego czasu jestem w Akademii Ikony. Na plenerze kontynuuję pracę nad ikoną rozpoczętą wcześniej. Dla początkujących to taki czas, żeby rozeznać, bo pisanie ikon nie jest dla każdego.",
+      "author": "Artur",
+      "role": "uczestnik warsztatów"
+    },
+    {
+      "quote": "Wszystkiego na raz się nie da zrobić, jesteśmy zabiegani i zapracowani. Zajęcia w Akademii Ikony to czas wyciszenia ale taki, że chcesz jeszcze coś z siebie wycisnąć. Dobry czas.",
+      "author": "Maciej",
+      "role": "uczestnik warsztatów"
+    },
+    {
+      "quote": "Wysiłek jest taki, że zapomina się o spaniu i jedzeniu, ale bez szkody, a nawet z korzyścią dla ciała.",
+      "author": "Adam",
+      "role": "uczestnik pleneru",
+      "scope": "plener"
+    },
+    {
+      "quote": "To jest tak, jak ze wspinaczką w górach – idziemy, bo taki jest nasz wybór. Jest wspaniale.",
+      "author": "Hania",
+      "role": "uczestniczka pleneru",
+      "scope": "plener"
+    },
+    {
+      "quote": "To czas rekolekcyjny, możemy zatrzymać się i rozważać. Bywają takie zakręty życia, z których wychodzimy dzięki takim spotkaniom nie tylko cali, ale i wzmocnieni.",
+      "author": "Iza",
+      "role": "nauczycielka akademicka",
+      "scope": "plener"
+    },
+    {
+      "quote": "Jest fajnie, przyjeżdżają wspaniali ludzie z różnych stron, spotykamy się. Pani Elżbieta prowadzi każdego tak, że ikony powstają pełne dobra i piękna. Oczywiście musi być włożony wysiłek, ale tego się tak nie odczuwa.",
+      "author": "Robert",
+      "role": "uczestnik pleneru",
+      "scope": "plener"
+    },
+    {
+      "quote": "Przeżycie artystyczne i duchowe, polecam.",
+      "author": "Emilia",
+      "role": "uczestniczka pleneru",
+      "scope": "plener"
+    },
+    {
+      "quote": "Cztery lata temu po raz pierwszy wziąłem udział w warsztatach wakacyjnych i od tego czasu jestem w Akademii Ikony. Na plenerze kontynuuję pracę nad ikoną rozpoczętą wcześniej. Dla początkujących to taki czas, żeby rozeznać, bo pisanie ikon nie jest dla każdego.",
+      "author": "Artur",
+      "role": "uczestnik pleneru",
+      "scope": "plener"
+    }
+  ]
+}

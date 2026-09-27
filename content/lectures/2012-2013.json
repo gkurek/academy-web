@@ -1,0 +1,80 @@
+{
+  "slug": "2012-2013",
+  "label": "2012/2013",
+  "cycleTitle": "Świat ikony",
+  "intro": "Spotkania moderuje Elżbieta Jackowska-Kurek. Wykłady: ks. dr Henryk Paprocki — teologia ikony (pierwszy wykład), ks. dr Piotr Nikolski — sztuka ikony (drugi wykład).",
+  "lectures": [
+    {
+      "date": "2012-10-18",
+      "title": "Źródła ikony · Kształtowanie teologii i artystycznego języka ikony. Sztuka wczesnochrześcijańska a ikona.",
+      "lecturerSlugs": [
+        "henryk-paprocki",
+        "piotr-nikolski"
+      ]
+    },
+    {
+      "date": "2012-11-22",
+      "title": "Przedstawienia w Starym Testamencie i świecie grecko-rzymskim · Ikona Trójcy Świętej w świetle prawosławnej teologii trynitarnej. Kształtowanie typu ikonograficznego na przestrzeni wieków od katakumb do Rublowa.",
+      "lecturerSlugs": [
+        "henryk-paprocki",
+        "piotr-nikolski"
+      ]
+    },
+    {
+      "date": "2012-12-13",
+      "title": "Ikony Matki Bożej a prawosławna pobożność maryjna · Ikona Zbawiciela w świetle dogmatu chalcedońskiego i praktyki modlitwy Jezusowej",
+      "lecturerSlugs": [
+        "henryk-paprocki",
+        "piotr-nikolski"
+      ]
+    },
+    {
+      "date": "2013-01-31",
+      "title": "Historia dogmatu kultu ikony · Interpretacja dogmatu kultu ikony",
+      "lecturerSlugs": [
+        "henryk-paprocki",
+        "piotr-nikolski"
+      ]
+    },
+    {
+      "date": "2013-02-21",
+      "title": "Ikona i jej antynomie · Rok liturgiczny w ikonie cz. 1",
+      "lecturerSlugs": [
+        "henryk-paprocki",
+        "piotr-nikolski"
+      ]
+    },
+    {
+      "date": "2013-03-14",
+      "title": "Ikona i sztuka · Rok liturgiczny w ikonie cz. 2",
+      "lecturerSlugs": [
+        "henryk-paprocki",
+        "piotr-nikolski"
+      ]
+    },
+    {
+      "date": "2013-04-25",
+      "title": "Teologia piękna – Boski Archetyp · Ikona Sądu Ostatecznego w świetle eschatologii Kościoła Wschodniego.",
+      "lecturerSlugs": [
+        "henryk-paprocki",
+        "piotr-nikolski"
+      ]
+    },
+    {
+      "date": "2013-05-23",
+      "title": "Granice dogmatyczne ikony · Człowiek przebóstwiony – ikony świętych.",
+      "lecturerSlugs": [
+        "henryk-paprocki",
+        "piotr-nikolski"
+      ]
+    },
+    {
+      "date": "2013-06-20",
+      "title": "Kult ikony, ikona a liturgia · Ikonostas i układ świątyni prawosławnej, ikona w liturgii.",
+      "lecturerSlugs": [
+        "henryk-paprocki",
+        "piotr-nikolski"
+      ]
+    }
+  ]
+}

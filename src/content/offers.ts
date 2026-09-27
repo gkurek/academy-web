@@ -6,11 +6,25 @@ import PlenerContent, { frontmatter as plenerFrontmatter } from "../../content/o
 import WykladyContent, { frontmatter as wykladyFrontmatter } from "../../content/offers/wyklady.mdx";
 import ZamowienieContent, { frontmatter as zamowienieFrontmatter } from "../../content/offers/zamowienie.mdx";
 
+/** Short block under the lead, left of the FactsBox on desktop. */
+export type OfferLeadExtra = {
+  heading: string;
+  items: { title: string; text: string }[];
+};
+
+/** Prose sections under the lead (left column), e.g. zamówienie intro from WP. */
+export type OfferLeadIntroSection = {
+  heading: string;
+  paragraphs: string[];
+};
+
 export type OfferFrontmatter = {
   slug: string;
   title: string;
   lead?: string;
   leadSecondary?: string;
+  leadExtra?: OfferLeadExtra;
+  leadIntro?: OfferLeadIntroSection[];
   kind: Offer["kind"];
   sample?: boolean;
   facts: OfferFacts;
@@ -24,6 +38,8 @@ export type OfferFrontmatter = {
 
 export type LoadedOffer = Offer & {
   leadSecondary?: string;
+  leadExtra?: OfferLeadExtra;
+  leadIntro?: OfferLeadIntroSection[];
   semesters: SemesterItem[];
   steps: StepItem[];
   exampleSlugs: string[];
@@ -65,6 +81,8 @@ function toOffer(offerModule: OfferModule): LoadedOffer {
     title: frontmatter.title,
     lead: frontmatter.lead,
     leadSecondary: frontmatter.leadSecondary,
+    leadExtra: frontmatter.leadExtra,
+    leadIntro: frontmatter.leadIntro,
     kind: frontmatter.kind,
     facts: frontmatter.facts,
     hero: frontmatter.hero,

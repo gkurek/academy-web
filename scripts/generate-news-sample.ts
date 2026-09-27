@@ -80,6 +80,9 @@ type GeneratedEntry = {
   body: string;
   images?: ImageMeta[];
   poster?: ImageMeta;
+  featured?: boolean;
+  featuredUntil?: string;
+  cover?: ImageMeta;
 };
 
 const EXCLUDED_SLUGS = new Set([
@@ -414,8 +417,16 @@ const buildNabor2026Entry = (): GeneratedEntry => ({
   title: "Nabór na kurs roczny i trzyletni 2026/2027",
   date: "2026-09-01",
   kind: "warsztaty",
+  featured: true,
+  featuredUntil: "2026-09-24",
   excerpt:
     "Rusza nabór na kurs roczny i trzyletni w sezonie 2026/2027. Zgłoszenia przyjmujemy mailem do 24 września 2026.",
+  cover: {
+    src: "/media/sample/news/nasze-pisanie-ikon-2.jpg",
+    alt: "Uczestnicy warsztatów pisania ikon w pracowni Akademii Ikony",
+    width: 1024,
+    height: 768,
+  },
   body: `Zapraszamy do zapisów na kurs roczny i trzyletni w Akademii Ikony. Zajęcia odbywają się raz w tygodniu, od października do czerwca, w grupach wieczornych i dziennych — w Kościele Środowisk Twórczych na Placu Teatralnym w Warszawie.
 
 <NewsCta href="/warsztaty/kurs-roczny-i-trzyletni" label="Jak się zapisać na kurs" />`,
@@ -441,6 +452,15 @@ const serializeFrontmatter = (entry: GeneratedEntry): string => {
   }
   if (entry.poster) {
     payload.poster = entry.poster;
+  }
+  if (entry.featured) {
+    payload.featured = true;
+  }
+  if (entry.featuredUntil) {
+    payload.featuredUntil = entry.featuredUntil;
+  }
+  if (entry.cover) {
+    payload.cover = entry.cover;
   }
 
   return `export const frontmatter = ${JSON.stringify(payload, null, 2)};\n\n`;

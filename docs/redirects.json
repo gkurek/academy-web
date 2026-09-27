@@ -1,0 +1,169 @@
+{
+  "redirects": [
+    {
+      "source": "/aktualnosci/sladami-najpiekniejszych-ikon-swiata",
+      "destination": "/aktualnosci/spotkania-sladami-najpiekniejszych-ikon-swiata",
+      "note": "A3: scalenie duplikatu news (2026-09-27)"
+    },
+    {
+      "source": "/sladami-najpiekniejszych-ikon-swiata",
+      "destination": "/aktualnosci/spotkania-sladami-najpiekniejszych-ikon-swiata",
+      "note": "WP slug zduplikowanego wpisu → kanoniczny spotkania (2026-09-27)"
+    },
+    {
+      "source": "/aktualnosci/tworcze-lato-2016",
+      "destination": "/aktualnosci/sesja-ikonowa-modlitwa-psalmami-i-wystawa-ikon-w-swietej-lipce-2016",
+      "note": "B3: duplikat Lipka 2016 scalony w kanoniczny wpis wyjazd (2026-09-27)"
+    },
+    {
+      "source": "/tworcze-lato-2016",
+      "destination": "/aktualnosci/sesja-ikonowa-modlitwa-psalmami-i-wystawa-ikon-w-swietej-lipce-2016",
+      "note": "WP slug tworcze-lato-2016 → kanoniczny Lipka 2016 (2026-09-27)"
+    },
+    {
+      "source": "/aktualnosci/wystawa-ikona-dzis-2",
+      "destination": "/aktualnosci/wystawa-ikona-dzis",
+      "note": "K-67: scalenie duplikatów (brief §5, P1 2026-09-27)"
+    },
+    {
+      "source": "/aktualnosci/149",
+      "destination": "/aktualnosci/ikona-piekno-zanurzone-w-tajemnicy",
+      "note": "K-67: scalenie duplikatów (brief §5, P1 2026-09-27)"
+    },
+    {
+      "source": "/strona-glowna",
+      "destination": "/",
+      "note": "WP strona główna → home (P8 2026-09-27)"
+    },
+    {
+      "source": "/strona-glowna/celem-dzialalnosci-akademii-ikony-studium-ikonograficznego-sw-andrzeja-apostola-jest-ksztalcenie-ale-i-pomoc-w-doswiadczaniu-ikony",
+      "destination": "/o-akademii",
+      "note": "brief §5, kawałek 1 v2 (P1 2026-09-27)"
+    },
+    {
+      "source": "/strona-glowna/pracownia",
+      "destination": "/pracownia",
+      "note": "brief §5 (P1 2026-09-27)"
+    },
+    {
+      "source": "/strona-glowna/kontakt",
+      "destination": "/kontakt",
+      "note": "brief §5 (P1 2026-09-27)"
+    },
+    {
+      "source": "/strona-glowna/polityka-prywatnosci",
+      "destination": "/polityka-prywatnosci",
+      "note": "brief §5 (P1 2026-09-27)"
+    },
+    {
+      "source": "/strona-glowna/aktualnosci",
+      "destination": "/aktualnosci",
+      "note": "WP lista aktualności → hub news (P1 2026-09-27)"
+    },
+    {
+      "source": "/warsztaty/warsztaty-roczne",
+      "destination": "/warsztaty/kurs-roczny-i-trzyletni",
+      "note": "brief §5 (P1 2026-09-27)"
+    },
+    {
+      "source": "/warsztaty/warsztaty-wakacyjne",
+      "destination": "/warsztaty/letnia-szkola-swiatla",
+      "note": "brief §5 (P1 2026-09-27)"
+    },
+    {
+      "source": "/warsztaty/zapisy-na-warsztaty",
+      "destination": "/warsztaty/kurs-roczny-i-trzyletni",
+      "note": "brief §5: zapisy scalone w ofertę kursu (P1 2026-09-27)"
+    },
+    {
+      "source": "/wyklady/tematy",
+      "destination": "/wyklady",
+      "note": "P0 #12: program w JSON + hub (2026-09-27)"
+    },
+    {
+      "source": "/wyklady/zapisy-na-wyklady",
+      "destination": "/wyklady#zapisy",
+      "note": "brief §5 (P1 2026-09-27)"
+    },
+    {
+      "source": "/ikona",
+      "destination": "/ikony",
+      "note": "WP hub Ikona → /ikony (P1 #14, 2026-09-27)"
+    },
+    {
+      "source": "/ikona/galeria",
+      "destination": "/ikony",
+      "note": "brief §5 (P1 2026-09-27)"
+    },
+    {
+      "source": "/ikona/wystawy",
+      "destination": "/ikony/wystawy",
+      "note": "brief §5 / K-90 (P1 2026-09-27)"
+    },
+    {
+      "source": "/ikona/ikony-na-zamowienie",
+      "destination": "/ikony/na-zamowienie",
+      "note": "brief §5 (P1 2026-09-27)"
+    },
+    {
+      "source": "/wernisaze",
+      "destination": "/ikony/wystawy",
+      "note": "P1 #17: stary hub wystaw (K-90, 2026-09-27)"
+    },
+    {
+      "source": "/oprowadzania-kuratorskie",
+      "destination": "/ikony/wystawy#oprowadzania",
+      "note": "brief §5 / K-90 (P1 #19, 2026-09-27)"
+    },
+    {
+      "source": "/wyjazdy-studyjne",
+      "destination": "/aktualnosci",
+      "note": "K-50 (P1 #20, 2026-09-27)"
+    },
+    {
+      "source": "/wydarzenia",
+      "destination": "/aktualnosci",
+      "note": "K-50 (P1 #21, 2026-09-27)"
+    },
+    {
+      "source": "/publikacje/artykuly",
+      "destination": "/publikacje#artykuly",
+      "note": "brief §5 (P1 2026-09-27)"
+    },
+    {
+      "source": "/publikacje/plakaty",
+      "destination": "/aktualnosci",
+      "note": "P0 #25: tymczasowo do listy aktualności; po wpisie zbiorczym → /aktualnosci/[slug] (2026-09-27)"
+    },
+    {
+      "source": "/publikacje/multimedia",
+      "destination": "/publikacje",
+      "note": "K-78 (P1 #26, 2026-09-27)"
+    },
+    {
+      "source": "/konsultacje-i-lekcje-indywidualne",
+      "destination": "/warsztaty/kurs-roczny-i-trzyletni#konsultacje",
+      "note": "P0 #28 (2026-09-27)"
+    },
+    {
+      "source": "/blog",
+      "destination": "https://studiumikony.blogspot.com",
+      "note": "P1 #29: blog nie migrowany; link jak w settings.blogUrl (2026-09-27)"
+    },
+    {
+      "source": "/ikona-korzenie-i-owoce-wiary-2",
+      "destination": "/ikony/wystawy",
+      "note": "S4: treść w annual.json, nie news (brief §5, P1 2026-09-27)"
+    },
+    {
+      "source": "/ikony/wystawa",
+      "destination": "/ikony/wystawy",
+      "note": "adres z etapu 7–8 (brief §5, P1 2026-09-27)"
+    },
+    {
+      "source": "/poswiecenia-ikon",
+      "destination": "/aktualnosci/poswiecenia-ikon",
+      "note": "P7 #27: strona WP → wpis aktualności (K-77, 2026-09-27)"
+    }
+  ]
+}

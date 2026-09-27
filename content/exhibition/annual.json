@@ -26,7 +26,7 @@
           "height": 800
         },
         {
-          "src": "/media/sample/icons/chrystus.jpg",
+          "src": "/media/import/icons/chrystus.jpg",
           "alt": "Ikona Chrystusa na wystawie",
           "width": 360,
           "height": 682
@@ -45,19 +45,19 @@
       "newsSlug": "wystawa-madrosc-boza-2026",
       "photos": [
         {
-          "src": "/media/sample/icons/boze-narodzenie-3.jpg",
+          "src": "/media/import/icons/boze-narodzenie-3.jpg",
           "alt": "Ikona Bożego Narodzenia z wystawy 2026",
           "width": 800,
           "height": 1200
         },
         {
-          "src": "/media/sample/icons/mandylion-3.jpg",
+          "src": "/media/import/icons/mandylion-3.jpg",
           "alt": "Ikona Mandylionu z wystawy 2026",
           "width": 800,
           "height": 1200
         },
         {
-          "src": "/media/sample/icons/matka-boza-sniezna.jpg",
+          "src": "/media/import/icons/matka-boza-sniezna.jpg",
           "alt": "Ikona Matki Bożej Śnieżnej z wystawy 2026",
           "width": 800,
           "height": 1200
@@ -92,16 +92,15 @@
     {
       "seasonSlug": "2018-2019",
       "title": "O świętości",
-      "iconCount": 44,
       "photos": [
         {
-          "src": "/media/sample/icons/chrystus.jpg",
+          "src": "/media/import/icons/chrystus.jpg",
           "alt": "Ikona Chrystusa z wystawy 2019",
           "width": 360,
           "height": 682
         },
         {
-          "src": "/media/sample/icons/swiety-symeon.jpg",
+          "src": "/media/import/icons/swiety-symeon.jpg",
           "alt": "Ikona świętego Symeona z wystawy 2019",
           "width": 800,
           "height": 1200

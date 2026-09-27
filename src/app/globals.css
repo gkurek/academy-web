@@ -407,6 +407,37 @@
   --publication-article-max: 720px;
   --publication-spread-gap: 14px;
   --publication-toc-read-col: 190px;
+
+  /* Footer — mockup 9e (contact band, sitemap band, legal bar). */
+  --footer-contact-bg: #1a140f;
+  --footer-credit-hover: #ff78be;
+  --footer-contact-col: 440px;
+  --footer-brand-size: 19px;
+  --footer-heading-size: 22px;
+  --footer-person-size: 25px;
+  --footer-sublink-size: 15.5px;
+  --footer-contact-py: 40px;
+  --footer-contact-py-m: 30px;
+  --footer-contact-stack-gap: 24px;
+  --footer-persons-gap: 32px;
+  --footer-persons-gap-m: 28px;
+  --footer-subtitle-mt: 6px;
+  --footer-address-mt: 22px;
+  --footer-address-mt-m: 20px;
+  --footer-address-line-mt-m: 6px;
+  --footer-note-mt: 12px;
+  --footer-role-mt: 5px;
+  --footer-role-mt-m: 4px;
+  --footer-data-mt: 12px;
+  --footer-data-mt-m: 6px;
+  --footer-social-gap-m: 12px;
+  --footer-social-px: 18px;
+  --footer-sitemap-pt: 36px;
+  --footer-sitemap-pb: 32px;
+  --footer-sitemap-py-m: 22px;
+  --footer-group-gap-m: 6px;
+  --footer-rule-mt: 32px;
+  --footer-legal-py-m: 22px;
 }
 
 /* Tailwind utility mappings for the tokens this piece actually consumes.
@@ -522,12 +553,40 @@
   --spacing-menu-indent: 36px;
   /* Gold underline offset under an active nav link. */
   --spacing-link-underline-gap: 2px;
-  /* Footer (design/components/navigation/Footer.jsx: padding 48px .. 40px, gap 40px). */
-  --spacing-footer-pt: 48px;
-  --spacing-footer-pb: 40px;
-  --spacing-footer-gap: 40px;
-
-  --grid-template-columns-footer: 1.25fr 1fr 1fr 1fr;
+  /* Footer — mockup 9e. */
+  --color-footer-contact: var(--footer-contact-bg);
+  --color-footer-credit-hover: var(--footer-credit-hover);
+  --text-size-footer-brand: var(--footer-brand-size);
+  --text-size-footer-heading: var(--footer-heading-size);
+  --text-size-footer-person: var(--footer-person-size);
+  --text-size-footer-sublink: var(--footer-sublink-size);
+  --leading-footer-address: 1.65;
+  --leading-footer-sublink: 1.5;
+  /* Mockup 9e leaves these lines at the font's own `normal` metric (Tailwind's leading-normal is 1.5). */
+  --leading-footer-text: normal;
+  --spacing-footer-contact-py: var(--footer-contact-py);
+  --spacing-footer-contact-py-m: var(--footer-contact-py-m);
+  --spacing-footer-contact-stack-gap: var(--footer-contact-stack-gap);
+  --spacing-footer-persons-gap: var(--footer-persons-gap);
+  --spacing-footer-persons-gap-m: var(--footer-persons-gap-m);
+  --spacing-footer-subtitle-mt: var(--footer-subtitle-mt);
+  --spacing-footer-address-mt: var(--footer-address-mt);
+  --spacing-footer-address-mt-m: var(--footer-address-mt-m);
+  --spacing-footer-address-line-mt-m: var(--footer-address-line-mt-m);
+  --spacing-footer-note-mt: var(--footer-note-mt);
+  --spacing-footer-role-mt: var(--footer-role-mt);
+  --spacing-footer-role-mt-m: var(--footer-role-mt-m);
+  --spacing-footer-data-mt: var(--footer-data-mt);
+  --spacing-footer-data-mt-m: var(--footer-data-mt-m);
+  --spacing-footer-social-gap-m: var(--footer-social-gap-m);
+  --spacing-footer-social-px: var(--footer-social-px);
+  --spacing-footer-sitemap-pt: var(--footer-sitemap-pt);
+  --spacing-footer-sitemap-pb: var(--footer-sitemap-pb);
+  --spacing-footer-sitemap-py-m: var(--footer-sitemap-py-m);
+  --spacing-footer-group-gap-m: var(--footer-group-gap-m);
+  --spacing-footer-rule-mt: var(--footer-rule-mt);
+  --spacing-footer-legal-py-m: var(--footer-legal-py-m);
+  --grid-template-columns-footer-contact: minmax(0, 1fr) var(--footer-contact-col);
 
   /* Home hero */
   --spacing-hero-pt: var(--hero-pt);
@@ -842,6 +901,24 @@
     transform: translateX(-50%);
     width: 100vw;
     background: var(--surface-footer);
+  }
+
+  /* Footer contact band (mockup 9e) — lighter than the rest of the footer, full viewport. */
+  .surface-footer-contact-bleed {
+    position: relative;
+    isolation: isolate;
+  }
+
+  .surface-footer-contact-bleed::after {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100vw;
+    background: var(--footer-contact-bg);
   }
 
   /* Offer bands (e.g. “Gotowe ikony”) — background spans the full viewport. */
@@ -1306,7 +1383,7 @@
 
   .person-profile {
     display: grid;
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
     gap: var(--space-5);
     align-items: start;
   }
@@ -1375,7 +1452,6 @@
     font-size: var(--size-body);
     line-height: var(--leading-body);
     color: var(--accent-text);
-    white-space: nowrap;
   }
 
   .person-profile-work-year {
@@ -1406,6 +1482,11 @@
       gap: var(--space-6);
       align-items: baseline;
       padding-block: var(--space-4);
+    }
+
+    /* Only in the two-column row — stacked on mobile, a long meta line must wrap. */
+    .person-profile-work-meta {
+      white-space: nowrap;
     }
 
     .person-profile-work-title {
@@ -2420,6 +2501,25 @@
     display: block;
     width: 100%;
     height: auto;
+  }
+
+  .lecturer-photo-placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    aspect-ratio: var(--lecturer-photo-aspect);
+    border: 1px solid var(--line-gold);
+    background: var(--surface-tile);
+  }
+
+  .lecturer-photo-placeholder-text {
+    margin: 0;
+    padding: var(--space-4);
+    font-size: var(--size-caption);
+    line-height: var(--leading-body);
+    color: var(--text-tertiary);
+    text-align: center;
   }
 
   .news-poster-placeholder {

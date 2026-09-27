@@ -20,6 +20,15 @@ export function getLecturer(slug: string): Lecturer | undefined {
   return lecturers.find((lecturer) => lecturer.slug === slug);
 }
 
+export function getLecturerProfileHref(slug: string): string | undefined {
+  const lecturer = getLecturer(slug);
+  if (!lecturer?.bio) {
+    return undefined;
+  }
+
+  return `/wyklady/wykladowcy#${slug}`;
+}
+
 export function getLecturersPageIntro(): string {
   const { intro } = lecturersPageMeta as LecturersPageMeta;
   return intro.replace("{totalSeasons}", String(getTotalSeasonCount()));

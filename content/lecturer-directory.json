@@ -2,8 +2,13 @@
   {
     "slug": "aleksander-jacyniak",
     "name": "Aleksander Jacyniak",
-    "titles": "ks. dr",
-    "affiliation": "SJ"
+    "titles": "o. dr SJ",
+    "affiliation": "AKW"
+  },
+  {
+    "slug": "aleksandra-sulikowska-gaska",
+    "name": "Aleksandra Sulikowska-Gąska",
+    "titles": "dr"
   },
   {
     "slug": "aleksandra-szyborska",
@@ -17,10 +22,36 @@
     "titles": "ks. dr"
   },
   {
+    "slug": "artur-aleksiejuk",
+    "name": "Artur Aleksiejuk",
+    "titles": "ks. dr",
+    "affiliation": "ChAT"
+  },
+  {
+    "slug": "barbara-bodziony",
+    "name": "Barbara Bodziony"
+  },
+  {
+    "slug": "barbara-strzalkowska",
+    "name": "Barbara Strzałkowska",
+    "titles": "prof. dr hab.",
+    "affiliation": "UKSW"
+  },
+  {
+    "slug": "ewa-siuzdak",
+    "name": "Ewa Siuzdak",
+    "titles": "dr"
+  },
+  {
     "slug": "dariusz-klejnowski-rozycki",
     "name": "Dariusz Klejnowski-Różycki",
     "titles": "dr hab.",
     "affiliation": "prof. UO"
+  },
+  {
+    "slug": "dorota-walczak",
+    "name": "Dorota Walczak",
+    "titles": "dr"
   },
   {
     "slug": "elzbieta-jackowska-kurek",
@@ -32,6 +63,12 @@
     "titles": "dr"
   },
   {
+    "slug": "ewa-kocoj",
+    "name": "Ewa Kocój",
+    "titles": "prof. dr hab.",
+    "affiliation": "UJ"
+  },
+  {
     "slug": "ewa-korpysz",
     "name": "Ewa Korpysz",
     "titles": "dr"
@@ -39,7 +76,16 @@
   {
     "slug": "henryk-paprocki",
     "name": "Henryk Paprocki",
-    "titles": "ks. dr"
+    "titles": "ks. mitrat dr"
+  },
+  {
+    "slug": "iza-murza",
+    "name": "Iza Murza"
+  },
+  {
+    "slug": "irina-tatarova",
+    "name": "Irina Tatarova",
+    "titles": "dr"
   },
   {
     "slug": "jozef-naumowicz",
@@ -48,9 +94,16 @@
     "affiliation": "UKSW"
   },
   {
+    "slug": "judyta-pudelko",
+    "name": "Judyta Pudełko",
+    "titles": "s. dr hab.",
+    "affiliation": "PDDM"
+  },
+  {
     "slug": "justyna-sprutta",
     "name": "Justyna Sprutta",
-    "titles": "dr"
+    "titles": "dr",
+    "affiliation": "UAM"
   },
   {
     "slug": "maciej-biskup",
@@ -61,11 +114,16 @@
   {
     "slug": "magdalena-dylewska",
     "name": "Magdalena Dylewska",
-    "titles": "dr"
+    "titles": "dr",
+    "affiliation": "KUL"
   },
   {
     "slug": "marcin-bornus-szczycinski",
     "name": "Marcin Bornus Szczyciński"
+  },
+  {
+    "slug": "maria-osuchowska-marcelleti",
+    "name": "Maria Osuchowska-Marcelleti"
   },
   {
     "slug": "marek-szymula",
@@ -75,7 +133,8 @@
   {
     "slug": "marek-wojnarowski",
     "name": "Marek Wojnarowski",
-    "titles": "ks. dr"
+    "titles": "ks. dr",
+    "affiliation": "UW"
   },
   {
     "slug": "michal-borkowski",
@@ -83,11 +142,29 @@
   },
   {
     "slug": "michal-wojtczyk",
-    "name": "Michał Wojtczyk"
+    "name": "Michał Wojtczyk",
+    "affiliation": "UKSW"
   },
   {
     "slug": "milena-kindziuk",
     "name": "Milena Kindziuk",
     "titles": "dr"
+  },
+  {
+    "slug": "lukasz-hajduczenia",
+    "name": "Łukasz Hajduczenia",
+    "titles": "dr",
+    "affiliation": "UW"
+  },
+  {
+    "slug": "piotr-nikolski",
+    "name": "Piotr Nikolski",
+    "titles": "ks. dr"
+  },
+  {
+    "slug": "vitali-michalczuk",
+    "name": "Witali Michalczuk",
+    "titles": "dr",
+    "affiliation": "UW"
   }
 ]

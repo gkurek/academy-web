@@ -1,9 +1,21 @@
 import archiveMeta from "../../content/lectures/archive.json";
+import season20122013Data from "../../content/lectures/2012-2013.json";
+import season20132014Data from "../../content/lectures/2013-2014.json";
+import season20142015Data from "../../content/lectures/2014-2015.json";
+import season20152016Data from "../../content/lectures/2015-2016.json";
+import season20162017Data from "../../content/lectures/2016-2017.json";
+import season20172018Data from "../../content/lectures/2017-2018.json";
+import season20182019Data from "../../content/lectures/2018-2019.json";
+import season20192020Data from "../../content/lectures/2019-2020.json";
+import season20202021Data from "../../content/lectures/2020-2021.json";
+import season20212022Data from "../../content/lectures/2021-2022.json";
+import season20222023Data from "../../content/lectures/2022-2023.json";
+import season20232024Data from "../../content/lectures/2023-2024.json";
+import season20242025Data from "../../content/lectures/2024-2025.json";
+import season20252026Data from "../../content/lectures/2025-2026.json";
 import currentSeasonData from "../../content/lectures/2026-2027.json";
-import sample20242025Data from "../../content/lectures/sample-2024-2025.json";
-import sample20252026Data from "../../content/lectures/sample-2025-2026.json";
 import { getLecturerDirectoryEntry } from "@/content/lecturer-directory";
-import { formatLecturerTitles, getLecturer } from "@/content/lecturers";
+import { formatLecturerTitles, getLecturer, getLecturerProfileHref } from "@/content/lecturers";
 import type { Lecture, LectureSeason } from "@/content/types";
 
 const CURRENT_SEASON_SLUG = "2026-2027";
@@ -13,8 +25,20 @@ type LectureSeasonFile = LectureSeason & { sample?: boolean };
 
 const seasonModules: Record<string, LectureSeasonFile> = {
   "2026-2027": currentSeasonData as LectureSeasonFile,
-  "2025-2026": sample20252026Data as LectureSeasonFile,
-  "2024-2025": sample20242025Data as LectureSeasonFile,
+  "2025-2026": season20252026Data as LectureSeasonFile,
+  "2024-2025": season20242025Data as LectureSeasonFile,
+  "2023-2024": season20232024Data as LectureSeasonFile,
+  "2022-2023": season20222023Data as LectureSeasonFile,
+  "2021-2022": season20212022Data as LectureSeasonFile,
+  "2020-2021": season20202021Data as LectureSeasonFile,
+  "2019-2020": season20192020Data as LectureSeasonFile,
+  "2018-2019": season20182019Data as LectureSeasonFile,
+  "2017-2018": season20172018Data as LectureSeasonFile,
+  "2016-2017": season20162017Data as LectureSeasonFile,
+  "2015-2016": season20152016Data as LectureSeasonFile,
+  "2014-2015": season20142015Data as LectureSeasonFile,
+  "2013-2014": season20132014Data as LectureSeasonFile,
+  "2012-2013": season20122013Data as LectureSeasonFile,
 };
 
 const monthNamesGenitive = [
@@ -35,6 +59,7 @@ const monthNamesGenitive = [
 export type LectureTalk = {
   title: string;
   lecturer?: string;
+  lecturerHref?: string;
 };
 
 export type LectureListItem = {
@@ -150,6 +175,7 @@ function toLectureListItem(lecture: Lecture): LectureListItem {
     talks: pairs.map(({ title, slug }) => ({
       title,
       lecturer: slug ? formatLecturerLabel(slug) : undefined,
+      lecturerHref: slug ? getLecturerProfileHref(slug) : undefined,
     })),
     note: lecture.note,
   };

@@ -1,5 +1,9 @@
 import type { Author } from "@/content/types";
-import { formatLecturerDisplayName, getLecturer } from "@/content/lecturers";
+import {
+  formatLecturerDisplayName,
+  getLecturer,
+  getLecturerProfileHref,
+} from "@/content/lecturers";
 
 export function assertLecturerSlugExists(author: Author, context: string): void {
   if (!author.lecturerSlug) {
@@ -23,5 +27,5 @@ export function getAuthorDisplayName(author: Author): string {
 }
 
 export function getAuthorProfileHref(author: Author): string | undefined {
-  return author.lecturerSlug ? `/wyklady/wykladowcy#${author.lecturerSlug}` : undefined;
+  return author.lecturerSlug ? getLecturerProfileHref(author.lecturerSlug) : undefined;
 }

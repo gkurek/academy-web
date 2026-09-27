@@ -192,12 +192,8 @@ export function getLastFinishedAnnualExhibition(
   });
 }
 
-export function getAnnualIconCountLabel(exhibition: AnnualExhibition): string {
+export function getAnnualIconCountLabel(): string {
   const { onDisplayValue } = pl.exhibition.annual;
-
-  if (exhibition.iconCount) {
-    return `${exhibition.iconCount} ikon uczestników Akademii i EJK`;
-  }
 
   return onDisplayValue
     .replace("{from}", String(DEFAULT_ICON_COUNT_FROM))
