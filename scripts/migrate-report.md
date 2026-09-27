@@ -9,7 +9,7 @@ Zatwierdzone przez właściciela repo **2026-09-27**. Bez implementacji treści 
 | # | Slug / temat | Decyzja |
 | --- | --- | --- |
 | 12 | `tematy` | **301** `/wyklady/tematy/` → `/wyklady` (program tylko w `content/lectures/*.json` + hub). |
-| 25 | `plakaty` | Wpis zbiorczy `kind: aktualnosc` (galeria plakatów WP; tytuł z latami przy gate). **301** `/publikacje/plakaty/` → ten wpis po utworzeniu; do czasu wpisu → `/aktualnosci` (P1). **Etap 10:** rozłożyć plakaty na większe wpisy (`poster` itd.) i usunąć wpis zbiorczy, gdy zbędny. Realizacja wpisu: P6 / fala mediów. |
+| 25 | `plakaty` | Wpis zbiorczy `kind: aktualnosc` (galeria plakatów WP; tytuł z latami przy gate). **301** `/publikacje/plakaty/` → ten wpis po utworzeniu; do czasu wpisu → `/aktualnosci` (P1). **Etap 10:** rozłożyć plakaty na większe wpisy (`poster` itd.) i usunąć wpis zbiorczy, gdy zbędny. Realizacja wpisu: **fala mediów** (po **P6** ✅). |
 | 28 | `konsultacje-i-lekcje-indywidualne` | Kotwica `#konsultacje` przy sekcji w `kurs-roczny-i-trzyletni.mdx`. **301** → `/warsztaty/kurs-roczny-i-trzyletni#konsultacje`. |
 | — | Backlog post `podsumowanie-2019` | **✅ zamknięty** 2026-09-27: **#1** → P4 Tura A; **#2–#8** → wpisy news (P4 Tura C); **#9** (akapit 2020 / film) → **skip** — treść rozplanowana poza rollupem WP (bez osobnego news z tego akapitu). |
 
@@ -19,7 +19,7 @@ Zatwierdzone przez właściciela repo **2026-09-27**. Bez implementacji treści 
 
 **Zamknięty** 2026-09-27 (OK właściciela na listę 31 wpisów w `docs/redirects.json`). `next.config.ts` bez zmian — `loadPermanentRedirects()` przy buildzie.
 
-Kotwica `#konsultacje` w `content/offers/kurs-roczny-i-trzyletni.mdx` (P0 #28). `/publikacje/plakaty` → zaktualizować po wpisie zbiorczym plakatów (P0 #25 / P6).
+Kotwica `#konsultacje` w `content/offers/kurs-roczny-i-trzyletni.mdx` (P0 #28). `/publikacje/plakaty` → zaktualizować po wpisie zbiorczym plakatów (P0 #25; po P6 ✅).
 
 ## P3 — Zamówienie (#18)
 
@@ -113,6 +113,24 @@ Kotwica `#konsultacje` w `content/offers/kurs-roczny-i-trzyletni.mdx` (P0 #28). 
 
 **Zamrożenie:** metadane i kolejność galerii — **zostaw**; bez ponownego fetchu strony WP. Korekta tytułów, wymiarów, placeholder `do-uzupelnienia-tytul-ikony` — **etap 10** (`docs/plan-claude-code.md` §5).
 
+## P6 — Publikacje (#23–24)
+
+**Zamknięty** 2026-09-27 (gate K-122; tura 1 + tura 2).
+
+| Pole | Wartość |
+| --- | --- |
+| WP #23 | `https://www.akademiaikony.pl/publikacje/` |
+| WP #24 | `https://www.akademiaikony.pl/publikacje/artykuly/` |
+| Pliki | `content/publications/ikona-dzis.mdx`, `ikona-dzis-body.mdx`; `content/articles/*.mdx` (4 slugi); `src/i18n/pl.ts` (`articlesLead`) |
+| Album | `sample` zdjęty; ISBN `978-83-978648-0-1`, `pages: 176`; media okładka/rozkładówki nadal `/media/sample/publications/` |
+| Artykuły (zestaw v1) | `pietnasta-rocznica`, `piekno-ikony-perspektywa-i-swiatlo` (album); `cisza-ikony`, `ikona-przejmujaca-delikatnosc` (media / blogspot) — **gate OK** właściciela |
+| `toc` | `articleSlug` dla 3 pozycji online (`pietnasta-rocznica`, `ikona-przejmujaca-delikatnosc`, `piekno-ikony-perspektywa-i-swiatlo`); pozostałe pozycje bez artykułu — etap 10 / EJK |
+| Zakup z WP #24 | już w UI albumu (`mailto:` → `settings.json` sekretariat); lead sekcji artykułów bez duplikacji maila |
+| **301** | `/publikacje/artykuly/` — `docs/redirects.json` (P1) |
+| **EJK / etap 10** | import okładki/rozkładówek, `alt`, placeholdery w `toc` i `ikona-dzis-body.mdx`; **prawa** do publikacji online tekstów z albumu (zwł. uczestnicy) — nadal otwarte w §5 |
+
+**Zamrożenie (nie fetchować ponownie):** strony WP `publikacje`, `artykuly` — copy i mapowanie artykułów wg gate P6.
+
 ## P2 — Wykładowcy (#13)
 
 **Zamknięty** 2026-09-27 (gate K-122; weryfikacja właściciela repo — treść już w repo).
@@ -140,6 +158,21 @@ Kotwica `#konsultacje` w `content/offers/kurs-roczny-i-trzyletni.mdx` (P0 #28). 
 | **301** | `docs/redirects.json` → `/aktualnosci/poswiecenia-ikon` |
 
 **EJK:** `alt` galerii (6 zdj.); akapit o znaczeniu poświęcenia w kościele — placeholder w body (porównanie do chrztu/sakramentów).
+
+## P8 — Strona główna (#22)
+
+**Zamknięty** 2026-09-27 (gate K-122; weryfikacja właściciela — **bez zmian treści**).
+
+| Pole | Wartość |
+| --- | --- |
+| WP | `https://www.akademiaikony.pl/strona-glowna/` (page) |
+| Trasa | `/` — `src/app/page.tsx` + `src/i18n/pl.ts` (`home`) + `content/settings.json` (`upcoming`) + `src/content/icons.ts` (`FEATURED_ICON_SLUGS`) |
+| Decyzja | **zostaw** — copy Hero, Najbliższe, filary, testimonial i wybór 4 ikon uznane za docelowe; stary akapit WP nie mapowany (treść rozłożona w k1 i hubach) |
+| `sample` | brak na `icons.json` (P5); brak flagi na home |
+| **301** | `/strona-glowna` → `/` — `docs/redirects.json` (P8) |
+| **Etap 10 / EJK** | zdjęcia filarów (`/media/sample/photos/*` w `pl.home.pillars`); ewent. korekta kafli `upcoming` po terminach naboru — przegląd z EJK |
+
+**Zamrożenie:** `pl.ts` → `home`, `settings.json` → `upcoming`, `FEATURED_ICON_SLUGS` — **zostaw**; bez ponownego fetchu WP pod home.
 
 ## EJK — otwarte
 
@@ -393,7 +426,7 @@ Treść z poniższych domen uznajemy za zmigrowaną — **bez ponownego fetchu**
 | `content/lectures/*.json` | ✅ sezony 2012/2013–2025/2026 + bieżący poza archiwalnym gate |
 | Bez postu WP | `wystawa-piekno-boga-piekno-czlowieka-2025`, `wystawa-madrosc-boza-2026` — placeholdery treści, linki `#wystawa-2025` / `#wystawa-2026` |
 
-**Handoff → kawałek 3 v2:** media (`public/media/sample/`, import static, galeria), `docs/redirects.json`, pozostałe `grep sample` poza news, `content/exhibition/`, publikacje.
+**Handoff → kawałek 3 v2:** media (`public/media/sample/`, import static, okładka/rozkładówki publikacji), pozostałe `grep sample` poza news, `content/exhibition/` (P4 Tura B). Strony WP P0–P8 — **zamknięte** (`migrate-report.md` § P0–P8); `docs/redirects.json` — uzupełniać przy kolejnych 301; wdrożenie w `next.config.ts` — osobny krok etapu 9/11.
 
 ## TODO — kawałek 2 v2 (aktualności, po zamknięciu gate)
 

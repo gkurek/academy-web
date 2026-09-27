@@ -1,6 +1,6 @@
 # Plan 09 v2 — Migracja treści z WordPressa (redakcja + skrypt)
 
-Status: **w implementacji** (2026-09-27) — kawałki **1 v2** i **2 v2** zamknięte; **3 v2** w toku (strony WP: **P0–P5, P7** ✅). Następny pod-kawałek stron: **P6** (publikacje) lub **P8** (strona główna). Refactor wystaw dorocznych (P4 Tura B, R1–R9) — **po migracji**. v2 zastępuje **implementację kawałków** z `docs/plans/09-migration.md`; decyzje **K-08**, **K-121**, **K-122** nadal obowiązują.  
+Status: **w implementacji** (2026-09-27) — kawałki **1 v2** i **2 v2** zamknięte; **3 v2** w toku (strony WP **P0–P8** ✅). Następny zakres k3: **media** / globalny **`grep sample`**, zamknięcie kryteriów kawałka 3 (inwentaryzacja, plan mediów, kawałki 4+). Refactor wystaw dorocznych (P4 Tura B, R1–R9) — **po migracji**. v2 zastępuje **implementację kawałków** z `docs/plans/09-migration.md`; decyzje **K-08**, **K-121**, **K-122** nadal obowiązują.  
 Gałąź: `feat/09-migration`  
 Makiety: brak (etap wyłącznie treści; UI bez zmian). Trasy i model treści: `docs/brief-claude-code.md` §3–§5.
 
@@ -207,7 +207,7 @@ Po **wszystkich** kawałkach wykonawczych zatwierdzonych po kawałku 3 (nie tylk
 | ---------- | ------ | ------------ |
 | 1 — rdzeń redakcyjny | ✅ | 2026-09-26. `/o-akademii`, `/pracownia`, `/kontakt` — zostaw; kurs, plener, hub `/warsztaty` — nowa redakcja (akceptacja wizualna); nowe pole `leadExtra` w ofertach; `sample` zdjęty z obu ofert i `testimonials.json` (fałszywy cytat Izy → Artur); raport: zamrożenia, „WP zamknięte — kawałek 1 v2”, TODO k2 i etap 10; build/lint OK |
 | 2 — wykłady + aktualności | ✅ | 2026-09-27. Wykłady: gate K-122 (15 sezonów archiwum + bieżący). Aktualności: faza 0 **B**; S1–S5 ✅; partie **A, B, C, E, F, D** (gate D1–D21) ✅; brak `sample-*.mdx`. Wyjątki: D20/D21 bez postów WP (placeholdery); backlog `podsumowanie-2019` **zamknięty** (P4 Tura C, #9 skip). Otwarte przed DoD etapu 9: `plener` vs `wyjazd`, `<NewsCta />`, `#wyjazdowe` — raport § TODO k2. |
-| 3 — inwentaryzacja + media + plan dalszy | 🟡 | Plan stron WP: `09-migration-wp-pages.md` — **P0–P5 ✅, P7 ✅** (P4 Tura B po migracji). Następny: **P6** / **P8** lub media/`grep sample`. |
+| 3 — inwentaryzacja + media + plan dalszy | 🟡 | Plan stron WP: `09-migration-wp-pages.md` — **P0–P8 ✅** (P4 Tura B po migracji). Następny: media / `grep sample`, DoD kawałka 3 (raport, plan 4+). |
 
 **Mapowanie ze starego planu (`09-migration.md`):**
 

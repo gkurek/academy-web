@@ -499,7 +499,7 @@ export const pl = {
     },
     articlesHeading: "Artykuły",
     articlesLead:
-      "Teksty z albumu oraz artykuły Elżbiety Jackowskiej-Kurek pisane dla różnych mediów. Najnowsze na górze.",
+      "Teksty wykładowców Akademii, wybrane pozycje z albumu oraz artykuły Elżbiety Jackowskiej-Kurek z mediów.",
     sampleTag: "[przykład]",
     sourceFromAlbum: "Z albumu {title} · {year}",
     sourceFromMedia: "{outlet} · {year}",

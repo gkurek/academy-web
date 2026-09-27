@@ -10,6 +10,7 @@ Nadrzędny plan: `docs/plans/09-migration-v2.md` (kawałek **3 v2** — ten doku
 
 - Kawałek **1 v2:** rdzeń redakcyjny — URL-e w `scripts/migrate-report.md` § „WP zamknięte — kawałek 1 v2”.
 - Kawałek **2 v2:** wszystkie **61 postów** WP + wykłady — `scripts/migrate-report.md` § „WP zamknięte — kawałek 2 v2”; `content/news/` bez `sample-*.mdx`; `content/lectures/` 2012/2013–2026/2027.
+- Pod-kawałki stron **P6** (publikacje #23–24) — `scripts/migrate-report.md` § P6 (2026-09-27).
 
 **Źródło WP:** `https://www.akademiaikony.pl` (REST, **K-121**). Gate przed zapisem: **K-122**. Treści rdzeniowe warsztatów/O nas **nie** z masowego `--only=static` (**K-123**).
 
@@ -81,12 +82,12 @@ Legenda **Status:**
 | 19 | `oprowadzania-kuratorskie` | Oprowadzania | HUB | `/ikony/wystawy#oprowadzania` | news S2/S3 | Treść w `oprowadzania-po-wystawie-2017` + wpis kuratorski — **301** |
 | 20 | `wyjazdy-studyjne` | Wyjazdy studyjne | HUB | `/aktualnosci` | news (plener/wyjazd) | **301** (K-50); ewent. lead na hubie wystaw — etap 10 |
 | 21 | `wydarzenia` | Wydarzenia | POMIŃ / 301 | `/aktualnosci` | — | Hub nie migrować (K-50); **redirect obowiązkowy** |
-| 22 | `strona-glowna` | Strona główna | WYKONANIE | `/` | `src/app/page.tsx` + `settings.json` + `icons.ts` | Brak `content/pages/home`; porównać WP z `upcoming` i **FEATURED_ICON_SLUGS** — decyzja redakcyjna home |
-| 23 | `publikacje` | Publikacje | WYKONANIE | `/publikacje` | `content/publications/ikona-dzis.mdx` | Hub albumu; **`sample: true`**; ISBN/okładka EJK (część etap 8/10) |
-| 24 | `artykuly` | Artykuły | WYKONANIE | `/publikacje#artykuly` | `content/articles/*.mdx` (4) | **DECYZJA:** które teksty z WP `artykuly` → które slugi; prawa do tekstów (§5 planu) |
+| 22 | `strona-glowna` | Strona główna | ZAMKNIĘTE | `/` | `src/app/page.tsx` + `settings.json` + `icons.ts` | **P8 ✅** 2026-09-27 — gate: zostaw (copy docelowe); zdjęcia filarów → etap 10; `migrate-report.md` § P8 |
+| 23 | `publikacje` | Publikacje | ZAMKNIĘTE | `/publikacje` | `content/publications/ikona-dzis.mdx` | **P6 ✅** 2026-09-27; copy gate OK; `sample` zdjęty; ISBN + 176 str.; media okładka/rozkładówki → plan mediów |
+| 24 | `artykuly` | Artykuły | ZAMKNIĘTE | `/publikacje#artykuly` | `content/articles/*.mdx` (4) | **P6 ✅** — 4 slugi; `articlesLead`; prawa online → §5 EJK |
 | 25 | `plakaty` | Plakaty | DECYZJA | brak strony (K-78) | `News.poster` w news | ~20 plakatów — przypisanie do wpisów po weryfikacji EJK; nie migrować jako strona |
 | 26 | `multimedia` | Multimedia | POMIŃ | `/publikacje` (K-78) | — | Film nie osadzany; **301**; ewent. link w artykule/albumie — EJK |
-| 27 | `poswiecenia-ikon` | Poświęcenia | WYKONANIE | `/aktualnosci/[slug]` | **brak wpisu** | **K-77:** nowy wpis `kind: plener`, 6 zdj., redakcja EJK; **301** `/poswiecenia-ikon/` |
+| 27 | `poswiecenia-ikon` | Poświęcenia | ZAMKNIĘTE | `/aktualnosci/poswiecenia-ikon` | `content/news/poswiecenia-ikon.mdx` | **P7 ✅** 2026-09-27 (K-77) |
 | 28 | `konsultacje-i-lekcje-indywidualne` | Konsultacje… | DECYZJA | brak w brief §3 | — | **Właściciel:** (A) redirect `/kontakt` lub `/warsztaty`, (B) akapit w ofercie kursu, (C) pominąć z 301 na `/kontakt` |
 | 29 | `blog` | Blog | POMIŃ | Blogspot w stopce | `settings.json` `blogUrl` | Nie migrować |
 
@@ -110,8 +111,8 @@ Realizacja **po jednym** z gate K-122; po każdym — wpis w `scripts/migrate-re
 | **P3 — Zamówienie** | #18 | Gate: WP → `zamowienie.mdx`; zdjąć `sample` gdy copy docelowe (media może zostać sample do planu mediów) |
 | **P4 — Wystawy** | #16–17 + post `ikona-korzenie…-2` | Gate: `page.mdx` + `annual.json`; bez masowego news; zdjąć `sample` gdy treść+struktura OK |
 | **P5 — Galeria** | #15 | ✅ **zamknięty** 2026-09-27 — weryfikacja vs WP; `sample` zdjęty; media `import/icons/`; tytuły → etap 10 |
-| **P6 — Publikacje** | #23–24 | Gate album + mapowanie artykułów WP; prawa — EJK |
-| **P7 — Poświęcenia** | #27 | Nowy `content/news/*.mdx` + manifest; K-77; 301 |
+| **P6 — Publikacje** | #23–24 | ✅ **zamknięty** 2026-09-27 — `migrate-report.md` § P6 |
+| **P7 — Poświęcenia** | #27 | ✅ **zamknięty** 2026-09-27 — `migrate-report.md` § P7 |
 | **P8 — Strona główna** | #22 | Gate: `settings.upcoming`, featured ikony, ewent. lead — bez nowego pliku `content/` jeśli wystarczy JSON/i18n |
 
 **Kolejność rekomendowana:** P0 → P1 (szybkie domknięcie URL-i) → P7 (jeden wpis, jasna decyzja K-77) → P2 → P3 → P4 → P5 → P6 → P8.
@@ -143,9 +144,9 @@ Jeden pod-kawałek na turę → checkpoint → czekaj na OK. Nie commitować bez
 | P3 Zamówienie | ✅ | 2026-09-27 — gate OK; `leadIntro` w lewej kolumnie; `sample` zdjęty; hero → etap 10 (`migrate-report.md` § P3) |
 | P4 Wystawy | ✅ | 2026-09-27 — Tura A + C; Tura B **po migracji** (R1–R9); `sample` na `annual.json` + 1. foto `page.mdx`; 2. foto import |
 | P5 Galeria | ✅ | 2026-09-27 — gate OK; kolejność WP; `sample` zdjęty z `icons.json`; media w `public/media/import/icons/`; tytuły → etap 10 |
-| P6 Publikacje | ⬜ | |
+| P6 Publikacje | ✅ | 2026-09-27 — #23–#24; album + 4 artykuły; `migrate-report.md` § P6 |
 | P7 Poświęcenia | ✅ | 2026-09-27 — `poswiecenia-ikon.mdx`, `kind: aktualnosc`, 301, media import |
-| P8 Strona główna | ⬜ | |
+| P8 Strona główna | ✅ | 2026-09-27 — bez zmian treści; 301 `/strona-glowna` → `/`; `migrate-report.md` § P8 |
 
 ---
 

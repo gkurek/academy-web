@@ -31,6 +31,11 @@
       "note": "K-67: scalenie duplikatów (brief §5, P1 2026-09-27)"
     },
     {
+      "source": "/strona-glowna",
+      "destination": "/",
+      "note": "WP strona główna → home (P8 2026-09-27)"
+    },
+    {
       "source": "/strona-glowna/celem-dzialalnosci-akademii-ikony-studium-ikonograficznego-sw-andrzeja-apostola-jest-ksztalcenie-ale-i-pomoc-w-doswiadczaniu-ikony",
       "destination": "/o-akademii",
       "note": "brief §5, kawałek 1 v2 (P1 2026-09-27)"
