@@ -1383,7 +1383,7 @@
 
   .person-profile {
     display: grid;
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
     gap: var(--space-5);
     align-items: start;
   }
@@ -1452,7 +1452,6 @@
     font-size: var(--size-body);
     line-height: var(--leading-body);
     color: var(--accent-text);
-    white-space: nowrap;
   }
 
   .person-profile-work-year {
@@ -1483,6 +1482,11 @@
       gap: var(--space-6);
       align-items: baseline;
       padding-block: var(--space-4);
+    }
+
+    /* Only in the two-column row — stacked on mobile, a long meta line must wrap. */
+    .person-profile-work-meta {
+      white-space: nowrap;
     }
 
     .person-profile-work-title {
