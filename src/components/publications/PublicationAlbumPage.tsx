@@ -16,14 +16,14 @@ import {
 import { getSiteSettings } from "@/content/settings";
 import { pl } from "@/i18n/pl";
 import { buildMailtoHref } from "@/lib/mailto";
-import { footerSitemap } from "@/navigation";
+import { footerSitemapFlat } from "@/navigation";
 
 export interface PublicationAlbumPageProps {
   publication: LoadedPublication;
 }
 
 export function PublicationAlbumPage({ publication }: PublicationAlbumPageProps) {
-  const publicationsLabel = footerSitemap.find((item) => item.href === "/publikacje")!.label;
+  const publicationsLabel = footerSitemapFlat.find((item) => item.href === "/publikacje")!.label;
   const authorGroups = getPublicationAuthorGroups(publication);
   const relatedNews = publication.relatedNewsSlug
     ? getNewsBySlug(publication.relatedNewsSlug)

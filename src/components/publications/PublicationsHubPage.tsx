@@ -15,10 +15,10 @@ import { getSiteSettings } from "@/content/settings";
 import { pl } from "@/i18n/pl";
 import { pluralize } from "@/i18n/pluralize";
 import { buildMailtoHref } from "@/lib/mailto";
-import { footerSitemap } from "@/navigation";
+import { footerSitemapFlat } from "@/navigation";
 
 export function PublicationsHubPage() {
-  const publicationsLabel = footerSitemap.find((item) => item.href === "/publikacje")!.label;
+  const publicationsLabel = footerSitemapFlat.find((item) => item.href === "/publikacje")!.label;
   const [publication] = getPublications();
   const articles = getArticles();
   const settings = getSiteSettings();

@@ -626,5 +626,9 @@ export const pl = {
     blogLabel: "Blog",
     facebookLabel: "Facebook",
     youtubeLabel: "YouTube",
+    legalSeparator: "·",
+    designCreditLabel: "Projekt i wdrożenie",
+    designCreditName: "GK",
+    designCreditUrl: "https://grzegorzkurek.pl/",
   },
 } as const;

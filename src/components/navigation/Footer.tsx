@@ -3,207 +3,192 @@ import Link from "next/link";
 import { ExternalLink } from "@/components/core/ExternalLink";
 import { getSiteSettings } from "@/content/settings";
 import { pl } from "@/i18n/pl";
-import { footerLegalLink, footerSitemap, type MainNavItem } from "@/navigation";
+import {
+  footerLegalLink,
+  footerSitemapFlat,
+  footerSitemapGroups,
+  type MainNavItem,
+} from "@/navigation";
 
-const sitemapLinkClass = "tap-target-nav-block text-text-secondary";
-const hubHeadingClass =
-  "tap-target-nav-block font-serif text-size-body text-accent-text mb-space-1";
-const contactLabelClass = "text-size-ui text-text-tertiary";
-const contactLinkClass = "tap-target-nav-block text-text-secondary";
-const socialLinkClass = "text-text-secondary hover:text-text-body";
-const bottomLinkClass = "tap-target-nav text-text-tertiary";
-const organizerLinkClass = "border-b border-border-secondary text-text-tertiary";
+// Mockup 9e: contact band restyles at md and splits into two columns at xl
+// (the 440px contact column leaves room for the unbroken address line only
+// from there); the sitemap goes to four columns at lg; the legal bar is a row from md.
+const colorTransition = "transition-colors duration-150 motion-reduce:transition-none";
+const sectionHeadingClass = `flex min-h-tap-min-mobile-header items-center font-serif text-size-footer-heading leading-heading text-text-list-title hover:text-accent-text lg:min-h-0 lg:w-fit ${colorTransition}`;
+const subLinkClass = `flex min-h-tap-min-mobile-header items-center text-size-nav text-text-secondary hover:text-accent-hover lg:min-h-0 lg:w-fit lg:text-size-footer-sublink lg:leading-footer-sublink ${colorTransition}`;
+const contactDataClass = `flex w-fit min-h-tap-min-mobile-header items-center whitespace-nowrap text-size-ui leading-footer-text text-accent-text underline underline-offset-3 hover:text-accent-hover md:min-h-0 ${colorTransition}`;
+const socialLinkClass = `inline-flex min-h-tap-min items-center border border-border-secondary px-footer-social-px text-size-caption-m leading-footer-text text-text-secondary hover:border-accent-text hover:text-accent-text md:min-h-tap-min-mobile-header ${colorTransition}`;
+const legalLinkClass = `underline underline-offset-3 hover:text-accent-text ${colorTransition}`;
 
-function FooterHubSection({ group }: { group: MainNavItem }) {
-  return (
-    <div>
-      <Link href={group.href} className={hubHeadingClass}>
-        {group.label}
-      </Link>
-      {group.children?.map((child) => (
-        <Link key={child.href} href={child.href} className={sitemapLinkClass}>
-          {child.label}
-        </Link>
-      ))}
-    </div>
-  );
+// Splits the fixed church name (brief §8) into its display lines; if the
+// content ever changes shape, the whole name falls back to one block.
+function splitPlace(place: string) {
+  const [church, dedication] = place.split(" pw. ");
+  const [first, second] = dedication?.split(" i św. ") ?? [];
+  if (!first || !second) return null;
+  return { church, dedicationA: `pw. ${first}`, dedicationB: `i św. ${second}` };
 }
 
-function FooterBrandBlock() {
+function FooterAddress() {
   const settings = getSiteSettings();
+  const place = splitPlace(settings.place);
 
   return (
-    <>
-      <div className="font-serif text-size-lead tracking-logo-footer text-text-list-title mb-space-3">
-        {pl.meta.orgShortName}
-      </div>
-      <address className="mb-space-3 block not-italic text-size-ui leading-body text-text-secondary">
-        {settings.place}
-        <br />
-        {settings.address}
-      </address>
-      <p className="text-size-caption text-text-tertiary">{pl.footer.accessibilityNote}</p>
-    </>
+    <address className="mt-footer-address-mt-m block not-italic text-size-ui leading-body text-text-secondary md:mt-footer-address-mt md:leading-footer-address">
+      {place ? (
+        <>
+          <span className="block">{place.church}</span>
+          <span className="block">
+            <span className="block md:inline">{place.dedicationA}</span>{" "}
+            <span className="block md:inline">{place.dedicationB}</span>
+          </span>
+        </>
+      ) : (
+        <span className="block">{settings.place}</span>
+      )}
+      <span className="mt-footer-address-line-mt-m block md:mt-0">{settings.address}</span>
+    </address>
   );
 }
 
-function FooterContactBlock() {
+function FooterContacts() {
   const settings = getSiteSettings();
   const telHref = `tel:+48${settings.phone.replace(/\s/g, "")}`;
 
   return (
-    <>
+    <div className="flex flex-col gap-footer-persons-gap-m md:gap-footer-persons-gap">
       {settings.emails.map((email, index) => (
-        <div key={email.address} className={index > 0 ? "mt-space-5" : undefined}>
-          <div className={`${contactLabelClass} mb-space-1`}>{email.label}</div>
-          <div className="grid gap-space-1">
-            <a href={`mailto:${email.address}`} className={`${contactLinkClass} w-fit`}>
+        <div key={email.address}>
+          {email.contactName ? (
+            <div className="font-serif text-size-footer-person leading-heading text-text-list-title">
+              {email.contactName}
+            </div>
+          ) : null}
+          <div className="mt-footer-role-mt-m text-size-caption-m leading-footer-text text-text-tertiary md:mt-footer-role-mt">
+            {email.label}
+          </div>
+          <div className="mt-footer-data-mt-m flex flex-col md:mt-footer-data-mt md:gap-space-2">
+            <a href={`mailto:${email.address}`} className={contactDataClass}>
               {email.address}
             </a>
             {index === 0 ? (
-              <a href={telHref} className={`${contactLinkClass} w-fit`}>
+              <a href={telHref} className={contactDataClass}>
                 {settings.phone}
               </a>
             ) : null}
           </div>
-          {email.contactName ? (
-            <span className="mt-space-2 block text-text-tertiary">{email.contactName}</span>
-          ) : null}
         </div>
       ))}
 
-      <div className="mt-space-6">
-        <ExternalLink
-          href={settings.ecosystem.social.facebook}
-          className={`tap-target-nav-block ${socialLinkClass}`}
-        >
+      <div className="flex flex-wrap gap-footer-social-gap-m md:gap-space-4">
+        <ExternalLink href={settings.ecosystem.social.facebook} className={socialLinkClass}>
           {pl.footer.facebookLabel}
         </ExternalLink>
-        <ExternalLink
-          href={settings.ecosystem.social.youtube}
-          className={`tap-target-nav-block ${socialLinkClass}`}
-        >
+        <ExternalLink href={settings.ecosystem.social.youtube} className={socialLinkClass}>
           {pl.footer.youtubeLabel}
         </ExternalLink>
-        <ExternalLink href={settings.blogUrl} className={`tap-target-nav-block ${socialLinkClass}`}>
+        <ExternalLink href={settings.blogUrl} className={socialLinkClass}>
           {pl.footer.blogLabel}
         </ExternalLink>
       </div>
-    </>
+    </div>
   );
 }
 
-function FooterMobileLayout({
-  orgLink,
-  workshopsLink,
-  lecturesLink,
-  iconsLink,
-  akademiaLinks,
-  contactLink,
-}: {
-  orgLink: MainNavItem;
-  workshopsLink: MainNavItem;
-  lecturesLink: MainNavItem;
-  iconsLink: MainNavItem;
-  akademiaLinks: MainNavItem[];
-  contactLink: MainNavItem;
-}) {
+function FooterSitemapGroup({ group }: { group: MainNavItem }) {
   return (
-    <div className="grid grid-cols-2 gap-x-space-6 gap-y-space-6 wrap-anywhere md:hidden">
-      <div className="grid min-w-0 gap-space-5 content-start text-size-ui leading-loose">
-        <FooterBrandBlock />
-        <Link href={orgLink.href} className={sitemapLinkClass}>
-          {orgLink.label}
-        </Link>
-        {akademiaLinks.map((link) => (
-          <Link key={link.href} href={link.href} className={sitemapLinkClass}>
-            {link.label}
-          </Link>
+    <div className="flex flex-col gap-footer-group-gap-m lg:gap-space-3">
+      <Link href={group.href} className={sectionHeadingClass}>
+        {group.label}
+      </Link>
+      <ul className="flex flex-col gap-footer-group-gap-m lg:gap-space-3">
+        {group.children?.map((child) => (
+          <li key={child.href}>
+            <Link href={child.href} className={subLinkClass}>
+              {child.label}
+            </Link>
+          </li>
         ))}
-        <FooterHubSection group={workshopsLink} />
-      </div>
-
-      <div className="grid min-w-0 gap-space-5 content-start text-size-ui leading-loose">
-        <FooterContactBlock />
-        <FooterHubSection group={lecturesLink} />
-        <FooterHubSection group={iconsLink} />
-        <Link href={contactLink.href} className={sitemapLinkClass}>
-          {contactLink.label}
-        </Link>
-      </div>
+      </ul>
     </div>
   );
 }
 
 export function Footer() {
   const settings = getSiteSettings();
-  const [orgLink, workshopsLink, lecturesLink, iconsLink, ...flatLinks] = footerSitemap;
-  const contactLink = flatLinks[flatLinks.length - 1];
-  const akademiaLinks = flatLinks.slice(0, -1);
 
   return (
-    <footer className="rule-gold-t surface-footer-bleed font-sans">
-      <div className="px-page-margin-mobile md:px-page-margin pt-footer-pt">
-        <FooterMobileLayout
-          orgLink={orgLink}
-          workshopsLink={workshopsLink}
-          lecturesLink={lecturesLink}
-          iconsLink={iconsLink}
-          akademiaLinks={akademiaLinks}
-          contactLink={contactLink}
-        />
-
-        <div className="hidden md:grid gap-space-6 md:grid-cols-footer md:gap-footer-gap">
+    <footer className="surface-footer-bleed font-sans">
+      <div className="rule-gold-t surface-footer-contact-bleed px-page-margin-mobile py-footer-contact-py-m md:px-page-margin md:py-footer-contact-py">
+        <div className="grid gap-y-footer-contact-stack-gap xl:grid-cols-footer-contact xl:items-start xl:gap-x-space-10">
           <div>
-            <FooterBrandBlock />
+            <div className="font-serif text-size-footer-brand leading-heading tracking-logo-footer text-text-list-title">
+              {pl.meta.orgShortName}
+            </div>
+            <div className="mt-footer-subtitle-mt font-serif text-size-body leading-footer-text text-text-tertiary">
+              {pl.meta.orgSubtitle}
+            </div>
+            <FooterAddress />
+            <p className="mt-footer-note-mt text-size-caption-m leading-footer-text text-text-tertiary">
+              {pl.footer.accessibilityNote}
+            </p>
           </div>
 
-          <div className="text-size-ui leading-loose">
-            <FooterContactBlock />
-          </div>
-
-          <nav aria-label={pl.footer.sitemapAriaLabel} className="contents">
-            <div className="grid gap-space-5 content-start text-size-ui leading-loose">
-              <Link href={orgLink.href} className={sitemapLinkClass}>
-                {orgLink.label}
-              </Link>
-              <FooterHubSection group={workshopsLink} />
-              <FooterHubSection group={lecturesLink} />
-            </div>
-
-            <div className="grid gap-space-5 content-start text-size-ui leading-loose">
-              <FooterHubSection group={iconsLink} />
-              <div className="grid gap-space-1">
-                {flatLinks.map((link) => (
-                  <Link key={link.href} href={link.href} className={sitemapLinkClass}>
-                    {link.label}
-                  </Link>
-                ))}
-              </div>
-            </div>
-          </nav>
+          <FooterContacts />
         </div>
       </div>
 
-      <div className="mt-space-7 rule-neutral-t">
-        <div className="px-page-margin-mobile md:px-page-margin py-space-5 flex flex-wrap items-center justify-between gap-x-space-6 gap-y-space-3 text-size-caption text-text-tertiary">
-          <div className="flex flex-wrap items-center gap-x-space-6 gap-y-space-3">
-            <span>{pl.footer.copyright}</span>
-            <span>
-              {pl.footer.organizerLabel}:{" "}
-              <ExternalLink
-                href={settings.ecosystem.foundationUrl}
-                className={organizerLinkClass}
-                showIcon={false}
-              >
-                {pl.footer.organizerName}
-              </ExternalLink>
-            </span>
-          </div>
-          <Link href={footerLegalLink.href} className={bottomLinkClass}>
-            {footerLegalLink.label}
-          </Link>
+      <nav
+        aria-label={pl.footer.sitemapAriaLabel}
+        className="rule-gold-t px-page-margin-mobile py-footer-sitemap-py-m md:px-page-margin lg:pt-footer-sitemap-pt lg:pb-footer-sitemap-pb"
+      >
+        <div className="flex flex-col gap-space-7 lg:grid lg:grid-cols-4 lg:items-start lg:gap-space-8">
+          {footerSitemapGroups.map((group) => (
+            <FooterSitemapGroup key={group.href} group={group} />
+          ))}
         </div>
+
+        <ul className="mt-space-7 grid gap-space-3 border-t border-line-neutral pt-space-5 lg:mt-footer-rule-mt lg:grid-cols-4 lg:gap-space-8">
+          {footerSitemapFlat.map((link) => (
+            <li key={link.href}>
+              <Link href={link.href} className={sectionHeadingClass}>
+                {link.label}
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </nav>
+
+      <div className="rule-neutral-t flex flex-col gap-space-3 px-page-margin-mobile py-footer-legal-py-m text-size-caption-m leading-footer-text text-text-tertiary md:flex-row md:flex-wrap md:items-center md:gap-x-space-4 md:px-page-margin md:py-space-5 md:text-size-caption">
+        <span>{pl.footer.copyright}</span>
+        <span aria-hidden="true" className="hidden md:inline">
+          {pl.footer.legalSeparator}
+        </span>
+        <span>
+          {pl.footer.organizerLabel}:{" "}
+          <ExternalLink href={settings.ecosystem.foundationUrl} className={legalLinkClass}>
+            {pl.footer.organizerName}
+          </ExternalLink>
+        </span>
+        <span aria-hidden="true" className="hidden md:inline">
+          {pl.footer.legalSeparator}
+        </span>
+        <Link
+          href={footerLegalLink.href}
+          className={`flex w-fit min-h-tap-min-mobile-header items-center md:inline md:min-h-0 ${legalLinkClass}`}
+        >
+          {footerLegalLink.label}
+        </Link>
+        <span className="md:ml-auto">
+          {pl.footer.designCreditLabel}:{" "}
+          <ExternalLink
+            href={pl.footer.designCreditUrl}
+            showIcon={false}
+            className={`hover:text-footer-credit-hover ${colorTransition}`}
+          >
+            {pl.footer.designCreditName}
+          </ExternalLink>
+        </span>
       </div>
     </footer>
   );
