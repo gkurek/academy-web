@@ -68,10 +68,10 @@ export const sectionNav: Record<SectionKey, NavLink[]> = {
   ],
 };
 
-// Full sitemap for the footer — original four-column layout (K-24 variant B).
+// Footer sitemap (mockup 9e) — four equal columns of sections with subpages.
 // Hub headings link to section routes; children include routes omitted from mainNav.
-export const footerSitemap: MainNavItem[] = [
-  mainNav[0], // O Akademii
+export const footerSitemapGroups: MainNavItem[] = [
+  { ...mainNav[0], children: sectionNav["o-akademii"].slice(1) }, // O Akademii · Pracownia
   mainNav[1], // Warsztaty
   {
     label: "Wykłady",
@@ -87,7 +87,10 @@ export const footerSitemap: MainNavItem[] = [
     href: "/ikony",
     children: sectionNav.ikony,
   },
-  { label: "Pracownia", href: "/pracownia" },
+];
+
+// Sections without subpages — the row under the hairline, same grid as the groups.
+export const footerSitemapFlat: NavLink[] = [
   mainNav[4], // Aktualności
   { label: "Publikacje", href: "/publikacje" },
   mainNav[5], // Kontakt
