@@ -31,7 +31,7 @@ Kotwica `#konsultacje` w `content/offers/kurs-roczny-i-trzyletni.mdx` (P0 #28). 
 | Plik | `content/offers/zamowienie.mdx` — `leadIntro` (lewa kolumna pod leadami), `src/components/offers/OfferLeadIntro.tsx`, `src/app/ikony/na-zamowienie/page.tsx` (`leadExtraSlot`) |
 | Decyzja | **mix** — leady z repo; treść WP zredagowana w `leadIntro` + `facts` + kroki; bez galerii 5× DSC z WP (`exampleSlugs` bez zmian) |
 | `sample` | zdjęty z frontmatter oferty |
-| **Hero (etap 10)** | `OfferFigure` → `/media/sample/photos/pisanie-ikony-pracownia.jpg` — **do weryfikacji / podmiany** (uploads WP 2017 lub sesja); nie blokuje zamknięcia P3 |
+| **Hero (etap 10)** | `OfferFigure` → `/media/offers/zamowienie/pisanie-ikony-pracownia.jpg` (**M1**); **podmiana kadru** z WP 2017 lub sesji — EJK; ścieżka zamknięta |
 | **301** | `/ikona/ikony-na-zamowienie` — `docs/redirects.json` (P1) |
 
 **Zamrożenie:** copy oferty (`lead`, `leadIntro`, `facts`, kroki) — **zostaw**; bez ponownego fetchu strony WP pod body.
@@ -43,10 +43,10 @@ Kotwica `#konsultacje` w `content/offers/kurs-roczny-i-trzyletni.mdx` (P0 #28). 
 | Pole | Wartość |
 | --- | --- |
 | WP strony | `https://www.akademiaikony.pl/ikona/wystawy/`, `https://www.akademiaikony.pl/wernisaze/` (301 P1) |
-| WP post S4 | `https://www.akademiaikony.pl/ikona-korzenie-i-owoce-wiary-2/` — copy → `body.mdx` / wystawy; **media:** 2. zdjęcie `interiorPhotos` → `import/exhibition/20250613_194453-scaled.jpg` (WP uploads 2025/06); 1. zdjęcie nadal sample (2018) |
+| WP post S4 | `https://www.akademiaikony.pl/ikona-korzenie-i-owoce-wiary-2/` — copy → `body.mdx` / wystawy; **media (M2/M6):** `interiorPhotos[1]` → `/media/exhibition/20250613_194453-scaled.jpg`; `[0]` → `/media/news/wystawa-ikona-korzenie-i-owoce-wiary-2018/2.jpg` |
 | WP backlog | `podsumowanie-2019` — **zamknięty** (#1 Tura A; #2–#8 news; #9 skip — plan poza postem) |
 | Pliki | `content/exhibition/page.mdx`, `body.mdx`, `annual.json` (bez refaktoru listy dorocznej w P4) |
-| `sample` | **zostaje** na `page.mdx` + `annual.json` do planu mediów / refactoru |
+| `sample` | zdjęty z `page.mdx` (**M2**); `annual.json` bez `photos[]` (sloty `[przykład]`); refactor Tura B — po migracji |
 | Tura A | **gate OK** — wariant 2 copy w `body.mdx`; `page.mdx` `lead` (pole niewidoczne w UI); bez zdania o oprowadzeniach w body |
 | Kod | usunięte `AnnualExhibition.iconCount` (`types.ts`, `annual.json`, `exhibition.ts`) — liczba ikon na dorocznej **nie** w danych |
 
@@ -85,13 +85,13 @@ Kotwica `#konsultacje` w `content/offers/kurs-roczny-i-trzyletni.mdx` (P0 #28). 
 
 | Wiersz | Proponowany slug | `kind` | Tytuł (propozycja) | Uwagi gate |
 | --- | --- | --- | --- | --- |
-| #2 | `wystawa-praga-del-arte-2019` | `wystawa` | Wystawa w galerii Praga del ARTE, 2019 | **gate OK** 2026-09-27; media `import/news/wystawa-praga-del-arte-2019/1.jpg` (WP 6.jpg) |
+| #2 | `wystawa-praga-del-arte-2019` | `wystawa` | Wystawa w galerii Praga del ARTE, 2019 | **gate OK** 2026-09-27; media `news/wystawa-praga-del-arte-2019/1.jpg` (WP 6.jpg) |
 | #3 | `ikona-piekno-zanurzone-w-tajemnicy` | `wystawa` | (ten sam wpis) | **gate OK** 2026-09-27 — merge Bażantarni 2019; nie osobny slug |
-| #4 | `wystawa-ikona-okno-ku-wiecznosci-2019` | `wystawa` | Wystawa „Ikona – okno ku wieczności”, wrzesień 2019 | **gate OK** 2026-09-27; media `import/news/wystawa-ikona-okno-ku-wiecznosci-2019/1.jpg` (WP 22.jpg) |
-| #5 | `wystawa-ikona-drabina-do-nieba-2019` | `wystawa` | Wystawa „Ikona – drabina do nieba”, listopad 2019 | **gate OK** 2026-09-27; media `import/.../1.png` (WP 16.png; korekta z 23.jpg) |
-| #6 | `wystawa-ikona-nadzieja-i-oczekiwanie-2019` | `wystawa` | Wystawa „Ikona – nadzieja i oczekiwanie”, grudzień 2019 | **gate OK** 2026-09-27; media `import/.../1.jpg` (WP 17.jpg) |
-| #7 | `wystawa-galeria-wiezy-ken-2019` | `wystawa` | Wystawa w Galerii Wieży, kościół Wniebowstąpienia | **gate OK** 2026-09-27; media `import/.../1–3.jpg` (WP 19–21.jpg) |
-| #8 | `wystawa-ikona-bozego-narodzenia-kst-2019` | `wystawa` | Wystawa ikony Bożego Narodzenia, KŚT 2019/2020 | **gate OK** 2026-09-27; media `import/.../1.jpg` (WP 18.jpg) |
+| #4 | `wystawa-ikona-okno-ku-wiecznosci-2019` | `wystawa` | Wystawa „Ikona – okno ku wieczności”, wrzesień 2019 | **gate OK** 2026-09-27; media `news/wystawa-ikona-okno-ku-wiecznosci-2019/1.jpg` (WP 22.jpg) |
+| #5 | `wystawa-ikona-drabina-do-nieba-2019` | `wystawa` | Wystawa „Ikona – drabina do nieba”, listopad 2019 | **gate OK** 2026-09-27; media `news/…/1.png` (WP 16.png; korekta z 23.jpg) |
+| #6 | `wystawa-ikona-nadzieja-i-oczekiwanie-2019` | `wystawa` | Wystawa „Ikona – nadzieja i oczekiwanie”, grudzień 2019 | **gate OK** 2026-09-27; media `news/…/1.jpg` (WP 17.jpg) |
+| #7 | `wystawa-galeria-wiezy-ken-2019` | `wystawa` | Wystawa w Galerii Wieży, kościół Wniebowstąpienia | **gate OK** 2026-09-27; media `news/…/1–3.jpg` (WP 19–21.jpg) |
+| #8 | `wystawa-ikona-bozego-narodzenia-kst-2019` | `wystawa` | Wystawa ikony Bożego Narodzenia, KŚT 2019/2020 | **gate OK** 2026-09-27; media `news/…/1.jpg` (WP 18.jpg) |
 | #9 | — | — | Akapit 2020 w poście (KŚT, Lipka, sanktuarium, „Światłość w ciszy”, film YT) | **✅ skip** 2026-09-27 — rozplanowane poza rollupem; **brak** news z tego akapitu; film bez embedu (K-78) |
 
 **Szablon body (gdy brak relacji):** wariacja standardowa + link do `/ikony/wystawy`; galeria po dostarczeniu zdjęć EJK.
@@ -107,8 +107,8 @@ Kotwica `#konsultacje` w `content/offers/kurs-roczny-i-trzyletni.mdx` (P0 #28). 
 | WP | `https://www.akademiaikony.pl/ikona/galeria/` (page) |
 | Plik | `content/icons.json` (52 prace: 23 EJK + 29 uczniów), `scripts/wp-gallery-manifest.json` |
 | Weryfikacja | 52 figury HTML = manifest = `icons.json` (kolejność jak WP); `wpUrl` bez rozjazdów |
-| Media | `public/media/import/icons/*` (53 pliki, w tym `chrystus.jpg` — hero); ścieżki `/media/import/icons/{slug}.jpg` |
-| `sample` | **zdjęty** z `content/icons.json`; przeniesienie z `public/media/sample/icons/` → `import/icons/` 2026-09-27 |
+| Media | `public/media/icons/*` (53 pliki, w tym `chrystus.jpg` — hero); ścieżki `/media/icons/{slug}.jpg` (**M6** 2026-09-29) |
+| `sample` | **zdjęty** z `content/icons.json`; pliki w `public/media/icons/` (promocja P5, ścieżki M6) |
 | **301** | `/ikona/galeria` — `docs/redirects.json` (P1) |
 
 **Zamrożenie:** metadane i kolejność galerii — **zostaw**; bez ponownego fetchu strony WP. Korekta tytułów, wymiarów, placeholder `do-uzupelnienia-tytul-ikony` — **etap 10** (`docs/plan-claude-code.md` §5).
@@ -122,7 +122,7 @@ Kotwica `#konsultacje` w `content/offers/kurs-roczny-i-trzyletni.mdx` (P0 #28). 
 | WP #23 | `https://www.akademiaikony.pl/publikacje/` |
 | WP #24 | `https://www.akademiaikony.pl/publikacje/artykuly/` |
 | Pliki | `content/publications/ikona-dzis.mdx`, `ikona-dzis-body.mdx`; `content/articles/*.mdx` (4 slugi); `src/i18n/pl.ts` (`articlesLead`) |
-| Album | `sample` zdjęty; ISBN `978-83-978648-0-1`, `pages: 176`; media okładka/rozkładówki nadal `/media/sample/publications/` |
+| Album | `sample` zdjęty; ISBN `978-83-978648-0-1`, `pages: 176`; media `public/media/publications/ikona-dzis/` — `/media/publications/ikona-dzis/…` (**M3** + M6) |
 | Artykuły (zestaw v1) | `pietnasta-rocznica`, `piekno-ikony-perspektywa-i-swiatlo` (album); `cisza-ikony`, `ikona-przejmujaca-delikatnosc` (media / blogspot) — **gate OK** właściciela |
 | `toc` | `articleSlug` dla 3 pozycji online (`pietnasta-rocznica`, `ikona-przejmujaca-delikatnosc`, `piekno-ikony-perspektywa-i-swiatlo`); pozostałe pozycje bez artykułu — etap 10 / EJK |
 | Zakup z WP #24 | już w UI albumu (`mailto:` → `settings.json` sekretariat); lead sekcji artykułów bez duplikacji maila |
@@ -154,7 +154,7 @@ Kotwica `#konsultacje` w `content/offers/kurs-roczny-i-trzyletni.mdx` (P0 #28). 
 | WP | `https://www.akademiaikony.pl/poswiecenia-ikon/` (page, nie post) |
 | Plik | `content/news/poswiecenia-ikon.mdx` |
 | `kind` | `aktualnosc` (decyzja właściciela: relacja z obrzędu na końcu pleneru; link do wpisu warsztatów Lipka 2017 — odchylenie od K-77 `plener`) |
-| Media | `public/media/import/news/poswiecenia-ikon/1.jpg` … `6.jpg` |
+| Media | `public/media/news/poswiecenia-ikon/1.jpg` … `6.jpg` |
 | **301** | `docs/redirects.json` → `/aktualnosci/poswiecenia-ikon` |
 
 **EJK:** `alt` galerii (6 zdj.); akapit o znaczeniu poświęcenia w kościele — placeholder w body (porównanie do chrztu/sakramentów).
@@ -170,7 +170,7 @@ Kotwica `#konsultacje` w `content/offers/kurs-roczny-i-trzyletni.mdx` (P0 #28). 
 | Decyzja | **zostaw** — copy Hero, Najbliższe, filary, testimonial i wybór 4 ikon uznane za docelowe; stary akapit WP nie mapowany (treść rozłożona w k1 i hubach) |
 | `sample` | brak na `icons.json` (P5); brak flagi na home |
 | **301** | `/strona-glowna` → `/` — `docs/redirects.json` (P8) |
-| **Etap 10 / EJK** | zdjęcia filarów (`/media/sample/photos/*` w `pl.home.pillars`); ewent. korekta kafli `upcoming` po terminach naboru — przegląd z EJK |
+| **Etap 10 / EJK** | zdjęcia filarów — `/media/home/*` (**M4**); ewent. podmiana kadów z WP/sesji; kafle `upcoming` po terminach naboru |
 
 **Zamrożenie:** `pl.ts` → `home`, `settings.json` → `upcoming`, `FEATURED_ICON_SLUGS` — **zostaw**; bez ponownego fetchu WP pod home.
 
@@ -178,9 +178,9 @@ Kotwica `#konsultacje` w `content/offers/kurs-roczny-i-trzyletni.mdx` (P0 #28). 
 
 _(pozycje dopisywane w kolejnych kawałkach)_
 
-- **`/ikony/na-zamowienie` — zdjęcie hero (P3, etap 10):** `OfferFigure` nadal wskazuje `/media/sample/photos/pisanie-ikony-pracownia.jpg`; rozstrzygnięcie: import z WP (DSC06987 itd.) lub nowa sesja — patrz § P3.
+- **`/ikony/na-zamowienie` — zdjęcie hero (P3, etap 10):** ścieżka `/media/offers/zamowienie/pisanie-ikony-pracownia.jpg` (**M1**); **podmiana pliku** z WP (DSC06987 itd.) lub sesji — patrz § P3.
 - **Adres zgłoszeń na kurs roczny/trzyletni:** WP `/zapisy-na-warsztaty` podaje `sekretariat.ikony22@gmail.com`, WP `/warsztaty-roczne` i brief §8 — `akademiaikony@gmail.com`. Na stronie: `akademiaikony@gmail.com` (decyzja 2026-09-26); potwierdzić z EJK.
-- **Aktualności `spotkania-sladami-najpiekniejszych-ikon-swiata` (gate A3, 2026-09-27):** (1) **uzupełnić program** w `content/news/spotkania-sladami-najpiekniejszych-ikon-swiata.mdx` — lista w repo jest niepełna względem plakatu z WP; (2) **dodać skan plakatu** z harmonogramem (osobny plik w `import/news/…`) — zdjęcie **ze spotkania** jest już w wpisie (`poster` + `images` + galeria). Po edycji: `generateNewsManifest()`. Media wpisu: ✅ `import/news/` (2026-09-28).
+- **Aktualności `spotkania-sladami-najpiekniejszych-ikon-swiata` (gate A3, 2026-09-27):** (1) **uzupełnić program** w MDX; (2) **dodać skan plakatu** (osobny plik w `public/media/news/…`) — zdjęcie ze spotkania już w wpisie. Po edycji: `generateNewsManifest()`. Media wpisu: ✅ `public/media/news/` (M0/M6).
 
 ## Zamrożenia — kawałek 1 (static)
 
@@ -189,9 +189,9 @@ _(pozycje dopisywane w kolejnych kawałkach)_
 | `content/pages/kontakt.mdx` (akapit pod mapą / kontaktem) | **zostaw** — jeden akapit o zakrystii + tel.; bez akapitu WP o KŚT | 2026-09-26 |
 | `content/pages/polityka-prywatnosci.json` | **zostaw** — wersja redakcyjna (Administrator, „na rzecz”, „Masz prawo…”, bez `studiumikony@gmail.com` w treści; `contactEmail`: `akademiaikony@gmail.com`) | 2026-09-26 |
 | `content/settings.json` | **zostaw** — kontakt (2 maile, §8), `mapEmbedUrl`, `upcoming`, ekosystem; WP kontakt nie nadpisuje | 2026-09-26 |
-| `content/pages/o-akademii.json` + `o-akademii.mdx` | **zostaw** (tekst etapu 6); **bez podpinania** mediów z WP — ścieżki `/media/workshop/` bez zmian; pliki w `public/media/import/static/o-akademii/` tylko artefakt fetchu | 2026-09-26 |
-| `content/pages/pracownia.json` + `pracownia.mdx` | **zostaw** — treść etapu 6 bez zmian; bez podpinania `public/media/import/static/pracownia/` | 2026-09-26 |
-| `public/media/import/static/{o-akademii,pracownia}/` (20 plików) | **zostaw** w repo — niepodpięte do JSON; niepełny fetch „O nas” (4/10 `<img>` — tylko linki w `<a href=uploads>`); na później / EJK | 2026-09-26 |
+| `content/pages/o-akademii.json` + `o-akademii.mdx` | **zostaw** (tekst etapu 6); **bez podpinania** mediów z WP — ścieżki `/media/workshop/` bez zmian | 2026-09-26 |
+| `content/pages/pracownia.json` + `pracownia.mdx` | **zostaw** — treść etapu 6 bez zmian; bez podpinania fetchu WP | 2026-09-26 |
+| `archive/wp-fetch-static/{o-akademii,pracownia}/` (20 plików) | **zostaw** — artefakt fetchu (**M6** przeniesiony z `public/media/import/static/`); niepodpięte do JSON; podpięcie po gate EJK | 2026-09-29 |
 
 **Kawałek 1 — zamknięty** 2026-09-26 (gate OK; build/lint OK).
 
@@ -390,7 +390,7 @@ Treść z poniższych URL-i uznajemy za zmigrowaną (konspekt w `docs/plans/09-m
 
 **WP skip (S2):** posty scalone w `oprowadzania-po-wystawie-2017` (nie osobne wpisy news): `ikona-serca-jezusa`, `ikona-trojcy-swietej`, `ikony-emaliowane`. Osobno (S3): `wystawa-ikona-korzenie-i-owoce-wiary-oprowadzania-kuratorskie`.
 
-**WP skip (S4):** post `ikona-korzenie-i-owoce-wiary-2` — **gate OK** 2026-09-27: bez wpisu `/aktualnosci`; copy → `/ikony/wystawy`. **Media:** `page.mdx` `interiorPhotos[1]` — `import/exhibition/20250613_194453-scaled.jpg` (WP 2025-06); `[0]` sample do fali mediów.
+**WP skip (S4):** post `ikona-korzenie-i-owoce-wiary-2` — **gate OK** 2026-09-27: bez wpisu `/aktualnosci`; copy → `/ikony/wystawy`. **Media (M2/M6):** `interiorPhotos[1]` → `/media/exhibition/20250613_194453-scaled.jpg`; `[0]` → `/media/news/wystawa-ikona-korzenie-i-owoce-wiary-2018/2.jpg`.
 
 ### Backlog — treść z `podsumowanie-2019` poza 3 splitami
 
@@ -426,19 +426,31 @@ Treść z poniższych domen uznajemy za zmigrowaną — **bez ponownego fetchu**
 | `content/lectures/*.json` | ✅ sezony 2012/2013–2025/2026 + bieżący poza archiwalnym gate |
 | Bez postu WP | `wystawa-piekno-boga-piekno-czlowieka-2025`, `wystawa-madrosc-boza-2026` — placeholdery treści, linki `#wystawa-2025` / `#wystawa-2026` |
 
-**Handoff → kawałek 3 v2:** media poza aktualnościami (`public/media/sample/` poza skopiowanymi plikami news, `import/static/`, hero ofert, okładka/rozkładówki publikacji), pozostałe `grep sample` w `content/`, `content/exhibition/` (P4 Tura B). Strony WP P0–P8 — **zamknięte** (`migrate-report.md` § P0–P8); `docs/redirects.json` — uzupełniać przy kolejnych 301; wdrożenie w `next.config.ts` — osobny krok etapu 9/11.
+**Handoff → kawałek 3 v2 (historyczny):** media — **zamknięte** w `09-migration-media.md` **M0–M6** (2026-09-29). Otwarte: P4 Tura B, plakaty EJK, redirecty wdrożeniowe (`next.config.ts`).
 
 ## Media aktualności — zamknięte (2026-09-28)
 
 | Element | Stan |
 | --- | --- |
 | Weryfikacja mediów (aktualności) | ✅ `docs/plans/09-migration-media.md` § M0 — przegląd zakończony przez właściciela repo |
-| Ścieżki w treści | ✅ `content/news/*.mdx` + `manifest.json` — wyłącznie `/media/import/news/…` (brak `/media/sample/news/`) |
-| Pliki | ✅ `public/media/import/news/{slug}/` (kopie z `public/media/sample/news/`; nazewnictwo: `1.jpg`…, `poster.jpg`, `cover.jpg` lub oryginalne nazwy WP tam, gdzie gate tak ustalił) |
+| Ścieżki w treści | ✅ `/media/news/…` w `content/news/*.mdx` + `manifest.json` (po **M6**; brak `sample`/`import`) |
+| Pliki | ✅ `public/media/news/{slug}/` |
 | Skrypt | `npx tsx scripts/promote-news-media-from-sample.ts` (jednorazowo) + `generateNewsManifest()` |
 | Build / lint | ✅ po zamknięciu |
 
 **Otwarte (treść / etap 10, nie blokuje mediów):** EJK — program + skan plakatu `spotkania-sladami-najpiekniejszych-ikon-swiata`; masowe `alt`; plakaty (~20) w `News.poster`.
+
+## Media — ujednolicenie ścieżek M6 (2026-09-29)
+
+| Element | Stan |
+| --- | --- |
+| Plan | `docs/plans/09-migration-media.md` § M6 |
+| Dysk | `git mv`: `import/news` → `news`, `import/icons` → `icons`, `import/exhibition` → `exhibition`; `import/static` → `archive/wp-fetch-static/`; brak `public/media/import/` i `sample/` |
+| Treść | Rewrite `/media/import/{news,icons,exhibition}/` → `/media/{domena}/` w `content/`, `src/i18n/pl.ts` |
+| Weryfikacja | `rg '/media/(sample|import)' content/ src/` — pusty; `grep -r sample content/ public/media/` — pusty; build/lint OK |
+| **301** | Stare URL `/media/import/…` — osobny krok przy wdrożeniu (`docs/redirects.json` / `next.config.ts`) |
+
+**Uwaga:** wpisy gate P4 Tura C z 2026-09-27 mogą w tabeli wspominać `import/news/` — na dysku i w treści obowiązuje `public/media/news/` i `/media/news/…`.
 
 ## TODO — kawałek 2 v2 (aktualności, po zamknięciu gate)
 

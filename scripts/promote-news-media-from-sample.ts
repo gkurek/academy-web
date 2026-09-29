@@ -1,5 +1,5 @@
 /**
- * One-off: copy news images from public/media/sample/news to public/media/import/news/{slug}/
+ * One-off: copy news images from public/media/sample/news to public/media/news/{slug}/
  * and rewrite /media/sample/news/ paths in content/news/*.mdx.
  *
  * Usage: npx tsx scripts/promote-news-media-from-sample.ts
@@ -21,7 +21,7 @@ import { generateNewsManifest } from "./generate-news-index";
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
 const NEWS_DIR = join(ROOT, "content/news");
 const SAMPLE_DIR = join(ROOT, "public/media/sample/news");
-const IMPORT_ROOT = join(ROOT, "public/media/import/news");
+const IMPORT_ROOT = join(ROOT, "public/media/news");
 
 function extractSlugFromMdx(source: string): string | null {
   const match = source.match(/"slug":\s*"([^"]+)"/);
@@ -71,7 +71,7 @@ function promotePath(
   const destName = destNameForSampleFile(slug, sampleBasename, role);
   const importDir = join(IMPORT_ROOT, slug);
   const destDisk = join(importDir, destName);
-  const destPublic = `/media/import/news/${slug}/${destName}`;
+  const destPublic = `/media/news/${slug}/${destName}`;
 
   if (!existsSync(importDir)) {
     mkdirSync(importDir, { recursive: true });

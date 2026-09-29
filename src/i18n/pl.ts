@@ -57,7 +57,7 @@ export const pl = {
       ctaPrimary: "Warsztaty pisania ikon",
       ctaSecondary: "Wykłady 2026/2027",
       image: {
-        src: "/media/import/icons/chrystus.jpg",
+        src: "/media/icons/chrystus.jpg",
         alt: "Ikona Chrystusa Pantokratora",
         width: 360,
         height: 682,

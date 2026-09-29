@@ -3,20 +3,20 @@
 **Nadrzędny plan:** `docs/plans/09-migration-v2.md`  
 **Raport:** `scripts/migrate-report.md` (§ Media aktualności, P2–P8)  
 **Gałąź:** `feat/09-migration`  
-**Stan:** 2026-09-29 — **M5 zamknięte** (`public/media/sample/` usunięty); **DoD sample ✅**; następna fala: **M6** (ujednolicenie `import/` → domeny).
+**Stan:** 2026-09-29 — **M6 zamknięte**; produkcyjne media pod `/media/{domena}/` (bez `import/` i `sample/`); fetch WP static → `archive/wp-fetch-static/` (poza `public/`).
 
-**Cel etapu 9 (media):** w `content/` i `src/` brak ścieżek `/media/sample/…`; katalog `public/media/sample/` usunięty lub pusty; `grep -r sample content/ public/media/` bez wyników (DoD całego etapu 9).
+**Cel etapu 9 (media):** ✅ osiągnięty 2026-09-29 — w `content/` i `src/` brak `/media/sample/…` i `/media/import/…`; `public/media/sample/` i `public/media/import/` usunięte; `grep -r sample content/ public/media/` oraz `rg '/media/(sample|import)' content/ src/` — puste.
 
 **Konwencja po M6 (ujednolicenie — na koniec migracji mediów):** wszystkie pliki produkcyjne pod **`/media/{domena}/…`**. Bez segmentu `import/` i bez `sample/`. Zamknięta lista `domena` jak poniżej (ściąga § Konwencja mediów). Cross-domeny dozwolone (np. wystawa → plik z `news/{slug}/`).
 
-**Konwencja tranzycyjna (do M6):** `import/{domena}/` (news, ikony, wystawy), `lecturers/`, `workshop/`, plus domeny już płaskie: `offers/`, `publications/`, `home/`. **`import/static/`** — artefakt fetchu; patrz § Fetch static. Katalog **`sample/` — usunięty (M5).**
+**Konwencja tranzycyjna:** zakończona w **M6** (2026-09-29). Artefakt fetchu stron statycznych WP: `archive/wp-fetch-static/` — nie serwowane; patrz § Fetch static.
 
 | Fala | Nowe pliki / rewrite |
 | --- | --- |
 | M1–M4 | Od razu **`/media/{domena}/…`** (np. `offers/`, `publications/`, `home/`) — mniej pracy w M6 |
-| M0, M2, P2, P5 (zamknięte) | Zostają w `import/…` / `workshop/` / `lecturers/` do **M6** |
-| M5 | Usunięcie `sample/`; bez rename `import/` |
-| **M6** | Przeniesienie `public/media/import/*` → `public/media/{domena}/`; masowy rewrite `content/` + `src/` + skrypty; decyzja o `import/static/` i ewent. `workshop/` → `pages/` **po gate EJK** |
+| M0, M2, P2, P5 | Najpierw `import/…`, potem **M6** → płaskie domeny |
+| M5 | Usunięcie `sample/` ✅ |
+| **M6** | ✅ 2026-09-29 — `import/{news,icons,exhibition}` → domeny; `static` → `archive/wp-fetch-static/`; rewrite ścieżek |
 
 Źródło plików: WP REST / `href` z HTML (**K-121**), nie miniatury `src`. Gate per pozycja tam, gdzie wybór zdjęcia nie jest oczywisty (**K-122**).
 
@@ -24,18 +24,18 @@
 
 ## Konwencja mediów — ściąga
 
-| Domena docelowa (`/media/…`) | Treść / referencje | Na dysku **dziś** (M0–M5) | Status migracji |
+| Domena docelowa (`/media/…`) | Treść / referencje | Na dysku (`public/media/`) | Status migracji |
 | --- | --- | --- | --- |
-| `news/{slug}/` | `content/news/*.mdx`, `manifest.json` | `import/news/` | ✅ M0 |
-| `icons/` | `content/icons.json`, hero `/ikony` | `import/icons/` | ✅ P5 |
-| `exhibition/` | `content/exhibition/` | `import/exhibition/` (+ reuse `import/news/…`) | ✅ M2 |
+| `news/{slug}/` | `content/news/*.mdx`, `manifest.json` | `news/` | ✅ M0 + M6 |
+| `icons/` | `content/icons.json`, hero `/ikony` | `icons/` | ✅ P5 + M6 |
+| `exhibition/` | `content/exhibition/` | `exhibition/` (+ reuse `news/…`) | ✅ M2 + M6 |
 | `lecturers/` | `content/lecturers.json` | `lecturers/` | ✅ P2 (już zgodne z M6) |
-| `workshop/` *lub* `pages/` | `content/pages/*.json` | `workshop/`; fetch WP → `import/static/` (**nie UI**) | ⬜ treść etapu 6; rename `pages/` opcjonalnie w M6 + gate |
+| `workshop/` *lub* `pages/` | `content/pages/*.json` | `workshop/`; fetch WP → `archive/wp-fetch-static/` (**nie UI**) | ⬜ treść etapu 6; rename `pages/` opcjonalnie + gate EJK |
 | `offers/{slug}/` | `content/offers/*.mdx` | `offers/` (3 slugi, 4 pl.) | ✅ M1 2026-09-29 |
 | `publications/{slug}/` | `content/publications/*.mdx` | `publications/ikona-dzis/` (10 pl.) | ✅ M3 2026-09-29 |
 | `home/` | `src/i18n/pl.ts` (filary, kafle) | `home/` (3 pl.) | ✅ M4 2026-09-29 |
 | — | — | ~~`sample/`~~ | ✅ skasowany M5 |
-| — | — | `import/static/{o-akademii,pracownia}/` | artefakt; M6: archiwum poza `public/` lub podpięcie po gate |
+| — | — | `archive/wp-fetch-static/{o-akademii,pracownia}/` | artefakt fetchu; podpięcie po gate EJK |
 
 **Do zapamiętania:** szukaj **domeny treści** (news, icons, workshop…), nie „import vs workshop”.
 
@@ -45,16 +45,16 @@
 
 | # | Domena | Ścieżki w treści | Pliki na dysku | Status |
 | --- | --- | --- | --- | --- |
-| 1 | Aktualności | `content/news/*.mdx`, `manifest.json` | `import/news/` (~50 slugów, 67 wpisów MDX) | ✅ **Zamknięte** 2026-09-28 |
-| 2 | Galeria `/ikony` | `content/icons.json` | `import/icons/` (53 pl.) | ✅ 2026-09-27 (P5) |
-| 3 | Wykładowcy | `lecturers.json`, katalog | `lecturers/` (17 pl.) | ✅ 2026-09-27 (P2) |
-| 4 | Wystawy codzienne + doroczne | `content/exhibition/page.mdx`, `annual.json`, `ExhibitionTravelingSection` | `import/exhibition/` (2 pl. S4); doroczne kafle bez `photos` → `[przykład]` | ✅ **Zamknięte** 2026-09-29 (M2) |
-| 5 | Strony O Akademii / Pracownia | `content/pages/*.json` → `/media/workshop/` | `import/static/` (20 pl., **niepodpięte**) | ⬜ Artefakt fetchu; **bez podpinania** bez gate (zamrożenie k1) |
+| 1 | Aktualności | `content/news/*.mdx`, `manifest.json` | `news/` (~50 slugów, 67 wpisów MDX) | ✅ M0 + M6 |
+| 2 | Galeria `/ikony` | `content/icons.json` | `icons/` (53 pl.) | ✅ P5 + M6 |
+| 3 | Wykładowcy | `lecturers.json`, katalog | `lecturers/` (17 pl.) | ✅ P2 |
+| 4 | Wystawy codzienne + doroczne | `content/exhibition/page.mdx`, `annual.json`, `ExhibitionTravelingSection` | `exhibition/` (2 pl. S4) + cross-ref `news/`; doroczne kafle bez `photos` → `[przykład]` | ✅ M2 + M6 |
+| 5 | Strony O Akademii / Pracownia | `content/pages/*.json` → `/media/workshop/` | `archive/wp-fetch-static/` (20 pl., **niepodpięte**) | ⬜ Artefakt fetchu; podpięcie po gate EJK |
 | 6 | Oferty warsztatów + zamówienie | 3× `content/offers/*.mdx` | `offers/` (4 pl.) | ✅ **M1** 2026-09-29 |
 | 7 | *(wchodzi w #6)* | hero `zamowienie.mdx` | ten sam plik co M1 | ✅ ścieżka; **treść zdjęcia** → etap 10 / EJK (§ P3) |
 | 8 | Publikacje (album) | `content/publications/ikona-dzis.mdx` | `publications/ikona-dzis/` (10 pl.) | ✅ **M3** 2026-09-29 |
 | 9 | Strona główna (filar) | `src/i18n/pl.ts` | `home/` (3 pl.) | ✅ **M4** 2026-09-29 |
-| 10 | Porządki `sample/` | — | katalog usunięty | ✅ **M5** 2026-09-29; **M6** → rename `import/` |
+| 10 | Porządki `sample/` + `import/` | — | brak `sample/` i `import/` w `public/media/` | ✅ **M5** + **M6** 2026-09-29 |
 
 ---
 
@@ -65,8 +65,8 @@
 | Element | Szczegóły |
 | --- | --- |
 | Weryfikacja | Gate pozycja po pozycji — właściciel repo; stan: ten plik § M0 + `migrate-report.md` § Media aktualności |
-| Treść | Brak `/media/sample/news/` w `content/news/` i `manifest.json` — wyłącznie `/media/import/news/{slug}/…` |
-| Pliki | Kopia do `public/media/import/news/`; nazwy: `1.jpg`…, `poster.jpg`, `cover.jpg` lub nazwy WP tam, gdzie gate tak ustalił |
+| Treść | Brak `/media/sample/news/`; ścieżki `/media/news/{slug}/…` (po **M6**; wcześniej przez `import/news/`) |
+| Pliki | `public/media/news/{slug}/`; nazwy: `1.jpg`…, `poster.jpg`, `cover.jpg` lub nazwy WP tam, gdzie gate tak ustalił |
 | Skrypt | `npx tsx scripts/promote-news-media-from-sample.ts` + `generateNewsManifest()` |
 | Build / lint | OK po zamknięciu |
 
@@ -74,8 +74,8 @@
 
 ### Galeria ikon (P5, 2026-09-27)
 
-- 52 prace + `chrystus.jpg` (hero) w `public/media/import/icons/`.
-- `content/icons.json` — same `/media/import/icons/…`; `sample` zdjęty z JSON.
+- 52 prace + `chrystus.jpg` (hero) w `public/media/icons/`.
+- `content/icons.json` — `/media/icons/…`; `sample` zdjęty z JSON (P5 + M6).
 
 ### Wykładowcy (P2, 2026-09-27)
 
@@ -85,10 +85,10 @@
 
 | Element | Szczegóły |
 | --- | --- |
-| `page.mdx` | `interiorPhotos`: `import/news/…-2018/2.jpg` + `import/exhibition/20250613_194453-scaled.jpg`; brak `sample` |
+| `page.mdx` | `interiorPhotos`: `/media/news/…-2018/2.jpg` + `/media/exhibition/20250613_194453-scaled.jpg`; brak `sample` |
 | `annual.json` | Usunięte wszystkie `photos[]` — sekcja doroczna: 4 sloty `[przykład]`; zdjęcia sezonów **ręcznie** później |
 | `ExhibitionTravelingSection` | Kadr z `interiorPhotos[0]` (prop z `ExhibitionPage`) |
-| `import/exhibition/` | `20250613_194453-scaled.jpg` (podpięte); `502585831_…_n.jpg` z posta S4 — **na dysku, bez referencji w treści** |
+| `exhibition/` | `20250613_194453-scaled.jpg` (podpięte); `502585831_…_n.jpg` z posta S4 — **na dysku, bez referencji w treści** |
 | Weryfikacja | Brak `/media/sample` w `content/exhibition/` i `src/components/exhibition/`; build/lint OK |
 
 ### M1 — Oferty (2026-09-29)
@@ -130,19 +130,29 @@
 | Element | Szczegóły |
 | --- | --- |
 | Weryfikacja | `rg '/media/sample' content/ src/` — pusty przed kasacją |
-| Dysk | Usunięty `public/media/sample/` (news, photos, publications — kopie produkcyjne w `import/news`, `offers`, `publications`, `home`) |
+| Dysk | Usunięty `public/media/sample/` (kopie produkcyjne w `news/`, `offers/`, `publications/`, `home`, `icons/`) |
 | DoD | `rg sample content/ public/media/` — pusty |
 | Skrypty | `promote-*-from-sample.ts` i `generate-news-sample.ts` — historyczne; ponowny zapis wymagałby odtworzenia `sample/` z gita |
 
 ### Fetch static (stary kawałek 1 — artefakt)
 
-- `public/media/import/static/o-akademii/` (4 pl.), `pracownia/` (16 pl.) — **nie** podpięte do `content/pages/` (zamrożenie: treść etapu 6 + `/media/workshop/`).
+- `archive/wp-fetch-static/o-akademii/` (4 pl.), `pracownia/` (16 pl.) — **nie** podpięte do `content/pages/` (zamrożenie: treść etapu 6 + `/media/workshop/`).
+
+### M6 — Ujednolicenie ścieżek (2026-09-29)
+
+| Element | Szczegóły |
+| --- | --- |
+| Dysk | `git mv`: `import/news` → `news`, `import/icons` → `icons`, `import/exhibition` → `exhibition`; `import/static` → `archive/wp-fetch-static/`; brak `public/media/import/` |
+| Treść | Rewrite `/media/import/{news,icons,exhibition}/` → `/media/{domena}/` w `content/`, `src/i18n/pl.ts` |
+| Skrypty | `promote-news-media-from-sample.ts`, `wp-gallery-manifest.json`, `fetch-wp-gallery-sample.mjs`, `migrate-wp/domains/static.ts` |
+| Weryfikacja | `rg '/media/(sample|import)' content/ src/` — pusty; build/lint OK |
+| Poza zakresem | `workshop/` → `pages/`; 301 ze starych URL obrazów |
 
 ---
 
-## ⬜ Do migracji (fale proponowane)
+## Fale mediów (zamknięte)
 
-Kolejność: najpierw ścieżki widoczne na produkcie, potem sprzątanie `public/media/sample/`.
+Wszystkie fale **M0–M6** zamknięte 2026-09-29. Poniżej skrót historyczny.
 
 ### M1 — Oferty warsztatów + hero zamówienia ✅ 2026-09-29
 
@@ -160,18 +170,9 @@ Zamknięte — patrz § M4 powyżej.
 
 Zamknięte — patrz § M5 powyżej.
 
-### M6 — Ujednolicenie ścieżek `/media/{domena}/` (po M5)
+### M6 — Ujednolicenie ścieżek `/media/{domena}/` ✅ 2026-09-29
 
-**Cel:** jedna reguła URL; w `public/media/` tylko foldery domen z § Konwencja mediów — ściąga.
-
-1. Przenieść katalogi: `import/news` → `news`, `import/icons` → `icons`, `import/exhibition` → `exhibition` (git mv / skrypt).
-2. Masowy rewrite ścieżek w `content/`, `src/`, `scripts/` (`/media/import/news/` → `/media/news/` itd.).
-3. **`import/static/`:** skasować, przenieść do archiwum (np. poza `public/`) albo — **tylko po gate** — pliki do `workshop/` / `pages/` + aktualizacja `content/pages/*.json`.
-4. Opcjonalnie: rename `workshop/` → `pages/` — **tylko z decyzją EJK** (medio stron O Akademii / Pracownia), nie mechanicznie.
-5. Weryfikacja: `rg '/media/(sample|import)' content/ src/` — pusty; `npm run build`, `npm run lint`.
-6. Jeśli produkcja już indeksuje stare URL obrazów: 301 w `docs/redirects.json` / `next.config.ts` (osobny krok — uzgodnić przy wdrożeniu).
-
-**Kryterium gotowe:** wszystkie referencje zgodne ze ściągą; brak `public/media/import/` i `public/media/sample/`.
+Zamknięte — patrz § M6 powyżej. **301** ze `/media/import/…` — osobny krok przy wdrożeniu.
 
 ---
 
@@ -180,9 +181,9 @@ Zamknięte — patrz § M5 powyżej.
 Pełna tabela domen: § **Konwencja mediów — ściąga**. Skrót:
 
 ```text
-content/news/          → ✅ import/news (→ news/ w M6)
-content/icons.json     → ✅ import/icons (→ icons/ w M6)
-content/exhibition/    → ✅ import (bez sample)
+content/news/          → ✅ news/
+content/icons.json     → ✅ icons/
+content/exhibition/    → ✅ exhibition/ + cross-ref news/
 content/offers/        → ✅ offers/ (M1)
 content/publications/  → ✅ publications/ikona-dzis (M3)
 content/pages/         → workshop/ (świadomy wybór etapu 6)
@@ -203,9 +204,9 @@ src/components/exhibition/  → ✅ bez sample
 | Manifest aktualności | wywołanie `generateNewsManifest()` z pipeline treści / skryptu news |
 | Fetch WP (pomocniczy) | `npx tsx scripts/migrate-wp.ts --dry-run` (bez masowego static/offers — **K-123**) |
 | Weryfikacja | `npm run build`, `npm run lint` |
-| Kontrola sample (DoD) | `rg '/media/sample' content/ src/`; `rg sample content/ public/media/` |
+| Kontrola mediów (DoD) | `rg '/media/(sample|import)' content/ src/`; `rg sample content/ public/media/` |
 
-Nowe skrypty (M1–M3): **propozycja** — helper kopiujący z WP uploads lub z `sample/` do `public/media/{domena}/` + rewrite ścieżek w JSON/MDX; **gate przed zapisem**; bez nowych zależności npm bez zgody. Skrypt rename `import/` → płaskie domeny — **M6**.
+Skrypty `promote-*-from-sample.ts` — historyczne (wymagałyby odtworzenia `sample/` z gita). Fetch galerii: `fetch-wp-gallery-sample.mjs` → `public/media/icons/`. Fetch static WP: `migrate-wp/domains/static.ts` → `archive/wp-fetch-static/`.
 
 ---
 
@@ -220,14 +221,14 @@ Nowe skrypty (M1–M3): **propozycja** — helper kopiujący z WP uploads lub z 
 | M3 Publikacje | ✅ | 2026-09-29 |
 | M4 Home (`pl.ts`) | ✅ | 2026-09-29 |
 | M5 Usunięcie `sample/` | ✅ | 2026-09-29 |
-| M6 Ujednolicenie `/media/{domena}/` | ⬜ | po M5 |
+| M6 Ujednolicenie `/media/{domena}/` | ✅ | 2026-09-29 |
 
-**Następny krok (rekomendacja):** **M6** — przeniesienie `import/*` na płaskie domeny + rewrite (§ M6).
+**Następny krok (rekomendacja):** etap 9 — domknięcie pozostałych pozycji planu v2 (treść / SEO); media produkcyjne — ścieżki zamknięte.
 
 ---
 
 ## Powiązania
 
-- `docs/plan-claude-code.md` §5 — wiersze sample dot. mediów (hero zamówienie, publikacje, filary home).
+- `docs/plan-claude-code.md` §5 — wiersze otwarte (hero zamówienie — kadrowanie, publikacje — `alt`, filary home — kadry EJK).
 - `docs/plans/09-migration-wp-pages.md` — P5/P6/P8 odwołania do planu mediów.
 - Gate S4 — 2 zdjęcia z posta `ikona-korzenie-i-owoce-wiary-2` → wystawy, nie news.

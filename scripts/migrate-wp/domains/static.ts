@@ -83,8 +83,8 @@ const downloadStaticImages = async (
   report: MigrateReport,
 ): Promise<number> => {
   const urls = extractLinkedUploadUrls(wp.content.rendered);
-  const mediaRoot = join(ROOT, "public/media/import/static", route);
-  const publicPrefix = `/media/import/static/${route}`;
+  const mediaRoot = join(ROOT, "archive/wp-fetch-static", route);
+  const publicPrefix = `/archive/wp-fetch-static/${route}`;
 
   const results = await Promise.all(
     urls.map((url, index) =>
