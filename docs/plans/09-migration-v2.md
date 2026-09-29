@@ -1,6 +1,6 @@
 # Plan 09 v2 — Migracja treści z WordPressa (redakcja + skrypt)
 
-Status: **w implementacji** (2026-09-27) — kawałki **1 v2** i **2 v2** zamknięte; **3 v2** w toku (strony WP **P0–P8** ✅). Następny zakres k3: **media** / globalny **`grep sample`**, zamknięcie kryteriów kawałka 3 (inwentaryzacja, plan mediów, kawałki 4+). Refactor wystaw dorocznych (P4 Tura B, R1–R9) — **po migracji**. v2 zastępuje **implementację kawałków** z `docs/plans/09-migration.md`; decyzje **K-08**, **K-121**, **K-122** nadal obowiązują.  
+Status: **w implementacji** (2026-09-28) — kawałki **1 v2** i **2 v2** zamknięte; **3 v2** w toku (strony WP **P0–P8** ✅; **media aktualności** ✅). Następny zakres k3: pozostałe **media** (static, oferty, publikacje, wystawy), globalny **`grep sample`**, zamknięcie kryteriów kawałka 3 (inwentaryzacja, plan mediów reszty, kawałki 4+). Refactor wystaw dorocznych (P4 Tura B, R1–R9) — **po migracji**. v2 zastępuje **implementację kawałków** z `docs/plans/09-migration.md`; decyzje **K-08**, **K-121**, **K-122** nadal obowiązują.  
 Gałąź: `feat/09-migration`  
 Makiety: brak (etap wyłącznie treści; UI bez zmian). Trasy i model treści: `docs/brief-claude-code.md` §3–§5.
 
@@ -57,6 +57,7 @@ Nie powtarzamy gate ani masowego zapisu dla:
 | ---- | ---------------- |
 | `docs/plans/09-migration-source.md` | Surowy konspekt treści z WP (wypełnia właściciel repo); **nie** trafia na produkcję |
 | `docs/plans/09-migration-v2.md` | Ten plan |
+| `docs/plans/09-migration-media.md` | Plan mediów: stan + fale M0–M5 (news ✅, reszta ⬜) |
 | `scripts/migrate-wp.ts` | Kawałek 2: `lectures`, `news`; opcjonalnie inwentaryzacja WP w kawałku 3 |
 | `scripts/migrate-report.md` | Zamrożenia, zamknięte URL-e WP, EJK, konflikty |
 | `content/pages/*`, `content/offers/*`, `src/i18n/pl.ts` (hub warsztatów) | Kawałek 1 — docelowe copy |
@@ -170,11 +171,17 @@ Oferta `zamowienie` i inne trasy **poza** piątką stron — poza kawałkiem 1 (
 4. **Redirecty:** propozycja wpisów do `docs/redirects.json` dla URL-i zamkniętych w kawałkach 1–2 (+ znanych slugów z brief §5).
 5. **Pozostałe `sample`:** tabela „co zostaje” z `docs/plan-claude-code.md` §5 po kawałkach 1–2 (galeria, publikacje, wystawy, strona główna, `zamowienie`, itd.).
 
+**Media aktualności (podzakres k3):**
+
+- [x] Weryfikacja pozycja po pozycji — `docs/plans/09-migration-media.md` § M0 (2026-09-28, właściciel repo)
+- [x] Zdjęcia wpisów news: `/media/sample/news/` → `public/media/import/news/{slug}/`, ścieżki w `content/news/*.mdx` + `manifest.json` (skrypt: `scripts/promote-news-media-from-sample.ts`; potem `generateNewsManifest()`)
+- [x] `npm run build`, `npm run lint` po podmianie ścieżek
+
 **Kryterium „gotowe”:**
 
 - [ ] Tabela inwentaryzacji w `migrate-report.md` (lub załącznik wskazany w raporcie)
 - [ ] Zatwierdzony plan kawałków 4+ (nazwa, `--only`, zakres) **lub** jawne przeniesienie pozycji do etapu 10 z EJK
-- [ ] Plan mediów (co podpinamy, co usuwamy z `import/`, co zostaje sample do czasu)
+- [x] Plan mediów **poza aktualnościami** — `docs/plans/09-migration-media.md` (2026-09-28); wykonanie fal M1–M5 ⬜
 - [ ] Checkpoint — **bez wymogu** pustego `grep sample` (to DoD całego etapu 9)
 
 ## Dane sample w tym etapie
@@ -207,7 +214,7 @@ Po **wszystkich** kawałkach wykonawczych zatwierdzonych po kawałku 3 (nie tylk
 | ---------- | ------ | ------------ |
 | 1 — rdzeń redakcyjny | ✅ | 2026-09-26. `/o-akademii`, `/pracownia`, `/kontakt` — zostaw; kurs, plener, hub `/warsztaty` — nowa redakcja (akceptacja wizualna); nowe pole `leadExtra` w ofertach; `sample` zdjęty z obu ofert i `testimonials.json` (fałszywy cytat Izy → Artur); raport: zamrożenia, „WP zamknięte — kawałek 1 v2”, TODO k2 i etap 10; build/lint OK |
 | 2 — wykłady + aktualności | ✅ | 2026-09-27. Wykłady: gate K-122 (15 sezonów archiwum + bieżący). Aktualności: faza 0 **B**; S1–S5 ✅; partie **A, B, C, E, F, D** (gate D1–D21) ✅; brak `sample-*.mdx`. Wyjątki: D20/D21 bez postów WP (placeholdery); backlog `podsumowanie-2019` **zamknięty** (P4 Tura C, #9 skip). Otwarte przed DoD etapu 9: `plener` vs `wyjazd`, `<NewsCta />`, `#wyjazdowe` — raport § TODO k2. |
-| 3 — inwentaryzacja + media + plan dalszy | 🟡 | Plan stron WP: `09-migration-wp-pages.md` — **P0–P8 ✅** (P4 Tura B po migracji). Następny: media / `grep sample`, DoD kawałka 3 (raport, plan 4+). |
+| 3 — inwentaryzacja + media + plan dalszy | 🟡 | Plan stron WP: `09-migration-wp-pages.md` — **P0–P8 ✅** (P4 Tura B po migracji). **Media aktualności ✅** 2026-09-28 (`09-migration-media.md` § M0, `import/news/`). Następny: media poza news, `grep sample`, DoD kawałka 3 (raport, plan 4+). |
 
 **Mapowanie ze starego planu (`09-migration.md`):**
 

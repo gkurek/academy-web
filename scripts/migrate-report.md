@@ -180,7 +180,7 @@ _(pozycje dopisywane w kolejnych kawałkach)_
 
 - **`/ikony/na-zamowienie` — zdjęcie hero (P3, etap 10):** `OfferFigure` nadal wskazuje `/media/sample/photos/pisanie-ikony-pracownia.jpg`; rozstrzygnięcie: import z WP (DSC06987 itd.) lub nowa sesja — patrz § P3.
 - **Adres zgłoszeń na kurs roczny/trzyletni:** WP `/zapisy-na-warsztaty` podaje `sekretariat.ikony22@gmail.com`, WP `/warsztaty-roczne` i brief §8 — `akademiaikony@gmail.com`. Na stronie: `akademiaikony@gmail.com` (decyzja 2026-09-26); potwierdzić z EJK.
-- **Aktualności `spotkania-sladami-najpiekniejszych-ikon-swiata` (gate A3, 2026-09-27):** (1) **uzupełnić program** w `content/news/spotkania-sladami-najpiekniejszych-ikon-swiata.mdx` — lista w repo jest niepełna względem plakatu z WP; (2) **dodać skan plakatu** z harmonogramem (osobny plik obok `spotkania-sladami-najpiekniejszych-ikon-swiata-0.jpg`) — zdjęcie **ze spotkania** jest już w wpisie (`poster` + `images` + galeria). Po edycji: `generateNewsManifest()`. Kawałek 3: docelowy import mediów zamiast sample.
+- **Aktualności `spotkania-sladami-najpiekniejszych-ikon-swiata` (gate A3, 2026-09-27):** (1) **uzupełnić program** w `content/news/spotkania-sladami-najpiekniejszych-ikon-swiata.mdx` — lista w repo jest niepełna względem plakatu z WP; (2) **dodać skan plakatu** z harmonogramem (osobny plik w `import/news/…`) — zdjęcie **ze spotkania** jest już w wpisie (`poster` + `images` + galeria). Po edycji: `generateNewsManifest()`. Media wpisu: ✅ `import/news/` (2026-09-28).
 
 ## Zamrożenia — kawałek 1 (static)
 
@@ -426,7 +426,19 @@ Treść z poniższych domen uznajemy za zmigrowaną — **bez ponownego fetchu**
 | `content/lectures/*.json` | ✅ sezony 2012/2013–2025/2026 + bieżący poza archiwalnym gate |
 | Bez postu WP | `wystawa-piekno-boga-piekno-czlowieka-2025`, `wystawa-madrosc-boza-2026` — placeholdery treści, linki `#wystawa-2025` / `#wystawa-2026` |
 
-**Handoff → kawałek 3 v2:** media (`public/media/sample/`, import static, okładka/rozkładówki publikacji), pozostałe `grep sample` poza news, `content/exhibition/` (P4 Tura B). Strony WP P0–P8 — **zamknięte** (`migrate-report.md` § P0–P8); `docs/redirects.json` — uzupełniać przy kolejnych 301; wdrożenie w `next.config.ts` — osobny krok etapu 9/11.
+**Handoff → kawałek 3 v2:** media poza aktualnościami (`public/media/sample/` poza skopiowanymi plikami news, `import/static/`, hero ofert, okładka/rozkładówki publikacji), pozostałe `grep sample` w `content/`, `content/exhibition/` (P4 Tura B). Strony WP P0–P8 — **zamknięte** (`migrate-report.md` § P0–P8); `docs/redirects.json` — uzupełniać przy kolejnych 301; wdrożenie w `next.config.ts` — osobny krok etapu 9/11.
+
+## Media aktualności — zamknięte (2026-09-28)
+
+| Element | Stan |
+| --- | --- |
+| Weryfikacja mediów (aktualności) | ✅ `docs/plans/09-migration-media.md` § M0 — przegląd zakończony przez właściciela repo |
+| Ścieżki w treści | ✅ `content/news/*.mdx` + `manifest.json` — wyłącznie `/media/import/news/…` (brak `/media/sample/news/`) |
+| Pliki | ✅ `public/media/import/news/{slug}/` (kopie z `public/media/sample/news/`; nazewnictwo: `1.jpg`…, `poster.jpg`, `cover.jpg` lub oryginalne nazwy WP tam, gdzie gate tak ustalił) |
+| Skrypt | `npx tsx scripts/promote-news-media-from-sample.ts` (jednorazowo) + `generateNewsManifest()` |
+| Build / lint | ✅ po zamknięciu |
+
+**Otwarte (treść / etap 10, nie blokuje mediów):** EJK — program + skan plakatu `spotkania-sladami-najpiekniejszych-ikon-swiata`; masowe `alt`; plakaty (~20) w `News.poster`.
 
 ## TODO — kawałek 2 v2 (aktualności, po zamknięciu gate)
 
