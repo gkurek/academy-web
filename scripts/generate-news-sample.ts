@@ -90,13 +90,11 @@ const EXCLUDED_SLUGS = new Set([
   "podsumowanie-2019",
   "ikona-serca-jezusa",
   "ikona-trojcy-swietej",
-  "ikony-emaliowane",
 ]);
 
 const OPROWADZANIA_2017_SLUGS = [
   "ikona-serca-jezusa",
   "ikona-trojcy-swietej",
-  "ikony-emaliowane",
 ] as const;
 
 const downloadedUrls = new Map<string, string>();
@@ -278,14 +276,19 @@ const assignPoster = (images: ImageMeta[]): ImageMeta | undefined => {
 
 const buildFromPost = async (post: WpPost): Promise<GeneratedEntry> => {
   const images = await extractImages(post.content.rendered, post.slug);
-  const body = htmlToBody(post.content.rendered);
+  let body = htmlToBody(post.content.rendered);
+  if (post.slug === "ikony-emaliowane") {
+    body = body.replace(/Dzieciom się to podobało[\s\S]*$/i, "").trim();
+  }
   const poster = assignPoster(images);
+  const kind =
+    post.slug === "ikony-emaliowane" ? "aktualnosc" : determineKind(post);
 
   return {
     slug: post.slug,
     title: decodeHtml(post.title.rendered),
     date: post.date.slice(0, 10),
-    kind: determineKind(post),
+    kind,
     excerpt: buildExcerpt(body, post.excerpt.rendered),
     body,
     images: images.length > 0 ? images : undefined,
@@ -379,10 +382,6 @@ const buildOprowadzania2017Entry = async (
           : "Oprowadzanie kuratorskie po ikonie Serca Jezusa na wystawie w Kościele Środowisk Twórczych.";
       }
 
-      if (post.slug === "ikony-emaliowane") {
-        body = body.replace(/Dzieciom się to podobało[\s\S]*$/i, "").trim();
-      }
-
       return {
         title: decodeHtml(post.title.rendered),
         body,
@@ -401,7 +400,7 @@ const buildOprowadzania2017Entry = async (
 
   return {
     slug: "oprowadzania-po-wystawie-2017",
-    title: "Oprowadzania po wystawie: Serce Jezusa, Trójca Święta, ikony emaliowane",
+    title: "Oprowadzania po wystawie: Serce Jezusa, Trójca Święta",
     date: "2017-06-25",
     kind: "oprowadzanie",
     excerpt:

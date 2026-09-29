@@ -164,6 +164,11 @@
       "source": "/poswiecenia-ikon",
       "destination": "/aktualnosci/poswiecenia-ikon",
       "note": "P7 #27: strona WP → wpis aktualności (K-77, 2026-09-27)"
+    },
+    {
+      "source": "/ikony-emaliowane",
+      "destination": "/aktualnosci/ikony-emaliowane",
+      "note": "WP post oprowadzania 2017 → osobny wpis aktualności (wyłączenie ze scalenia, 2026-09-28)"
     }
   ]
 }
