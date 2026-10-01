@@ -9,17 +9,47 @@ Zatwierdzone przez właściciela repo **2026-09-27**. Bez implementacji treści 
 | # | Slug / temat | Decyzja |
 | --- | --- | --- |
 | 12 | `tematy` | **301** `/wyklady/tematy/` → `/wyklady` (program tylko w `content/lectures/*.json` + hub). |
-| 25 | `plakaty` | Wpis zbiorczy `kind: aktualnosc` (galeria plakatów WP; tytuł z latami przy gate). **301** `/publikacje/plakaty/` → ten wpis po utworzeniu; do czasu wpisu → `/aktualnosci` (P1). **Etap 10:** rozłożyć plakaty na większe wpisy (`poster` itd.) i usunąć wpis zbiorczy, gdy zbędny. Realizacja wpisu: **fala mediów** (po **P6** ✅). |
+| 25 | `plakaty` | **✅ 2026-09-30 (DoD #3):** `content/news/plakaty-z-wydarzen.mdx` — 20 zdj. z WP `/publikacje/plakaty/` → `public/media/news/plakaty-z-wydarzen/`; **301** `/publikacje/plakaty` → `/aktualnosci/plakaty-z-wydarzen`. **Etap 10:** opisy `alt` (wydarzenie + rok), rozłożenie na `News.poster` przy wpisach docelowych; wpis zbiorczy usunąć, gdy zbędny. |
+| — | Zdjęcie FB `71496678_…_n-1.jpg` (hub WP `/publikacje/`) | **✅ zamknięte (DoD #5):** nie migrowane; **bez backlogu** — temat nie wraca. |
 | 28 | `konsultacje-i-lekcje-indywidualne` | Kotwica `#konsultacje` przy sekcji w `kurs-roczny-i-trzyletni.mdx`. **301** → `/warsztaty/kurs-roczny-i-trzyletni#konsultacje`. |
 | — | Backlog post `podsumowanie-2019` | **✅ zamknięty** 2026-09-27: **#1** → P4 Tura A; **#2–#8** → wpisy news (P4 Tura C); **#9** (akapit 2020 / film) → **skip** — treść rozplanowana poza rollupem WP (bez osobnego news z tego akapitu). |
 
 **P0 — zamknięty** 2026-09-27.
 
+## DoD #3 — redirecty (2026-09-30)
+
+| Element | Stan |
+| --- | --- |
+| `docs/redirects.json` | **108** wpisów: huby P1 (34) + root slugi wpisów news + wyjątki (`podsumowanie-2019`, oprowadzenia 2017, K-67) + 3× `/media/import/{news,icons,exhibition}/:path*` |
+| Regeneracja | `npx tsx scripts/rebuild-redirects-json.ts` (idempotentne; nie usuwa wpisów ręcznych P1) |
+| Plakaty P0 #25 | `content/news/plakaty-z-wydarzen.mdx`, 20 zdj. `public/media/news/plakaty-z-wydarzen/`; import: `npx tsx scripts/sync-plakaty-news-from-wp.ts` |
+| **301** `/publikacje/plakaty` | → `/aktualnosci/plakaty-z-wydarzen` |
+| `next.config.ts` | bez zmian — `loadPermanentRedirects()` |
+
+**Etap 10:** `alt` plakatów; rozłożenie na `News.poster`; ewent. usunięcie wpisu zbiorczego.
+
+## WP zamknięte — kawałek 3 v2 (2026-09-30)
+
+**Decyzja właściciela:** w etapie 9 **nie** ma kolejnego kawałka wykonawczego (stary plan: galeria/publikacje — już **P5–P6** + media **M3/M6**). Zamknięcie k3 = inwentaryzacja + dokumentacja; DoD **#1–#8** ✅ (2026-10-01).
+
+**Inwentaryzacja 29 stron WP:** pełna tabela — `docs/plans/09-migration-wp-pages.md` § „Inwentaryzacja — wszystkie 29 stron”. Szczegóły implementacji w tym raporcie:
+
+| Zakres | Sekcja |
+| --- | --- |
+| Decyzje P0 (#12, #25, #28, `podsumowanie-2019`) | § Decyzje P0 |
+| Redirecty (huby + root slugi news + `/media/import/…`) | § DoD #3, § P1 |
+| Wykładowcy, zamówienie, wystawy (Tura A+C), galeria, publikacje, poświęcenia, home | § P2–§ P8 |
+| Media produkcyjne | `docs/plans/09-migration-media.md` **M0–M6** |
+
+**Po migracji (nie blokuje k3):** P4 **Tura B** — refactor `/ikony/wystawy`, `annual.json`, R1–R9 (§ P4 backlog).
+
+**Etap 10 / EJK (skrót):** `alt` i kadry; plakaty → wpisy docelowe; 4 miejsca LSŚ bez `newsSlug`; tytuły/wymiary galerii; album (copy/`alt`/fragmenty); `<NewsCta />`, sekcja wystaw „specjalne”; korekta Trójcy 2017; poświęcenia / spotkania A3; fetch `archive/wp-fetch-static/` niepodpięty do UI — pełna lista: § EJK, § Do etapu 10 (k1/k2, **DoD #8**), `docs/plan-claude-code.md` §5. **CMS wykładów** — osobny projekt po etapach 9–11 (DoD #5, 2026-10-01).
+
 ## P1 — redirecty hubów
 
-**Zamknięty** 2026-09-27 (OK właściciela na listę 31 wpisów w `docs/redirects.json`). `next.config.ts` bez zmian — `loadPermanentRedirects()` przy buildzie.
+**Zamknięty** 2026-09-27 (OK właściciela na listę hubów w `docs/redirects.json`). **Rozszerzenie DoD #3 (2026-09-30):** 108 wpisów łącznie — root slugi wpisów news (~68), wyjątki (oprowadzenia 2017, `podsumowanie-2019`, K-67), wildcards `/media/import/{news,icons,exhibition}/:path*`; regeneracja: `npx tsx scripts/rebuild-redirects-json.ts`. `next.config.ts` bez zmian — `loadPermanentRedirects()`.
 
-Kotwica `#konsultacje` w `content/offers/kurs-roczny-i-trzyletni.mdx` (P0 #28). `/publikacje/plakaty` → zaktualizować po wpisie zbiorczym plakatów (P0 #25; po P6 ✅).
+Kotwica `#konsultacje` w `content/offers/kurs-roczny-i-trzyletni.mdx` (P0 #28). `/publikacje/plakaty` → `/aktualnosci/plakaty-z-wydarzen` (P0 #25 ✅).
 
 ## P3 — Zamówienie (#18)
 
@@ -111,7 +141,7 @@ Kotwica `#konsultacje` w `content/offers/kurs-roczny-i-trzyletni.mdx` (P0 #28). 
 | `sample` | **zdjęty** z `content/icons.json`; pliki w `public/media/icons/` (promocja P5, ścieżki M6) |
 | **301** | `/ikona/galeria` — `docs/redirects.json` (P1) |
 
-**Zamrożenie:** metadane i kolejność galerii — **zostaw**; bez ponownego fetchu strony WP. Korekta tytułów, wymiarów, placeholder `do-uzupelnienia-tytul-ikony` — **etap 10** (`docs/plan-claude-code.md` §5).
+**Zamrożenie:** metadane i kolejność galerii — **zostaw**; bez ponownego fetchu strony WP. Korekta tytułów (poza `trojca-swieta-2017` ✅ 2026-10-01), wymiarów — **etap 10** (`docs/plan-claude-code.md` §5).
 
 ## P6 — Publikacje (#23–24)
 
@@ -127,7 +157,7 @@ Kotwica `#konsultacje` w `content/offers/kurs-roczny-i-trzyletni.mdx` (P0 #28). 
 | `toc` | `articleSlug` dla 3 pozycji online (`pietnasta-rocznica`, `ikona-przejmujaca-delikatnosc`, `piekno-ikony-perspektywa-i-swiatlo`); pozostałe pozycje bez artykułu — etap 10 / EJK |
 | Zakup z WP #24 | już w UI albumu (`mailto:` → `settings.json` sekretariat); lead sekcji artykułów bez duplikacji maila |
 | **301** | `/publikacje/artykuly/` — `docs/redirects.json` (P1) |
-| **EJK / etap 10** | import okładki/rozkładówek, `alt`, placeholdery w `toc` i `ikona-dzis-body.mdx`; **prawa** do publikacji online tekstów z albumu (zwł. uczestnicy) — nadal otwarte w §5 |
+| **EJK / etap 10** | `alt`, placeholdery w `toc` i `ikona-dzis-body.mdx`, fragmenty / „Jak powstał”; **prawa online** — zamknięte (EJK, DoD #5 2026-10-01) |
 
 **Zamrożenie (nie fetchować ponownie):** strony WP `publikacje`, `artykuly` — copy i mapowanie artykułów wg gate P6.
 
@@ -141,7 +171,7 @@ Kotwica `#konsultacje` w `content/offers/kurs-roczny-i-trzyletni.mdx` (P0 #28). 
 | Pliki | `content/lecturers.json`, `content/lecturer-directory.json`, `content/lecturers-page.json` |
 | Media | `public/media/lecturers/*` (bez `/media/sample/`) |
 | `sample` | brak w plikach wykładowców i sezonach `content/lectures/*` |
-| **301** | `/wyklady/wykladowcy/` — już w `docs/redirects.json` (P1) |
+| **301** | `/wyklady/wykladowcy/` — ta sama trasa na nowej stronie; wpis w P1 był mylący — **brak** osobnego redirectu (2026-09-30) |
 
 **Zamrożenie:** lista profili, bio i zdjęcia — **zostaw**; bez ponownego fetchu HTML→MDX.
 
@@ -153,7 +183,7 @@ Kotwica `#konsultacje` w `content/offers/kurs-roczny-i-trzyletni.mdx` (P0 #28). 
 | --- | --- |
 | WP | `https://www.akademiaikony.pl/poswiecenia-ikon/` (page, nie post) |
 | Plik | `content/news/poswiecenia-ikon.mdx` |
-| `kind` | `aktualnosc` (decyzja właściciela: relacja z obrzędu na końcu pleneru; link do wpisu warsztatów Lipka 2017 — odchylenie od K-77 `plener`) |
+| `kind` | `aktualnosc` (K-77; relacja z obrzędu na końcu pleneru; link do Lipka 2017) |
 | Media | `public/media/news/poswiecenia-ikon/1.jpg` … `6.jpg` |
 | **301** | `docs/redirects.json` → `/aktualnosci/poswiecenia-ikon` |
 
@@ -174,13 +204,13 @@ Kotwica `#konsultacje` w `content/offers/kurs-roczny-i-trzyletni.mdx` (P0 #28). 
 
 **Zamrożenie:** `pl.ts` → `home`, `settings.json` → `upcoming`, `FEATURED_ICON_SLUGS` — **zostaw**; bez ponownego fetchu WP pod home.
 
-## EJK — otwarte
+## EJK — backlog po migracji (etap 10)
 
-_(pozycje dopisywane w kolejnych kawałkach)_
+Skrót: § „WP zamknięte — kawałek 3 v2” + `docs/plan-claude-code.md` §5 (DoD #5 ✅). Poniżej pozycje **aktywne** (nie zamknięte w etapie 9):
 
-- **`/ikony/na-zamowienie` — zdjęcie hero (P3, etap 10):** ścieżka `/media/offers/zamowienie/pisanie-ikony-pracownia.jpg` (**M1**); **podmiana pliku** z WP (DSC06987 itd.) lub sesji — patrz § P3.
-- **Adres zgłoszeń na kurs roczny/trzyletni:** WP `/zapisy-na-warsztaty` podaje `sekretariat.ikony22@gmail.com`, WP `/warsztaty-roczne` i brief §8 — `akademiaikony@gmail.com`. Na stronie: `akademiaikony@gmail.com` (decyzja 2026-09-26); potwierdzić z EJK.
-- **Aktualności `spotkania-sladami-najpiekniejszych-ikon-swiata` (gate A3, 2026-09-27):** (1) **uzupełnić program** w MDX; (2) **dodać skan plakatu** (osobny plik w `public/media/news/…`) — zdjęcie ze spotkania już w wpisie. Po edycji: `generateNewsManifest()`. Media wpisu: ✅ `public/media/news/` (M0/M6).
+- **`/ikony/na-zamowienie` — zdjęcie hero (P3):** ścieżka `/media/offers/zamowienie/pisanie-ikony-pracownia.jpg` (**M1**); podmiana kadru — § P3.
+- **Adres zgłoszeń na kurs:** na stronie `akademiaikony@gmail.com` (2026-09-26); WP miał też `sekretariat.ikony22@gmail.com` — potwierdzić z EJK w etapie 10.
+- **`spotkania-sladami-najpiekniejszych-ikon-swiata` (A3):** program w MDX + skan plakatu; media wpisu ✅ (M0/M6).
 
 ## Zamrożenia — kawałek 1 (static)
 
@@ -213,7 +243,7 @@ _Uwaga:_ ten sam rekord **Maciej** jest używany na plenerze (`getPlenerTestimon
 
 | `content/offers/letnia-szkola-swiatla.mdx` — `lead`, `leadSecondary`, `leadExtra` („Tydzień na plenerze”), `facts.audience`, sekcja MDX „Po co ten tydzień” | **nowa redakcja** z source (warsztaty-wakacyjne, zapisy-na-warsztaty); odbiorcy: osoby z pierwszym doświadczeniem, decyzja w rozmowie (bez „bez wymogu doświadczenia”); `sample` zdjęty | 2026-09-26 |
 | `content/offers/letnia-szkola-swiatla.mdx` — „Rytm dnia” | **zostaw** (makieta; zaakceptowany przez klientkę) — usunięta etykieta „[do potwierdzenia z EJK]” | 2026-09-26 |
-| `content/offers/letnia-szkola-swiatla.mdx` — `whereWeWere` | **mix** — lista z source (Warszawa, Święta Lipka, Supraśl, Przemyśl, Litwa, Gruzja) + miejscowości z makiety (Wesoła, Wilno, Tbilisi); lata `[do uzupełnienia]` — patrz TODO niżej | 2026-09-26 |
+| `content/offers/letnia-szkola-swiatla.mdx` — `whereWeWere` | 8 miejsc; `{ place, newsSlug? }` (K-126); 4 linki; bez lat/regionów | 2026-09-30 |
 
 | `src/i18n/pl.ts` → `workshopsHub.lead`, `leadSecondary` (nowe pole), `cards.*.excerpt`, bullet pleneru | **nowa redakcja** z source (`/warsztaty`: praca malarza ikon, EJK); plener lipiec–wrzesień, odbiorcy jak na stronie pleneru | 2026-09-26 |
 
@@ -261,7 +291,7 @@ Treść z poniższych URL-i uznajemy za zmigrowaną (konspekt w `docs/plans/09-m
 
 **Decyzja techniczna (2026-09-27, faza 0):** **(B)** pipeline gate = edycja MDX + ten raport; re-sync z WP przez `npx tsx scripts/generate-news-sample.ts` tylko świadomie (nadpisuje `sample-*` i czyści `public/media/sample/news/`). `migrate-wp --only=news` pozostaje stub do **fazy 5** (wspólny moduł + `--dry-run` bez zapisu, respekt zamrożeń). Reguły transformacji: `scripts/generate-news-sample.ts` (nagłówek) + `docs/plan-claude-code.md` §3 etap 9 (K-50…K-58).
 
-**Zakres gate (zamknięty 2026-09-27):** 61 postów WP + wpisy z hubów / annual (D20, D21 bez postów WP). **Stan:** brak plików `sample-*.mdx`; `manifest.json` — `"sample": true` = 0. Liczniki `kind` (docelowe): wystawa 24, wyklady 16, warsztaty 9, aktualnosc 4, oprowadzanie 2, plener 2, spotkanie 2, wyjazd 2. Pełna lista slugów: `manifest.json`.
+**Zakres gate (zamknięty 2026-09-27):** 61 postów WP + wpisy z hubów / annual (D20, D21 bez postów WP). **Stan:** brak plików `sample-*.mdx`; `manifest.json` — `"sample": true` = 0. Liczniki `kind` (po **K-125**, 2026-09-30): wystawa 24, wyklady 16, warsztaty 9, aktualnosc 4, oprowadzanie 2, spotkanie 2, **wyjazd 6** (dawne `plener` scalone). Pełna lista slugów: `manifest.json`.
 
 ### Formuła wpisów `kind: wyklady` (partia A — decyzja 2026-09-27, korekta)
 
@@ -289,7 +319,7 @@ Treść z poniższych URL-i uznajemy za zmigrowaną (konspekt w `docs/plans/09-m
 
 | Slug | kind | Decyzja gate | Data | Uwagi / EJK |
 | --- | --- | --- | --- | --- |
-| `plener-swietej-lipki-2019` | plener | **gate OK** (S1) | 2026-09-27 | split z `podsumowanie-2019`; media sample do kawałka 3 |
+| `plener-swietej-lipki-2019` | wyjazd | **gate OK** (S1) | 2026-09-27 | split z `podsumowanie-2019`; `kind` → `wyjazd` (K-125, 2026-09-30) |
 | `noc-swiatyn-2019` | wystawa | **gate OK** (S1) | 2026-09-27 | poprawiony link Noc Świątyń w body |
 | `ikona-okno-duszy-2019` | wystawa | **gate OK** (S1) | 2026-09-27 | inauguracja wykładów w body; program → `wyklady-2019-2020` |
 | `oprowadzania-po-wystawie-2017` | oprowadzanie | **gate OK** (S2) | 2026-09-27 | merge 3 postów WP; galeria 2+2 (Serce/Trójca/emaliowane); body Trójcy bez śmieci FooGallery |
@@ -326,7 +356,7 @@ Treść z poniższych URL-i uznajemy za zmigrowaną (konspekt w `docs/plans/09-m
 | `pracujemy` | aktualnosc | **gate OK** (C2) | 2026-09-27 | tytuł „W pracowni Akademii Ikony — grudzień 2016”; fotorelacja WP (10 zdj. Blogspot); bez CTA; **EJK:** `alt` galerii |
 | `program-na-rok-20152016-zapraszamy-serdecznie` | aktualnosc | **gate OK** (C3) | 2026-09-27 | kronika sezonu 2015/2016 (lista formacji); bez zapisów/maila/tel. WP; link → archiwum wykładów, `/warsztaty` |
 | `tejemnice-ikony` | aktualnosc | **gate OK** (C4) | 2026-09-27 | tytuł „Tajemnice…”; opis archiwalny; 6 zdj. (WP uploads + Blogspot); bez spotkania info X 2015; link → `/warsztaty`, `/kontakt`; **EJK:** `alt` galerii |
-| `wakacyjne-wyjazdy-studyjne-grodek` | plener | **gate OK** (E1) | 2026-09-27 | `kind: plener` (decyzja 2026-09-27); wstęp VIII 2017 + opis cerkwi z WP; 7 zdj. uploads 1024px; link → Letnia Szkoła Światła; **EJK:** `alt`; por. TODO plener vs wyjazd |
+| `wakacyjne-wyjazdy-studyjne-grodek` | wyjazd | **gate OK** (E1) | 2026-09-27 | wstęp VIII 2017 + opis cerkwi z WP; 7 zdj.; link → Letnia Szkoła Światła; **EJK:** `alt`; `kind` → `wyjazd` (K-125) |
 | `wakacyjne-wyjazdy-studyjne-mielnik-nad-bugiem` | wyjazd | **gate OK** (F1) | 2026-09-27 | para z Gródkiem (VIII 2017); opis Mielnika + podpis fot.; 10 zdj.; link → Letnia Szkoła Światła; **EJK:** `alt` |
 | `wyjazd-studyjny-sladami-ikon-prof-jerzego-nowosielskiego` | wyjazd | **gate OK** (F2) | 2026-09-27 | 16 VII 2017 Klimaka + Wesoła; relacja WP bez FooGallery; 4 zdj.; **EJK:** `alt` |
 | `spotkania-z-grzegorzem-zinkiewiczem` | spotkanie | **gate OK** (F3) | 2026-09-27 | bio + galeria 11 zdj.; caption na porcie Grzegorza; **EJK:** `alt` reszty |
@@ -350,7 +380,7 @@ Treść z poniższych URL-i uznajemy za zmigrowaną (konspekt w `docs/plans/09-m
 
 | `noc-muzeow-2014` | aktualnosc | **gate OK** (D9) | 2026-09-27 | Noc Muzeów, Muzeum Ikon 2014; `kind` aktualnosc; 3 zdj.; `alt` Zdjęcia Aleksandra Kurek |
 
-| `sesja-ikonowa-w-swietej-lipce` | plener | **gate OK** (D10) | 2026-09-27 | Lipka IX 2015; `kind` plener; 19 zdj.; body redakcja; link → Letnia Szkoła; **EJK:** `alt` |
+| `sesja-ikonowa-w-swietej-lipce` | wyjazd | **gate OK** (D10) | 2026-09-27 | Lipka IX 2015; 19 zdj.; body redakcja; link → Letnia Szkoła; **EJK:** `alt`; `kind` → `wyjazd` (K-125) |
 
 | `wystawa-ikon-w-kosciele-bl-wladyslawa-z-gielniowa-patrona-warszwy` | wystawa | **gate OK** (D11) | 2026-09-27 | Okno ku wieczności 22 VI 2014 bł. Władysław; `venue: Warszawa`; 5 zdj.; link → D5; **EJK:** `alt` |
 
@@ -380,7 +410,7 @@ Treść z poniższych URL-i uznajemy za zmigrowaną (konspekt w `docs/plans/09-m
 
 **Partia C (aktualność) — zamknięta** 2026-09-27: C1–C4 (4/4).
 
-**Partia E (plener) — zamknięta** 2026-09-27: `plener-swietej-lipki-2019` (S1) + E1 Gródek (2/2).
+**Partia E (dawne plenery / wyjazdy LSŚ) — zamknięta** 2026-09-27: `plener-swietej-lipki-2019` (S1) + E1 Gródek; wszystkie wpisy tej partii mają `kind: wyjazd` od K-125 (2026-09-30).
 
 **Partia B (warsztaty) — zamknięta** 2026-09-27: B1, B4–B8 zamrożone; B2 → `kind: wyjazd`; B3 `tworcze-lato-2016` skip + 301; `nabor-kursu-2026-2027` (S5).
 
@@ -410,7 +440,7 @@ Treść z poniższych URL-i uznajemy za zmigrowaną (konspekt w `docs/plans/09-m
 
 **Pokryte gdzie indziej (nie duplikować bez potrzeby):** split S1 (#3 Lipka → `plener-swietej-lipki-2019`, #6 Noc → `noc-swiatyn-2019`, #7 Okno duszy → `ikona-okno-duszy-2019`); program wykładów → `wyklady-2019-2020` / `wyklady-2020-2021`.
 
-**Partie gate (K-122):** A wyklady (16) ✅ → B warsztaty (9) ✅ → C aktualnosc (4) ✅ → D wystawa (24, D1–D21) ✅ → E plener ✅ → F wyjazd/spotkanie ✅ → G oprowadzanie (2 zamrożone w S2/S3). **Faza 1:** S1–S5 ✅.
+**Partie gate (K-122):** A wyklady (16) ✅ → B warsztaty (9) ✅ → C aktualnosc (4) ✅ → D wystawa (24, D1–D21) ✅ → E wyjazdy LSŚ ✅ → F wyjazd/spotkanie ✅ → G oprowadzanie (2 zamrożone w S2/S3). **Faza 1:** S1–S5 ✅. Model: jeden `NewsKind` `wyjazd` (K-125).
 
 **Kawałek 2 v2 (aktualności + wykłady) — gate zamknięty** 2026-09-27 (build/lint OK po D21).
 
@@ -426,7 +456,7 @@ Treść z poniższych domen uznajemy za zmigrowaną — **bez ponownego fetchu**
 | `content/lectures/*.json` | ✅ sezony 2012/2013–2025/2026 + bieżący poza archiwalnym gate |
 | Bez postu WP | `wystawa-piekno-boga-piekno-czlowieka-2025`, `wystawa-madrosc-boza-2026` — placeholdery treści, linki `#wystawa-2025` / `#wystawa-2026` |
 
-**Handoff → kawałek 3 v2 (historyczny):** media — **zamknięte** w `09-migration-media.md` **M0–M6** (2026-09-29). Otwarte: P4 Tura B, plakaty EJK, redirecty wdrożeniowe (`next.config.ts`).
+**Handoff → kawałek 3 v2:** **zamknięty** 2026-09-30 (§ „WP zamknięte — kawałek 3 v2”). Media **M0–M6** ✅; redirecty **DoD #3** ✅. Po migracji: P4 Tura B; reszta → etap 10 / §5.
 
 ## Media aktualności — zamknięte (2026-09-28)
 
@@ -448,24 +478,84 @@ Treść z poniższych domen uznajemy za zmigrowaną — **bez ponownego fetchu**
 | Dysk | `git mv`: `import/news` → `news`, `import/icons` → `icons`, `import/exhibition` → `exhibition`; `import/static` → `archive/wp-fetch-static/`; brak `public/media/import/` i `sample/` |
 | Treść | Rewrite `/media/import/{news,icons,exhibition}/` → `/media/{domena}/` w `content/`, `src/i18n/pl.ts` |
 | Weryfikacja | `rg '/media/(sample|import)' content/ src/` — pusty; `grep -r sample content/ public/media/` — pusty; build/lint OK |
-| **301** | Stare URL `/media/import/…` — osobny krok przy wdrożeniu (`docs/redirects.json` / `next.config.ts`) |
+| **301** | Wildcards `/media/import/{news,icons,exhibition}/:path*` w `docs/redirects.json` (**DoD #3**, 2026-09-30); `next.config.ts` bez zmian |
 
 **Uwaga:** wpisy gate P4 Tura C z 2026-09-27 mogą w tabeli wspominać `import/news/` — na dysku i w treści obowiązuje `public/media/news/` i `/media/news/…`.
 
 ## TODO — kawałek 2 v2 (aktualności, po zamknięciu gate)
 
-- [ ] **`kind: plener` vs `kind: wyjazd` (przed zamknięciem etapu 9):** uporządkować model i treść — dziś dwa osobne `NewsKind` (`pl.ts`: „Plener” / „Wyjazd studyjny”); heurystyka importu: `wakacyjne-wyjazdy-*` → zwykle `wyjazd`, wyjątek `…-grodek` → `plener` (`generate-news-sample.ts`). **Decyzja gate E1 (2026-09-27):** `wakacyjne-wyjazdy-studyjne-grodek` zostaje **`plener`**. Do rozstrzygnięcia przed końcem migracji: czy scalić / zrefaktoryzować oba kindy (filtry `/aktualnosci`, etykiety, mapowanie slugów, spójność z ofertą Letnia Szkoła Światła vs wyjazdy studyjne — np. Lipka 2016 `wyjazd` vs Lipka 2019 `plener`); ewent. jeden kind + podtyp lub jedna etykieta UI — **nie** blokować gate E/F; wykonać przed sekcją raportu „WP zamknięte — kawałek 2 v2” i DoD etapu 9.
-- [ ] **Plener — „Gdzie byliśmy”:** cross-check każdej pozycji `whereWeWere` z wpisami aktualności (`kind: 'plener'`) po migracji news; uzupełnić lata, wykreślić miejsca bez udokumentowanego pleneru.
+- [x] **`NewsKind` plener + wyjazd → tylko `wyjazd` (K-125, 2026-09-30):** usunięto `plener` z `NewsKind`; 3 wpisy przepisane; etykieta UI „Wyjazd studyjny”; heurystyka `generate-news-sample.ts` bez wyjątku Gródek.
+- [x] **Letnia Szkoła Światła — „Gdzie byliśmy” (DoD etapu 9, punkt 2, K-126, 2026-09-30):** 8 miejsc (`place`); ręczne `newsSlug` → Święta Lipka `plener-swietej-lipki-2019`, Wesoła / Gródek / Mielnik → wpisy `wyjazd`; Supraśl, Przemyśl, Wilno, Tbilisi bez linku (relacje — etap 10, §5). `PlenerWhereWeWereSection`; bez lat i regionów.
 - [x] **Backlog `podsumowanie-2019` (P0 + P4, 2026-09-27):** #1 → P4 Tura A; #2–#8 → news Tura C; #9 → skip (plan poza postem).
-- [ ] **Plakaty WP (P0 #25):** wpis zbiorczy + etap 10 — rozłożyć na wpisy docelowe i skasować zbiorczy.
-- [ ] **0.2A:** `generate-news-sample.ts --dry-run` (lub `domains/news.ts`) — diff do raportu, zero nadpisywania po zamrożeniu.
+- [x] **Plakaty WP (P0 #25, DoD #3):** galeria zbiorcza `plakaty-z-wydarzen` + 301 `/publikacje/plakaty` — **2026-09-30**. **Etap 10:** `alt`, rozłożenie na wpisy docelowe / `News.poster`, ewent. usunięcie zbiorczego.
+- [x] **0.2A:** pominięte (DoD #6, 2026-10-01) — aktualności zamrożone po gate 2026-09-27; ponowny `--dry-run` nie jest wymagany do zamknięcia etapu 9.
+
+## DoD #6 — przegląd raportu (2026-10-01)
+
+| Obszar | Werdykt |
+| --- | --- |
+| P0–P8, M0–M6, DoD #3 redirecty | Spójne z `09-migration-v2.md` i `09-migration-wp-pages.md`; bez sprzeczności blokujących etap 9 |
+| § TODO k2 + § Do etapu 10 (k1/k2) | Otwarte checkboxy = **etap 10** lub **P4 Tura B** (wystawy) — nie wracamy do fetchu WP |
+| § Formuła wyklady — „Otwarte przed CMS” | Zostaje jako notatka pod **osobny projekt CMS** (poza 9–11); nie blokuje DoD |
+| § EJK — backlog | Zaktualizowany nagłówek; bez zdjęcia FB 71496678 (temat zamknięty, bez backlogu) |
+| `archive/wp-fetch-static/` | Świadomie niepodpięte — etap 10 / EJK po gate |
+
+**Wniosek:** raport uznany za przejrzany; brak pozycji wymagających nowego kawałka migracji w etapie 9.
+
+## DoD #7 — daty w `content/` (2025 vs 2026, 2026-10-01)
+
+**Kontekst:** „dzisiaj” produktu = wrzesień **2026**; bieżący rok akademicki **2026/2027**; sezon wystawy dorocznej w toku **2026–2027** (`annual.json` → `Mistyka dziś`).
+
+| Obszar | Stan | Uwagi |
+| --- | --- | --- |
+| Wykłady | OK | Bieżący: `content/lectures/2026-2027.json`; archiwum 2012/2013–**2025/2026** (`archive.json`, `lectures.ts`) |
+| Aktualności `kind: wyklady` | OK | Zapowiedzi **2025/2026** (`date` 2025-07…) i **2026/2027** (`2026-08-25`) — zgodne z sezonami, nie mylą się na liście |
+| Nabór / home `settings.upcoming` | OK | Kurs i pierwszy wykład **2026** (6 X 2026, deadline 24 IX 2026) |
+| Wystawy doroczne | OK | `2024-2025` → news `…-2025` (VI 2025); `2025-2026` → `wystawa-madrosc-boza-**2026**` (VI 2026); slug z rokiem wernisaża, nie mylić z sezonem w tytule |
+| Plener LSŚ | OK | Copy: zapisy 2026 zamknięte, 2027 od III 2027 — spójne z IX 2026 |
+
+**Werdykt:** brak rozbieżności wymagających edycji w etapie 9; daty archiwalne **2025** nie są błędnie traktowane jako bieżące (sortowanie po `date` w aktualnościach).
+
+## DoD #8 — build, lint, przegląd tras (2026-10-01)
+
+| Element | Stan |
+| --- | --- |
+| `npm run build` | OK — Next.js 16.3.4 (Turbopack), **93** tras (SSG aktualności + publikacje; `/ikony` dynamic) |
+| `npm run lint` | OK |
+| Przegląd UI | `npm run start` (prod lokalnie); viewport **~390px** i **1280px**; snapshoty a11y + próbki interakcji |
+
+**Trasy objęte przeglądem (brief §3):** `/`, `/o-akademii`, `/pracownia`, `/warsztaty/letnia-szkola-swiatla`, `/wyklady/archiwum`, `/ikony`, `/ikony?temat=chrystus`, `/ikony/wystawy`, `/aktualnosci`, `/aktualnosci/plakaty-z-wydarzen`, `/publikacje`, `/kontakt`.
+
+**Interakcje sprawdzone:** menu mobilne (akordeon sekcji); filtr tematu galerii; `SeasonAccordion` (archiwum wykładów); lightbox galerii (Zamknij, prev/next, licznik „1 z 20” na plakatach).
+
+**Nie objęte w DoD #8 (→ etap 10 — pełna ewaluacja §3 planu):** `/warsztaty`, `/warsztaty/kurs-roczny-i-trzyletni`, `/wyklady` (hub), `/wyklady/wykladowcy`, `/publikacje/[slug]` (poza hubem), `/polityka-prywatnosci`; próbki **301** ze starych URL WP (wymaga stagingu z `docs/redirects.json`); Lighthouse; test lightboxa **Escape** i fizyczny **iOS Safari** (K-38).
+
+**Werdykt:** brak blokad zamknięcia etapu 9; uwagi techniczne i treściowe → § „Do etapu 10 — uwagi z DoD #8” poniżej oraz istniejące §5 / §EJK.
+
+## Do etapu 10 — uwagi z DoD #8 (przegląd tras, 2026-10-01)
+
+**Techniczne / a11y / UI (nie wymagały poprawki w etapie 9):**
+
+- [ ] **Hydratacja w `next dev`:** overlay React (`Pillars.tsx` ~L27, `OfferLeadExtra.tsx` ~L18) — na `next start` w tej sesji bez overlay; zweryfikować w dev u właściciela; ewent. naprawa w etapie 10 przy audycie kodu.
+- [ ] **Siatka ikon `/ikony`:** przyciski miniatur w drzewie a11y często bez `name` (pusty `button`) — porównać z galeriami na `/pracownia` i `/ikony/wystawy` (pełne „Powiększ zdjęcie: …”).
+- [ ] **Zduplikowane `h2` w snapshotach:** „W skrócie · plener 2027” (×2 na LSS), „Informacje praktyczne” (×2 na `/ikony/wystawy`) — wzorzec FactsBox + widoczny nagłówek; rozważyć `sr-only` / unikalne `id` (etap 10, bez zmiany tokenów bez potrzeby).
+- [ ] **Lista wystaw wyjazdowych:** wiele pozycji „Warszawa · 2019 Relacja” — dane archiwalne lub **P4 Tura B** (R1–R9), nie migracja WP.
+
+**Treść — potwierdzone wizualnie (szczegóły w `docs/plan-claude-code.md` §5 / §EJK):**
+
+- [ ] `/o-akademii` — „Wybrane realizacje”: 6× `[DO UZUPEŁNIENIA: obiekt / ikona …]`.
+- [ ] `/aktualnosci/plakaty-z-wydarzen` — `alt` placeholder na wszystkich 20 plakatach (rozłożenie na wpisy / `News.poster` — jak P0 #25).
+- [ ] `/ikony/wystawy` — placeholdery `[przykład]` / `[przykład: kadry z wystawy 2026]` w sekcji dorocznej.
+- [ ] `/publikacje` — rozkładówki `[rozkładówka N — do uzupełnienia]`; copy okładki albumu ze placeholderem kadru.
+
+**Po migracji (już w raporcie, bez zmian):** P4 **Tura B**; sekcja „Wystawy specjalne”; `<NewsCta />` w archiwalnych wpisach warsztatowych; pozostałe checkboxy w § Do etapu 10 (k1/k2).
 
 ## Do etapu 10 — uwagi z kawałka 2 v2 (aktualności)
 
 - [ ] **`/ikony/wystawy` — sekcja „Wystawy wyjazdowe” → „Wystawy specjalne” (po zakończonej migracji etapu 9):** nagłówek, lead, anchor (`#wyjazdowe` → np. `#specjalne`), copy w `pl.ts` i nawigacji strony wystaw; logika listy obejmuje **wyjazdowe/gościnne** oraz **krótkie wystawy specjalne w KŚT** (np. autorska EJK „Okno ku wieczności” 2014), które nie są ekspozycją codzienną ani doroczną. Dziś K-87: `getTravelingExhibitions()` = `kind: wystawa` + `venue` (m.in. Izabelin, Warszawa 2014); po refaktorze — nazwa sekcji i ewent. kryterium / etykiety listy (Warszawa vs miejscowość wyjazdowa).
 - [ ] **Wpis `kind: warsztaty` z `<NewsCta />` w MDX** (np. B5, B6, `nabor-kursu-2026-2027`): po zakończonej migracji — refaktoryzacja układu CTA w aktualnościach; obecny blok wizualnie nie wypada (makieta C2 vs archiwalny kontekst). Ustalić wspólny wzorzec (copy przed CTA, jedna oferta docelowa, ewent. bez CTA w starych wpisach).
-- [ ] **`oprowadzania-po-wystawie-2017`:** cytat metryczki Roberta Rumina w body — potwierdzić zgodę na publikację (plan §3 etap 9).
-- [ ] **`oprowadzania-po-wystawie-2017`:** zdanie o „jedynym kanonicznym przedstawieniu” Trójcy Świętej — korekta merytoryczna EJK.
+- [x] **`oprowadzania-po-wystawie-2017`:** cytat metryczki Roberta Rumina — zgoda na publikację potwierdzona (DoD #5, 2026-10-01).
+- [ ] **`oprowadzania-po-wystawie-2017`:** zdanie o „jedynym kanonicznym przedstawieniu” Trójcy Świętej — korekta merytoryczna EJK (**etap 10**).
 
 ## Do etapu 10 — uwagi z kawałka 1 v2
 

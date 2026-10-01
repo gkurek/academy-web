@@ -589,7 +589,6 @@ export const pl = {
       aktualnosc: "Z Akademii",
       wyklady: "Wykłady",
       warsztaty: "Warsztaty",
-      plener: "Plener",
       wystawa: "Wystawa",
       oprowadzanie: "Oprowadzanie",
       wyjazd: "Wyjazd studyjny",

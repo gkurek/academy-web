@@ -1,6 +1,6 @@
 # Plan 09 v2 — Migracja treści z WordPressa (redakcja + skrypt)
 
-Status: **w implementacji** (2026-09-29) — kawałki **1 v2** i **2 v2** zamknięte; **3 v2** w toku (strony WP **P0–P8** ✅; **plan mediów M0–M6** ✅). Produkcyjne pliki obrazów: `/media/{domena}/…` (bez `import/` i `sample/` w `public/media/`); `rg sample content/ public/media/` pusty. Następny zakres: DoD etapu 9 (§5 `plan-claude-code.md`, redirecty, kawałki 4+ / etap 10). Refactor wystaw dorocznych (P4 Tura B, R1–R9) — **po migracji**. v2 zastępuje **implementację kawałków** z `docs/plans/09-migration.md`; decyzje **K-08**, **K-121**, **K-122** nadal obowiązują.  
+Status: **zamknięty** (2026-10-01) — kawałki v2 **1–3** ✅ (strony WP **P0–P8**; media **M0–M6**; brak kawałka 4+). Produkcyjne pliki: `/media/{domena}/…`; `rg sample content/ public/media/` pusty; `docs/redirects.json` **108** wpisów. DoD etapu 9: **8/8** ✅ (ostatni: **#8**, build/lint/przegląd tras — `migrate-report.md` § DoD #8). Refactor wystaw dorocznych (P4 Tura B, R1–R9) → **etap 10**. v2 zastępuje implementację kawałków z `docs/plans/09-migration.md`; **K-08**, **K-121**, **K-122** obowiązują.  
 Gałąź: `feat/09-migration`  
 Makiety: brak (etap wyłącznie treści; UI bez zmian). Trasy i model treści: `docs/brief-claude-code.md` §3–§5.
 
@@ -50,6 +50,7 @@ Nie powtarzamy gate ani masowego zapisu dla:
 | **K-121** | REST API jako źródło; WXR rezerwa. |
 | **K-122** | Gate w czacie przed zapisem; zamrożenia w `migrate-report.md`; `--force` nie zastępuje gate. |
 | **K-123** | Treści rdzeniowe warsztatów i „O nas” **nie** z masowego `--only=static` / `--only=offers` — źródło redakcyjne: `docs/plans/09-migration-source.md`; cel: **ulepszenie** treści w repo, nie kopia 1:1 z WP. Skrypt dla tych stron: tylko pomocniczy fetch / raport, bez nadpisywania zamrożonych plików. |
+| **K-125**, **K-126** | Pełne brzmienie w `docs/plan-claude-code.md` §4: jeden `NewsKind` `wyjazd`; LSŚ `whereWeWere` — `{ place, newsSlug? }`, bez lat (DoD #2 ✅ 2026-09-30). |
 
 ## Pliki i skrypty
 
@@ -168,7 +169,7 @@ Oferta `zamowienie` i inne trasy **poza** piątką stron — poza kawałkiem 1 (
 1. **Lista** wszystkich stron i postów WP **nieobjętych** kawałkami 1–2 (REST lub eksport do raportu): slug, tytuł, propozycja trasy docelowej / brak / etap 10. *(Strony: tabela w `09-migration-wp-pages.md`.)*
 2. **Decyzja właściciela** per pozycja (w czacie lub tabeli w raporcie): migrować w etapie 9 (nowy kawałek 4+), odłożyć, pominąć.
 3. **Plan mediów:** ✅ wykonanie w `09-migration-media.md` (**M0–M6**). Artefakt fetchu static: `archive/wp-fetch-static/`. **Z gate S4:** zdjęcia wystawy w `exhibition/` + cross-ref `news/` — zamknięte w M2/M6.
-4. **Redirecty:** propozycja wpisów do `docs/redirects.json` dla URL-i zamkniętych w kawałkach 1–2 (+ znanych slugów z brief §5).
+4. **Redirecty:** ✅ 2026-09-30 (DoD #3) — `docs/redirects.json` (108 wpisów); skrypty `rebuild-redirects-json.ts`, `sync-plakaty-news-from-wp.ts`; wpis `plakaty-z-wydarzen`.
 5. **Pozostałe `sample`:** tabela „co zostaje” z `docs/plan-claude-code.md` §5 po kawałkach 1–2 (galeria, publikacje, wystawy, strona główna, `zamowienie`, itd.).
 
 **Media aktualności (podzakres k3):**
@@ -179,11 +180,11 @@ Oferta `zamowienie` i inne trasy **poza** piątką stron — poza kawałkiem 1 (
 
 **Kryterium „gotowe”:**
 
-- [ ] Tabela inwentaryzacji w `migrate-report.md` (lub załącznik wskazany w raporcie)
-- [ ] Zatwierdzony plan kawałków 4+ (nazwa, `--only`, zakres) **lub** jawne przeniesienie pozycji do etapu 10 z EJK
+- [x] Tabela inwentaryzacji w `migrate-report.md` (skrót + link do `09-migration-wp-pages.md`; sekcja „WP zamknięte — kawałek 3 v2”, 2026-09-30)
+- [x] Zatwierdzony plan kawałków 4+ **lub** jawne przeniesienie do etapu 10 — **brak k4+** w etapie 9 (decyzja właściciela 2026-09-30); otwarte → raport § EJK / etap 10
 - [x] Plan mediów **poza aktualnościami** — `docs/plans/09-migration-media.md` (2026-09-28); wykonanie fal **M1–M6** ✅ (2026-09-29)
 - [x] `grep -r sample content/ public/media/` — pusty (po M5/M6); `rg '/media/(sample|import)' content/ src/` — pusty
-- [ ] Checkpoint k3 — pozostałe kryteria DoD etapu 9 (§5, redirecty wdrożeniowe)
+- [x] Checkpoint k3 — 2026-09-30 (redirecty DoD #3; inwentaryzacja; brak k4+)
 
 ## Dane sample w tym etapie
 
@@ -194,12 +195,27 @@ Nowych `sample` nie dodajemy. Każde zdjęcie flagi w kawałku 1–2 aktualizuje
 Po **wszystkich** kawałkach wykonawczych zatwierdzonych po kawałku 3 (nie tylko po v2 1–3):
 
 - [x] `grep -r sample content/ public/media/` bez wyników (2026-09-29, M5/M6)
-- [ ] Pozycje §5 odhaczone lub przeniesione do etapu 10 z wpisem EJK
-- [ ] `scripts/migrate-report.md` przejrzany
-- [ ] Daty w `content/` — archiwum 2025 vs bieżące 2026
-- [ ] `npm run build`, `npm run lint`
-- [ ] Przegląd reprezentatywnych tras (mobile + desktop)
-- [ ] `docs/redirects.json` + 301 w `next.config.ts` dla zamkniętej migracji
+- [x] Pozycje §5 odhaczone lub przeniesione do etapu 10 z wpisem EJK (2026-10-01, DoD #5)
+- [x] `scripts/migrate-report.md` przejrzany (2026-10-01, DoD #6)
+- [x] Daty w `content/` — archiwum 2025 vs bieżące 2026 (2026-10-01, DoD #7; `migrate-report.md` § DoD #7)
+- [x] `npm run build`, `npm run lint` (2026-10-01, DoD #8)
+- [x] Przegląd reprezentatywnych tras (mobile + desktop) (2026-10-01, DoD #8; szczegóły: `migrate-report.md`)
+- [x] `docs/redirects.json` + 301 w `next.config.ts` dla zamkniętej migracji (2026-09-30, DoD #3)
+
+### DoD etapu 9 — przejście punkt po punkcie (właściciel repo + agent)
+
+| # | Temat | Status | Uwagi |
+| --- | --- | --- | --- |
+| 1 | `NewsKind`: scalenie `plener` + `wyjazd` → tylko `wyjazd` | ✅ 2026-09-30 | **K-125**; 6 wpisów w archiwum; `generate-news-sample.ts` bez wyjątku Gródek |
+| 2 | Letnia Szkoła Światła — sekcja „Gdzie byliśmy” | ✅ 2026-09-30 | **K-126**; lista miejsc bez lat/regionów; `newsSlug` ręcznie (4 linki); Supraśl, Przemyśl, Wilno, Tbilisi bez wpisu → etap 10 |
+| 3 | Redirecty (`docs/redirects.json`, ewent. `/media/import/`) | ✅ 2026-09-30 | 108 wpisów: huby P1 + root slugi news + wildcards M6; `/publikacje/plakaty` → `plakaty-z-wydarzen`; skrypty `rebuild-redirects-json.ts`, `sync-plakaty-news-from-wp.ts` |
+| 4 | Zamknięcie k3 (inwentaryzacja, kawałki 4+ vs etap 10) | ✅ 2026-09-30 | Brak k4+; skrót inwentaryzacji w `migrate-report.md` + tabela 29 stron w `09-migration-wp-pages.md` |
+| 5 | `docs/plan-claude-code.md` §5 — odhaczenie / przeniesienie do 10 | ✅ 2026-10-01 | Wszystkie wiersze ✔; backlog EJK → etap 10 / CMS osobno; `trojca-swieta-2017`; FB 71496678 — nie migrować |
+| 6 | Przegląd `scripts/migrate-report.md` | ✅ 2026-10-01 | Sekcja „DoD #6” w raporcie; 0.2A pominięte; backlog = etap 10 / P4 / CMS |
+| 7 | Daty w `content/` (2025 vs 2026) | ✅ 2026-10-01 | Audyt w `migrate-report.md` § DoD #7; bez zmian w plikach |
+| 8 | Build, lint, przegląd tras mobile + desktop | ✅ 2026-10-01 | Build/lint OK; przegląd na `next start` (390px + 1280px); uwagi → `migrate-report.md` § DoD #8 + § Do etapu 10 (DoD #8) |
+
+**Następna sesja:** **etap 10** — sesja planistyczna (`docs/plans/10-wykonczenie.md` do utworzenia); merge `feat/09-migration` po commicie właściciela.
 
 ## Ryzyka i otwarte kwestie
 
@@ -214,8 +230,8 @@ Po **wszystkich** kawałkach wykonawczych zatwierdzonych po kawałku 3 (nie tylk
 | Kawałek v2 | Status | Gate / uwagi |
 | ---------- | ------ | ------------ |
 | 1 — rdzeń redakcyjny | ✅ | 2026-09-26. `/o-akademii`, `/pracownia`, `/kontakt` — zostaw; kurs, plener, hub `/warsztaty` — nowa redakcja (akceptacja wizualna); nowe pole `leadExtra` w ofertach; `sample` zdjęty z obu ofert i `testimonials.json` (fałszywy cytat Izy → Artur); raport: zamrożenia, „WP zamknięte — kawałek 1 v2”, TODO k2 i etap 10; build/lint OK |
-| 2 — wykłady + aktualności | ✅ | 2026-09-27. Wykłady: gate K-122 (15 sezonów archiwum + bieżący). Aktualności: faza 0 **B**; S1–S5 ✅; partie **A, B, C, E, F, D** (gate D1–D21) ✅; brak `sample-*.mdx`. Wyjątki: D20/D21 bez postów WP (placeholdery); backlog `podsumowanie-2019` **zamknięty** (P4 Tura C, #9 skip). Otwarte przed DoD etapu 9: `plener` vs `wyjazd`, `<NewsCta />`, `#wyjazdowe` — raport § TODO k2. |
-| 3 — inwentaryzacja + media + plan dalszy | 🟡 | Plan stron WP: **P0–P8 ✅**. Media: **M0–M6 ✅** 2026-09-29 (`09-migration-media.md`); ścieżki `/media/{domena}/`. Następny: DoD etapu 9 (§5 otwarte, `redirects.json` → `next.config.ts`, plan kawałków 4+ / etap 10). P4 Tura B po migracji. |
+| 2 — wykłady + aktualności | ✅ | 2026-09-27. Wykłady: gate K-122 (15 sezonów archiwum + bieżący). Aktualności: faza 0 **B**; S1–S5 ✅; partie **A, B, C, E, F, D** (gate D1–D21) ✅; brak `sample-*.mdx`. Wyjątki: D20/D21 bez postów WP (placeholdery); backlog `podsumowanie-2019` **zamknięty** (P4 Tura C, #9 skip). `NewsKind` plener+wyjazd → tylko `wyjazd` (**K-125**, 2026-09-30). Otwarte przed DoD: `<NewsCta />`, `#wyjazdowe` — raport § TODO k2 / etap 10. |
+| 3 — inwentaryzacja + media + plan dalszy | ✅ | **P0–P8** ✅; **M0–M6** ✅; DoD **#1–#8** ✅ (2026-10-01). P4 Tura B → etap 10. |
 
 **Mapowanie ze starego planu (`09-migration.md`):**
 
@@ -224,4 +240,10 @@ Po **wszystkich** kawałkach wykonawczych zatwierdzonych po kawałku 3 (nie tylk
 | 1 static + rdzeń | Wchodzi w **kawałek 1 v2** (zrobione technicznie) + redakcja source |
 | 2 offers | **Kawałek 1 v2** (redakcja) |
 | 3–4 lectures/news | **Kawałek 2 v2** |
-| 5–7 gallery / publications / finalize | **Kawałek 3 v2** → decyzje → kawałki 4+ |
+| 5–7 gallery / publications / finalize | **Kawałek 3 v2** → decyzje → kawałki 4+ (jeśli w ogóle w etapie 9) |
+
+---
+
+## Prompt startowy (etap 9 zamknięty — patrz etap 10)
+
+Etap 9 zamknięty **2026-10-01** (DoD 8/8). Aktualny prompt wznowienia: **etap 10** — `docs/plan-claude-code.md` §3 (sekcja „Etap 10”) oraz handoff w ostatnim wpisie §6 dziennika.

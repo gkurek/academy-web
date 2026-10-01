@@ -33,7 +33,7 @@ export type OfferFrontmatter = {
   steps?: StepItem[];
   quote?: Testimonial & { image?: Image };
   exampleSlugs?: string[];
-  whereWeWere?: { place: string; year: string }[];
+  whereWeWere?: { place: string; newsSlug?: string }[];
 };
 
 export type LoadedOffer = Offer & {
@@ -44,7 +44,7 @@ export type LoadedOffer = Offer & {
   steps: StepItem[];
   exampleSlugs: string[];
   quote?: Testimonial & { image?: Image };
-  whereWeWere: { place: string; year: string }[];
+  whereWeWere: { place: string; newsSlug?: string }[];
   Content: ComponentType;
 };
 

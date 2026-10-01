@@ -47,7 +47,7 @@ Strona jest częścią szerszego ekosystemu (Akademia + Fundacja + planowana str
 /ikony/[slug]              pojedyncza ikona (opcjonalnie w v1)
 /ikony/na-zamowienie       strona ofertowa (treść wymienna w przyszłości — nie istotne teraz)
 /ikony/wystawy             trzy formy wystaw w KŚT: ekspozycja codzienna, doroczna, wyjazdowe (K-82…K-90; historia K-51)
-/aktualnosci               lista z typem wpisu (`kind`), w tym archiwum wystaw, oprowadzań, wyjazdów, plenerów (K-50, K-52)
+/aktualnosci               lista z typem wpisu (`kind`), w tym archiwum wystaw, oprowadzań i wyjazdów studyjnych (w tym dawne plenery LSŚ → `kind: 'wyjazd'`; K-50, K-52, K-125)
 /aktualnosci/[slug]
 /publikacje                album Akademii + artykuły (K-76)
 /publikacje/[slug]         album lub artykuł (wspólna przestrzeń slugów)
@@ -109,6 +109,8 @@ type Offer = Page & {
   kind: 'kurs' | 'plener' | 'wyklady' | 'zamowienie';
   facts: OfferFacts;
   testimonials?: Testimonial[];
+  /** Tylko Letnia Szkoła Światła (K-126): lista miejsc plenerów; opcjonalny link do wpisu Aktualności. */
+  whereWeWere?: { place: string; newsSlug?: string }[];
 };
 
 type Lecturer = {
@@ -148,7 +150,6 @@ type NewsKind =
   | 'aktualnosc'
   | 'wyklady'
   | 'warsztaty'
-  | 'plener'
   | 'wystawa'
   | 'oprowadzanie'
   | 'wyjazd'
@@ -313,7 +314,7 @@ Szacunek ręcznej korekty po migracji: ~10 stron statycznych, 16 sezonów wykła
 | `/publikacje/` | `/publikacje` |
 | `/publikacje/artykuly/` | `/publikacje#artykuly` |
 | `/publikacje/multimedia/` | `/publikacje` |
-| `/publikacje/plakaty/` | `/aktualnosci` |
+| `/publikacje/plakaty/` | `/aktualnosci/plakaty-z-wydarzen` |
 | `/ikona-korzenie-i-owoce-wiary-2/` i wpisy wystaw z lat 2015–2018 | `/ikony/wystawy` (kotwice `#wystawa-{rok}` gdy relacja doroczna) |
 | pojedyncze wpisy oprowadzań 2017 (`/ikony-emaliowane/`, `/ikona-trojcy-swietej/`, `/ikona-serca-jezusa/`, `/wystawa-ikona-korzenie-i-owoce-wiary-oprowadzania-kuratorskie/`) | jeden połączony wpis w `/aktualnosci/[slug]` |
 | pozostałe wpisy wystaw i wyjazdów | odpowiadające wpisy `/aktualnosci/[slug]` |

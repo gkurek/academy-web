@@ -47,7 +47,6 @@ type NewsKind =
   | "aktualnosc"
   | "wyklady"
   | "warsztaty"
-  | "plener"
   | "wystawa"
   | "oprowadzanie"
   | "wyjazd"
@@ -130,8 +129,13 @@ const stripCacheUrl = (url: string): string =>
   url.replace(/-\d+x\d+(?=\.\w+$)/, "").replace(/\/cache\//, "/");
 
 const inferWydarzenieKind = (slug: string): NewsKind => {
-  if (slug.includes("wyjazd") || slug.includes("wakacyjne-wyjazdy")) {
-    return slug.includes("grodek") ? "plener" : "wyjazd";
+  if (
+    slug.includes("wyjazd") ||
+    slug.includes("wakacyjne-wyjazdy") ||
+    slug.includes("plener-swietej") ||
+    slug.includes("sesja-ikonowa")
+  ) {
+    return "wyjazd";
   }
   if (slug.includes("spotkanie") || slug.includes("spotkania")) {
     return "spotkanie";
@@ -327,7 +331,7 @@ const extractPodsumowanie2019Entries = async (
       slug,
       title,
       date,
-      dateEnd: kind === "plener" ? "2019-08-10" : undefined,
+      dateEnd: slug === "plener-swietej-lipki-2019" ? "2019-08-10" : undefined,
       kind,
       excerpt: buildExcerpt(body, ""),
       body,
@@ -355,7 +359,7 @@ const extractPodsumowanie2019Entries = async (
       "plener-swietej-lipki-2019",
       "Warsztaty i wystawa w Świętej Lipce",
       "2019-08-03",
-      "plener",
+      "wyjazd",
       lipkaMatch?.[0],
     ),
   ]);

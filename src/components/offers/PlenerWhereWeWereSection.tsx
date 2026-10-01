@@ -1,8 +1,9 @@
+import { TextLink } from "@/components/core/TextLink";
 import { pl } from "@/i18n/pl";
 
 export type PlenerWhereWeWereEntry = {
   place: string;
-  year: string;
+  newsSlug?: string;
 };
 
 export interface PlenerWhereWeWereSectionProps {
@@ -24,7 +25,11 @@ export function PlenerWhereWeWereSection({ entries }: PlenerWhereWeWereSectionPr
       <ul className="grid gap-space-3 text-size-body-lg leading-body text-text-secondary md:text-size-body md:leading-prose">
         {entries.map((entry) => (
           <li key={entry.place}>
-            {entry.place} · {entry.year}
+            {entry.newsSlug ? (
+              <TextLink href={`/aktualnosci/${entry.newsSlug}`}>{entry.place}</TextLink>
+            ) : (
+              entry.place
+            )}
           </li>
         ))}
       </ul>

@@ -146,7 +146,7 @@
 | Treść | Rewrite `/media/import/{news,icons,exhibition}/` → `/media/{domena}/` w `content/`, `src/i18n/pl.ts` |
 | Skrypty | `promote-news-media-from-sample.ts`, `wp-gallery-manifest.json`, `fetch-wp-gallery-sample.mjs`, `migrate-wp/domains/static.ts` |
 | Weryfikacja | `rg '/media/(sample|import)' content/ src/` — pusty; build/lint OK |
-| Poza zakresem | `workshop/` → `pages/`; 301 ze starych URL obrazów |
+| Poza zakresem | `workshop/` → `pages/`; 301 ze starych URL obrazów — ✅ redirecty M6 w DoD #3 |
 
 ---
 
@@ -172,7 +172,7 @@ Zamknięte — patrz § M5 powyżej.
 
 ### M6 — Ujednolicenie ścieżek `/media/{domena}/` ✅ 2026-09-29
 
-Zamknięte — patrz § M6 powyżej. **301** ze `/media/import/…` — osobny krok przy wdrożeniu.
+Zamknięte — patrz § M6 powyżej. **301** ze `/media/import/…` — ✅ DoD etapu 9 #3 (2026-09-30), `docs/redirects.json` (wildcards `:path*`).
 
 ---
 
@@ -223,7 +223,7 @@ Skrypty `promote-*-from-sample.ts` — historyczne (wymagałyby odtworzenia `sam
 | M5 Usunięcie `sample/` | ✅ | 2026-09-29 |
 | M6 Ujednolicenie `/media/{domena}/` | ✅ | 2026-09-29 |
 
-**Następny krok (rekomendacja):** etap 9 — domknięcie pozostałych pozycji planu v2 (treść / SEO); media produkcyjne — ścieżki zamknięte.
+**Etap 9:** zamknięty 2026-10-01 (DoD 8/8 w `09-migration-v2.md`). Media produkcyjne — ścieżki zamknięte (M0–M6). Otwarte kadry/`alt` → etap 10 (`docs/plan-claude-code.md` §5).
 
 ---
 
