@@ -179,7 +179,7 @@ Struktura ma dwa poziomy; każda podstrona musi być osiągalna w maksymalnie dw
 ### Panel CMS (etap 2, po uruchomieniu strony)
 
 - Logowanie dla 2–3 osób nietechnicznych.
-- Edycja: aktualności (w tym wpisy `kind: 'wystawa' | 'oprowadzanie' | 'wyjazd' | 'plener' | 'spotkanie'`, pole `venue` na wyjazdowych), wystawy KŚT (`PermanentExhibition` + `annual.json`), „Najbliższe” na stronie głównej, pola „W skrócie” (terminy, ceny), program sezonu wykładów, galeria (upload + podpis), treść strony zamówień. (K-50/K-53, K-82…K-90)
+- Edycja: aktualności (w tym wpisy `kind: 'wystawa' | 'oprowadzanie' | 'wyjazd' | 'spotkanie'` — wyjazdy studyjne obejmują też archiwalne plenery LSŚ; K-125), pole `venue` na wyjazdowych wystawach), wystawy KŚT (`PermanentExhibition` + `annual.json`), „Najbliższe” na stronie głównej, pola „W skrócie” (terminy, ceny), program sezonu wykładów, galeria (upload + podpis), treść strony zamówień. (K-50/K-53, K-82…K-90)
 - Podgląd przed publikacją. Bez edycji layoutu.
 
 ---
@@ -328,7 +328,6 @@ type NewsKind =
   | "aktualnosc"
   | "wyklady"
   | "warsztaty"
-  | "plener"
   | "wystawa"
   | "oprowadzanie"
   | "wyjazd"

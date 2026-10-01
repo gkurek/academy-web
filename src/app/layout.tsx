@@ -12,7 +12,7 @@ const ebGaramond = EB_Garamond({
 const ibmPlexSans = IBM_Plex_Sans({
   variable: "--font-sans",
   subsets: ["latin", "latin-ext"],
-  weight: ["400", "500", "600"],
+  weight: "variable",
 });
 
 export const metadata: Metadata = {

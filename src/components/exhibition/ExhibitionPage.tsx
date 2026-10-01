@@ -86,6 +86,7 @@ export function ExhibitionPage({ active, sectionActive }: ExhibitionPageProps) {
   const latestYear = getAnnualExhibitionYear(latestAnnual.seasonSlug);
   const archiveBlock = getExhibitionArchiveBlock();
   const interiorPhotos = filterExistingPhotos(page.interiorPhotos);
+  const travelingPhotoSrc = interiorPhotos[0]?.src;
   const { page: pageCopy, permanent, annual, previous, facts, tours, traveling } = pl.exhibition;
   const enrollmentEmail = settings.emails[0]?.address ?? "akademiaikony@gmail.com";
 
@@ -259,7 +260,11 @@ export function ExhibitionPage({ active, sectionActive }: ExhibitionPageProps) {
         <ExhibitionPreviousSection exhibitions={previousExhibitions} />
       </ExhibitionLightboxProvider>
 
-      <ExhibitionTravelingSection mailtoHref={travelingMailtoHref} items={travelingItems} />
+      <ExhibitionTravelingSection
+        mailtoHref={travelingMailtoHref}
+        items={travelingItems}
+        photoSrc={travelingPhotoSrc ?? ""}
+      />
 
       <footer className="exhibition-page-footer">
         <span className="exhibition-page-footer-label">{pageCopy.startHere}</span>

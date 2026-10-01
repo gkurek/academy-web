@@ -15,7 +15,7 @@ const ICON_THEMES = [
 ];
 
 const MANUAL_TAGS = {
-  "do-uzupelnienia-tytul-ikony": "chrystus",
+  "trojca-swieta-2017": "sceny-i-swieta",
 };
 
 const normalizeTitle = (title) =>

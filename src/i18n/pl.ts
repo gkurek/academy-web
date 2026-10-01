@@ -57,7 +57,7 @@ export const pl = {
       ctaPrimary: "Warsztaty pisania ikon",
       ctaSecondary: "Wykłady 2026/2027",
       image: {
-        src: "/media/import/icons/chrystus.jpg",
+        src: "/media/icons/chrystus.jpg",
         alt: "Ikona Chrystusa Pantokratora",
         width: 360,
         height: 682,
@@ -73,7 +73,7 @@ export const pl = {
         linkLabel: "Kurs i plener",
         href: "/warsztaty",
         image: {
-          src: "/media/sample/photos/pracownia.jpg",
+          src: "/media/home/pracownia.jpg",
           alt: "Praca nad ikoną w pracowni",
           width: 960,
           height: 540,
@@ -85,7 +85,7 @@ export const pl = {
         linkLabel: "Sezon i archiwum",
         href: "/wyklady",
         image: {
-          src: "/media/sample/photos/wyklad.jpg",
+          src: "/media/home/wyklad.jpg",
           alt: "Wykład w Akademii Ikony",
           width: 1440,
           height: 810,
@@ -99,7 +99,7 @@ export const pl = {
         secondaryLinkLabel: "Galeria i wystawa",
         secondaryHref: "/ikony/wystawy",
         image: {
-          src: "/media/sample/photos/wystawa.jpg",
+          src: "/media/home/wystawa.jpg",
           alt: "Zwiedzający na wystawie ikon",
           width: 1000,
           height: 714,
@@ -333,13 +333,13 @@ export const pl = {
     },
     cardImages: {
       "kurs-roczny-i-trzyletni": {
-        src: "/media/sample/photos/pracownia.jpg",
+        src: "/media/home/pracownia.jpg",
         alt: "Praca nad ikoną",
         width: 960,
         height: 540,
       },
       "letnia-szkola-swiatla": {
-        src: "/media/sample/photos/wyklad.jpg",
+        src: "/media/home/wyklad.jpg",
         alt: "Plener ikonowy",
         width: 1440,
         height: 810,
@@ -589,7 +589,6 @@ export const pl = {
       aktualnosc: "Z Akademii",
       wyklady: "Wykłady",
       warsztaty: "Warsztaty",
-      plener: "Plener",
       wystawa: "Wystawa",
       oprowadzanie: "Oprowadzanie",
       wyjazd: "Wyjazd studyjny",

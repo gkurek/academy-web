@@ -7,21 +7,25 @@ type RedirectEntry = {
   note?: string;
 };
 
+type NextRedirect = {
+  source: string;
+  destination: string;
+  permanent: true;
+};
+
 type RedirectsFile = {
   redirects: RedirectEntry[];
 };
 
-export function loadPermanentRedirects(): Array<{
-  source: string;
-  destination: string;
-  permanent: true;
-}> {
+export function loadPermanentRedirects(): NextRedirect[] {
   const path = join(process.cwd(), "docs", "redirects.json");
   const data = JSON.parse(readFileSync(path, "utf8")) as RedirectsFile;
 
-  return data.redirects.map((entry) => ({
-    source: entry.source,
-    destination: entry.destination,
-    permanent: true,
-  }));
+  return data.redirects.map(
+    (entry): NextRedirect => ({
+      source: entry.source,
+      destination: entry.destination,
+      permanent: true,
+    }),
+  );
 }

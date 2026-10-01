@@ -54,11 +54,15 @@ export type TravelingExhibitionListItem = {
 export interface ExhibitionTravelingSectionProps {
   mailtoHref: string;
   items: TravelingExhibitionListItem[];
+  photoSrc: string;
 }
 
-export function ExhibitionTravelingSection({ mailtoHref, items }: ExhibitionTravelingSectionProps) {
+export function ExhibitionTravelingSection({
+  mailtoHref,
+  items,
+  photoSrc,
+}: ExhibitionTravelingSectionProps) {
   const { traveling } = pl.exhibition;
-  const photoSrc = "/media/sample/news/wystawa-ikona-korzenie-i-owoce-wiary-2018-1.jpg";
 
   return (
     <section

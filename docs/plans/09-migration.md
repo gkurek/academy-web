@@ -1,6 +1,6 @@
 # Plan 09 — Migracja treści z WordPressa
 
-Status: zatwierdzony 2026-09-26  
+Status: **zamknięty** (implementacja wg `09-migration-v2.md`, 2026-10-01); CLI i gate — ten dokument.  
 Gałąź: `feat/09-migration`  
 Makiety: brak (etap wyłącznie treści; UI bez zmian). Trasy i model treści: `docs/brief-claude-code.md` §3–§5.
 
@@ -81,7 +81,7 @@ Kryterium „gotowe”: archiwum i bieżący sezon zgodne ze strukturą WP; `/wy
 
 **`--only=news`**
 
-Zakres: posty → `content/news/*.mdx` + `manifest.json`; mapowanie kategoria → `kind` jak w `generate-news-sample.ts`; **wszystkie** transformacje „Wydarzeń” z `docs/plan-claude-code.md` §3 (splity, scalone oprowadzania 2017, pominięcie hubu `/wydarzenia/`, poświęcenia → `kind: plener` itd.). Plakaty (**K-78**, **K-98**) — kandydaci do `News.poster`; nierozstrzygnięte → sekcja EJK w raporcie.
+Zakres: posty → `content/news/*.mdx` + `manifest.json`; mapowanie kategoria → `kind` jak w `generate-news-sample.ts`; **wszystkie** transformacje „Wydarzeń” z `docs/plan-claude-code.md` §3 (splity, scalone oprowadzania 2017, pominięcie hubu `/wydarzenia/`, poświęcenia → Aktualności itd.; `NewsKind` — tylko `wyjazd` dla plenerów archiwalnych, K-125). Plakaty (**K-78**, **K-98**) — kandydaci do `News.poster`; nierozstrzygnięte → sekcja EJK w raporcie.
 
 Kryterium „gotowe”: strumień aktualności buduje się; slugi docelowe kluczowych 301 istnieją; gate OK (największy przegląd merytoryczny).
 

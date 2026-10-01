@@ -1,29 +1,9 @@
 {
   "redirects": [
     {
-      "source": "/aktualnosci/sladami-najpiekniejszych-ikon-swiata",
-      "destination": "/aktualnosci/spotkania-sladami-najpiekniejszych-ikon-swiata",
-      "note": "A3: scalenie duplikatu news (2026-09-27)"
-    },
-    {
-      "source": "/sladami-najpiekniejszych-ikon-swiata",
-      "destination": "/aktualnosci/spotkania-sladami-najpiekniejszych-ikon-swiata",
-      "note": "WP slug zduplikowanego wpisu → kanoniczny spotkania (2026-09-27)"
-    },
-    {
-      "source": "/aktualnosci/tworcze-lato-2016",
-      "destination": "/aktualnosci/sesja-ikonowa-modlitwa-psalmami-i-wystawa-ikon-w-swietej-lipce-2016",
-      "note": "B3: duplikat Lipka 2016 scalony w kanoniczny wpis wyjazd (2026-09-27)"
-    },
-    {
-      "source": "/tworcze-lato-2016",
-      "destination": "/aktualnosci/sesja-ikonowa-modlitwa-psalmami-i-wystawa-ikon-w-swietej-lipce-2016",
-      "note": "WP slug tworcze-lato-2016 → kanoniczny Lipka 2016 (2026-09-27)"
-    },
-    {
-      "source": "/aktualnosci/wystawa-ikona-dzis-2",
-      "destination": "/aktualnosci/wystawa-ikona-dzis",
-      "note": "K-67: scalenie duplikatów (brief §5, P1 2026-09-27)"
+      "source": "/149",
+      "destination": "/aktualnosci/ikona-piekno-zanurzone-w-tajemnicy",
+      "note": "WP root slug — brak wpisu news (DoD #3, 2026-09-30)"
     },
     {
       "source": "/aktualnosci/149",
@@ -31,19 +11,279 @@
       "note": "K-67: scalenie duplikatów (brief §5, P1 2026-09-27)"
     },
     {
+      "source": "/aktualnosci/sladami-najpiekniejszych-ikon-swiata",
+      "destination": "/aktualnosci/spotkania-sladami-najpiekniejszych-ikon-swiata",
+      "note": "A3: scalenie duplikatu news (2026-09-27)"
+    },
+    {
+      "source": "/aktualnosci/tworcze-lato-2016",
+      "destination": "/aktualnosci/sesja-ikonowa-modlitwa-psalmami-i-wystawa-ikon-w-swietej-lipce-2016",
+      "note": "B3: duplikat Lipka 2016 scalony w kanoniczny wpis wyjazd (2026-09-27)"
+    },
+    {
+      "source": "/aktualnosci/wystawa-ikona-dzis-2",
+      "destination": "/aktualnosci/wystawa-ikona-dzis",
+      "note": "K-67: scalenie duplikatów (brief §5, P1 2026-09-27)"
+    },
+    {
+      "source": "/blog",
+      "destination": "https://studiumikony.blogspot.com",
+      "note": "P1 #29: blog nie migrowany; link jak w settings.blogUrl (2026-09-27)"
+    },
+    {
+      "source": "/dnia-17-lipca-wspomnienie-sw-andrieja-rublowa",
+      "destination": "/aktualnosci/dnia-17-lipca-wspomnienie-sw-andrieja-rublowa",
+      "note": "WP post root → /aktualnosci (DoD #3, 2026-09-30)"
+    },
+    {
+      "source": "/ekumeniczna-droga-krzyzowa-w-warszawie",
+      "destination": "/aktualnosci/ekumeniczna-droga-krzyzowa-w-warszawie",
+      "note": "WP post root → /aktualnosci (DoD #3, 2026-09-30)"
+    },
+    {
+      "source": "/ikona",
+      "destination": "/ikony",
+      "note": "WP hub Ikona → /ikony (P1 #14, 2026-09-27)"
+    },
+    {
+      "source": "/ikona-dzis-3",
+      "destination": "/aktualnosci/ikona-dzis-3",
+      "note": "WP post root → /aktualnosci (DoD #3, 2026-09-30)"
+    },
+    {
+      "source": "/ikona-korzenie-i-owoce-wiary-2",
+      "destination": "/ikony/wystawy",
+      "note": "S4: treść w annual.json, nie news (brief §5, P1 2026-09-27)"
+    },
+    {
+      "source": "/ikona-korzenie-i-owoce-wiary-madrosc-boza-wyklady-2025-2026",
+      "destination": "/aktualnosci/ikona-korzenie-i-owoce-wiary-madrosc-boza-wyklady-2025-2026",
+      "note": "WP post root → /aktualnosci (DoD #3, 2026-09-30)"
+    },
+    {
+      "source": "/ikona-korzenie-i-owoce-wiary-mistyka-dzis-wyklady-2026-2027",
+      "destination": "/aktualnosci/ikona-korzenie-i-owoce-wiary-mistyka-dzis-wyklady-2026-2027",
+      "note": "WP post root → /aktualnosci (DoD #3, 2026-09-30)"
+    },
+    {
+      "source": "/ikona-okno-duszy-2019",
+      "destination": "/aktualnosci/ikona-okno-duszy-2019",
+      "note": "WP post root → /aktualnosci (DoD #3, 2026-09-30)"
+    },
+    {
+      "source": "/ikona-okno-ku-wiecznosci",
+      "destination": "/aktualnosci/ikona-okno-ku-wiecznosci",
+      "note": "WP post root → /aktualnosci (DoD #3, 2026-09-30)"
+    },
+    {
+      "source": "/ikona-okno-ku-wiecznosci-2",
+      "destination": "/aktualnosci/ikona-okno-ku-wiecznosci-2",
+      "note": "WP post root → /aktualnosci (DoD #3, 2026-09-30)"
+    },
+    {
+      "source": "/ikona-piekno-zanurzone-w-tajemnicy",
+      "destination": "/aktualnosci/ikona-piekno-zanurzone-w-tajemnicy",
+      "note": "WP post root → /aktualnosci (DoD #3, 2026-09-30)"
+    },
+    {
+      "source": "/ikona-serca-jezusa",
+      "destination": "/aktualnosci/oprowadzania-po-wystawie-2017",
+      "note": "WP root slug — brak wpisu news (DoD #3, 2026-09-30)"
+    },
+    {
+      "source": "/ikona-trojcy-swietej",
+      "destination": "/aktualnosci/oprowadzania-po-wystawie-2017",
+      "note": "WP root slug — brak wpisu news (DoD #3, 2026-09-30)"
+    },
+    {
+      "source": "/ikona/galeria",
+      "destination": "/ikony",
+      "note": "brief §5 (P1 2026-09-27)"
+    },
+    {
+      "source": "/ikona/ikony-na-zamowienie",
+      "destination": "/ikony/na-zamowienie",
+      "note": "brief §5 (P1 2026-09-27)"
+    },
+    {
+      "source": "/ikona/wystawy",
+      "destination": "/ikony/wystawy",
+      "note": "brief §5 / K-90 (P1 2026-09-27)"
+    },
+    {
+      "source": "/ikonografia-patronow-pielgrzymow",
+      "destination": "/aktualnosci/ikonografia-patronow-pielgrzymow",
+      "note": "WP post root → /aktualnosci (DoD #3, 2026-09-30)"
+    },
+    {
+      "source": "/ikony-emaliowane",
+      "destination": "/aktualnosci/ikony-emaliowane",
+      "note": "WP post oprowadzania 2017 → osobny wpis aktualności (wyłączenie ze scalenia, 2026-09-28)"
+    },
+    {
+      "source": "/ikony/wystawa",
+      "destination": "/ikony/wystawy",
+      "note": "adres z etapu 7–8 (brief §5, P1 2026-09-27)"
+    },
+    {
+      "source": "/jestesmy-pielgrzymami",
+      "destination": "/aktualnosci/jestesmy-pielgrzymami",
+      "note": "WP post root → /aktualnosci (DoD #3, 2026-09-30)"
+    },
+    {
+      "source": "/konsultacje-i-lekcje-indywidualne",
+      "destination": "/warsztaty/kurs-roczny-i-trzyletni#konsultacje",
+      "note": "P0 #28 (2026-09-27)"
+    },
+    {
+      "source": "/media/import/exhibition/:path*",
+      "destination": "/media/exhibition/:path*",
+      "note": "M6: stare ścieżki /media/import (DoD #3)"
+    },
+    {
+      "source": "/media/import/icons/:path*",
+      "destination": "/media/icons/:path*",
+      "note": "M6: stare ścieżki /media/import (DoD #3)"
+    },
+    {
+      "source": "/media/import/news/:path*",
+      "destination": "/media/news/:path*",
+      "note": "M6: stare ścieżki /media/import (DoD #3)"
+    },
+    {
+      "source": "/miedzynarodowe-warsztaty-oraz-wystawa-ikon-z-pracowni-akademii-ikony-w-swietej-lipce-19-27-sierpnia-2017",
+      "destination": "/aktualnosci/miedzynarodowe-warsztaty-oraz-wystawa-ikon-z-pracowni-akademii-ikony-w-swietej-lipce-19-27-sierpnia-2017",
+      "note": "WP post root → /aktualnosci (DoD #3, 2026-09-30)"
+    },
+    {
+      "source": "/nabor-kursu-2026-2027",
+      "destination": "/aktualnosci/nabor-kursu-2026-2027",
+      "note": "WP post root → /aktualnosci (DoD #3, 2026-09-30)"
+    },
+    {
+      "source": "/nasze-pisanie-ikon",
+      "destination": "/aktualnosci/nasze-pisanie-ikon",
+      "note": "WP post root → /aktualnosci (DoD #3, 2026-09-30)"
+    },
+    {
+      "source": "/noc-muzeow-2014",
+      "destination": "/aktualnosci/noc-muzeow-2014",
+      "note": "WP post root → /aktualnosci (DoD #3, 2026-09-30)"
+    },
+    {
+      "source": "/noc-swiatyn-2019",
+      "destination": "/aktualnosci/noc-swiatyn-2019",
+      "note": "WP post root → /aktualnosci (DoD #3, 2026-09-30)"
+    },
+    {
+      "source": "/oprowadzania-kuratorskie",
+      "destination": "/ikony/wystawy#oprowadzania",
+      "note": "brief §5 / K-90 (P1 #19, 2026-09-27)"
+    },
+    {
+      "source": "/oprowadzania-po-wystawie-2017",
+      "destination": "/aktualnosci/oprowadzania-po-wystawie-2017",
+      "note": "WP post root → /aktualnosci (DoD #3, 2026-09-30)"
+    },
+    {
+      "source": "/piekno-boga-piekno-czlowieka-wyklady-2024-2025",
+      "destination": "/aktualnosci/piekno-boga-piekno-czlowieka-wyklady-2024-2025",
+      "note": "WP post root → /aktualnosci (DoD #3, 2026-09-30)"
+    },
+    {
+      "source": "/plakaty-z-wydarzen",
+      "destination": "/aktualnosci/plakaty-z-wydarzen",
+      "note": "WP post root → /aktualnosci (DoD #3, 2026-09-30)"
+    },
+    {
+      "source": "/plener-swietej-lipki-2019",
+      "destination": "/aktualnosci/plener-swietej-lipki-2019",
+      "note": "WP post root → /aktualnosci (DoD #3, 2026-09-30)"
+    },
+    {
+      "source": "/podsumowanie-2019",
+      "destination": "/aktualnosci",
+      "note": "WP root slug — brak wpisu news (DoD #3, 2026-09-30)"
+    },
+    {
+      "source": "/poswiecenia-ikon",
+      "destination": "/aktualnosci/poswiecenia-ikon",
+      "note": "P7 #27: strona WP → wpis aktualności (K-77, 2026-09-27)"
+    },
+    {
+      "source": "/pracujemy",
+      "destination": "/aktualnosci/pracujemy",
+      "note": "WP post root → /aktualnosci (DoD #3, 2026-09-30)"
+    },
+    {
+      "source": "/program-na-rok-20152016-zapraszamy-serdecznie",
+      "destination": "/aktualnosci/program-na-rok-20152016-zapraszamy-serdecznie",
+      "note": "WP post root → /aktualnosci (DoD #3, 2026-09-30)"
+    },
+    {
+      "source": "/przyjazn-z-bogiem-bojazn-boza-wolnosc-czlowieka-wyklady-2023-2024",
+      "destination": "/aktualnosci/przyjazn-z-bogiem-bojazn-boza-wolnosc-czlowieka-wyklady-2023-2024",
+      "note": "WP post root → /aktualnosci (DoD #3, 2026-09-30)"
+    },
+    {
+      "source": "/publikacje/artykuly",
+      "destination": "/publikacje#artykuly",
+      "note": "brief §5 (P1 2026-09-27)"
+    },
+    {
+      "source": "/publikacje/multimedia",
+      "destination": "/publikacje",
+      "note": "K-78 (P1 #26, 2026-09-27)"
+    },
+    {
+      "source": "/publikacje/plakaty",
+      "destination": "/aktualnosci/plakaty-z-wydarzen",
+      "note": "P0 #25: galeria plakatów WP → wpis zbiorczy (DoD #3 redirecty, 2026-09-30)"
+    },
+    {
+      "source": "/sesja-ikonowa-modlitwa-psalmami-i-wystawa-ikon-w-swietej-lipce-2016",
+      "destination": "/aktualnosci/sesja-ikonowa-modlitwa-psalmami-i-wystawa-ikon-w-swietej-lipce-2016",
+      "note": "WP post root → /aktualnosci (DoD #3, 2026-09-30)"
+    },
+    {
+      "source": "/sesja-ikonowa-w-swietej-lipce",
+      "destination": "/aktualnosci/sesja-ikonowa-w-swietej-lipce",
+      "note": "WP post root → /aktualnosci (DoD #3, 2026-09-30)"
+    },
+    {
+      "source": "/sladami-najpiekniejszych-ikon-swiata",
+      "destination": "/aktualnosci/spotkania-sladami-najpiekniejszych-ikon-swiata",
+      "note": "WP slug zduplikowanego wpisu → kanoniczny spotkania (2026-09-27)"
+    },
+    {
+      "source": "/spotkania-sladami-najpiekniejszych-ikon-swiata",
+      "destination": "/aktualnosci/spotkania-sladami-najpiekniejszych-ikon-swiata",
+      "note": "WP post root → /aktualnosci (DoD #3, 2026-09-30)"
+    },
+    {
+      "source": "/spotkania-z-grzegorzem-zinkiewiczem",
+      "destination": "/aktualnosci/spotkania-z-grzegorzem-zinkiewiczem",
+      "note": "WP post root → /aktualnosci (DoD #3, 2026-09-30)"
+    },
+    {
+      "source": "/spotkanie-z-michalem-ploskim",
+      "destination": "/aktualnosci/spotkanie-z-michalem-ploskim",
+      "note": "WP post root → /aktualnosci (DoD #3, 2026-09-30)"
+    },
+    {
       "source": "/strona-glowna",
       "destination": "/",
       "note": "WP strona główna → home (P8 2026-09-27)"
     },
     {
+      "source": "/strona-glowna/aktualnosci",
+      "destination": "/aktualnosci",
+      "note": "WP lista aktualności → hub news (P1 2026-09-27)"
+    },
+    {
       "source": "/strona-glowna/celem-dzialalnosci-akademii-ikony-studium-ikonograficznego-sw-andrzeja-apostola-jest-ksztalcenie-ale-i-pomoc-w-doswiadczaniu-ikony",
       "destination": "/o-akademii",
       "note": "brief §5, kawałek 1 v2 (P1 2026-09-27)"
-    },
-    {
-      "source": "/strona-glowna/pracownia",
-      "destination": "/pracownia",
-      "note": "brief §5 (P1 2026-09-27)"
     },
     {
       "source": "/strona-glowna/kontakt",
@@ -56,9 +296,59 @@
       "note": "brief §5 (P1 2026-09-27)"
     },
     {
-      "source": "/strona-glowna/aktualnosci",
-      "destination": "/aktualnosci",
-      "note": "WP lista aktualności → hub news (P1 2026-09-27)"
+      "source": "/strona-glowna/pracownia",
+      "destination": "/pracownia",
+      "note": "brief §5 (P1 2026-09-27)"
+    },
+    {
+      "source": "/swiat-ikony-wyklady-rok-20122013",
+      "destination": "/aktualnosci/swiat-ikony-wyklady-rok-20122013",
+      "note": "WP post root → /aktualnosci (DoD #3, 2026-09-30)"
+    },
+    {
+      "source": "/tejemnice-ikony",
+      "destination": "/aktualnosci/tejemnice-ikony",
+      "note": "WP post root → /aktualnosci (DoD #3, 2026-09-30)"
+    },
+    {
+      "source": "/tworcze-lato-2016",
+      "destination": "/aktualnosci/sesja-ikonowa-modlitwa-psalmami-i-wystawa-ikon-w-swietej-lipce-2016",
+      "note": "WP slug tworcze-lato-2016 → kanoniczny Lipka 2016 (2026-09-27)"
+    },
+    {
+      "source": "/wakacyjne-warsztaty-ikonograficzne-w-warszawie",
+      "destination": "/aktualnosci/wakacyjne-warsztaty-ikonograficzne-w-warszawie",
+      "note": "WP post root → /aktualnosci (DoD #3, 2026-09-30)"
+    },
+    {
+      "source": "/wakacyjne-wyjazdy-studyjne-grodek",
+      "destination": "/aktualnosci/wakacyjne-wyjazdy-studyjne-grodek",
+      "note": "WP post root → /aktualnosci (DoD #3, 2026-09-30)"
+    },
+    {
+      "source": "/wakacyjne-wyjazdy-studyjne-mielnik-nad-bugiem",
+      "destination": "/aktualnosci/wakacyjne-wyjazdy-studyjne-mielnik-nad-bugiem",
+      "note": "WP post root → /aktualnosci (DoD #3, 2026-09-30)"
+    },
+    {
+      "source": "/warsztaty-pisania-ikon",
+      "destination": "/aktualnosci/warsztaty-pisania-ikon",
+      "note": "WP post root → /aktualnosci (DoD #3, 2026-09-30)"
+    },
+    {
+      "source": "/warsztaty-pisania-ikon-w-kosciele-srodowisk-tworczych-w-warszawie",
+      "destination": "/aktualnosci/warsztaty-pisania-ikon-w-kosciele-srodowisk-tworczych-w-warszawie",
+      "note": "WP post root → /aktualnosci (DoD #3, 2026-09-30)"
+    },
+    {
+      "source": "/warsztaty-w-kosciele-srodowisk-tworczych-pp-sw-andrzeja-apostola-i-sw-brata-alberta-w-warszawie-plac-teatralny-20",
+      "destination": "/aktualnosci/warsztaty-w-kosciele-srodowisk-tworczych-pp-sw-andrzeja-apostola-i-sw-brata-alberta-w-warszawie-plac-teatralny-20",
+      "note": "WP post root → /aktualnosci (DoD #3, 2026-09-30)"
+    },
+    {
+      "source": "/warsztaty-w-lipcu",
+      "destination": "/aktualnosci/warsztaty-w-lipcu",
+      "note": "WP post root → /aktualnosci (DoD #3, 2026-09-30)"
     },
     {
       "source": "/warsztaty/warsztaty-roczne",
@@ -76,6 +366,76 @@
       "note": "brief §5: zapisy scalone w ofertę kursu (P1 2026-09-27)"
     },
     {
+      "source": "/wernisaze",
+      "destination": "/ikony/wystawy",
+      "note": "P1 #17: stary hub wystaw (K-90, 2026-09-27)"
+    },
+    {
+      "source": "/wydarzenia",
+      "destination": "/aktualnosci",
+      "note": "K-50 (P1 #21, 2026-09-27)"
+    },
+    {
+      "source": "/wyjazd-studyjny-sladami-ikon-prof-jerzego-nowosielskiego",
+      "destination": "/aktualnosci/wyjazd-studyjny-sladami-ikon-prof-jerzego-nowosielskiego",
+      "note": "WP post root → /aktualnosci (DoD #3, 2026-09-30)"
+    },
+    {
+      "source": "/wyjazdy-studyjne",
+      "destination": "/aktualnosci",
+      "note": "K-50 (P1 #20, 2026-09-27)"
+    },
+    {
+      "source": "/wyklady-20132014",
+      "destination": "/aktualnosci/wyklady-20132014",
+      "note": "WP post root → /aktualnosci (DoD #3, 2026-09-30)"
+    },
+    {
+      "source": "/wyklady-20142015",
+      "destination": "/aktualnosci/wyklady-20142015",
+      "note": "WP post root → /aktualnosci (DoD #3, 2026-09-30)"
+    },
+    {
+      "source": "/wyklady-20152016-2",
+      "destination": "/aktualnosci/wyklady-20152016-2",
+      "note": "WP post root → /aktualnosci (DoD #3, 2026-09-30)"
+    },
+    {
+      "source": "/wyklady-20162017",
+      "destination": "/aktualnosci/wyklady-20162017",
+      "note": "WP post root → /aktualnosci (DoD #3, 2026-09-30)"
+    },
+    {
+      "source": "/wyklady-20172018",
+      "destination": "/aktualnosci/wyklady-20172018",
+      "note": "WP post root → /aktualnosci (DoD #3, 2026-09-30)"
+    },
+    {
+      "source": "/wyklady-20182019",
+      "destination": "/aktualnosci/wyklady-20182019",
+      "note": "WP post root → /aktualnosci (DoD #3, 2026-09-30)"
+    },
+    {
+      "source": "/wyklady-2019-2020",
+      "destination": "/aktualnosci/wyklady-2019-2020",
+      "note": "WP post root → /aktualnosci (DoD #3, 2026-09-30)"
+    },
+    {
+      "source": "/wyklady-2020-2021",
+      "destination": "/aktualnosci/wyklady-2020-2021",
+      "note": "WP post root → /aktualnosci (DoD #3, 2026-09-30)"
+    },
+    {
+      "source": "/wyklady-2021-2022",
+      "destination": "/aktualnosci/wyklady-2021-2022",
+      "note": "WP post root → /aktualnosci (DoD #3, 2026-09-30)"
+    },
+    {
+      "source": "/wyklady-2022-2023",
+      "destination": "/aktualnosci/wyklady-2022-2023",
+      "note": "WP post root → /aktualnosci (DoD #3, 2026-09-30)"
+    },
+    {
       "source": "/wyklady/tematy",
       "destination": "/wyklady",
       "note": "P0 #12: program w JSON + hub (2026-09-27)"
@@ -86,84 +446,99 @@
       "note": "brief §5 (P1 2026-09-27)"
     },
     {
-      "source": "/ikona",
-      "destination": "/ikony",
-      "note": "WP hub Ikona → /ikony (P1 #14, 2026-09-27)"
+      "source": "/wystawa-galeria-wiezy-ken-2019",
+      "destination": "/aktualnosci/wystawa-galeria-wiezy-ken-2019",
+      "note": "WP post root → /aktualnosci (DoD #3, 2026-09-30)"
     },
     {
-      "source": "/ikona/galeria",
-      "destination": "/ikony",
-      "note": "brief §5 (P1 2026-09-27)"
+      "source": "/wystawa-ikon-w-kosciele-bl-wladyslawa-z-gielniowa-patrona-warszwy",
+      "destination": "/aktualnosci/wystawa-ikon-w-kosciele-bl-wladyslawa-z-gielniowa-patrona-warszwy",
+      "note": "WP post root → /aktualnosci (DoD #3, 2026-09-30)"
     },
     {
-      "source": "/ikona/wystawy",
-      "destination": "/ikony/wystawy",
-      "note": "brief §5 / K-90 (P1 2026-09-27)"
+      "source": "/wystawa-ikon-w-kosciele-srodowisk-tworczych-warszawa-plac-teatralny-20",
+      "destination": "/aktualnosci/wystawa-ikon-w-kosciele-srodowisk-tworczych-warszawa-plac-teatralny-20",
+      "note": "WP post root → /aktualnosci (DoD #3, 2026-09-30)"
     },
     {
-      "source": "/ikona/ikony-na-zamowienie",
-      "destination": "/ikony/na-zamowienie",
-      "note": "brief §5 (P1 2026-09-27)"
+      "source": "/wystawa-ikon-w-swidnicy-czynna-w-dniach-4-07-25-08-2014-zapraszamy",
+      "destination": "/aktualnosci/wystawa-ikon-w-swidnicy-czynna-w-dniach-4-07-25-08-2014-zapraszamy",
+      "note": "WP post root → /aktualnosci (DoD #3, 2026-09-30)"
     },
     {
-      "source": "/wernisaze",
-      "destination": "/ikony/wystawy",
-      "note": "P1 #17: stary hub wystaw (K-90, 2026-09-27)"
+      "source": "/wystawa-ikon-w-wilnie",
+      "destination": "/aktualnosci/wystawa-ikon-w-wilnie",
+      "note": "WP post root → /aktualnosci (DoD #3, 2026-09-30)"
     },
     {
-      "source": "/oprowadzania-kuratorskie",
-      "destination": "/ikony/wystawy#oprowadzania",
-      "note": "brief §5 / K-90 (P1 #19, 2026-09-27)"
+      "source": "/wystawa-ikona-bozego-narodzenia-kst-2019",
+      "destination": "/aktualnosci/wystawa-ikona-bozego-narodzenia-kst-2019",
+      "note": "WP post root → /aktualnosci (DoD #3, 2026-09-30)"
     },
     {
-      "source": "/wyjazdy-studyjne",
-      "destination": "/aktualnosci",
-      "note": "K-50 (P1 #20, 2026-09-27)"
+      "source": "/wystawa-ikona-drabina-do-nieba-2019",
+      "destination": "/aktualnosci/wystawa-ikona-drabina-do-nieba-2019",
+      "note": "WP post root → /aktualnosci (DoD #3, 2026-09-30)"
     },
     {
-      "source": "/wydarzenia",
-      "destination": "/aktualnosci",
-      "note": "K-50 (P1 #21, 2026-09-27)"
+      "source": "/wystawa-ikona-dzis",
+      "destination": "/aktualnosci/wystawa-ikona-dzis",
+      "note": "WP post root → /aktualnosci (DoD #3, 2026-09-30)"
     },
     {
-      "source": "/publikacje/artykuly",
-      "destination": "/publikacje#artykuly",
-      "note": "brief §5 (P1 2026-09-27)"
+      "source": "/wystawa-ikona-dzis-2",
+      "destination": "/aktualnosci/wystawa-ikona-dzis",
+      "note": "WP root slug — brak wpisu news (DoD #3, 2026-09-30)"
     },
     {
-      "source": "/publikacje/plakaty",
-      "destination": "/aktualnosci",
-      "note": "P0 #25: tymczasowo do listy aktualności; po wpisie zbiorczym → /aktualnosci/[slug] (2026-09-27)"
+      "source": "/wystawa-ikona-korzenie-i-owoce-wiary-2018",
+      "destination": "/aktualnosci/wystawa-ikona-korzenie-i-owoce-wiary-2018",
+      "note": "WP post root → /aktualnosci (DoD #3, 2026-09-30)"
     },
     {
-      "source": "/publikacje/multimedia",
-      "destination": "/publikacje",
-      "note": "K-78 (P1 #26, 2026-09-27)"
+      "source": "/wystawa-ikona-korzenie-i-owoce-wiary-oprowadzania-kuratorskie",
+      "destination": "/aktualnosci/wystawa-ikona-korzenie-i-owoce-wiary-oprowadzania-kuratorskie",
+      "note": "WP post root → /aktualnosci (DoD #3, 2026-09-30)"
     },
     {
-      "source": "/konsultacje-i-lekcje-indywidualne",
-      "destination": "/warsztaty/kurs-roczny-i-trzyletni#konsultacje",
-      "note": "P0 #28 (2026-09-27)"
+      "source": "/wystawa-ikona-nadzieja-i-oczekiwanie-2019",
+      "destination": "/aktualnosci/wystawa-ikona-nadzieja-i-oczekiwanie-2019",
+      "note": "WP post root → /aktualnosci (DoD #3, 2026-09-30)"
     },
     {
-      "source": "/blog",
-      "destination": "https://studiumikony.blogspot.com",
-      "note": "P1 #29: blog nie migrowany; link jak w settings.blogUrl (2026-09-27)"
+      "source": "/wystawa-ikona-okno-ku-wiecznosci-2019",
+      "destination": "/aktualnosci/wystawa-ikona-okno-ku-wiecznosci-2019",
+      "note": "WP post root → /aktualnosci (DoD #3, 2026-09-30)"
     },
     {
-      "source": "/ikona-korzenie-i-owoce-wiary-2",
-      "destination": "/ikony/wystawy",
-      "note": "S4: treść w annual.json, nie news (brief §5, P1 2026-09-27)"
+      "source": "/wystawa-ikona-piekno-zanurzone-w-tajemnicy",
+      "destination": "/aktualnosci/wystawa-ikona-piekno-zanurzone-w-tajemnicy",
+      "note": "WP post root → /aktualnosci (DoD #3, 2026-09-30)"
     },
     {
-      "source": "/ikony/wystawa",
-      "destination": "/ikony/wystawy",
-      "note": "adres z etapu 7–8 (brief §5, P1 2026-09-27)"
+      "source": "/wystawa-ikona-sztuka-i-modlitwa",
+      "destination": "/aktualnosci/wystawa-ikona-sztuka-i-modlitwa",
+      "note": "WP post root → /aktualnosci (DoD #3, 2026-09-30)"
     },
     {
-      "source": "/poswiecenia-ikon",
-      "destination": "/aktualnosci/poswiecenia-ikon",
-      "note": "P7 #27: strona WP → wpis aktualności (K-77, 2026-09-27)"
+      "source": "/wystawa-madrosc-boza-2026",
+      "destination": "/aktualnosci/wystawa-madrosc-boza-2026",
+      "note": "WP post root → /aktualnosci (DoD #3, 2026-09-30)"
+    },
+    {
+      "source": "/wystawa-piekno-boga-piekno-czlowieka-2025",
+      "destination": "/aktualnosci/wystawa-piekno-boga-piekno-czlowieka-2025",
+      "note": "WP post root → /aktualnosci (DoD #3, 2026-09-30)"
+    },
+    {
+      "source": "/wystawa-praga-del-arte-2019",
+      "destination": "/aktualnosci/wystawa-praga-del-arte-2019",
+      "note": "WP post root → /aktualnosci (DoD #3, 2026-09-30)"
+    },
+    {
+      "source": "/wystawa-w-kosciele-pw-sw-andrzeja-apostola",
+      "destination": "/aktualnosci/wystawa-w-kosciele-pw-sw-andrzeja-apostola",
+      "note": "WP post root → /aktualnosci (DoD #3, 2026-09-30)"
     }
   ]
 }

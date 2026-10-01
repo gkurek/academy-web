@@ -47,7 +47,6 @@ type NewsKind =
   | "aktualnosc"
   | "wyklady"
   | "warsztaty"
-  | "plener"
   | "wystawa"
   | "oprowadzanie"
   | "wyjazd"
@@ -90,13 +89,11 @@ const EXCLUDED_SLUGS = new Set([
   "podsumowanie-2019",
   "ikona-serca-jezusa",
   "ikona-trojcy-swietej",
-  "ikony-emaliowane",
 ]);
 
 const OPROWADZANIA_2017_SLUGS = [
   "ikona-serca-jezusa",
   "ikona-trojcy-swietej",
-  "ikony-emaliowane",
 ] as const;
 
 const downloadedUrls = new Map<string, string>();
@@ -132,8 +129,13 @@ const stripCacheUrl = (url: string): string =>
   url.replace(/-\d+x\d+(?=\.\w+$)/, "").replace(/\/cache\//, "/");
 
 const inferWydarzenieKind = (slug: string): NewsKind => {
-  if (slug.includes("wyjazd") || slug.includes("wakacyjne-wyjazdy")) {
-    return slug.includes("grodek") ? "plener" : "wyjazd";
+  if (
+    slug.includes("wyjazd") ||
+    slug.includes("wakacyjne-wyjazdy") ||
+    slug.includes("plener-swietej") ||
+    slug.includes("sesja-ikonowa")
+  ) {
+    return "wyjazd";
   }
   if (slug.includes("spotkanie") || slug.includes("spotkania")) {
     return "spotkanie";
@@ -278,14 +280,19 @@ const assignPoster = (images: ImageMeta[]): ImageMeta | undefined => {
 
 const buildFromPost = async (post: WpPost): Promise<GeneratedEntry> => {
   const images = await extractImages(post.content.rendered, post.slug);
-  const body = htmlToBody(post.content.rendered);
+  let body = htmlToBody(post.content.rendered);
+  if (post.slug === "ikony-emaliowane") {
+    body = body.replace(/Dzieciom się to podobało[\s\S]*$/i, "").trim();
+  }
   const poster = assignPoster(images);
+  const kind =
+    post.slug === "ikony-emaliowane" ? "aktualnosc" : determineKind(post);
 
   return {
     slug: post.slug,
     title: decodeHtml(post.title.rendered),
     date: post.date.slice(0, 10),
-    kind: determineKind(post),
+    kind,
     excerpt: buildExcerpt(body, post.excerpt.rendered),
     body,
     images: images.length > 0 ? images : undefined,
@@ -324,7 +331,7 @@ const extractPodsumowanie2019Entries = async (
       slug,
       title,
       date,
-      dateEnd: kind === "plener" ? "2019-08-10" : undefined,
+      dateEnd: slug === "plener-swietej-lipki-2019" ? "2019-08-10" : undefined,
       kind,
       excerpt: buildExcerpt(body, ""),
       body,
@@ -352,7 +359,7 @@ const extractPodsumowanie2019Entries = async (
       "plener-swietej-lipki-2019",
       "Warsztaty i wystawa w Świętej Lipce",
       "2019-08-03",
-      "plener",
+      "wyjazd",
       lipkaMatch?.[0],
     ),
   ]);
@@ -379,10 +386,6 @@ const buildOprowadzania2017Entry = async (
           : "Oprowadzanie kuratorskie po ikonie Serca Jezusa na wystawie w Kościele Środowisk Twórczych.";
       }
 
-      if (post.slug === "ikony-emaliowane") {
-        body = body.replace(/Dzieciom się to podobało[\s\S]*$/i, "").trim();
-      }
-
       return {
         title: decodeHtml(post.title.rendered),
         body,
@@ -401,7 +404,7 @@ const buildOprowadzania2017Entry = async (
 
   return {
     slug: "oprowadzania-po-wystawie-2017",
-    title: "Oprowadzania po wystawie: Serce Jezusa, Trójca Święta, ikony emaliowane",
+    title: "Oprowadzania po wystawie: Serce Jezusa, Trójca Święta",
     date: "2017-06-25",
     kind: "oprowadzanie",
     excerpt:

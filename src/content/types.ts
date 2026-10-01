@@ -97,7 +97,6 @@ export type NewsKind =
   | "aktualnosc"
   | "wyklady"
   | "warsztaty"
-  | "plener"
   | "wystawa"
   | "oprowadzanie"
   | "wyjazd"
