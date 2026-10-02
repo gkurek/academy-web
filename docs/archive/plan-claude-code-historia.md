@@ -11,7 +11,7 @@ Co jest w tym pliku:
 | Sekcja | Co zawiera | Skąd |
 | --- | --- | --- |
 | §3H | Opisy etapów 1–8b: cel, zakres, DoD, podział na kawałki, pytania | §3 planu v0.6 |
-| §4H | Decyzje **zamknięte** — 65 z 118 wierszy (53 żywe zostały w §4 żywego planu) | §4 planu v0.6 |
+| §4H | Decyzje **zamknięte** — 63 z 119 wierszy (56 żywych zostały w §4 żywego planu) | §4 planu v0.6 |
 | §5H | Pozycje treści makietowych **odhaczone** (`✅`) | §5 planu v0.6 |
 | §6H | Dziennik w całości (2026-09-11 … 2026-09-26) | §6 planu v0.6 |
 | Załącznik B | Prompty sesji planistycznej i wznowienia | bez zmian |
@@ -191,8 +191,8 @@ Szablon planu etapu (Załącznik A) **został w żywym dokumencie** — jest pot
 
 ## §4H. Rejestr decyzji — wiersze zamknięte
 
-65 z 118 wierszy: te, które nie mają już skutków dla etapów 9–11. **Zero duplikacji** —
-pozostałe 53 wiersze (otwarte albo wiążące dla 9/10/11) żyją wyłącznie w
+63 z 119 wierszy: te, które nie mają już skutków dla etapów 9–11. **Zero duplikacji** —
+pozostałe 56 wierszy (otwarte albo wiążące dla 9/10/11) żyją wyłącznie w
 `docs/plan-claude-code.md` §4 i nie są tu powtórzone. Pełny rejestr w jednym ciągu
 = ten plik + §4 żywego planu; numeracja `K-xx` jest globalna, więc każdy numer
 znajdziesz w dokładnie jednym z dwóch miejsc.
@@ -218,7 +218,6 @@ Numery tutaj: patrz tabela niżej. Jeśli szukanego `K-xx` tu nie ma — jest w 
 | K-27 | Role kolorów i detale spójności (04b)               | 4b       | Złoto = metadane (`--accent-text`); belka 2 px; `SeasonAccordion` role kolorów + stan otwarty; nadtytuły sezonu na ofertach; full-bleed kafli Najbliższe mobile — świadomy wyjątek (makieta `#3b`) | 2026-09-19 |
 | K-28 | Szerokość linii (04b)                              | 4b       | **`--measure-lead` 680 px**, **`--measure-prose` 640 px** na leadach, body MDX i biogramach | 2026-09-19 |
 | K-29 | Skala odstępów i rytm desktop (04b)                | 4b       | **Tokeny `--space-10/11/12`, `--section-gap` 96 px od 1024 px, cytat home 120 px góra/dół.** Świadome odstępstwo: dolna linia cytatu (`rule-gold-b`) **zostaje** — cezura między cytatem a „Wybrane ikony"; pierwotna rekomendacja usunięcia odrzucona po review | 2026-09-19 |
-| K-30 | `content-max` na szerokich ekranach (04b)          | 4b       | **`--content-max: 1280px` od 1600 px**; tekst trzyma K-28; siatki korzystają z szerszego kontenera | 2026-09-19 |
 | K-31 | Kadrowanie ikon w `IconGrid` (04b)                 | 4b       | **`object-contain`** na `--surface-tile`, stała wysokość boksu; reguła wejściowa etapu 5 | 2026-09-19 |
 | K-33 | Hero home — rozmiar obrazu i fold (04b)            | 4b       | **Częściowo** — H2 „Najbliższe", filary → huby; `ClosingCta` home odrzucony (K-32). Hero: rekomendacja review `min(760px, 68vh)` **nie wdrożona** — **opcja A (2026-09-19):** zostaje `min(920px, 76vh)`, kolumna obrazu max 500 px, mobile 72%, siatka md+ (`--hero-text-min: 300px`). Kafle „Najbliższe" nad foldem przy 1920×917 **nie są wymagane** (priorytet: czytelność ikony). Patrz `docs/plans/04b-review-fixes.md` K-33 pkt 1 | 2026-09-19 |
 | K-34 | Stan czasu w `LectureList` (04b)                   | 4b       | **Odłożone** — bez zmian; obliczanie po stronie serwera + `revalidate`; powrót po etapie 10 | 2026-09-19 |
@@ -243,7 +242,6 @@ Numery tutaj: patrz tabela niżej. Jeśli szukanego `K-xx` tu nie ma — jest w 
 | K-83 | Ekspozycja codzienna                                  | 8b       | „Ikona – korzenie i owoce wiary”, 6–10 ikon EJK, bez „przerwy wakacyjnej” w copy | 2026-09-26 |
 | K-86 | Oprowadzania kuratorskie                              | 8b       | Bez terminów i archiwum tematów; `tours[]` usunięte | 2026-09-26 |
 | K-88 | Tytuły wystaw dorocznych                              | 8b       | 15 rekordów w `annual.json` (tabela w planie 08b) | 2026-09-26 |
-| K-89 | Sekcja „Poprzednie wystawy”                           | 8b       | 14 wierszy, zwijanie 2013–2021 | 2026-09-26 |
 | K-91 | Dyżury uczniów                                        | 8b       | Usunięte z `body.mdx` | 2026-09-26 |
 | K-92 | Wzorzec sekcji wystawy                                | 8b       | Tekst + `FactsBox` + zdjęcia na pełną szerokość | 2026-09-26 |
 | K-93 | `FactsBox` na wystawie                                | 8b       | Geometria oferty, `useId`, `sr-only` nagłówek | 2026-09-26 |
