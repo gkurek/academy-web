@@ -141,14 +141,14 @@ Legenda: **P** poprawka · **R** refaktor · **IA** decyzja produktowa + Design.
 
 ### `/aktualnosci` (kawałek 3)
 
-| ID | Typ | Zadanie |
-| --- | --- | --- |
-| A1 | IA | K-69 — zapowiedź vs kronika, cykl roku, format wpisów |
-| A2 | R | Featured na górze, bez `featuredUntil` |
-| A3 | R | Animacja scrollu do roku (`prefers-reduced-motion`) |
-| A4 | R | Szablon pojedynczego wpisu (typografia, linki, brak cover) |
-| A5 | R | Wzorzec `<NewsCta />` w archiwalnych wpisach warsztatowych |
-| A6 | P | Regresja `getExhibitionUpcomingHighlight` / `getExhibitionNowNext` na `/` i linkach wpisów → `/ikony/wystawy` (wspólne helpery z k1) |
+| ID | Typ | Zadanie | Status |
+| --- | --- | --- | --- |
+| A1 | IA | K-69 — zapowiedź vs kronika, cykl roku, format wpisów | ✅ discovery (D1–D11) |
+| A2 | R | Featured na górze, bez `featuredUntil` | ✅ k3a |
+| A3 | R | Animacja scrollu do roku (`prefers-reduced-motion`) | ✅ k3a |
+| A4 | R | Szablon pojedynczego wpisu (typografia, linki, brak cover) | ✅ k3c + **k3e** (układ K3 v2.1, K-133, lead F11) |
+| A5 | R | Wzorzec `<NewsCta />` w archiwalnych wpisach warsztatowych | ✅ k3b (K-122; CTA/Powiązane w k3c) |
+| A6 | P | Regresja `getExhibitionUpcomingHighlight` / `getExhibitionNowNext` na `/` i linkach wpisów → `/ikony/wystawy` (wspólne helpery z k1) | ✅ k3a (`scripts/check-exhibition-states.ts`) |
 
 ### `/ikony` (kawałek 7)
 
@@ -188,7 +188,7 @@ Skrót klas — szczegóły w `docs/plan-claude-code.md` §5, `scripts/migrate-r
 | Klasa | Przykłady |
 | --- | --- |
 | Galeria — dane | tytuły, `size`, `authorName`, technika, zgoda na nazwiska, wstęp uczniów |
-| Aktualności — treść | `alt`, Trójca 2017, poświęcenia, program A3, plakaty → `News.poster` |
+| Aktualności — treść | `alt`, Trójca 2017, poświęcenia, program A3, plakaty → `images[]` wpisów (K-129) |
 | Publikacje — treść | fragmenty, rozkładówki, „Jak powstał”, alt okładki |
 | O nas / pracownia | realizacje, bio, rozmowa, portret; `archive/wp-fetch-static/` |
 | Oferty — treść | hero zamówienia, cytat Piotra, e-mail sekretariat |
@@ -232,7 +232,7 @@ Z `docs/plan-claude-code.md` §3, etap 10:
 | --- | --- | --- |
 | 1 — wystawy | ✅ | `10-k1-exhibitions.md` 1.1–1.4; W0–W5; korekty **K1–K4** (m.in. K4 margines wide mobile) |
 | 2 — lightbox | ✅ | `10-k2-lightbox.md` zamknięty (G1–G3, D9); K-38 iOS OK 2026-10-03 |
-| 3 — aktualności | 🔄 | discovery ✅, ocena makiety ✅ (E1–E8), plan k3a–k3d ✅ 2026-10-03 (`10-k3-news.md`); następnie k3a |
+| 3 — aktualności | ✅ | k3a–k3e 2026-10-03 (K-133, makieta v2.1); cykliczne → `docs/wpisy-cykliczne-aktualnosci-ejk.md` |
 | 4 — home | ⬜ | |
 | 5 — album | ⬜ | |
 | 6 — wykłady | ⬜ | |

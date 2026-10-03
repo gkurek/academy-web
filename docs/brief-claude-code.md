@@ -161,17 +161,23 @@ type News = {
   date: string;
   dateEnd?: string;
   kind: NewsKind;
+  layout: 'wydarzenie' | 'galeria' | 'tekst' | 'program';  // układ szablonu wpisu (K-129)
   excerpt?: string;
   body: string;
   cover?: Image;
   images?: Image[];
-  poster?: Image;
-  featured?: boolean;
-  featuredUntil?: string;       // YYYY-MM-DD; tylko przy featured: true; po dacie wpis traci wyróżnienie przy buildzie (K-73)
+  facts?: { label: string; value: string }[];   // wiersz faktów — tylko layout wydarzenie
+  related?: { label: string; href: string }[];  // nadpisanie bloku „Powiązane” (max 1–2)
+  hideLead?: boolean;                           // ukryj lead z excerpt (wyjątek od E5)
+  columnImageIndex?: number;                    // opcjonalnie: indeks w images[] — podgląd w prawej kolumnie desktop (K-132); domyślnie brak
+  featured?: boolean;           // wyróżnienie do ręcznego zdjęcia flagi; wymaga cover; max 1 (K-73, etap 10 k3)
   venue?: string;               // opcjonalny kontekst miejsca w artykule; lista #wyjazdowe z `travelingPlaces` (K-127)
 };
 // K-72: na liście (`NewsCard`) wyświetlana jest tylko `date` z rokiem — bez zakresu `dateEnd`.
 // We wpisie pojedynczym i w wyróżnionym: `formatDateRange` z `dateEnd` gdy jest.
+// K-131 / K-133: faza `layout: wydarzenie` — koniec wydarzenia = `dateEnd ?? date`; dzień po = po terminie;
+// relacja gdy po terminie i jest `images[]`; lead na stronie wpisu — K-133 F11 (`shouldShowLead`, manifest `bodyText`).
+// Szczegóły: `docs/plans/10-k3-news.md` E7/F11, `docs/wpisy-cykliczne-aktualnosci-ejk.md`.
 
 // K-82…K-90 (08b), K-127: w KŚT są trzy formy wystawy — ekspozycja codzienna (6–10 ikon EJK),
 // wystawa doroczna (40–50 ikon, wernisaż na ostatnim wykładzie sezonu), wystawy wyjazdowe

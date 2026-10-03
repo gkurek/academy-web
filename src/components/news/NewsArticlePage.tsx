@@ -1,18 +1,22 @@
-import Link from "next/link";
-
 import { TextLink } from "@/components/core/TextLink";
 import { SectionPageShell } from "@/components/layout/SectionPageShell";
+import { NewsArticleCover } from "@/components/news/NewsArticleCover";
+import { NewsArticleNav } from "@/components/news/NewsArticleNav";
+import { NewsEventCta } from "@/components/news/NewsEventCta";
+import { NewsFacts } from "@/components/news/NewsFacts";
 import { NewsGallery } from "@/components/news/NewsGallery";
-import { NewsPoster } from "@/components/news/NewsPoster";
+import { newsMdxComponents } from "@/components/news/newsMdxComponents";
+import { NewsRelated } from "@/components/news/NewsRelated";
 import { Breadcrumb } from "@/components/navigation/Breadcrumb";
 import { NewsDateMeta } from "@/components/news/NewsDateMeta";
 import {
-  getAnnualExhibitionByNewsSlug,
-  getAnnualExhibitionYear,
-} from "@/content/exhibition";
-import {
+  getEffectiveNewsLayout,
+  getExcerpt,
+  getNewsEventPhase,
+  shouldShowLead,
   getNewsKindLabel,
   getNewsNeighbors,
+  getNewsRelatedLinks,
   type LoadedNews,
 } from "@/content/news";
 import { pl } from "@/i18n/pl";
@@ -22,94 +26,165 @@ export interface NewsArticlePageProps {
   active: string;
 }
 
-function formatAriaLabel(template: string, title: string): string {
-  return template.replace("{title}", title);
+function newsArticleGridClass(flags: {
+  hasTop: boolean;
+  hasCta: boolean;
+  hasMgal: boolean;
+  hasGal: boolean;
+}): string {
+  const parts = ["news-article"];
+  if (flags.hasTop) {
+    parts.push("news-article--has-top");
+  }
+  if (flags.hasCta) {
+    parts.push("news-article--has-cta");
+  }
+  if (flags.hasMgal) {
+    parts.push("news-article--has-mgal");
+  }
+  if (flags.hasGal) {
+    parts.push("news-article--has-gal");
+  }
+  return parts.join(" ");
 }
 
 export function NewsArticlePage({ entry, active }: NewsArticlePageProps) {
   const { Content } = entry;
   const kindLabel = getNewsKindLabel(entry.kind);
   const neighbors = getNewsNeighbors(entry.slug);
-  const hasPoster = Boolean(entry.poster);
-  const hasGallery = Boolean(entry.images && entry.images.length > 0);
-  const annualExhibition =
-    entry.kind === "wystawa" ? getAnnualExhibitionByNewsSlug(entry.slug) : undefined;
-  const annualExhibitionYear = annualExhibition
-    ? getAnnualExhibitionYear(annualExhibition.seasonSlug)
-    : undefined;
+  const layout = getEffectiveNewsLayout(entry);
+  const eventPhase = getNewsEventPhase(entry);
+  const images = entry.images ?? [];
+  const hasImages = images.length > 0;
+  const lead = shouldShowLead(entry) ? getExcerpt(entry) : undefined;
+  const relatedLinks = getNewsRelatedLinks(entry);
+
+  const showFacts = layout === "wydarzenie" && entry.facts && entry.facts.length > 0;
+  const showEventCta = eventPhase === "zapowiedz";
+  const showRelated =
+    layout === "wydarzenie"
+      ? eventPhase === "relacja" || eventPhase === "po-terminie"
+      : relatedLinks.length > 0;
+  const isWideImageLayout = layout === "galeria" || layout === "wydarzenie";
+  const columnImageIndex = entry.columnImageIndex;
+  const columnImage =
+    columnImageIndex !== undefined ? images[columnImageIndex] : undefined;
+  const showColumnImage =
+    columnImage !== undefined && columnImageIndex !== undefined;
+  const hasGalleryTekst = layout === "tekst" && hasImages;
+  const hasGalleryWide = isWideImageLayout && hasImages;
+  /** Desktop `gal` row: omit when the only image sits in the column (mobile still uses `gal`). */
+  const hasGalGridArea =
+    hasGalleryWide && (images.length > 1 || !showColumnImage);
+  const galleryHeading = layout === "tekst";
+  const hideOnDesktopIndex = showColumnImage ? columnImageIndex : undefined;
+  const railStickyOff = relatedLinks.length > 3;
+
+  const articleClass = newsArticleGridClass({
+    hasTop: Boolean(showFacts || showColumnImage),
+    hasCta: showEventCta,
+    hasMgal: hasGalleryTekst,
+    hasGal: hasGalGridArea,
+  });
 
   return (
     <SectionPageShell active={active}>
-      <article className="news-article">
-        <Breadcrumb
-          items={[
-            { label: pl.news.breadcrumbHome, href: "/aktualnosci" },
-            { label: entry.title },
-          ]}
-        />
-
-        <header className="news-article-header">
-          <p className="news-article-meta">
-            <span className="text-accent-text">{kindLabel}</span>
-            {" · "}
+      <article className={articleClass}>
+        <header className="news-article-head">
+          <Breadcrumb items={[{ label: pl.news.breadcrumbHome, href: "/aktualnosci" }]} />
+          <p className="news-article-kind">{kindLabel}</p>
+          <h1 className="news-article-title">{entry.title}</h1>
+          <p className="news-article-byline">
             <NewsDateMeta
               date={entry.date}
               dateEnd={entry.dateEnd}
               withYear
-              className="text-text-tertiary"
+              className="news-article-byline-date"
             />
+            {entry.venue ? (
+              <>
+                {" · "}
+                <span>{entry.venue}</span>
+              </>
+            ) : null}
           </p>
-          <h1 className="news-article-title">{entry.title}</h1>
+          {lead ? <p className="news-article-lead">{lead}</p> : null}
+          <hr className="news-article-head-rule" />
         </header>
 
-        <div className={hasPoster ? "news-article-body-grid" : undefined}>
-          <div className="news-article-mdx text-page-mdx min-w-0">
-            <Content />
+        {showFacts || showColumnImage ? (
+          <div className="news-article-top">
+            {showColumnImage ? (
+              <NewsArticleCover
+                image={columnImage}
+                images={images}
+                lightboxIndex={columnImageIndex}
+              />
+            ) : null}
+            {showFacts ? <NewsFacts facts={entry.facts!} /> : null}
           </div>
-          {hasPoster ? <NewsPoster poster={entry.poster} /> : null}
-        </div>
-
-        {hasGallery ? <NewsGallery images={entry.images!} /> : null}
-
-        {annualExhibitionYear ? (
-          <p className="news-article-related">
-            <TextLink href="/ikony/wystawy#doroczna">
-              {pl.news.backToExhibition.replace("{year}", String(annualExhibitionYear))}
-            </TextLink>
-          </p>
         ) : null}
 
-        <nav className="news-article-nav" aria-label={pl.news.articleNavAriaLabel}>
-          <div className="news-article-nav-links">
-            {neighbors.previous ? (
-              <Link
-                href={`/aktualnosci/${neighbors.previous.slug}`}
-                className="news-article-nav-link"
-                aria-label={formatAriaLabel(pl.news.previousEntryAria, neighbors.previous.title)}
-              >
-                <span aria-hidden="true">‹</span>
-                {pl.news.previousEntry}
-              </Link>
-            ) : (
-              <span className="news-article-nav-spacer" aria-hidden="true" />
-            )}
-            {neighbors.next ? (
-              <Link
-                href={`/aktualnosci/${neighbors.next.slug}`}
-                className="news-article-nav-link news-article-nav-link-next"
-                aria-label={formatAriaLabel(pl.news.nextEntryAria, neighbors.next.title)}
-              >
-                {pl.news.nextEntry}
-                <span aria-hidden="true">›</span>
-              </Link>
-            ) : (
-              <span className="news-article-nav-spacer" aria-hidden="true" />
-            )}
+        <div className="news-article-main news-article-prose news-prose">
+          <Content components={newsMdxComponents} />
+        </div>
+
+        {showEventCta ? (
+          <div className="news-article-cta">
+            <NewsEventCta kind={entry.kind} />
           </div>
-          <TextLink href="/aktualnosci" className="news-article-nav-all">
-            {pl.news.allNewsLink}
-          </TextLink>
-        </nav>
+        ) : null}
+
+        {hasGalleryTekst ? (
+          <div className="news-article-mgal">
+            <NewsGallery
+              images={images}
+              layout={layout}
+              showHeading={galleryHeading}
+              hideOnDesktopIndex={hideOnDesktopIndex}
+            />
+          </div>
+        ) : null}
+
+        {hasGalleryWide ? (
+          <div
+            className={[
+              "news-article-gal",
+              !hasGalGridArea ? "news-article-gal--column-only-mobile" : "",
+            ]
+              .filter(Boolean)
+              .join(" ")}
+          >
+            <NewsGallery
+              images={images}
+              layout={layout}
+              showHeading={false}
+              hideOnDesktopIndex={hideOnDesktopIndex}
+            />
+          </div>
+        ) : null}
+
+        <div className="news-article-rail">
+          <div
+            className={[
+              "news-article-rail-inner",
+              railStickyOff ? "news-article-rail-inner--no-sticky" : "",
+            ]
+              .filter(Boolean)
+              .join(" ")}
+          >
+            {showRelated ? <NewsRelated links={relatedLinks} /> : null}
+            <NewsArticleNav previous={neighbors.previous} next={neighbors.next} />
+          </div>
+        </div>
+
+        {hasGalGridArea ? (
+          <footer className="news-article-gend">
+            <TextLink href="/aktualnosci" className="news-article-gend-link">
+              {pl.news.allNewsLink}
+            </TextLink>
+          </footer>
+        ) : null}
       </article>
     </SectionPageShell>
   );

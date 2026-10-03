@@ -3,7 +3,11 @@
 import Link from "next/link";
 import { useEffect, useRef, type MouseEvent } from "react";
 
-import { focusNewsYearCardTitleAfterLayout } from "@/components/news/focusNewsYearCardTitle";
+import {
+  focusNewsYearCardTitleAfterLayout,
+  newsPrefersReducedMotion,
+  scrollNewsYearIntoView,
+} from "@/components/news/focusNewsYearCardTitle";
 import { useYearActiveId } from "@/components/news/useYearActiveId";
 import { NEWS_ARCHIVE_EXPAND_EVENT } from "@/components/news/newsArchiveEvents";
 import { pl } from "@/i18n/pl";
@@ -11,10 +15,6 @@ import { pl } from "@/i18n/pl";
 export interface YearNavClientProps {
   years: string[];
   archiveYears: string[];
-}
-
-function prefersReducedMotion(): boolean {
-  return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 }
 
 export function YearNavClient({ years, archiveYears }: YearNavClientProps) {
@@ -56,7 +56,7 @@ export function YearNavClient({ years, archiveYears }: YearNavClientProps) {
     activeLink.scrollIntoView({
       inline: "nearest",
       block: "nearest",
-      behavior: prefersReducedMotion() ? "auto" : "smooth",
+      behavior: newsPrefersReducedMotion() ? "auto" : "smooth",
     });
   }, [activeYear]);
 
@@ -82,11 +82,13 @@ export function YearNavClient({ years, archiveYears }: YearNavClientProps) {
         window.dispatchEvent(
           new CustomEvent(NEWS_ARCHIVE_EXPAND_EVENT, { detail: { year, focus: false } }),
         );
-        focusNewsYearCardTitleAfterLayout(year);
         return;
       }
     }
 
+    event.preventDefault();
+    window.history.pushState(null, "", `#${year}`);
+    scrollNewsYearIntoView(year);
     focusNewsYearCardTitleAfterLayout(year);
   };
 

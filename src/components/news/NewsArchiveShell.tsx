@@ -2,7 +2,10 @@
 
 import { useCallback, useEffect, useState, type ReactNode } from "react";
 
-import { focusNewsYearCardTitleAfterLayout } from "@/components/news/focusNewsYearCardTitle";
+import {
+  focusNewsYearCardTitleAfterLayout,
+  scrollNewsYearIntoView,
+} from "@/components/news/focusNewsYearCardTitle";
 import {
   NEWS_ARCHIVE_EXPAND_EVENT,
   type NewsArchiveExpandDetail,
@@ -52,17 +55,15 @@ export function NewsArchiveShell({
       const shouldFocus = detail?.focus ?? false;
 
       requestAnimationFrame(() => {
-        const focusTargetYear = shouldFocus ? firstYearId : targetYear;
         if (targetYear) {
-          window.location.hash = targetYear;
-        }
-
-        if (!focusTargetYear) {
+          window.history.pushState(null, "", `#${targetYear}`);
+          scrollNewsYearIntoView(targetYear);
+          focusNewsYearCardTitleAfterLayout(targetYear);
           return;
         }
 
         if (shouldFocus) {
-          focusNewsYearCardTitleAfterLayout(focusTargetYear);
+          focusNewsYearCardTitleAfterLayout(firstYearId);
         }
       });
     },

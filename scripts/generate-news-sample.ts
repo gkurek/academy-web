@@ -78,9 +78,8 @@ type GeneratedEntry = {
   excerpt?: string;
   body: string;
   images?: ImageMeta[];
-  poster?: ImageMeta;
+  layout?: "wydarzenie" | "galeria" | "tekst" | "program";
   featured?: boolean;
-  featuredUntil?: string;
   cover?: ImageMeta;
 };
 
@@ -273,10 +272,8 @@ const buildExcerpt = (body: string, wpExcerpt: string): string => {
   return firstParagraph?.slice(0, 280) ?? body.slice(0, 280);
 };
 
-const assignPoster = (images: ImageMeta[]): ImageMeta | undefined => {
-  const portrait = images.find((image) => image.height > image.width);
-  return portrait ?? images[0];
-};
+const defaultSampleLayout = (kind: NewsKind): GeneratedEntry["layout"] =>
+  kind === "wyklady" ? "wydarzenie" : "galeria";
 
 const buildFromPost = async (post: WpPost): Promise<GeneratedEntry> => {
   const images = await extractImages(post.content.rendered, post.slug);
@@ -284,7 +281,6 @@ const buildFromPost = async (post: WpPost): Promise<GeneratedEntry> => {
   if (post.slug === "ikony-emaliowane") {
     body = body.replace(/Dzieciom się to podobało[\s\S]*$/i, "").trim();
   }
-  const poster = assignPoster(images);
   const kind =
     post.slug === "ikony-emaliowane" ? "aktualnosc" : determineKind(post);
 
@@ -293,10 +289,10 @@ const buildFromPost = async (post: WpPost): Promise<GeneratedEntry> => {
     title: decodeHtml(post.title.rendered),
     date: post.date.slice(0, 10),
     kind,
+    layout: defaultSampleLayout(kind),
     excerpt: buildExcerpt(body, post.excerpt.rendered),
     body,
     images: images.length > 0 ? images : undefined,
-    poster,
   };
 };
 
@@ -336,7 +332,7 @@ const extractPodsumowanie2019Entries = async (
       excerpt: buildExcerpt(body, ""),
       body,
       images: images.length > 0 ? images : undefined,
-      poster: assignPoster(images),
+      layout: defaultSampleLayout(kind),
     };
   };
 
@@ -411,7 +407,7 @@ const buildOprowadzania2017Entry = async (
       "Tematyczne oprowadzania kuratorskie po wystawie „Ikona – korzenie i owoce wiary” w 2017 roku.",
     body,
     images: images.length > 0 ? images : undefined,
-    poster: assignPoster(images),
+    layout: "tekst",
   };
 };
 
@@ -420,8 +416,7 @@ const buildNabor2026Entry = (): GeneratedEntry => ({
   title: "Nabór na kurs roczny i trzyletni 2026/2027",
   date: "2026-09-01",
   kind: "warsztaty",
-  featured: true,
-  featuredUntil: "2026-09-24",
+  layout: "wydarzenie",
   excerpt:
     "Rusza nabór na kurs roczny i trzyletni w sezonie 2026/2027. Zgłoszenia przyjmujemy mailem do 24 września 2026.",
   cover: {
@@ -441,6 +436,7 @@ const serializeFrontmatter = (entry: GeneratedEntry): string => {
     title: entry.title,
     date: entry.date,
     kind: entry.kind,
+    layout: entry.layout ?? defaultSampleLayout(entry.kind),
     sample: true,
   };
 
@@ -453,14 +449,8 @@ const serializeFrontmatter = (entry: GeneratedEntry): string => {
   if (entry.images?.length) {
     payload.images = entry.images;
   }
-  if (entry.poster) {
-    payload.poster = entry.poster;
-  }
   if (entry.featured) {
     payload.featured = true;
-  }
-  if (entry.featuredUntil) {
-    payload.featuredUntil = entry.featuredUntil;
   }
   if (entry.cover) {
     payload.cover = entry.cover;

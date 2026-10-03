@@ -102,20 +102,36 @@ export type NewsKind =
   | "wyjazd"
   | "spotkanie";
 
+export type NewsLayout = "wydarzenie" | "galeria" | "tekst" | "program";
+
+export type NewsFact = {
+  label: string;
+  value: string;
+};
+
+export type NewsRelatedLink = {
+  label: string;
+  href: string;
+};
+
 export type News = {
   slug: string;
   title: string;
   date: string;
   dateEnd?: string;
   kind: NewsKind;
+  layout: NewsLayout;
   excerpt?: string;
   body: string;
   cover?: Image;
   images?: Image[];
-  poster?: Image;
+  facts?: NewsFact[];
+  related?: NewsRelatedLink[];
+  hideLead?: boolean;
+  /** 0-based index into `images[]`; desktop ≥1024 only — preview in right column (`top`), hidden from gallery there. */
+  columnImageIndex?: number;
   venue?: string;
   featured?: boolean;
-  featuredUntil?: string;
 };
 
 export type Testimonial = {

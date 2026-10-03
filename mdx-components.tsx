@@ -5,8 +5,6 @@ import type { ComponentPropsWithoutRef } from "react";
 import { OfferFigure } from "@/components/content/OfferFigure";
 import { SemesterProgram } from "@/components/content/SemesterProgram";
 import { StepList } from "@/components/content/StepList";
-import { NewsCta } from "@/components/news/NewsCta";
-
 type ImgProps = ComponentPropsWithoutRef<"img">;
 
 function MdxImage({ src, alt, width, height }: ImgProps) {
@@ -42,7 +40,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
       </h3>
     ),
     p: ({ children }) => (
-      <p className="text-size-body md:text-size-body-lg leading-body md:leading-prose text-text-body max-w-measure-prose mb-space-4 last:mb-0 [&:has(>em:only-child)]:font-serif [&:has(>em:only-child)]:italic [&:has(>em:only-child)]:text-size-body [&:has(>em:only-child)]:text-text-tertiary [&:has(>em:only-child)]:mt-space-3 [&:has(>em:only-child)]:mb-space-7">
+      <p className="text-size-body md:text-size-body-lg leading-body md:leading-prose text-text-body max-w-measure-prose mb-space-4 last:mb-0">
         {children}
       </p>
     ),
@@ -57,7 +55,6 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     OfferFigure,
     SemesterProgram,
     StepList,
-    NewsCta,
     ...components,
   };
 }
