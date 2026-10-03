@@ -41,19 +41,29 @@ export function Lightbox({ item, index, total, onPrev, onNext, onClose }: Lightb
         .replace("{total}", String(total))
     : "";
 
+  const showNavigation = total > 1;
+
   const {
     dialogRef,
     handleDialogClick,
     handlePointerDown,
     handlePointerUp,
     handlePointerCancel,
-  } = useLightboxDialog({ isOpen, onClose, onPrev, onNext });
+  } = useLightboxDialog({
+    isOpen,
+    onClose,
+    onPrev,
+    onNext,
+    enableNavigation: showNavigation,
+  });
 
   return (
     <LightboxDialogShell
       dialogRef={dialogRef}
       isOpen={isOpen}
       ariaLabel={isOpen && item ? item.title : undefined}
+      layoutVariant="icons"
+      showNavigation={showNavigation}
       labels={labels}
       positionLabel={positionLabel}
       onClose={onClose}

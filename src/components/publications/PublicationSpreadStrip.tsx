@@ -4,9 +4,7 @@ import Image from "next/image";
 import { useCallback, useState } from "react";
 
 import { TextLink } from "@/components/core/TextLink";
-import { LightboxDialogShell } from "@/components/lightbox/LightboxDialogShell";
-import { LightboxImage } from "@/components/lightbox/LightboxImage";
-import { useLightboxDialog } from "@/components/lightbox/useLightboxDialog";
+import { ContentLightbox } from "@/components/lightbox/ContentLightbox";
 import type { Image as ContentImage } from "@/content/types";
 import { pl } from "@/i18n/pl";
 
@@ -56,22 +54,6 @@ export function PublicationSpreadStrip({
     });
   }, [visibleSpreads.length]);
 
-  const activeSpread = lightboxIndex !== null ? visibleSpreads[lightboxIndex] : null;
-  const isOpen = activeSpread !== null && lightboxIndex !== null;
-  const positionLabel = lightboxIndex !== null
-    ? labels.position
-        .replace("{index}", String(lightboxIndex + 1))
-        .replace("{total}", String(visibleSpreads.length))
-    : "";
-
-  const {
-    dialogRef,
-    handleDialogClick,
-    handlePointerDown,
-    handlePointerUp,
-    handlePointerCancel,
-  } = useLightboxDialog({ isOpen, onClose: handleClose, onPrev: handlePrev, onNext: handleNext });
-
   if (visibleSpreads.length === 0) {
     return null;
   }
@@ -114,44 +96,25 @@ export function PublicationSpreadStrip({
         ))}
       </ul>
 
-      <LightboxDialogShell
-        dialogRef={dialogRef}
-        isOpen={isOpen}
-        ariaLabel={isOpen && activeSpread ? activeSpread.alt : undefined}
-        dialogClassName="publication-spread-lightbox"
+      <ContentLightbox
+        photos={visibleSpreads}
+        index={lightboxIndex}
         labels={labels}
-        positionLabel={positionLabel}
-        onClose={handleClose}
+        dialogClassName="publication-spread-lightbox"
         onPrev={handlePrev}
         onNext={handleNext}
-        onDialogClick={handleDialogClick}
-        onPointerDown={handlePointerDown}
-        onPointerUp={handlePointerUp}
-        onPointerCancel={handlePointerCancel}
-        image={
-          activeSpread ? (
-            <LightboxImage
-              src={activeSpread.src}
-              alt={activeSpread.alt}
-              width={activeSpread.width}
-              height={activeSpread.height}
-            />
-          ) : null
-        }
-        meta={
-          activeSpread ? (
-            <div className="publication-spread-lightbox-meta">
-              <p className="publication-spread-lightbox-position">{positionLabel}</p>
-              {activeSpread.caption ? (
-                <p className="publication-spread-lightbox-caption">{activeSpread.caption}</p>
-              ) : null}
-              {showMailto && mailtoHref ? (
-                <TextLink href={mailtoHref} className="publication-spread-lightbox-order">
+        onClose={handleClose}
+        renderExtra={
+          showMailto && mailtoHref
+            ? () => (
+                <TextLink
+                  href={mailtoHref}
+                  className="mt-space-4 inline-flex min-h-tap-min-mobile-header items-center text-size-body"
+                >
                   {pl.publications.orderSpreadMailto}
                 </TextLink>
-              ) : null}
-            </div>
-          ) : null
+              )
+            : undefined
         }
       />
     </div>

@@ -13,7 +13,7 @@ Domknięcie serwisu na prawdziwych danych z etapu 9 przed wdrożeniem (etap 11).
 
 **Poza zakresem etapu 10:** hosting, DNS, pełny runbook wdrożenia (etap 11); **CMS wykładów** (osobny projekt po etapach 9–11); zmiany w `design/` przez Claude Code; nowe zależności npm bez uzgodnienia; `next.config.ts` redirecty — już w etapie 9 (ew. korekta po uzgodnieniu).
 
-**Źródła backlogu:** `scripts/migrate-report.md` (§ Do etapu 10, § EJK, P4 Tura B R1–R9, DoD #8), `docs/plan-claude-code.md` §3–§5, §4 (K-69, K-35–K-38, K-76, K-127, …).
+**Źródła backlogu:** `scripts/migrate-report.md` (§ Do etapu 10, § EJK, P4 Tura B R1–R9, DoD #8), `docs/plan-claude-code.md` §3–§5, §4 (K-69, K-35–K-37, K-39, K-76, K-127, …).
 
 ## Decyzje podjęte w sesji planistycznej
 
@@ -27,6 +27,7 @@ Domknięcie serwisu na prawdziwych danych z etapu 9 przed wdrożeniem (etap 11).
 | **Treść z makiety** | Copy z Claude Design ≠ treść klienta — nowe twierdzenia → `[do uzupełnienia]` lub gate EJK (`docs/plan-claude-code.md` §3). |
 | **K-122** | Gate w czacie przed zapisem treści redakcyjnej w `content/` (definicja: `docs/archive/plans/09-migration-v2.md`; rozszerzona tu z migracji na cały etap 10); refaktory UI — checkpoint po kawałku. |
 | **Kotwice `#wystawa-{rok}`** | K-89 usuwa sekcję, która je nosiła. Linkują do nich: `NewsArticlePage` (link powrotny przy wpisach dorocznych, K-103) i 7 wpisów w `content/news/*.mdx` (+ `#wyjazdowe` w `ikona-okno-ku-wiecznosci-2.mdx`). Redirecty 301 (`docs/redirects.json`) używają tylko `#oprowadzania` — tę kotwicę zachowujemy. Rozwiązanie (R7) — w kawałku 1. |
+| **Lightbox k2 (G1–G3) ✅** | Zamknięty 2026-10-03 — **`docs/plans/10-k2-lightbox.md`**. G1–G3 zrealizowane; siatki wg **D9** (justified: `/ikony`, `/`, wystawy doroczne; klasyczny grid + lupa: pracownia/aktualności; publikacje — grid 2:1). **K-38** iOS Safari — test OK 2026-10-03. Inline MDX → **k8**. |
 
 ## Pliki i komponenty (orientacyjnie)
 
@@ -54,11 +55,11 @@ Domknięcie serwisu na prawdziwych danych z etapu 9 przed wdrożeniem (etap 11).
 
 **Kryterium „gotowe”:** build + lint OK; strona na 390px, 1440px i ≥1600px (K-30) zgodna z K-127 w zakresie layoutu; brak zduplikowanych `h2` w drzewie a11y na tej trasie; regresja lightboxa na kafelach dorocznych; żaden link w repo nie celuje w nieistniejącą kotwicę `/ikony/wystawy#…`; `#oprowadzania` działa (cel 301); decyzja zapisana: nazwa sekcji wyjazdowej + anchor. Szczegółowy plan: **`docs/plans/10-k1-exhibitions.md`**.
 
-### Kawałek 2 — Lightbox global (G1–G3)
+### Kawałek 2 — Lightbox global (G1–G3) ✅
 
-**Zakres:** poprawka kadrowania/wyśrodkowania w modalu; **jeden wzorzec** otwierania zdjęć po kliknięciu w treści (galeria, pracownia, wystawy, news, album); Escape; test **iOS Safari** (K-38).
+**Zakres:** **G1** — miganie poprzedniego kadru przy prev/next; skala obrazu (`min(intrinsic, viewport)`). **G2** — modal treściowy vs ikon; siatki i hover wg **D9** w `10-k2-lightbox.md`; **Wybrane ikony** — lightbox ikon. **G3** — Escape, regresje desktop; **K-38** iOS Safari — test OK 2026-10-03. Inline MDX → **k8**.
 
-**Kryterium „gotowe”:** ten sam UX lightboxa na reprezentatywnych stronach; brak regresji galerii `/ikony`; K-38 odnotowany (OK lub fallback uzasadniony).
+**Kryterium „gotowe”:** spełnione 2026-10-03. Szczegóły: **`docs/plans/10-k2-lightbox.md`**.
 
 ### Kawałek 3 — Aktualności (lista + pojedynczy wpis + IA)
 
@@ -68,7 +69,7 @@ Domknięcie serwisu na prawdziwych danych z etapu 9 przed wdrożeniem (etap 11).
 
 ### Kawałek 4 — Strona główna
 
-**Zakres:** **Wybrane ikony** — layout jak siatka `/ikony`, bez bocznych pasków (H1); **Najbliższe** — IA (kafle vs aktualności) po K-69; hydratacja `Pillars` / `OfferLeadExtra` (DoD #8).
+**Zakres:** **Wybrane ikony** — otoczka sekcji (H1: marginesy nagłówka, bez bocznych pasków); siatka justified + lightbox ikon → **kawałek 2** (D6). **Najbliższe** — IA (kafle vs aktualności) po K-69; hydratacja `Pillars` / `OfferLeadExtra` (DoD #8).
 
 **Kryterium „gotowe”:** makieta lub zatwierdzenie właściciela na układ; brak overlay hydratacji w typowym `next dev` (lub udokumentowana znana przyczyna).
 
@@ -110,11 +111,11 @@ Legenda: **P** poprawka · **R** refaktor · **IA** decyzja produktowa + Design.
 
 ### Globalnie
 
-| ID | Typ | Zadanie |
-| --- | --- | --- |
-| G1 | P | Lightbox — błędne wyświetlanie obrazu w modalu |
-| G2 | R | Jeden wzorzec lightboxa dla klikalnych zdjęć w treści |
-| G3 | P | Escape, regresje; iOS Safari (K-38) |
+| ID | Typ | Zadanie | Status |
+| --- | --- | --- | --- |
+| G1 | P | Flash przy prev/next; cap skali (bez upscale ponad źródło) — `10-k2-lightbox.md` D1–D2 | ✅ |
+| G2 | R | Siatki (D9), lupa, modal treści vs ikon, single-slide, Wybrane ikony — `10-k2-lightbox.md` D3–D7, D9 | ✅ |
+| G3 | P | Escape, regresje desktop; iOS Safari (K-38) — test OK 2026-10-03 | ✅ |
 
 ### `/ikony/wystawy` (kawałek 1) — **W0–W5 ✅** (2026-10-03; szczegóły `10-k1-exhibitions.md`)
 
@@ -131,7 +132,7 @@ Legenda: **P** poprawka · **R** refaktor · **IA** decyzja produktowa + Design.
 
 | ID | Typ | Zadanie |
 | --- | --- | --- |
-| H1 | R | Wybrane ikony — layout jak `/ikony`, bez bocznych pasków |
+| H1 | R | Wybrane ikony — **otoczka** sekcji (bez bocznych pasków); siatka + lightbox → **k2 ✅** (k4 tylko marginesy/nagłówek) |
 | H2 | IA+R | Sekcja „Najbliższe” — rola i źródło danych |
 | H3 | P | Hydratacja `Pillars`, `OfferLeadExtra` |
 
@@ -190,6 +191,7 @@ Skrót klas — szczegóły w `docs/plan-claude-code.md` §5, `scripts/migrate-r
 | Oferty — treść | hero zamówienia, cytat Piotra, e-mail sekretariat |
 | LSŚ | Supraśl, Przemyśl, Wilno, Tbilisi — wpisy + `newsSlug` |
 | Wystawy — media | zdjęcia doroczne (`AnnualExhibition.photos`) i kadry strony (`heroImage`, `permanentImage`, `permanentImage2`, `closingImage`) — w k1 placeholdery; szablony news per rok (po W0–W1) |
+| Aktualności / MDX — inline | pojedyncze zdjęcia w treści do podpięcia lightboxa — inwentarz stron z EJK (**k8**, `10-k2-lightbox.md` D7) |
 | Wystawy — copy | redakcja z EJK tekstów przyjętych z makiety K-127 (lead, doroczna, oprowadzania, wyjazdowe); zakres „wyjazdowe / gościnne” i lista miast |
 | Wykłady — dane | unresolved lecturers w JSON 2012–2014 |
 | SEO i analityka | metadata, sitemap, robots, JSON-LD, K-07 |
@@ -208,7 +210,8 @@ Z `docs/plan-claude-code.md` §3, etap 10:
 - [ ] walidator schema.org bez błędów dla czterech typów; podgląd OG sprawdzony dla strony głównej i jednej ofertowej;
 - [ ] zdarzenia analityczne widoczne w panelu narzędzia w środowisku testowym;
 - [ ] przegląd kodu zakończony: usunięte lub uzasadnione miejsca over-engineered; brak oczywistych duplikacji i naruszeń konwencji repo;
-- [ ] raport Lighthouse dla 5 tras (główna, kurs, wykłady, galeria `/ikony`, aktualności) w `docs/lighthouse/`; lightbox `/ikony` na iOS Safari (K-38);
+- [ ] raport Lighthouse dla 5 tras (główna, kurs, wykłady, galeria `/ikony`, aktualności) w `docs/lighthouse/`;
+- [x] lightbox `/ikony` na iOS Safari (K-38) — test OK 2026-10-03;
 - [ ] `npm run build` i `npm run lint` bez regresji; dokumentacja zsynchronizowana z kodem i decyzjami etapu.
 
 ## Ryzyka i pytania otwarte
@@ -225,7 +228,7 @@ Z `docs/plan-claude-code.md` §3, etap 10:
 | Kawałek | Status | Uwagi |
 | --- | --- | --- |
 | 1 — wystawy | ✅ | `10-k1-exhibitions.md` 1.1–1.4; W0–W5; korekty **K1–K4** (m.in. K4 margines wide mobile) |
-| 2 — lightbox | ⬜ | |
+| 2 — lightbox | ✅ | `10-k2-lightbox.md` zamknięty (G1–G3, D9); K-38 iOS OK 2026-10-03 |
 | 3 — aktualności | ⬜ | |
 | 4 — home | ⬜ | |
 | 5 — album | ⬜ | |

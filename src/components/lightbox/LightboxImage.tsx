@@ -1,7 +1,10 @@
+"use client";
+
 import Image from "next/image";
+import { useState } from "react";
 
 import {
-  getLightboxImageRatio,
+  getLightboxImageDisplayStyle,
   getLightboxImageSizes,
   type LightboxImageDimensions,
 } from "@/components/lightbox/lightboxUtils";
@@ -12,17 +15,26 @@ export interface LightboxImageProps extends LightboxImageDimensions {
 }
 
 export function LightboxImage({ src, alt, width, height }: LightboxImageProps) {
+  const [readySrc, setReadySrc] = useState<string | null>(null);
+  const isVisible = readySrc === src;
+
+  const dimensions = { width, height };
+
   return (
     <Image
+      key={src}
       src={src}
       alt={alt}
       width={width}
       height={height}
-      sizes={getLightboxImageSizes({ width, height })}
+      sizes={getLightboxImageSizes(dimensions)}
       fetchPriority="high"
+      onLoadingComplete={() => {
+        setReadySrc(src);
+      }}
       style={{
-        width: `calc(var(--lightbox-image-h) * ${getLightboxImageRatio({ width, height })})`,
-        aspectRatio: `${width} / ${height}`,
+        ...getLightboxImageDisplayStyle(dimensions),
+        visibility: isVisible ? "visible" : "hidden",
       }}
       className="block h-auto max-w-full lg:shadow-lightbox"
     />

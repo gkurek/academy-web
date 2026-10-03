@@ -528,7 +528,7 @@ Treść z poniższych domen uznajemy za zmigrowaną — **bez ponownego fetchu**
 
 **Interakcje sprawdzone:** menu mobilne (akordeon sekcji); filtr tematu galerii; `SeasonAccordion` (archiwum wykładów); lightbox galerii (Zamknij, prev/next, licznik „1 z 20” na plakatach).
 
-**Nie objęte w DoD #8 (→ etap 10 — pełna ewaluacja §3 planu):** `/warsztaty`, `/warsztaty/kurs-roczny-i-trzyletni`, `/wyklady` (hub), `/wyklady/wykladowcy`, `/publikacje/[slug]` (poza hubem), `/polityka-prywatnosci`; próbki **301** ze starych URL WP (wymaga stagingu z `docs/redirects.json`); Lighthouse; test lightboxa **Escape** i fizyczny **iOS Safari** (K-38).
+**Nie objęte w DoD #8 (→ etap 10 — pełna ewaluacja §3 planu):** `/warsztaty`, `/warsztaty/kurs-roczny-i-trzyletni`, `/wyklady` (hub), `/wyklady/wykladowcy`, `/publikacje/[slug]` (poza hubem), `/polityka-prywatnosci`; próbki **301** ze starych URL WP (wymaga stagingu z `docs/redirects.json`); Lighthouse. (Test lightboxa Escape + fizyczny iOS Safari — **K-38** zamknięty 2026-10-03 w etapie 10 k2.)
 
 **Werdykt:** brak blokad zamknięcia etapu 9; uwagi techniczne i treściowe → § „Do etapu 10 — uwagi z DoD #8” poniżej oraz istniejące §5 / §EJK.
 

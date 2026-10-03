@@ -806,8 +806,8 @@
     overscroll-behavior: contain;
   }
 
-  /* Height the lightbox image is sized to (K-45): 60svh stacked, 80vh from lg. The image
-     gets width = this × its ratio (inline), so small source files are not shown smaller. */
+  /* Lightbox image viewport ceiling (K-45): 60svh stacked, 80vh from lg. Display size is
+     min(intrinsic px, this ceiling) — see getLightboxImageDisplayStyle (k2 D2). */
   .lightbox-dialog {
     --lightbox-image-h: var(--lightbox-image-max-h-m);
   }
@@ -1927,6 +1927,12 @@
     .photo-grid-caption {
       display: none;
     }
+  }
+
+  .lightbox-dialog--content .lightbox-content-meta {
+    max-width: var(--measure-prose);
+    margin-inline: auto;
+    text-align: center;
   }
 
   .workshop-lightbox-meta {
@@ -3536,22 +3542,6 @@
 
   .publication-spread-image {
     object-fit: contain;
-  }
-
-  .publication-spread-lightbox-meta {
-    padding: var(--space-5) var(--page-margin-mobile);
-  }
-
-  .publication-spread-lightbox-position {
-    margin-bottom: var(--space-3);
-    font-size: var(--size-ui-m);
-    color: var(--accent-text);
-  }
-
-  .publication-spread-lightbox-caption,
-  .publication-spread-lightbox-order {
-    font-size: var(--size-body-m);
-    color: var(--text-secondary);
   }
 
   .publication-articles-section {

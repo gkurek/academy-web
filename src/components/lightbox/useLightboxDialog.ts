@@ -9,11 +9,13 @@ export function useLightboxDialog({
   onClose,
   onPrev,
   onNext,
+  enableNavigation = true,
 }: {
   isOpen: boolean;
   onClose: () => void;
   onPrev: () => void;
   onNext: () => void;
+  enableNavigation?: boolean;
 }) {
   const dialogRef = useRef<HTMLDialogElement>(null);
   const swipeStartRef = useRef<{ x: number; y: number } | null>(null);
@@ -37,7 +39,7 @@ export function useLightboxDialog({
   }, [isOpen]);
 
   useEffect(() => {
-    if (!isOpen) {
+    if (!isOpen || !enableNavigation) {
       return;
     }
 
@@ -54,7 +56,7 @@ export function useLightboxDialog({
 
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [isOpen, onPrev, onNext]);
+  }, [isOpen, enableNavigation, onPrev, onNext]);
 
   const handleDialogClick = (event: MouseEvent<HTMLDialogElement>) => {
     const target = event.target as HTMLElement;
@@ -73,6 +75,11 @@ export function useLightboxDialog({
   };
 
   const handlePointerUp = (event: PointerEvent<HTMLDivElement>) => {
+    if (!enableNavigation) {
+      swipeStartRef.current = null;
+      return;
+    }
+
     const start = swipeStartRef.current;
     swipeStartRef.current = null;
     if (!start) {

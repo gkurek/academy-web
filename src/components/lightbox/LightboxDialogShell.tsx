@@ -16,13 +16,19 @@ export type LightboxControlLabels = {
   previousAria: string;
   next: string;
   nextAria: string;
+  position: string;
 };
+
+export type LightboxLayoutVariant = "icons" | "content";
 
 export interface LightboxDialogShellProps {
   dialogRef: RefObject<HTMLDialogElement | null>;
   isOpen: boolean;
   ariaLabel?: string;
   dialogClassName?: string;
+  layoutVariant?: LightboxLayoutVariant;
+  /** When false, hides prev/next and the mobile nav bar (D4 — single slide). */
+  showNavigation?: boolean;
   labels: LightboxControlLabels;
   positionLabel: string;
   onClose: () => void;
@@ -41,6 +47,8 @@ export function LightboxDialogShell({
   isOpen,
   ariaLabel,
   dialogClassName,
+  layoutVariant = "icons",
+  showNavigation = true,
   labels,
   positionLabel,
   onClose,
@@ -54,6 +62,7 @@ export function LightboxDialogShell({
   meta,
 }: LightboxDialogShellProps) {
   const dialogClasses = ["lightbox-dialog", dialogClassName].filter(Boolean).join(" ");
+  const isContentLayout = layoutVariant === "content";
 
   return (
     <dialog
@@ -91,34 +100,51 @@ export function LightboxDialogShell({
             </button>
           </div>
 
-          <div className="absolute left-space-5 top-1/2 hidden -translate-y-1/2 lg:block">
-            <LightboxIconButton label={labels.previousAria} onClick={onPrev}>
-              <LightboxArrow direction="prev" />
-            </LightboxIconButton>
-          </div>
+          {showNavigation ? (
+            <div className="absolute left-space-5 top-1/2 hidden -translate-y-1/2 lg:block">
+              <LightboxIconButton label={labels.previousAria} onClick={onPrev}>
+                <LightboxArrow direction="prev" />
+              </LightboxIconButton>
+            </div>
+          ) : null}
 
-          <div className="flex flex-1 touch-pan-y flex-col lg:flex-none lg:flex-row lg:items-center lg:gap-space-7">
-            <div className="flex justify-center px-page-margin-mobile lg:min-w-0 lg:px-0">{image}</div>
-            <div aria-live="polite">{meta}</div>
-          </div>
+          {isContentLayout ? (
+            <div className="flex flex-1 touch-pan-y flex-col items-center justify-center px-page-margin-mobile lg:flex-none lg:px-0">
+              <div className="flex w-full justify-center">{image}</div>
+              <div aria-live="polite" className="w-full">{meta}</div>
+            </div>
+          ) : (
+            <div className="flex flex-1 touch-pan-y flex-col lg:flex-none lg:flex-row lg:items-center lg:gap-space-7">
+              <div className="flex justify-center px-page-margin-mobile lg:min-w-0 lg:px-0">{image}</div>
+              <div aria-live="polite">{meta}</div>
+            </div>
+          )}
 
-          <div className="absolute right-space-5 top-1/2 hidden -translate-y-1/2 lg:block">
-            <LightboxIconButton label={labels.nextAria} onClick={onNext}>
-              <LightboxArrow direction="next" />
-            </LightboxIconButton>
-          </div>
+          {showNavigation ? (
+            <div className="absolute right-space-5 top-1/2 hidden -translate-y-1/2 lg:block">
+              <LightboxIconButton label={labels.nextAria} onClick={onNext}>
+                <LightboxArrow direction="next" />
+              </LightboxIconButton>
+            </div>
+          ) : null}
 
-          <div className="sticky bottom-0 z-10 flex items-center gap-lightbox-mobile-nav-gap border-t border-line-neutral bg-surface-lightbox px-page-margin-mobile py-space-3 lg:hidden">
-            <LightboxMobileNavButton onClick={onPrev}>
-              <LightboxArrow direction="prev" />
-              {labels.previous}
-            </LightboxMobileNavButton>
-            <span className="flex-none text-size-ui-m text-accent-text">{positionLabel}</span>
-            <LightboxMobileNavButton onClick={onNext}>
-              {labels.next}
-              <LightboxArrow direction="next" />
-            </LightboxMobileNavButton>
-          </div>
+          {showNavigation ? (
+            <div className="sticky bottom-0 z-10 flex items-center gap-lightbox-mobile-nav-gap border-t border-line-neutral bg-surface-lightbox px-page-margin-mobile py-space-3 lg:hidden">
+              <LightboxMobileNavButton onClick={onPrev}>
+                <LightboxArrow direction="prev" />
+                {labels.previous}
+              </LightboxMobileNavButton>
+              {isContentLayout ? (
+                <span className="flex-1" aria-hidden="true" />
+              ) : (
+                <span className="flex-none text-size-ui-m text-accent-text">{positionLabel}</span>
+              )}
+              <LightboxMobileNavButton onClick={onNext}>
+                {labels.next}
+                <LightboxArrow direction="next" />
+              </LightboxMobileNavButton>
+            </div>
+          ) : null}
         </div>
       ) : null}
     </dialog>

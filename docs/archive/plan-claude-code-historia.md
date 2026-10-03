@@ -11,7 +11,7 @@ Co jest w tym pliku:
 | Sekcja | Co zawiera | Skąd |
 | --- | --- | --- |
 | §3H | Opisy etapów 1–8b: cel, zakres, DoD, podział na kawałki, pytania | §3 planu v0.6 |
-| §4H | Decyzje **zamknięte** — 63 z 119 wierszy (56 żywych zostały w §4 żywego planu) | §4 planu v0.6 |
+| §4H | Decyzje **zamknięte** — 64 z 119 wierszy (55 żywych zostały w §4 żywego planu) | §4 planu v0.6 |
 | §5H | Pozycje treści makietowych **odhaczone** (`✅`) | §5 planu v0.6 |
 | §6H | Dziennik w całości (2026-09-11 … 2026-09-26) | §6 planu v0.6 |
 | Załącznik B | Prompty sesji planistycznej i wznowienia | bez zmian |
@@ -191,8 +191,8 @@ Szablon planu etapu (Załącznik A) **został w żywym dokumencie** — jest pot
 
 ## §4H. Rejestr decyzji — wiersze zamknięte
 
-63 z 119 wierszy: te, które nie mają już skutków dla etapów 9–11. **Zero duplikacji** —
-pozostałe 56 wierszy (otwarte albo wiążące dla 9/10/11) żyją wyłącznie w
+64 z 119 wierszy: te, które nie mają już skutków dla etapów 9–11. **Zero duplikacji** —
+pozostałe 55 wierszy (otwarte albo wiążące dla 9/10/11) żyją wyłącznie w
 `docs/plan-claude-code.md` §4 i nie są tu powtórzone. Pełny rejestr w jednym ciągu
 = ten plik + §4 żywego planu; numeracja `K-xx` jest globalna, więc każdy numer
 znajdziesz w dokładnie jednym z dwóch miejsc.
@@ -221,6 +221,7 @@ Numery tutaj: patrz tabela niżej. Jeśli szukanego `K-xx` tu nie ma — jest w 
 | K-31 | Kadrowanie ikon w `IconGrid` (04b)                 | 4b       | **`object-contain`** na `--surface-tile`, stała wysokość boksu; reguła wejściowa etapu 5 | 2026-09-19 |
 | K-33 | Hero home — rozmiar obrazu i fold (04b)            | 4b       | **Częściowo** — H2 „Najbliższe", filary → huby; `ClosingCta` home odrzucony (K-32). Hero: rekomendacja review `min(760px, 68vh)` **nie wdrożona** — **opcja A (2026-09-19):** zostaje `min(920px, 76vh)`, kolumna obrazu max 500 px, mobile 72%, siatka md+ (`--hero-text-min: 300px`). Kafle „Najbliższe" nad foldem przy 1920×917 **nie są wymagane** (priorytet: czytelność ikony). Patrz `docs/plans/04b-review-fixes.md` K-33 pkt 1 | 2026-09-19 |
 | K-34 | Stan czasu w `LectureList` (04b)                   | 4b       | **Odłożone** — bez zmian; obliczanie po stronie serwera + `revalidate`; powrót po etapie 10 | 2026-09-19 |
+| K-38 | `Lightbox` — implementacja modalna                 | 5, 10    | **Natywny `<dialog>` + `showModal()`**; test fizyczny iOS Safari OK 2026-10-03 (etap 10 k2 G3); bez fallback overlay; patrz `docs/archive/plans/05-galeria.md`, `docs/plans/10-k2-lightbox.md` | 2026-10-03 |
 | K-40 | Układ siatki galerii (05b; zmienia K-31 dla galerii) | 5b | **Opcja B — wyrównane rzędy** (FooGallery / `justifyGalleryRows.ts`): stała wysokość rzędu, zmienna szerokość kafli, `object-cover`, `lastRow: smart`; desktop `rowHeight` 300 / `maxRowHeight` 400, max 4 kafle w rzędzie. Opcja A (półka) odrzucona po ocenie wizualnej na pełnym zestawie WP (52 prace, 2026-09-20); tymczasowy toggle A/B usunięty. „Wybrane ikony” na home zostają przy K-31 — patrz `docs/plans/05b-review-fixes.md` | 2026-09-20 |
 | K-44 | Nagłówek galerii (05b) | 5b | **Jednokolumnowy** na wszystkich szerokościach (H1, pod nim filtr tematu); mobile: poziomy pasek chipów z uciętym ostatnim chipem (świadome odstępstwo od K-23 — filtr to nie nawigacja). Bez układu dwukolumnowego od 1024 px | 2026-09-19 |
 | K-47 | Treść `sample` galerii (05b) | 5b | **Pełny zestaw WP** — 52 prace (23 EJK + 29 uczniów), oryginały w `public/media/sample/icons/`, wszystkie `sample: true`; tytuły zgodne ze zdjęciami WP. Wymiary z podpisów WP w danych (`size` — 47 z 52; bez `size`: 3 EJK + 2 uczniów), UI pokazuje „Wymiary: do weryfikacji” (bez nowego pola). Z makiety wypadły „Św. Antoni” i „Przemienienie” (brak w galerii WP); dawny „Mandylion” to Chrystus Pantokrator, „Matka Boża Znaku” to Krzew Gorejący | 2026-09-20 |
