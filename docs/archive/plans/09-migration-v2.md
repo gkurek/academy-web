@@ -215,7 +215,7 @@ Po **wszystkich** kawałkach wykonawczych zatwierdzonych po kawałku 3 (nie tylk
 | 7 | Daty w `content/` (2025 vs 2026) | ✅ 2026-10-01 | Audyt w `migrate-report.md` § DoD #7; bez zmian w plikach |
 | 8 | Build, lint, przegląd tras mobile + desktop | ✅ 2026-10-01 | Build/lint OK; przegląd na `next start` (390px + 1280px); uwagi → `migrate-report.md` § DoD #8 + § Do etapu 10 (DoD #8) |
 
-**Następna sesja:** **etap 10** — sesja planistyczna (`docs/plans/10-wykonczenie.md` do utworzenia); merge `feat/09-migration` po commicie właściciela.
+**Następna sesja:** **etap 10** — sesja planistyczna (`docs/plans/10-finishing.md`); merge `feat/09-migration` po commicie właściciela.
 
 ## Ryzyka i otwarte kwestie
 

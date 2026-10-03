@@ -15,16 +15,19 @@ export function ExhibitionFactsPanel({ rows, footerLink }: ExhibitionFactsPanelP
   return (
     <aside
       aria-labelledby={headingId}
-      className="exhibition-facts bg-surface-card border-t-offer-facts-top border-accent px-offer-facts-x pt-offer-facts-y pb-offer-facts-pb"
+      className="exhibition-facts bg-surface-card"
     >
-      <h2 id={headingId} className="sr-only">
-        {pl.exhibition.facts.srHeading}
-      </h2>
+      <p
+        id={headingId}
+        className="exhibition-facts__heading font-serif text-size-role-box-title-m md:text-size-role-box-title leading-heading text-text-h2"
+      >
+        {pl.exhibition.facts.heading}
+      </p>
       <dl className="text-size-body leading-facts">
         {rows.map((row) => (
           <div key={row.label}>
             <dt className="text-size-caption text-text-tertiary">{row.label}</dt>
-            <dd className="mt-offer-facts-dd-mt pb-space-6 text-text-body last:pb-0">{row.value}</dd>
+            <dd className="text-text-body">{row.value}</dd>
           </div>
         ))}
       </dl>

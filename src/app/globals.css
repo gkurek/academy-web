@@ -382,18 +382,23 @@
   /* /ikony/wystawy — mockup 9a–9e (WY-*). */
   --exhibition-section-gap: 64px;
   --exhibition-section-gap-m: 30px;
-  --exhibition-photo-pair-h-m: 175px;
-  --exhibition-photo-pair-h-d: 261px;
-  --exhibition-photo-quad-h-m: 130px;
-  --exhibition-photo-quad-h-d: 186px;
-  --exhibition-traveling-photo-h-m: 200px;
-  --exhibition-traveling-photo-h-d: 260px;
-  --exhibition-edition-year-size: 21px;
-  --exhibition-edition-year-col-m: 62px;
-  --exhibition-edition-year-col-d: 96px;
+  --exhibition-aspect-wide: 21 / 8;
+  --exhibition-aspect-standard: 3 / 2;
+  --exhibition-aspect-square: 1 / 1;
+  --exhibition-aspect-tile: 4 / 3;
+  /* 60/40 pair: same row height as 4:3 tile at 40% width → 2:1 at 60%. */
+  --exhibition-aspect-tile-pair-lead: 2 / 1;
+  /* 13a/14a — kolumna „W skrócie” / CTA; treść = reszta (652px przy szer. treści 1068px). */
+  --exhibition-facts-w: 360px;
+  --exhibition-section-col-gap: 56px;
+  /* 13a: padding-top 52px przed kadrem 21:8; 14a: margin-top 30px po TOC. */
+  --exhibition-hero-frame-mt: var(--space-8);
+  --exhibition-hero-frame-mt-m: var(--exhibition-section-gap-m);
+  /* 13a — eyebrow → H2: 10px; H2 → pierwszy akapit: 22px. */
+  --exhibition-section-eyebrow-mb: var(--space-3);
+  --exhibition-section-h2-mb: var(--icon-grid-gap);
   --exhibition-cta-x: 30px;
   --exhibition-cta-y: 26px;
-  --exhibition-archive-label-size: 19px;
 
   /* /publikacje — mockup 8a–8j (PU-*). */
   --publication-section-gap: 64px;
@@ -2754,6 +2759,84 @@
   }
 
   /* /ikony/wystawy */
+  .exhibition-hero-frame {
+    margin-top: var(--exhibition-hero-frame-mt-m);
+  }
+
+  .exhibition-hero-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    column-gap: var(--exhibition-section-col-gap);
+    row-gap: 0;
+    align-items: start;
+  }
+
+  .exhibition-hero-grid__eyebrow {
+    margin: 0 0 var(--space-2);
+  }
+
+  .exhibition-hero-grid__h1 {
+    margin: 0 0 var(--space-4);
+  }
+
+  .exhibition-hero-grid__lead {
+    margin: 0;
+  }
+
+  .exhibition-hero-grid__now {
+    margin-top: var(--space-5);
+  }
+
+  .exhibition-hero-grid__nav.exhibition-page-nav {
+    margin-top: var(--space-5);
+  }
+
+  .exhibition-now-next-title {
+    display: block;
+    margin: var(--space-2) 0 0;
+    font-family: var(--font-serif);
+    line-height: var(--leading-heading);
+    color: var(--text-list-title);
+    text-decoration: none;
+  }
+
+  .exhibition-now-next-title--primary {
+    font-size: var(--text-size-role-card-title-m);
+  }
+
+  .exhibition-now-next-title--secondary {
+    font-size: var(--text-size-role-row-title-m);
+  }
+
+  .exhibition-now-next-title:hover {
+    color: var(--accent-text);
+  }
+
+  .exhibition-now-next-title:focus-visible {
+    outline: 2px solid var(--focus-ring);
+    outline-offset: 2px;
+  }
+
+  .exhibition-now-next-subline {
+    margin: var(--space-2) 0 0;
+    font-size: var(--size-body-m);
+    line-height: var(--leading-body);
+    color: var(--text-body);
+  }
+
+  .exhibition-tours-pass {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-5);
+    padding: var(--space-6) 0;
+    border-top: 1px solid var(--line-gold);
+    border-bottom: 1px solid var(--line-gold);
+  }
+
+  .exhibition-tours-pass__intro {
+    margin: 0;
+  }
+
   .exhibition-page-nav {
     display: flex;
     flex-direction: column;
@@ -2785,6 +2868,45 @@
     margin-top: var(--exhibition-section-gap-m);
   }
 
+  .exhibition-section-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+    align-items: start;
+  }
+
+  .exhibition-section-grid--text-facts {
+    grid-template-columns: 1fr;
+  }
+
+  .exhibition-permanent-layout {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+    align-items: start;
+  }
+
+  .exhibition-permanent-layout__main {
+    order: 1;
+  }
+
+  .exhibition-permanent-layout__facts {
+    order: 2;
+  }
+
+  .exhibition-permanent-layout__media {
+    order: 3;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
+    width: 100%;
+  }
+
+  .exhibition-permanent-layout__media .exhibition-frame--tile-pair-lead .exhibition-frame-media,
+  .exhibition-permanent-layout__media .exhibition-frame--tile-pair-lead .exhibition-frame-placeholder {
+    aspect-ratio: var(--exhibition-aspect-tile);
+  }
+
   .exhibition-section-copy,
   .exhibition-section-lead {
     margin: 0;
@@ -2793,51 +2915,146 @@
     color: var(--text-secondary);
   }
 
+  .exhibition-section-grid__main {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .exhibition-section-eyebrow {
+    margin: 0 0 var(--exhibition-section-eyebrow-mb);
+  }
+
+  .exhibition-section-h2 {
+    margin: 0 0 var(--exhibition-section-h2-mb);
+  }
+
+  .exhibition-section-grid__main .exhibition-section-copy + .exhibition-section-copy,
+  .exhibition-permanent-layout__main .exhibition-section-copy + .exhibition-section-copy {
+    margin-top: var(--offer-facts-dd-mb);
+  }
+
+  .exhibition-section-grid__main .exhibition-section-copy + .exhibition-frame {
+    margin-top: var(--space-6);
+  }
+
+  .exhibition-facts {
+    border-top: 3px solid var(--accent);
+    padding: var(--lecturer-row-y) var(--news-card-x-m) var(--space-6);
+  }
+
+  .exhibition-facts__heading {
+    margin: 0 0 var(--space-4);
+  }
+
+  .exhibition-facts dd {
+    margin: var(--space-1) 0 0;
+    padding-bottom: var(--offer-facts-dd-mb);
+  }
+
+  .exhibition-facts dl > div:last-child dd {
+    padding-bottom: 0;
+  }
+
   .exhibition-facts-footer {
-    margin-top: var(--space-5);
-    padding-top: var(--space-5);
+    margin-top: var(--offer-examples-link-mt);
+  }
+
+  .exhibition-now-next {
+    padding: var(--offer-facts-y) var(--offer-facts-x) var(--offer-facts-pb);
+    border: 0;
+    border-top: 3px solid var(--accent);
+    background: var(--surface-card);
+  }
+
+  .exhibition-now-next-row {
+    margin: 0;
+  }
+
+  .exhibition-now-next-row + .exhibition-now-next-row {
+    margin-top: var(--space-4);
+    padding-top: var(--space-4);
     border-top: 1px solid var(--line-neutral);
   }
 
-  .exhibition-archive-label {
-    margin: 0;
-    font-family: var(--font-serif);
-    font-size: var(--exhibition-archive-label-size);
-    line-height: var(--leading-body);
-    color: var(--text-secondary);
-  }
-
-  .exhibition-archive-footer {
-    margin-top: var(--space-4);
-  }
-
-  .exhibition-archive-note {
-    margin: 0 0 var(--space-3);
-    font-size: var(--size-body);
+  .exhibition-now-next-label {
+    margin: 0 0 var(--space-2);
+    font-size: var(--size-caption);
     line-height: var(--leading-body);
     color: var(--text-tertiary);
   }
 
-  .exhibition-photo-row {
-    display: grid;
+
+  .exhibition-frame {
+    margin: 0;
+    width: 100%;
+  }
+
+  .exhibition-frame-media,
+  .exhibition-frame-placeholder {
+    position: relative;
+    display: block;
+    width: 100%;
+    overflow: hidden;
+    border: 1px solid var(--line-gold);
+    background: var(--surface-tile);
+  }
+
+  .exhibition-frame--wide .exhibition-frame-media,
+  .exhibition-frame--wide .exhibition-frame-placeholder,
+  .exhibition-frame-media.exhibition-frame--wide,
+  .exhibition-frame-placeholder.exhibition-frame--wide {
+    aspect-ratio: var(--exhibition-aspect-standard);
+  }
+
+  .exhibition-frame--standard .exhibition-frame-media,
+  .exhibition-frame--standard .exhibition-frame-placeholder,
+  .exhibition-frame-media.exhibition-frame--standard,
+  .exhibition-frame-placeholder.exhibition-frame--standard {
+    aspect-ratio: var(--exhibition-aspect-standard);
+  }
+
+  .exhibition-frame--square .exhibition-frame-media,
+  .exhibition-frame--square .exhibition-frame-placeholder,
+  .exhibition-frame-media.exhibition-frame--square,
+  .exhibition-frame-placeholder.exhibition-frame--square {
+    aspect-ratio: var(--exhibition-aspect-square);
+  }
+
+  .exhibition-frame--tile .exhibition-frame-media,
+  .exhibition-frame--tile .exhibition-frame-placeholder,
+  .exhibition-frame-media.exhibition-frame--tile,
+  .exhibition-frame-placeholder.exhibition-frame--tile {
+    aspect-ratio: var(--exhibition-aspect-tile);
+  }
+
+  .exhibition-frame--tile-pair-lead .exhibition-frame-media,
+  .exhibition-frame--tile-pair-lead .exhibition-frame-placeholder,
+  .exhibition-frame-media.exhibition-frame--tile-pair-lead,
+  .exhibition-frame-placeholder.exhibition-frame--tile-pair-lead {
+    aspect-ratio: var(--exhibition-aspect-tile-pair-lead);
+  }
+
+  .exhibition-frame-image {
+    object-fit: cover;
+    object-position: center;
+  }
+
+  .exhibition-annual-tiles {
     margin-top: var(--space-6);
   }
 
-  .exhibition-photo-row--pair {
-    grid-template-columns: 1fr;
-    gap: 18px;
-  }
-
-  .exhibition-photo-row--quad {
+  .exhibition-annual-tiles-row {
+    display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 12px;
   }
 
-  .exhibition-photo-cell {
+  .exhibition-annual-tile {
     margin: 0;
   }
 
-  .exhibition-photo-button {
+  .exhibition-annual-tile-button {
     display: block;
     width: 100%;
     min-height: var(--tap-min);
@@ -2847,57 +3064,63 @@
     cursor: pointer;
   }
 
-  .exhibition-photo-button:focus-visible {
+  .exhibition-annual-tile-button:focus-visible {
     outline: 2px solid var(--focus-ring);
     outline-offset: 2px;
   }
 
-  .exhibition-photo-row--pair .exhibition-photo-frame,
-  .exhibition-photo-row--pair .exhibition-photo-placeholder {
-    height: var(--exhibition-photo-pair-h-m);
-  }
-
-  .exhibition-photo-row--quad .exhibition-photo-frame,
-  .exhibition-photo-row--quad .exhibition-photo-placeholder {
-    height: var(--exhibition-photo-quad-h-m);
-  }
-
-  .exhibition-photo-frame {
-    position: relative;
-    display: block;
-    width: 100%;
-    overflow: hidden;
-  }
-
-  .exhibition-photo-image {
-    object-fit: cover;
-    object-position: center;
-  }
-
-  .exhibition-photo-placeholder {
+  .exhibition-annual-tile-frame {
     width: 100%;
   }
 
-  .exhibition-photo-caption {
-    margin: var(--space-3) 0 0;
+  .exhibition-annual-tile-image {
+    object-fit: contain;
+  }
+
+  .exhibition-annual-tiles-caption {
+    margin: var(--space-4) 0 0;
     font-size: var(--size-ui-m);
     line-height: var(--leading-body);
-    color: var(--text-tertiary);
+    color: var(--text-secondary);
   }
 
-  .exhibition-photo-caption-note,
-  .exhibition-traveling-pending-text {
-    color: var(--text-tertiary);
+  .exhibition-annual-tiles-caption-button {
+    padding: 0;
+    border: 0;
+    border-bottom: 1px solid var(--accent-veil);
+    background: transparent;
+    font: inherit;
+    color: var(--accent-text);
+    cursor: pointer;
+  }
+
+  .exhibition-annual-tiles-caption-button:hover {
+    color: var(--accent-hover);
+    border-bottom-color: var(--accent-hover);
+  }
+
+  .exhibition-annual-tiles-caption-button:focus-visible {
+    outline: 2px solid var(--focus-ring);
+    outline-offset: 2px;
   }
 
   .exhibition-media-placeholder {
+    box-sizing: border-box;
     display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: var(--space-4);
+    align-items: flex-end;
+    justify-content: flex-start;
+    min-height: 0;
+    padding: var(--space-4) var(--space-5);
+    text-align: start;
+    background: repeating-linear-gradient(
+      135deg,
+      var(--umbra-850) 0 var(--space-4),
+      var(--umbra-800) var(--space-4) calc(2 * var(--space-4))
+    );
+  }
+
+  .exhibition-frame-placeholder.exhibition-media-placeholder {
     border: 1px solid var(--line-gold);
-    background: var(--surface-tile);
-    text-align: center;
   }
 
   .exhibition-media-placeholder-text {
@@ -2928,179 +3151,6 @@
     color: var(--text-list-title);
   }
 
-  .exhibition-traveling-photo {
-    margin: 0 0 var(--space-5);
-  }
-
-  .exhibition-traveling-photo-frame {
-    position: relative;
-    display: block;
-    width: 100%;
-    height: var(--exhibition-traveling-photo-h-m);
-    overflow: hidden;
-  }
-
-  .exhibition-traveling-photo-image {
-    object-fit: cover;
-    object-position: center;
-  }
-
-  .exhibition-traveling-list {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-    display: grid;
-    gap: 1px;
-    background: var(--line-gold);
-  }
-
-  .exhibition-traveling-row {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: var(--space-2);
-    padding: 14px 18px;
-    background: var(--surface-tile);
-  }
-
-  .exhibition-traveling-place {
-    font-size: var(--size-body-m);
-    line-height: var(--leading-body);
-    color: var(--text-list-title);
-  }
-
-  .exhibition-traveling-pending {
-    padding: 14px 18px;
-    background: var(--surface-tile);
-  }
-
-  .exhibition-previous-list {
-    display: grid;
-    gap: 1px;
-    margin: 0;
-    padding: 0;
-    list-style: none;
-    background: var(--line-gold);
-  }
-
-  .exhibition-previous-item {
-    background: var(--surface-tile);
-  }
-
-  .exhibition-previous-item--linked:hover {
-    background: var(--surface-card);
-  }
-
-  .exhibition-previous-row {
-    position: relative;
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: var(--space-2);
-    padding: 14px 18px;
-  }
-
-  .exhibition-previous-row-link {
-    position: absolute;
-    inset: 0;
-    z-index: 0;
-  }
-
-  .exhibition-previous-row-link:focus-visible {
-    outline: 2px solid var(--focus-ring);
-    outline-offset: -2px;
-  }
-
-  .exhibition-previous-heading {
-    display: grid;
-    grid-template-columns: var(--exhibition-edition-year-col-m) minmax(0, 1fr);
-    gap: 14px;
-    align-items: baseline;
-    margin: 0;
-    font-weight: 400;
-  }
-
-  .exhibition-previous-year {
-    font-family: var(--font-serif);
-    font-size: var(--exhibition-edition-year-size);
-    font-variant-numeric: tabular-nums;
-    line-height: var(--leading-heading);
-    color: var(--accent-text);
-  }
-
-  .exhibition-previous-title {
-    font-family: var(--font-sans);
-    font-size: var(--size-body-m);
-    line-height: var(--leading-body);
-    color: var(--text-list-title);
-  }
-
-  .exhibition-previous-photos {
-    position: relative;
-    z-index: 1;
-    justify-self: start;
-    min-height: var(--tap-min);
-    padding: var(--space-3) 0;
-    border: 0;
-    border-bottom: 1px solid var(--accent-veil);
-    background: transparent;
-    font-size: var(--size-body);
-    color: var(--accent-text);
-    cursor: pointer;
-  }
-
-  .exhibition-previous-photos:hover {
-    color: var(--accent-hover);
-    border-bottom-color: var(--accent-hover);
-  }
-
-  .exhibition-previous-photos:focus-visible {
-    outline: 2px solid var(--focus-ring);
-    outline-offset: 2px;
-  }
-
-  .exhibition-previous-photos--empty {
-    display: block;
-    width: 100px;
-    visibility: hidden;
-    pointer-events: none;
-  }
-
-  .exhibition-previous-expand-row {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: var(--space-4);
-    padding: 12px 18px;
-    background: var(--surface-card);
-  }
-
-  .exhibition-previous-expand-label {
-    font-size: var(--size-body-m);
-    line-height: var(--leading-body);
-    color: var(--text-secondary);
-  }
-
-  .exhibition-previous-expand {
-    display: inline-flex;
-    align-items: center;
-    gap: var(--space-2);
-    min-height: var(--tap-min);
-    padding: 0 var(--space-1);
-    border: 0;
-    background: transparent;
-    font-size: var(--size-body);
-    color: var(--accent-text);
-    cursor: pointer;
-  }
-
-  .exhibition-previous-expand:hover {
-    color: var(--accent-hover);
-  }
-
-  .exhibition-previous-expand:focus-visible {
-    outline: 2px solid var(--focus-ring);
-    outline-offset: 2px;
-  }
-
   .exhibition-page-footer {
     display: flex;
     flex-wrap: wrap;
@@ -3118,6 +3168,23 @@
   }
 
   @media (min-width: 768px) {
+    .exhibition-facts {
+      padding: var(--offer-facts-y) var(--offer-facts-x) var(--offer-facts-pb);
+    }
+
+    .exhibition-facts__heading {
+      margin-bottom: var(--space-5);
+    }
+
+    .exhibition-facts dd {
+      margin-top: var(--offer-facts-dd-mt);
+      padding-bottom: var(--space-4);
+    }
+
+    .exhibition-facts-footer {
+      margin-top: var(--news-article-nav-gap);
+    }
+
     .exhibition-page-nav {
       flex-direction: row;
       flex-wrap: wrap;
@@ -3129,7 +3196,17 @@
 
     .exhibition-page-nav-link {
       min-height: auto;
-      border-bottom: 1px solid var(--accent-veil);
+      color: var(--text-body);
+      border-bottom: 0;
+    }
+
+    .exhibition-page-nav-link:hover {
+      color: var(--accent-text);
+    }
+
+    .exhibition-hero-grid__nav.exhibition-page-nav {
+      margin-top: 0;
+      padding-top: var(--space-6);
     }
 
     .exhibition-section {
@@ -3142,75 +3219,129 @@
       line-height: var(--leading-prose);
     }
 
-    .exhibition-photo-row--pair {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 24px;
+    .exhibition-frame--wide .exhibition-frame-media,
+    .exhibition-frame--wide .exhibition-frame-placeholder,
+    .exhibition-frame-media.exhibition-frame--wide,
+    .exhibition-frame-placeholder.exhibition-frame--wide {
+      aspect-ratio: var(--exhibition-aspect-wide);
     }
 
-    .exhibition-photo-row--quad {
+    .exhibition-hero-frame {
+      margin-top: var(--exhibition-hero-frame-mt);
+    }
+
+    .exhibition-hero-grid {
+      grid-template-columns: minmax(0, 1fr) var(--exhibition-facts-w);
+      grid-template-rows: auto auto auto 1fr;
+      column-gap: var(--exhibition-section-col-gap);
+      row-gap: 0;
+      align-items: stretch;
+    }
+
+    .exhibition-hero-grid__eyebrow {
+      grid-column: 1;
+      grid-row: 1;
+      margin-bottom: var(--space-3);
+    }
+
+    .exhibition-hero-grid__h1 {
+      grid-column: 1;
+      grid-row: 2;
+      margin-bottom: var(--workshop-section-heading-mb-m);
+    }
+
+    .exhibition-hero-grid__lead {
+      grid-column: 1;
+      grid-row: 3;
+    }
+
+    .exhibition-hero-grid__nav {
+      grid-column: 1;
+      grid-row: 4;
+      align-self: end;
+    }
+
+    .exhibition-hero-grid__now {
+      grid-column: 2;
+      grid-row: 1 / 5;
+      align-self: stretch;
+      margin-top: 0;
+    }
+
+    .exhibition-hero-grid__nav.exhibition-page-nav {
+      margin-top: auto;
+    }
+
+    .exhibition-now-next-title--primary {
+      font-size: var(--text-size-role-card-title);
+    }
+
+    .exhibition-now-next-title--secondary {
+      font-size: var(--text-size-role-row-title);
+    }
+
+    .exhibition-now-next-subline {
+      font-size: var(--size-body-lg);
+    }
+
+    .exhibition-tours-pass {
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: var(--exhibition-section-col-gap);
+      align-items: center;
+      padding: var(--space-6) 0;
+    }
+
+    .exhibition-tours-pass__cta {
+      width: auto;
+      flex: none;
+    }
+
+    .exhibition-annual-tiles-row {
       grid-template-columns: repeat(4, minmax(0, 1fr));
       gap: var(--space-4);
     }
 
-    .exhibition-photo-row--pair .exhibition-photo-frame,
-    .exhibition-photo-row--pair .exhibition-photo-placeholder {
-      height: var(--exhibition-photo-pair-h-d);
+    .exhibition-section-grid--text-facts {
+      grid-template-columns: minmax(0, 1fr) var(--exhibition-facts-w);
+      gap: var(--exhibition-section-col-gap);
     }
 
-    .exhibition-photo-row--quad .exhibition-photo-frame,
-    .exhibition-photo-row--quad .exhibition-photo-placeholder {
-      height: var(--exhibition-photo-quad-h-d);
+    .exhibition-permanent-layout {
+      grid-template-columns: var(--exhibition-facts-w) minmax(0, 1fr);
+      column-gap: var(--exhibition-section-col-gap);
+      row-gap: var(--space-6);
+    }
+
+    .exhibition-permanent-layout__facts {
+      grid-column: 1;
+      grid-row: 1;
+      order: unset;
+    }
+
+    .exhibition-permanent-layout__main {
+      grid-column: 2;
+      grid-row: 1;
+      order: unset;
+    }
+
+    .exhibition-permanent-layout__media {
+      grid-column: 1 / -1;
+      grid-row: 2;
+      order: unset;
+      width: 100%;
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+      gap: var(--space-4);
+    }
+
+    .exhibition-permanent-layout__media .exhibition-frame--tile-pair-lead .exhibition-frame-media,
+    .exhibition-permanent-layout__media .exhibition-frame--tile-pair-lead .exhibition-frame-placeholder {
+      aspect-ratio: var(--exhibition-aspect-tile-pair-lead);
     }
 
     .exhibition-tours-grid,
     .exhibition-traveling-grid {
-      grid-template-columns: minmax(0, 1fr) var(--offer-sidebar-w);
-      gap: var(--offer-main-gap);
-    }
-
-    .exhibition-traveling-photo-frame {
-      height: var(--exhibition-traveling-photo-h-d);
-    }
-
-    .exhibition-previous-row {
-      grid-template-columns: minmax(0, 1fr) auto;
-      gap: 24px;
-      align-items: baseline;
-      padding: 16px 26px;
-    }
-
-    .exhibition-previous-heading {
-      grid-template-columns: var(--exhibition-edition-year-col-d) minmax(0, 1fr);
-      gap: 24px;
-    }
-
-    .exhibition-previous-title {
-      font-size: var(--size-body-lg);
-    }
-
-    .exhibition-previous-photos {
-      justify-self: end;
-      width: 100px;
-      text-align: right;
-    }
-
-    .exhibition-previous-expand-row {
-      padding: 8px 26px;
-    }
-
-    .exhibition-traveling-row {
-      grid-template-columns: minmax(0, 1fr) auto;
-      gap: 24px;
-      align-items: baseline;
-      padding: 16px 26px;
-    }
-
-    .exhibition-traveling-place {
-      font-size: var(--size-body-lg);
-    }
-
-    .exhibition-traveling-pending {
-      padding: 16px 26px;
+      grid-template-columns: minmax(0, 1fr) var(--exhibition-facts-w);
+      gap: var(--exhibition-section-col-gap);
     }
   }
 

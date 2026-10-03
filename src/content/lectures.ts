@@ -259,6 +259,26 @@ export function getSeason(slug: string): LoadedLectureSeason | undefined {
   return season ? toLoadedSeason(season) : undefined;
 }
 
+/** Short lecture-cycle theme for exhibition copy (suffix after ". " when cycleTitle has two parts). */
+export function getLectureSeasonShortTheme(seasonSlug: string): string {
+  const season = getSeason(seasonSlug);
+  if (!season) {
+    throw new Error(`lectures: unknown season "${seasonSlug}" for short theme`);
+  }
+
+  const cycleTitle = season.cycleTitle.trim();
+  if (!cycleTitle) {
+    throw new Error(`lectures: empty cycleTitle for season "${seasonSlug}"`);
+  }
+
+  const dotSpace = cycleTitle.indexOf(". ");
+  if (dotSpace >= 0) {
+    return cycleTitle.slice(dotSpace + 2).trim();
+  }
+
+  return cycleTitle;
+}
+
 /** ISO date and location for future JSON-LD Event emission (etap 7). */
 export function getLectureEventData(season: LectureSeason): Array<{
   date: string;

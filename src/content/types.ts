@@ -283,12 +283,23 @@ export type AboutPageData = TextPageData & {
   };
 };
 
-// K-82…K-84: daily permanent display + annual exhibitions in KŚT.
+// K-82…K-84, K-127: daily permanent display + annual exhibitions in KŚT.
+export type ExhibitionTravelingPlace = {
+  place: string;
+  newsSlug?: string;
+};
+
 export type PermanentExhibition = {
   title: string;
   lead: string;
   iconCount: { from: number; to: number };
-  interiorPhotos: Image[];
+  /** K-127: optional frame images; omitted = placeholder in UI. */
+  heroImage?: Image;
+  permanentImage?: Image;
+  permanentImage2?: Image;
+  closingImage?: Image;
+  /** K-127 / K-87: curated list for #wyjazdowe (not derived from News.venue). */
+  travelingPlaces: ExhibitionTravelingPlace[];
   sample?: boolean;
 };
 
@@ -297,7 +308,6 @@ export type AnnualExhibition = {
   title: string;
   vernissage?: string;
   dateEnd?: string;
-  summary?: string;
   photos?: Image[];
   newsSlug?: string;
 };

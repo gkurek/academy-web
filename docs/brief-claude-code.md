@@ -46,7 +46,7 @@ Strona jest częścią szerszego ekosystemu (Akademia + Fundacja + planowana str
 /ikony                     galeria: sekcje Elżbieta / uczniowie + filtr tematu
 /ikony/[slug]              pojedyncza ikona (opcjonalnie w v1)
 /ikony/na-zamowienie       strona ofertowa (treść wymienna w przyszłości — nie istotne teraz)
-/ikony/wystawy             trzy formy wystaw w KŚT: ekspozycja codzienna, doroczna, wyjazdowe (K-82…K-90; historia K-51)
+/ikony/wystawy             trzy formy wystaw w KŚT; kotwice `#doroczna`, `#ekspozycja`, `#oprowadzania`, `#wyjazdowe` (K-127, k1)
 /aktualnosci               lista z typem wpisu (`kind`), w tym archiwum wystaw, oprowadzań i wyjazdów studyjnych (w tym dawne plenery LSŚ → `kind: 'wyjazd'`; K-50, K-52, K-125)
 /aktualnosci/[slug]
 /publikacje                album Akademii + artykuły (K-76)
@@ -168,21 +168,26 @@ type News = {
   poster?: Image;
   featured?: boolean;
   featuredUntil?: string;       // YYYY-MM-DD; tylko przy featured: true; po dacie wpis traci wyróżnienie przy buildzie (K-73)
-  venue?: string;               // wystawy wyjazdowe — wiersz na `/ikony/wystawy#wyjazdowe` (K-87)
+  venue?: string;               // opcjonalny kontekst miejsca w artykule; lista #wyjazdowe z `travelingPlaces` (K-127)
 };
 // K-72: na liście (`NewsCard`) wyświetlana jest tylko `date` z rokiem — bez zakresu `dateEnd`.
 // We wpisie pojedynczym i w wyróżnionym: `formatDateRange` z `dateEnd` gdy jest.
 
-// K-82…K-90 (08b): w KŚT są trzy formy wystawy — ekspozycja codzienna (6–10 ikon EJK),
+// K-82…K-90 (08b), K-127: w KŚT są trzy formy wystawy — ekspozycja codzienna (6–10 ikon EJK),
 // wystawa doroczna (40–50 ikon, wernisaż na ostatnim wykładzie sezonu), wystawy wyjazdowe
-// (wpisy Aktualności `kind: 'wystawa'` z `venue`). Strona `/ikony/wystawy`, H1 „Wystawy ikon”.
-// Szczegóły merytoryczne i układ: `docs/archive/plans/08b-review-fixes.md` §1–§2. K-51: historia wydzielenia
-// wystawy z Aktualności (2026-09-21); model `ExhibitionEdition` zastąpiony w 08b.
+// (ręczna lista `travelingPlaces` w `page.mdx`, kotwica `#wyjazdowe`). Strona `/ikony/wystawy`, H1 „Wystawy ikon”.
+// Szczegóły merytoryczne: `docs/archive/plans/08b-review-fixes.md` §1–§2; układ K-127 i korekty K1–K4 (w tym odstępstwa od makiety 14a): `docs/plans/10-k1-exhibitions.md`.
+type ExhibitionTravelingPlace = { place: string; newsSlug?: string };
+
 type PermanentExhibition = {
   title: string;
   lead: string;
   iconCount: { from: number; to: number };
-  interiorPhotos: Image[];
+  heroImage?: Image;
+  permanentImage?: Image;
+  permanentImage2?: Image;
+  closingImage?: Image;
+  travelingPlaces: ExhibitionTravelingPlace[];
   sample?: boolean;
 };
 
@@ -191,8 +196,6 @@ type AnnualExhibition = {
   title: string;                // osobne pole (K-84), np. „Mistyka dziś”
   vernissage?: string;          // domyślnie data ostatniego wykładu sezonu
   dateEnd?: string;             // domyślnie 31 sierpnia roku wernisażu
-  iconCount?: number;
-  summary?: string;
   photos?: Image[];
   newsSlug?: string;            // relacja doroczna ↔ wpis Aktualności (K-103)
 };
@@ -315,7 +318,7 @@ Szacunek ręcznej korekty po migracji: ~10 stron statycznych, 16 sezonów wykła
 | `/publikacje/artykuly/` | `/publikacje#artykuly` |
 | `/publikacje/multimedia/` | `/publikacje` |
 | `/publikacje/plakaty/` | `/aktualnosci/plakaty-z-wydarzen` |
-| `/ikona-korzenie-i-owoce-wiary-2/` i wpisy wystaw z lat 2015–2018 | `/ikony/wystawy` (kotwice `#wystawa-{rok}` gdy relacja doroczna) |
+| `/ikona-korzenie-i-owoce-wiary-2/` i wpisy wystaw z lat 2015–2018 | `/ikony/wystawy` lub `/ikony/wystawy#doroczna` (bez `#wystawa-{rok}`, k1) |
 | pojedyncze wpisy oprowadzań 2017 (`/ikony-emaliowane/`, `/ikona-trojcy-swietej/`, `/ikona-serca-jezusa/`, `/wystawa-ikona-korzenie-i-owoce-wiary-oprowadzania-kuratorskie/`) | jeden połączony wpis w `/aktualnosci/[slug]` |
 | pozostałe wpisy wystaw i wyjazdów | odpowiadające wpisy `/aktualnosci/[slug]` |
 | `/aktualnosci/wystawa-ikona-dzis-2` | `/aktualnosci/wystawa-ikona-dzis` (K-67, scalenie duplikatów) |

@@ -73,7 +73,7 @@ export function NewsArticlePage({ entry, active }: NewsArticlePageProps) {
 
         {annualExhibitionYear ? (
           <p className="news-article-related">
-            <TextLink href={`/ikony/wystawy#wystawa-${annualExhibitionYear}`}>
+            <TextLink href="/ikony/wystawy#doroczna">
               {pl.news.backToExhibition.replace("{year}", String(annualExhibitionYear))}
             </TextLink>
           </p>

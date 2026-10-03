@@ -7,9 +7,9 @@ Do zrobienia:
 
 | Plik | Etap | Status |
 | --- | --- | --- |
-| `09-migration.md` | 9 — migracja treści z WordPressa | 🔵 plan zatwierdzony 2026-09-26 (K-08, K-121, K-122) |
-| `10-wykonczenie.md` | 10 — ewaluacja, poprawki, SEO, optymalizacja | ⬜ plan nie powstał |
+| `10-finishing.md` | 10 — ewaluacja, poprawki, SEO, optymalizacja | 🔵 plan zatwierdzony 2026-10-03 (fala 1: refaktory; start: wystawy) |
+| `10-k1-exhibitions.md` | 10 / kawałek 1 — `/ikony/wystawy` (K-127) | 🔵 plan zatwierdzony 2026-10-03 (kroki 1.1–1.4) |
 | `11-wdrozenie.md` | 11 — wdrożenie | ⬜ plan nie powstał |
 
-Plany etapów 1–8b są zamknięte i przeniesione do `docs/archive/plans/`
+Plany etapów 1–9 są zamknięte i przeniesione do `docs/archive/plans/`
 (patrz `docs/archive/README.md`).

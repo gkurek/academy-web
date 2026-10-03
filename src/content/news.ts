@@ -26,11 +26,6 @@ export type NewsFrontmatter = {
   bodyText?: string;
 };
 
-export type TravelingExhibitionEntry = {
-  label: string;
-  newsSlug: string;
-};
-
 export type NewsListEntry = NewsFrontmatter & {
   displayExcerpt?: string;
 };
@@ -320,12 +315,3 @@ export function getNewsKindLabel(kind: NewsKind): string {
   return pl.news.kind[kind];
 }
 
-/** Traveling exhibitions for `#wyjazdowe` — `kind: "wystawa"` with `venue` (K-87). */
-export function getTravelingExhibitions(): TravelingExhibitionEntry[] {
-  return getNews()
-    .filter((entry) => entry.kind === "wystawa" && entry.venue)
-    .map((entry) => ({
-      label: `${entry.venue} · ${entry.date.slice(0, 4)}`,
-      newsSlug: entry.slug,
-    }));
-}
