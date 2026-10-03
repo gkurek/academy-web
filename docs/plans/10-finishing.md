@@ -27,6 +27,7 @@ Domknięcie serwisu na prawdziwych danych z etapu 9 przed wdrożeniem (etap 11).
 | **Treść z makiety** | Copy z Claude Design ≠ treść klienta — nowe twierdzenia → `[do uzupełnienia]` lub gate EJK (`docs/plan-claude-code.md` §3). |
 | **K-122** | Gate w czacie przed zapisem treści redakcyjnej w `content/` (definicja: `docs/archive/plans/09-migration-v2.md`; rozszerzona tu z migracji na cały etap 10); refaktory UI — checkpoint po kawałku. |
 | **Kotwice `#wystawa-{rok}`** | K-89 usuwa sekcję, która je nosiła. Linkują do nich: `NewsArticlePage` (link powrotny przy wpisach dorocznych, K-103) i 7 wpisów w `content/news/*.mdx` (+ `#wyjazdowe` w `ikona-okno-ku-wiecznosci-2.mdx`). Redirecty 301 (`docs/redirects.json`) używają tylko `#oprowadzania` — tę kotwicę zachowujemy. Rozwiązanie (R7) — w kawałku 1. |
+| **Aktualności k3 — discovery ✅** | 2026-10-03 — **`docs/plans/10-k3-news.md`** (D1–D11). **K-69 zamknięte: kierunek B** (jeden strumień; „co teraz” w „Najbliższe” na `/`). 4 wpisy cykliczne/rok (IX, III, VI, VIII/IX), jeden wpis = dwie fazy (zapowiedź → relacja). Nowe pole `News.layout` (`wydarzenie` / `galeria` / `tekst` / `program`); **usunięcie `News.poster`**; „Powiązane” zamiast `<NewsCta />` w archiwach; styl „prose” tylko w Aktualnościach. Makieta szablonu wpisu zamówiona w Claude Design. |
 | **Lightbox k2 (G1–G3) ✅** | Zamknięty 2026-10-03 — **`docs/plans/10-k2-lightbox.md`**. G1–G3 zrealizowane; siatki wg **D9** (justified: `/ikony`, `/`, wystawy doroczne; klasyczny grid + lupa: pracownia/aktualności; publikacje — grid 2:1). **K-38** iOS Safari — test OK 2026-10-03. Inline MDX → **k8**. |
 
 ## Pliki i komponenty (orientacyjnie)
@@ -66,6 +67,8 @@ Domknięcie serwisu na prawdziwych danych z etapu 9 przed wdrożeniem (etap 11).
 **Zakres:** **K-69** (zapowiedź vs kronika, cykl roku, format przyszłych wpisów); **featured** zawsze na górze, **bez** `featuredUntil` (**zmienia K-73** — wpis do §4 planu żywego przy kawałku 3); refaktor szablonu **pojedynczego wpisu** (typografia, linki, layout bez cover); animacja scrollu do roku; wzorzec **`<NewsCta />`** w archiwalnych wpisach warsztatowych; **regresja helperów wystaw** współdzielonych ze stroną główną (przeniesione z k1 § Ryzyka).
 
 **Kryterium „gotowe”:** decyzje K-69 zapisane w §4 lub w tym planie; reguły featured w kodzie i walidacji; szablon wpisu czytelny na mobile/desktop; reduced-motion respektowane.
+
+**Po discovery (2026-10-03):** zakres rozszerzony o redesign szablonu wpisu wg nowej makiety, pole `layout`, usunięcie `poster`, „Powiązane”; podział na **k3a** technika (A2, A3, A6) · **k3b** model i dane (gate K-122) · **k3c** szablon wpisu (po makiecie) · **k3d** dokumentacja. Szczegóły: **`docs/plans/10-k3-news.md`**.
 
 ### Kawałek 4 — Strona główna
 
@@ -216,7 +219,7 @@ Z `docs/plan-claude-code.md` §3, etap 10:
 
 ## Ryzyka i pytania otwarte
 
-- **K-69** — blokuje finalny układ home/aktualności; zamknąć w kawałku 3 przed lub równolegle z H2.
+- **K-69** — zamknięte 2026-10-03 (kierunek B, `10-k3-news.md` D1); H2 (k4) projektuje „Najbliższe” jako „co teraz” z kaflami do ofert.
 - **R6 / brakujące newsy doroczne** — rozstrzygnięte: fala 2 (kawałek 8, treść EJK); kawałek 1 musi tylko sensownie obsłużyć brak relacji.
 - **Wystawy wyjazdowe / gościnne — do przegadania z EJK:** zakres sekcji i brakujące wpisy (Supraśl, Tbilisi bez `newsSlug` w k1) — **kawałek 8**; w produkcie: „Wystawy wyjazdowe”, `#wyjazdowe`, lista ręczna w `page.mdx`.
 - **K-07** Plausible vs Umami — fala 2.
@@ -229,7 +232,7 @@ Z `docs/plan-claude-code.md` §3, etap 10:
 | --- | --- | --- |
 | 1 — wystawy | ✅ | `10-k1-exhibitions.md` 1.1–1.4; W0–W5; korekty **K1–K4** (m.in. K4 margines wide mobile) |
 | 2 — lightbox | ✅ | `10-k2-lightbox.md` zamknięty (G1–G3, D9); K-38 iOS OK 2026-10-03 |
-| 3 — aktualności | ⬜ | |
+| 3 — aktualności | 🔄 | discovery ✅, ocena makiety ✅ (E1–E8), plan k3a–k3d ✅ 2026-10-03 (`10-k3-news.md`); następnie k3a |
 | 4 — home | ⬜ | |
 | 5 — album | ⬜ | |
 | 6 — wykłady | ⬜ | |
