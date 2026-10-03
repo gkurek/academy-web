@@ -1,5 +1,6 @@
+import type { MDXProps } from "mdx/types";
 import type { ComponentType } from "react";
-import type { Image, NewsKind } from "@/content/types";
+import type { Image, NewsKind, NewsLayout, NewsRelatedLink } from "@/content/types";
 import newsManifest from "../../content/news/manifest.json";
 import { newsModules } from "@/content/news-registry";
 import { NEWS_ARCHIVE_UNTIL_YEAR } from "@/config/news";
@@ -12,19 +13,22 @@ export type NewsFrontmatter = {
   date: string;
   dateEnd?: string;
   kind: NewsKind;
+  layout: NewsLayout;
   excerpt?: string;
   sample?: boolean;
   cover?: Image;
   images?: Image[];
-  poster?: Image;
+  facts?: { label: string; value: string }[];
+  related?: { label: string; href: string }[];
+  hideLead?: boolean;
   /** Traveling exhibition venue — drives the #wyjazdowe list (K-87). */
   venue?: string;
   featured?: boolean;
-  /** After this date (YYYY-MM-DD) the entry loses featured status at build time (K-73). */
-  featuredUntil?: string;
   /** Stripped MDX body — manifest only, for fallback excerpts (K-63). */
   bodyText?: string;
 };
+
+const NEWS_LAYOUTS: NewsLayout[] = ["wydarzenie", "galeria", "tekst", "program"];
 
 export type NewsListEntry = NewsFrontmatter & {
   displayExcerpt?: string;
@@ -32,7 +36,7 @@ export type NewsListEntry = NewsFrontmatter & {
 
 export type LoadedNews = NewsListEntry & {
   body: string;
-  Content: ComponentType;
+  Content: ComponentType<MDXProps>;
 };
 
 const EXCERPT_MAX_CHARS = 180;
@@ -48,34 +52,7 @@ function compareByDateDesc(a: NewsFrontmatter, b: NewsFrontmatter): number {
   return b.date.localeCompare(a.date);
 }
 
-function getBuildDateIso(): string {
-  const now = new Date();
-  const month = String(now.getMonth() + 1).padStart(2, "0");
-  const day = String(now.getDate()).padStart(2, "0");
-  return `${now.getFullYear()}-${month}-${day}`;
-}
-
-function isFeaturedActive(entry: NewsFrontmatter): boolean {
-  if (!entry.featured) {
-    return false;
-  }
-
-  if (entry.featuredUntil && entry.featuredUntil < getBuildDateIso()) {
-    return false;
-  }
-
-  return true;
-}
-
 function validateFeaturedEntries(entries: NewsFrontmatter[]): void {
-  entries.forEach((entry) => {
-    if (entry.featuredUntil && !entry.featured) {
-      throw new Error(
-        `News entry "${entry.slug}" has featuredUntil but featured is not true`,
-      );
-    }
-  });
-
   const featuredEntries = entries.filter((entry) => entry.featured);
 
   if (featuredEntries.length > 1) {
@@ -90,6 +67,35 @@ function validateFeaturedEntries(entries: NewsFrontmatter[]): void {
 }
 
 validateFeaturedEntries(allNewsEntries);
+
+function validateNewsLayouts(entries: NewsFrontmatter[]): void {
+  entries.forEach((entry) => {
+    if (!entry.layout) {
+      throw new Error(`News entry "${entry.slug}" is missing required layout`);
+    }
+    if (!NEWS_LAYOUTS.includes(entry.layout)) {
+      throw new Error(`News entry "${entry.slug}" has unknown layout: ${entry.layout}`);
+    }
+    if (entry.facts && entry.facts.length > 0 && entry.layout !== "wydarzenie") {
+      throw new Error(`News entry "${entry.slug}" has facts but layout is not wydarzenie`);
+    }
+    if (entry.layout === "galeria" && (!entry.images || entry.images.length === 0)) {
+      console.warn(
+        `[news] "${entry.slug}": layout galeria without images — effective layout tekst until k3c`,
+      );
+    }
+  });
+}
+
+validateNewsLayouts(allNewsEntries);
+
+/** Layout with build-time fallback when galeria has no images (D5). */
+export function getEffectiveNewsLayout(entry: NewsFrontmatter): NewsLayout {
+  if (entry.layout === "galeria" && (!entry.images || entry.images.length === 0)) {
+    return "tekst";
+  }
+  return entry.layout;
+}
 
 function stripMarkdown(text: string): string {
   return text
@@ -221,7 +227,7 @@ export function getNewsBySlug(slug: string): NewsListEntry | undefined {
 
 /** Featured list entry — at most one active; undefined when none (K-62, K-73). */
 export function getFeaturedNews(): NewsListEntry | undefined {
-  const entry = allNewsEntries.find((item) => isFeaturedActive(item));
+  const entry = allNewsEntries.find((item) => item.featured);
   return entry ? enrichListEntry(entry) : undefined;
 }
 
@@ -313,5 +319,79 @@ export function getNewsNeighbors(slug: string): NewsNeighbors {
 /** UI label for a news `kind` — keys from `pl.news.kind`. */
 export function getNewsKindLabel(kind: NewsKind): string {
   return pl.news.kind[kind];
+}
+
+/** Calendar year for breadcrumb and list anchor links. */
+export function getNewsArticleYear(entry: NewsFrontmatter): string {
+  return entry.date.slice(0, 4);
+}
+
+function getNewsEventEndDate(entry: NewsFrontmatter): string {
+  return entry.dateEnd ?? entry.date;
+}
+
+/** True when the build-day calendar date is after the event end (E7: `dateEnd` = koniec wydarzenia). */
+export function isNewsEventEnded(entry: NewsFrontmatter, now: Date = new Date()): boolean {
+  const today = now.toISOString().slice(0, 10);
+  return today > getNewsEventEndDate(entry);
+}
+
+export type NewsEventPhase = "zapowiedz" | "relacja" | "po-terminie";
+
+/** Phase for `layout: wydarzenie` only (README §5, E3). */
+export function getNewsEventPhase(
+  entry: NewsFrontmatter,
+  now: Date = new Date(),
+): NewsEventPhase | null {
+  if (getEffectiveNewsLayout(entry) !== "wydarzenie") {
+    return null;
+  }
+
+  const imageCount = entry.images?.length ?? 0;
+  if (!isNewsEventEnded(entry, now)) {
+    return "zapowiedz";
+  }
+  if (imageCount > 0) {
+    return "relacja";
+  }
+  return "po-terminie";
+}
+
+const DEFAULT_RELATED_BY_KIND: Partial<Record<NewsKind, NewsRelatedLink>> = {
+  warsztaty: { label: pl.news.relatedDefaults.warsztaty, href: "/warsztaty/kurs-roczny-i-trzyletni" },
+  wyklady: { label: pl.news.relatedDefaults.wyklady, href: "/wyklady" },
+  wystawa: { label: pl.news.relatedDefaults.wystawa, href: "/ikony/wystawy" },
+  wyjazd: { label: pl.news.relatedDefaults.wyjazd, href: "/warsztaty/letnia-szkola-swiatla" },
+};
+
+/** Default „Powiązane” from `kind` (D7), max 2 links. */
+export function getNewsRelatedLinks(entry: NewsFrontmatter): NewsRelatedLink[] {
+  if (entry.related && entry.related.length > 0) {
+    return entry.related.slice(0, 2);
+  }
+
+  const fallback = DEFAULT_RELATED_BY_KIND[entry.kind];
+  return fallback ? [fallback] : [];
+}
+
+export type NewsEventCtaLink = {
+  label: string;
+  href: string;
+};
+
+/** Primary CTA in `wydarzenie` zapowiedź — same destinations as related defaults where defined. */
+export function getNewsEventCta(kind: NewsKind): NewsEventCtaLink | undefined {
+  const related = DEFAULT_RELATED_BY_KIND[kind];
+  if (!related) {
+    return undefined;
+  }
+
+  const ctaLabels = pl.news.eventCta as Partial<Record<NewsKind, string>>;
+  const ctaLabel = ctaLabels[kind];
+  if (!ctaLabel) {
+    return undefined;
+  }
+
+  return { label: ctaLabel, href: related.href };
 }
 

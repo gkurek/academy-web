@@ -1,6 +1,6 @@
 # Plan 10 / kawałek 3 — Aktualności (rola, wpisy cykliczne, szablon wpisu)
 
-Status: **discovery zamknięte** 2026-10-03 · makieta szablonu wpisu **dostarczona i oceniona** 2026-10-03 (kierunek przyjęty, bez rundy korekcyjnej — sekcja „Ocena makiety”) · implementacja **nie rozpoczęta**  
+Status: **zamknięte** 2026-10-03 · discovery + makieta + implementacja **k3a–k3d ✅**  
 Etap: `docs/plans/10-finishing.md` (kawałek 3, zadania A1–A6)  
 Gałąź: `feat/10-finishing`  
 Makiety odniesienia (stan przed redesignem): `design/Akademia Ikony - Wystawa i Aktualności.dc.html` — 7e/7f (lista), 7g (C1 wpis z plakatem i galerią), 7i (C2 krótki wpis). Nowa makieta szablonu wpisu (zastępuje 7g–7j): `design/Akademia Ikony - Wpis Aktualności.dc.html` (płótno, ekrany 1a–8f) + `design/WpisAktualnosci.dc.html` (komponent szkieletu) + `design/README-wpis-aktualnosci.md` (handoff, tabela tokenów `--prose-*`). Odczyt wartości: `docs/design-mockup-guide.md`.
@@ -160,7 +160,72 @@ Wynik sesji: lista poprawek do makiety (prompt korekcyjny do Claude Design) **al
 | Prompt do Claude Design | ✅ 2026-10-03 | przekazany przez właściciela, nie w repo |
 | Ocena makiety | ✅ 2026-10-03 | E1–E8; kierunek przyjęty bez rundy korekcyjnej; otwarte: szerokość ≥ 1600 |
 | Plan implementacji k3a–k3d + D11 potwierdzone | ✅ 2026-10-03 | sekcja „Plan implementacji” |
-| k3a — technika | ⬜ | następna sesja — start od A2 |
-| k3b — model i dane | ⬜ | gate K-122 |
-| k3c — szablon wpisu | ⬜ | po akceptacji makiety |
-| k3d — dokumentacja | ⬜ | |
+| k3a — technika | ✅ 2026-10-03 | A2, A3, A6; skrypt `scripts/check-exhibition-states.ts` |
+| k3b — model i dane | ✅ 2026-10-03 | gate K-122 OK; `migrate-news-k122.ts` |
+| k3c — szablon wpisu | ✅ 2026-10-03 | prose, galeria D8, Powiązane, fazy `wydarzenie`, wariant ≥1600 |
+| k3d — dokumentacja | ✅ 2026-10-03 | §4 (K-73, K-129–K-131), brief §4, `docs/wpisy-cykliczne-aktualnosci-ejk.md`, postęp w `10-finishing.md` |
+| k3c — poprawki po ewaluacji | ✅ 2026-10-03 | prose nie działało (klasy Tailwind z `mdx-components` wygrywały z `@layer components`) → `newsMdxComponents`; listy z `<strong>`/`<a>` (grid → `::before` absolutny); `--prose-measure` 600px (było 30em = 3 różne krawędzie); `--prose-h2/h3-after` ujemne wg README §2; tokeny `--prose-fact-size`, `--prose-related-link-size`; usunięty martwy CSS plakatu/`news-cta` i `NewsCta.tsx` |
+
+## Checkpoint 3/4 — k3c (2026-10-03)
+
+**Zrobione:** tokeny `--prose-*` i styl wpisu w `globals.css`; `NewsArticlePage` (meta · data · miejsce, lead, fakty, kolejność E3: tekst → galeria, breadcrumb › rok); `NewsGallery` (1 / 2–3 / 4–12 / >12, lupa, lightbox); `NewsFacts`, `NewsRelated`, `NewsEventCta`; fazy `wydarzenie` (`getNewsEventPhase` — koniec: `dateEnd ?? date`); wyrównanie ≥1600: `newsArticleWideAlign.ts` (`start` \| `center`); stringi w `pl.ts`; `NewsCta` usunięty z `mdx-components`.
+
+**Odstępstwa od planu / makiety:** brak — E3 (galeria pod tekstem) i E2 (nagłówek a) jak w ocenie makiety.
+
+**Do decyzji:** E7 — przyjęta robocza reguła fazy: `dateEnd ?? date` = koniec wydarzenia (dzień po = po terminie); `date` w meta bez zmiany semantyki w danych. Wybór wariantu szerokości ≥1600 px na żywym kodzie (`NEWS_ARTICLE_WIDE_ALIGN`). Brak `facts` w frontmatter — wiersz faktów się nie renderuje (EJK / CMS).
+
+**Następny krok:** k3d — dokumentacja (§4, brief §4, propozycja wpisów cyklicznych).
+
+**Build/lint:** OK.
+
+**Czekam na OK.**
+
+## Checkpoint 4/4 — k3d (2026-10-03)
+
+**Zrobione:** `docs/plan-claude-code.md` §4 — doprecyzowanie K-73, K-78, K-129, K-130, nowe **K-131** (E1–E8); §2/§3/§5 i dziennik; `docs/brief-claude-code.md` §4 — komentarz fazy wydarzenia (K-131); **`docs/wpisy-cykliczne-aktualnosci-ejk.md`** (formuły wpisów IX / III / VI / VIII–IX + rezerwy, pola CMS); `docs/plans/10-finishing.md` — A4 ✅, postęp kawałka 3 ✅, fala 2 plakaty.
+
+**Odstępstwa od planu / makiety:** brak.
+
+**Do decyzji:** wybór `NEWS_ARTICLE_WIDE_ALIGN` (`start` \| `center`) na stagingu (otwarte od k3c); ewentualna finalna akceptacja dokumentu cyklicznych przez EJK (treść redakcyjna, nie kod).
+
+**Następny krok:** etap 10 **kawałek 4** — strona główna (`10-finishing.md`, H2 „Najbliższe” po K-69).
+
+**Build/lint:** bez zmian w kodzie aplikacji (tylko docs).
+
+**Czekam na OK.**
+
+## Checkpoint 2/4 — k3b (2026-10-03)
+
+**Zrobione:** model `layout`, `facts`, `related`, `hideLead`; usunięcie `poster` (`types.ts`, brief §4, `news.ts` walidacja + `getEffectiveNewsLayout`); migracja 68 MDX (`scripts/migrate-news-k122.ts`), regeneracja `manifest.json` + registry; usunięcie `NewsPoster` i kolumny plakatu w `NewsArticlePage`; `generate-news-index.ts` / `generate-news-sample.ts`; `migrate-report.md` (plakaty → galeria).
+
+**Build/lint:** OK. `npx tsx scripts/check-exhibition-states.ts`.
+
+**Zamknięte:** OK właściciela 2026-10-03 (bez commitu — sesja lokalna).
+
+**Następny krok:** k3c — szablon wpisu (prose, galeria, Powiązane, fazy `wydarzenie`).
+
+## Checkpoint 1/4 — k3a (2026-10-03)
+
+**Zrobione:** A2 (`featuredUntil` usunięte; nabór bez `featured`; manifest zregenerowany) · A3 (płynny scroll do roku + archiwum; `scrollNewsYearIntoView` w `focusNewsYearCardTitle.ts`) · A6 (`scripts/check-exhibition-states.ts`). Pliki: `types.ts`, `news.ts`, `brief` §4, `nabor-kursu-2026-2027.mdx`, `generate-news-sample.ts`, `YearNavClient.tsx`, `NewsArchiveShell.tsx`.
+
+**Build/lint:** OK. Regresja wystaw: `npx tsx scripts/check-exhibition-states.ts`.
+
+**Następny krok:** k3b — **najpierw** tabela 68 slugów (`layout`, migracja `poster`, `<NewsCta />` → „Powiązane”) do gate'u K-122; **bez** zapisu w `content/` do OK właściciela. Na starcie k3b potwierdzić nazwy pól z E7 (`facts`, `related`, `hideLead`).
+
+## Wznowienie — prompt startowy (nowa konwersacja, k3c)
+
+Skopiuj do pierwszej wiadomości:
+
+```
+Kontynuuję etap 10, kawałek 3 (Aktualności) na gałęzi feat/10-finishing.
+
+Przeczytaj: CLAUDE.md, docs/plans/10-k3-news.md (Checkpoint 2/4, „Plan implementacji” k3c–k3d, D1–D11, E1–E8, „Ocena makiety”), docs/design-mockup-guide.md, design/README-wpis-aktualnosci.md, docs/plans/10-finishing.md (kawałek 3).
+
+Stan: k3a ✅ · k3b ✅ (2026-10-03, gate K-122). k3c–k3d ⬜.
+
+Następny krok: k3c — szablon wpisu (tokeny --prose-*, NewsArticlePage, galeria D8, Powiązane, fazy wydarzenie, wariant ≥1600 px). Model: layout/facts/related/hideLead w types + 68 wpisów zmigrowanych.
+
+Otwarte przed pełną treścią wydarzenie: znaczenie date/dateEnd dla fazy zapowiedź vs relacja (E7).
+
+Rytm: jeden podkawałek → meldunek → czekam na OK. Bez commitów (sesja lokalna).
+```

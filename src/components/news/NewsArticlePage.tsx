@@ -2,17 +2,22 @@ import Link from "next/link";
 
 import { TextLink } from "@/components/core/TextLink";
 import { SectionPageShell } from "@/components/layout/SectionPageShell";
+import { NewsEventCta } from "@/components/news/NewsEventCta";
+import { NewsFacts } from "@/components/news/NewsFacts";
 import { NewsGallery } from "@/components/news/NewsGallery";
-import { NewsPoster } from "@/components/news/NewsPoster";
+import { newsMdxComponents } from "@/components/news/newsMdxComponents";
+import { NEWS_ARTICLE_WIDE_ALIGN } from "@/components/news/newsArticleWideAlign";
+import { NewsRelated } from "@/components/news/NewsRelated";
 import { Breadcrumb } from "@/components/navigation/Breadcrumb";
 import { NewsDateMeta } from "@/components/news/NewsDateMeta";
 import {
-  getAnnualExhibitionByNewsSlug,
-  getAnnualExhibitionYear,
-} from "@/content/exhibition";
-import {
+  getEffectiveNewsLayout,
+  getExcerpt,
+  getNewsArticleYear,
+  getNewsEventPhase,
   getNewsKindLabel,
   getNewsNeighbors,
+  getNewsRelatedLinks,
   type LoadedNews,
 } from "@/content/news";
 import { pl } from "@/i18n/pl";
@@ -30,56 +35,79 @@ export function NewsArticlePage({ entry, active }: NewsArticlePageProps) {
   const { Content } = entry;
   const kindLabel = getNewsKindLabel(entry.kind);
   const neighbors = getNewsNeighbors(entry.slug);
-  const hasPoster = Boolean(entry.poster);
-  const hasGallery = Boolean(entry.images && entry.images.length > 0);
-  const annualExhibition =
-    entry.kind === "wystawa" ? getAnnualExhibitionByNewsSlug(entry.slug) : undefined;
-  const annualExhibitionYear = annualExhibition
-    ? getAnnualExhibitionYear(annualExhibition.seasonSlug)
-    : undefined;
+  const layout = getEffectiveNewsLayout(entry);
+  const eventPhase = getNewsEventPhase(entry);
+  const images = entry.images ?? [];
+  const hasGallery = images.length > 0;
+  const year = getNewsArticleYear(entry);
+  const lead = entry.hideLead ? undefined : getExcerpt(entry);
+  const relatedLinks = getNewsRelatedLinks(entry);
+
+  const showFacts = layout === "wydarzenie" && entry.facts && entry.facts.length > 0;
+  const showEventCta = eventPhase === "zapowiedz";
+  const showRelated =
+    layout === "wydarzenie"
+      ? eventPhase === "relacja" || eventPhase === "po-terminie"
+      : relatedLinks.length > 0;
+  const galleryHeading = layout === "tekst";
+
+  const wideAlignClass =
+    NEWS_ARTICLE_WIDE_ALIGN === "center"
+      ? "news-article--wide-center"
+      : "news-article--wide-start";
 
   return (
     <SectionPageShell active={active}>
-      <article className="news-article">
+      <article className={["news-article", wideAlignClass].join(" ")}>
         <Breadcrumb
           items={[
             { label: pl.news.breadcrumbHome, href: "/aktualnosci" },
-            { label: entry.title },
+            {
+              label: year,
+              href: `/aktualnosci#${year}`,
+            },
           ]}
         />
 
-        <header className="news-article-header">
+        <header className="news-article-header news-article-col">
           <p className="news-article-meta">
-            <span className="text-accent-text">{kindLabel}</span>
+            <span className="news-article-meta-kind">{kindLabel}</span>
             {" · "}
             <NewsDateMeta
               date={entry.date}
               dateEnd={entry.dateEnd}
               withYear
-              className="text-text-tertiary"
+              className="news-article-meta-date"
             />
+            {entry.venue ? (
+              <>
+                {" · "}
+                <span>{entry.venue}</span>
+              </>
+            ) : null}
           </p>
           <h1 className="news-article-title">{entry.title}</h1>
+          {lead ? <p className="news-article-lead">{lead}</p> : null}
         </header>
 
-        <div className={hasPoster ? "news-article-body-grid" : undefined}>
-          <div className="news-article-mdx text-page-mdx min-w-0">
-            <Content />
-          </div>
-          {hasPoster ? <NewsPoster poster={entry.poster} /> : null}
+        {showFacts ? <NewsFacts facts={entry.facts!} /> : null}
+
+        <div className="news-article-prose news-prose news-article-col">
+          <Content components={newsMdxComponents} />
         </div>
 
-        {hasGallery ? <NewsGallery images={entry.images!} /> : null}
+        {showEventCta ? <NewsEventCta kind={entry.kind} /> : null}
 
-        {annualExhibitionYear ? (
-          <p className="news-article-related">
-            <TextLink href="/ikony/wystawy#doroczna">
-              {pl.news.backToExhibition.replace("{year}", String(annualExhibitionYear))}
-            </TextLink>
-          </p>
+        {hasGallery ? (
+          <NewsGallery images={images} layout={layout} showHeading={galleryHeading} />
         ) : null}
 
-        <nav className="news-article-nav" aria-label={pl.news.articleNavAriaLabel}>
+        {showRelated ? <NewsRelated links={relatedLinks} /> : null}
+
+        <nav
+          className="news-article-nav news-article-col"
+          aria-label={pl.news.articleNavAriaLabel}
+        >
           <div className="news-article-nav-links">
             {neighbors.previous ? (
               <Link

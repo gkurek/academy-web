@@ -631,7 +631,22 @@ export const pl = {
     articleNavAriaLabel: "Nawigacja między wpisami",
     galleryHeading: "Zdjęcia",
     galleryMobileCaption: "Kliknij zdjęcie, aby powiększyć.",
-    posterPlaceholder: "[do uzupełnienia: plakat]",
+    showAllGallery: "Pokaż wszystkie ({count})",
+    enlargePhotoAria: "Powiększ zdjęcie {n} z {total}",
+    relatedHeading: "Powiązane",
+    relatedDefaults: {
+      warsztaty: "Kurs roczny i trzyletni",
+      wyklady: "Wykłady",
+      wystawa: "Wystawy w Kościele Środowisk Twórczych",
+      wyjazd: "Letnia Szkoła Światła",
+    },
+    eventCta: {
+      warsztaty: "Jak się zapisać na kurs",
+      wyklady: "Program wykładów",
+      wystawa: "Wystawy w Kościele Środowisk Twórczych",
+      wyjazd: "Letnia Szkoła Światła",
+    },
+    breadcrumbYearAria: "Aktualności z roku {year}",
     ctaContact: "akademiaikony@gmail.com · 601 734 705",
   },
   footer: {
