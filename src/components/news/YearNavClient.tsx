@@ -116,7 +116,7 @@ export function YearNavClient({ years, archiveYears }: YearNavClientProps) {
                 " tap-target-nav year-nav-link"
               }
             >
-              {year}
+              <span className="link-underline-target">{year}</span>
             </Link>
           );
         })}

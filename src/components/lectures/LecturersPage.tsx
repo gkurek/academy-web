@@ -22,7 +22,7 @@ export function LecturersPage({ lecturers, intro, section, sectionActive, active
         {intro}
       </p>
 
-      <div className="grid gap-hairline-gap bg-line-gold">
+      <div className="hairline-stack">
         {lecturers.map((lecturer) => (
           <LecturerCard key={lecturer.slug} lecturer={lecturer} />
         ))}

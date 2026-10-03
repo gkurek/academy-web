@@ -23,7 +23,7 @@ export function NewsArchive({ groups, yearRange }: NewsArchiveProps) {
       yearRange={yearRange}
       firstYearId={firstYearId}
     >
-      <NewsYearGroups groups={groups} className="news-list" />
+      <NewsYearGroups groups={groups} className="news-list hairline-stack" />
     </NewsArchiveShell>
   );
 }

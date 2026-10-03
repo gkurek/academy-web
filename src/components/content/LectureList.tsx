@@ -7,7 +7,7 @@ export interface LectureListProps {
 
 export function LectureList({ items }: LectureListProps) {
   return (
-    <div className="grid gap-hairline-gap bg-line-gold">
+    <div className="hairline-stack">
       {items.map((item) => (
         <article
           key={item.dateIso}

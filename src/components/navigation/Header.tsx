@@ -38,7 +38,7 @@ export function Header({ active }: HeaderProps) {
                   " tap-target-nav"
                 }
               >
-                {item.label}
+                <span className="link-underline-target">{item.label}</span>
               </Link>
             );
           })}

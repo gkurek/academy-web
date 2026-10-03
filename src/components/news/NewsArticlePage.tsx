@@ -1,4 +1,5 @@
-import { TextLink } from "@/components/core/TextLink";
+import Link from "next/link";
+
 import { SectionPageShell } from "@/components/layout/SectionPageShell";
 import { NewsArticleCover } from "@/components/news/NewsArticleCover";
 import { NewsArticleNav } from "@/components/news/NewsArticleNav";
@@ -7,7 +8,6 @@ import { NewsFacts } from "@/components/news/NewsFacts";
 import { NewsGallery } from "@/components/news/NewsGallery";
 import { newsMdxComponents } from "@/components/news/newsMdxComponents";
 import { NewsRelated } from "@/components/news/NewsRelated";
-import { Breadcrumb } from "@/components/navigation/Breadcrumb";
 import { NewsDateMeta } from "@/components/news/NewsDateMeta";
 import {
   getEffectiveNewsLayout,
@@ -91,23 +91,17 @@ export function NewsArticlePage({ entry, active }: NewsArticlePageProps) {
     <SectionPageShell active={active}>
       <article className={articleClass}>
         <header className="news-article-head">
-          <Breadcrumb items={[{ label: pl.news.breadcrumbHome, href: "/aktualnosci" }]} />
-          <p className="news-article-kind">{kindLabel}</p>
-          <h1 className="news-article-title">{entry.title}</h1>
-          <p className="news-article-byline">
+          <p className="news-article-meta">
+            <span className="news-article-kind">{kindLabel}</span>
+            {" · "}
             <NewsDateMeta
               date={entry.date}
               dateEnd={entry.dateEnd}
               withYear
-              className="news-article-byline-date"
+              className="news-article-meta-date"
             />
-            {entry.venue ? (
-              <>
-                {" · "}
-                <span>{entry.venue}</span>
-              </>
-            ) : null}
           </p>
+          <h1 className="news-article-title">{entry.title}</h1>
           {lead ? <p className="news-article-lead">{lead}</p> : null}
           <hr className="news-article-head-rule" />
         </header>
@@ -180,9 +174,9 @@ export function NewsArticlePage({ entry, active }: NewsArticlePageProps) {
 
         {hasGalGridArea ? (
           <footer className="news-article-gend">
-            <TextLink href="/aktualnosci" className="news-article-gend-link">
+            <Link href="/aktualnosci" className="news-article-entry-link news-article-gend-link">
               {pl.news.allNewsLink}
-            </TextLink>
+            </Link>
           </footer>
         ) : null}
       </article>

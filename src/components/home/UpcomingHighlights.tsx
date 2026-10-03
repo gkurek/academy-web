@@ -18,7 +18,7 @@ export function UpcomingHighlights() {
         {pl.home.upcomingHeading}
       </h2>
       <div
-        className={`grid gap-hairline-gap bg-line-gold ${tiles.length === 3 ? "md:grid-cols-3" : "md:grid-cols-2"}`}
+        className={tiles.length === 3 ? "hairline-grid-3" : "hairline-grid-2"}
       >
         {tiles.map((item) => (
           <div

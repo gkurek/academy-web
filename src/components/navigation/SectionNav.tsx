@@ -30,7 +30,7 @@ export function SectionNav({ items, active, ariaLabel }: SectionNavProps) {
               " tap-target-nav"
             }
           >
-            {item.label}
+            <span className="link-underline-target">{item.label}</span>
           </Link>
         );
       })}

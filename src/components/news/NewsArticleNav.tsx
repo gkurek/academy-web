@@ -1,6 +1,5 @@
 import Link from "next/link";
 
-import { TextLink } from "@/components/core/TextLink";
 import type { NewsListEntry } from "@/content/news";
 import { pl } from "@/i18n/pl";
 
@@ -22,11 +21,8 @@ export function NewsArticleNav({ previous, next }: NewsArticleNavProps) {
           className="news-article-nav-row"
           aria-label={formatAriaLabel(pl.news.previousEntryAria, previous.title)}
         >
-          <span className="news-article-nav-row-arrow" aria-hidden="true">←</span>
-          <span className="news-article-nav-row-text">
-            <span className="news-article-nav-row-label">{pl.news.previousEntryNav}</span>
-            <span className="news-article-nav-row-title">{previous.title}</span>
-          </span>
+          <span className="news-article-entry-label">{pl.news.previousEntryNav}</span>
+          <span className="news-article-nav-row-title">{previous.title}</span>
         </Link>
       ) : null}
       {next ? (
@@ -35,16 +31,13 @@ export function NewsArticleNav({ previous, next }: NewsArticleNavProps) {
           className="news-article-nav-row"
           aria-label={formatAriaLabel(pl.news.nextEntryAria, next.title)}
         >
-          <span className="news-article-nav-row-arrow" aria-hidden="true">→</span>
-          <span className="news-article-nav-row-text">
-            <span className="news-article-nav-row-label">{pl.news.nextEntryNav}</span>
-            <span className="news-article-nav-row-title">{next.title}</span>
-          </span>
+          <span className="news-article-entry-label">{pl.news.nextEntryNav}</span>
+          <span className="news-article-nav-row-title">{next.title}</span>
         </Link>
       ) : null}
-      <TextLink href="/aktualnosci" className="news-article-nav-all">
+      <Link href="/aktualnosci" className="news-article-entry-link news-article-nav-all">
         {pl.news.allNewsLink}
-      </TextLink>
+      </Link>
     </nav>
   );
 }

@@ -146,7 +146,7 @@ Legenda: **P** poprawka · **R** refaktor · **IA** decyzja produktowa + Design.
 | A1 | IA | K-69 — zapowiedź vs kronika, cykl roku, format wpisów | ✅ discovery (D1–D11) |
 | A2 | R | Featured na górze, bez `featuredUntil` | ✅ k3a |
 | A3 | R | Animacja scrollu do roku (`prefers-reduced-motion`) | ✅ k3a |
-| A4 | R | Szablon pojedynczego wpisu (typografia, linki, brak cover) | ✅ k3c + **k3e** (układ K3 v2.1, K-133, lead F11) |
+| A4 | R | Szablon pojedynczego wpisu (typografia, linki, brak cover) | ✅ k3c + **k3e** (K-133, lead F11) + **k3f** (K-134, K-135) |
 | A5 | R | Wzorzec `<NewsCta />` w archiwalnych wpisach warsztatowych | ✅ k3b (K-122; CTA/Powiązane w k3c) |
 | A6 | P | Regresja `getExhibitionUpcomingHighlight` / `getExhibitionNowNext` na `/` i linkach wpisów → `/ikony/wystawy` (wspólne helpery z k1) | ✅ k3a (`scripts/check-exhibition-states.ts`) |
 
@@ -232,7 +232,7 @@ Z `docs/plan-claude-code.md` §3, etap 10:
 | --- | --- | --- |
 | 1 — wystawy | ✅ | `10-k1-exhibitions.md` 1.1–1.4; W0–W5; korekty **K1–K4** (m.in. K4 margines wide mobile) |
 | 2 — lightbox | ✅ | `10-k2-lightbox.md` zamknięty (G1–G3, D9); K-38 iOS OK 2026-10-03 |
-| 3 — aktualności | ✅ | k3a–k3e 2026-10-03 (K-133, makieta v2.1); cykliczne → `docs/wpisy-cykliczne-aktualnosci-ejk.md` |
+| 3 — aktualności | ✅ | k3a–k3f 2026-10-03 (K-133–K-135); cykliczne → `docs/wpisy-cykliczne-aktualnosci-ejk.md` |
 | 4 — home | ⬜ | |
 | 5 — album | ⬜ | |
 | 6 — wykłady | ⬜ | |

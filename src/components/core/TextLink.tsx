@@ -11,7 +11,9 @@ export interface TextLinkProps extends AnchorHTMLAttributes<HTMLAnchorElement> {
 }
 
 const linkClass =
-  "text-accent-text no-underline border-b border-accent-veil hover:text-accent-hover hover:border-accent-hover";
+  "text-link text-accent-text no-underline hover:text-accent-hover";
+
+const underlineTargetClass = "link-underline-target link-underline-target--border";
 
 export function TextLink({ href, external = false, children, className, ...rest }: TextLinkProps) {
   const classes = [linkClass, className].filter(Boolean).join(" ");
@@ -19,14 +21,14 @@ export function TextLink({ href, external = false, children, className, ...rest 
   if (external) {
     return (
       <ExternalLink href={href} className={classes} {...rest}>
-        {children}
+        <span className={underlineTargetClass}>{children}</span>
       </ExternalLink>
     );
   }
 
   return (
     <Link href={href} className={classes} {...rest}>
-      {children}
+      <span className={underlineTargetClass}>{children}</span>
     </Link>
   );
 }

@@ -1,6 +1,6 @@
 # Plan 10 / kawałek 3 — Aktualności (rola, wpisy cykliczne, szablon wpisu)
 
-Status: **k3e ✅ 2026-10-03** — k3a–k3d + k3e (układ K3 v2.1, K-133, lead F11); kawałek 3 zamknięty implementacyjnie  
+Status: **k3f ✅ 2026-10-03** — k3a–k3e + k3f (poprawki po ewaluacji: nagłówek, rail, podkreślenia linków, K-134); drobne poprawki po zamknięciu (odstęp nav→nagłówek wpisu, data wyróżnionego wpisu); kawałek 3 zamknięty implementacyjnie  
 Etap: `docs/plans/10-finishing.md` (kawałek 3, zadania A1–A6)  
 Gałąź: `feat/10-finishing`  
 Makiety odniesienia (stan przed redesignem): `design/Akademia Ikony - Wystawa i Aktualności.dc.html` — 7e/7f (lista), 7g (C1 wpis z plakatem i galerią), 7i (C2 krótki wpis). Nowa makieta szablonu wpisu (zastępuje 7g–7j): `design/Akademia Ikony - Wpis Aktualności.dc.html` (płótno, ekrany 1a–8f) + `design/WpisAktualnosci.dc.html` (komponent szkieletu) + `design/README-wpis-aktualnosci.md` (handoff, tabela tokenów `--prose-*`). Odczyt wartości: `docs/design-mockup-guide.md`.
@@ -13,6 +13,19 @@ Makiety odniesienia (stan przed redesignem): `design/Akademia Ikony - Wystawa i 
 4. Techniczne A2 (featured bez `featuredUntil`), A3 (animacja scrollu do roku), A6 (regresja helperów wystaw).
 
 **Nie wchodzi:** zmiany listy `/aktualnosci` poza A2/A3; kafle „Najbliższe” (kawałek 4, H2); typografia „prose” poza Aktualnościami; CMS aktualności (osobny projekt); redakcja treści EJK (gate K-122, kawałek 8 tam, gdzie to treść).
+
+## Decyzje właściciela — k3f (2026-10-03)
+
+| # | Decyzja | Zastępuje / uwagi |
+| --- | --- | --- |
+| **D-a** | Wpis `/aktualnosci/[slug]` **bez** `Breadcrumb` na wszystkich szerokościach (powrót: „Wszystkie aktualności”, `pinNewsListYear`, aktywne „Aktualności” w menu). | **K-104** tylko dla wpisu Aktualności; Publikacje (`ArticlePage`, `PublicationAlbumPage`) bez zmian. |
+| **D-b** | Nagłówek: jedna linia meta `rodzaj · data[–dateEnd]` (rodzaj złoty, data w kolorze byline), potem H1, lead (`shouldShowLead` bez zmian); **bez** `venue` w nagłówku. | **F6** (breadcrumb, kolejność, venue w byline). |
+| **D-c** | Prawa kolumna (`rail`): wzór „etykieta nad linkiem” (Plex `--entry-nav-label-size`, `--bone-600`); linki tytułów / „Wszystkie aktualności” — `--entry-nav-title-size`, accent, bez `TextLink` border; strzałki w etykiecie nav; `gend` ten sam styl. Separatory **F7** bez zmian logiki; złota linia nad „Powiązane” tylko &lt; 1024. | **F3** (DOM/styl nav); **F7** (wygląd nagłówka „Powiązane”). |
+| **D-d** | Podkreślenie globalnie: kreska na `.link-underline-target`, strefa tap na zewnętrznym elemencie (`TextLink`, `.nav-link-underline` + `.tap-target-nav`, stopka, publikacje, `MapBlock`, `Pillars`). Animacja `::after` menu (scaleX, 150 ms) na wewnętrznym spanie. | — |
+
+**Venue (D-b):** 27 wpisów z `venue` w frontmatterze; po usunięciu z nagłówka miejsce nadal występuje w treści / `facts` / tytule — brak wpisów „tylko w nagłówku”.
+
+**Tokeny nieużywane po k3f (do ewentualnego usunięcia):** `--entry-crumb-gap`, `--entry-byline-gap`, `--prose-related-link-size`.
 
 ## Decyzje sesji discovery (2026-10-03)
 
@@ -278,6 +291,11 @@ Rytm wg `CLAUDE.md`: jeden kawałek → checkpoint → „OK”. Na start sesji 
 | k3e-1 — siatka, nagłówek, kolumna z nawigacją | ✅ 2026-10-03 | siatka K3, nagłówek 5b, `NewsArticleNav`, `gend`, galeria `mgal`/`gal` |
 | k3e-2 — kadr wizytówki, karta faktów, sticky | ✅ 2026-10-03 | `NewsArticleCover`, F9 galeria, karta faktów + CTA ≥1024, sticky rail |
 | k3e-3 — lead, porządki, dokumentacja | ✅ 2026-10-03 | F11 `shouldShowLead`, martwe tokeny nav-pt, K-133, `getNewsArticleYear` usunięte |
+| k3f-1 — nagłówek wpisu (D-a, D-b) | ✅ 2026-10-03 | bez breadcrumb; meta · H1 · lead; `pl.news.breadcrumbHome` usunięte |
+| k3f-2 — prawa kolumna (D-c) | ✅ 2026-10-03 | `NewsRelated`, `NewsArticleNav`, `.news-article-entry-*`, `gend` |
+| k3f-3 — podkreślenia linków (D-d) | ✅ 2026-10-03 | `.link-underline-target`; `TextLink`, nav, stopka, publikacje, `MapBlock`, `Pillars` |
+| k3f-4 — odstęp nav → nagłówek wpisu | ✅ 2026-10-03 | usunięte nadmiarowe `--space-6` z `.news-article` (`padding-top`) i `.news-article-head` (`margin-top`); standard jak lista `/aktualnosci` — tylko `py-space-6` na `<main>` w `SectionPageShell` |
+| k3f-5 — data wyróżnionego wpisu | ✅ 2026-10-03 | `nowy-rok-w-akademii-2026-2027`: `date` 2026-09-01, bez `dateEnd` (meta: 1 września, nie zakres do 30.09); `content/news/manifest.json` |
 | k3c — kolumna wpisu (próba, niezacommitowana) | ⚠️ odrzucone jako docelowe 2026-10-03 | decyzja właściciela (próba): **jedna wyśrodkowana kolumna** = `--prose-measure` (600 px) dla breadcrumbu, nagłówka, leadu, prose, faktów, CTA, „Powiązanych” i nawigacji, na wszystkich szerokościach; galeria `galeria`/`wydarzenie` pełna szerokość kontenera, `tekst` 760 px (`--news-gallery-narrow`), obie wyśrodkowane. Odrzucone: warianty `start`/`center` (`newsArticleWideAlign.ts` usunięty) i kolumna 760 px z tekstem 600 px (dwie prawe krawędzie). Odstępstwo od makiety 1a (lewa oś). |
 
 ## Checkpoint 3/4 — k3c (2026-10-03)

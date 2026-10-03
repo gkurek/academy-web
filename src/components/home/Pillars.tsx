@@ -3,7 +3,9 @@ import Link from "next/link";
 import { pl } from "@/i18n/pl";
 
 const pillarLinkClass =
-  "text-accent-text no-underline border-b border-accent-veil group-hover:text-accent-hover group-hover:border-accent-hover";
+  "text-accent-text no-underline group-hover:text-accent-hover";
+
+const pillarLinkUnderline = "link-underline-target link-underline-target--border";
 
 /** "Warsztaty / Wykłady / Ikony" — three static entry points into the main sections. */
 export function Pillars() {
@@ -31,14 +33,14 @@ export function Pillars() {
             <p className="text-size-body leading-body text-text-secondary mb-space-4">{pillar.body}</p>
             <div className="flex flex-wrap gap-x-space-5 gap-y-space-3">
               <Link href={pillar.href} className={`text-size-ui-m md:text-size-body ${pillarLinkClass}`}>
-                {pillar.linkLabel}
+                <span className={pillarLinkUnderline}>{pillar.linkLabel}</span>
               </Link>
               {"secondaryLinkLabel" in pillar && pillar.secondaryLinkLabel && pillar.secondaryHref ? (
                 <Link
                   href={pillar.secondaryHref}
                   className={`text-size-ui-m md:text-size-body ${pillarLinkClass}`}
                 >
-                  {pillar.secondaryLinkLabel}
+                  <span className={pillarLinkUnderline}>{pillar.secondaryLinkLabel}</span>
                 </Link>
               ) : null}
             </div>

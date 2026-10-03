@@ -8,7 +8,7 @@ export interface NewsYearGroupsProps {
 
 export function NewsYearGroups({ groups, className }: NewsYearGroupsProps) {
   return (
-    <ol className={className ?? "news-list"}>
+    <ol className={className ?? "news-list hairline-stack"}>
       {groups.flatMap((group) =>
         group.entries.map((entry, index) => {
           const isYearStart = index === 0;

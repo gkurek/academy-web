@@ -60,7 +60,7 @@ export function PublicationTocList({ items }: PublicationTocListProps) {
                 <div className="publication-toc-main">
                   {item.articleSlug ? (
                     <Link href={`/publikacje/${item.articleSlug}`} className="publication-toc-title-link">
-                      {item.title}
+                      <span className="link-underline-target link-underline-target--border">{item.title}</span>
                     </Link>
                   ) : (
                     <p className="publication-toc-title">{item.title}</p>

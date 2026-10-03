@@ -123,7 +123,13 @@
     "kind": "wyklady",
     "layout": "wydarzenie",
     "excerpt": "Zapraszamy do zapoznania się z programem wykładów na nadchodzący rok akademicki. W tym roku tematem przewodnim będzie „Mądrość Boża”.",
-    "bodyText": "Zajrzyj na stronę [Wykłady](/wyklady/archiwum), aby zobaczyć program tego sezonu."
+    "related": [
+      {
+        "label": "Archiwum wykładów",
+        "href": "/wyklady/archiwum#season-2025-2026"
+      }
+    ],
+    "bodyText": "Szczegóły programu znajdziesz w [Archiwum wykładów](/wyklady/archiwum#season-2025-2026)."
   },
   {
     "slug": "ikona-korzenie-i-owoce-wiary-mistyka-dzis-wyklady-2026-2027",
@@ -830,6 +836,41 @@
     "bodyText": "Dnia 21 września odbyła się „[Noc Świątyń](https://nocswiatyn.pl/)”. Z tej okazji w kościele Środowisk Twórczych zorganizowaliśmy wystawę ikon. Elżbieta Jackowska-Kurek oprowadzała po wystawie i wygłosiła wykład o kondycji współczesnej ikonografii."
   },
   {
+    "slug": "nowy-rok-w-akademii-2026-2027",
+    "title": "Nowy sezon w Akademii Ikony 2026/2027",
+    "date": "2026-09-01",
+    "kind": "aktualnosc",
+    "layout": "wydarzenie",
+    "venue": "Warszawa",
+    "excerpt": "Rok akademicki 2026/2027: kurs pisania ikon oraz wykłady „Ikona – korzenie i owoce wiary. Mistyka dziś” w Kościele Środowisk Twórczych na Placu Teatralnym.",
+    "featured": true,
+    "cover": {
+      "src": "/media/home/pracownia.jpg",
+      "alt": "Praca nad ikoną w pracowni",
+      "width": 960,
+      "height": 540
+    },
+    "images": [
+      {
+        "src": "/media/home/pracownia.jpg",
+        "alt": "Praca nad ikoną w pracowni",
+        "width": 960,
+        "height": 540
+      }
+    ],
+    "related": [
+      {
+        "label": "Kurs roczny i trzyletni",
+        "href": "/warsztaty/kurs-roczny-i-trzyletni"
+      },
+      {
+        "label": "Program wykładów",
+        "href": "/wyklady"
+      }
+    ],
+    "bodyText": "Wraz z październikiem rozpoczynamy szesnasty sezon wykładów i kolejny rok warsztatów pisania ikon w Akademii. Zapraszamy do udziału w kursie rocznym lub trzyletnim oraz do cyklu wykładów towarzyszących zajęciom. **Kurs roczny i trzyletni** — zajęcia raz w tygodniu, od października do czerwca, w grupach wieczornych i dziennych. Materiały są na miejscu. Formalny termin zgłoszeń upłynął 24 września 2026; o wolne miejsca można zapytać mailowo na [akademiaikony@gmail.com](mailto:akademiaikony@gmail.com?subject=Zgłoszenie%20%E2%80%93%20kurs%20roczny%202026%2F2027) lub telefonicznie (601 734 705). Szczegóły [Kurs roczny i trzyletni](/warsztaty/kurs-roczny-i-trzyletni). **Wykłady 2026/2027** — w tym roku kontynuujemy cykl „Ikona – korzenie i owoce wiary” pod hasłem „Mistyka dziś”. Spotkania w wybrane wtorki, 18:00–20:30; opłata 400 zł za rok. Zapisy do końca września 2026 prowadzi sekretariat: [sekretariat.ikony22@gmail.com](mailto:sekretariat.ikony22@gmail.com?subject=Zgłoszenie%20%E2%80%93%20wykłady%202026%2F2027). Pełny program i terminy: [Wykłady](/wyklady). Pierwsze zajęcia kursu i inauguracyjny wykład sezonu odbędą się **6 października 2026 o godz. 18:00** w Kościele Środowisk Twórczych."
+  },
+  {
     "slug": "oprowadzania-po-wystawie-2017",
     "title": "Oprowadzania po wystawie: Serce Jezusa, Trójca Święta",
     "date": "2017-06-25",
@@ -901,7 +942,13 @@
     "kind": "wyklady",
     "layout": "wydarzenie",
     "excerpt": "Ogłaszamy program wykładów na nadchodzący rok akademicki. W tym roku tematem przewodnim będzie „piękno Boga, piękno człowieka”.",
-    "bodyText": "Zajrzyj na stronę [Wykłady](/wyklady/archiwum), aby zobaczyć program tego sezonu."
+    "related": [
+      {
+        "label": "Archiwum wykładów",
+        "href": "/wyklady/archiwum#season-2024-2025"
+      }
+    ],
+    "bodyText": "Szczegóły programu znajdziesz w [Archiwum wykładów](/wyklady/archiwum#season-2024-2025)."
   },
   {
     "slug": "plakaty-z-wydarzen",
@@ -913,129 +960,129 @@
     "cover": {
       "src": "/media/news/plakaty-z-wydarzen/234379126_4523191267715467_2587776833096860395_n.jpg",
       "alt": "[do uzupełnienia: opis plakatu — wydarzenie i rok]",
-      "width": 300,
-      "height": 280
+      "width": 1759,
+      "height": 1640
     },
     "images": [
       {
         "src": "/media/news/plakaty-z-wydarzen/234379126_4523191267715467_2587776833096860395_n.jpg",
         "alt": "[do uzupełnienia: opis plakatu — wydarzenie i rok]",
-        "width": 300,
-        "height": 280
+        "width": 1759,
+        "height": 1640
       },
       {
         "src": "/media/news/plakaty-z-wydarzen/WykladyAI20252026_n.jpg",
         "alt": "[do uzupełnienia: opis plakatu — wydarzenie i rok]",
-        "width": 215,
-        "height": 300
+        "width": 1470,
+        "height": 2048
       },
       {
         "src": "/media/news/plakaty-z-wydarzen/wystawa2025_n.jpg",
         "alt": "[do uzupełnienia: opis plakatu — wydarzenie i rok]",
-        "width": 216,
-        "height": 300
+        "width": 1245,
+        "height": 1732
       },
       {
         "src": "/media/news/plakaty-z-wydarzen/22196229_1898770470343483_3103313737730797286_naaaa.jpg",
         "alt": "[do uzupełnienia: opis plakatu — wydarzenie i rok]",
-        "width": 203,
-        "height": 300
+        "width": 635,
+        "height": 940
       },
       {
         "src": "/media/news/plakaty-z-wydarzen/487455563_1179205403998646_7530736485192664770_n.jpg",
         "alt": "[do uzupełnienia: opis plakatu — wydarzenie i rok]",
-        "width": 212,
-        "height": 300
+        "width": 595,
+        "height": 842
       },
       {
         "src": "/media/news/plakaty-z-wydarzen/plakat_premiera_ksiazki_Ikona_dzis_2025_29.11-1.png",
         "alt": "[do uzupełnienia: opis plakatu — wydarzenie i rok]",
-        "width": 212,
-        "height": 300
+        "width": 1414,
+        "height": 2000
       },
       {
         "src": "/media/news/plakaty-z-wydarzen/zapisy-na-warsztaty-24_n26wrzesnia.jpg",
         "alt": "[do uzupełnienia: opis plakatu — wydarzenie i rok]",
-        "width": 216,
-        "height": 300
+        "width": 1400,
+        "height": 1944
       },
       {
         "src": "/media/news/plakaty-z-wydarzen/Ejszyszkiplakat-scaled.jpg",
         "alt": "[do uzupełnienia: opis plakatu — wydarzenie i rok]",
-        "width": 212,
-        "height": 300
+        "width": 1810,
+        "height": 2560
       },
       {
         "src": "/media/news/plakaty-z-wydarzen/337713552_696275902289573_3891671052018141711_n.png",
         "alt": "[do uzupełnienia: opis plakatu — wydarzenie i rok]",
-        "width": 212,
-        "height": 300
+        "width": 1448,
+        "height": 2048
       },
       {
         "src": "/media/news/plakaty-z-wydarzen/69749523_2318640458356480_1340913236765048832_n-1.jpg",
         "alt": "[do uzupełnienia: opis plakatu — wydarzenie i rok]",
-        "width": 300,
-        "height": 169
+        "width": 1920,
+        "height": 1080
       },
       {
         "src": "/media/news/plakaty-z-wydarzen/499379683_3861626914057819_8871432240859114791_n.jpg",
         "alt": "[do uzupełnienia: opis plakatu — wydarzenie i rok]",
-        "width": 208,
-        "height": 300
+        "width": 1418,
+        "height": 2048
       },
       {
         "src": "/media/news/plakaty-z-wydarzen/wystawa-ikon-w-Wilnie-scaled.jpg",
         "alt": "[do uzupełnienia: opis plakatu — wydarzenie i rok]",
-        "width": 203,
-        "height": 300
+        "width": 1734,
+        "height": 2560
       },
       {
         "src": "/media/news/plakaty-z-wydarzen/unnamedLIpkawarsztaty.jpg",
         "alt": "[do uzupełnienia: opis plakatu — wydarzenie i rok]",
-        "width": 286,
-        "height": 300
+        "width": 1080,
+        "height": 1132
       },
       {
         "src": "/media/news/plakaty-z-wydarzen/plakat2017-1-scaled.jpg",
         "alt": "[do uzupełnienia: opis plakatu — wydarzenie i rok]",
-        "width": 208,
-        "height": 300
+        "width": 1773,
+        "height": 2560
       },
       {
         "src": "/media/news/plakaty-z-wydarzen/O-sztuce-ikonopisania-plakat.webp",
         "alt": "[do uzupełnienia: opis plakatu — wydarzenie i rok]",
-        "width": 210,
-        "height": 300
+        "width": 231,
+        "height": 330
       },
       {
         "src": "/media/news/plakaty-z-wydarzen/493505391_3840023266218184_6780934151803503857_n.jpg",
         "alt": "[do uzupełnienia: opis plakatu — wydarzenie i rok]",
-        "width": 212,
-        "height": 300
+        "width": 1447,
+        "height": 2048
       },
       {
         "src": "/media/news/plakaty-z-wydarzen/485661208_1173206314598555_4775639608849839318_n.jpg",
         "alt": "[do uzupełnienia: opis plakatu — wydarzenie i rok]",
-        "width": 225,
-        "height": 300
+        "width": 1536,
+        "height": 2048
       },
       {
         "src": "/media/news/plakaty-z-wydarzen/508589444_24195615516713083_8621004510282053883_n.jpg",
         "alt": "[do uzupełnienia: opis plakatu — wydarzenie i rok]",
-        "width": 212,
-        "height": 300
+        "width": 509,
+        "height": 720
       },
       {
         "src": "/media/news/plakaty-z-wydarzen/508571398_24195615596713075_2339499066222323840_n.jpg",
         "alt": "[do uzupełnienia: opis plakatu — wydarzenie i rok]",
-        "width": 212,
-        "height": 300
+        "width": 565,
+        "height": 800
       },
       {
         "src": "/media/news/plakaty-z-wydarzen/506753077_24195615476713087_9139429935178743349_n-1.jpg",
         "alt": "[do uzupełnienia: opis plakatu — wydarzenie i rok]",
-        "width": 213,
-        "height": 300
+        "width": 512,
+        "height": 720
       }
     ],
     "bodyText": "Zapraszamy do zapoznania się z wybranymi plakatami z naszych wydarzeń."
@@ -1191,7 +1238,7 @@
     "kind": "aktualnosc",
     "layout": "program",
     "excerpt": "Przegląd wydarzeń w Akademii Ikony w sezonie 2015/2016, Kościół Środowisk Twórczych w Warszawie.",
-    "bodyText": "W sezonie 2015/2016 zajęcia Akademii Ikony odbywały się w Kościele Środowisk Twórczych pw. św. Andrzeja Apostoła i św. Brata Alberta w Warszawie (Plac Teatralny 20): - **Studium pisania ikon** — zajęcia warsztatowe (ikona tablicowa i fresk), raz w tygodniu; prowadzenie: Elżbieta Jackowska-Kurek. - **Cykl wykładów „Ikona dziś”** — comiesięczne spotkania we wtorki. - **Tajemnice ikony** — warsztaty dla dzieci w wieku szkolnym (prowadzenie: Elżbieta Jackowska-Kurek; opieka duchowa: ks. Grzegorz Michalczyk). - **Otwarte piątki** — konsultacje po wcześniejszym umówieniu. - **Klub Pielgrzyma „Śladami najpiękniejszych ikon świata”** — comiesięczne prelekcje we wtorki. Program wykładów tego sezonu opisujemy w [archiwum wykładów](/wyklady/archiwum). Aktualną ofertę warsztatów znajdziesz na stronie [Warsztaty](/warsztaty)."
+    "bodyText": "W sezonie 2015/2016 zajęcia Akademii Ikony odbywały się w Kościele Środowisk Twórczych pw. św. Andrzeja Apostoła i św. Brata Alberta w Warszawie (Plac Teatralny 20): - **Studium pisania ikon** — zajęcia warsztatowe (ikona tablicowa i fresk), raz w tygodniu; prowadzenie: Elżbieta Jackowska-Kurek. - **Cykl wykładów „Ikona dziś”** — comiesięczne spotkania we wtorki. - **Tajemnice ikony** — warsztaty dla dzieci w wieku szkolnym (prowadzenie: Elżbieta Jackowska-Kurek; opieka duchowa: ks. Grzegorz Michalczyk). - **Otwarte piątki** — konsultacje po wcześniejszym umówieniu. - **Klub Pielgrzyma „Śladami najpiękniejszych ikon świata”** — comiesięczne prelekcje we wtorki. Program wykładów tego sezonu opisujemy w [Archiwum wykładów](/wyklady/archiwum#season-2015-2016). Aktualną ofertę warsztatów znajdziesz na stronie [Warsztaty](/warsztaty)."
   },
   {
     "slug": "przyjazn-z-bogiem-bojazn-boza-wolnosc-czlowieka-wyklady-2023-2024",
@@ -1200,7 +1247,13 @@
     "kind": "wyklady",
     "layout": "wydarzenie",
     "excerpt": "Rozpoczynamy nowy sezon wykładów. W tym roku tematem przewodnim będzie „przyjaźń z Bogiem, bojaźń Boża i wolność człowieka”.",
-    "bodyText": "Zajrzyj na stronę [Wykłady](/wyklady/archiwum), aby zobaczyć program tego sezonu."
+    "related": [
+      {
+        "label": "Archiwum wykładów",
+        "href": "/wyklady/archiwum#season-2023-2024"
+      }
+    ],
+    "bodyText": "Szczegóły programu znajdziesz w [Archiwum wykładów](/wyklady/archiwum#season-2023-2024)."
   },
   {
     "slug": "sesja-ikonowa-modlitwa-psalmami-i-wystawa-ikon-w-swietej-lipce-2016",
@@ -1545,7 +1598,13 @@
     "kind": "wyklady",
     "layout": "wydarzenie",
     "excerpt": "Zapraszamy na kolejny rok wykładów w Akademii Ikony. W tym roku tematem przewodnim będzie „Świat ikony”.",
-    "bodyText": "Zajrzyj na stronę [Wykłady](/wyklady/archiwum), aby zobaczyć program tego sezonu."
+    "related": [
+      {
+        "label": "Archiwum wykładów",
+        "href": "/wyklady/archiwum#season-2012-2013"
+      }
+    ],
+    "bodyText": "Szczegóły programu znajdziesz w [Archiwum wykładów](/wyklady/archiwum#season-2012-2013)."
   },
   {
     "slug": "tejemnice-ikony",
@@ -1895,7 +1954,13 @@
     "kind": "wyklady",
     "layout": "wydarzenie",
     "excerpt": "Ogłaszamy program wykładów na nadchodzący rok akademicki. W tym roku tematem przewodnim będzie „Ikona – miejsce spotkania”.",
-    "bodyText": "Zajrzyj na stronę [Wykłady](/wyklady/archiwum), aby zobaczyć program tego sezonu."
+    "related": [
+      {
+        "label": "Archiwum wykładów",
+        "href": "/wyklady/archiwum#season-2013-2014"
+      }
+    ],
+    "bodyText": "Szczegóły programu znajdziesz w [Archiwum wykładów](/wyklady/archiwum#season-2013-2014)."
   },
   {
     "slug": "wyklady-20142015",
@@ -1913,7 +1978,13 @@
         "caption": "Plakat"
       }
     ],
-    "bodyText": "Rozpoczynamy nowy sezon wykładów. W tym roku tematem przewodnim będzie „Obraz i kult”. Zajrzyj na stronę [Wykłady](/wyklady/archiwum), aby zobaczyć program tego sezonu."
+    "related": [
+      {
+        "label": "Archiwum wykładów",
+        "href": "/wyklady/archiwum#season-2014-2015"
+      }
+    ],
+    "bodyText": "Rozpoczynamy nowy sezon wykładów. W tym roku tematem przewodnim będzie „Obraz i kult”. Szczegóły programu znajdziesz w [Archiwum wykładów](/wyklady/archiwum#season-2014-2015)."
   },
   {
     "slug": "wyklady-20152016-2",
@@ -1922,7 +1993,13 @@
     "kind": "wyklady",
     "layout": "wydarzenie",
     "excerpt": "Zapraszamy do zapoznania się z programem wykładów na nadchodzący rok akademicki. W tym roku tematem przewodnim będzie „Ikona dziś”.",
-    "bodyText": "Zajrzyj na stronę [Wykłady](/wyklady/archiwum), aby zobaczyć program tego sezonu."
+    "related": [
+      {
+        "label": "Archiwum wykładów",
+        "href": "/wyklady/archiwum#season-2015-2016"
+      }
+    ],
+    "bodyText": "Szczegóły programu znajdziesz w [Archiwum wykładów](/wyklady/archiwum#season-2015-2016)."
   },
   {
     "slug": "wyklady-20162017",
@@ -1940,7 +2017,13 @@
         "caption": "Plakat"
       }
     ],
-    "bodyText": "Zapraszamy na kolejny rok wykładów w Akademii Ikony. W tym roku tematem przewodnim będzie „Ikona – niebo na ziemi”. Zajrzyj na stronę [Wykłady](/wyklady/archiwum), aby zobaczyć program tego sezonu."
+    "related": [
+      {
+        "label": "Archiwum wykładów",
+        "href": "/wyklady/archiwum#season-2016-2017"
+      }
+    ],
+    "bodyText": "Zapraszamy na kolejny rok wykładów w Akademii Ikony. W tym roku tematem przewodnim będzie „Ikona – niebo na ziemi”. Szczegóły programu znajdziesz w [Archiwum wykładów](/wyklady/archiwum#season-2016-2017)."
   },
   {
     "slug": "wyklady-20172018",
@@ -1949,7 +2032,13 @@
     "kind": "wyklady",
     "layout": "wydarzenie",
     "excerpt": "Ogłaszamy program wykładów na nadchodzący rok akademicki. W tym roku tematem przewodnim będzie „O świętości”.",
-    "bodyText": "Zajrzyj na stronę [Wykłady](/wyklady/archiwum), aby zobaczyć program tego sezonu."
+    "related": [
+      {
+        "label": "Archiwum wykładów",
+        "href": "/wyklady/archiwum#season-2017-2018"
+      }
+    ],
+    "bodyText": "Szczegóły programu znajdziesz w [Archiwum wykładów](/wyklady/archiwum#season-2017-2018)."
   },
   {
     "slug": "wyklady-20182019",
@@ -1958,7 +2047,13 @@
     "kind": "wyklady",
     "layout": "wydarzenie",
     "excerpt": "Zapraszamy na kolejny rok wykładów w Akademii Ikony. W tym roku tematem przewodnim będzie „O świętości”.",
-    "bodyText": "Zajrzyj na stronę [Wykłady](/wyklady/archiwum), aby zobaczyć program tego sezonu."
+    "related": [
+      {
+        "label": "Archiwum wykładów",
+        "href": "/wyklady/archiwum#season-2018-2019"
+      }
+    ],
+    "bodyText": "Szczegóły programu znajdziesz w [Archiwum wykładów](/wyklady/archiwum#season-2018-2019)."
   },
   {
     "slug": "wyklady-2019-2020",
@@ -1967,7 +2062,13 @@
     "kind": "wyklady",
     "layout": "wydarzenie",
     "excerpt": "Zapraszamy na kolejny rok wykładów w Akademii Ikony. W tym roku tematem przewodnim będzie „O Duchu Świętym”.",
-    "bodyText": "Zajrzyj na stronę [Wykłady](/wyklady/archiwum), aby zobaczyć program tego sezonu."
+    "related": [
+      {
+        "label": "Archiwum wykładów",
+        "href": "/wyklady/archiwum#season-2019-2020"
+      }
+    ],
+    "bodyText": "Szczegóły programu znajdziesz w [Archiwum wykładów](/wyklady/archiwum#season-2019-2020)."
   },
   {
     "slug": "wyklady-2020-2021",
@@ -1976,7 +2077,13 @@
     "kind": "wyklady",
     "layout": "wydarzenie",
     "excerpt": "Zapraszamy na kolejny rok wykładów w Akademii Ikony. W tym roku tematem przewodnim będzie „O Bożej obecności”.",
-    "bodyText": "Zajrzyj na stronę [Wykłady](/wyklady/archiwum), aby zobaczyć program tego sezonu."
+    "related": [
+      {
+        "label": "Archiwum wykładów",
+        "href": "/wyklady/archiwum#season-2020-2021"
+      }
+    ],
+    "bodyText": "Szczegóły programu znajdziesz w [Archiwum wykładów](/wyklady/archiwum#season-2020-2021)."
   },
   {
     "slug": "wyklady-2021-2022",
@@ -1985,7 +2092,13 @@
     "kind": "wyklady",
     "layout": "wydarzenie",
     "excerpt": "Zapraszamy na kolejny rok wykładów w Akademii Ikony. W tym roku tematem przewodnim będzie „Światłość prawdziwa”.",
-    "bodyText": "Zajrzyj na stronę [Wykłady](/wyklady/archiwum), aby zobaczyć program tego sezonu."
+    "related": [
+      {
+        "label": "Archiwum wykładów",
+        "href": "/wyklady/archiwum#season-2021-2022"
+      }
+    ],
+    "bodyText": "Szczegóły programu znajdziesz w [Archiwum wykładów](/wyklady/archiwum#season-2021-2022)."
   },
   {
     "slug": "wyklady-2022-2023",
@@ -1994,7 +2107,13 @@
     "kind": "wyklady",
     "layout": "wydarzenie",
     "excerpt": "Zapraszamy na kolejny rok wykładów w Akademii Ikony. W tym roku tematem przewodnim będzie „Widzieć niewidzialnego”.",
-    "bodyText": "Zajrzyj na stronę [Wykłady](/wyklady/archiwum), aby zobaczyć program tego sezonu."
+    "related": [
+      {
+        "label": "Archiwum wykładów",
+        "href": "/wyklady/archiwum#season-2022-2023"
+      }
+    ],
+    "bodyText": "Szczegóły programu znajdziesz w [Archiwum wykładów](/wyklady/archiwum#season-2022-2023)."
   },
   {
     "slug": "wystawa-galeria-wiezy-ken-2019",

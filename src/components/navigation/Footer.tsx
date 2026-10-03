@@ -16,9 +16,10 @@ import {
 const colorTransition = "transition-colors duration-150 motion-reduce:transition-none";
 const sectionHeadingClass = `flex min-h-tap-min-mobile-header items-center font-serif text-size-footer-heading leading-heading text-text-list-title hover:text-accent-text lg:min-h-0 lg:w-fit ${colorTransition}`;
 const subLinkClass = `flex min-h-tap-min-mobile-header items-center text-size-nav text-text-secondary hover:text-accent-hover lg:min-h-0 lg:w-fit lg:text-size-footer-sublink lg:leading-footer-sublink ${colorTransition}`;
-const contactDataClass = `flex w-fit min-h-tap-min-mobile-header items-center whitespace-nowrap text-size-ui leading-footer-text text-accent-text underline underline-offset-3 hover:text-accent-hover md:min-h-0 ${colorTransition}`;
+const footerLinkUnderline = "link-underline-target link-underline-target--border";
+const contactDataClass = `flex w-fit min-h-tap-min-mobile-header items-center whitespace-nowrap text-size-ui leading-footer-text text-accent-text no-underline hover:text-accent-hover md:min-h-0 ${colorTransition}`;
 const socialLinkClass = `inline-flex min-h-tap-min items-center border border-border-secondary px-footer-social-px text-size-caption-m leading-footer-text text-text-secondary hover:border-accent-text hover:text-accent-text md:min-h-tap-min-mobile-header ${colorTransition}`;
-const legalLinkClass = `underline underline-offset-3 hover:text-accent-text ${colorTransition}`;
+const legalLinkClass = `no-underline hover:text-accent-text ${colorTransition}`;
 
 // Splits the fixed church name (brief §8) into its display lines; if the
 // content ever changes shape, the whole name falls back to one block.
@@ -69,11 +70,11 @@ function FooterContacts() {
           </div>
           <div className="mt-footer-data-mt-m flex flex-col md:mt-footer-data-mt md:gap-space-2">
             <a href={`mailto:${email.address}`} className={contactDataClass}>
-              {email.address}
+              <span className={footerLinkUnderline}>{email.address}</span>
             </a>
             {index === 0 ? (
               <a href={telHref} className={contactDataClass}>
-                {settings.phone}
+                <span className={footerLinkUnderline}>{settings.phone}</span>
               </a>
             ) : null}
           </div>
@@ -167,7 +168,7 @@ export function Footer() {
         <span>
           {pl.footer.organizerLabel}:{" "}
           <ExternalLink href={settings.ecosystem.foundationUrl} className={legalLinkClass}>
-            {pl.footer.organizerName}
+            <span className={footerLinkUnderline}>{pl.footer.organizerName}</span>
           </ExternalLink>
         </span>
         <span aria-hidden="true" className="hidden md:inline">
@@ -177,7 +178,7 @@ export function Footer() {
           href={footerLegalLink.href}
           className={`flex w-fit min-h-tap-min-mobile-header items-center md:inline md:min-h-0 ${legalLinkClass}`}
         >
-          {footerLegalLink.label}
+          <span className={footerLinkUnderline}>{footerLegalLink.label}</span>
         </Link>
         <span className="md:ml-auto">
           {pl.footer.designCreditLabel}:{" "}

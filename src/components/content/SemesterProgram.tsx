@@ -24,7 +24,7 @@ export function SemesterProgram() {
       <p className="text-size-body leading-body text-text-secondary mb-space-6">
         {pl.offers.semesterProgramIntro}
       </p>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-hairline-gap bg-line-gold">
+      <div className="hairline-grid-2">
         {semesters.map((semester, index) => (
           <article
             key={`${index}-${semester.title}`}
