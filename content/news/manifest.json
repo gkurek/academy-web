@@ -123,12 +123,7 @@
     "kind": "wyklady",
     "layout": "wydarzenie",
     "excerpt": "Zapraszamy do zapoznania się z programem wykładów na nadchodzący rok akademicki. W tym roku tematem przewodnim będzie „Mądrość Boża”.",
-    "related": [
-      {
-        "label": "Archiwum wykładów",
-        "href": "/wyklady/archiwum#season-2025-2026"
-      }
-    ],
+    "lectureSeason": "2025-2026",
     "bodyText": "Szczegóły programu znajdziesz w [Archiwum wykładów](/wyklady/archiwum#season-2025-2026)."
   },
   {
@@ -138,7 +133,8 @@
     "kind": "wyklady",
     "layout": "wydarzenie",
     "excerpt": "Zapraszamy do zapoznania się z programem wykładów na nadchodzący rok akademicki. W tym roku tematem przewodnim będzie „Mistyka dziś”.",
-    "bodyText": "Zajrzyj na stronę [Wykłady](/wyklady), aby zobaczyć program tego sezonu."
+    "lectureSeason": "2026-2027",
+    "bodyText": "Zajrzyj na stronę , aby zobaczyć program tego sezonu."
   },
   {
     "slug": "ikona-okno-duszy-2019",
@@ -942,12 +938,7 @@
     "kind": "wyklady",
     "layout": "wydarzenie",
     "excerpt": "Ogłaszamy program wykładów na nadchodzący rok akademicki. W tym roku tematem przewodnim będzie „piękno Boga, piękno człowieka”.",
-    "related": [
-      {
-        "label": "Archiwum wykładów",
-        "href": "/wyklady/archiwum#season-2024-2025"
-      }
-    ],
+    "lectureSeason": "2024-2025",
     "bodyText": "Szczegóły programu znajdziesz w [Archiwum wykładów](/wyklady/archiwum#season-2024-2025)."
   },
   {
@@ -1247,12 +1238,7 @@
     "kind": "wyklady",
     "layout": "wydarzenie",
     "excerpt": "Rozpoczynamy nowy sezon wykładów. W tym roku tematem przewodnim będzie „przyjaźń z Bogiem, bojaźń Boża i wolność człowieka”.",
-    "related": [
-      {
-        "label": "Archiwum wykładów",
-        "href": "/wyklady/archiwum#season-2023-2024"
-      }
-    ],
+    "lectureSeason": "2023-2024",
     "bodyText": "Szczegóły programu znajdziesz w [Archiwum wykładów](/wyklady/archiwum#season-2023-2024)."
   },
   {
@@ -1598,12 +1584,7 @@
     "kind": "wyklady",
     "layout": "wydarzenie",
     "excerpt": "Zapraszamy na kolejny rok wykładów w Akademii Ikony. W tym roku tematem przewodnim będzie „Świat ikony”.",
-    "related": [
-      {
-        "label": "Archiwum wykładów",
-        "href": "/wyklady/archiwum#season-2012-2013"
-      }
-    ],
+    "lectureSeason": "2012-2013",
     "bodyText": "Szczegóły programu znajdziesz w [Archiwum wykładów](/wyklady/archiwum#season-2012-2013)."
   },
   {
@@ -1954,12 +1935,7 @@
     "kind": "wyklady",
     "layout": "wydarzenie",
     "excerpt": "Ogłaszamy program wykładów na nadchodzący rok akademicki. W tym roku tematem przewodnim będzie „Ikona – miejsce spotkania”.",
-    "related": [
-      {
-        "label": "Archiwum wykładów",
-        "href": "/wyklady/archiwum#season-2013-2014"
-      }
-    ],
+    "lectureSeason": "2013-2014",
     "bodyText": "Szczegóły programu znajdziesz w [Archiwum wykładów](/wyklady/archiwum#season-2013-2014)."
   },
   {
@@ -1978,12 +1954,7 @@
         "caption": "Plakat"
       }
     ],
-    "related": [
-      {
-        "label": "Archiwum wykładów",
-        "href": "/wyklady/archiwum#season-2014-2015"
-      }
-    ],
+    "lectureSeason": "2014-2015",
     "bodyText": "Rozpoczynamy nowy sezon wykładów. W tym roku tematem przewodnim będzie „Obraz i kult”. Szczegóły programu znajdziesz w [Archiwum wykładów](/wyklady/archiwum#season-2014-2015)."
   },
   {
@@ -1993,12 +1964,7 @@
     "kind": "wyklady",
     "layout": "wydarzenie",
     "excerpt": "Zapraszamy do zapoznania się z programem wykładów na nadchodzący rok akademicki. W tym roku tematem przewodnim będzie „Ikona dziś”.",
-    "related": [
-      {
-        "label": "Archiwum wykładów",
-        "href": "/wyklady/archiwum#season-2015-2016"
-      }
-    ],
+    "lectureSeason": "2015-2016",
     "bodyText": "Szczegóły programu znajdziesz w [Archiwum wykładów](/wyklady/archiwum#season-2015-2016)."
   },
   {
@@ -2017,12 +1983,7 @@
         "caption": "Plakat"
       }
     ],
-    "related": [
-      {
-        "label": "Archiwum wykładów",
-        "href": "/wyklady/archiwum#season-2016-2017"
-      }
-    ],
+    "lectureSeason": "2016-2017",
     "bodyText": "Zapraszamy na kolejny rok wykładów w Akademii Ikony. W tym roku tematem przewodnim będzie „Ikona – niebo na ziemi”. Szczegóły programu znajdziesz w [Archiwum wykładów](/wyklady/archiwum#season-2016-2017)."
   },
   {
@@ -2032,12 +1993,7 @@
     "kind": "wyklady",
     "layout": "wydarzenie",
     "excerpt": "Ogłaszamy program wykładów na nadchodzący rok akademicki. W tym roku tematem przewodnim będzie „O świętości”.",
-    "related": [
-      {
-        "label": "Archiwum wykładów",
-        "href": "/wyklady/archiwum#season-2017-2018"
-      }
-    ],
+    "lectureSeason": "2017-2018",
     "bodyText": "Szczegóły programu znajdziesz w [Archiwum wykładów](/wyklady/archiwum#season-2017-2018)."
   },
   {
@@ -2047,12 +2003,7 @@
     "kind": "wyklady",
     "layout": "wydarzenie",
     "excerpt": "Zapraszamy na kolejny rok wykładów w Akademii Ikony. W tym roku tematem przewodnim będzie „O świętości”.",
-    "related": [
-      {
-        "label": "Archiwum wykładów",
-        "href": "/wyklady/archiwum#season-2018-2019"
-      }
-    ],
+    "lectureSeason": "2018-2019",
     "bodyText": "Szczegóły programu znajdziesz w [Archiwum wykładów](/wyklady/archiwum#season-2018-2019)."
   },
   {
@@ -2062,12 +2013,7 @@
     "kind": "wyklady",
     "layout": "wydarzenie",
     "excerpt": "Zapraszamy na kolejny rok wykładów w Akademii Ikony. W tym roku tematem przewodnim będzie „O Duchu Świętym”.",
-    "related": [
-      {
-        "label": "Archiwum wykładów",
-        "href": "/wyklady/archiwum#season-2019-2020"
-      }
-    ],
+    "lectureSeason": "2019-2020",
     "bodyText": "Szczegóły programu znajdziesz w [Archiwum wykładów](/wyklady/archiwum#season-2019-2020)."
   },
   {
@@ -2077,12 +2023,7 @@
     "kind": "wyklady",
     "layout": "wydarzenie",
     "excerpt": "Zapraszamy na kolejny rok wykładów w Akademii Ikony. W tym roku tematem przewodnim będzie „O Bożej obecności”.",
-    "related": [
-      {
-        "label": "Archiwum wykładów",
-        "href": "/wyklady/archiwum#season-2020-2021"
-      }
-    ],
+    "lectureSeason": "2020-2021",
     "bodyText": "Szczegóły programu znajdziesz w [Archiwum wykładów](/wyklady/archiwum#season-2020-2021)."
   },
   {
@@ -2092,12 +2033,7 @@
     "kind": "wyklady",
     "layout": "wydarzenie",
     "excerpt": "Zapraszamy na kolejny rok wykładów w Akademii Ikony. W tym roku tematem przewodnim będzie „Światłość prawdziwa”.",
-    "related": [
-      {
-        "label": "Archiwum wykładów",
-        "href": "/wyklady/archiwum#season-2021-2022"
-      }
-    ],
+    "lectureSeason": "2021-2022",
     "bodyText": "Szczegóły programu znajdziesz w [Archiwum wykładów](/wyklady/archiwum#season-2021-2022)."
   },
   {
@@ -2107,12 +2043,7 @@
     "kind": "wyklady",
     "layout": "wydarzenie",
     "excerpt": "Zapraszamy na kolejny rok wykładów w Akademii Ikony. W tym roku tematem przewodnim będzie „Widzieć niewidzialnego”.",
-    "related": [
-      {
-        "label": "Archiwum wykładów",
-        "href": "/wyklady/archiwum#season-2022-2023"
-      }
-    ],
+    "lectureSeason": "2022-2023",
     "bodyText": "Szczegóły programu znajdziesz w [Archiwum wykładów](/wyklady/archiwum#season-2022-2023)."
   },
   {

@@ -307,7 +307,9 @@ Treść z poniższych URL-i uznajemy za zmigrowaną (konspekt w `docs/plans/09-m
 
 **Do refaktoryzacji (przyszły CMS EJK — etap 10+ / osobny projekt):** docelowo jeden formularz „nowy sezon wykładów”: submit aktualizuje `content/lectures/<bieżący>.json`, przenosi poprzedni sezon do archiwum, **generuje** wpis `/aktualnosci` i ewentualnie aktualizuje hub. Dziś duplikacja intro (JSON + MDX) jest świadoma i zamrożona przy gate.
 
-**Otwarte (rozstrzygnąć przed CMS):**
+**Rozstrzygnięte w etapie 10 / k6 (2026-10-04, K-139, `docs/plans/10-k6-lectures.md`):** p. 1 → pole `lectureSeason` + link wyliczany (body wpisu zostaje jako kronika; link sam przechodzi z `/wyklady` na kotwicę archiwum); p. 2 → kotwice `#season-{slug}` wdrożone w k3b, linki archiwalne na stałe w body, bieżący przez `<LectureSeasonLink />`; p. 3 → odłożone do projektu CMS (duplikacja intro JSON + MDX zamrożona). Przyszłe sezony bez osobnego wpisu „wykłady {sezon}” — program we wpisie IX „Nowy rok w Akademii” (`10-k3-news.md` D3). Wpisów `kind: wyklady` jest **15** (14 archiwalnych + bieżący). **Zmiana sezonu (procedura):** w `src/content/lectures.ts` — import nowego JSON i `CURRENT_SEASON_SLUG`; w `content/lectures/archive.json` — `lastSeason`; liczby i zakresy lat w copy wyliczają się same.
+
+**Otwarte (stan sprzed k6, zachowany dla historii):**
 
 1. **Bieżący vs przeszły sezon w aktualnościach** — czy po zakończeniu sezonu body wpisu news **zostaje** (kronika zapowiedzi), czy **jest przepisywane** (np. tylko link do archiwum)?
 2. **Głębokie linki** — kotwice na `/wyklady/archiwum` per `season.slug` (np. `#2012-2013`) + automatyczne wstawianie w akapicie „zobacz program”; vs pełny program z powrotem w MDX dla sezonów archiwalnych.

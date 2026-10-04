@@ -1,5 +1,5 @@
 import { LecturesHubPage } from "@/components/lectures/LecturesHubPage";
-import { getArchiveIntro, getCurrentSeason } from "@/content/lectures";
+import { getCurrentSeason, getHubArchiveIntro } from "@/content/lectures";
 import { getOffer } from "@/content/offers";
 import { mainNav, sectionNav } from "@/navigation";
 import { notFound } from "next/navigation";
@@ -9,7 +9,7 @@ const sectionActive = sectionNav.wyklady[0].label;
 
 export default function LecturesPage() {
   const season = getCurrentSeason();
-  const archiveIntro = getArchiveIntro();
+  const archiveIntro = getHubArchiveIntro();
   const offer = getOffer("wyklady");
 
   if (!offer) {

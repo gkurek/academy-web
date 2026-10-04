@@ -305,6 +305,8 @@ export const pl = {
     affiliationPlaceholder: "[do uzupełnienia: afiliacja]",
     expandBio: "Rozwiń notę",
     collapseBio: "Zwiń notę",
+    expandBioLabel: "Rozwiń notę: {name}",
+    collapseBioLabel: "Zwiń notę: {name}",
   },
   gallery: {
     title: "Galeria ikon",
@@ -670,6 +672,7 @@ export const pl = {
       wystawa: "Wystawy w Kościele Środowisk Twórczych",
       wyjazd: "Letnia Szkoła Światła",
     },
+    relatedLectureArchive: "Archiwum wykładów",
     eventCta: {
       warsztaty: "Jak się zapisać na kurs",
       wyklady: "Program wykładów",

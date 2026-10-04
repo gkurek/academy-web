@@ -178,6 +178,7 @@ type News = {
   columnImageIndex?: number;                    // opcjonalnie: indeks w images[] — podgląd w prawej kolumnie desktop (K-132); domyślnie brak
   featured?: boolean;           // wyróżnienie do ręcznego zdjęcia flagi; wymaga cover; max 1 (K-73, etap 10 k3)
   venue?: string;               // opcjonalny kontekst miejsca w artykule; lista #wyjazdowe z `travelingPlaces` (K-127)
+  lectureSeason?: string;       // slug sezonu wykładów ("2026-2027"); link do programu wyliczany: bieżący → /wyklady, archiwalny → /wyklady/archiwum#season-{slug} (K-139)
 };
 // K-72: na liście (`NewsCard`) wyświetlana jest tylko `date` z rokiem — bez zakresu `dateEnd`.
 // We wpisie pojedynczym i w wyróżnionym: `formatDateRange` z `dateEnd` gdy jest.

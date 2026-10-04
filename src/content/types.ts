@@ -148,6 +148,8 @@ export type News = {
   columnImageIndex?: number;
   venue?: string;
   featured?: boolean;
+  /** Lecture season slug (`"2026-2027"`); link to its program is derived — hub while current, archive anchor after (LK1). */
+  lectureSeason?: string;
 };
 
 export type Testimonial = {

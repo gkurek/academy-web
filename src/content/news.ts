@@ -5,6 +5,7 @@ import newsManifest from "../../content/news/manifest.json";
 import { newsModules } from "@/content/news-registry";
 import { NEWS_ARCHIVE_UNTIL_YEAR } from "@/config/news";
 import { formatDateRange } from "@/lib/formatDateRange";
+import { getLectureSeasonHref, getSeason, isCurrentLectureSeason } from "@/content/lectures";
 import { pl } from "@/i18n/pl";
 
 export type NewsFrontmatter = {
@@ -25,6 +26,8 @@ export type NewsFrontmatter = {
   /** Traveling exhibition venue — drives the #wyjazdowe list (K-87). */
   venue?: string;
   featured?: boolean;
+  /** Lecture season slug — drives the derived program link (LK1). */
+  lectureSeason?: string;
   /** Stripped MDX body — manifest only, for fallback excerpts (K-63). */
   bodyText?: string;
 };
@@ -84,6 +87,9 @@ function validateNewsLayouts(entries: NewsFrontmatter[]): void {
       console.warn(
         `[news] "${entry.slug}": layout galeria without images — effective layout tekst until k3c`,
       );
+    }
+    if (entry.lectureSeason !== undefined && !getSeason(entry.lectureSeason)) {
+      throw new Error(`News entry "${entry.slug}": unknown lectureSeason "${entry.lectureSeason}"`);
     }
     if (entry.columnImageIndex !== undefined) {
       const index = entry.columnImageIndex;
@@ -407,10 +413,24 @@ const DEFAULT_RELATED_BY_KIND: Partial<Record<NewsKind, NewsRelatedLink>> = {
   wyjazd: { label: pl.news.relatedDefaults.wyjazd, href: "/warsztaty/letnia-szkola-swiatla" },
 };
 
-/** Default „Powiązane” from `kind` (D7), max 2 links. */
+/** Link to a lecture season's program — hub while current, archive anchor afterwards (LK1). */
+export function getLectureSeasonLink(seasonSlug: string): NewsRelatedLink {
+  return {
+    label: isCurrentLectureSeason(seasonSlug)
+      ? pl.news.relatedDefaults.wyklady
+      : pl.news.relatedLectureArchive,
+    href: getLectureSeasonHref(seasonSlug),
+  };
+}
+
+/** Default „Powiązane” from `lectureSeason` or `kind` (D7), max 2 links. */
 export function getNewsRelatedLinks(entry: NewsFrontmatter): NewsRelatedLink[] {
   if (entry.related && entry.related.length > 0) {
     return entry.related.slice(0, 2);
+  }
+
+  if (entry.lectureSeason) {
+    return [getLectureSeasonLink(entry.lectureSeason)];
   }
 
   const fallback = DEFAULT_RELATED_BY_KIND[entry.kind];

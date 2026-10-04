@@ -111,7 +111,7 @@ export function SeasonAccordion({ seasons, defaultExpandedSlug }: SeasonAccordio
         const triggerId = `season-trigger-${season.slug}`;
 
         return (
-          <div key={season.slug} id={seasonAnchorId(season.slug)}>
+          <div key={season.slug} id={seasonAnchorId(season.slug)} className="scroll-mt-space-6">
             <button
               type="button"
               id={triggerId}
@@ -154,7 +154,7 @@ export function SeasonAccordion({ seasons, defaultExpandedSlug }: SeasonAccordio
               role="region"
               aria-labelledby={triggerId}
               hidden={!isExpanded}
-              className="bg-surface-card border-l-2 border-l-accent pl-tile-px"
+              className="bg-surface-card border-l-2 border-l-accent md:pl-tile-px"
             >
               {season.placeholder ? (
                 <p className="px-lecture-row-x text-size-body leading-body text-text-secondary">

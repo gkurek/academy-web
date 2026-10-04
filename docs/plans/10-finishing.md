@@ -2,7 +2,7 @@
 
 Status: **zatwierdzony** 2026-10-03  
 Gałąź: `feat/10-finishing` (od `main` po merge etapu 9 — PR #11 — i archiwizacji planów 09 — PR #12)  
-Makiety: **K-127** — `design/Akademia Ikony - Wystawy warianty.dc.html` (13a desktop, 14a mobile); dalsze ekrany — Claude Design w trakcie fali 1 (home, aktualności, album, wykłady). Tokeny: `design/README`, `docs/design-mockup-guide.md`.
+Makiety: **K-127** — `design/Akademia Ikony - Wystawy warianty.dc.html` (13a desktop, 14a mobile); dalsze ekrany — Claude Design w trakcie fali 1 (home, aktualności, album); wykłady — bez nowej makiety, obecny układ z etapu 4 (`10-k6-lectures.md` LK4). Tokeny: `design/README`, `docs/design-mockup-guide.md`.
 
 ## Cel i zakres
 
@@ -91,6 +91,8 @@ Domknięcie serwisu na prawdziwych danych z etapu 9 przed wdrożeniem (etap 11).
 **Zakres:** hub + archiwum + spójność nawigacji (trasy nieobjęte DoD #8); powiązanie news `kind: wyklady` ↔ hub (otwarte p. 1–3 w `migrate-report.md` — kotwice sezonu, ewent. czytanie JSON w szablonie); **bez** pełnego CMS.
 
 **Kryterium „gotowe”:** decyzje 1–3 zamknięte lub świadomie odłożone z wpisem w planie; hub/archiwum przejrzane na mobile/desktop.
+
+**Po sesji planistycznej (2026-10-04):** p. 2 (kotwice `#season-…`) w praktyce zrobiony w k3b; p. 1 → nowe opcjonalne pole `News.lectureSeason` z wyliczanym linkiem (LK1); p. 3 → odłożony do CMS (LK2); przyszłe sezony bez osobnego wpisu, program we wpisie IX (LK3, D3); obecny układ, bez makiety (LK4). Podział: **6a** przegląd · **6b** poprawki L1 · **6c** L2 (gate K-122). Szczegóły: **`docs/plans/10-k6-lectures.md`**.
 
 ### Kawałek 7 — Pozostały layout fali 1
 
@@ -239,7 +241,7 @@ Z `docs/plan-claude-code.md` §3, etap 10:
 | 3 — aktualności | ✅ | k3a–k3f 2026-10-03 (K-133–K-135); cykliczne → `docs/wpisy-cykliczne-aktualnosci-ejk.md` |
 | 4 — home | ✅ | 2026-10-04 — `10-k4-home.md` 4.1–4.5; K-136 |
 | 5 — album | ✅ | k5a–k5d ✅ 2026-10-04 (`10-k5-album.md`); K-137, K-138; **zamknięty** |
-| 6 — wykłady | ⬜ | |
+| 6 — wykłady | ✅ | 2026-10-04 — `10-k6-lectures.md` 6a–6c (LK1–LK6), K-139; **zamknięty** |
 | 7 — reszta layoutu | 🟡 | C1 (stopka K-36) ✅ 2026-10-04; reszta ⬜ |
 | 8 — treść EJK | ⬜ | fala 2 |
 | 9 — SEO / analityka | ⬜ | fala 2 |

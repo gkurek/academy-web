@@ -30,6 +30,7 @@ export type NewsManifestEntry = {
   venue?: string;
   sample?: boolean;
   featured?: boolean;
+  lectureSeason?: string;
   bodyText?: string;
   facts?: Array<{ label: string; value: string }>;
   related?: Array<{ label: string; href: string }>;

@@ -76,10 +76,10 @@ export type LoadedLectureSeason = Omit<LectureSeason, "lectures"> & {
 
 type ArchiveMeta = {
   intro: string;
+  /** Archive teaser on the `/wyklady` hub — not the archive page intro. */
+  hubIntro: string;
   firstSeason: string;
   lastSeason: string;
-  archivalSeasonCount: number;
-  totalSeasonCount: number;
 };
 
 export function formatLectureDate(isoDate: string): string {
@@ -224,12 +224,39 @@ function getArchiveMeta(): ArchiveMeta {
   return archiveMeta as ArchiveMeta;
 }
 
-export function getArchiveIntro(): string {
-  return getArchiveMeta().intro;
+/** Fills season placeholders in archive copy, so a season rollover needs no copy edit (LK5). */
+function fillArchivePlaceholders(text: string): string {
+  const { firstSeason, lastSeason } = getArchiveMeta();
+  return text
+    .replace("{firstSeasonLabel}", slugToSeasonLabel(firstSeason))
+    .replace("{lastSeasonLabel}", slugToSeasonLabel(lastSeason))
+    .replace("{currentSeasonLabel}", slugToSeasonLabel(CURRENT_SEASON_SLUG));
 }
 
+export function getArchiveIntro(): string {
+  return fillArchivePlaceholders(getArchiveMeta().intro);
+}
+
+export function getHubArchiveIntro(): string {
+  return fillArchivePlaceholders(getArchiveMeta().hubIntro);
+}
+
+/** All seasons from the first archived one up to the current one (LK5 — derived, not stored). */
 export function getTotalSeasonCount(): number {
-  return getArchiveMeta().totalSeasonCount;
+  const { firstSeason } = getArchiveMeta();
+  return parseSeasonStartYear(CURRENT_SEASON_SLUG) - parseSeasonStartYear(firstSeason) + 1;
+}
+
+export function isCurrentLectureSeason(slug: string): boolean {
+  return slug === CURRENT_SEASON_SLUG;
+}
+
+/** Where a season's program lives: the hub while current, its archive anchor afterwards (LK1). */
+export function getLectureSeasonHref(slug: string): string {
+  if (!seasonModules[slug]) {
+    throw new Error(`lectures: unknown season "${slug}"`);
+  }
+  return isCurrentLectureSeason(slug) ? "/wyklady" : `/wyklady/archiwum#season-${slug}`;
 }
 
 export function getCurrentSeason(): LoadedLectureSeason {

@@ -51,7 +51,7 @@ export function LecturerCard({ lecturer }: LecturerCardProps) {
           {affiliationFull}
         </p>
         {lecturer.bio ? (
-          <LecturerBio bio={lecturer.bio} collapsible={isLongLecturerBio(lecturer.bio)} />
+          <LecturerBio bio={lecturer.bio} collapsible={isLongLecturerBio(lecturer.bio)} name={displayName} />
         ) : null}
       </div>
     </article>
