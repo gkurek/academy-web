@@ -1,6 +1,6 @@
 # Plan 10/RF — Poprawki po review (techniczne; wizualne dopisze V4)
 
-Status: **zatwierdzony** 2026-10-04 (projekt R5; decyzje D1–D9 potwierdzone przez właściciela w wersji domyślnej) · następny: **RF-1** · paczki wizualne dopisze V4  
+Status: **zatwierdzony** 2026-10-04 (projekt R5; decyzje D1–D10 potwierdzone przez właściciela) · następny: **RF-0** · paczki wizualne dopisze V4  
 Gałąź: `feat/10-review` (RV-8; merge do `main` niezależnie od k8 na `feat/10-finishing`)  
 Staging: https://academy-web-lovat.vercel.app/ — weryfikacja każdej paczki po deployu  
 Makiety: tokeny `design/README`, odczyt wartości `docs/design-mockup-guide.md` — tylko w paczkach „po V1”  
@@ -16,13 +16,14 @@ Wdrożyć poprawki techniczne z bloku R (R1–R5) w paczkach, które da się zbu
 - paczka nie zmienia wyglądu, chyba że jej opis mówi inaczej („zmiana widoczna: …”); zrzuty 390 / 1440 przed i po dla tras z zakresu;
 - przed każdą paczką `npm run build` + `npm run lint` jako punkt odniesienia; po — bez regresji;
 - bez wartości arbitralnych Tailwind, bez tekstu UI w JSX, bez zmiany nazw pól w `src/content/types.ts` (`CLAUDE.md`);
-- komunikat commita `10/RF-N: <short description>` (RV-8); w sesji cloud commit i push po „OK” (K-120).
+- komunikat commita `10/RF-N: <short description>` (RV-8); w sesji cloud commit i push po „OK” (K-120);
+- **każda paczka kończy się porównaniem przed/po** wg sekcji „Weryfikacja: wygląd i zachowanie” niżej — wynik (liczba stron z różnicą, które i dlaczego zaakceptowane) wchodzi do meldunku w linii „Build/lint”.
 
 **Modele (RV-5 dla paczek RF, 2026-10-04):** każda paczka w świeżej sesji. Kryterium wyboru:
 
 | Model | Kiedy | Paczki |
 | --- | --- | --- |
-| **Sonnet 5.5** | zmiana mechaniczna albo lokalna, kryterium „gotowe” sprawdzalne narzędziem (knip, grep, axe, zrzuty identyczne), bez decyzji po drodze | RF-1, RF-6, RF-7, RF-9, RF-10, RF-11 |
+| **Sonnet 5.5** | zmiana mechaniczna albo lokalna, kryterium „gotowe” sprawdzalne narzędziem (knip, grep, axe, zrzuty identyczne), bez decyzji po drodze | RF-0, RF-1, RF-6, RF-7, RF-9, RF-10, RF-11 |
 | **Opus 5.5** | refaktor przekrojowy: wiele plików, zmiana sygnatur lub konwencji, trzeba rozstrzygać przypadki brzegowe w trakcie | RF-2, RF-3, RF-5, RF-8, RF-12, RF-13, RF-14 |
 | **Fable 5.1** | wyjątkowo: przepisanie logiki od nowa z twardym kryterium wydajnościowym i ryzykiem wizualnym | RF-4 |
 
@@ -43,6 +44,7 @@ Odpowiedzi z `05-tech-synthesis.md` §5 — **potwierdzone przez właściciela 2
 | **D7** | `.publication-excerpt*` i `publications.originHeading` usunięte | RF-7 |
 | **D8** | Filtr galerii: `history.replaceState` | RF-4 |
 | **D9** | `existsSync` usunięte z renderu; `check:media` przy buildzie | RF-3 |
+| **D10** | `playwright` jako `devDependency` (zgoda 2026-10-04); skrypt `scripts/visual-check.ts` porównuje zrzuty i wyliczone style dwóch adresów; punkt odniesienia = **adres deployu**, nie pliki w repo | RF-0 |
 
 ## Pliki i komponenty
 
@@ -57,21 +59,73 @@ Zbiorczo — szczegóły w paczkach.
 | Style | `src/app/globals.css` (podział na pliki w RF-14), `mdx-components.tsx` | RF-1, RF-10, RF-13, RF-14 |
 | Teksty UI | `src/i18n/pl.ts` | RF-2, RF-7, RF-11, RF-12 |
 | Narzędzia | `package.json`, `knip.json` (nowy), `scripts/`, `archive/wp-fetch-static/` | RF-6 |
+| Weryfikacja wizualna | `scripts/visual-check.ts` (nowy), `scripts/visual-check.routes.json` (nowy), `package.json` (`playwright`, `check:visual`) | RF-0, każda paczka |
 | Treść (po k8) | `content/pages/home.json`, `content/pages/workshops-hub.json` (nowe), `content/exhibition/page.mdx`, `content/settings.json` | RF-12 |
 
 ## Kolejność i zależności
 
 ```
-RF-1 ─┐
-RF-2 ─┼─ RF-3 ─ RF-4 ─ RF-5* ─ RF-6 ─ RF-7 ─ RF-8 ─ RF-9 ─ RF-10 ─ RF-11 ─ RF-12** ─ V1 ─ RF-13 ─ RF-14
+RF-0 ─ RF-1 ─┐
+       RF-2 ─┼─ RF-3 ─ RF-4 ─ RF-5* ─ RF-6 ─ RF-7 ─ RF-8 ─ RF-9 ─ RF-10 ─ RF-11 ─ RF-12** ─ V1 ─ RF-13 ─ RF-14
       │
       └ * RF-5 po zamknięciu T-R1, T-R2 (dane wykładowców) — może przesunąć się za RF-6…RF-11
         ** RF-12 po k8 / merge feat/10-finishing (dotyka content/)
 ```
 
-Najpierw bugi (RF-1, RF-2, RF-4) i paczki bez zmian wizualnych; RF-13 i RF-14 **po V1** (RV-7: pomiar przed wartościami docelowymi). RF-3 przed RF-4, bo walidacje przy buildzie wyłapią błędy wprowadzane w kolejnych refaktorach.
+RF-0 przed wszystkim (punkt odniesienia i narzędzie). Potem bugi (RF-1, RF-2, RF-4) i paczki bez zmian wizualnych; RF-13 i RF-14 **po V1** (RV-7: pomiar przed wartościami docelowymi). RF-3 przed RF-4, bo walidacje przy buildzie wyłapią błędy wprowadzane w kolejnych refaktorach.
+
+## Weryfikacja: wygląd i zachowanie (obowiązuje każdą paczkę)
+
+**Zasada.** Paczka techniczna nie zmienia wyglądu ani zachowania serwisu poza tym, co jej opis wymienia w linii „Zmiana widoczna”. Sprawdzamy to narzędziem, nie okiem: `npm run check:visual -- --base <adres> --head <adres>` (RF-0) renderuje obie wersje i porównuje.
+
+**Punkt odniesienia = adres deployu, nie pliki.** Vercel zachowuje adres każdego deployu (`academy-web-<hash>.vercel.app`), więc bazą dla paczki N jest deploy paczki N−1 (dla RF-1: deploy `bb7b0cb` — adres z panelu Vercel wpisać tu po RF-0: `[do uzupełnienia: adres deployu bb7b0cb]`). Dzięki temu w repo nie ma obrazów, a porównanie da się powtórzyć z każdej maszyny. Po zaakceptowaniu paczki jej deploy staje się bazą dla następnej.
+
+**Co porównujemy** (19 tras × 390 / 1440 / 1920 — K-30):
+
+1. **Zrzuty pełnej strony** — próg: różnica ≤ 0,1 % pikseli strony **albo** wszystkie różnice w obszarach z listy oczekiwanych; obszary dynamiczne maskowane (kafle „Najbliższe” na `/`, `iframe` mapy na `/kontakt`).
+2. **Wyliczone style** (metoda z R4): dla każdego `h1–h3`, `p`, `section`, `main`, `nav a`, `button` — `font-size`, `line-height`, `color`, `margin`, `padding`, `border-*-width`, `outline`; zapis JSON per trasa i `diff`. To sygnał odporny na antyaliasing i ładowanie fontów; przy sprzecznych wynikach **ten rozstrzyga**.
+3. **HTML z serwera** (bez skryptów): `curl` + normalizacja whitespace; różnice tylko w atrybutach z listy oczekiwanych (`aria-current`, `title`, `id` z `useId`).
+4. **Smoke zachowań** — Playwright na `head`, niezależnie od zakresu paczki: menu mobilne (390) otwiera się, Tab krąży w dialogu, `Escape` zamyka i oddaje fokus; filtr `/ikony?temat=…` zawęża siatkę; lightbox na `/ikony` i na wpisie otwiera się, strzałki działają, `Escape` zamyka; `/wyklady/archiwum#season-2019-2020` rozwija sezon; `mailto:` i `tel:` w `FactsBox` mają poprawne `href`; TOC na `/pracownia` (390) rozwija się; nieznany slug → 404 z powłoką; skip link prowadzi do `#main-content`.
+
+**Lokalnie vs cloud.**
+
+| | Sesja cloud (Claude Code on the web) | Sesja lokalna |
+| --- | --- | --- |
+| Przeglądarka | Chromium preinstalowany (`PLAYWRIGHT_BROWSERS_PATH=/opt/pw-browsers`); **nie** uruchamiać `playwright install` | raz: `npx playwright install chromium` (~150 MB, poza repo) |
+| `head` | deploy preview gałęzi po pushu paczki (adres z Vercel / GitHub Deployments) | j.w. **albo** `npm run build && npm run start` → `http://localhost:3000` (fonty i obrazy te same, więc zrzuty porównywalne; różnice w `next/image` przez brak CDN — patrz lista oczekiwanych) |
+| `base` | adres deployu poprzedniej paczki | j.w. |
+| Wynik | katalog `.visual/` (w `.gitignore`): zrzuty, diffy, `report.md` z tabelą trasa × szerokość | j.w. |
+
+Skrypt czyta `PLAYWRIGHT_BROWSERS_PATH`, gdy jest ustawiony, inaczej używa domyślnej lokalizacji Playwrighta — ten sam kod w obu środowiskach.
+
+**Różnice oczekiwane (PASS bez pytania, ale wymienione w meldunku):**
+
+- to, co paczka deklaruje w „Zmiana widoczna” (RF-1: obrys fokusu `summary`, kreska pod linkami miejsc LSŚ; RF-2: stan zamknięty FactsBox kursu; RF-4: liczba kafli w rzędach galerii; RF-8: `<title>`; RF-12: `[pole CMS]` → `[do uzupełnienia: …]`; RF-13 / RF-14: wartości z V1);
+- treść zależna od daty: kafle „Najbliższe” na `/`, stan wystawy na `/ikony/wystawy`, faza wpisu `wydarzenie` — maskowane, a jeśli nie, różnica tylko w tekście tych bloków;
+- różnice między deployami Vercel w parametrach `next/image` (`?w=…&q=…`, hash w `/_next/static/`) i w `id` generowanych przez `useId` — ignorowane przez normalizację HTML;
+- antyaliasing fontów i cienie o różnicy ≤ 0,1 % pikseli bez zmiany w wyliczonych stylach;
+- `iframe` mapy Google (treść zewnętrzna);
+- zmiany treści scalone z `main` (k8) między bazą a głową — wtedy porównać z deployem `main` po merge jako bazą, nie z poprzednią paczką.
+
+**Różnice nieoczekiwane (FAIL — paczka nie dostaje „OK”):** każda zmiana wyliczonego stylu poza listą deklarowaną; strona z > 0,1 % różnych pikseli bez wytłumaczenia z listy wyżej; dowolny punkt smoke, który przestał działać; zmiana HTML poza `aria-current` / `title` / `id`.
+
+**Jeśli Playwright nie wyjdzie** (instalacja, brak sieci do deployu, niestabilne zrzuty > 1 sesja pracy): nie blokujemy paczek dłużej niż jedną sesję. Plan awaryjny w kolejności:
+
+1. **Tylko wyliczone style + HTML** — skrypt z R4 wstrzykiwany w przeglądarce właściciela (bez Playwrighta), zapis JSON ręcznie do `.visual/`, `diff` w terminalu. Pokrywa punkty 2–3, bez obrazów i bez smoke.
+2. **Zrzuty ręczne** 390 / 1440 tylko dla tras z zakresu paczki + smoke ręcznie z listy wyżej (ok. 10 minut); meldunek odnotowuje, że porównanie było ręczne.
+3. Jeśli w dwóch kolejnych paczkach weryfikacja była ręczna — wrócić do RF-0 w sesji Opusa i naprawić narzędzie, zanim zaczną się RF-4 i RF-8 (dwie paczki o największym ryzyku wizualnym nie idą bez narzędzia).
 
 ## Kawałki
+
+### RF-0 — Punkt odniesienia i narzędzie porównania
+
+**Pozycje:** brak zgłoszeń — infrastruktura weryfikacji (D10). **Decyzja:** D10 (zgoda na `playwright`).  
+**Zakres (pliki):** `package.json` (`devDependencies`: `playwright`; skrypt `check:visual`; `tsx` — jeśli RF-6 jeszcze nie weszło, dopisać tu, bo skrypt go potrzebuje), `package-lock.json`, nowy `scripts/visual-check.ts`, nowy `scripts/visual-check.routes.json` (19 tras z `00-scope.md` §2.2 + reprezentanci `[slug]` z R0; maski per trasa), `.gitignore` (`.visual/`), `knip.json` (`entry` + skrypt — jeśli RF-6 później, utworzyć tu minimalny), ten plik (adres deployu `bb7b0cb` wpisany w sekcji „Weryfikacja”).  
+**Co:** skrypt z flagami `--base`, `--head`, `--widths 390,1440,1920`, `--routes`, `--only screenshots|styles|html|smoke`; zrzuty pełnej strony po `networkidle` i po wyłączeniu animacji (`prefers-reduced-motion`), porównanie pikselowe (biblioteka porównania wchodząca w skład Playwrighta — bez dodatkowych zależności), maski z JSON; wyliczone style wg listy z sekcji „Weryfikacja” do JSON + diff; HTML przez `fetch` z normalizacją; smoke jako lista kroków z asercjami; `report.md` z tabelą trasa × szerokość × sygnał (PASS / EXPECTED / FAIL) i linkami do diffów. Pierwszy przebieg: `--base` = `--head` = deploy `bb7b0cb` (ma dać 0 różnic — test narzędzia), drugi: `bb7b0cb` vs lokalny `npm run start` (pokazuje szum lokalny do skalibrowania progu).  
+**Zmiana widoczna:** brak (zero zmian w `src/`).  
+**Gotowe:** przebieg `bb7b0cb` vs `bb7b0cb` → 57 PASS; przebieg vs lokalny build → tylko różnice z listy oczekiwanych (parametry obrazów), próg skalibrowany i wpisany do skryptu; smoke na stagingu: wszystkie punkty zielone (jeśli któryś jest czerwony **przed** RF-1, to nowe zgłoszenie do `05-tech-synthesis.md`, nie poprawka); skrypt działa w cloud (`/opt/pw-browsers`) i lokalnie (`npx playwright install chromium`) — sprawdzone w obu; czas przebiegu < 5 min.  
+**Weryfikacja:** build + lint bez zmian; `npm run check:visual` na dwóch adresach.  
+**Model:** Sonnet 5.5. **Koszt:** S–M. **Commit:** `10/RF-0: add visual and behavior regression check with Playwright`
 
 ### RF-1 — Dostępność: dialog menu, linki w tekście, landmarki, fokus
 
@@ -126,8 +180,8 @@ Najpierw bugi (RF-1, RF-2, RF-4) i paczki bez zmian wizualnych; RF-13 i RF-14 **
 ### RF-6 — `scripts/` i `package.json`
 
 **Pozycje:** S-09 (+ B5). **Źródła:** R4-03, R1-09; knip z R0 §3.4. **Decyzja:** D2 (zgoda na `devDependencies` — `CLAUDE.md`).  
-**Zakres (pliki):** `package.json` (`devDependencies`: `tsx`, `@types/mdx`, `@types/node ^22`; skrypty: `content:index`, `check:states`, `check:media`, `check:content`, `prebuild`; usunięcie `migrate:wp`), `package-lock.json`, nowy `knip.json` (`entry`: 5 skryptów; `ignoreDependencies: ["sharp"]`), usunięcie: `scripts/migrate-wp/`, `scripts/migrate-wp.ts`, `fetch-*` ×2, `generate-news-sample.ts`, `migrate-news-k122.ts`, `promote-*` ×4, `sync-*` ×2, `fix-plakaty-dimensions.ts`, `build-lecturers-from-archive.mjs`, `rebuild-redirects-json.ts`, `readImageSize.ts`, `scripts/*.json`, `archive/wp-fetch-static/`; `docs/plans/10-finishing.md` (B4 ✅, B5 ✅).  
-**Co:** zostają `generate-news-index.ts`, `generate-publications-index.ts`, `check-upcoming-states.ts`, `check-exhibition-states.ts`, `optimize-album-media.ts` (K-138) + `check-content.ts`, `check-media.ts` z RF-3; nagłówek każdego z komentarzem „kiedy uruchamiać”. Historia jednorazowych skryptów zostaje w git (`docs/archive/migrate-report.md` już o tym mówi).  
+**Zakres (pliki):** `package.json` (`devDependencies`: `tsx`, `@types/mdx`, `@types/node ^22`; skrypty: `content:index`, `check:states`, `check:media`, `check:content`, `prebuild`; usunięcie `migrate:wp`), `package-lock.json`, nowy `knip.json` (`entry`: 8 skryptów; `ignoreDependencies: ["sharp"]`; `playwright` używany przez `visual-check.ts`), usunięcie: `scripts/migrate-wp/`, `scripts/migrate-wp.ts`, `fetch-*` ×2, `generate-news-sample.ts`, `migrate-news-k122.ts`, `promote-*` ×4, `sync-*` ×2, `fix-plakaty-dimensions.ts`, `build-lecturers-from-archive.mjs`, `rebuild-redirects-json.ts`, `readImageSize.ts`, `scripts/*.json`, `archive/wp-fetch-static/`; `docs/plans/10-finishing.md` (B4 ✅, B5 ✅).  
+**Co:** zostają `generate-news-index.ts`, `generate-publications-index.ts`, `check-upcoming-states.ts`, `check-exhibition-states.ts`, `optimize-album-media.ts` (K-138) + `check-content.ts`, `check-media.ts` z RF-3 + `visual-check.ts` z RF-0; nagłówek każdego z komentarzem „kiedy uruchamiać”. Historia jednorazowych skryptów zostaje w git (`docs/archive/migrate-report.md` już o tym mówi).  
 **Zmiana widoczna:** brak.  
 **Gotowe:** `npx knip` → 0 nieużywanych plików i 0 niezadeklarowanych zależności (pozostałe nieużywane eksporty `src/` zamyka RF-7); `npm run build` uruchamia `prebuild`; `npm ls tsx @types/mdx` pokazuje wersje przypięte.  
 **Weryfikacja:** build + lint; `npx knip`; bez stagingu (brak zmian w `src/` poza skryptami).  
@@ -218,7 +272,7 @@ Brak. RF-12 tworzy `content/pages/home.json` i `workshops-hub.json` **z treści 
 
 ## Kryteria ukończenia (część techniczna)
 
-- [ ] RF-1 … RF-11 wdrożone na stagingu; każda z zielonym build + lint i meldunkiem;
+- [ ] RF-0 … RF-11 wdrożone na stagingu; każda z zielonym build + lint, raportem `check:visual` (0 FAIL) i meldunkiem;
 - [ ] axe na 21 trasach × 2 szerokości (jak R0) → 0 naruszeń;
 - [ ] CLS `/ikony` < 0,1 (390 i 1440); `/ikony` statyczna w buildzie;
 - [ ] `npx knip` z `knip.json` → czysto; `npx jscpd src` → klony TSX = 0, CSS ≤ 15 (do RF-14: ≤ 5);
@@ -233,12 +287,14 @@ Brak. RF-12 tworzy `content/pages/home.json` i `workshops-hub.json` **z treści 
 - **Zachowanie Tailwind v4 przy scalaniu `leading-*` / `shadow-*`** (RF-10) — komentarz w `globals.css` mówi o „self-collision”; sprawdzić na jednym tokenie przed hurtową zmianą; w razie problemu zostawić duplikat z komentarzem i zgłosić.
 - **`prebuild` na Vercel** — `check:content` czyta `content/**/*.mdx` przez `tsx`; sprawdzić czas (budżet < 10 s) i że `tsx` z `devDependencies` jest instalowane w buildzie (Vercel instaluje dev deps domyślnie).
 - **`dynamicParams = false` + `revalidate`** (RF-2) — nowy wpis bez rebuildu daje 404 do następnego deployu; dziś i tak wymaga deployu (`manifest.json` w repo), więc bez zmiany praktyki — odnotować w B9 / runbooku etapu 11.
+- **Narzędzie porównania (RF-0)** — zrzuty pełnej strony bywają niestabilne (lazy loading, fonty); dlatego wyliczone style są sygnałem rozstrzygającym, a plan awaryjny jest w sekcji „Weryfikacja”. Adres deployu `bb7b0cb` musi zostać wpisany, zanim ruszy RF-1.
 - **Bias modelu (RV-6)** — paczki RF implementuje ta sama rodzina modeli, która pisała kod i review; właściciel ogląda każdą paczkę na stagingu, a V1 mierzy po RF-1…RF-11, nie przed.
 
 ## Postęp
 
 | Paczka | Model | Status | Uwagi z checkpointu |
 | --- | --- | --- | --- |
+| RF-0 — punkt odniesienia, `check:visual` | Sonnet 5.5 | ⬜ | D10 |
 | RF-1 — a11y: dialog, linki, landmarki, fokus | Sonnet 5.5 | ⬜ | |
 | RF-2 — daty, sezon, stan zapisów (A1) | Opus 5.5 | ⬜ | D5 |
 | RF-3 — wymagana treść, walidacje, `prebuild` check | Opus 5.5 | ⬜ | D2, D9 |

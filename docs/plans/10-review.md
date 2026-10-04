@@ -1,6 +1,6 @@
 # Plan 10/R — Review serwisu (techniczne, wizualne, treść)
 
-Status: **zatwierdzony** 2026-10-04 · R0 ✅ 2026-10-04 · R1 ✅ 2026-10-04 · R2 ✅ 2026-10-04 · R3 ✅ 2026-10-04 · R4 ✅ 2026-10-04 · R5 ✅ 2026-10-04 · `10-review-fixes.md` **zatwierdzony** 2026-10-04 (D1–D9 domyślne) · następny: **RF-1**  
+Status: **zatwierdzony** 2026-10-04 · R0 ✅ 2026-10-04 · R1 ✅ 2026-10-04 · R2 ✅ 2026-10-04 · R3 ✅ 2026-10-04 · R4 ✅ 2026-10-04 · R5 ✅ 2026-10-04 · `10-review-fixes.md` **zatwierdzony** 2026-10-04 (D1–D10) · następny: **RF-0** (Playwright, punkt odniesienia)  
 Gałąź: `feat/10-review` od `main` — dokumenty review i paczki poprawek; k8 zostaje na `feat/10-finishing` (merge do `main` niezależnie)  
 Staging: https://academy-web-lovat.vercel.app/  
 Makiety: tokeny `design/README`, odczyt wartości `docs/design-mockup-guide.md` (tylko jako punkt odniesienia w V1–V4).
