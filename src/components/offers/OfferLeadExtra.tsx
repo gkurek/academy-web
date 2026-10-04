@@ -1,7 +1,36 @@
-import type { OfferLeadExtra as OfferLeadExtraData } from "@/content/offers";
+import Link from "next/link";
+import { Fragment } from "react";
+
+import type { OfferLeadExtra as OfferLeadExtraData, OfferLeadExtraPlace } from "@/content/offers";
+import { pl } from "@/i18n/pl";
+
+const whereWeWereLinkClass =
+  "text-link text-accent-text no-underline hover:text-accent-hover";
 
 export interface OfferLeadExtraProps {
   leadExtra: OfferLeadExtraData;
+}
+
+function OfferLeadExtraWhereWeWere({ entries }: { entries: OfferLeadExtraPlace[] }) {
+  return (
+    <>
+      {" "}
+      {pl.offers.plenerWhereWeWereInline}{" "}
+      {entries.map((entry, index) => (
+        <Fragment key={entry.place}>
+          {index > 0 ? ", " : null}
+          {entry.newsSlug ? (
+            <Link href={`/aktualnosci/${entry.newsSlug}`} className={whereWeWereLinkClass}>
+              {entry.place}
+            </Link>
+          ) : (
+            entry.place
+          )}
+        </Fragment>
+      ))}
+      .
+    </>
+  );
 }
 
 export function OfferLeadExtra({ leadExtra }: OfferLeadExtraProps) {
@@ -20,6 +49,9 @@ export function OfferLeadExtra({ leadExtra }: OfferLeadExtraProps) {
           </h3>
           <p className="text-size-body md:text-size-body-lg leading-body md:leading-prose text-text-secondary">
             {item.text}
+            {item.whereWeWere && item.whereWeWere.length > 0 ? (
+              <OfferLeadExtraWhereWeWere entries={item.whereWeWere} />
+            ) : null}
           </p>
         </div>
       ))}

@@ -8,18 +8,30 @@ export function GalleryOrderTeaser() {
   return (
     <section
       aria-labelledby="gallery-order-teaser-heading"
-      className="mt-section-gap-mobile md:mt-section-gap pt-space-7 pb-section-gap-mobile md:pb-section-gap border-t border-line-gold"
+      className="mt-section-gap-mobile md:mt-section-gap"
     >
-      <h2
-        id="gallery-order-teaser-heading"
-        className="font-serif text-size-role-section-h2-m md:text-size-role-section-h2 leading-heading text-text-h2 mb-space-4"
-      >
-        {title}
-      </h2>
-      <p className="text-size-body leading-body text-text-secondary max-w-measure-prose mb-space-5">
-        {lead}
-      </p>
-      <Button href="/ikony/na-zamowienie">{linkLabel}</Button>
+      <div className="exhibition-tours-pass border-b-0">
+        <div className="exhibition-tours-pass__content">
+          <h2
+            id="gallery-order-teaser-heading"
+            className="font-serif text-size-role-section-h2-m md:text-size-role-section-h2 leading-heading text-text-h2 mb-space-2"
+          >
+            {title}
+          </h2>
+          <p className="exhibition-section-copy exhibition-tours-pass__intro max-w-measure-lead">
+            {lead}
+          </p>
+        </div>
+        <Button
+          href="/ikony/na-zamowienie"
+          variant="primary"
+          block
+          size="lg"
+          className="exhibition-tours-pass__cta md:inline-block"
+        >
+          {linkLabel}
+        </Button>
+      </div>
     </section>
   );
 }

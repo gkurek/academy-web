@@ -7,10 +7,15 @@ import PlenerContent, { frontmatter as plenerFrontmatter } from "../../content/o
 import WykladyContent, { frontmatter as wykladyFrontmatter } from "../../content/offers/wyklady.mdx";
 import ZamowienieContent, { frontmatter as zamowienieFrontmatter } from "../../content/offers/zamowienie.mdx";
 
+export type OfferLeadExtraPlace = {
+  place: string;
+  newsSlug?: string;
+};
+
 /** Short block under the lead, left of the FactsBox on desktop. */
 export type OfferLeadExtra = {
   heading: string;
-  items: { title: string; text: string }[];
+  items: { title: string; text: string; whereWeWere?: OfferLeadExtraPlace[] }[];
 };
 
 /** Prose sections under the lead (left column), e.g. zamówienie intro from WP. */
@@ -34,7 +39,6 @@ export type OfferFrontmatter = {
   steps?: StepItem[];
   quote?: Testimonial & { image?: Image };
   exampleSlugs?: string[];
-  whereWeWere?: { place: string; newsSlug?: string }[];
 };
 
 export type LoadedOffer = Offer & {
@@ -45,7 +49,6 @@ export type LoadedOffer = Offer & {
   steps: StepItem[];
   exampleSlugs: string[];
   quote?: Testimonial & { image?: Image };
-  whereWeWere: { place: string; newsSlug?: string }[];
   Content: ComponentType<MDXProps>;
 };
 
@@ -91,7 +94,6 @@ function toOffer(offerModule: OfferModule): LoadedOffer {
     steps: frontmatter.steps ?? [],
     exampleSlugs: frontmatter.exampleSlugs ?? [],
     quote: frontmatter.quote,
-    whereWeWere: frontmatter.whereWeWere ?? [],
     body: "",
     Content,
   };

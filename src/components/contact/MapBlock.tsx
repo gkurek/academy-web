@@ -3,13 +3,8 @@ import type { ReactNode } from "react";
 import { ExternalLink } from "@/components/core/ExternalLink";
 import { getSiteSettings } from "@/content/settings";
 import { pl } from "@/i18n/pl";
-import { buildGoogleMapsDirectionsUrl, buildGoogleMapsSearchUrl } from "@/lib/googleMaps";
-
 const contactOnlineLinkClass =
   "inline-block w-fit text-accent-text no-underline hover:text-accent-hover";
-
-const mapLinkClass =
-  "inline-block w-fit text-size-ui text-accent-text no-underline hover:text-accent-hover";
 
 const mapLinkUnderline = "link-underline-target link-underline-target--border";
 
@@ -21,11 +16,6 @@ export interface MapBlockProps {
   transport?: ReactNode;
   /** Extra block below the address panel (organizer, online links). */
   aside?: ReactNode;
-}
-
-function mapsDestinationQuery(): string {
-  const settings = getSiteSettings();
-  return `${settings.place}, ${settings.address}`;
 }
 
 export function MapEmbed({ embedSrc }: { embedSrc?: string }) {
@@ -48,21 +38,6 @@ export function MapEmbed({ embedSrc }: { embedSrc?: string }) {
   );
 }
 
-export function MapDirectionsLinks() {
-  const destination = mapsDestinationQuery();
-
-  return (
-    <div className="mt-space-3 flex flex-col gap-space-2 sm:flex-row sm:flex-wrap sm:gap-x-space-6">
-      <ExternalLink href={buildGoogleMapsSearchUrl(destination)} className={mapLinkClass}>
-        <span className={mapLinkUnderline}>{pl.contact.mapOpenInGoogle}</span>
-      </ExternalLink>
-      <ExternalLink href={buildGoogleMapsDirectionsUrl(destination)} className={mapLinkClass}>
-        <span className={mapLinkUnderline}>{pl.contact.mapGetDirections}</span>
-      </ExternalLink>
-    </div>
-  );
-}
-
 export function OnlineAside() {
   const settings = getSiteSettings();
   const { contact, footer } = pl;
@@ -74,12 +49,8 @@ export function OnlineAside() {
           {contact.organizerHeading}
         </h2>
         <p className="text-size-body leading-body text-text-secondary md:text-size-body-lg md:leading-prose">
-          {contact.organizerLead}{" "}
-          <ExternalLink
-            href={settings.ecosystem.foundationUrl}
-            className={contactOnlineLinkClass}
-            showIcon={false}
-          >
+          {contact.organizerLead}
+          <ExternalLink href={settings.ecosystem.foundationUrl} className={contactOnlineLinkClass}>
             <span className={mapLinkUnderline}>{contact.organizerLinkLabel}</span>
           </ExternalLink>
           {contact.organizerTail}

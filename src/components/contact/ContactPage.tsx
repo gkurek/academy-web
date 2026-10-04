@@ -1,6 +1,6 @@
 import type { ComponentType } from "react";
 
-import { MapDirectionsLinks, MapEmbed, OnlineAside } from "@/components/contact/MapBlock";
+import { MapEmbed, OnlineAside } from "@/components/contact/MapBlock";
 import { SectionPageShell } from "@/components/layout/SectionPageShell";
 import { getSiteSettings } from "@/content/settings";
 import { pl } from "@/i18n/pl";
@@ -46,7 +46,6 @@ export function ContactPage({ Content }: ContactPageProps) {
 
           <div id="dojazd" className="contact-page-map scroll-mt-space-6">
             <MapEmbed embedSrc={settings.mapEmbedUrl} />
-            <MapDirectionsLinks />
           </div>
 
           <div className="contact-page-address">

@@ -305,17 +305,6 @@ export type AboutPageData = TextPageData & {
     photos: Image[];
     links: TextPageLink[];
   };
-  foundation: {
-    beforeLink: string;
-    linkLabel: string;
-    linkHref: string;
-    afterLink: string;
-  };
-  legal: string;
-  startLinks: {
-    intro: string;
-    links: TextPageLink[];
-  };
 };
 
 // K-82…K-84, K-127: daily permanent display + annual exhibitions in KŚT.

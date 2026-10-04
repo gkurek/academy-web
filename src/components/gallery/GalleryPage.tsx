@@ -30,9 +30,13 @@ export function GalleryPage({ active, sectionActive, searchParams }: GalleryPage
     works,
     ...(id === "uczniowie" ? { names: getStudentNames(works) } : {}),
   }));
-  const hasInvalidTag = searchParams.temat !== undefined && filters.tag === undefined;
+  const tematParam = searchParams.temat;
+  const tematRaw = typeof tematParam === "string" ? tematParam : undefined;
+  const hasInvalidTag = tematRaw !== undefined && filters.tag === undefined;
   const hasLegacyAutor = searchParams.autor !== undefined;
-  const needsUrlCleanup = hasInvalidTag || hasLegacyAutor;
+  const needsCanonicalTemat =
+    tematRaw !== undefined && filters.tag !== undefined && tematRaw !== filters.tag;
+  const needsUrlCleanup = hasInvalidTag || hasLegacyAutor || needsCanonicalTemat;
 
   return (
     <SectionPageShell active={active} section="ikony" sectionActive={sectionActive}>

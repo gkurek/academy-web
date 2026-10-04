@@ -1,13 +1,12 @@
 import { TextLink } from "@/components/core/TextLink";
-import { IconGrid } from "@/components/gallery/IconGrid";
-import type { IconWork } from "@/content/types";
+import { FeaturedIconsGallery } from "@/components/home/FeaturedIconsGallery";
+import { getFeaturedIconWorks } from "@/content/icons";
 import { pl } from "@/i18n/pl";
 
-export interface OrderExamplesProps {
-  items: IconWork[];
-}
+/** Same curated set and gallery UX as home „Wybrane ikony” (justified rows, lightbox). */
+export function OrderExamples() {
+  const icons = getFeaturedIconWorks();
 
-export function OrderExamples({ items }: OrderExamplesProps) {
   return (
     <section
       aria-labelledby="order-examples-heading"
@@ -19,7 +18,7 @@ export function OrderExamples({ items }: OrderExamplesProps) {
       >
         {pl.offers.orderExamplesHeading}
       </h2>
-      <IconGrid items={items} />
+      <FeaturedIconsGallery icons={icons} />
       <TextLink href="/ikony" className="inline-block mt-offer-examples-link-mt text-size-body">
         {pl.home.icons.seeAllLabel}
       </TextLink>
