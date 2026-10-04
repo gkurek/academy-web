@@ -19,14 +19,14 @@ export function OfferQuote({ quote, author, role, image }: OfferQuoteProps) {
       </p>
       <footer className="text-size-ui text-text-tertiary">{formatAttribution(author, role)}</footer>
       {image && (
-        <div className="hidden md:block mt-offer-quote-image-mt">
+        <div className="mt-offer-quote-image-mt">
           <Image
             src={image.src}
             alt={image.alt}
             width={image.width}
             height={image.height}
             sizes="(min-width: 768px) 448px, 100vw"
-            className="w-full h-offer-quote-image-h object-cover"
+            className="w-full h-auto md:h-offer-quote-image-h object-cover"
           />
         </div>
       )}

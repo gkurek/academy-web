@@ -1,11 +1,15 @@
 import type { ReactNode } from "react";
 
 import { FactsBox } from "@/components/content/FactsBox";
+import { MdxLink } from "@/components/content/MdxLink";
 import { OfferContentProvider } from "@/components/content/OfferContentContext";
 import { SectionPageShell } from "@/components/layout/SectionPageShell";
 import type { LoadedOffer } from "@/content/offers";
 import { pl } from "@/i18n/pl";
 import type { SectionKey } from "@/navigation";
+
+// Links are styled only in offer MDX (LY5); news, contact and articles keep their own `a` styles.
+const offerMdxComponents = { a: MdxLink };
 
 function getOfferEyebrow(kind: LoadedOffer["kind"], seasonLabel?: string): string | null {
   if (!seasonLabel) {
@@ -94,7 +98,8 @@ export function OfferPage({
 
   return (
     <SectionPageShell active={active} section={section} sectionActive={sectionActive}>
-      <div className="grid grid-cols-1 lg:grid-cols-offer-main gap-offer-main-gap items-start mb-space-7">
+      {/* Single FactsBox instance: stacks below the lead column on mobile, sidebar on lg. */}
+      <div className="grid grid-cols-1 lg:grid-cols-offer-main gap-space-6 lg:gap-offer-main-gap items-start mb-space-7">
         <div className="min-w-0">
           {eyebrow ? (
             <p className="font-serif text-size-body text-accent-text mb-lectures-eyebrow-mb">
@@ -118,20 +123,14 @@ export function OfferPage({
           )}
 
           {leadExtraSlot && <div className="mt-space-6">{leadExtraSlot}</div>}
-
-          <div className="mt-space-6 lg:hidden">
-            <FactsBox facts={facts} kind={kind} />
-          </div>
         </div>
 
-        <div className="hidden lg:block">
-          <FactsBox facts={facts} kind={kind} />
-        </div>
+        <FactsBox facts={facts} kind={kind} />
       </div>
 
       <OfferContentProvider semesters={semesters} steps={steps}>
         <div className="offer-mdx">
-          <Content />
+          <Content components={offerMdxComponents} />
         </div>
       </OfferContentProvider>
 

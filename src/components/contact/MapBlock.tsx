@@ -6,10 +6,12 @@ import { pl } from "@/i18n/pl";
 import { buildGoogleMapsDirectionsUrl, buildGoogleMapsSearchUrl } from "@/lib/googleMaps";
 
 const contactOnlineLinkClass =
-  "inline-block w-fit text-accent-text no-underline border-b border-accent-veil hover:text-accent-hover hover:border-accent-hover";
+  "inline-block w-fit text-accent-text no-underline hover:text-accent-hover";
 
 const mapLinkClass =
-  "inline-block w-fit text-size-ui text-accent-text no-underline border-b border-accent-veil hover:text-accent-hover hover:border-accent-hover";
+  "inline-block w-fit text-size-ui text-accent-text no-underline hover:text-accent-hover";
+
+const mapLinkUnderline = "link-underline-target link-underline-target--border";
 
 export interface MapBlockProps {
   /** Google Maps embed URL; without it, renders an empty tile with a short note. */
@@ -52,10 +54,10 @@ export function MapDirectionsLinks() {
   return (
     <div className="mt-space-3 flex flex-col gap-space-2 sm:flex-row sm:flex-wrap sm:gap-x-space-6">
       <ExternalLink href={buildGoogleMapsSearchUrl(destination)} className={mapLinkClass}>
-        {pl.contact.mapOpenInGoogle}
+        <span className={mapLinkUnderline}>{pl.contact.mapOpenInGoogle}</span>
       </ExternalLink>
       <ExternalLink href={buildGoogleMapsDirectionsUrl(destination)} className={mapLinkClass}>
-        {pl.contact.mapGetDirections}
+        <span className={mapLinkUnderline}>{pl.contact.mapGetDirections}</span>
       </ExternalLink>
     </div>
   );
@@ -66,7 +68,7 @@ export function OnlineAside() {
   const { contact, footer } = pl;
 
   return (
-    <div className="grid gap-px bg-line-gold">
+    <div className="hairline-stack">
       <div className="bg-surface-tile px-space-5 py-space-5 md:px-space-6 md:py-space-6">
         <h2 className="mb-space-3 font-serif text-size-h3-m md:text-size-h3 leading-heading text-text-h2">
           {contact.organizerHeading}
@@ -78,7 +80,7 @@ export function OnlineAside() {
             className={contactOnlineLinkClass}
             showIcon={false}
           >
-            {contact.organizerLinkLabel}
+            <span className={mapLinkUnderline}>{contact.organizerLinkLabel}</span>
           </ExternalLink>
           {contact.organizerTail}
         </p>
@@ -89,13 +91,13 @@ export function OnlineAside() {
         </h2>
         <div className="grid gap-space-2 text-size-ui leading-body">
           <ExternalLink href={settings.ecosystem.social.facebook} className={contactOnlineLinkClass}>
-            {footer.facebookLabel}
+            <span className={mapLinkUnderline}>{footer.facebookLabel}</span>
           </ExternalLink>
           <ExternalLink href={settings.ecosystem.social.youtube} className={contactOnlineLinkClass}>
-            {footer.youtubeLabel}
+            <span className={mapLinkUnderline}>{footer.youtubeLabel}</span>
           </ExternalLink>
           <ExternalLink href={settings.blogUrl} className={contactOnlineLinkClass}>
-            {contact.blogLinkLabel}
+            <span className={mapLinkUnderline}>{contact.blogLinkLabel}</span>
           </ExternalLink>
         </div>
       </div>

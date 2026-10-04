@@ -46,7 +46,7 @@ Strona jest częścią szerszego ekosystemu (Akademia + Fundacja + planowana str
 /ikony                     galeria: sekcje Elżbieta / uczniowie + filtr tematu
 /ikony/[slug]              pojedyncza ikona (opcjonalnie w v1)
 /ikony/na-zamowienie       strona ofertowa (treść wymienna w przyszłości — nie istotne teraz)
-/ikony/wystawy             trzy formy wystaw w KŚT: ekspozycja codzienna, doroczna, wyjazdowe (K-82…K-90; historia K-51)
+/ikony/wystawy             trzy formy wystaw w KŚT; kotwice `#doroczna`, `#ekspozycja`, `#oprowadzania`, `#wyjazdowe` (K-127, k1)
 /aktualnosci               lista z typem wpisu (`kind`), w tym archiwum wystaw, oprowadzań i wyjazdów studyjnych (w tym dawne plenery LSŚ → `kind: 'wyjazd'`; K-50, K-52, K-125)
 /aktualnosci/[slug]
 /publikacje                album Akademii + artykuły (K-76)
@@ -94,13 +94,19 @@ type OfferFacts = {             // blok „W skrócie”
   where?: string;
   audience?: string;
   price?: string;               // „400 zł / rok”
-  enrollmentDeadline?: string;  // tekst wiersza w FactsBox (np. „Do 24 września 2026”, „do końca września 2026”); nie ISO — daty maszynowe w `firstMeeting`
+  enrollmentDeadline?: string;  // tekst wiersza w FactsBox (np. „Do 24 września 2026”); nie ISO
   enrollmentStart?: string;     // plener: wiersz „Nabór” (np. „Rusza w marcu 2027”)
   enrollmentRule?: string;      // plener: wiersz „Zasada naboru” (np. „Kolejność zgłoszeń”)
   enrollmentEmail: string;
   enrollmentPhone?: string;
   enrollmentSubject: string;    // ujednolicony temat mailto
-  firstMeeting?: string;        // ISO
+  firstMeeting?: string;        // tekst wiersza w FactsBox; data maszynowa w `firstMeetingDate`
+  enrollmentOpens?: string;       // ISO (YYYY-MM-DD) — kurs: początek naboru (N7)
+  enrollmentClose?: string;     // ISO — kurs: koniec naboru (N7)
+  firstMeetingDate?: string;    // ISO — kurs: pierwsze zajęcia (N7)
+  registrationClose?: string;   // ISO — LSŚ: koniec zapisów (N7)
+  dateStart?: string;           // ISO — LSŚ: start pleneru (N7)
+  dateEnd?: string;             // ISO — LSŚ: koniec pleneru (N7)
   enrollmentOpen: boolean;
   leadTime?: string;            // zamówienia: orientacyjny czas realizacji
 };
@@ -161,28 +167,40 @@ type News = {
   date: string;
   dateEnd?: string;
   kind: NewsKind;
+  layout: 'wydarzenie' | 'galeria' | 'tekst' | 'program';  // układ szablonu wpisu (K-129)
   excerpt?: string;
   body: string;
   cover?: Image;
   images?: Image[];
-  poster?: Image;
-  featured?: boolean;
-  featuredUntil?: string;       // YYYY-MM-DD; tylko przy featured: true; po dacie wpis traci wyróżnienie przy buildzie (K-73)
-  venue?: string;               // wystawy wyjazdowe — wiersz na `/ikony/wystawy#wyjazdowe` (K-87)
+  facts?: { label: string; value: string }[];   // wiersz faktów — tylko layout wydarzenie
+  related?: { label: string; href: string }[];  // nadpisanie bloku „Powiązane” (max 1–2)
+  hideLead?: boolean;                           // ukryj lead z excerpt (wyjątek od E5)
+  columnImageIndex?: number;                    // opcjonalnie: indeks w images[] — podgląd w prawej kolumnie desktop (K-132); domyślnie brak
+  featured?: boolean;           // wyróżnienie do ręcznego zdjęcia flagi; wymaga cover; max 1 (K-73, etap 10 k3)
+  venue?: string;               // opcjonalny kontekst miejsca w artykule; lista #wyjazdowe z `travelingPlaces` (K-127)
+  lectureSeason?: string;       // slug sezonu wykładów ("2026-2027"); link do programu wyliczany: bieżący → /wyklady, archiwalny → /wyklady/archiwum#season-{slug} (K-139)
 };
 // K-72: na liście (`NewsCard`) wyświetlana jest tylko `date` z rokiem — bez zakresu `dateEnd`.
 // We wpisie pojedynczym i w wyróżnionym: `formatDateRange` z `dateEnd` gdy jest.
+// K-131 / K-133: faza `layout: wydarzenie` — koniec wydarzenia = `dateEnd ?? date`; dzień po = po terminie;
+// relacja gdy po terminie i jest `images[]`; lead na stronie wpisu — K-133 F11 (`shouldShowLead`, manifest `bodyText`).
+// Szczegóły: `docs/archive/plans/10-k3-news.md` E7/F11, `docs/wpisy-cykliczne-aktualnosci-ejk.md`.
 
-// K-82…K-90 (08b): w KŚT są trzy formy wystawy — ekspozycja codzienna (6–10 ikon EJK),
+// K-82…K-90 (08b), K-127: w KŚT są trzy formy wystawy — ekspozycja codzienna (6–10 ikon EJK),
 // wystawa doroczna (40–50 ikon, wernisaż na ostatnim wykładzie sezonu), wystawy wyjazdowe
-// (wpisy Aktualności `kind: 'wystawa'` z `venue`). Strona `/ikony/wystawy`, H1 „Wystawy ikon”.
-// Szczegóły merytoryczne i układ: `docs/archive/plans/08b-review-fixes.md` §1–§2. K-51: historia wydzielenia
-// wystawy z Aktualności (2026-09-21); model `ExhibitionEdition` zastąpiony w 08b.
+// (ręczna lista `travelingPlaces` w `page.mdx`, kotwica `#wyjazdowe`). Strona `/ikony/wystawy`, H1 „Wystawy ikon”.
+// Szczegóły merytoryczne: `docs/archive/plans/08b-review-fixes.md` §1–§2; układ K-127 i korekty K1–K4 (w tym odstępstwa od makiety 14a): `docs/archive/plans/10-k1-exhibitions.md`.
+type ExhibitionTravelingPlace = { place: string; newsSlug?: string };
+
 type PermanentExhibition = {
   title: string;
   lead: string;
   iconCount: { from: number; to: number };
-  interiorPhotos: Image[];
+  heroImage?: Image;
+  permanentImage?: Image;
+  permanentImage2?: Image;
+  closingImage?: Image;
+  travelingPlaces: ExhibitionTravelingPlace[];
   sample?: boolean;
 };
 
@@ -191,8 +209,6 @@ type AnnualExhibition = {
   title: string;                // osobne pole (K-84), np. „Mistyka dziś”
   vernissage?: string;          // domyślnie data ostatniego wykładu sezonu
   dateEnd?: string;             // domyślnie 31 sierpnia roku wernisażu
-  iconCount?: number;
-  summary?: string;
   photos?: Image[];
   newsSlug?: string;            // relacja doroczna ↔ wpis Aktualności (K-103)
 };
@@ -203,6 +219,8 @@ type AnnualExhibition = {
 ```ts
 // K-76: Publikacje — jeden album jubileuszowy + artykuły (bez zakładek, bez SectionNav).
 type Author = { name: string; lecturerSlug?: string };
+// K-137: rozdział albumu jak w drukowanym spisie; pages = zakres, np. „6–51”.
+type PublicationChapter = { title?: string; pages: string };
 
 type Publication = {
   slug: string;
@@ -216,7 +234,8 @@ type Publication = {
   availability: 'dostepny' | 'wyczerpany';
   cover: Image;
   spreads: Image[];               // 8–12
-  toc: { title: string; author: Author; articleSlug?: string }[];
+  chapters?: PublicationChapter[];
+  toc: { title: string; author?: Author; articleSlug?: string; chapter?: number; intro?: boolean }[]; // K-137
   sample?: boolean;
 };
 
@@ -254,7 +273,15 @@ type SiteSettings = {
     personalSiteUrl?: string;   // uzupełnić po starcie strony autorskiej EJK — puste teraz
     social: { facebook: string; youtube: string };
   };
-  upcoming: { title: string; text: string; href: string; linkLabel: string }[];   // „Najbliższe” na stronie głównej (K-16)
+  upcomingOverrides: {
+    slot: 'warsztaty' | 'wyklady' | 'ikony';
+    title: string;
+    text: string;
+    href: string;
+    linkLabel: string;
+    from?: string;   // ISO (YYYY-MM-DD), opcjonalnie
+    until: string;   // ISO (YYYY-MM-DD), wymagane
+  }[];   // ręczne nadpisania kafli „Najbliższe” (N7, etap 10 k4)
 };
 ```
 
@@ -282,7 +309,7 @@ type SiteSettings = {
 5. wygenerować `content/icons.json`,
 6. wygenerować `docs/redirects.json`.
 
-Być idempotentny, logować nieudane parsowania do `scripts/migrate-report.md`. Bez pętli `for`/`for-of` — `map`/`filter`/`reduce`/`forEach`.
+Być idempotentny, logować nieudane parsowania do `docs/archive/migrate-report.md`. Bez pętli `for`/`for-of` — `map`/`filter`/`reduce`/`forEach`.
 
 Szacunek ręcznej korekty po migracji: ~10 stron statycznych, 16 sezonów wykładów (nazwiska), ~52 podpisy ikon (stan WP 2026-09-19: 23 prace Elżbiety, 3 z nich bez podpisu, + 29 prac uczniów, 10 bez nazwiska). ~60 wpisów aktualności bez korekty. Blog (blogspot) — nie migrować, tylko link w stopce.
 
@@ -315,7 +342,7 @@ Szacunek ręcznej korekty po migracji: ~10 stron statycznych, 16 sezonów wykła
 | `/publikacje/artykuly/` | `/publikacje#artykuly` |
 | `/publikacje/multimedia/` | `/publikacje` |
 | `/publikacje/plakaty/` | `/aktualnosci/plakaty-z-wydarzen` |
-| `/ikona-korzenie-i-owoce-wiary-2/` i wpisy wystaw z lat 2015–2018 | `/ikony/wystawy` (kotwice `#wystawa-{rok}` gdy relacja doroczna) |
+| `/ikona-korzenie-i-owoce-wiary-2/` i wpisy wystaw z lat 2015–2018 | `/ikony/wystawy` lub `/ikony/wystawy#doroczna` (bez `#wystawa-{rok}`, k1) |
 | pojedyncze wpisy oprowadzań 2017 (`/ikony-emaliowane/`, `/ikona-trojcy-swietej/`, `/ikona-serca-jezusa/`, `/wystawa-ikona-korzenie-i-owoce-wiary-oprowadzania-kuratorskie/`) | jeden połączony wpis w `/aktualnosci/[slug]` |
 | pozostałe wpisy wystaw i wyjazdów | odpowiadające wpisy `/aktualnosci/[slug]` |
 | `/aktualnosci/wystawa-ikona-dzis-2` | `/aktualnosci/wystawa-ikona-dzis` (K-67, scalenie duplikatów) |
@@ -356,6 +383,7 @@ Szacunek ręcznej korekty po migracji: ~10 stron statycznych, 16 sezonów wykła
 - `Zgłoszenie – Letnia Szkoła Światła 2027`
 - `Zgłoszenie – wykłady 2026/2027`
 - `Zapytanie – ikona na zamówienie`
+- `Zapytanie – kursy doskonalące i konsultacje` (LY2, 2026-10-04; `akademiaikony@gmail.com`, sekcja „Dalsza droga” kursu)
 - `Zamówienie – album „Ikona dziś. Akademia Ikony 2010–2025”` (K-76; zapis do potwierdzenia razem z tytułem albumu)
 
 Telefon jako `tel:+48601734705`.

@@ -1,3 +1,4 @@
+import type { MDXProps } from "mdx/types";
 import type { ComponentType } from "react";
 import type { Image, Offer, OfferFacts, Testimonial } from "@/content/types";
 import type { SemesterItem, StepItem } from "@/components/content/OfferContentContext";
@@ -45,11 +46,11 @@ export type LoadedOffer = Offer & {
   exampleSlugs: string[];
   quote?: Testimonial & { image?: Image };
   whereWeWere: { place: string; newsSlug?: string }[];
-  Content: ComponentType;
+  Content: ComponentType<MDXProps>;
 };
 
 type OfferModule = {
-  Content: ComponentType;
+  Content: ComponentType<MDXProps>;
   frontmatter: OfferFrontmatter;
 };
 
@@ -110,4 +111,58 @@ export function getWorkshopOffers(): LoadedOffer[] {
     .map((slug) => offerModules[slug])
     .filter((offerModule): offerModule is OfferModule => offerModule !== undefined)
     .map(toOffer);
+}
+
+const ISO_DATE_FIELDS: (keyof OfferFacts)[] = [
+  "enrollmentOpens",
+  "enrollmentClose",
+  "firstMeetingDate",
+  "registrationClose",
+  "dateStart",
+  "dateEnd",
+];
+
+const ISO_DATE_RE = /^\d{4}-\d{2}-\d{2}$/;
+
+function assertIsoDateField(value: string, context: string): void {
+  if (!ISO_DATE_RE.test(value)) {
+    throw new Error(`${context}: expected ISO date YYYY-MM-DD, got "${value}"`);
+  }
+
+  const [year, month, day] = value.split("-").map((part) => Number(part));
+  const parsed = new Date(Date.UTC(year, month - 1, day));
+
+  if (
+    parsed.getUTCFullYear() !== year ||
+    parsed.getUTCMonth() !== month - 1 ||
+    parsed.getUTCDate() !== day
+  ) {
+    throw new Error(`${context}: invalid calendar date "${value}"`);
+  }
+}
+
+function validateOfferFactsIsoDates(offerModule: OfferModule): void {
+  const { slug, facts } = offerModule.frontmatter;
+
+  ISO_DATE_FIELDS.forEach((field) => {
+    const value = facts[field];
+    if (typeof value === "string" && value.length > 0) {
+      assertIsoDateField(value, `content/offers/${slug}.mdx facts.${field}`);
+    }
+  });
+}
+
+workshopSlugs.forEach((slug) => {
+  const offerModule = offerModules[slug];
+  if (offerModule) {
+    validateOfferFactsIsoDates(offerModule);
+  }
+});
+
+/** Facts the home „Najbliższe” Warsztaty slot is computed from (plan 10-k4 N6). */
+export function getUpcomingOfferFacts(): { kurs: OfferFacts; plener: OfferFacts } {
+  return {
+    kurs: offerModules["kurs-roczny-i-trzyletni"].frontmatter.facts,
+    plener: offerModules["letnia-szkola-swiatla"].frontmatter.facts,
+  };
 }

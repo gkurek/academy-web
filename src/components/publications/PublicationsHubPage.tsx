@@ -60,10 +60,7 @@ export function PublicationsHubPage() {
                   priority
                 />
               </div>
-              <p className="publication-hub-cover-caption">
-                {pl.publications.coverCaption}{" "}
-                <span className="publication-placeholder-note">{pl.publications.coverScanNote}</span>
-              </p>
+              <p className="publication-hub-cover-caption">{pl.publications.coverCaption}</p>
             </div>
 
             <div className="publication-hub-album-copy">

@@ -40,7 +40,7 @@ export default function NotFound() {
                     href={item.href}
                     className="nav-link-underline tap-target-nav text-size-body text-text-body hover:text-text-list-title"
                   >
-                    {item.label}
+                    <span className="link-underline-target">{item.label}</span>
                   </Link>
                 </li>
               ))}

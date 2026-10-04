@@ -16,18 +16,22 @@
       "youtube": "https://www.youtube.com/@akademiaikony3822"
     }
   },
-  "upcoming": [
+  "upcomingOverrides": [
     {
+      "slot": "warsztaty",
       "title": "Nabór na kurs roczny i trzyletni 2026/2027",
       "text": "Zgłoszenia do 24 września 2026",
       "href": "/warsztaty/kurs-roczny-i-trzyletni",
-      "linkLabel": "Jak się zapisać"
+      "linkLabel": "Jak się zapisać",
+      "until": "2026-09-24"
     },
     {
+      "slot": "wyklady",
       "title": "Pierwszy wykład cyklu „Ikona – korzenie i owoce wiary. Mistyka dziś”",
       "text": "6 października 2026, 18:00",
       "href": "/wyklady",
-      "linkLabel": "Program sezonu"
+      "linkLabel": "Program sezonu",
+      "until": "2026-10-06"
     }
   ]
 }

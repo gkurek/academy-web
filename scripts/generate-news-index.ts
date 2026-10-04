@@ -25,11 +25,17 @@ export type NewsManifestEntry = {
   date: string;
   dateEnd?: string;
   kind: string;
+  layout: string;
   excerpt?: string;
   venue?: string;
   sample?: boolean;
   featured?: boolean;
+  lectureSeason?: string;
   bodyText?: string;
+  facts?: Array<{ label: string; value: string }>;
+  related?: Array<{ label: string; href: string }>;
+  hideLead?: boolean;
+  columnImageIndex?: number;
   cover?: {
     src: string;
     alt: string;
@@ -44,13 +50,6 @@ export type NewsManifestEntry = {
     height: number;
     caption?: string;
   }>;
-  poster?: {
-    src: string;
-    alt: string;
-    width: number;
-    height: number;
-    caption?: string;
-  };
 };
 
 function readFrontmatterFromMdx(filePath: string): NewsManifestEntry {

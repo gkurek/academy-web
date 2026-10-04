@@ -3,13 +3,10 @@
 Jeden plik na etap, wg szablonu z `docs/plan-claude-code.md`, Załącznik A.
 Bez zatwierdzonego planu nie piszemy kodu w danym etapie (`CLAUDE.md`, §Rytm pracy).
 
-Do zrobienia:
-
 | Plik | Etap | Status |
 | --- | --- | --- |
-| `09-migration.md` | 9 — migracja treści z WordPressa | 🔵 plan zatwierdzony 2026-09-26 (K-08, K-121, K-122) |
-| `10-wykonczenie.md` | 10 — ewaluacja, poprawki, SEO, optymalizacja | ⬜ plan nie powstał |
+| `10-finishing.md` | 10 — ewaluacja, poprawki, SEO, optymalizacja | 🟠 fala 1 ✅ (k1–k7); następny k8 |
 | `11-wdrozenie.md` | 11 — wdrożenie | ⬜ plan nie powstał |
 
-Plany etapów 1–8b są zamknięte i przeniesione do `docs/archive/plans/`
-(patrz `docs/archive/README.md`).
+Plany kawałków etapu 10 (`10-kN-*.md`) powstają tu na czas kawałka i po jego zamknięciu idą do archiwum.
+Plany etapów 1–9 i zamknięte kawałki 10/k1–k7: `docs/archive/plans/` (spis w `docs/archive/README.md`).

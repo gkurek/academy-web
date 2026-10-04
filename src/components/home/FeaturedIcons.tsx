@@ -1,6 +1,6 @@
 import { Button } from "@/components/core/Button";
 import { TextLink } from "@/components/core/TextLink";
-import { IconGrid } from "@/components/gallery/IconGrid";
+import { FeaturedIconsGallery } from "@/components/home/FeaturedIconsGallery";
 import { getFeaturedIconWorks } from "@/content/icons";
 import { pl } from "@/i18n/pl";
 
@@ -22,7 +22,7 @@ export function FeaturedIcons() {
           {pl.home.icons.seeAllLabel}
         </TextLink>
       </div>
-      <IconGrid items={icons} mobileCount={2} />
+      <FeaturedIconsGallery icons={icons} />
       <Button href="/ikony" variant="secondary" size="lg" block className="mt-space-5 md:hidden">
         {pl.home.icons.seeAllLabel}
       </Button>

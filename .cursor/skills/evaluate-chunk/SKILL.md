@@ -162,5 +162,5 @@ Refactor list priority: **remove dead code → reuse existing → token instead 
 or:
 
 ```
-evaluate-chunk docs/plans/10-wykonczenie.md
+evaluate-chunk docs/plans/10-finishing.md
 ```

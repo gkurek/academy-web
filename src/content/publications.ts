@@ -1,6 +1,6 @@
 import type { ComponentType } from "react";
 
-import type { Author, Image, Publication } from "@/content/types";
+import type { Image, Publication } from "@/content/types";
 import { assertLecturerSlugExists } from "@/content/authors";
 import { articleModules } from "@/content/articles-registry";
 import { publicationModules } from "@/content/publications-registry";
@@ -17,11 +17,6 @@ export type PublicationFrontmatter = Publication & {
 export type LoadedPublication = PublicationFrontmatter & {
   aboutParagraphs: string[];
   Content: ComponentType;
-};
-
-export type PublicationAuthorGroups = {
-  lecturers: Author[];
-  participants: Author[];
 };
 
 type PublicationBodyExports = {
@@ -47,14 +42,52 @@ function validatePublicationToc(publication: PublicationFrontmatter): void {
       );
     }
 
-    assertLecturerSlugExists(
-      item.author,
-      `Publication "${publication.slug}" toc entry "${item.title}"`,
-    );
+    if (item.author) {
+      assertLecturerSlugExists(
+        item.author,
+        `Publication "${publication.slug}" toc entry "${item.title}"`,
+      );
+    }
+  });
+}
+
+// AL3: every entry points at an existing chapter, chapters appear as contiguous runs in
+// ascending order, and intro entries precede the chapter's regular entries.
+function validatePublicationChapters(publication: PublicationFrontmatter): void {
+  const { chapters, toc, slug } = publication;
+  if (!chapters) {
+    const stray = toc.find((item) => item.chapter !== undefined || item.intro);
+    if (stray) {
+      throw new Error(
+        `Publication "${slug}" toc entry "${stray.title}" uses chapter/intro but publication has no chapters`,
+      );
+    }
+    return;
+  }
+
+  toc.forEach((item, index) => {
+    const context = `Publication "${slug}" toc entry "${item.title}"`;
+    if (item.chapter === undefined || !chapters[item.chapter]) {
+      throw new Error(`${context}: missing or unknown chapter index "${item.chapter}"`);
+    }
+
+    const previous = index > 0 ? toc[index - 1] : undefined;
+    if (!previous || previous.chapter === undefined) {
+      return;
+    }
+
+    if (item.chapter < previous.chapter) {
+      throw new Error(`${context}: chapter ${item.chapter} is not contiguous or out of order`);
+    }
+
+    if (item.chapter === previous.chapter && item.intro && !previous.intro) {
+      throw new Error(`${context}: intro entry must precede the chapter's regular entries`);
+    }
   });
 }
 
 publicationEntries.forEach(validatePublicationToc);
+publicationEntries.forEach(validatePublicationChapters);
 
 Object.values(articleModules).forEach((module) => {
   const { source, slug, title } = module.frontmatter;
@@ -98,26 +131,6 @@ export function loadPublicationBySlug(slug: string): LoadedPublication | undefin
     ...publicationModule.frontmatter,
     aboutParagraphs: body.aboutParagraphs,
     Content: publicationModule.Content,
-  };
-}
-
-export function getPublicationAuthorGroups(publication: Publication): PublicationAuthorGroups {
-  const lecturers = new Map<string, Author>();
-  const participants = new Map<string, Author>();
-
-  publication.toc.forEach((item) => {
-    const { author } = item;
-    if (author.lecturerSlug) {
-      lecturers.set(author.lecturerSlug, author);
-      return;
-    }
-
-    participants.set(author.name, author);
-  });
-
-  return {
-    lecturers: [...lecturers.values()],
-    participants: [...participants.values()],
   };
 }
 

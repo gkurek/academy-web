@@ -28,7 +28,7 @@ export default function WorkshopsPage() {
       </section>
 
       <section>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-hairline-gap bg-line-gold">
+        <div className="hairline-grid-2">
           {offers.map((offer) => {
             const image = pl.workshopsHub.cardImages[offer.slug as keyof typeof pl.workshopsHub.cardImages];
             const card = pl.workshopsHub.cards[offer.slug as keyof typeof pl.workshopsHub.cards];

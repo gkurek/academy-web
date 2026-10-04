@@ -7,6 +7,10 @@ export type Image = {
   width: number;
   height: number;
   caption?: string;
+  /** Optional grid preview; lightbox uses `src` at full resolution. */
+  thumbSrc?: string;
+  thumbWidth?: number;
+  thumbHeight?: number;
 };
 
 export type Page = {
@@ -25,13 +29,25 @@ export type OfferFacts = {
   where?: string;
   audience?: string;
   price?: string; // "400 zł / rok"
-  enrollmentDeadline?: string; // display text for FactsBox row (e.g. „Do 24 września 2026”); not ISO — use `firstMeeting` for machine-readable dates
+  enrollmentDeadline?: string; // display text for FactsBox row (e.g. „Do 24 września 2026”); not ISO
   enrollmentStart?: string; // plener: row label „Nabór”
   enrollmentRule?: string; // plener: row label „Zasada naboru”
   enrollmentEmail: string;
   enrollmentPhone?: string;
   enrollmentSubject: string; // unified mailto subject
-  firstMeeting?: string; // ISO
+  firstMeeting?: string; // display text for FactsBox row; machine-readable date in `firstMeetingDate`
+  /** ISO date (YYYY-MM-DD) — kurs: start of enrollment window (N7). */
+  enrollmentOpens?: string;
+  /** ISO date (YYYY-MM-DD) — kurs: end of enrollment window (N7). */
+  enrollmentClose?: string;
+  /** ISO date (YYYY-MM-DD) — kurs: first meeting (N7). */
+  firstMeetingDate?: string;
+  /** ISO date (YYYY-MM-DD) — Letnia Szkoła Światła: registration deadline (N7). */
+  registrationClose?: string;
+  /** ISO date (YYYY-MM-DD) — LSŚ: plener start (N7). */
+  dateStart?: string;
+  /** ISO date (YYYY-MM-DD) — LSŚ: plener end (N7). */
+  dateEnd?: string;
   enrollmentOpen: boolean;
   leadTime?: string; // orders: approximate lead time
 };
@@ -102,20 +118,38 @@ export type NewsKind =
   | "wyjazd"
   | "spotkanie";
 
+export type NewsLayout = "wydarzenie" | "galeria" | "tekst" | "program";
+
+export type NewsFact = {
+  label: string;
+  value: string;
+};
+
+export type NewsRelatedLink = {
+  label: string;
+  href: string;
+};
+
 export type News = {
   slug: string;
   title: string;
   date: string;
   dateEnd?: string;
   kind: NewsKind;
+  layout: NewsLayout;
   excerpt?: string;
   body: string;
   cover?: Image;
   images?: Image[];
-  poster?: Image;
+  facts?: NewsFact[];
+  related?: NewsRelatedLink[];
+  hideLead?: boolean;
+  /** 0-based index into `images[]`; desktop ≥1024 only — preview in right column (`top`), hidden from gallery there. */
+  columnImageIndex?: number;
   venue?: string;
   featured?: boolean;
-  featuredUntil?: string;
+  /** Lecture season slug (`"2026-2027"`); link to its program is derived — hub while current, archive anchor after (LK1). */
+  lectureSeason?: string;
 };
 
 export type Testimonial = {
@@ -158,8 +192,9 @@ export type PersonProfileData = {
   role: string;
   portrait: Image;
   bio: string[];
-  worksTitle: string;
-  works: PersonWork[];
+  /** Optional — the "Wybrane realizacje" section was dropped (LY4); kept in the shared model. */
+  worksTitle?: string;
+  works?: PersonWork[];
   link?: { href: string; label: string };
 };
 
@@ -283,12 +318,23 @@ export type AboutPageData = TextPageData & {
   };
 };
 
-// K-82…K-84: daily permanent display + annual exhibitions in KŚT.
+// K-82…K-84, K-127: daily permanent display + annual exhibitions in KŚT.
+export type ExhibitionTravelingPlace = {
+  place: string;
+  newsSlug?: string;
+};
+
 export type PermanentExhibition = {
   title: string;
   lead: string;
   iconCount: { from: number; to: number };
-  interiorPhotos: Image[];
+  /** K-127: optional frame images; omitted = placeholder in UI. */
+  heroImage?: Image;
+  permanentImage?: Image;
+  permanentImage2?: Image;
+  closingImage?: Image;
+  /** K-127 / K-87: curated list for #wyjazdowe (not derived from News.venue). */
+  travelingPlaces: ExhibitionTravelingPlace[];
   sample?: boolean;
 };
 
@@ -297,13 +343,24 @@ export type AnnualExhibition = {
   title: string;
   vernissage?: string;
   dateEnd?: string;
-  summary?: string;
   photos?: Image[];
   newsSlug?: string;
 };
 
 // K-76: Publikacje — jeden album jubileuszowy + artykuły (bez zakładek, bez SectionNav).
 export type Author = { name: string; lecturerSlug?: string };
+
+/** AL3: album chapter as printed in the book's table of contents; `pages` is a range, e.g. "6–51". */
+export type PublicationChapter = { title?: string; pages: string };
+
+/** AL3: `chapter` is an index into `Publication.chapters`; `intro` marks a text printed before the chapter title. */
+export type PublicationTocEntry = {
+  title: string;
+  author?: Author;
+  articleSlug?: string;
+  chapter?: number;
+  intro?: boolean;
+};
 
 export type Publication = {
   slug: string;
@@ -317,7 +374,8 @@ export type Publication = {
   availability: "dostepny" | "wyczerpany";
   cover: Image;
   spreads: Image[];
-  toc: { title: string; author: Author; articleSlug?: string }[];
+  chapters?: PublicationChapter[];
+  toc: PublicationTocEntry[];
   sample?: boolean;
 };
 
@@ -335,6 +393,21 @@ export type Article = {
   sample?: boolean;
 };
 
+export type UpcomingSlot = "warsztaty" | "wyklady" | "ikony";
+
+/** Manual override for one „Najbliższe” slot on the home page (N7). */
+export type UpcomingOverride = {
+  slot: UpcomingSlot;
+  title: string;
+  text: string;
+  href: string;
+  linkLabel: string;
+  /** ISO date (YYYY-MM-DD); active from this day inclusive. Omitted = always from the past. */
+  from?: string;
+  /** ISO date (YYYY-MM-DD); active through this day inclusive. */
+  until: string;
+};
+
 export type SiteSettings = {
   orgName: string;
   place: string;
@@ -348,5 +421,5 @@ export type SiteSettings = {
     personalSiteUrl?: string; // fill in once EJK's personal site launches — empty for now
     social: { facebook: string; youtube: string };
   };
-  upcoming: { title: string; text: string; href: string; linkLabel: string }[]; // "Najbliższe" on the home page
+  upcomingOverrides: UpcomingOverride[];
 };

@@ -21,7 +21,7 @@ export function ArticleList({ articles }: ArticleListProps) {
           </p>
           <h3 className="publication-article-list-title">
             <Link href={`/publikacje/${article.slug}`} className="publication-article-list-title-link">
-              {article.title}
+              <span className="link-underline-target link-underline-target--border">{article.title}</span>
             </Link>
           </h3>
           <p className="publication-article-excerpt">{article.excerpt}</p>

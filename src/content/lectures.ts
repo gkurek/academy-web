@@ -15,7 +15,7 @@ import season20242025Data from "../../content/lectures/2024-2025.json";
 import season20252026Data from "../../content/lectures/2025-2026.json";
 import currentSeasonData from "../../content/lectures/2026-2027.json";
 import { getLecturerDirectoryEntry } from "@/content/lecturer-directory";
-import { formatLecturerTitles, getLecturer, getLecturerProfileHref } from "@/content/lecturers";
+import { formatLecturerDisplayName, getLecturer, getLecturerProfileHref } from "@/content/lecturers";
 import type { Lecture, LectureSeason } from "@/content/types";
 
 const CURRENT_SEASON_SLUG = "2026-2027";
@@ -76,10 +76,10 @@ export type LoadedLectureSeason = Omit<LectureSeason, "lectures"> & {
 
 type ArchiveMeta = {
   intro: string;
+  /** Archive teaser on the `/wyklady` hub — not the archive page intro. */
+  hubIntro: string;
   firstSeason: string;
   lastSeason: string;
-  archivalSeasonCount: number;
-  totalSeasonCount: number;
 };
 
 export function formatLectureDate(isoDate: string): string {
@@ -106,13 +106,7 @@ function buildLecturerLabel(entry: {
   titles?: string;
   affiliation?: string;
 }): string {
-  const nameParts: string[] = [];
-  if (entry.titles) {
-    nameParts.push(formatLecturerTitles(entry.titles));
-  }
-  nameParts.push(entry.name);
-
-  const label = nameParts.join(" ");
+  const label = formatLecturerDisplayName(entry);
   return entry.affiliation ? `${label}, ${entry.affiliation}` : label;
 }
 
@@ -230,12 +224,39 @@ function getArchiveMeta(): ArchiveMeta {
   return archiveMeta as ArchiveMeta;
 }
 
-export function getArchiveIntro(): string {
-  return getArchiveMeta().intro;
+/** Fills season placeholders in archive copy, so a season rollover needs no copy edit (LK5). */
+function fillArchivePlaceholders(text: string): string {
+  const { firstSeason, lastSeason } = getArchiveMeta();
+  return text
+    .replace("{firstSeasonLabel}", slugToSeasonLabel(firstSeason))
+    .replace("{lastSeasonLabel}", slugToSeasonLabel(lastSeason))
+    .replace("{currentSeasonLabel}", slugToSeasonLabel(CURRENT_SEASON_SLUG));
 }
 
+export function getArchiveIntro(): string {
+  return fillArchivePlaceholders(getArchiveMeta().intro);
+}
+
+export function getHubArchiveIntro(): string {
+  return fillArchivePlaceholders(getArchiveMeta().hubIntro);
+}
+
+/** All seasons from the first archived one up to the current one (LK5 — derived, not stored). */
 export function getTotalSeasonCount(): number {
-  return getArchiveMeta().totalSeasonCount;
+  const { firstSeason } = getArchiveMeta();
+  return parseSeasonStartYear(CURRENT_SEASON_SLUG) - parseSeasonStartYear(firstSeason) + 1;
+}
+
+export function isCurrentLectureSeason(slug: string): boolean {
+  return slug === CURRENT_SEASON_SLUG;
+}
+
+/** Where a season's program lives: the hub while current, its archive anchor afterwards (LK1). */
+export function getLectureSeasonHref(slug: string): string {
+  if (!seasonModules[slug]) {
+    throw new Error(`lectures: unknown season "${slug}"`);
+  }
+  return isCurrentLectureSeason(slug) ? "/wyklady" : `/wyklady/archiwum#season-${slug}`;
 }
 
 export function getCurrentSeason(): LoadedLectureSeason {
@@ -257,6 +278,38 @@ export function getArchiveSeasons(): LoadedLectureSeason[] {
 export function getSeason(slug: string): LoadedLectureSeason | undefined {
   const season = seasonModules[slug];
   return season ? toLoadedSeason(season) : undefined;
+}
+
+export type SeasonLectureEntry = {
+  seasonSlug: string;
+  lecture: Lecture;
+};
+
+/** Raw lectures of every loaded season, sorted by date ascending (home „Najbliższe”, N5). */
+export function getAllSeasonLectures(): SeasonLectureEntry[] {
+  return Object.values(seasonModules)
+    .flatMap((season) => season.lectures.map((lecture) => ({ seasonSlug: season.slug, lecture })))
+    .sort((a, b) => a.lecture.date.localeCompare(b.lecture.date));
+}
+
+/** Short lecture-cycle theme for exhibition copy (suffix after ". " when cycleTitle has two parts). */
+export function getLectureSeasonShortTheme(seasonSlug: string): string {
+  const season = getSeason(seasonSlug);
+  if (!season) {
+    throw new Error(`lectures: unknown season "${seasonSlug}" for short theme`);
+  }
+
+  const cycleTitle = season.cycleTitle.trim();
+  if (!cycleTitle) {
+    throw new Error(`lectures: empty cycleTitle for season "${seasonSlug}"`);
+  }
+
+  const dotSpace = cycleTitle.indexOf(". ");
+  if (dotSpace >= 0) {
+    return cycleTitle.slice(dotSpace + 2).trim();
+  }
+
+  return cycleTitle;
 }
 
 /** ISO date and location for future JSON-LD Event emission (etap 7). */

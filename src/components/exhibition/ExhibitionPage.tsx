@@ -1,276 +1,260 @@
-import type { ReactNode } from "react";
-
+import { Button } from "@/components/core/Button";
 import { TextLink } from "@/components/core/TextLink";
+import { ExhibitionAnnualTiles } from "@/components/exhibition/ExhibitionAnnualTiles";
 import { ExhibitionFactsPanel } from "@/components/exhibition/ExhibitionFactsPanel";
+import { ExhibitionHashScroll } from "@/components/exhibition/ExhibitionHashScroll";
+import { ExhibitionFrame } from "@/components/exhibition/ExhibitionFrame";
 import { ExhibitionLightboxProvider } from "@/components/exhibition/ExhibitionLightboxProvider";
+import { ExhibitionNowNextBlock } from "@/components/exhibition/ExhibitionNowNext";
 import { ExhibitionPageNav } from "@/components/exhibition/ExhibitionPageNav";
-import { ExhibitionPhotoGrid } from "@/components/exhibition/ExhibitionPhotoGrid";
-import { ExhibitionPreviousSection } from "@/components/exhibition/ExhibitionPreviousSection";
 import {
   ExhibitionToursSection,
   ExhibitionTravelingSection,
 } from "@/components/exhibition/ExhibitionToursSection";
 import { SectionPageShell } from "@/components/layout/SectionPageShell";
 import {
-  getAnnualExhibitions,
   getAnnualExhibitionYear,
-  getAnnualIconCountLabel,
-  getAnnualOpenPeriodLabel,
-  getExhibitionArchiveBlock,
+  getExhibitionNowNext,
   getExhibitionPage,
+  getFirstAnnualExhibitionYear,
+  getLastFinishedAnnualExhibition,
   getLatestAnnualExhibition,
+  getLatestAnnualExhibitionWithPhotos,
   isAnnualExhibitionActive,
   resolveAnnualVernissage,
 } from "@/content/exhibition";
-import { getTravelingExhibitions } from "@/content/news";
+import { getLectureSeasonShortTheme } from "@/content/lectures";
 import { getSiteSettings } from "@/content/settings";
 import { pl } from "@/i18n/pl";
-import { formatDateRange } from "@/lib/formatDateRange";
 import { buildMailtoHref } from "@/lib/mailto";
 import { filterExistingPhotos } from "@/lib/mediaFileExists";
+import { formatPolishMonthYearLocative } from "@/lib/polishMonth";
 
 export interface ExhibitionPageProps {
   active: string;
   sectionActive: string;
 }
 
-function ExhibitionSectionLayout({
-  sectionId,
-  eyebrow,
-  heading,
-  headingId,
-  copy,
-  facts,
-  photos,
-}: {
-  sectionId: string;
-  eyebrow?: string;
-  heading: string;
-  headingId: string;
-  copy: ReactNode;
-  facts: ReactNode;
-  photos: ReactNode;
-}) {
-  return (
-    <section id={sectionId} className="exhibition-section scroll-mt-space-6" aria-labelledby={headingId}>
-      {eyebrow ? (
-        <p className="text-size-caption uppercase tracking-caption-wide text-text-tertiary mb-space-3">
-          {eyebrow}
-        </p>
-      ) : null}
-      <h2
-        id={headingId}
-        className="font-serif text-size-role-section-h2-m md:text-size-role-section-h2 leading-heading text-text-h2 mb-space-5"
-      >
-        {heading}
-      </h2>
-
-      <div className="grid grid-cols-1 lg:grid-cols-offer-main gap-offer-main-gap items-start mb-space-6">
-        <div className="min-w-0">{copy}</div>
-        <div className="hidden lg:block">{facts}</div>
-      </div>
-
-      <div className="mb-space-6 lg:hidden">{facts}</div>
-      {photos}
-    </section>
-  );
-}
-
 export function ExhibitionPage({ active, sectionActive }: ExhibitionPageProps) {
   const page = getExhibitionPage();
   const settings = getSiteSettings();
   const latestAnnual = getLatestAnnualExhibition();
-  const allAnnual = getAnnualExhibitions();
   const annualActive = isAnnualExhibitionActive(latestAnnual);
-  const vernissage = resolveAnnualVernissage(latestAnnual);
-  const latestYear = getAnnualExhibitionYear(latestAnnual.seasonSlug);
-  const archiveBlock = getExhibitionArchiveBlock();
-  const interiorPhotos = filterExistingPhotos(page.interiorPhotos);
-  const travelingPhotoSrc = interiorPhotos[0]?.src;
-  const { page: pageCopy, permanent, annual, previous, facts, tours, traveling } = pl.exhibition;
+  const lastFinished = getLastFinishedAnnualExhibition();
+  const latestWithPhotos = getLatestAnnualExhibitionWithPhotos();
+  const nowNext = getExhibitionNowNext();
+  const {
+    page: pageCopy,
+    permanent,
+    annual,
+    facts,
+    frames,
+    tours,
+    traveling,
+  } = pl.exhibition;
   const enrollmentEmail = settings.emails[0]?.address ?? "akademiaikony@gmail.com";
+  const toursMailtoHref = buildMailtoHref(enrollmentEmail, tours.mailtoSubject);
+  const travelingMailtoHref = buildMailtoHref(enrollmentEmail, traveling.mailtoSubject);
+
+  const annualFactRows = [
+    { label: facts.where, value: facts.whereValue },
+    { label: annual.facts.when, value: annual.facts.whenValue },
+    { label: annual.facts.vernissage, value: annual.facts.vernissageValue },
+    { label: annual.facts.onDisplay, value: annual.facts.onDisplayValue },
+    { label: annual.facts.admission, value: annual.facts.admissionValue },
+  ];
 
   const permanentFactRows = [
+    { label: facts.where, value: facts.whereValue },
+    { label: permanent.facts.when, value: permanent.facts.whenValue },
+    { label: permanent.facts.hours, value: permanent.facts.hoursValue },
     {
-      label: facts.where,
-      value: `${settings.place}, ${settings.address}`,
-    },
-    {
-      label: facts.when,
-      value: facts.whenValue,
-    },
-    {
-      label: facts.admission,
-      value: facts.admissionValue,
-    },
-    {
-      label: permanent.iconCountLabel,
-      value: permanent.iconCountValue
+      label: permanent.facts.onDisplay,
+      value: permanent.facts.onDisplayValue
         .replace("{from}", String(page.iconCount.from))
         .replace("{to}", String(page.iconCount.to)),
     },
+    { label: permanent.facts.admission, value: permanent.facts.admissionValue },
   ];
 
-  const annualFactRows = annualActive
-    ? [
-        {
-          label: annual.activeLabel,
-          value: `„${latestAnnual.title}"`,
-        },
-        {
-          label: annual.openUntilLabel,
-          value: getAnnualOpenPeriodLabel(latestAnnual),
-        },
-      ]
-    : [
-        {
-          label: annual.vernissageLabel,
-          value: vernissage
-            ? formatDateRange(vernissage, undefined, { withYear: true })
-            : "[do uzupełnienia: data wernisażu]",
-        },
-        {
-          label: annual.openUntilLabel,
-          value: getAnnualOpenPeriodLabel(latestAnnual),
-        },
-        {
-          label: annual.admissionLabel,
-          value: annual.admissionValue,
-        },
-        {
-          label: annual.onDisplayLabel,
-          value: getAnnualIconCountLabel(),
-        },
-      ];
+  const titleSource = annualActive ? latestAnnual : lastFinished;
+  const titleSentence = titleSource
+    ? (annualActive ? annual.titleSentenceCurrent : annual.titleSentencePast)
+        .replace("{year}", String(getAnnualExhibitionYear(titleSource.seasonSlug)))
+        .replace("{theme}", getLectureSeasonShortTheme(titleSource.seasonSlug))
+    : "";
 
-  const annualFooterLink = annualActive ? (
-    latestAnnual.newsSlug ? (
-      <TextLink href={`/aktualnosci/${latestAnnual.newsSlug}`}>
-        {annual.vernissageNewsLink.replace("{year}", String(latestYear))}
-      </TextLink>
-    ) : (
-      <TextLink href="/aktualnosci">
-        {annual.vernissageNewsLink.replace("{year}", String(latestYear))}
-      </TextLink>
-    )
-  ) : (
-    <TextLink href="/wyklady">{annual.lecturesLink}</TextLink>
-  );
+  const vernissage = resolveAnnualVernissage(latestAnnual);
+  const monthYear = vernissage ? formatPolishMonthYearLocative(vernissage) : "";
+  const scheduleNext =
+    monthYear.length > 0
+      ? annual.scheduleNext.replace("{monthYear}", monthYear)
+      : annual.scheduleNextMissing;
 
-  const annualPhotos = annualActive
-    ? filterExistingPhotos(latestAnnual.photos)
-    : filterExistingPhotos(archiveBlock?.photos ?? []);
+  const annualPhotos = filterExistingPhotos(latestAnnual.photos ?? []);
+  const tilesCaption =
+    latestWithPhotos && (latestWithPhotos.photos?.length ?? 0) > 0
+      ? annual.tilesCaption
+          .replace("{year}", String(getAnnualExhibitionYear(latestWithPhotos.seasonSlug)))
+          .replace("{count}", String(latestWithPhotos.photos?.length ?? 0))
+      : undefined;
 
-  const previousExhibitions = allAnnual.map((exhibition) => ({
-    seasonSlug: exhibition.seasonSlug,
-    year: getAnnualExhibitionYear(exhibition.seasonSlug),
-    title: exhibition.title,
-    newsSlug: exhibition.newsSlug,
-    photos: filterExistingPhotos(exhibition.photos),
-  }));
-
-  const toursMailtoHref = buildMailtoHref(enrollmentEmail, tours.mailtoSubject);
-  const travelingMailtoHref = buildMailtoHref(enrollmentEmail, traveling.mailtoSubject);
-  const travelingItems = getTravelingExhibitions();
+  const heroImage = page.heroImage ? filterExistingPhotos([page.heroImage])[0] : undefined;
+  const permanentImage = page.permanentImage
+    ? filterExistingPhotos([page.permanentImage])[0]
+    : undefined;
+  const permanentImage2 = page.permanentImage2
+    ? filterExistingPhotos([page.permanentImage2])[0]
+    : undefined;
+  const closingImage = page.closingImage ? filterExistingPhotos([page.closingImage])[0] : undefined;
 
   return (
     <SectionPageShell active={active} section="ikony" sectionActive={sectionActive}>
-      <header className="mb-space-6">
-        <p className="text-size-caption uppercase tracking-caption-wide text-text-tertiary mb-lectures-eyebrow-mb">
-          {pageCopy.eyebrow}
-        </p>
-        <h1 className="font-serif text-size-h1-m md:text-size-h1 leading-tight text-text-h1 mb-space-5">
-          {pageCopy.title}
-        </h1>
-        <p className="text-size-lead-m md:text-size-lead leading-body text-text-secondary max-w-measure-lead">
-          {pageCopy.lead}
-        </p>
-        <ExhibitionPageNav />
+      <ExhibitionHashScroll>
+      <header>
+        <div className="exhibition-hero-grid">
+          <p
+            className="exhibition-hero-grid__eyebrow text-size-caption uppercase tracking-caption-wide text-text-tertiary"
+          >
+            {pageCopy.eyebrow}
+          </p>
+          <h1
+            className="exhibition-hero-grid__h1 font-serif text-size-h1-m md:text-size-h1 leading-tight text-text-h1"
+          >
+            {pageCopy.title}
+          </h1>
+          <p
+            className="exhibition-hero-grid__lead text-size-lead-m md:text-size-lead leading-body text-text-secondary max-w-measure-lead"
+          >
+            {pageCopy.lead}
+          </p>
+          <ExhibitionNowNextBlock state={nowNext} className="exhibition-hero-grid__now" />
+          <ExhibitionPageNav className="exhibition-hero-grid__nav" />
+        </div>
       </header>
 
       <ExhibitionLightboxProvider>
-        <ExhibitionSectionLayout
-          sectionId={permanent.sectionId}
-          eyebrow={permanent.eyebrow}
-          heading={page.title}
-          headingId="exhibition-permanent-heading"
-          copy={
-            <>
+        <div className="exhibition-hero-frame mb-space-6">
+          <ExhibitionFrame
+            image={heroImage}
+            aspect="wide"
+            placeholderLabel={frames.heroWide}
+          />
+        </div>
+
+        <section
+          id={annual.sectionId}
+          className="exhibition-section scroll-mt-space-6"
+          aria-labelledby="exhibition-annual-heading"
+        >
+          <div className="exhibition-section-grid exhibition-section-grid--text-facts mb-space-6">
+            <div className="exhibition-section-grid__main min-w-0">
+              <p
+                className="exhibition-section-eyebrow text-size-caption uppercase tracking-caption-wide text-text-tertiary"
+              >
+                {frames.annualHeroEyebrow}
+              </p>
+              <h2
+                id="exhibition-annual-heading"
+                className="exhibition-section-h2 font-serif text-size-role-section-h2-m md:text-size-role-section-h2 leading-heading text-text-h2"
+              >
+                {annual.title}
+              </h2>
+              <p className="exhibition-section-copy">
+                {titleSentence ? `${annual.intro1} ${titleSentence}` : annual.intro1}
+              </p>
+              <p className="exhibition-section-copy">{annual.intro3}</p>
+              <p className="exhibition-section-copy">
+                {annual.scheduleSince.replace("{firstYear}", String(getFirstAnnualExhibitionYear()))}{" "}
+                {scheduleNext}
+              </p>
+              <p className="exhibition-section-copy">
+                <TextLink href="/aktualnosci">{annual.photoArchiveLink}</TextLink>
+              </p>
+            </div>
+            <div className="exhibition-section-grid__facts min-w-0">
+              <ExhibitionFactsPanel
+                rows={annualFactRows}
+                footerLink={
+                  <Button href="/wyklady" variant="secondary" block size="lg">
+                    {annual.facts.lecturesProgramLink}
+                  </Button>
+                }
+              />
+            </div>
+          </div>
+
+          <ExhibitionAnnualTiles
+            photos={annualPhotos}
+            placeholderLabels={frames.tilePlaceholders}
+            caption={tilesCaption}
+          />
+        </section>
+
+        <section
+          id={permanent.sectionId}
+          className="exhibition-section scroll-mt-space-6"
+          aria-labelledby="exhibition-permanent-heading"
+        >
+          <div className="exhibition-permanent-layout">
+            <div className="exhibition-permanent-layout__facts min-w-0">
+              <ExhibitionFactsPanel rows={permanentFactRows} />
+            </div>
+            <div className="exhibition-permanent-layout__main min-w-0">
+              <p
+                className="exhibition-section-eyebrow text-size-caption uppercase tracking-caption-wide text-text-tertiary"
+              >
+                {frames.permanentEyebrow}
+              </p>
+              <h2
+                id="exhibition-permanent-heading"
+                className="exhibition-section-h2 font-serif text-size-role-section-h2-m md:text-size-role-section-h2 leading-heading text-text-h2"
+              >
+                {page.title}
+              </h2>
               {page.descriptionParagraphs.map((paragraph) => (
-                <p key={paragraph} className="exhibition-section-copy mb-space-4 last:mb-0">
+                <p key={paragraph} className="exhibition-section-copy">
                   {paragraph}
                 </p>
               ))}
-            </>
-          }
-          facts={
-            <ExhibitionFactsPanel
-              rows={permanentFactRows}
-              footerLink={<TextLink href="/kontakt#dojazd">{facts.contactLink}</TextLink>}
-            />
-          }
-          photos={
-            <ExhibitionPhotoGrid
-              photos={interiorPhotos}
-              layout="pair"
-              showCaptionNote
-            />
-          }
-        />
-
-        <ExhibitionSectionLayout
-          sectionId={annual.sectionId}
-          heading={annual.title}
-          headingId="exhibition-annual-heading"
-          copy={
-            <>
-              <p className="exhibition-section-copy mb-space-4">{annual.intro1}</p>
-              <p className="exhibition-section-copy">{annual.intro2}</p>
-            </>
-          }
-          facts={<ExhibitionFactsPanel rows={annualFactRows} footerLink={annualFooterLink} />}
-          photos={
-            <>
-              {!annualActive && archiveBlock ? (
-                <p className="exhibition-archive-label mb-space-4">
-                  {previous.lastExhibitionLabel
-                    .replace("{year}", String(archiveBlock.year))
-                    .replace("{title}", archiveBlock.title)}
-                </p>
-              ) : null}
-              <ExhibitionPhotoGrid photos={annualPhotos} layout="quad" maxCount={4} />
-              {!annualActive && archiveBlock ? (
-                <div className="exhibition-archive-footer">
-                  <p className="exhibition-archive-note">
-                    {annual.archivePhotosNote.replace("{year}", String(archiveBlock.year))}
-                  </p>
-                  {archiveBlock.newsSlug ? (
-                    <TextLink href={`/aktualnosci/${archiveBlock.newsSlug}`}>
-                      {annual.vernissageNewsLink.replace("{year}", String(archiveBlock.year))}
-                    </TextLink>
-                  ) : null}
-                </div>
-              ) : null}
-            </>
-          }
-        />
+            </div>
+            <div className="exhibition-permanent-layout__media">
+              <ExhibitionFrame
+                image={permanentImage}
+                aspect="tilePairLead"
+                placeholderLabel={frames.permanentStandard}
+              />
+              <ExhibitionFrame
+                image={permanentImage2}
+                aspect="tile"
+                placeholderLabel={frames.permanentStandard2}
+              />
+            </div>
+          </div>
+        </section>
 
         <ExhibitionToursSection mailtoHref={toursMailtoHref} />
 
-        <ExhibitionPreviousSection exhibitions={previousExhibitions} />
-      </ExhibitionLightboxProvider>
+        <ExhibitionTravelingSection
+          mailtoHref={travelingMailtoHref}
+          places={page.travelingPlaces}
+        />
 
-      <ExhibitionTravelingSection
-        mailtoHref={travelingMailtoHref}
-        items={travelingItems}
-        photoSrc={travelingPhotoSrc ?? ""}
-      />
+        <div className="exhibition-section exhibition-closing-frame">
+          <ExhibitionFrame
+            image={closingImage}
+            aspect="wide"
+            placeholderLabel={frames.closingWide}
+          />
+        </div>
+      </ExhibitionLightboxProvider>
 
       <footer className="exhibition-page-footer">
         <span className="exhibition-page-footer-label">{pageCopy.startHere}</span>
         <TextLink href="/ikony">{pageCopy.galleryLink}</TextLink>
         <TextLink href="/warsztaty">{pageCopy.workshopsLink}</TextLink>
       </footer>
+      </ExhibitionHashScroll>
     </SectionPageShell>
   );
 }

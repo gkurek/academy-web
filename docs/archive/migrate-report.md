@@ -9,7 +9,7 @@ Zatwierdzone przez właściciela repo **2026-09-27**. Bez implementacji treści 
 | # | Slug / temat | Decyzja |
 | --- | --- | --- |
 | 12 | `tematy` | **301** `/wyklady/tematy/` → `/wyklady` (program tylko w `content/lectures/*.json` + hub). |
-| 25 | `plakaty` | **✅ 2026-09-30 (DoD #3):** `content/news/plakaty-z-wydarzen.mdx` — 20 zdj. z WP `/publikacje/plakaty/` → `public/media/news/plakaty-z-wydarzen/`; **301** `/publikacje/plakaty` → `/aktualnosci/plakaty-z-wydarzen`. **Etap 10:** opisy `alt` (wydarzenie + rok), rozłożenie na `News.poster` przy wpisach docelowych; wpis zbiorczy usunąć, gdy zbędny. |
+| 25 | `plakaty` | **✅ 2026-09-30 (DoD #3):** `content/news/plakaty-z-wydarzen.mdx` — 20 zdj. z WP `/publikacje/plakaty/` → `public/media/news/plakaty-z-wydarzen/`; **301** `/publikacje/plakaty` → `/aktualnosci/plakaty-z-wydarzen`. **Etap 10:** opisy `alt` (wydarzenie + rok), rozłożenie plakatów na galerię wpisów docelowych (`images[]`, caption „Plakat” — K-122 k3b); wpis zbiorczy usunąć, gdy zbędny. |
 | — | Zdjęcie FB `71496678_…_n-1.jpg` (hub WP `/publikacje/`) | **✅ zamknięte (DoD #5):** nie migrowane; **bez backlogu** — temat nie wraca. |
 | 28 | `konsultacje-i-lekcje-indywidualne` | Kotwica `#konsultacje` przy sekcji w `kurs-roczny-i-trzyletni.mdx`. **301** → `/warsztaty/kurs-roczny-i-trzyletni#konsultacje`. |
 | — | Backlog post `podsumowanie-2019` | **✅ zamknięty** 2026-09-27: **#1** → P4 Tura A; **#2–#8** → wpisy news (P4 Tura C); **#9** (akapit 2020 / film) → **skip** — treść rozplanowana poza rollupem WP (bez osobnego news z tego akapitu). |
@@ -26,7 +26,7 @@ Zatwierdzone przez właściciela repo **2026-09-27**. Bez implementacji treści 
 | **301** `/publikacje/plakaty` | → `/aktualnosci/plakaty-z-wydarzen` |
 | `next.config.ts` | bez zmian — `loadPermanentRedirects()` |
 
-**Etap 10:** `alt` plakatów; rozłożenie na `News.poster`; ewent. usunięcie wpisu zbiorczego.
+**Etap 10:** `alt` plakatów; rozłożenie na galerię wpisów docelowych (fala 2 / k8); ewent. usunięcie wpisu zbiorczego.
 
 ## WP zamknięte — kawałek 3 v2 (2026-09-30)
 
@@ -307,7 +307,9 @@ Treść z poniższych URL-i uznajemy za zmigrowaną (konspekt w `docs/plans/09-m
 
 **Do refaktoryzacji (przyszły CMS EJK — etap 10+ / osobny projekt):** docelowo jeden formularz „nowy sezon wykładów”: submit aktualizuje `content/lectures/<bieżący>.json`, przenosi poprzedni sezon do archiwum, **generuje** wpis `/aktualnosci` i ewentualnie aktualizuje hub. Dziś duplikacja intro (JSON + MDX) jest świadoma i zamrożona przy gate.
 
-**Otwarte (rozstrzygnąć przed CMS):**
+**Rozstrzygnięte w etapie 10 / k6 (2026-10-04, K-139, `docs/plans/10-k6-lectures.md`):** p. 1 → pole `lectureSeason` + link wyliczany (body wpisu zostaje jako kronika; link sam przechodzi z `/wyklady` na kotwicę archiwum); p. 2 → kotwice `#season-{slug}` wdrożone w k3b, linki archiwalne na stałe w body, bieżący przez `<LectureSeasonLink />`; p. 3 → odłożone do projektu CMS (duplikacja intro JSON + MDX zamrożona). Przyszłe sezony bez osobnego wpisu „wykłady {sezon}” — program we wpisie IX „Nowy rok w Akademii” (`10-k3-news.md` D3). Wpisów `kind: wyklady` jest **15** (14 archiwalnych + bieżący). **Zmiana sezonu (procedura):** w `src/content/lectures.ts` — import nowego JSON i `CURRENT_SEASON_SLUG`; w `content/lectures/archive.json` — `lastSeason`; liczby i zakresy lat w copy wyliczają się same.
+
+**Otwarte (stan sprzed k6, zachowany dla historii):**
 
 1. **Bieżący vs przeszły sezon w aktualnościach** — czy po zakończeniu sezonu body wpisu news **zostaje** (kronika zapowiedzi), czy **jest przepisywane** (np. tylko link do archiwum)?
 2. **Głębokie linki** — kotwice na `/wyklady/archiwum` per `season.slug` (np. `#2012-2013`) + automatyczne wstawianie w akapicie „zobacz program”; vs pełny program z powrotem w MDX dla sezonów archiwalnych.
@@ -468,7 +470,7 @@ Treść z poniższych domen uznajemy za zmigrowaną — **bez ponownego fetchu**
 | Skrypt | `npx tsx scripts/promote-news-media-from-sample.ts` (jednorazowo) + `generateNewsManifest()` |
 | Build / lint | ✅ po zamknięciu |
 
-**Otwarte (treść / etap 10, nie blokuje mediów):** EJK — program + skan plakatu `spotkania-sladami-najpiekniejszych-ikon-swiata`; masowe `alt`; plakaty (~20) w `News.poster`.
+**Otwarte (treść / etap 10, nie blokuje mediów):** EJK — program + skan plakatu `spotkania-sladami-najpiekniejszych-ikon-swiata`; masowe `alt`; plakaty (~20) z `plakaty-z-wydarzen` → wpisy docelowe (fala 2).
 
 ## Media — ujednolicenie ścieżek M6 (2026-09-29)
 
@@ -487,7 +489,7 @@ Treść z poniższych domen uznajemy za zmigrowaną — **bez ponownego fetchu**
 - [x] **`NewsKind` plener + wyjazd → tylko `wyjazd` (K-125, 2026-09-30):** usunięto `plener` z `NewsKind`; 3 wpisy przepisane; etykieta UI „Wyjazd studyjny”; heurystyka `generate-news-sample.ts` bez wyjątku Gródek.
 - [x] **Letnia Szkoła Światła — „Gdzie byliśmy” (DoD etapu 9, punkt 2, K-126, 2026-09-30):** 8 miejsc (`place`); ręczne `newsSlug` → Święta Lipka `plener-swietej-lipki-2019`, Wesoła / Gródek / Mielnik → wpisy `wyjazd`; Supraśl, Przemyśl, Wilno, Tbilisi bez linku (relacje — etap 10, §5). `PlenerWhereWeWereSection`; bez lat i regionów.
 - [x] **Backlog `podsumowanie-2019` (P0 + P4, 2026-09-27):** #1 → P4 Tura A; #2–#8 → news Tura C; #9 → skip (plan poza postem).
-- [x] **Plakaty WP (P0 #25, DoD #3):** galeria zbiorcza `plakaty-z-wydarzen` + 301 `/publikacje/plakaty` — **2026-09-30**. **Etap 10:** `alt`, rozłożenie na wpisy docelowe / `News.poster`, ewent. usunięcie zbiorczego.
+- [x] **Plakaty WP (P0 #25, DoD #3):** galeria zbiorcza `plakaty-z-wydarzen` + 301 `/publikacje/plakaty` — **2026-09-30**. **Etap 10:** `alt`, rozłożenie na galerię wpisów docelowych (k8), ewent. usunięcie zbiorczego. **K-122 k3b:** `News.poster` usunięte; plakaty w `images[]`.
 - [x] **0.2A:** pominięte (DoD #6, 2026-10-01) — aktualności zamrożone po gate 2026-09-27; ponowny `--dry-run` nie jest wymagany do zamknięcia etapu 9.
 
 ## DoD #6 — przegląd raportu (2026-10-01)
@@ -528,7 +530,7 @@ Treść z poniższych domen uznajemy za zmigrowaną — **bez ponownego fetchu**
 
 **Interakcje sprawdzone:** menu mobilne (akordeon sekcji); filtr tematu galerii; `SeasonAccordion` (archiwum wykładów); lightbox galerii (Zamknij, prev/next, licznik „1 z 20” na plakatach).
 
-**Nie objęte w DoD #8 (→ etap 10 — pełna ewaluacja §3 planu):** `/warsztaty`, `/warsztaty/kurs-roczny-i-trzyletni`, `/wyklady` (hub), `/wyklady/wykladowcy`, `/publikacje/[slug]` (poza hubem), `/polityka-prywatnosci`; próbki **301** ze starych URL WP (wymaga stagingu z `docs/redirects.json`); Lighthouse; test lightboxa **Escape** i fizyczny **iOS Safari** (K-38).
+**Nie objęte w DoD #8 (→ etap 10 — pełna ewaluacja §3 planu):** `/warsztaty`, `/warsztaty/kurs-roczny-i-trzyletni`, `/wyklady` (hub), `/wyklady/wykladowcy`, `/publikacje/[slug]` (poza hubem), `/polityka-prywatnosci`; próbki **301** ze starych URL WP (wymaga stagingu z `docs/redirects.json`); Lighthouse. (Test lightboxa Escape + fizyczny iOS Safari — **K-38** zamknięty 2026-10-03 w etapie 10 k2.)
 
 **Werdykt:** brak blokad zamknięcia etapu 9; uwagi techniczne i treściowe → § „Do etapu 10 — uwagi z DoD #8” poniżej oraz istniejące §5 / §EJK.
 
@@ -536,7 +538,7 @@ Treść z poniższych domen uznajemy za zmigrowaną — **bez ponownego fetchu**
 
 **Techniczne / a11y / UI (nie wymagały poprawki w etapie 9):**
 
-- [ ] **Hydratacja w `next dev`:** overlay React (`Pillars.tsx` ~L27, `OfferLeadExtra.tsx` ~L18) — na `next start` w tej sesji bez overlay; zweryfikować w dev u właściciela; ewent. naprawa w etapie 10 przy audycie kodu.
+- [x] **Hydratacja w `next dev`:** overlay React (`Pillars.tsx` ~L27, `OfferLeadExtra.tsx` ~L18) — na `next start` w tej sesji bez overlay; zweryfikować w dev u właściciela; ewent. naprawa w etapie 10 przy audycie kodu. **Zamknięte 2026-10-04 (etap 10, k4 4.4):** nie występuje w `next dev` (czysta przeglądarka i Chrome właściciela); komponenty deterministyczne — bez zmian w kodzie.
 - [ ] **Siatka ikon `/ikony`:** przyciski miniatur w drzewie a11y często bez `name` (pusty `button`) — porównać z galeriami na `/pracownia` i `/ikony/wystawy` (pełne „Powiększ zdjęcie: …”).
 - [ ] **Zduplikowane `h2` w snapshotach:** „W skrócie · plener 2027” (×2 na LSS), „Informacje praktyczne” (×2 na `/ikony/wystawy`) — wzorzec FactsBox + widoczny nagłówek; rozważyć `sr-only` / unikalne `id` (etap 10, bez zmiany tokenów bez potrzeby).
 - [ ] **Lista wystaw wyjazdowych:** wiele pozycji „Warszawa · 2019 Relacja” — dane archiwalne lub **P4 Tura B** (R1–R9), nie migracja WP.
@@ -544,7 +546,7 @@ Treść z poniższych domen uznajemy za zmigrowaną — **bez ponownego fetchu**
 **Treść — potwierdzone wizualnie (szczegóły w `docs/plan-claude-code.md` §5 / §EJK):**
 
 - [ ] `/o-akademii` — „Wybrane realizacje”: 6× `[DO UZUPEŁNIENIA: obiekt / ikona …]`.
-- [ ] `/aktualnosci/plakaty-z-wydarzen` — `alt` placeholder na wszystkich 20 plakatach (rozłożenie na wpisy / `News.poster` — jak P0 #25).
+- [ ] `/aktualnosci/plakaty-z-wydarzen` — `alt` placeholder na wszystkich 20 plakatach (rozłożenie na wpisy docelowe — jak P0 #25, fala 2).
 - [ ] `/ikony/wystawy` — placeholdery `[przykład]` / `[przykład: kadry z wystawy 2026]` w sekcji dorocznej.
 - [ ] `/publikacje` — rozkładówki `[rozkładówka N — do uzupełnienia]`; copy okładki albumu ze placeholderem kadru.
 

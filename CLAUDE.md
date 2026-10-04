@@ -2,9 +2,9 @@
 
 ## Dokumenty i kiedy je czytać
 
-- `docs/plan-claude-code.md` – plan żywy: rytm pracy, tabela postępu, etapy **9–11**, decyzje wiążące, otwarte pozycje treści; czytaj na starcie każdej sesji planistycznej.
-- `docs/plans/0N-*.md` – plan bieżącego etapu; czytaj na starcie każdej sesji implementacyjnej. Są tu wyłącznie plany **09, 10, 11**.
-- `docs/archive/` – **nie czytaj w normalnej sesji.** Zamknięte plany etapów 1–8b, zamknięte sesje dokumentacyjne i `plan-claude-code-historia.md` (opisy etapów 1–8b, 65 decyzji zamkniętych, dziennik do 2026-09-26). Sięgaj tam tylko po rekonstrukcję zamkniętej decyzji — mapa „szukasz → idź do" jest w `docs/plan-claude-code.md` §7, spis w `docs/archive/README.md`. Pliki w archiwum cytują dawne ścieżki `docs/plans/0N-*.md`; dziś to `docs/archive/plans/0N-*.md` — nie przepisujemy ich, żeby zachować treść z dnia zamknięcia.
+- `docs/plan-claude-code.md` – plan żywy: rytm pracy, tabela postępu, etapy **10–11**, decyzje wiążące, otwarte pozycje treści; czytaj na starcie każdej sesji planistycznej.
+- `docs/plans/0N-*.md` – plan bieżącego etapu; czytaj na starcie każdej sesji implementacyjnej. Są tu wyłącznie plany **10, 11**.
+- `docs/archive/` – **nie czytaj w normalnej sesji.** Zamknięte plany etapów 1–9 i kawałków 10/k1–k7, raport migracji WP, zamknięte sesje dokumentacyjne i `plan-claude-code-historia.md` (opisy etapów 1–9, decyzje zamknięte, dziennik do 2026-10-01). Sięgaj tam tylko po rekonstrukcję zamkniętej decyzji — mapa „szukasz → idź do" jest w `docs/plan-claude-code.md` §7, spis w `docs/archive/README.md`. Pliki w archiwum cytują dawne ścieżki `docs/plans/0N-*.md`; dziś to `docs/archive/plans/0N-*.md` — nie przepisujemy ich, żeby zachować treść z dnia zamknięcia.
 - `docs/brief-claude-code.md` – wymagania, architektura tras (§3), model treści (§4), fakty stałe (§8); czytaj przy pytaniach „co ma być”.
 - `docs/brief-full.md` – kontekst biznesowy; tylko przy niejasnościach co do treści lub copy, nie przy pytaniach technicznych.
 - `design/README` + `design/*.dc.html` – makiety i tokeny. Obowiązuje kierunek 1a i jego rozwinięcia 2a/3a/3b;
@@ -93,6 +93,5 @@ Przy konflikcie: `CLAUDE.md` > plan etapu > `brief-claude-code.md` > `brief-full
 ## Nie rób
 
 - Nie dotykaj `.env*`, `next.config.ts` (poza uzgodnionymi przekierowaniami 301 w etapie 9) ani plików w `design/`.
-- Nie uruchamiaj migracji z WordPressa ani żadnych zapytań do `akademiaikony.pl` przed etapem 9 (migracja to etap 9 od zamiany etapów 2026-09-22; wcześniej ten punkt mówił „etapem 10”).
 - Nie usuwaj i nie przenoś plików poza zakresem kawałka; nie „porządkuj przy okazji”.
 - Nie dodawaj banera cookies, `localStorage`, zewnętrznych skryptów ani analityki bez planu, w którym to jest zapisane.
