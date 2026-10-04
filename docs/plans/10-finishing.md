@@ -76,11 +76,15 @@ Domknięcie serwisu na prawdziwych danych z etapu 9 przed wdrożeniem (etap 11).
 
 **Kryterium „gotowe”:** makieta lub zatwierdzenie właściciela na układ; brak overlay hydratacji w typowym `next dev` (lub udokumentowana znana przyczyna).
 
+**Stan (2026-10-04):** H1 ✅. Discovery H2 ✅ — 3 stałe kafle (Warsztaty · Wykłady · Ikony) liczone z dat w treści + ręczne nadpisanie z `until`; nowe pola ISO w ofertach; obecny wygląd kafla. Podział 4.1–4.5. Szczegóły: **`docs/plans/10-k4-home.md`** (N1–N10).
+
 ### Kawałek 5 — Album (`/publikacje` — podstrona albumu)
 
 **Zakres:** TOC, usunięcie zbędnego spisu uczestników, przeniesienie autorów (P1, K-76 layout).
 
-**Kryterium „gotowe”:** układ zgodny z uzgodnioną makietą; build OK.
+**Po sesji planistycznej (2026-10-04):** spis wg struktury albumu (rozdziały + zakresy stron), wszyscy autorzy = wykładowcy (sekcja „Autorzy tekstów” usunięta), korekta copy (gate K-122), usunięcie notatek z makiety; **skany albumu w fali 1** jako ostatni checkpoint. Podział: **k5a** model i dane · **k5b** spis i porządki · **k5c** skany. Szczegóły: **`docs/plans/10-k5-album.md`** (AL1–AL8).
+
+**Kryterium „gotowe”:** kryteria k5a–k5c z `10-k5-album.md`; build + lint OK.
 
 ### Kawałek 6 — Wykłady (krótki refaktor)
 
@@ -133,11 +137,11 @@ Legenda: **P** poprawka · **R** refaktor · **IA** decyzja produktowa + Design.
 
 ### `/` — strona główna (kawałek 4)
 
-| ID | Typ | Zadanie |
-| --- | --- | --- |
-| H1 | R | Wybrane ikony — **otoczka** sekcji (bez bocznych pasków); siatka + lightbox → **k2 ✅** (k4 tylko marginesy/nagłówek) |
-| H2 | IA+R | Sekcja „Najbliższe” — rola i źródło danych |
-| H3 | P | Hydratacja `Pillars`, `OfferLeadExtra` |
+| ID | Typ | Zadanie | Status |
+| --- | --- | --- | --- |
+| H1 | R | Wybrane ikony — **otoczka** sekcji (bez bocznych pasków); siatka + lightbox → **k2 ✅** (k4 tylko marginesy/nagłówek) | ✅ 2026-10-04 |
+| H2 | IA+R | Sekcja „Najbliższe” — rola i źródło danych | discovery ✅ (N1–N10, `10-k4-home.md`) |
+| H3 | P | Hydratacja `Pillars`, `OfferLeadExtra` | ⬜ (4.4) |
 
 ### `/aktualnosci` (kawałek 3)
 
@@ -160,7 +164,7 @@ Legenda: **P** poprawka · **R** refaktor · **IA** decyzja produktowa + Design.
 
 | ID | Typ | Zadanie |
 | --- | --- | --- |
-| P1 | R | TOC, uczestnicy, umiejscowienie autorów |
+| P1 | R | TOC, uczestnicy, umiejscowienie autorów — `10-k5-album.md` |
 
 ### `/wyklady` (kawałek 6)
 
@@ -189,7 +193,7 @@ Skrót klas — szczegóły w `docs/plan-claude-code.md` §5, `scripts/migrate-r
 | --- | --- |
 | Galeria — dane | tytuły, `size`, `authorName`, technika, zgoda na nazwiska, wstęp uczniów |
 | Aktualności — treść | `alt`, Trójca 2017, poświęcenia, program A3, plakaty → `images[]` wpisów (K-129) |
-| Publikacje — treść | fragmenty, rozkładówki, „Jak powstał”, alt okładki |
+| Publikacje — treść | fragmenty, „Jak powstał” (skany okładki i rozkładówek + `alt` → k5c, fala 1) |
 | O nas / pracownia | realizacje, bio, rozmowa, portret; `archive/wp-fetch-static/` |
 | Oferty — treść | hero zamówienia, cytat Piotra, e-mail sekretariat |
 | LSŚ | Supraśl, Przemyśl, Wilno, Tbilisi — wpisy + `newsSlug` |
@@ -219,7 +223,7 @@ Z `docs/plan-claude-code.md` §3, etap 10:
 
 ## Ryzyka i pytania otwarte
 
-- **K-69** — zamknięte 2026-10-03 (kierunek B, `10-k3-news.md` D1); H2 (k4) projektuje „Najbliższe” jako „co teraz” z kaflami do ofert.
+- **K-69** — zamknięte 2026-10-03 (kierunek B, `10-k3-news.md` D1); H2 (k4) projektuje „Najbliższe” jako „co teraz” z kaflami do ofert — rozstrzygnięte w `10-k4-home.md` (N1–N10).
 - **R6 / brakujące newsy doroczne** — rozstrzygnięte: fala 2 (kawałek 8, treść EJK); kawałek 1 musi tylko sensownie obsłużyć brak relacji.
 - **Wystawy wyjazdowe / gościnne — do przegadania z EJK:** zakres sekcji i brakujące wpisy (Supraśl, Tbilisi bez `newsSlug` w k1) — **kawałek 8**; w produkcie: „Wystawy wyjazdowe”, `#wyjazdowe`, lista ręczna w `page.mdx`.
 - **K-07** Plausible vs Umami — fala 2.
@@ -233,8 +237,8 @@ Z `docs/plan-claude-code.md` §3, etap 10:
 | 1 — wystawy | ✅ | `10-k1-exhibitions.md` 1.1–1.4; W0–W5; korekty **K1–K4** (m.in. K4 margines wide mobile) |
 | 2 — lightbox | ✅ | `10-k2-lightbox.md` zamknięty (G1–G3, D9); K-38 iOS OK 2026-10-03 |
 | 3 — aktualności | ✅ | k3a–k3f 2026-10-03 (K-133–K-135); cykliczne → `docs/wpisy-cykliczne-aktualnosci-ejk.md` |
-| 4 — home | ⬜ | |
-| 5 — album | ⬜ | |
+| 4 — home | 🔄 | H1 ✅; discovery H2 ✅ 2026-10-04; plan **`10-k4-home.md`** (4.1–4.5) |
+| 5 — album | ⬜ | plan `10-k5-album.md` zatwierdzony 2026-10-04 (k5a–k5c) |
 | 6 — wykłady | ⬜ | |
 | 7 — reszta layoutu | ⬜ | |
 | 8 — treść EJK | ⬜ | fala 2 |
