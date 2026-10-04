@@ -6,7 +6,7 @@ export const FEATURED_ICON_SLUGS = [
   "matka-boza-krzew-gorejacy",
   "chrystus-pantokrator",
   "archaniol-michal",
-  "trojca-swieta",
+  "swiety-symeon",
 ] as const;
 
 /**

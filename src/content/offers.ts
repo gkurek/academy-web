@@ -1,3 +1,4 @@
+import type { MDXProps } from "mdx/types";
 import type { ComponentType } from "react";
 import type { Image, Offer, OfferFacts, Testimonial } from "@/content/types";
 import type { SemesterItem, StepItem } from "@/components/content/OfferContentContext";
@@ -45,11 +46,11 @@ export type LoadedOffer = Offer & {
   exampleSlugs: string[];
   quote?: Testimonial & { image?: Image };
   whereWeWere: { place: string; newsSlug?: string }[];
-  Content: ComponentType;
+  Content: ComponentType<MDXProps>;
 };
 
 type OfferModule = {
-  Content: ComponentType;
+  Content: ComponentType<MDXProps>;
   frontmatter: OfferFrontmatter;
 };
 

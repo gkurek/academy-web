@@ -100,6 +100,8 @@ Domknięcie serwisu na prawdziwych danych z etapu 9 przed wdrożeniem (etap 11).
 
 **Kryterium „gotowe”:** checklista pozycji z § „Fala 1 — zadania” dla tych tras odhaczona lub przeniesiona do fali 2 z uzasadnieniem.
 
+**Stan (2026-10-04):** C1 stopka (K-36) ✅ poprawiona i zamknięta. Sesja planistyczna ✅ — podział **7a** a11y (I1, O2) · **7b** linki MDX ofert (O3, gate K-122) · **7c** „Dalsza droga” (O1, tekst zatwierdzony) · **7d** usunięcie „Wybranych realizacji” (S1); S2 → k8, K-35 → k9, K-37 odłożony po prezentacji. Szczegóły: **`docs/plans/10-k7-layout.md`** (LY1–LY6).
+
 ## Kawałki (fala 2)
 
 ### Kawałek 8 — Treść i gate EJK
@@ -185,7 +187,7 @@ Legenda: **P** poprawka · **R** refaktor · **IA** decyzja produktowa + Design.
 | O4 | IA | K-37 sticky FactsBox; K-35 CTA w headerze (opcjonalnie) |
 | S1 | R | O nas — układ „Wybrane realizacje” przy placeholderach |
 | S2 | R | Teaser zamówienia bez zdjęcia (K-46) |
-| C1 | R | Stopka — polish K-36 ✅ 2026-10-04: kontakt (skrócony: kościół + adres, 1 mail, telefon, social) i mapa strony w jednym rzędzie od 1280 (kontakt 320 px + 4 kolumny), 1/3 + 2 kolumny przy 1024–1279; nagłówki mapy 20 px; pełny kontakt tylko na `/kontakt`. Odstępstwo od makiety 9e — tokeny stopki w `design/README` nieaktualne |
+| C1 | R | Stopka — polish K-36 ✅ **poprawiona i zamknięta** 2026-10-04: kontakt (skrócony: kościół + adres, 1 mail, telefon, social) i mapa strony w jednym rzędzie od 1280 (kontakt 320 px + 4 kolumny), 1/3 + 2 kolumny przy 1024–1279; nagłówki mapy 20 px; pełny kontakt tylko na `/kontakt`. Odstępstwo od makiety 9e — tokeny stopki w `design/README` nieaktualne |
 
 ## Fala 2 — reszta (treść, weryfikacje, audyty)
 
@@ -242,7 +244,7 @@ Z `docs/plan-claude-code.md` §3, etap 10:
 | 4 — home | ✅ | 2026-10-04 — `10-k4-home.md` 4.1–4.5; K-136 |
 | 5 — album | ✅ | k5a–k5d ✅ 2026-10-04 (`10-k5-album.md`); K-137, K-138; **zamknięty** |
 | 6 — wykłady | ✅ | 2026-10-04 — `10-k6-lectures.md` 6a–6c (LK1–LK6), K-139; **zamknięty** |
-| 7 — reszta layoutu | 🟡 | C1 (stopka K-36) ✅ 2026-10-04; reszta ⬜ |
+| 7 — reszta layoutu | ✅ | C1 (stopka K-36) ✅ **zamknięta** 2026-10-04; 7a–7d ✅ 2026-10-04 (`10-k7-layout.md`) |
 | 8 — treść EJK | ⬜ | fala 2 |
 | 9 — SEO / analityka | ⬜ | fala 2 |
 | 10 — audyty / docs | ⬜ | fala 2 |

@@ -388,7 +388,6 @@
   --milestone-grid-gap: 40px;
   --activity-name-col: 260px;
   --person-portrait-w: 420px;
-  --person-works-max: 860px;
   --about-workshop-band-y: 60px;
   --about-workshop-photo-gap: 26px;
   --about-workshop-photo-h: 340px;
@@ -474,29 +473,20 @@
   /* Footer — mockup 9e (contact band, sitemap band, legal bar). */
   --footer-contact-bg: #1a140f;
   --footer-credit-hover: #ff78be;
-  --footer-contact-col: 440px;
+  --footer-contact-col: 320px;
   --footer-brand-size: 19px;
-  --footer-heading-size: 22px;
-  --footer-person-size: 25px;
+  --footer-heading-size: 20px;
   --footer-sublink-size: 15.5px;
   --footer-contact-py: 40px;
   --footer-contact-py-m: 30px;
   --footer-contact-stack-gap: 24px;
-  --footer-persons-gap: 32px;
-  --footer-persons-gap-m: 28px;
   --footer-subtitle-mt: 6px;
   --footer-address-mt: 22px;
   --footer-address-mt-m: 20px;
-  --footer-address-line-mt-m: 6px;
-  --footer-note-mt: 12px;
-  --footer-role-mt: 5px;
-  --footer-role-mt-m: 4px;
   --footer-data-mt: 12px;
   --footer-data-mt-m: 6px;
   --footer-social-gap-m: 12px;
   --footer-social-px: 18px;
-  --footer-sitemap-pt: 36px;
-  --footer-sitemap-pb: 32px;
   --footer-sitemap-py-m: 22px;
   --footer-group-gap-m: 6px;
   --footer-rule-mt: 32px;
@@ -621,7 +611,6 @@
   --color-footer-credit-hover: var(--footer-credit-hover);
   --text-size-footer-brand: var(--footer-brand-size);
   --text-size-footer-heading: var(--footer-heading-size);
-  --text-size-footer-person: var(--footer-person-size);
   --text-size-footer-sublink: var(--footer-sublink-size);
   --leading-footer-address: 1.65;
   --leading-footer-sublink: 1.5;
@@ -630,26 +619,18 @@
   --spacing-footer-contact-py: var(--footer-contact-py);
   --spacing-footer-contact-py-m: var(--footer-contact-py-m);
   --spacing-footer-contact-stack-gap: var(--footer-contact-stack-gap);
-  --spacing-footer-persons-gap: var(--footer-persons-gap);
-  --spacing-footer-persons-gap-m: var(--footer-persons-gap-m);
   --spacing-footer-subtitle-mt: var(--footer-subtitle-mt);
   --spacing-footer-address-mt: var(--footer-address-mt);
   --spacing-footer-address-mt-m: var(--footer-address-mt-m);
-  --spacing-footer-address-line-mt-m: var(--footer-address-line-mt-m);
-  --spacing-footer-note-mt: var(--footer-note-mt);
-  --spacing-footer-role-mt: var(--footer-role-mt);
-  --spacing-footer-role-mt-m: var(--footer-role-mt-m);
   --spacing-footer-data-mt: var(--footer-data-mt);
   --spacing-footer-data-mt-m: var(--footer-data-mt-m);
   --spacing-footer-social-gap-m: var(--footer-social-gap-m);
   --spacing-footer-social-px: var(--footer-social-px);
-  --spacing-footer-sitemap-pt: var(--footer-sitemap-pt);
-  --spacing-footer-sitemap-pb: var(--footer-sitemap-pb);
   --spacing-footer-sitemap-py-m: var(--footer-sitemap-py-m);
   --spacing-footer-group-gap-m: var(--footer-group-gap-m);
   --spacing-footer-rule-mt: var(--footer-rule-mt);
   --spacing-footer-legal-py-m: var(--footer-legal-py-m);
-  --grid-template-columns-footer-contact: minmax(0, 1fr) var(--footer-contact-col);
+  --grid-template-columns-footer: var(--footer-contact-col) repeat(4, minmax(0, 1fr));
 
   /* Home hero */
   --spacing-hero-pt: var(--hero-pt);
@@ -1585,48 +1566,6 @@
     color: var(--accent-text);
   }
 
-  .person-profile-works {
-    max-width: var(--person-works-max);
-    margin-top: var(--space-5);
-  }
-
-  .person-profile-works-title {
-    margin: 0 0 var(--space-1);
-    font-family: var(--font-serif);
-    font-size: var(--size-list-title);
-    line-height: var(--leading-heading);
-    color: var(--text-list-title);
-  }
-
-  .person-profile-work {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: var(--space-1);
-    padding-block: var(--space-4);
-    border-top: 1px solid var(--line-neutral);
-  }
-
-  .person-profile-work:last-child {
-    border-bottom: 1px solid var(--line-neutral);
-  }
-
-  .person-profile-work-title {
-    font-family: var(--font-serif);
-    font-size: var(--role-row-title-m);
-    line-height: 1.3;
-    color: var(--text-list-title);
-  }
-
-  .person-profile-work-meta {
-    font-size: var(--size-body);
-    line-height: var(--leading-body);
-    color: var(--accent-text);
-  }
-
-  .person-profile-work-year {
-    font-variant-numeric: tabular-nums;
-  }
-
   @media (min-width: 1024px) {
     .person-profile {
       grid-template-columns: var(--person-portrait-w) minmax(0, 1fr);
@@ -1639,27 +1578,6 @@
 
     .person-profile-name {
       font-size: var(--size-h2-sm);
-    }
-
-    .person-profile-works {
-      grid-column: 1 / -1;
-      margin-top: var(--space-7);
-    }
-
-    .person-profile-work {
-      grid-template-columns: minmax(0, 1fr) auto;
-      gap: var(--space-6);
-      align-items: baseline;
-      padding-block: var(--space-4);
-    }
-
-    /* Only in the two-column row — stacked on mobile, a long meta line must wrap. */
-    .person-profile-work-meta {
-      white-space: nowrap;
-    }
-
-    .person-profile-work-title {
-      font-size: var(--size-list-title);
     }
   }
 

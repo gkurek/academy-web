@@ -33,7 +33,7 @@ export function LecturesHubPage({
     <SectionPageShell active={active} section={section} sectionActive={sectionActive}>
       <div
         id="zapisy"
-        className="scroll-mt-space-6 grid grid-cols-1 lg:grid-cols-offer-main gap-offer-main-gap items-start mb-space-7"
+        className="scroll-mt-space-6 grid grid-cols-1 lg:grid-cols-offer-main gap-space-6 lg:gap-offer-main-gap items-start mb-space-7"
       >
         <div className="min-w-0">
           <p className="font-serif text-size-lectures-eyebrow text-accent-text mb-lectures-eyebrow-mb">
@@ -49,10 +49,6 @@ export function LecturesHubPage({
             </p>
           ) : null}
 
-          <div className="mb-space-5 lg:hidden">
-            <FactsBox facts={facts} kind="wyklady" />
-          </div>
-
           {season.introSecondary ? (
             <p className="text-size-body-lg leading-prose text-text-secondary max-w-measure-prose">
               {season.introSecondary}
@@ -60,9 +56,7 @@ export function LecturesHubPage({
           ) : null}
         </div>
 
-        <div className="hidden lg:block">
-          <FactsBox facts={facts} kind="wyklady" />
-        </div>
+        <FactsBox facts={facts} kind="wyklady" />
       </div>
 
       <section aria-labelledby="lectures-program-heading">

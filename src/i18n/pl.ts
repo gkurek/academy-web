@@ -276,6 +276,11 @@ export const pl = {
     orderStepsHeading: "Jak przebiega zamówienie",
     orderStepsIntro: "Trzy kroki od pierwszego maila do gotowej ikony.",
     orderExamplesHeading: "Przykłady realizacji",
+    // Course "Dalsza droga" right column (LY1).
+    sideCta: {
+      title: "Kursy doskonalące i konsultacje indywidualne",
+      mailtoLabel: "Zapytaj",
+    },
     readyIconsTitle: "Gotowe ikony – zapytaj mailem",
     readyIconsBody:
       "Część prac z galerii jest dostępna od ręki. Napisz, którą masz na myśli:",
@@ -342,6 +347,7 @@ export const pl = {
       next: "Następna",
       nextAria: "Następna",
       position: "{index} z {total}",
+      openIcon: "Powiększ ikonę: {title}",
       authorLabel: "Autor:",
       // Sizes copied from WP captions are unconfirmed (they contradict the photos) — never shown as numbers.
       sizeLabel: "Wymiary:",

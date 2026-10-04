@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useCallback, useRef, useState, type RefObject } from "react";
 
+import { GalleryTileHoverOverlay } from "@/components/gallery/galleryJustifiedShared";
 import { WorkshopLightbox } from "@/components/text/WorkshopLightbox";
 import type { NewsLayout } from "@/content/types";
 import type { Image as ContentImage } from "@/content/types";
@@ -36,24 +37,6 @@ function galleryLayoutVariant(count: number): "single" | "row" | "grid" {
     return "row";
   }
   return "grid";
-}
-
-function NewsGalleryZoomIcon() {
-  return (
-    <svg
-      width="20"
-      height="20"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.6"
-      strokeLinecap="round"
-      aria-hidden="true"
-    >
-      <circle cx="10.5" cy="10.5" r="6" />
-      <path d="M15 15 L20 20" />
-    </svg>
-  );
 }
 
 type NewsGalleryTileProps = {
@@ -93,7 +76,7 @@ function NewsGalleryTile({
       <button
         ref={buttonRef}
         type="button"
-        className="news-gallery-tile"
+        className="news-gallery-tile group"
         onClick={() => onOpen(index)}
         aria-label={formatEnlargeAria(index, total)}
       >
@@ -106,9 +89,7 @@ function NewsGalleryTile({
             sizes="(min-width: 768px) 25vw, 50vw"
             className="news-gallery-tile-image"
           />
-          <span className="news-gallery-tile-zoom" aria-hidden="true">
-            <NewsGalleryZoomIcon />
-          </span>
+          <GalleryTileHoverOverlay />
         </span>
       </button>
     </li>

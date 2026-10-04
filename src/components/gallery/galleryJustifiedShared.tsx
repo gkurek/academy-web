@@ -82,7 +82,16 @@ export function useGalleryContainerWidth<T extends HTMLElement>() {
   return { ref, width };
 }
 
-export function computeJustifiedGalleryRows(aspectRatios: number[], containerWidth: number) {
+export type JustifiedGalleryLayoutOptions = {
+  /** When false, the last row scales to container width (home „Wybrane ikony”). Default: smart cap. */
+  lastRowSmart?: boolean;
+};
+
+export function computeJustifiedGalleryRows(
+  aspectRatios: number[],
+  containerWidth: number,
+  layoutOptions?: JustifiedGalleryLayoutOptions,
+) {
   const singleColumn =
     containerWidth > 0 && containerWidth <= JUSTIFIED_SINGLE_COLUMN_MAX_W;
   const isDesktop = containerWidth >= JUSTIFIED_DESKTOP_MIN_WIDTH;
@@ -94,7 +103,7 @@ export function computeJustifiedGalleryRows(aspectRatios: number[], containerWid
     targetRowHeight: isDesktop ? JUSTIFIED_DESKTOP_TARGET_ROW_HEIGHT : JUSTIFIED_TARGET_ROW_HEIGHT,
     maxRowHeight: isDesktop ? JUSTIFIED_DESKTOP_MAX_ROW_HEIGHT : JUSTIFIED_MAX_ROW_HEIGHT,
     gap,
-    lastRowSmart: true,
+    lastRowSmart: layoutOptions?.lastRowSmart ?? true,
     singleColumn,
     maxTilesPerRow: isDesktop ? JUSTIFIED_DESKTOP_MAX_TILES_PER_ROW : undefined,
   });

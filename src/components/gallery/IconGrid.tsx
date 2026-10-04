@@ -15,6 +15,7 @@ import {
 } from "@/components/gallery/galleryJustifiedShared";
 import type { IconWork } from "@/content/types";
 import { formatIconCaption } from "@/i18n/formatIconCaption";
+import { pl } from "@/i18n/pl";
 
 export interface IconGridProps {
   items: IconWork[];
@@ -25,6 +26,8 @@ export interface IconGridProps {
   variant?: "preview" | "gallery";
   /** Gallery variant: how many leading tiles load eagerly (the first row, above the fold). */
   eagerCount?: number;
+  /** Gallery variant: stretch the last row to full container width (single-row previews on home). */
+  fillLastRow?: boolean;
   onSelect?: (index: number, trigger: HTMLButtonElement) => void;
 }
 
@@ -81,8 +84,9 @@ function GalleryJustifiedGrid({
   items,
   mobileCount,
   eagerCount = 0,
+  fillLastRow = false,
   onSelect,
-}: Pick<IconGridProps, "items" | "mobileCount" | "eagerCount" | "onSelect">) {
+}: Pick<IconGridProps, "items" | "mobileCount" | "eagerCount" | "fillLastRow" | "onSelect">) {
   const { ref, width: containerWidth } = useGalleryContainerWidth<HTMLDivElement>();
   const isNarrowMobile =
     mobileCount != null && containerWidth > 0 && containerWidth < JUSTIFIED_GAP_BREAKPOINT;
@@ -95,8 +99,13 @@ function GalleryJustifiedGrid({
   const singleColumn = isJustifiedSingleColumn(containerWidth);
 
   const rows = useMemo(
-    () => (containerWidth > 0 ? computeJustifiedGalleryRows(aspectRatios, containerWidth) : []),
-    [aspectRatios, containerWidth],
+    () =>
+      containerWidth > 0
+        ? computeJustifiedGalleryRows(aspectRatios, containerWidth, {
+            lastRowSmart: !fillLastRow,
+          })
+        : [],
+    [aspectRatios, containerWidth, fillLastRow],
   );
 
   return (
@@ -114,6 +123,7 @@ function GalleryJustifiedGrid({
                 <button
                   type="button"
                   onClick={(event) => onSelect?.(tile.index, event.currentTarget)}
+                  aria-label={pl.gallery.lightbox.openIcon.replace("{title}", item.title)}
                   className={[galleryTileButtonClass, "h-full w-full"].join(" ")}
                   style={{ height: tile.height }}
                 >
@@ -148,6 +158,7 @@ export function IconGrid({
   mobileCount,
   variant = "preview",
   eagerCount,
+  fillLastRow,
   onSelect,
 }: IconGridProps) {
   if (variant === "gallery") {
@@ -156,6 +167,7 @@ export function IconGrid({
         items={items}
         mobileCount={mobileCount}
         eagerCount={eagerCount}
+        fillLastRow={fillLastRow}
         onSelect={onSelect}
       />
     );

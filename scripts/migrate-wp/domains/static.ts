@@ -40,7 +40,7 @@ type SiteSettings = {
     personalSiteUrl?: string;
     social: { facebook: string; youtube: string };
   };
-  upcoming: unknown[];
+  upcomingOverrides: unknown[];
 };
 
 type PrivacyPolicyPageData = {

@@ -53,6 +53,7 @@ export function FeaturedIconsGallery({ icons }: FeaturedIconsGalleryProps) {
         variant="gallery"
         mobileCount={2}
         eagerCount={2}
+        fillLastRow
         onSelect={handleSelect}
       />
       <Lightbox

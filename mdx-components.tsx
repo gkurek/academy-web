@@ -5,7 +5,23 @@ import type { ComponentPropsWithoutRef } from "react";
 import { OfferFigure } from "@/components/content/OfferFigure";
 import { SemesterProgram } from "@/components/content/SemesterProgram";
 import { StepList } from "@/components/content/StepList";
+import { OfferSideCta } from "@/components/offers/OfferSideCta";
 type ImgProps = ComponentPropsWithoutRef<"img">;
+
+/**
+ * MDX h3 style. Also exposed as `Heading3` so content can set an anchor id
+ * (`<Heading3 id="…">`) — JSX literals in MDX bypass the `h3` mapping.
+ */
+function MdxHeading3({ id, children }: ComponentPropsWithoutRef<"h3">) {
+  return (
+    <h3
+      id={id}
+      className="font-serif text-size-h3-m md:text-size-h3 leading-heading text-text-list-title mt-space-6 mb-space-3 scroll-mt-space-6"
+    >
+      {children}
+    </h3>
+  );
+}
 
 function MdxImage({ src, alt, width, height }: ImgProps) {
   if (!src || typeof src !== "string") {
@@ -34,11 +50,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
         {children}
       </h2>
     ),
-    h3: ({ children }) => (
-      <h3 className="font-serif text-size-h3-m md:text-size-h3 leading-heading text-text-list-title mt-space-6 mb-space-3">
-        {children}
-      </h3>
-    ),
+    h3: MdxHeading3,
     p: ({ children }) => (
       <p className="text-size-body md:text-size-body-lg leading-body md:leading-prose text-text-body max-w-measure-prose mb-space-4 last:mb-0">
         {children}
@@ -52,7 +64,9 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     ),
     li: ({ children }) => <li className="mb-space-2">{children}</li>,
     img: MdxImage,
+    Heading3: MdxHeading3,
     OfferFigure,
+    OfferSideCta,
     SemesterProgram,
     StepList,
     ...components,

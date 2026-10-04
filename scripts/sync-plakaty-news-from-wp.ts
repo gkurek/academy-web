@@ -6,6 +6,7 @@
 import { mkdirSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { generateNewsManifest } from "./generate-news-index";
+import { readImageSizeFromFile } from "./readImageSize";
 
 const SLUG = "plakaty-z-wydarzen";
 const WP_API =
@@ -23,19 +24,15 @@ type PosterAsset = {
   index: number;
   filename: string;
   src: string;
-  width: number;
-  height: number;
 };
 
 function extractPostersFromHtml(html: string): PosterAsset[] {
   const blockRe =
-    /<a\s+href="(https:\/\/www\.akademiaikony\.pl\/wp-content\/uploads\/[^"]+)"[^>]*>\s*<img[^>]*width="(\d+)"[^>]*height="(\d+)"/gi;
+    /<a\s+href="(https:\/\/www\.akademiaikony\.pl\/wp-content\/uploads\/[^"]+)"[^>]*>\s*<img/gi;
   const matches = [...html.matchAll(blockRe)];
 
   return matches.map((match, index) => {
     const href = match[1];
-    const width = Number.parseInt(match[2], 10);
-    const height = Number.parseInt(match[3], 10);
     const basename = href.split("/").pop() ?? `poster-${index + 1}.jpg`;
     const safeName = basename.replace(/[^\w.-]+/g, "_");
 
@@ -43,8 +40,6 @@ function extractPostersFromHtml(html: string): PosterAsset[] {
       index: index + 1,
       filename: safeName,
       src: href,
-      width,
-      height,
     };
   });
 }
@@ -89,12 +84,17 @@ async function main(): Promise<void> {
     }),
   );
 
-  const images = posters.map((poster) => ({
-    src: `/media/news/${SLUG}/${poster.filename}`,
-    alt: "[do uzupełnienia: opis plakatu — wydarzenie i rok]",
-    width: poster.width,
-    height: poster.height,
-  }));
+  const images = posters.map((poster) => {
+    const dest = join(MEDIA_DIR, poster.filename);
+    const { width, height } = readImageSizeFromFile(dest);
+
+    return {
+      src: `/media/news/${SLUG}/${poster.filename}`,
+      alt: "[do uzupełnienia: opis plakatu — wydarzenie i rok]",
+      width,
+      height,
+    };
+  });
 
   const date = page.date.slice(0, 10);
 

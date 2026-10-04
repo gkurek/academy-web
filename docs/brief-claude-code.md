@@ -383,6 +383,7 @@ Szacunek ręcznej korekty po migracji: ~10 stron statycznych, 16 sezonów wykła
 - `Zgłoszenie – Letnia Szkoła Światła 2027`
 - `Zgłoszenie – wykłady 2026/2027`
 - `Zapytanie – ikona na zamówienie`
+- `Zapytanie – kursy doskonalące i konsultacje` (LY2, 2026-10-04; `akademiaikony@gmail.com`, sekcja „Dalsza droga” kursu)
 - `Zamówienie – album „Ikona dziś. Akademia Ikony 2010–2025”` (K-76; zapis do potwierdzenia razem z tytułem albumu)
 
 Telefon jako `tel:+48601734705`.

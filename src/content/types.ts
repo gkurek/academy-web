@@ -192,8 +192,9 @@ export type PersonProfileData = {
   role: string;
   portrait: Image;
   bio: string[];
-  worksTitle: string;
-  works: PersonWork[];
+  /** Optional — the "Wybrane realizacje" section was dropped (LY4); kept in the shared model. */
+  worksTitle?: string;
+  works?: PersonWork[];
   link?: { href: string; label: string };
 };
 

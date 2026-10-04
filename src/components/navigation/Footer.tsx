@@ -10,78 +10,52 @@ import {
   type MainNavItem,
 } from "@/navigation";
 
-// Mockup 9e: contact band restyles at md and splits into two columns at xl
-// (the 440px contact column leaves room for the unbroken address line only
-// from there); the sitemap goes to four columns at lg; the legal bar is a row from md.
+// Footer (K-36 rework of mockup 9e): basic contact and the sitemap share one
+// row from lg — a third + two sitemap columns at lg, a fixed contact column
+// + four sitemap columns at xl (the sitemap columns follow the outer grid).
+// The full contact (people, both e-mails, the church dedication) lives on /kontakt.
+// Below lg the contact block stacks above the sitemap. The legal bar is a row from md.
 const colorTransition = "transition-colors duration-150 motion-reduce:transition-none";
 const sectionHeadingClass = `flex min-h-tap-min-mobile-header items-center font-serif text-size-footer-heading leading-heading text-text-list-title hover:text-accent-text lg:min-h-0 lg:w-fit ${colorTransition}`;
 const subLinkClass = `flex min-h-tap-min-mobile-header items-center text-size-nav text-text-secondary hover:text-accent-hover lg:min-h-0 lg:w-fit lg:text-size-footer-sublink lg:leading-footer-sublink ${colorTransition}`;
 const footerLinkUnderline = "link-underline-target link-underline-target--border";
 const contactDataClass = `flex w-fit min-h-tap-min-mobile-header items-center whitespace-nowrap text-size-ui leading-footer-text text-accent-text no-underline hover:text-accent-hover md:min-h-0 ${colorTransition}`;
-const socialLinkClass = `inline-flex min-h-tap-min items-center border border-border-secondary px-footer-social-px text-size-caption-m leading-footer-text text-text-secondary hover:border-accent-text hover:text-accent-text md:min-h-tap-min-mobile-header ${colorTransition}`;
+const socialLinkClass = `inline-flex min-h-tap-min items-center border border-border-secondary px-footer-social-px text-size-caption-m lg:px-space-4 leading-footer-text text-text-secondary hover:border-accent-text hover:text-accent-text md:min-h-tap-min-mobile-header ${colorTransition}`;
 const legalLinkClass = `no-underline hover:text-accent-text ${colorTransition}`;
 
-// Splits the fixed church name (brief §8) into its display lines; if the
-// content ever changes shape, the whole name falls back to one block.
-function splitPlace(place: string) {
-  const [church, dedication] = place.split(" pw. ");
-  const [first, second] = dedication?.split(" i św. ") ?? [];
-  if (!first || !second) return null;
-  return { church, dedicationA: `pw. ${first}`, dedicationB: `i św. ${second}` };
-}
-
-function FooterAddress() {
+function FooterContact() {
   const settings = getSiteSettings();
-  const place = splitPlace(settings.place);
-
-  return (
-    <address className="mt-footer-address-mt-m block not-italic text-size-ui leading-body text-text-secondary md:mt-footer-address-mt md:leading-footer-address">
-      {place ? (
-        <>
-          <span className="block">{place.church}</span>
-          <span className="block">
-            <span className="block md:inline">{place.dedicationA}</span>{" "}
-            <span className="block md:inline">{place.dedicationB}</span>
-          </span>
-        </>
-      ) : (
-        <span className="block">{settings.place}</span>
-      )}
-      <span className="mt-footer-address-line-mt-m block md:mt-0">{settings.address}</span>
-    </address>
-  );
-}
-
-function FooterContacts() {
-  const settings = getSiteSettings();
+  // Church name only — the full dedication (brief §8) is on /kontakt.
+  const church = settings.place.split(" pw. ")[0];
+  const primaryEmail = settings.emails[0];
   const telHref = `tel:+48${settings.phone.replace(/\s/g, "")}`;
 
   return (
-    <div className="flex flex-col gap-footer-persons-gap-m md:gap-footer-persons-gap">
-      {settings.emails.map((email, index) => (
-        <div key={email.address}>
-          {email.contactName ? (
-            <div className="font-serif text-size-footer-person leading-heading text-text-list-title">
-              {email.contactName}
-            </div>
-          ) : null}
-          <div className="mt-footer-role-mt-m text-size-caption-m leading-footer-text text-text-tertiary md:mt-footer-role-mt">
-            {email.label}
-          </div>
-          <div className="mt-footer-data-mt-m flex flex-col md:mt-footer-data-mt md:gap-space-2">
-            <a href={`mailto:${email.address}`} className={contactDataClass}>
-              <span className={footerLinkUnderline}>{email.address}</span>
-            </a>
-            {index === 0 ? (
-              <a href={telHref} className={contactDataClass}>
-                <span className={footerLinkUnderline}>{settings.phone}</span>
-              </a>
-            ) : null}
-          </div>
-        </div>
-      ))}
+    <div>
+      <div className="font-serif text-size-footer-brand leading-heading tracking-logo-footer text-text-list-title">
+        {pl.meta.orgShortName}
+      </div>
+      <div className="mt-footer-subtitle-mt font-serif text-size-body leading-footer-text text-text-tertiary">
+        {pl.meta.orgSubtitle}
+      </div>
 
-      <div className="flex flex-wrap gap-footer-social-gap-m md:gap-space-4">
+      <address className="mt-footer-address-mt-m block not-italic text-size-ui leading-body text-text-secondary md:mt-footer-address-mt md:leading-footer-address">
+        <span className="block">{church}</span>
+        <span className="block">{settings.address}</span>
+      </address>
+
+      <div className="mt-footer-data-mt-m flex flex-col md:mt-footer-data-mt md:gap-space-2">
+        {primaryEmail ? (
+          <a href={`mailto:${primaryEmail.address}`} className={contactDataClass}>
+            <span className={footerLinkUnderline}>{primaryEmail.address}</span>
+          </a>
+        ) : null}
+        <a href={telHref} className={contactDataClass}>
+          <span className={footerLinkUnderline}>{settings.phone}</span>
+        </a>
+      </div>
+
+      <div className="mt-space-5 flex flex-wrap gap-footer-social-gap-m md:gap-space-4 lg:gap-space-3">
         <ExternalLink href={settings.ecosystem.social.facebook} className={socialLinkClass}>
           {pl.footer.facebookLabel}
         </ExternalLink>
@@ -120,45 +94,30 @@ export function Footer() {
 
   return (
     <footer className="surface-footer-bleed font-sans">
-      <div className="rule-gold-t surface-footer-contact-bleed px-page-margin-mobile py-footer-contact-py-m md:px-page-margin md:py-footer-contact-py">
-        <div className="grid gap-y-footer-contact-stack-gap xl:grid-cols-footer-contact xl:items-start xl:gap-x-space-10">
-          <div>
-            <div className="font-serif text-size-footer-brand leading-heading tracking-logo-footer text-text-list-title">
-              {pl.meta.orgShortName}
-            </div>
-            <div className="mt-footer-subtitle-mt font-serif text-size-body leading-footer-text text-text-tertiary">
-              {pl.meta.orgSubtitle}
-            </div>
-            <FooterAddress />
-            <p className="mt-footer-note-mt text-size-caption-m leading-footer-text text-text-tertiary">
-              {pl.footer.accessibilityNote}
-            </p>
+      <div className="rule-gold-t surface-footer-contact-bleed grid gap-y-footer-contact-stack-gap px-page-margin-mobile py-footer-contact-py-m md:px-page-margin md:py-footer-contact-py lg:grid-cols-3 lg:items-start lg:gap-x-space-7 xl:grid-cols-footer xl:gap-x-space-6">
+        <FooterContact />
+
+        <nav
+          aria-label={pl.footer.sitemapAriaLabel}
+          className="border-t border-line-neutral pt-footer-sitemap-py-m lg:col-span-2 lg:border-t-0 lg:pt-0 xl:col-span-4"
+        >
+          <div className="flex flex-col gap-space-7 lg:grid lg:grid-cols-2 lg:items-start lg:gap-x-space-7 lg:gap-y-space-8 xl:grid-cols-4 xl:gap-x-space-6">
+            {footerSitemapGroups.map((group) => (
+              <FooterSitemapGroup key={group.href} group={group} />
+            ))}
           </div>
 
-          <FooterContacts />
-        </div>
+          <ul className="mt-space-7 grid gap-space-3 border-t border-line-neutral pt-space-5 lg:mt-footer-rule-mt lg:grid-cols-2 lg:gap-x-space-7 xl:grid-cols-4 xl:gap-x-space-6">
+            {footerSitemapFlat.map((link) => (
+              <li key={link.href}>
+                <Link href={link.href} className={sectionHeadingClass}>
+                  {link.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </nav>
       </div>
-
-      <nav
-        aria-label={pl.footer.sitemapAriaLabel}
-        className="rule-gold-t px-page-margin-mobile py-footer-sitemap-py-m md:px-page-margin lg:pt-footer-sitemap-pt lg:pb-footer-sitemap-pb"
-      >
-        <div className="flex flex-col gap-space-7 lg:grid lg:grid-cols-4 lg:items-start lg:gap-space-8">
-          {footerSitemapGroups.map((group) => (
-            <FooterSitemapGroup key={group.href} group={group} />
-          ))}
-        </div>
-
-        <ul className="mt-space-7 grid gap-space-3 border-t border-line-neutral pt-space-5 lg:mt-footer-rule-mt lg:grid-cols-4 lg:gap-space-8">
-          {footerSitemapFlat.map((link) => (
-            <li key={link.href}>
-              <Link href={link.href} className={sectionHeadingClass}>
-                {link.label}
-              </Link>
-            </li>
-          ))}
-        </ul>
-      </nav>
 
       <div className="rule-neutral-t flex flex-col gap-space-3 px-page-margin-mobile py-footer-legal-py-m text-size-caption-m leading-footer-text text-text-tertiary md:flex-row md:flex-wrap md:items-center md:gap-x-space-4 md:px-page-margin md:py-space-5 md:text-size-caption">
         <span>{pl.footer.copyright}</span>
