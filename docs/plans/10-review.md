@@ -1,6 +1,6 @@
 # Plan 10/R — Review serwisu (techniczne, wizualne, treść)
 
-Status: **zatwierdzony** 2026-10-04 · następny: **R0**  
+Status: **zatwierdzony** 2026-10-04 · R0 ✅ 2026-10-04 · R1 ✅ 2026-10-04 · R2 ✅ 2026-10-04 · R3 ✅ 2026-10-04 · R4 ✅ 2026-10-04 · następny: **R5**  
 Gałąź: `feat/10-review` od `main` — dokumenty review i paczki poprawek; k8 zostaje na `feat/10-finishing` (merge do `main` niezależnie)  
 Staging: https://academy-web-lovat.vercel.app/  
 Makiety: tokeny `design/README`, odczyt wartości `docs/design-mockup-guide.md` (tylko jako punkt odniesienia w V1–V4).
@@ -151,11 +151,11 @@ Brak — review nie dotyka `content/`.
 
 | Kawałek | Model | Status | Uwagi z checkpointu |
 | --- | --- | --- | --- |
-| R0 — zakres i dane twarde | Opus 5.5 | ⬜ | |
-| R1 — dane | Opus 5.5 | ⬜ | |
-| R2 — komponenty | Opus 5.5 | ⬜ | |
-| R3 — trasy | Opus 5.5 | ⬜ | |
-| R4 — przekrojowe | Opus 5.5 | ⬜ | |
+| R0 — zakres i dane twarde | Opus 5.5 | ✅ 2026-10-04 | `docs/review/00-scope.md`; staging = `bb7b0cb` (= `src/` HEAD); tsc/lint/build OK; knip 20 plików / 37 eksportów; jscpd 1,51 %; axe: 4 naruszenia na 3 trasach; brak `/ikony/[slug]` i redirect `/ikony/wystawa` vs brief §3 → C1 |
+| R1 — dane | Opus 5.5 | ✅ 2026-10-04 | `docs/review/01-data.md`: 21 zgłoszeń (3 bug, 7 ryzyko, 4 niespójność, 5 upraszczanie, 2 drobiazg); bugi potwierdzone na stagingu: `enrollmentOpen` vs daty ISO (kurs „otwarty” po 24.09), dwa rejestry wykładowców (Szymula/Szymuła), fallback slugu bez polskich znaków (Sokolowski) |
+| R2 — komponenty | Opus 5.5 | ✅ 2026-10-04 | `docs/review/02-components.md`: 29 zgłoszeń (3 bug, 5 ryzyko, 8 niespójność, 6 upraszczanie, 7 drobiazg); potwierdzone na stagingu: galerie „justified” bez `<img>` w SSR i CLS `/ikony` 0,22 (1440) / 0,33 (375); przycisk × menu mobilnego poza pułapką fokusu `aria-modal`; `/wyklady/archiwum` 331 KB HTML / 107 KB skryptów (sezony serializowane do klienta); źródła axe z R0: `OfferLeadExtra` bez `TextLink`, `aside` w regionach |
+| R3 — trasy | Opus 5.5 | ✅ 2026-10-04 | `docs/review/03-routes.md`: 11 zgłoszeń (0 bug, 2 ryzyko, 4 niespójność, 3 upraszczanie, 2 drobiazg); rozstrzygnięte punkty z R1/R2: R1-07 potwierdzone (3 trasy zależne od daty, tylko `/aktualnosci/[slug]` bez `revalidate`), R2-12 → `resolveNav(path)` (R3-03), R2-08 → wymagana treść = błąd buildu (R3-01); na stagingu: `aria-current="page"` na sekcji nadrzędnej, `/ikony` `no-store` + żądanie RSC na każdy filtr, `/ikony/wystawa` 308 z konfiguracji (plik trasy martwy), 12/19 tras z domyślnym `<title>` (→ k9) |
+| R4 — przekrojowe | Opus 5.5 | ✅ 2026-10-04 | `docs/review/04-cross-cutting.md`: 21 zgłoszeń (0 bug, 3 ryzyko, 9 niespójność, 6 upraszczanie, 3 drobiazg); mapa 10+ mechanizmów odstępu sekcji (26–96 px) jako wejście V1; na stagingu: `--section-gap` 96 px na ≥ 1024 (poza `design/README` 56–64), sekcje publikacji 34 px na desktopie (token 64 nieużyty), złote belki paneli 2 px (oferty) vs 3 px (wystawy, publikacje), akapity MDX 20 vs 14 px (warstwy `components` vs `utilities`), menu mobilne z podwójnymi Aktualnościami / Kontaktem, `[pole CMS]` na `/warsztaty`; 43 nieużywane tokeny, 15 martwych klas, 19 nieużywanych kluczy `pl.ts`; B4 rozwiązane; korekta R3-02 (kolizje slugów są walidowane) |
 | R5 — synteza | Fable 5.1 | ⬜ | |
 | Poprawki techniczne | — | ⬜ | |
 | V1 — pomiar | Opus 5.5 | ⬜ | |
