@@ -94,13 +94,19 @@ type OfferFacts = {             // blok „W skrócie”
   where?: string;
   audience?: string;
   price?: string;               // „400 zł / rok”
-  enrollmentDeadline?: string;  // tekst wiersza w FactsBox (np. „Do 24 września 2026”, „do końca września 2026”); nie ISO — daty maszynowe w `firstMeeting`
+  enrollmentDeadline?: string;  // tekst wiersza w FactsBox (np. „Do 24 września 2026”); nie ISO
   enrollmentStart?: string;     // plener: wiersz „Nabór” (np. „Rusza w marcu 2027”)
   enrollmentRule?: string;      // plener: wiersz „Zasada naboru” (np. „Kolejność zgłoszeń”)
   enrollmentEmail: string;
   enrollmentPhone?: string;
   enrollmentSubject: string;    // ujednolicony temat mailto
-  firstMeeting?: string;        // ISO
+  firstMeeting?: string;        // tekst wiersza w FactsBox; data maszynowa w `firstMeetingDate`
+  enrollmentOpens?: string;       // ISO (YYYY-MM-DD) — kurs: początek naboru (N7)
+  enrollmentClose?: string;     // ISO — kurs: koniec naboru (N7)
+  firstMeetingDate?: string;    // ISO — kurs: pierwsze zajęcia (N7)
+  registrationClose?: string;   // ISO — LSŚ: koniec zapisów (N7)
+  dateStart?: string;           // ISO — LSŚ: start pleneru (N7)
+  dateEnd?: string;             // ISO — LSŚ: koniec pleneru (N7)
   enrollmentOpen: boolean;
   leadTime?: string;            // zamówienia: orientacyjny czas realizacji
 };
@@ -263,7 +269,15 @@ type SiteSettings = {
     personalSiteUrl?: string;   // uzupełnić po starcie strony autorskiej EJK — puste teraz
     social: { facebook: string; youtube: string };
   };
-  upcoming: { title: string; text: string; href: string; linkLabel: string }[];   // „Najbliższe” na stronie głównej (K-16)
+  upcomingOverrides: {
+    slot: 'warsztaty' | 'wyklady' | 'ikony';
+    title: string;
+    text: string;
+    href: string;
+    linkLabel: string;
+    from?: string;   // ISO (YYYY-MM-DD), opcjonalnie
+    until: string;   // ISO (YYYY-MM-DD), wymagane
+  }[];   // ręczne nadpisania kafli „Najbliższe” (N7, etap 10 k4)
 };
 ```
 

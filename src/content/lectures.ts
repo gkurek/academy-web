@@ -259,6 +259,18 @@ export function getSeason(slug: string): LoadedLectureSeason | undefined {
   return season ? toLoadedSeason(season) : undefined;
 }
 
+export type SeasonLectureEntry = {
+  seasonSlug: string;
+  lecture: Lecture;
+};
+
+/** Raw lectures of every loaded season, sorted by date ascending (home „Najbliższe”, N5). */
+export function getAllSeasonLectures(): SeasonLectureEntry[] {
+  return Object.values(seasonModules)
+    .flatMap((season) => season.lectures.map((lecture) => ({ seasonSlug: season.slug, lecture })))
+    .sort((a, b) => a.lecture.date.localeCompare(b.lecture.date));
+}
+
 /** Short lecture-cycle theme for exhibition copy (suffix after ". " when cycleTitle has two parts). */
 export function getLectureSeasonShortTheme(seasonSlug: string): string {
   const season = getSeason(seasonSlug);

@@ -9,7 +9,6 @@ import { join } from "node:path";
 import { pl } from "../src/i18n/pl";
 import {
   getExhibitionNowNext,
-  getExhibitionUpcomingHighlight,
   getLatestAnnualExhibition,
   isAnnualExhibitionActive,
   resolveAnnualDateEnd,
@@ -39,22 +38,15 @@ function assertConsistency(label: string, now: Date): string[] {
   const dateEnd = resolveAnnualDateEnd(latest);
   const active = isAnnualExhibitionActive(latest, now);
   const beforeVernissage = Boolean(vernissage && parseIsoDate(vernissage) > now);
-  const highlight = getExhibitionUpcomingHighlight(now);
   const nowNext = getExhibitionNowNext(now);
 
   if (active) {
-    if (!highlight) {
-      errors.push(`${label}: annual show active but getExhibitionUpcomingHighlight is null`);
-    }
     if (nowNext.now.section !== "doroczna") {
       errors.push(
         `${label}: annual show active but nowNext.now.section is "${nowNext.now.section}" (expected doroczna)`,
       );
     }
   } else if (beforeVernissage) {
-    if (!highlight) {
-      errors.push(`${label}: before vernissage but getExhibitionUpcomingHighlight is null`);
-    }
     if (nowNext.now.section !== "ekspozycja") {
       errors.push(
         `${label}: before vernissage but nowNext.now.section is "${nowNext.now.section}" (expected ekspozycja)`,
@@ -66,9 +58,6 @@ function assertConsistency(label: string, now: Date): string[] {
       );
     }
   } else {
-    if (highlight) {
-      errors.push(`${label}: after annual season but getExhibitionUpcomingHighlight is set`);
-    }
     if (nowNext.now.section !== "ekspozycja") {
       errors.push(
         `${label}: off-season but nowNext.now.section is "${nowNext.now.section}" (expected ekspozycja)`,
@@ -79,7 +68,7 @@ function assertConsistency(label: string, now: Date): string[] {
   const summary = [
     label,
     `  active=${active} beforeVernissage=${beforeVernissage}`,
-    `  highlight=${highlight ? "yes" : "no"} now=${nowNext.now.section} next=${nowNext.next.section}`,
+    `  now=${nowNext.now.section} next=${nowNext.next.section}`,
     vernissage ? `  vernissage=${vernissage}` : "",
     dateEnd ? `  dateEnd=${dateEnd}` : "",
   ]
@@ -205,7 +194,7 @@ function main(): void {
 
   console.log("\nAll exhibition state checks passed.");
   console.log(
-    "Note: home tile and /ikony/wystawy hero reflect build-time dates until the next deploy (etap 11).",
+    "Note: /ikony/wystawy hero reflects build-time dates until the next deploy (etap 11).",
   );
 }
 

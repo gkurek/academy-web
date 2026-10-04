@@ -66,6 +66,64 @@ export const pl = {
     },
     upcomingAriaLabel: "Najbliższe",
     upcomingHeading: "Najbliższe",
+    upcoming: {
+      newsLinkLabel: "Czytaj w Aktualnościach",
+      warsztaty: {
+        plener: {
+          title: "Letnia Szkoła Światła {year}",
+          textWithDeadline: "Zapisy do {date}",
+          text: "Zapisy w kolejności zgłoszeń",
+          linkLabel: "Jak się zapisać",
+        },
+        enrollment: {
+          title: "Nabór na kurs {season}",
+          textWithDeadline: "Zgłoszenia do {date}",
+          text: "Zgłoszenia mailem",
+          linkLabel: "Jak się zapisać",
+        },
+        starts: {
+          titleWithDate: "Kurs rusza {date}",
+          title: "Kurs rusza",
+          text: "Kurs roczny i trzyletni {season}",
+          linkLabel: "O kursie",
+        },
+        running: {
+          title: "Kurs {season} trwa",
+          text: "Nabór na kolejny rok od czerwca",
+          linkLabel: "O kursie",
+        },
+      },
+      wyklady: {
+        next: {
+          title: "{date} · {lecturers}",
+          titleNoLecturers: "{date}",
+          text: "Najbliższy wykład",
+          linkLabel: "Program sezonu",
+        },
+        break: {
+          title: "Sezon {season} — program we wrześniu",
+          text: "Ostatni wykład: {date}",
+          linkLabel: "O wykładach",
+        },
+      },
+      ikony: {
+        vernissage: {
+          title: "Wernisaż {date}",
+          text: "Wystawa doroczna „{title}”",
+          linkLabel: "O wystawach",
+        },
+        annual: {
+          title: "Wystawa „{title}”",
+          text: "Czynna do {date}",
+          linkLabel: "O wystawach",
+        },
+        permanent: {
+          title: "„{title}”",
+          text: "Ekspozycja codzienna · oprowadzania dla grup",
+          linkLabel: "O wystawach",
+        },
+      },
+    },
     pillars: [
       {
         title: "Warsztaty",
@@ -458,18 +516,6 @@ export const pl = {
     },
     lightbox: {
       openPhoto: "Powiększ zdjęcie: {alt}",
-    },
-    upcoming: {
-      biezaca: {
-        title: "Wystawa „{title}”",
-        text: "Czynna w godzinach otwarcia kościoła",
-        linkLabel: "O wystawach",
-      },
-      zapowiedz: {
-        title: "Wernisaż {date}",
-        text: "Zapraszamy na oprowadzenia kuratorskie po nowej edycji",
-        linkLabel: "O wystawach",
-      },
     },
   },
   publications: {

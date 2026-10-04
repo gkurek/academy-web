@@ -1,6 +1,6 @@
 # Plan 10 / kawałek 4 — Strona główna („Najbliższe”, hydratacja)
 
-Status: **zatwierdzony** 2026-10-04  
+Status: **zamknięty** 2026-10-04  
 Gałąź: `feat/10-finishing`  
 Nadrzędny: `docs/plans/10-finishing.md` (kawałek 4, H1–H3). Kontekst: `docs/plans/10-k3-news.md` (D1 — K-69 kierunek B, D3 — rytm roku, D4 — dwie fazy wpisu).
 
@@ -30,6 +30,7 @@ Nadrzędny: `docs/plans/10-finishing.md` (kawałek 4, H1–H3). Kontekst: `docs/
 ## Gate K-122 / EJK
 
 - Wartości nowych pól ISO (daty naboru 2027/2028, LSŚ 2027) — do czasu potwierdzenia pola puste.
+- **Nadal otwarte (EJK):** zdanie „nabór na kolejny rok od czerwca” (`pl.home.upcoming.warsztaty.running.text`); daty LSŚ 2027 (`registrationClose`, `dateStart`, `dateEnd`).
 - Zdanie „nabór na kolejny rok od czerwca” (kafel X–II) — twierdzenie o terminie; potwierdzić z EJK.
 - Usunięcie obecnych ręcznych `upcoming[]` z `settings.json` — treść, pokazać w gate.
 
@@ -51,8 +52,8 @@ Nadrzędny: `docs/plans/10-finishing.md` (kawałek 4, H1–H3). Kontekst: `docs/
 | --- | --- | --- |
 | H1 — Wybrane ikony, otoczka | ✅ | 2026-10-04, przed tym planem |
 | Discovery H2 | ✅ | 2026-10-04 — N1–N10 |
-| 4.1 — model i dane | ⬜ | |
-| 4.2 — logika | ⬜ | |
-| 4.3 — UI | ⬜ | |
-| 4.4 — H3 hydratacja | ⬜ | |
-| 4.5 — dokumentacja | ⬜ | |
+| 4.1 — model i dane | ✅ | 2026-10-04 — gate K-122: treść `upcomingOverrides`, daty LSŚ |
+| 4.2 — logika | ✅ | 2026-10-04 — `src/content/upcoming.ts`, `scripts/check-upcoming-states.ts` (22 scenariusze OK); OK właściciela — domyślne: zapowiedź wernisażu 30 dni, okna bez dat (nabór od 1 VI, do 30 IX / dnia przed 1. spotkaniem, sezon do 30 VI, LSŚ ustępuje naborowi), mapa N8 wąska (`warsztaty` / `wyklady` / `wystawa`), próg 2. wykładowcy 44 znaki (do strojenia w 4.3) |
+| 4.3 — UI | ✅ | 2026-10-04 — `UpcomingHighlights` na `getUpcomingTiles`, zawsze `hairline-grid-3`; 390 / 1440 / 1680 + fokus OK; wykładowcy: wszystkie nazwiska wieczoru (wariant B — decyzja właściciela po symulacji 7.10; jedno nazwisko mylące, korekta N5 „jeśli mieści się”); usunięte `getActiveUpcomingOverrides`, `getExhibitionUpcomingHighlight` + `pl.exhibition.upcoming` (część `check-exhibition-states` o kaflu też); K-58 do aktualizacji w 4.5 |
+| 4.4 — H3 hydratacja | ✅ | 2026-10-04 — nie odtworzone: `next dev` w czystej przeglądarce (`/`, oba kursy, `/wyklady`, `/ikony/na-zamowienie`) i w Chrome właściciela — brak błędu. `Pillars` / `OfferLeadExtra` deterministyczne (Server Components). Overlay z etapu 9 najpewniej z rozszerzenia przeglądarki lub nieaktualnego stanu dev; bez zmian w kodzie |
+| 4.5 — dokumentacja | ✅ | 2026-10-04 — K-136 (zastępuje K-58), warunek N9 w etapie 11, dziennik, `10-finishing.md`, `migrate-report.md` (hydratacja); brief §4 zsynchronizowany w 4.1 |

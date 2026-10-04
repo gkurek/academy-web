@@ -18,7 +18,6 @@ type ExhibitionBodyExports = {
 };
 
 const CURRENT_SEASON_SLUG = "2026-2027";
-const EXHIBITION_ROUTE = "/ikony/wystawy";
 
 const manifest = annualManifest as AnnualManifest;
 const permanentExhibition = pageFrontmatter as PermanentExhibition;
@@ -95,13 +94,6 @@ const allAnnualExhibitions = [...manifest.exhibitions].sort(
 
 export type LoadedExhibitionPage = PermanentExhibition & {
   descriptionParagraphs: string[];
-};
-
-export type ExhibitionUpcomingHighlight = {
-  title: string;
-  text: string;
-  href: string;
-  linkLabel: string;
 };
 
 export type ExhibitionNowNextSection = "ekspozycja" | "doroczna";
@@ -297,34 +289,4 @@ export function getExhibitionPage(): LoadedExhibitionPage {
     ...getPermanentExhibition(),
     descriptionParagraphs,
   };
-}
-
-/** Third „Najbliższe” tile — only when vernissage is upcoming or the annual show is on (K-85). */
-export function getExhibitionUpcomingHighlight(
-  now: Date = new Date(),
-): ExhibitionUpcomingHighlight | null {
-  const exhibition = getLatestAnnualExhibition();
-  const vernissage = resolveAnnualVernissage(exhibition);
-  const { upcoming } = pl.exhibition;
-
-  if (vernissage && new Date(vernissage) > now) {
-    const dateLabel = formatDateRange(vernissage, undefined, { withYear: true });
-    return {
-      title: upcoming.zapowiedz.title.replace("{date}", dateLabel),
-      text: upcoming.zapowiedz.text,
-      href: EXHIBITION_ROUTE,
-      linkLabel: upcoming.zapowiedz.linkLabel,
-    };
-  }
-
-  if (isAnnualExhibitionActive(exhibition, now)) {
-    return {
-      title: upcoming.biezaca.title.replace("{title}", exhibition.title),
-      text: upcoming.biezaca.text,
-      href: EXHIBITION_ROUTE,
-      linkLabel: upcoming.biezaca.linkLabel,
-    };
-  }
-
-  return null;
 }

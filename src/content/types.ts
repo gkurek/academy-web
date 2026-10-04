@@ -25,13 +25,25 @@ export type OfferFacts = {
   where?: string;
   audience?: string;
   price?: string; // "400 zł / rok"
-  enrollmentDeadline?: string; // display text for FactsBox row (e.g. „Do 24 września 2026”); not ISO — use `firstMeeting` for machine-readable dates
+  enrollmentDeadline?: string; // display text for FactsBox row (e.g. „Do 24 września 2026”); not ISO
   enrollmentStart?: string; // plener: row label „Nabór”
   enrollmentRule?: string; // plener: row label „Zasada naboru”
   enrollmentEmail: string;
   enrollmentPhone?: string;
   enrollmentSubject: string; // unified mailto subject
-  firstMeeting?: string; // ISO
+  firstMeeting?: string; // display text for FactsBox row; machine-readable date in `firstMeetingDate`
+  /** ISO date (YYYY-MM-DD) — kurs: start of enrollment window (N7). */
+  enrollmentOpens?: string;
+  /** ISO date (YYYY-MM-DD) — kurs: end of enrollment window (N7). */
+  enrollmentClose?: string;
+  /** ISO date (YYYY-MM-DD) — kurs: first meeting (N7). */
+  firstMeetingDate?: string;
+  /** ISO date (YYYY-MM-DD) — Letnia Szkoła Światła: registration deadline (N7). */
+  registrationClose?: string;
+  /** ISO date (YYYY-MM-DD) — LSŚ: plener start (N7). */
+  dateStart?: string;
+  /** ISO date (YYYY-MM-DD) — LSŚ: plener end (N7). */
+  dateEnd?: string;
   enrollmentOpen: boolean;
   leadTime?: string; // orders: approximate lead time
 };
@@ -361,6 +373,21 @@ export type Article = {
   sample?: boolean;
 };
 
+export type UpcomingSlot = "warsztaty" | "wyklady" | "ikony";
+
+/** Manual override for one „Najbliższe” slot on the home page (N7). */
+export type UpcomingOverride = {
+  slot: UpcomingSlot;
+  title: string;
+  text: string;
+  href: string;
+  linkLabel: string;
+  /** ISO date (YYYY-MM-DD); active from this day inclusive. Omitted = always from the past. */
+  from?: string;
+  /** ISO date (YYYY-MM-DD); active through this day inclusive. */
+  until: string;
+};
+
 export type SiteSettings = {
   orgName: string;
   place: string;
@@ -374,5 +401,5 @@ export type SiteSettings = {
     personalSiteUrl?: string; // fill in once EJK's personal site launches — empty for now
     social: { facebook: string; youtube: string };
   };
-  upcoming: { title: string; text: string; href: string; linkLabel: string }[]; // "Najbliższe" on the home page
+  upcomingOverrides: UpcomingOverride[];
 };

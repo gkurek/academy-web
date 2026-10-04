@@ -1,13 +1,11 @@
 import { TextLink } from "@/components/core/TextLink";
-import { getExhibitionUpcomingHighlight } from "@/content/exhibition";
-import { getSiteSettings } from "@/content/settings";
+import { getUpcomingOfferFacts } from "@/content/offers";
+import { getUpcomingTiles } from "@/content/upcoming";
 import { pl } from "@/i18n/pl";
 
-/** "Najbliższe" — two tiles from SiteSettings.upcoming plus optional exhibition tile (D-08-07, K-85). */
+/** "Najbliższe" — always three tiles (Warsztaty · Wykłady · Ikony) above matching `Pillars` (plan 10-k4 N1). */
 export function UpcomingHighlights() {
-  const { upcoming } = getSiteSettings();
-  const exhibitionTile = getExhibitionUpcomingHighlight();
-  const tiles = exhibitionTile ? [...upcoming, exhibitionTile] : upcoming;
+  const tiles = getUpcomingTiles(getUpcomingOfferFacts());
 
   return (
     <section aria-labelledby="upcoming-heading" className="md:px-page-margin">
@@ -17,12 +15,10 @@ export function UpcomingHighlights() {
       >
         {pl.home.upcomingHeading}
       </h2>
-      <div
-        className={tiles.length === 3 ? "hairline-grid-3" : "hairline-grid-2"}
-      >
+      <div className="hairline-grid-3">
         {tiles.map((item) => (
           <div
-            key={item.href + item.title}
+            key={item.slot}
             className="bg-surface-tile py-tile-py-m px-page-margin-mobile md:py-tile-py md:px-tile-px"
           >
             <div className="font-serif text-size-body text-accent-text mb-space-2">{item.text}</div>

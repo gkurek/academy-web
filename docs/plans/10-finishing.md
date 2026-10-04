@@ -76,7 +76,7 @@ Domknięcie serwisu na prawdziwych danych z etapu 9 przed wdrożeniem (etap 11).
 
 **Kryterium „gotowe”:** makieta lub zatwierdzenie właściciela na układ; brak overlay hydratacji w typowym `next dev` (lub udokumentowana znana przyczyna).
 
-**Stan (2026-10-04):** H1 ✅. Discovery H2 ✅ — 3 stałe kafle (Warsztaty · Wykłady · Ikony) liczone z dat w treści + ręczne nadpisanie z `until`; nowe pola ISO w ofertach; obecny wygląd kafla. Podział 4.1–4.5. Szczegóły: **`docs/plans/10-k4-home.md`** (N1–N10).
+**Stan (2026-10-04):** H1 ✅. Discovery H2 ✅ — 3 stałe kafle (Warsztaty · Wykłady · Ikony) liczone z dat w treści + ręczne nadpisanie z `until`; nowe pola ISO w ofertach; obecny wygląd kafla. Podział 4.1–4.5. Szczegóły: **`docs/plans/10-k4-home.md`** (N1–N10). **Zamknięty 2026-10-04** (4.1–4.5, K-136; H3 — błąd hydratacji nie występuje).
 
 ### Kawałek 5 — Album (`/publikacje` — podstrona albumu)
 
@@ -140,8 +140,8 @@ Legenda: **P** poprawka · **R** refaktor · **IA** decyzja produktowa + Design.
 | ID | Typ | Zadanie | Status |
 | --- | --- | --- | --- |
 | H1 | R | Wybrane ikony — **otoczka** sekcji (bez bocznych pasków); siatka + lightbox → **k2 ✅** (k4 tylko marginesy/nagłówek) | ✅ 2026-10-04 |
-| H2 | IA+R | Sekcja „Najbliższe” — rola i źródło danych | discovery ✅ (N1–N10, `10-k4-home.md`) |
-| H3 | P | Hydratacja `Pillars`, `OfferLeadExtra` | ⬜ (4.4) |
+| H2 | IA+R | Sekcja „Najbliższe” — rola i źródło danych | ✅ 2026-10-04 (4.1–4.3, K-136) |
+| H3 | P | Hydratacja `Pillars`, `OfferLeadExtra` | ✅ 2026-10-04 — nie występuje (czysta przeglądarka + Chrome właściciela); bez zmian w kodzie |
 
 ### `/aktualnosci` (kawałek 3)
 
@@ -237,7 +237,7 @@ Z `docs/plan-claude-code.md` §3, etap 10:
 | 1 — wystawy | ✅ | `10-k1-exhibitions.md` 1.1–1.4; W0–W5; korekty **K1–K4** (m.in. K4 margines wide mobile) |
 | 2 — lightbox | ✅ | `10-k2-lightbox.md` zamknięty (G1–G3, D9); K-38 iOS OK 2026-10-03 |
 | 3 — aktualności | ✅ | k3a–k3f 2026-10-03 (K-133–K-135); cykliczne → `docs/wpisy-cykliczne-aktualnosci-ejk.md` |
-| 4 — home | 🔄 | H1 ✅; discovery H2 ✅ 2026-10-04; plan **`10-k4-home.md`** (4.1–4.5) |
+| 4 — home | ✅ | 2026-10-04 — `10-k4-home.md` 4.1–4.5; K-136 |
 | 5 — album | ⬜ | plan `10-k5-album.md` zatwierdzony 2026-10-04 (k5a–k5c) |
 | 6 — wykłady | ⬜ | |
 | 7 — reszta layoutu | ⬜ | |

@@ -536,7 +536,7 @@ Treść z poniższych domen uznajemy za zmigrowaną — **bez ponownego fetchu**
 
 **Techniczne / a11y / UI (nie wymagały poprawki w etapie 9):**
 
-- [ ] **Hydratacja w `next dev`:** overlay React (`Pillars.tsx` ~L27, `OfferLeadExtra.tsx` ~L18) — na `next start` w tej sesji bez overlay; zweryfikować w dev u właściciela; ewent. naprawa w etapie 10 przy audycie kodu.
+- [x] **Hydratacja w `next dev`:** overlay React (`Pillars.tsx` ~L27, `OfferLeadExtra.tsx` ~L18) — na `next start` w tej sesji bez overlay; zweryfikować w dev u właściciela; ewent. naprawa w etapie 10 przy audycie kodu. **Zamknięte 2026-10-04 (etap 10, k4 4.4):** nie występuje w `next dev` (czysta przeglądarka i Chrome właściciela); komponenty deterministyczne — bez zmian w kodzie.
 - [ ] **Siatka ikon `/ikony`:** przyciski miniatur w drzewie a11y często bez `name` (pusty `button`) — porównać z galeriami na `/pracownia` i `/ikony/wystawy` (pełne „Powiększ zdjęcie: …”).
 - [ ] **Zduplikowane `h2` w snapshotach:** „W skrócie · plener 2027” (×2 na LSS), „Informacje praktyczne” (×2 na `/ikony/wystawy`) — wzorzec FactsBox + widoczny nagłówek; rozważyć `sr-only` / unikalne `id` (etap 10, bez zmiany tokenów bez potrzeby).
 - [ ] **Lista wystaw wyjazdowych:** wiele pozycji „Warszawa · 2019 Relacja” — dane archiwalne lub **P4 Tura B** (R1–R9), nie migracja WP.
