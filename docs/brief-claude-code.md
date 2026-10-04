@@ -184,12 +184,12 @@ type News = {
 // We wpisie pojedynczym i w wyróżnionym: `formatDateRange` z `dateEnd` gdy jest.
 // K-131 / K-133: faza `layout: wydarzenie` — koniec wydarzenia = `dateEnd ?? date`; dzień po = po terminie;
 // relacja gdy po terminie i jest `images[]`; lead na stronie wpisu — K-133 F11 (`shouldShowLead`, manifest `bodyText`).
-// Szczegóły: `docs/plans/10-k3-news.md` E7/F11, `docs/wpisy-cykliczne-aktualnosci-ejk.md`.
+// Szczegóły: `docs/archive/plans/10-k3-news.md` E7/F11, `docs/wpisy-cykliczne-aktualnosci-ejk.md`.
 
 // K-82…K-90 (08b), K-127: w KŚT są trzy formy wystawy — ekspozycja codzienna (6–10 ikon EJK),
 // wystawa doroczna (40–50 ikon, wernisaż na ostatnim wykładzie sezonu), wystawy wyjazdowe
 // (ręczna lista `travelingPlaces` w `page.mdx`, kotwica `#wyjazdowe`). Strona `/ikony/wystawy`, H1 „Wystawy ikon”.
-// Szczegóły merytoryczne: `docs/archive/plans/08b-review-fixes.md` §1–§2; układ K-127 i korekty K1–K4 (w tym odstępstwa od makiety 14a): `docs/plans/10-k1-exhibitions.md`.
+// Szczegóły merytoryczne: `docs/archive/plans/08b-review-fixes.md` §1–§2; układ K-127 i korekty K1–K4 (w tym odstępstwa od makiety 14a): `docs/archive/plans/10-k1-exhibitions.md`.
 type ExhibitionTravelingPlace = { place: string; newsSlug?: string };
 
 type PermanentExhibition = {
@@ -309,7 +309,7 @@ type SiteSettings = {
 5. wygenerować `content/icons.json`,
 6. wygenerować `docs/redirects.json`.
 
-Być idempotentny, logować nieudane parsowania do `scripts/migrate-report.md`. Bez pętli `for`/`for-of` — `map`/`filter`/`reduce`/`forEach`.
+Być idempotentny, logować nieudane parsowania do `docs/archive/migrate-report.md`. Bez pętli `for`/`for-of` — `map`/`filter`/`reduce`/`forEach`.
 
 Szacunek ręcznej korekty po migracji: ~10 stron statycznych, 16 sezonów wykładów (nazwiska), ~52 podpisy ikon (stan WP 2026-09-19: 23 prace Elżbiety, 3 z nich bez podpisu, + 29 prac uczniów, 10 bez nazwiska). ~60 wpisów aktualności bez korekty. Blog (blogspot) — nie migrować, tylko link w stopce.
 

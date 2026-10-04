@@ -3,14 +3,10 @@
 Jeden plik na etap, wg szablonu z `docs/plan-claude-code.md`, Załącznik A.
 Bez zatwierdzonego planu nie piszemy kodu w danym etapie (`CLAUDE.md`, §Rytm pracy).
 
-Do zrobienia:
-
 | Plik | Etap | Status |
 | --- | --- | --- |
-| `10-finishing.md` | 10 — ewaluacja, poprawki, SEO, optymalizacja | 🔵 plan zatwierdzony 2026-10-03 (fala 1: refaktory; start: wystawy) |
-| `10-k1-exhibitions.md` | 10 / kawałek 1 — `/ikony/wystawy` (K-127) | ✅ zamknięty 2026-10-03 |
-| `10-k2-lightbox.md` | 10 / kawałek 2 — lightbox global (G1–G3) | ✅ zamknięty 2026-10-03 |
+| `10-finishing.md` | 10 — ewaluacja, poprawki, SEO, optymalizacja | 🟠 fala 1 ✅ (k1–k7); następny k8 |
 | `11-wdrozenie.md` | 11 — wdrożenie | ⬜ plan nie powstał |
 
-Plany etapów 1–9 są zamknięte i przeniesione do `docs/archive/plans/`
-(patrz `docs/archive/README.md`).
+Plany kawałków etapu 10 (`10-kN-*.md`) powstają tu na czas kawałka i po jego zamknięciu idą do archiwum.
+Plany etapów 1–9 i zamknięte kawałki 10/k1–k7: `docs/archive/plans/` (spis w `docs/archive/README.md`).

@@ -1,7 +1,7 @@
 # Wpisy cykliczne w Aktualnościach — propozycja dla EJK
 
 **Data:** 2026-10-03  
-**Kontekst:** decyzje **K-69** (kierunek B), **K-128**, discovery w `docs/plans/10-k3-news.md` (D3–D4).  
+**Kontekst:** decyzje **K-69** (kierunek B), **K-128**, discovery w `docs/archive/plans/10-k3-news.md` (D3–D4).  
 **Cel dokumentu:** opis formuły każdego wpisu cyklicznego — pola w CMS, co dostarcza redakcja, układ (`layout`) — do przekazania EJK (mail / rozmowa). Nie zastępuje treści w `content/`; nowe zdania w produkcie nadal przez gate treści.
 
 ---
@@ -111,4 +111,4 @@ Program wykładów w treści: komponent MDX w body, **bez** osobnego pola JSON (
 
 ---
 
-*Powiązane: `docs/plans/10-k3-news.md`, `design/README-wpis-aktualnosci.md`, `docs/brief-claude-code.md` §4 (`News`).*
+*Powiązane: `docs/archive/plans/10-k3-news.md`, `design/README-wpis-aktualnosci.md`, `docs/brief-claude-code.md` §4 (`News`).*
