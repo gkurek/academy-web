@@ -62,7 +62,7 @@ Statusy: ⬜ nie zaczęty · 🟡 plan w przygotowaniu · 🔵 plan zatwierdzony
 | #   | Etap                                                                        | Plik planu                                                                       | Status       | Zakończono |
 | --- | --------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | ------------ | ---------- |
 | 1–9 | Budowa serwisu (1–8b) i migracja z WordPressa (9)                          | `docs/archive/plans/0N-*.md` — spis w `docs/archive/README.md`                   | ✅ zamknięte | 2026-10-01 |
-| 10  | Wykończenie: ewaluacja serwisu, poprawki po prezentacji, SEO, optymalizacja | `docs/plans/10-finishing.md`                                                     | 🟠 fala 1 ✅ (k1–k7); **następny: k8** treść EJK | —          |
+| 10  | Wykończenie: ewaluacja serwisu, poprawki po prezentacji, SEO, optymalizacja | `docs/plans/10-finishing.md`                                                     | 🟠 fala 1 ✅ (k1–k7); **następny: k8** treść EJK ∥ **blok R** review (`docs/plans/10-review.md`) | —          |
 | 11  | Wdrożenie                                                                   | `docs/plans/11-wdrozenie.md`                                                     | ⬜           | —          |
 
 11 zaczyna się po zamknięciu 10.
@@ -83,7 +83,7 @@ Dla każdego: cel, zakres, kryteria ukończenia (DoD) i pytania otwarte. Opisy e
 
 1. **Treść i gate EJK (k8)** — pozycje z §5; gate K-122 w czacie przed zapisem treści redakcyjnej w `content/`.
 2. **SEO, dane strukturalne, analityka (k9)** — `generateMetadata` + Open Graph (domyślny + per strona); `sitemap.ts`, `robots.ts`; JSON-LD: `Organization`, `Person` (EJK), `Event` (bieżący sezon), `Course` (kurs, plener), `Book` (album — K-76), `Article` (artykuły; `isPartOf` → `Book` dla tekstów z albumu); rozważyć `ExhibitionEvent` dla `/ikony/wystawy`; Plausible lub Umami bez ciasteczek — zdarzenia na CTA zapisów, `mailto:`, `tel:` (K-07, K-15); aktualizacja polityki prywatności (K-119).
-3. **Ewaluacja techniczna i audyty (k10)** — **ocena istniejącego kodu** (`src/`, `src/content/*`, komponenty): over-engineering, prostota, reużywalność, zgodność z konwencjami repo (`CLAUDE.md`, brief §7), typowanie strict, podział Server/Client, duplikacje. **Audyty produktowe:** Lighthouse (a11y ≥ 95, wydajność ≥ 90 mobile) na 5 trasach, raporty w `docs/lighthouse/`; kontrast, fokus i stany z ekranu „Komponenty”.
+3. **Ewaluacja techniczna i audyty (k10)** — ewaluację kodu i przegląd tras przejmuje **blok R** (`docs/plans/10-review.md`, RV-1), robiony równolegle do k8; k10 zostaje z deltą po k9, Lighthouse i dokumentami. Pierwotny zakres: **ocena istniejącego kodu** (`src/`, `src/content/*`, komponenty): over-engineering, prostota, reużywalność, zgodność z konwencjami repo (`CLAUDE.md`, brief §7), typowanie strict, podział Server/Client, duplikacje. **Audyty produktowe:** Lighthouse (a11y ≥ 95, wydajność ≥ 90 mobile) na 5 trasach, raporty w `docs/lighthouse/`; kontrast, fokus i stany z ekranu „Komponenty”.
 4. **Przegląd tras i poprawki po prezentacji** — każda trasa na desktopie i mobile (390 px); uwagi klienta po prezentacji (m.in. K-37); każda większa zmiana przez korektę planu etapu.
 5. **Dokumentacja** — §4–§5 tego planu i brief zsynchronizowane ze stanem kodu; bez zmian w `design/` i bez nowych zależności bez uzgodnienia.
 
@@ -222,6 +222,7 @@ Poniżej jeden wpis na zamknięty kawałek; nowe wpisy dopisujemy na górze.
 
 | Data       | Wpis |
 | ---------- | ---- |
+| 2026-10-04 | **Blok R — plan review zatwierdzony:** `docs/plans/10-review.md` — R0–R5 techniczne, V1–V4 wizualne, C1–C2 treść (po EJK); równolegle do k8, przejmuje ewaluację kodu i przegląd tras z k10 (RV-1); Opus 5.5 wszędzie poza R5 (Fable 5.1). **Następny:** R0. |
 | 2026-10-04 | **Porządki w dokumentach przed k8 (v0.9):** plany kawałków 10/k1–k7, prompty makiety k3 i raport migracji (dawniej `scripts/`) → `docs/archive/`; z rejestru §4 do archiwum trafiło 29 wierszy zamkniętych lub zastąpionych; przywrócone wiersze K-08, K-121, K-122, K-125, K-126 (wypadły w `179552e`); §5 przepisany na backlog treści k8 (T1–T30); dziennik etapu 9 → §6H; odzyskany opis etapu 9 (§3I). Migracja WP zamknięta na stałe — bez ponownego uruchamiania skryptów. **Następny:** k8. |
 | 2026-10-04 | **k7 reszta layoutu ✅ (7a–7d):** a11y miniatur `/ikony` (I1), duplikat `h2` LSŚ (O2), linki MDX ofert (O3), „Dalsza droga” (O1), usunięte „Wybrane realizacje” na `/o-akademii` (S1); stopka K-36 (C1). S2 → k8 (T6), K-35 → k9, K-37 po prezentacji. Plan: `docs/archive/plans/10-k7-layout.md`. **Fala 1 zamknięta.** |
 | 2026-10-04 | **k6 wykłady ✅ (6a–6c):** przegląd tras, a11y/mobile akordeonu, K-139 (`News.lectureSeason`, liczniki sezonów z danych). Plan: `docs/archive/plans/10-k6-lectures.md`. |
