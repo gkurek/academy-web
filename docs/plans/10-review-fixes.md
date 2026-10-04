@@ -18,6 +18,16 @@ Wdrożyć poprawki techniczne z bloku R (R1–R5) w paczkach, które da się zbu
 - bez wartości arbitralnych Tailwind, bez tekstu UI w JSX, bez zmiany nazw pól w `src/content/types.ts` (`CLAUDE.md`);
 - komunikat commita `10/RF-N: <short description>` (RV-8); w sesji cloud commit i push po „OK” (K-120).
 
+**Modele (RV-5 dla paczek RF, 2026-10-04):** każda paczka w świeżej sesji. Kryterium wyboru:
+
+| Model | Kiedy | Paczki |
+| --- | --- | --- |
+| **Sonnet 5.5** | zmiana mechaniczna albo lokalna, kryterium „gotowe” sprawdzalne narzędziem (knip, grep, axe, zrzuty identyczne), bez decyzji po drodze | RF-1, RF-6, RF-7, RF-9, RF-10, RF-11 |
+| **Opus 5.5** | refaktor przekrojowy: wiele plików, zmiana sygnatur lub konwencji, trzeba rozstrzygać przypadki brzegowe w trakcie | RF-2, RF-3, RF-5, RF-8, RF-12, RF-13, RF-14 |
+| **Fable 5.1** | wyjątkowo: przepisanie logiki od nowa z twardym kryterium wydajnościowym i ryzykiem wizualnym | RF-4 |
+
+Jeśli paczka Sonneta trafi na nieoczekiwaną decyzję architektoniczną — przerwać, zameldować, dokończyć w sesji Opusa (jak „plan okazuje się błędny” w `CLAUDE.md`).
+
 ## Decyzje podjęte w sesji planistycznej
 
 Odpowiedzi z `05-tech-synthesis.md` §5 — **potwierdzone przez właściciela 2026-10-04 w wersji domyślnej** (wiążące dla paczek RF):
@@ -71,7 +81,7 @@ Najpierw bugi (RF-1, RF-2, RF-4) i paczki bez zmian wizualnych; RF-13 i RF-14 **
 **Zmiana widoczna:** tylko obrys fokusu na `summary` (zgodny z `CLAUDE.md`); linki miejsc LSŚ zyskują kreskę (jak na `/ikony/wystawy`).  
 **Gotowe:** axe (ten sam zestaw tagów co R0) na `/warsztaty/letnia-szkola-swiatla`, `/ikony/wystawy`, `/publikacje/ikona-dzis` → **0 naruszeń**; na 390 px: Tab po otwarciu menu dochodzi do × i nie wychodzi z dialogu, `Escape` zamyka, fokus wraca na przycisk; Tab na `/pracownia` (390) pokazuje złoty obrys na „Spis treści”; `grep -c 'focus-visible' src/app/globals.css` spada o 14.  
 **Weryfikacja:** build + lint; staging 390 / 1440 (axe, klawiatura); zrzuty przed/po `/warsztaty/letnia-szkola-swiatla`, `/ikony/wystawy`.  
-**Koszt:** S. **Commit:** `10/RF-1: fix mobile menu dialog, text links, landmarks and focus rules`
+**Model:** Sonnet 5.5. **Koszt:** S. **Commit:** `10/RF-1: fix mobile menu dialog, text links, landmarks and focus rules`
 
 ### RF-2 — Daty, sezon i stan zapisów (A1)
 
@@ -81,7 +91,7 @@ Najpierw bugi (RF-1, RF-2, RF-4) i paczki bez zmian wizualnych; RF-13 i RF-14 **
 **Zmiana widoczna:** `/warsztaty/kurs-roczny-i-trzyletni` pokazuje stan **zamknięty** (CTA „Zapytaj o miejsce mailem” + nota) — zgodnie z D5 i z „Najbliższe” na `/`.  
 **Gotowe:** `/` i oferta kursu pokazują ten sam stan zapisów; `grep -n "2026" src/i18n/pl.ts` zwraca tylko `© {year}` / szablony; `npx tsx scripts/check-upcoming-states.ts` i `check-exhibition-states.ts` przechodzą; build pokazuje `/aktualnosci/[slug]` z `revalidate 1d`; `curl -I` nieznanego slugu daje 404 bez `X-Vercel-Cache: MISS` na funkcji (po deployu); jeden `CURRENT_SEASON_SLUG` w `src/`.  
 **Weryfikacja:** build + lint; staging `/`, `/warsztaty/kurs-roczny-i-trzyletni`, `/ikony/wystawy`, jeden wpis `wydarzenie` na 390 / 1440.  
-**Koszt:** M. **Commit:** `10/RF-2: single source for dates, season and enrollment state`
+**Model:** Opus 5.5. **Koszt:** M. **Commit:** `10/RF-2: single source for dates, season and enrollment state`
 
 ### RF-3 — Wymagana treść i walidacje przy buildzie
 
@@ -91,7 +101,7 @@ Najpierw bugi (RF-1, RF-2, RF-4) i paczki bez zmian wizualnych; RF-13 i RF-14 **
 **Zmiana widoczna:** brak.  
 **Gotowe:** tymczasowa zmiana nazwy `content/offers/wyklady.mdx` → build **pada** z czytelnym komunikatem (i wraca po przywróceniu); zły `newsSlug` w teście lokalnym → build pada; `npm run build` czysty na obecnych danych (w tym parowanie slugów — jeśli istniejące dane łamią regułę, zgłosić w meldunku, nie poprawiać `content/`); knip nie widzi `mediaFileExists`.  
 **Weryfikacja:** build + lint; staging: `/ikony/wystawy` bez różnic w HTML poza kolejnością atrybutów.  
-**Koszt:** M. **Commit:** `10/RF-3: fail the build on missing required content and invalid references`
+**Model:** Opus 5.5. **Koszt:** M. **Commit:** `10/RF-3: fail the build on missing required content and invalid references`
 
 ### RF-4 — Galeria renderowana na serwerze i jeden lightbox (A3)
 
@@ -101,7 +111,7 @@ Najpierw bugi (RF-1, RF-2, RF-4) i paczki bez zmian wizualnych; RF-13 i RF-14 **
 **Zmiana widoczna:** układ rzędów może różnić się o pojedyncze kafle od wersji mierzonej w JS — do zaakceptowania w meldunku ze zrzutami; galeria widoczna bez JS.  
 **Gotowe:** `curl -s staging/ikony | grep -c '<img'` ≥ 52; CLS (`PerformanceObserver`, jak w R2) **< 0,1** na 390 i 1440 dla `/ikony`, `/`, `/ikony/na-zamowienie`; build pokazuje `/ikony` jako ○ static; klik w chip nie wywołuje żądania RSC (Network); deep link `/ikony?temat=…` pokazuje przefiltrowaną siatkę po hydratacji bez „mignięcia” pełnej listy dłuższego niż jedna klatka (albo zaakceptowane w meldunku); jscpd: klony `GalleryIconGrid` ↔ `FeaturedIconsGallery`, `Lightbox` ↔ `ContentLightbox`, `NewsGallery` ↔ `PublicationSpreadStrip` / `WorkshopGallerySection` znikają; klawiatura w lightboxie (Esc, strzałki, powrót fokusu) bez regresji; iOS Safari ponownie (K-38) — właściciel.  
 **Weryfikacja:** build + lint; staging 390 / 1440 / 1920 (K-30) dla `/ikony`, `/`, `/ikony/na-zamowienie`, wpis z galerią, `/publikacje/ikona-dzis`; zrzuty przed/po.  
-**Koszt:** L. **Commit:** `10/RF-4: render justified galleries on the server and unify the lightbox`
+**Model:** Fable 5.1. **Koszt:** L. **Commit:** `10/RF-4: render justified galleries on the server and unify the lightbox`
 
 ### RF-5 — Wykładowcy: jeden rejestr i jedno pierwszeństwo
 
@@ -111,7 +121,7 @@ Najpierw bugi (RF-1, RF-2, RF-4) i paczki bez zmian wizualnych; RF-13 i RF-14 **
 **Zmiana widoczna:** poprawne nazwiska i tytuły na `/wyklady/archiwum` (wynik danych z T-R1/T-R2).  
 **Gotowe:** jedno miejsce czyta oba pliki; `grep -rn "getLecturerDirectoryEntry\|slugToDisplayName" src/` → tylko `lecturers.ts`; build pada przy slugu spoza rejestru (test lokalny na kopii).  
 **Weryfikacja:** build + lint; staging `/wyklady`, `/wyklady/archiwum`, `/wyklady/wykladowcy`, `/` („Najbliższe”) — te same nazwiska wszędzie.  
-**Koszt:** M. **Commit:** `10/RF-5: resolve lecturers through one function with build-time validation`
+**Model:** Opus 5.5. **Koszt:** M. **Commit:** `10/RF-5: resolve lecturers through one function with build-time validation`
 
 ### RF-6 — `scripts/` i `package.json`
 
@@ -121,7 +131,7 @@ Najpierw bugi (RF-1, RF-2, RF-4) i paczki bez zmian wizualnych; RF-13 i RF-14 **
 **Zmiana widoczna:** brak.  
 **Gotowe:** `npx knip` → 0 nieużywanych plików i 0 niezadeklarowanych zależności (pozostałe nieużywane eksporty `src/` zamyka RF-7); `npm run build` uruchamia `prebuild`; `npm ls tsx @types/mdx` pokazuje wersje przypięte.  
 **Weryfikacja:** build + lint; `npx knip`; bez stagingu (brak zmian w `src/` poza skryptami).  
-**Koszt:** S. **Commit:** `10/RF-6: keep only maintained scripts, declare tool deps and npm tasks`
+**Model:** Sonnet 5.5. **Koszt:** S. **Commit:** `10/RF-6: keep only maintained scripts, declare tool deps and npm tasks`
 
 ### RF-7 — Warstwa danych: model, loadery, martwy kod, jeden plik = jeden komponent
 
@@ -131,7 +141,7 @@ Najpierw bugi (RF-1, RF-2, RF-4) i paczki bez zmian wizualnych; RF-13 i RF-14 **
 **Zmiana widoczna:** brak (`MapBlock` renderuje to samo co dziś).  
 **Gotowe:** `npx knip` → 0 nieużywanych eksportów i typów w `src/` (poza celowo eksportowanymi typami modelu `types.ts` — wpisać do `knip.json` `ignoreExportsUsedInFile` albo listę); `grep -rn '"use client"' src/components | wc -l` spada o ≥ 4 (FactsBox z RF-2, panel wystawy, kontekst + 2 komponenty MDX); 0 plików CRLF (`git ls-files --eol`); `madge`-podobne sprawdzenie cyklu zbędne — wystarczy, że `lecturers.ts` nie importuje `lectures.ts`; HTML tras z zakresu bez różnic poza whitespace.  
 **Weryfikacja:** build + lint; knip; staging `/kontakt`, `/ikony/wystawy`, `/warsztaty/kurs-roczny-i-trzyletni`, `/aktualnosci` (390 / 1440) — zrzuty przed/po identyczne.  
-**Koszt:** M. **Commit:** `10/RF-7: derive loader types from the model, drop dead code and split multi-component files`
+**Model:** Sonnet 5.5. **Koszt:** M. **Commit:** `10/RF-7: derive loader types from the model, drop dead code and split multi-component files`
 
 ### RF-8 — Nawigacja i powłoka z `resolveNav(path)` (A2)
 
@@ -141,7 +151,7 @@ Najpierw bugi (RF-1, RF-2, RF-4) i paczki bez zmian wizualnych; RF-13 i RF-14 **
 **Zmiana widoczna:** `<title>` kart przeglądarki; poza tym brak.  
 **Gotowe:** `grep -rn "find(.*)!\.label" src/` → 0; `grep -rn "active=\|sectionActive=" src/app src/components` → 0; na stagingu `/warsztaty/kurs-roczny-i-trzyletni` dokładnie **jeden** `aria-current="page"` (w `SectionNav`), `/warsztaty` w nagłówku ma `aria-current="true"`; 19 tras z różnymi `<title>`; `/aktualnosci/[slug]` podkreśla Aktualności bez `pl.header.newsLink`; jscpd: klon kurs ↔ LSŚ `page.tsx` i `Header` ↔ `SectionNav` znikają; 404 i `/` renderują przez `SectionPageShell` (jeden `main#main-content` w kodzie).  
 **Weryfikacja:** build + lint; staging — każda trasa 390 / 1440: zrzuty przed/po identyczne poza `<title>`; czytnik ekranu / inspekcja `aria-current` (wejście dla V4).  
-**Koszt:** M. **Commit:** `10/RF-8: resolve navigation state from the route path and unify page shells`
+**Model:** Opus 5.5. **Koszt:** M. **Commit:** `10/RF-8: resolve navigation state from the route path and unify page shells`
 
 ### RF-9 — Akordeon archiwum renderowany na serwerze
 
@@ -151,7 +161,7 @@ Najpierw bugi (RF-1, RF-2, RF-4) i paczki bez zmian wizualnych; RF-13 i RF-14 **
 **Zmiana widoczna:** brak.  
 **Gotowe:** `curl -s staging/wyklady/archiwum | wc -c` < 150 KB (dziś 331 KB), skrypty inline < 20 KB (dziś 107 KB); hierarchia nagłówków `h1 → h2 (sezon) → h3 (wykład)` bez przeskoków (axe `heading-order` po rozwinięciu — ręcznie); klawiatura: Enter / Space na sezonie, `aria-expanded` / `aria-controls` zachowane; link `/wyklady/archiwum#season-2019-2020` z wpisu Aktualności otwiera właściwy sezon.  
 **Weryfikacja:** build + lint; staging 390 / 1440 `/wyklady/archiwum`, `/wyklady`; zrzuty przed/po (zamknięte i jeden rozwinięty sezon).  
-**Koszt:** M. **Commit:** `10/RF-9: render season accordion panels on the server`
+**Model:** Sonnet 5.5. **Koszt:** M. **Commit:** `10/RF-9: render season accordion panels on the server`
 
 ### RF-10 — Tokeny i CSS bez zmian wizualnych
 
@@ -161,7 +171,7 @@ Najpierw bugi (RF-1, RF-2, RF-4) i paczki bez zmian wizualnych; RF-13 i RF-14 **
 **Zmiana widoczna:** brak — kryterium twarde.  
 **Gotowe:** `grep -rE '\-\[|\[&' src/` → 0; zrzuty 390 / 1440 wszystkich 19 tras przed/po **identyczne** (porównanie pikselowe albo diff wyliczonych stylów skryptem z R4); `npx jscpd src/app/globals.css` → ≤ 15 klonów (z 22; reszta to role typograficzne — RF-14); liczba tokenów `:root` i mapowań `@theme` spada odpowiednio o ≥ 14 i ≥ 29.  
 **Weryfikacja:** build + lint; staging wszystkie trasy 390 / 1440 (skrypt porównujący wyliczone style, jak w R4).  
-**Koszt:** M. **Commit:** `10/RF-10: remove unused tokens, unify bleed and rule utilities, replace arbitrary values`
+**Model:** Sonnet 5.5. **Koszt:** M. **Commit:** `10/RF-10: remove unused tokens, unify bleed and rule utilities, replace arbitrary values`
 
 ### RF-11 — Teksty UI w komponentach i drobiazgi
 
@@ -170,7 +180,7 @@ Najpierw bugi (RF-1, RF-2, RF-4) i paczki bez zmian wizualnych; RF-13 i RF-14 **
 **Zmiana widoczna:** brak.  
 **Gotowe:** `grep -rnE '"[A-ZŻŹĆŃÓŁĄŚĘ][a-ząęółśżźćń]+ ' src/components --include=*.tsx` bez trafień poza `pl.ts` (ręczna inspekcja listy); zmiana `pl.publications.sourceFromAlbum` nie psuje kursywy tytułu; jeden egzemplarz chevrona i lupy w kodzie; dwa `<OfferSideCta>` na jednej stronie testowej → różne `id`.  
 **Weryfikacja:** build + lint; staging `/publikacje`, `/publikacje/cisza-ikony`, `/o-akademii`, oferty (390 / 1440) — zrzuty identyczne.  
-**Koszt:** S. **Commit:** `10/RF-11: move UI strings to pl.ts, share scroll and icon helpers, tidy component details`
+**Model:** Sonnet 5.5. **Koszt:** S. **Commit:** `10/RF-11: move UI strings to pl.ts, share scroll and icon helpers, tidy component details`
 
 ### RF-12 — Fakty z briefu §8 i treść redakcyjna poza `pl.ts` · **po k8**
 
@@ -180,7 +190,7 @@ Najpierw bugi (RF-1, RF-2, RF-4) i paczki bez zmian wizualnych; RF-13 i RF-14 **
 **Zmiana widoczna:** brak (ta sama treść z innego miejsca); `[pole CMS]` zamieniony na format `[do uzupełnienia: …]` z `CLAUDE.md`.  
 **Gotowe:** `grep -c "601 734 705" src/i18n/pl.ts` → 0 (wyłącznie `settings.json`); `grep -n "akademiaikony@gmail.com\|sekretariat" src/` → tylko `settings.ts`; `pl.ts` bez pól `src` / `width` / `href`; HTML tras `/`, `/warsztaty`, `/ikony/wystawy` identyczny z stanem przed (poza `[pole CMS]`).  
 **Weryfikacja:** build + lint; staging `/`, `/warsztaty`, `/ikony/wystawy`, `/kontakt`, stopka (390 / 1440); zrzuty przed/po.  
-**Koszt:** M. **Commit:** `10/RF-12: read site facts from settings and move editorial copy out of pl.ts`
+**Model:** Opus 5.5. **Koszt:** M. **Commit:** `10/RF-12: read site facts from settings and move editorial copy out of pl.ts`
 
 ### RF-13 — Skala odstępów sekcji (A5) · **po V1**
 
@@ -189,7 +199,7 @@ Najpierw bugi (RF-1, RF-2, RF-4) i paczki bez zmian wizualnych; RF-13 i RF-14 **
 **Zmiana widoczna:** **tak, zamierzona** — odstępy sekcji wyrównane do jednej skali; każda różnica względem zrzutów „przed” musi odpowiadać tabeli wartości z V1.  
 **Gotowe:** tabela 1 z `04-cross-cutting.md` zmierzona ponownie skryptem z V1: ≤ 2 wartości odstępu sekcji per szerokość (standard + ciasny) na wszystkich trasach; `grep -c "3px\|2px" src/app/globals.css` dla belek → 0 (tylko token); `--publication-section-gap` używany na desktopie; `--section-gap` bez przeskoku na 1024 (jeden próg z resztą).  
 **Weryfikacja:** build + lint; staging wszystkie trasy 390 / 1440 / 1920; porównanie z V1 i makietami (`docs/design-mockup-guide.md`); właściciel jako arbiter (RV-6).  
-**Koszt:** M. **Commit:** `10/RF-13: one section spacing scale and accent bar token`
+**Model:** Opus 5.5. **Koszt:** M. **Commit:** `10/RF-13: one section spacing scale and accent bar token`
 
 ### RF-14 — Role typograficzne i proza — jeden system (A4) · **po V1**
 
@@ -198,7 +208,7 @@ Najpierw bugi (RF-1, RF-2, RF-4) i paczki bez zmian wizualnych; RF-13 i RF-14 **
 **Zmiana widoczna:** tylko tam, gdzie V1 potwierdziło rozjazd (np. akapity 20 / 14 / 40 px → jedna wartość na wariant); reszta identyczna.  
 **Gotowe:** jedno miejsce definiuje każdą rolę (`grep -c "text-size-h2" src/components` → tylko `PageHeading`); akapit MDX na `/publikacje/cisza-ikony`, ofercie i `/pracownia` ma ten sam odstęp w obrębie wariantu; `npx jscpd src/app/styles` → ≤ 5 klonów; `globals.css` < 800 linii (reszta w plikach per dziedzina); V1 ponowione dla typografii = 0 odstępstw od wzorca poza K-130 (wpis).  
 **Weryfikacja:** build + lint; staging wszystkie trasy 390 / 1440 / 1920; zrzuty przed/po; właściciel jako arbiter.  
-**Koszt:** L. **Commit:** `10/RF-14: one set of typographic roles and a single prose system`
+**Model:** Opus 5.5. **Koszt:** L. **Commit:** `10/RF-14: one set of typographic roles and a single prose system`
 
 ### — Paczki wizualne (RF-15…) — dopisze V4 —
 
@@ -227,19 +237,19 @@ Brak. RF-12 tworzy `content/pages/home.json` i `workshops-hub.json` **z treści 
 
 ## Postęp
 
-| Paczka | Status | Uwagi z checkpointu |
-| --- | --- | --- |
-| RF-1 — a11y: dialog, linki, landmarki, fokus | ⬜ | |
-| RF-2 — daty, sezon, stan zapisów (A1) | ⬜ | D5 |
-| RF-3 — wymagana treść, walidacje, `prebuild` check | ⬜ | D2, D9 |
-| RF-4 — galeria na serwerze, jeden lightbox (A3) | ⬜ | D8 |
-| RF-5 — wykładowcy: jeden rejestr | ⬜ | po T-R1, T-R2 |
-| RF-6 — `scripts/`, `package.json`, `knip.json` | ⬜ | D2; zamyka B5 |
-| RF-7 — model, loadery, martwy kod, pliki | ⬜ | D6, D7 |
-| RF-8 — nawigacja i powłoka (A2), tytuły | ⬜ | D4 |
-| RF-9 — akordeon archiwum | ⬜ | |
-| RF-10 — tokeny i CSS bez zmian wizualnych | ⬜ | D1 (komentarz) |
-| RF-11 — teksty UI, drobiazgi | ⬜ | |
-| RF-12 — fakty §8 i treść poza `pl.ts` | ⬜ | **po k8** |
-| RF-13 — skala odstępów (A5) | ⬜ | **po V1** |
-| RF-14 — role typograficzne i proza (A4) | ⬜ | **po V1**, D3 |
+| Paczka | Model | Status | Uwagi z checkpointu |
+| --- | --- | --- | --- |
+| RF-1 — a11y: dialog, linki, landmarki, fokus | Sonnet 5.5 | ⬜ | |
+| RF-2 — daty, sezon, stan zapisów (A1) | Opus 5.5 | ⬜ | D5 |
+| RF-3 — wymagana treść, walidacje, `prebuild` check | Opus 5.5 | ⬜ | D2, D9 |
+| RF-4 — galeria na serwerze, jeden lightbox (A3) | Fable 5.1 | ⬜ | D8 |
+| RF-5 — wykładowcy: jeden rejestr | Opus 5.5 | ⬜ | po T-R1, T-R2 |
+| RF-6 — `scripts/`, `package.json`, `knip.json` | Sonnet 5.5 | ⬜ | D2; zamyka B5 |
+| RF-7 — model, loadery, martwy kod, pliki | Sonnet 5.5 | ⬜ | D6, D7 |
+| RF-8 — nawigacja i powłoka (A2), tytuły | Opus 5.5 | ⬜ | D4 |
+| RF-9 — akordeon archiwum | Sonnet 5.5 | ⬜ | |
+| RF-10 — tokeny i CSS bez zmian wizualnych | Sonnet 5.5 | ⬜ | D1 (komentarz) |
+| RF-11 — teksty UI, drobiazgi | Sonnet 5.5 | ⬜ | |
+| RF-12 — fakty §8 i treść poza `pl.ts` | Opus 5.5 | ⬜ | **po k8** |
+| RF-13 — skala odstępów (A5) | Opus 5.5 | ⬜ | **po V1** |
+| RF-14 — role typograficzne i proza (A4) | Opus 5.5 | ⬜ | **po V1**, D3 |
