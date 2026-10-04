@@ -1,102 +1,75 @@
-"use client";
-
-import Link from "next/link";
-import { useId, useState } from "react";
-
-import { TextLink } from "@/components/core/TextLink";
-import { getAuthorDisplayName, getAuthorProfileHref } from "@/content/authors";
-import type { Publication } from "@/content/types";
+import { PublicationTocItem } from "@/components/publications/PublicationTocItem";
+import type { Publication, PublicationTocEntry } from "@/content/types";
 import { pl } from "@/i18n/pl";
 
 export interface PublicationTocListProps {
+  chapters: Publication["chapters"];
   items: Publication["toc"];
 }
 
-const TOC_PREVIEW_LIMIT = 10;
+type TocGroup = {
+  title?: string;
+  pages?: string;
+  intro: PublicationTocEntry[];
+  entries: PublicationTocEntry[];
+};
 
-export function PublicationTocList({ items }: PublicationTocListProps) {
-  const listId = useId();
-  const [expanded, setExpanded] = useState(items.length <= TOC_PREVIEW_LIMIT);
-  const hasHiddenItems = items.length > TOC_PREVIEW_LIMIT;
+// AL1: one group per album chapter; publications without chapters render a single untitled group.
+function buildGroups(
+  chapters: Publication["chapters"],
+  items: Publication["toc"],
+): TocGroup[] {
+  if (!chapters) {
+    return [{ intro: [], entries: items }];
+  }
+
+  return chapters.map((chapter, index) => {
+    const chapterItems = items.filter((item) => item.chapter === index);
+    return {
+      title: chapter.title,
+      pages: chapter.pages,
+      intro: chapterItems.filter((item) => item.intro),
+      entries: chapterItems.filter((item) => !item.intro),
+    };
+  });
+}
+
+export function PublicationTocList({ chapters, items }: PublicationTocListProps) {
+  const groups = buildGroups(chapters, items);
 
   return (
     <section className="publication-toc" aria-labelledby="publication-toc-heading">
       <h2 id="publication-toc-heading" className="publication-section-heading">
         {pl.publications.tocHeading}
       </h2>
-      <p className="publication-section-lead publication-toc-lead-desktop">
-        {pl.publications.tocLead}
-      </p>
-      <p className="publication-section-lead publication-toc-lead-mobile">
-        {pl.publications.tocLeadMobile}
-      </p>
+      <p className="publication-section-lead">{pl.publications.tocLead}</p>
 
-      <ol id={listId} className="publication-toc-list">
-        {items.map((item, index) => {
-          const roleLabel = item.author.lecturerSlug
-            ? pl.publications.roles.lecturer
-            : pl.publications.roles.participant;
-          const authorHref = getAuthorProfileHref(item.author);
-          const authorName = getAuthorDisplayName(item.author);
-          const isCollapsed = hasHiddenItems && !expanded && index >= TOC_PREVIEW_LIMIT;
-
-          return (
-            <li
-              key={`${item.title}-${item.author.lecturerSlug ?? item.author.name}`}
-              data-index={index}
-              className={[
-                item.articleSlug
-                  ? "publication-toc-item publication-toc-item-linked"
-                  : "publication-toc-item",
-                isCollapsed ? "publication-toc-item-collapsed" : "",
-              ]
-                .filter(Boolean)
-                .join(" ")}
-            >
-              {item.articleSlug ? (
-                <p className="publication-toc-read-label">{pl.publications.tocReadOnline}</p>
-              ) : null}
-              <div className="publication-toc-row">
-                <div className="publication-toc-main">
-                  {item.articleSlug ? (
-                    <Link href={`/publikacje/${item.articleSlug}`} className="publication-toc-title-link">
-                      <span className="link-underline-target link-underline-target--border">{item.title}</span>
-                    </Link>
-                  ) : (
-                    <p className="publication-toc-title">{item.title}</p>
-                  )}
-                  <p className="publication-toc-author">
-                    {authorHref ? (
-                      <TextLink href={authorHref}>{authorName}</TextLink>
-                    ) : (
-                      authorName
-                    )}
-                    {" · "}
-                    {roleLabel}
-                  </p>
-                </div>
-                {item.articleSlug ? (
-                  <span className="publication-toc-read-desktop" aria-hidden="true">
-                    {pl.publications.tocReadOnline}
-                  </span>
-                ) : null}
-              </div>
-            </li>
-          );
-        })}
+      <ol className="publication-toc-chapters">
+        {groups.map((group, index) => (
+          <li key={group.pages ?? index} className="publication-toc-chapter">
+            {group.pages ? (
+              <p className="publication-toc-pages">
+                {pl.publications.tocPages.replace("{pages}", group.pages)}
+              </p>
+            ) : null}
+            {group.intro.length > 0 ? (
+              <ul className="publication-toc-list publication-toc-intro">
+                {group.intro.map((item) => (
+                  <PublicationTocItem key={item.title} item={item} />
+                ))}
+              </ul>
+            ) : null}
+            {group.title ? <h3 className="publication-toc-chapter-title">{group.title}</h3> : null}
+            {group.entries.length > 0 ? (
+              <ul className="publication-toc-list">
+                {group.entries.map((item) => (
+                  <PublicationTocItem key={item.title} item={item} />
+                ))}
+              </ul>
+            ) : null}
+          </li>
+        ))}
       </ol>
-
-      {hasHiddenItems && !expanded ? (
-        <button
-          type="button"
-          className="publication-toc-expand btn-secondary"
-          aria-expanded={expanded}
-          aria-controls={listId}
-          onClick={() => setExpanded(true)}
-        >
-          {pl.publications.tocShowFull.replace("{count}", String(items.length))}
-        </button>
-      ) : null}
     </section>
   );
 }

@@ -38,9 +38,17 @@ export function formatLecturerTitles(titles: string): string {
   return titles.charAt(0).toUpperCase() + titles.slice(1);
 }
 
+/** Religious-order postnominals (SJ, OP, OFM…): all-caps tokens without a dot, placed after the name. */
+const POSTNOMINAL_PATTERN = /^[A-Z]{2,}$/;
+
 export function formatLecturerDisplayName(lecturer: Pick<Lecturer, "name" | "titles">): string {
-  const titles = lecturer.titles ? formatLecturerTitles(lecturer.titles) : undefined;
-  return titles ? `${titles} ${lecturer.name}` : lecturer.name;
+  const tokens = lecturer.titles?.split(" ").filter(Boolean) ?? [];
+  const prefix = tokens.filter((token) => !POSTNOMINAL_PATTERN.test(token)).join(" ");
+  const suffix = tokens.filter((token) => POSTNOMINAL_PATTERN.test(token)).join(" ");
+
+  return [prefix ? formatLecturerTitles(prefix) : "", lecturer.name, suffix]
+    .filter(Boolean)
+    .join(" ");
 }
 
 export function isLongLecturerBio(bio: string): boolean {

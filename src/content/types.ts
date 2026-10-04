@@ -7,6 +7,10 @@ export type Image = {
   width: number;
   height: number;
   caption?: string;
+  /** Optional grid preview; lightbox uses `src` at full resolution. */
+  thumbSrc?: string;
+  thumbWidth?: number;
+  thumbHeight?: number;
 };
 
 export type Page = {
@@ -343,6 +347,18 @@ export type AnnualExhibition = {
 // K-76: Publikacje — jeden album jubileuszowy + artykuły (bez zakładek, bez SectionNav).
 export type Author = { name: string; lecturerSlug?: string };
 
+/** AL3: album chapter as printed in the book's table of contents; `pages` is a range, e.g. "6–51". */
+export type PublicationChapter = { title?: string; pages: string };
+
+/** AL3: `chapter` is an index into `Publication.chapters`; `intro` marks a text printed before the chapter title. */
+export type PublicationTocEntry = {
+  title: string;
+  author?: Author;
+  articleSlug?: string;
+  chapter?: number;
+  intro?: boolean;
+};
+
 export type Publication = {
   slug: string;
   title: string;
@@ -355,7 +371,8 @@ export type Publication = {
   availability: "dostepny" | "wyczerpany";
   cover: Image;
   spreads: Image[];
-  toc: { title: string; author: Author; articleSlug?: string }[];
+  chapters?: PublicationChapter[];
+  toc: PublicationTocEntry[];
   sample?: boolean;
 };
 

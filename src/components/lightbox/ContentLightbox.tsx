@@ -1,7 +1,5 @@
 "use client";
 
-import type { ReactNode } from "react";
-
 import {
   LightboxDialogShell,
   type LightboxControlLabels,
@@ -18,7 +16,6 @@ export interface ContentLightboxProps {
   onPrev: () => void;
   onNext: () => void;
   onClose: () => void;
-  renderExtra?: (photo: ContentImage) => ReactNode;
 }
 
 export function ContentLightbox({
@@ -29,7 +26,6 @@ export function ContentLightbox({
   onPrev,
   onNext,
   onClose,
-  renderExtra,
 }: ContentLightboxProps) {
   const photo = index !== null ? photos[index] : null;
   const isOpen = photo !== null && index !== null;
@@ -88,12 +84,8 @@ export function ContentLightbox({
         photo ? (
           <div className="lightbox-content-meta px-page-margin-mobile pt-space-5 pb-space-5 lg:px-0 lg:pb-space-6">
             {showNavigation ? (
-              <p className="mb-space-3 text-size-ui text-accent-text">{positionLabel}</p>
+              <p className="text-size-ui text-accent-text">{positionLabel}</p>
             ) : null}
-            {photo.caption ? (
-              <p className="font-serif text-size-body leading-loose text-text-secondary">{photo.caption}</p>
-            ) : null}
-            {renderExtra ? renderExtra(photo) : null}
           </div>
         ) : null
       }

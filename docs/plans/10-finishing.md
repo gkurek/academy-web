@@ -82,9 +82,9 @@ Domknięcie serwisu na prawdziwych danych z etapu 9 przed wdrożeniem (etap 11).
 
 **Zakres:** TOC, usunięcie zbędnego spisu uczestników, przeniesienie autorów (P1, K-76 layout).
 
-**Po sesji planistycznej (2026-10-04):** spis wg struktury albumu (rozdziały + zakresy stron), wszyscy autorzy = wykładowcy (sekcja „Autorzy tekstów” usunięta), korekta copy (gate K-122), usunięcie notatek z makiety; **skany albumu w fali 1** jako ostatni checkpoint. Podział: **k5a** model i dane · **k5b** spis i porządki · **k5c** skany. Szczegóły: **`docs/plans/10-k5-album.md`** (AL1–AL8).
+**Po sesji planistycznej (2026-10-04):** spis wg struktury albumu (rozdziały + zakresy stron), wszyscy autorzy = wykładowcy (sekcja „Autorzy tekstów” usunięta), korekta copy (gate K-122), usunięcie notatek z makiety; **skany albumu** — **k5c ✅ 2026-10-04**; **optymalizacja mediów** — **k5d ✅ 2026-10-04** (K-138). Podział: **k5a** model i dane · **k5b** spis i porządki · **k5c** skany · **k5d** optymalizacja. Szczegóły: **`docs/plans/10-k5-album.md`** (AL1–AL8).
 
-**Kryterium „gotowe”:** kryteria k5a–k5c z `10-k5-album.md`; build + lint OK.
+**Kryterium „gotowe”:** kryteria k5a–k5d z `10-k5-album.md`; build + lint OK.
 
 ### Kawałek 6 — Wykłady (krótki refaktor)
 
@@ -102,7 +102,7 @@ Domknięcie serwisu na prawdziwych danych z etapu 9 przed wdrożeniem (etap 11).
 
 ### Kawałek 8 — Treść i gate EJK
 
-**Zakres:** pozycje z § „Fala 2 — reszta” poniżej; gate K-122; aktualizacja `docs/plan-claude-code.md` §5 tam, gdzie zamyka się treść.
+**Zakres:** pozycje z § „Fala 2 — reszta” poniżej; gate K-122; aktualizacja `docs/plan-claude-code.md` §5 tam, gdzie zamyka się treść. **`alt` / `caption` obrazów** (w tym rozkładówki albumu w `ikona-dzis.mdx`) — przegląd całego serwisu z EJK, pozycja po pozycji w czacie; poza zakresem k5.
 
 ### Kawałek 9 — SEO, analityka, JSON-LD
 
@@ -164,7 +164,7 @@ Legenda: **P** poprawka · **R** refaktor · **IA** decyzja produktowa + Design.
 
 | ID | Typ | Zadanie |
 | --- | --- | --- |
-| P1 | R | TOC, uczestnicy, umiejscowienie autorów — `10-k5-album.md` |
+| P1 | R | TOC, uczestnicy, umiejscowienie autorów — `10-k5-album.md` (k5a–k5d ✅) |
 
 ### `/wyklady` (kawałek 6)
 
@@ -183,7 +183,7 @@ Legenda: **P** poprawka · **R** refaktor · **IA** decyzja produktowa + Design.
 | O4 | IA | K-37 sticky FactsBox; K-35 CTA w headerze (opcjonalnie) |
 | S1 | R | O nas — układ „Wybrane realizacje” przy placeholderach |
 | S2 | R | Teaser zamówienia bez zdjęcia (K-46) |
-| C1 | R | Stopka — polish K-36 |
+| C1 | R | Stopka — polish K-36 ✅ 2026-10-04: kontakt (skrócony: kościół + adres, 1 mail, telefon, social) i mapa strony w jednym rzędzie od 1280 (kontakt 320 px + 4 kolumny), 1/3 + 2 kolumny przy 1024–1279; nagłówki mapy 20 px; pełny kontakt tylko na `/kontakt`. Odstępstwo od makiety 9e — tokeny stopki w `design/README` nieaktualne |
 
 ## Fala 2 — reszta (treść, weryfikacje, audyty)
 
@@ -193,7 +193,7 @@ Skrót klas — szczegóły w `docs/plan-claude-code.md` §5, `scripts/migrate-r
 | --- | --- |
 | Galeria — dane | tytuły, `size`, `authorName`, technika, zgoda na nazwiska, wstęp uczniów |
 | Aktualności — treść | `alt`, Trójca 2017, poświęcenia, program A3, plakaty → `images[]` wpisów (K-129) |
-| Publikacje — treść | fragmenty, „Jak powstał” (skany okładki i rozkładówek + `alt` → k5c, fala 1) |
+| Publikacje — treść | fragmenty, „Jak powstał”; **`alt`/caption rozkładówek** (`ikona-dzis.mdx`, gate K-122) — **k8** z przeglądem `alt` całego serwisu (m.in. `spread-08`: `alt` 166–167 vs `caption` 146–147); skany ✅ **k5c**, optymalizacja ✅ **k5d** |
 | O nas / pracownia | realizacje, bio, rozmowa, portret; `archive/wp-fetch-static/` |
 | Oferty — treść | hero zamówienia, cytat Piotra, e-mail sekretariat |
 | LSŚ | Supraśl, Przemyśl, Wilno, Tbilisi — wpisy + `newsSlug` |
@@ -238,9 +238,9 @@ Z `docs/plan-claude-code.md` §3, etap 10:
 | 2 — lightbox | ✅ | `10-k2-lightbox.md` zamknięty (G1–G3, D9); K-38 iOS OK 2026-10-03 |
 | 3 — aktualności | ✅ | k3a–k3f 2026-10-03 (K-133–K-135); cykliczne → `docs/wpisy-cykliczne-aktualnosci-ejk.md` |
 | 4 — home | ✅ | 2026-10-04 — `10-k4-home.md` 4.1–4.5; K-136 |
-| 5 — album | ⬜ | plan `10-k5-album.md` zatwierdzony 2026-10-04 (k5a–k5c) |
+| 5 — album | ✅ | k5a–k5d ✅ 2026-10-04 (`10-k5-album.md`); K-137, K-138; **zamknięty** |
 | 6 — wykłady | ⬜ | |
-| 7 — reszta layoutu | ⬜ | |
+| 7 — reszta layoutu | 🟡 | C1 (stopka K-36) ✅ 2026-10-04; reszta ⬜ |
 | 8 — treść EJK | ⬜ | fala 2 |
 | 9 — SEO / analityka | ⬜ | fala 2 |
 | 10 — audyty / docs | ⬜ | fala 2 |

@@ -14,11 +14,17 @@ export interface LightboxImageProps extends LightboxImageDimensions {
   alt: string;
 }
 
+const servesOriginalFromPublicMedia = (src: string) => src.startsWith("/media/");
+
 export function LightboxImage({ src, alt, width, height }: LightboxImageProps) {
   const [readySrc, setReadySrc] = useState<string | null>(null);
+  const [displayDimensions, setDisplayDimensions] = useState<LightboxImageDimensions>({
+    width,
+    height,
+  });
   const isVisible = readySrc === src;
 
-  const dimensions = { width, height };
+  const useOriginalFile = servesOriginalFromPublicMedia(src);
 
   return (
     <Image
@@ -27,13 +33,20 @@ export function LightboxImage({ src, alt, width, height }: LightboxImageProps) {
       alt={alt}
       width={width}
       height={height}
-      sizes={getLightboxImageSizes(dimensions)}
+      unoptimized={useOriginalFile}
+      sizes={useOriginalFile ? undefined : getLightboxImageSizes(displayDimensions)}
       fetchPriority="high"
-      onLoadingComplete={() => {
+      onLoadingComplete={(img) => {
+        if (useOriginalFile && img.naturalWidth > 0 && img.naturalHeight > 0) {
+          setDisplayDimensions({
+            width: img.naturalWidth,
+            height: img.naturalHeight,
+          });
+        }
         setReadySrc(src);
       }}
       style={{
-        ...getLightboxImageDisplayStyle(dimensions),
+        ...getLightboxImageDisplayStyle(displayDimensions),
         visibility: isVisible ? "visible" : "hidden",
       }}
       className="block h-auto max-w-full lg:shadow-lightbox"

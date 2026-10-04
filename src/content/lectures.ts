@@ -15,7 +15,7 @@ import season20242025Data from "../../content/lectures/2024-2025.json";
 import season20252026Data from "../../content/lectures/2025-2026.json";
 import currentSeasonData from "../../content/lectures/2026-2027.json";
 import { getLecturerDirectoryEntry } from "@/content/lecturer-directory";
-import { formatLecturerTitles, getLecturer, getLecturerProfileHref } from "@/content/lecturers";
+import { formatLecturerDisplayName, getLecturer, getLecturerProfileHref } from "@/content/lecturers";
 import type { Lecture, LectureSeason } from "@/content/types";
 
 const CURRENT_SEASON_SLUG = "2026-2027";
@@ -106,13 +106,7 @@ function buildLecturerLabel(entry: {
   titles?: string;
   affiliation?: string;
 }): string {
-  const nameParts: string[] = [];
-  if (entry.titles) {
-    nameParts.push(formatLecturerTitles(entry.titles));
-  }
-  nameParts.push(entry.name);
-
-  const label = nameParts.join(" ");
+  const label = formatLecturerDisplayName(entry);
   return entry.affiliation ? `${label}, ${entry.affiliation}` : label;
 }
 

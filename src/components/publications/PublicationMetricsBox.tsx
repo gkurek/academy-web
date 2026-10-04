@@ -1,5 +1,4 @@
 import { Button } from "@/components/core/Button";
-import { TextLink } from "@/components/core/TextLink";
 import type { PublicationFrontmatter } from "@/content/publications";
 import { formatPublicationPrice } from "@/content/publications";
 import { getSiteSettings } from "@/content/settings";
@@ -49,11 +48,7 @@ export function PublicationMetricsBox({ publication }: PublicationMetricsBoxProp
         ))}
         <div className="publication-metrics-row">
           <dt className="publication-metrics-label">{facts.howToBuy}</dt>
-          <dd className="publication-metrics-value">
-            Na wykładach w Kościele Środowisk Twórczych (
-            <TextLink href="/wyklady">{facts.lecturesLink}</TextLink>
-            ) albo mailowo, z wysyłką pocztą.
-          </dd>
+          <dd className="publication-metrics-value">{facts.howToBuyValue}</dd>
         </div>
       </dl>
 

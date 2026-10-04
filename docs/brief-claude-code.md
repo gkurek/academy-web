@@ -218,6 +218,8 @@ type AnnualExhibition = {
 ```ts
 // K-76: Publikacje — jeden album jubileuszowy + artykuły (bez zakładek, bez SectionNav).
 type Author = { name: string; lecturerSlug?: string };
+// K-137: rozdział albumu jak w drukowanym spisie; pages = zakres, np. „6–51”.
+type PublicationChapter = { title?: string; pages: string };
 
 type Publication = {
   slug: string;
@@ -231,7 +233,8 @@ type Publication = {
   availability: 'dostepny' | 'wyczerpany';
   cover: Image;
   spreads: Image[];               // 8–12
-  toc: { title: string; author: Author; articleSlug?: string }[];
+  chapters?: PublicationChapter[];
+  toc: { title: string; author?: Author; articleSlug?: string; chapter?: number; intro?: boolean }[]; // K-137
   sample?: boolean;
 };
 

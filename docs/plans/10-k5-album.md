@@ -1,6 +1,6 @@
 # Plan 10 / kawałek 5 — Album (`/publikacje/ikona-dzis`)
 
-Status: **zatwierdzony** 2026-10-04 (sesja planistyczna)  
+Status: **zamknięty** 2026-10-04 (k5a–k5d ✅; plan zatwierdzony w sesji planistycznej 2026-10-04)  
 Etap: `docs/plans/10-finishing.md` (kawałek 5, zadanie P1)  
 Gałąź: `feat/10-finishing`  
 Kontekst: K-76 (Publikacje: album + artykuły). Źródło struktury spisu: spis treści w drukowanym albumie (zrzut przekazany przez właściciela w czacie 2026-10-04).
@@ -34,7 +34,7 @@ Spis treści na stronie ma odwzorowywać strukturę albumu (rozdziały z zakresa
 | **AL5 — Notatki z makiety** | `tocLeadMobile`, `spreadsIntroMobile`, `spreadsFootnote` — usunięte. `coverScanNote` / `coverScanNoteShort` zostają do k5c (znikają ze skanem okładki). |
 | **AL6 — Copy albumu** | Przeredagowanie `lead`, `hubDescription`, `aboutParagraphs` (bez „tekstów uczestników”, akcent na ikony i życie Akademii) — **gate K-122** w czacie przed zapisem; bez nowych twierdzeń — braki jako `[do uzupełnienia: …]`. |
 | **AL7 — Skan spisu** | Rozkładówka ze spisem treści jako **pierwsza** rozkładówka w galerii — uzupełnienie, nie zamiennik listy HTML. |
-| **AL8 — Skany w tej fali** | Skany (okładka, rozkładówki, spis) dostarcza właściciel w fali 1 — **ostatni checkpoint k5 (k5c)**. |
+| **AL8 — Skany w tej fali** | Skany (okładka, rozkładówki, spis) dostarcza właściciel w fali 1 — checkpoint **k5c**; batch optymalizacji i miniaturek — **k5d** (po komplecie plików w `public/`). |
 
 ## Plan implementacji
 
@@ -56,18 +56,58 @@ Spis treści na stronie ma odwzorowywać strukturę albumu (rozdziały z zakresa
 - `src/content/lecturers.ts` — #7: postnominal zakonny („SJ” itp.) po nazwisku w `formatLecturerDisplayName` (rozwiązanie w kodzie bez zmiany danych, lub — jeśli prostsze — korekta danych przez gate; wybór w meldunku).
 - **Kryterium:** definicja „gotowe” z `CLAUDE.md`; 390 px + desktop; brak zduplikowanych `h2`; linki w spisie dostępne z klawiatury; `/publikacje` (hub) bez regresji.
 
-### k5c — skany albumu (checkpoint 3/3, ostatni)
+### k5c — skany albumu (checkpoint 3/4)
 
-- Właściciel dostarcza pliki: skan okładki (23 × 23 cm, kadr kwadratowy), rozkładówki (2:1), rozkładówka ze spisem treści.
-- `public/media/publications/ikona-dzis/*` — podmiana plików; `ikona-dzis.mdx` — `cover` i `spreads[]` z prawdziwymi `width`/`height`, rozkładówka spisu pierwsza (AL7), podpisy ze stronami powiązanymi z zakresami rozdziałów; `alt` — gate K-122.
-- Usunięcie `coverScanNote` / `coverScanNoteShort` z `pl.ts`, `PublicationAlbumPage`, `PublicationsHubPage` (AL5).
-- Weryfikacja kadrowania okładki i siatki rozkładówek (D9 z k2 — grid 2:1) + lightbox na 390 px i desktopie; `/publikacje` (podgląd 4 rozkładówek).
-- Aktualizacja `docs/plan-claude-code.md` §5 (zamknięte placeholdery albumu), Postęp w `10-finishing.md`.
+- Właściciel dostarcza pliki **bezpośrednio** do `public/media/publications/ikona-dzis/` (nie przez czat — załączniki w czacie bywają przeskalowane / JPEG mimo `.png`).
+- Pliki: skan okładki (23 × 23 cm, kadr kwadratowy), rozkładówki (2:1), rozkładówka ze spisem treści.
+- `ikona-dzis.mdx` — `cover` i `spreads[]` z prawdziwymi `width`/`height` (np. `scripts/readImageSize.ts`), rozkładówka spisu pierwsza (AL7), podpisy (`caption`) ze stronami powiązanymi z zakresami rozdziałów; opcjonalnie `thumbSrc` / `thumbWidth` / `thumbHeight` per rozkładówka (siatka); `alt` — gate K-122.
+- Usunięcie `coverScanNote` / `coverScanNoteShort` z `pl.ts`, `PublicationAlbumPage`, `PublicationsHubPage` (AL5) — gdy okładka docelowa.
+- Weryfikacja kadrowania okładki i siatki rozkładówek + lightbox na 390 px i desktopie (pełny plik z `/media/`, bez `_next/image`); `/publikacje` (podgląd 4 rozkładówek). **Siatka:** proporcje kadru z `thumbWidth`/`thumbHeight` (skany ~1585×866 px, nie sztywne 2:1); złota obwódka na `.publication-spread-frame` — token `--publication-spread-aspect` jako fallback.
+- **Kryterium:** wszystkie sloty `cover` + `spreads[]` podpięte do plików właściciela; build + lint OK.
+
+### k5d — optymalizacja mediów albumu (checkpoint 4/4, ostatni)
+
+Po komplecie plików z k5c — batch, nie przy każdym pojedynczym wrzuceniu (wyjątek: ręczny `-thumb` przy pierwszych testach jak `-02`).
+
+| Krok | Działanie |
+| --- | --- |
+| 1 | **Weryfikacja formatu** — sygnatura pliku (PNG / JPEG); odrzucić pliki pośrednie z czatu. |
+| 2 | **Wymiary w treści** — `width`/`height` w `ikona-dzis.mdx` = rzeczywiste px oryginału (`readImageSizeFromFile`). |
+| 3 | **Miniaturki siatki** — dla każdej rozkładówki `spread-NN-thumb.png` (preset: szer. **800 px**, proporcje 2:1, `fit inside`); wpisy `thumbSrc` + wymiary thumb w frontmatter. Siatka = thumb; lightbox = pełny `spread-NN`. |
+| 4 | **Kompresja oryginałów (gate wizualny)** — rozkładówki z **tekstem** (spis): PNG, ewent. `oxipng` / ostrożny `pngquant`; głównie **ikony / foto**: rozważyć JPG q90–92 albo lekki PNG — **porównanie lightbox vs plik lokalny** przed zamknięciem. Docelowo typ. **~300–600 KB** na full spread przy ~1500 px szer.; bez upscalingu. |
+| 5 | **Skrypt** — `scripts/` (tsx): generacja thumb + opcjonalnie raport rozmiarów przed/po; narzędzie resize: **sharp** (propozycja z uzasadnieniem w meldunku, jeśli stała zależność) lub jednorazowo `sharp-cli` jak przy `-02`. |
+| 6 | **Lightbox** — domyślnie bez zmian: `unoptimized` dla `/media/` (ostrość tekstu). WebP/AVIF przez `_next/image` w lightboxie **tylko** po świadomej decyzji i teście ostrości (poza domyślnym k5d). |
+| 7 | **Domknięcie** — aktualizacja `docs/plan-claude-code.md` §5 (placeholdery albumu), Postęp w `10-finishing.md`. |
+
+- **Kryterium:** definicja „gotowe” z `CLAUDE.md`; siatka nie pobiera full ~1 MB; lightbox czytelny jak plik lokalny; build + lint OK.
+
+#### Wynik k5d (2026-10-04, K-138)
+
+Decyzje właściciela przed startem (wartości domyślne z czatu): **(1)** `sharp` jako stała `devDependency` (`^0.35.5`, ta sama kopia co w Next — `npm ls sharp`: *deduped*), **(2)** okładka w tym samym batchu, **(3)** zdjęciowe rozkładówki → JPG q90, spis treści → PNG.
+
+| Krok | Wynik |
+| --- | --- |
+| 1 — format | Wszystkie 19 plików z k5c to prawdziwe PNG (sygnatura `89504e47`). Kanał alfa obecny, ale w pełni nieprzezroczysty — zdejmowany (`removeAlpha`). |
+| 2 — wymiary | `width`/`height` w MDX = piksele oryginałów (bez rozbieżności). |
+| 3 — miniaturki | Regenerowane: szer. **800 px**, wysokość z proporcji skanu (436–440 px, ok. 1,83:1 — nie sztywne 2:1); wymiary identyczne z wpisami z k5c. Zdjęcia → JPG q82; spis → PNG z paletą. |
+| 4 — kompresja | Rozkładówki 02–09 → **JPG q90, mozjpeg, chroma 4:4:4** (193–292 KB). Spis (01) → **PNG z paletą** (quality 90; 60 KB). Okładka → **JPG q90, 1600 × 1200** (z 2560 × 1920; okładka idzie przez `next/image`, maks. ok. 720 px CSS × 2 DPR). Bezstratny PNG nie mieścił się w celu (zdjęcia 540–1260 KB). |
+| 4 — gate wizualny | Wycinki 1:1 oryginał / wynik (spis, rozkładówki 03 i 08 — złocenia, twarze, tekst): różnicy nie widać. |
+| 5 — skrypt | `scripts/optimize-album-media.ts` — batch + raport przed/po. Uruchamiać na **oryginałach** (`npx tsx scripts/optimize-album-media.ts <folder z oryginałami>`); ponowne uruchomienie na wynikach ponownie kwantyzuje spis. |
+| 6 — lightbox | Bez zmian: pełny plik z `/media/` (`unoptimized`). |
+| 7 — dokumenty | `docs/plan-claude-code.md` (§3, K-138, §5, dziennik), `10-finishing.md`. |
+
+**Rozmiary:** razem **16 138 KB → 2 539 KB**. Siatka (9 miniaturek): ok. 3,0 MB → **362 KB**. Okładka 5,5 MB → 428 KB. Pełne rozkładówki 0,4–1,5 MB → 60–292 KB.
+
+`ikona-dzis.mdx`: `cover` → `cover.jpg` 1600 × 1200; `spread-02…09` i ich miniaturki `.png` → `.jpg`; `spread-01` zostaje `.png`.
+
+**Pliki zastąpione:** `cover.png`, `spread-02…09.png`, `spread-02…09-thumb.png` (17 plików, ok. 13,6 MB) — **usunięte z `public/`** po OK właściciela (2026-10-04). Oryginały skanów zostają u właściciela; do ponownego batcha potrzebne poza `public/`.
+
+**Do k8 (przegląd `alt`/caption z EJK):** `spread-08` — `alt` mówi „strony 166–167”, `caption` „Strony 146–147”; jedno z nich jest błędne.
 
 ## Ryzyka i pytania otwarte
 
-- **#8 liczba stron** (176 vs 178) — do potwierdzenia przy gate k5a lub z EJK.
-- **#9 imię Dylewskiej** — informacyjnie do EJK (k8); na stronie zostaje nota.
+- ~~**#8 liczba stron**~~ — 178 (gate k5a, 2026-10-04).
+- ~~**#9 imię Dylewskiej**~~ — zamknięte (właściciel 2026-10-04): na stronie zostaje forma z noty wykładowcy („dr Magdalena Dylewska”), OK.
 - **Model współdzielony** — AL3 jest addytywny, ale `author?` luzuje kontrakt; odnotować w §4 dla przyszłego projektu.
 - JSON-LD `Book`/`Article` (k9) — `hasPart` może korzystać z `chapters`; nie w k5.
 
@@ -75,6 +115,7 @@ Spis treści na stronie ma odwzorowywać strukturę albumu (rozdziały z zakresa
 
 | Krok | Status | Uwagi |
 | --- | --- | --- |
-| k5a — model i dane | ⬜ | gate K-122 |
-| k5b — spis, porządki | ⬜ | |
-| k5c — skany | ⬜ | pliki od właściciela |
+| k5a — model i dane | ✅ 2026-10-04 | gate K-122 OK; K-137; 178 stron; rozdział 6 bez pozycji; `getPublicationAuthorGroups` usuwany w k5b razem z sekcją |
+| k5b — spis, porządki | ✅ 2026-10-04 | `PublicationTocList` (Server Component) + `PublicationTocItem`; po uwadze właściciela przywrócony wygląd kafli (pełna szerokość, złota krecha, „Czytaj na stronie” w prawej kolumnie) + nagłówki rozdziałów między grupami; wstęp jako kafel nad tytułem rozdziału 1; postnominal po nazwisku w kodzie (`formatLecturerDisplayName`, też etykiety wykładów) |
+| k5c — skany | ✅ 2026-10-04 | **Zamknięty.** `cover.png` + `spread-01…09.png` od właściciela (folder `public/media/…`, nie czat); MDX z wymiarami (`readImageSizeFromFile`), thumb 800 px + pola w frontmatter; usunięte sample JPG i `coverScanNote`; siatka — kadr wg wymiarów thumb/full (`PublicationSpreadStrip`, `--publication-spread-aspect`); lightbox pełny PNG (`unoptimized`). `alt` / `caption` rozkładówek (placeholdery w MDX) → **k8**, wspólny przegląd zdjęć z EJK (decyzja właściciela 2026-10-04); nie blokuje **k5d**. |
+| k5d — optymalizacja | ✅ 2026-10-04 | K-138; `scripts/optimize-album-media.ts` (`sharp` devDependency); JPG q90 dla zdjęć, PNG z paletą dla spisu, okładka 1600 px; 16,1 MB → 2,5 MB; siatka 362 KB; gate wizualny OK; 17 zastąpionych PNG usuniętych z `public/` (OK właściciela). **Kawałek 5 zamknięty.** |
