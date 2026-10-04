@@ -222,9 +222,9 @@ export const pl = {
           note: "Odpowiemy w kolejności zgłoszeń.",
         },
         closed: {
-          mailtoLabel:
-            "Nabór rusza w marcu 2027 – daj znać, że chcesz dostać wiadomość",
+          mailtoLabel: "Powiadom mnie o naborze",
           telLabel: "Zadzwoń: 601 734 705",
+          note: "Nabór na plenery 2027 ruszy w marcu — napisz, jeśli chcesz dostać wiadomość.",
         },
       },
       wyklady: {
@@ -272,7 +272,7 @@ export const pl = {
       "Semestr szósty",
     ],
     plenerQuotesHeading: "Głosy z pleneru",
-    whereWeWereHeading: "Gdzie byliśmy",
+    plenerWhereWeWereInline: "Miejsca się zmieniają — byliśmy m.in. w:",
     orderStepsHeading: "Jak przebiega zamówienie",
     orderStepsIntro: "Trzy kroki od pierwszego maila do gotowej ikony.",
     orderExamplesHeading: "Przykłady realizacji",
@@ -325,7 +325,7 @@ export const pl = {
       "matka-bozy": "Matka Boża",
       aniolowie: "Aniołowie",
       swieci: "Święci",
-      "sceny-i-swieta": "Sceny i święta",
+      swieta: "Święta",
     },
     // K-41: the gallery is split into two fixed sections; ids double as URL hashes.
     sections: {
@@ -619,12 +619,10 @@ export const pl = {
     addressHeading: "Adres",
     mapTitle: "Mapa dojazdu",
     mapPlaceholder: "Mapa – osadzenie zewnętrzne",
-    mapOpenInGoogle: "Otwórz w Mapach Google",
-    mapGetDirections: "Wyznacz trasę",
     organizerHeading: "Organizator",
-    organizerLead: "Fundacja IKONA DZIŚ –",
-    organizerLinkLabel: "ikonadzis.org",
-    organizerTail: " Akademia Ikony jest jej projektem wiodącym.",
+    organizerLead: "Akademia Ikony jest projektem wiodącym fundacji ",
+    organizerLinkLabel: "IKONA DZIŚ",
+    organizerTail: "",
     onlineHeading: "Akademia w sieci",
     blogLinkLabel: "Blog – studiumikony.blogspot.com",
   },

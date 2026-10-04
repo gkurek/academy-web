@@ -4,7 +4,6 @@ import { OfferPage } from "@/components/content/OfferPage";
 import { OfferLeadIntro } from "@/components/offers/OfferLeadIntro";
 import { OrderExamples } from "@/components/offers/OrderExamples";
 import { ReadyIconsNote } from "@/components/offers/ReadyIconsNote";
-import { getIconWorksBySlugs } from "@/content/icons";
 import { getOffer } from "@/content/offers";
 import { mainNav, sectionNav } from "@/navigation";
 
@@ -18,8 +17,6 @@ export default function CustomIconsPage() {
     notFound();
   }
 
-  const exampleIcons = getIconWorksBySlugs(offer.exampleSlugs);
-
   return (
     <OfferPage
       offer={offer}
@@ -31,7 +28,7 @@ export default function CustomIconsPage() {
       }
       afterBodySlot={
         <>
-          <OrderExamples items={exampleIcons} />
+          <OrderExamples />
           <ReadyIconsNote email={offer.facts.enrollmentEmail} />
         </>
       }

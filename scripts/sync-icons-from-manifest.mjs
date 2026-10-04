@@ -11,11 +11,11 @@ const ICON_THEMES = [
   "matka-bozy",
   "aniolowie",
   "swieci",
-  "sceny-i-swieta",
+  "swieta",
 ];
 
 const MANUAL_TAGS = {
-  "trojca-swieta-2017": "sceny-i-swieta",
+  "trojca-swieta-2017": "swieta",
 };
 
 const normalizeTitle = (title) =>
@@ -45,7 +45,7 @@ const inferTag = (title, slug) => {
       value,
     )
   ) {
-    return "sceny-i-swieta";
+    return "swieta";
   }
   if (
     /chrystus|mandylion|madylion|jezus|emmanuel|pantokrator|milosierny|eucharyst/.test(

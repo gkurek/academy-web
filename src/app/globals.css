@@ -1720,6 +1720,9 @@
   /* About page — workshop band and closing links. */
   .about-workshop-band {
     padding-block: var(--space-11);
+    /* Cancel main py-space-6 so card band meets footer gold rule (no page-bg strip). */
+    margin-bottom: calc(-1 * var(--space-6));
+    padding-bottom: calc(var(--space-11) + var(--space-6));
   }
 
   .about-workshop-band-inner {
@@ -1779,49 +1782,6 @@
     flex-wrap: wrap;
     gap: 0 var(--about-link-gap);
     margin: var(--space-4) 0 0;
-  }
-
-  .about-closing {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-4);
-    padding-left: 0;
-  }
-
-  @media (min-width: 1024px) {
-    .about-closing {
-      padding-left: calc(var(--text-page-heading-col) + var(--text-page-main-gap));
-    }
-  }
-
-  .about-closing-foundation {
-    margin: 0;
-    max-width: var(--measure-prose);
-    font-size: var(--size-body-lg);
-    line-height: var(--leading-prose);
-    color: var(--text-secondary);
-  }
-
-  .about-closing-legal {
-    margin: 0;
-    max-width: var(--measure-prose);
-    font-size: var(--size-body);
-    line-height: var(--leading-prose);
-    color: var(--text-secondary);
-  }
-
-  .about-closing-start {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 0 var(--about-link-gap);
-    max-width: var(--measure-prose);
-  }
-
-  .about-closing-start-intro {
-    font-size: var(--size-body);
-    line-height: var(--leading-body);
-    color: var(--text-secondary);
   }
 
   /* /pracownia — section layout without 280 px H2 column (6c/6d). */
@@ -2147,8 +2107,6 @@
     }
 
     .about-approach-comment,
-    .about-closing-foundation,
-    .about-closing-legal,
     .about-workshop-accessibility {
       font-size: var(--size-body-m);
       line-height: var(--leading-body);

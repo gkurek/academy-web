@@ -14,7 +14,12 @@ export const FEATURED_ICON_SLUGS = [
  * Every work needs at least one of these tags, every theme at least one work
  * (checked by validateIconTaxonomy below).
  */
-export const ICON_THEMES = ["chrystus", "matka-bozy", "aniolowie", "swieci", "sceny-i-swieta"] as const;
+export const ICON_THEMES = ["chrystus", "matka-bozy", "aniolowie", "swieci", "swieta"] as const;
+
+/** Retired `?temat=` slugs — normalized to canonical theme and cleaned from the URL. */
+const ICON_THEME_LEGACY_ALIASES: Record<string, (typeof ICON_THEMES)[number]> = {
+  "sceny-i-swieta": "swieta",
+};
 
 export type IconFilters = {
   tag?: string;
@@ -61,8 +66,12 @@ export function parseIconFilters(
   // Other params (including the retired `autor`) are ignored.
   // Unknown slugs are dropped, so the view falls back to "no theme filter".
   const temat = params.temat;
-  if (typeof temat === "string" && getIconTags().includes(temat)) {
-    filters.tag = temat;
+  if (typeof temat === "string") {
+    const canonical =
+      getIconTags().includes(temat) ? temat : ICON_THEME_LEGACY_ALIASES[temat];
+    if (canonical) {
+      filters.tag = canonical;
+    }
   }
 
   return filters;

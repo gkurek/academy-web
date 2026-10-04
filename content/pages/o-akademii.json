@@ -105,37 +105,23 @@
     "accessibility": "Przestrzeń wolna od barier architektonicznych.",
     "photos": [
       {
-        "src": "/media/workshop/workshop-finished-icon.jpg",
-        "alt": "Dwie uczestniczki przy stole w\u00a0pracowni z\u00a0ukończoną ikoną Mandylionu",
-        "width": 800,
-        "height": 600,
-        "caption": "Z\u00a0ukończoną ikoną w\u00a0pracowni"
-      },
-      {
         "src": "/media/workshop/workshop-boards.jpg",
         "alt": "Deski pokryte lewkasem i\u00a0słoik z\u00a0pędzlem na drewnianym stole",
         "width": 800,
         "height": 600,
         "caption": "Zagruntowane deski gotowe do pracy"
+      },
+      {
+        "src": "/media/workshop/workshop-finished-icon.jpg",
+        "alt": "Dwie uczestniczki przy stole w\u00a0pracowni z\u00a0ukończoną ikoną Mandylionu",
+        "width": 800,
+        "height": 600,
+        "caption": "Z\u00a0ukończoną ikoną w\u00a0pracowni"
       }
     ],
     "links": [
       { "href": "/pracownia", "label": "Pracownia" },
       { "href": "/kontakt", "label": "Kontakt" }
-    ]
-  },
-  "foundation": {
-    "beforeLink": "Akademia Ikony jest projektem wiodącym fundacji IKONA DZIŚ, która organizuje nasze warsztaty, wykłady i\u00a0wydarzenia: ",
-    "linkLabel": "ikonadzis.org",
-    "linkHref": "https://www.ikonadzis.org",
-    "afterLink": "."
-  },
-  "legal": "Nauczanie w\u00a0Akademii Ikony nie niesie za sobą żadnych skutków formalnych.",
-  "startLinks": {
-    "intro": "Zacznij tutaj:",
-    "links": [
-      { "href": "/warsztaty", "label": "Warsztaty" },
-      { "href": "/wyklady", "label": "Wykłady" }
     ]
   }
 }

@@ -145,12 +145,12 @@ export function FactsBox({ facts, kind }: FactsBoxProps) {
           href={mailtoHref}
           variant={facts.enrollmentOpen ? "primary" : "secondary"}
           block
-          size="lg"
+          size="md"
         >
           {cta.mailtoLabel}
         </Button>
 
-        <Button href={factsBox.phoneTel} variant="secondary" block size="lg" className="md:hidden">
+        <Button href={factsBox.phoneTel} variant="secondary" block size="md" className="md:hidden">
           {cta.telLabel}
         </Button>
 
