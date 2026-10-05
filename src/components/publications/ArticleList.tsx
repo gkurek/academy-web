@@ -20,7 +20,7 @@ export function ArticleList({ articles }: ArticleListProps) {
           <p className="publication-article-source">
             <ArticleSourceText label={describeArticleSource(article.source)} />
           </p>
-          <h3 className="publication-article-list-title">
+          <h3 className="list-title publication-article-list-title">
             <Link href={`/publikacje/${article.slug}`} className="publication-article-list-title-link">
               <span className="link-underline-target link-underline-target--border">{article.title}</span>
             </Link>

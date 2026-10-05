@@ -2,6 +2,7 @@ import Image from "next/image";
 
 import { TextLink } from "@/components/core/TextLink";
 import type { PersonProfileData } from "@/content/types";
+import { Prose } from "@/components/core/Prose";
 
 export interface PersonProfileProps {
   profile: PersonProfileData;
@@ -25,11 +26,11 @@ export function PersonProfile({ profile }: PersonProfileProps) {
       <div className="person-profile-text">
         <p className="person-profile-name">{name}</p>
         <p className="person-profile-role">{role}</p>
-        <div className="text-page-mdx">
+        <Prose variant="text">
           {bio.map((paragraph, index) => (
             <p key={index}>{paragraph}</p>
           ))}
-        </div>
+        </Prose>
         {link ? (
           <p className="mt-space-5">
             <TextLink href={link.href}>{link.label}</TextLink>

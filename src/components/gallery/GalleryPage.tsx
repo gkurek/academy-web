@@ -4,6 +4,7 @@ import { GalleryOrderTeaser } from "@/components/gallery/GalleryOrderTeaser";
 import { SectionPageShell } from "@/components/layout/SectionPageShell";
 import type { IconWork } from "@/content/types";
 import { pl } from "@/i18n/pl";
+import { PageHeading } from "@/components/core/PageHeading";
 
 export interface GalleryPageProps {
   /** Route path — see SectionPageShellProps["path"]. */
@@ -17,9 +18,9 @@ export function GalleryPage({ path, works, tags }: GalleryPageProps) {
   return (
     <SectionPageShell path={path}>
       <header className="pb-space-5 mb-space-6 border-b border-line-gold">
-        <h1 className="font-serif text-size-h1-m md:text-size-h1 leading-tight text-text-h1 mb-space-5">
+        <PageHeading level="page" className="mb-space-5">
           {pl.gallery.title}
-        </h1>
+        </PageHeading>
         <GalleryFilters tags={tags} />
       </header>
 

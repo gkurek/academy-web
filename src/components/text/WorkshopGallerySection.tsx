@@ -4,6 +4,7 @@ import { Lightbox } from "@/components/lightbox/Lightbox";
 import { useLightboxIndex } from "@/components/lightbox/useLightboxIndex";
 import { PhotoGrid } from "@/components/text/PhotoGrid";
 import type { Image as ContentImage } from "@/content/types";
+import { PageHeading } from "@/components/core/PageHeading";
 
 export interface WorkshopGallerySectionProps {
   heading: string;
@@ -20,7 +21,7 @@ export function WorkshopGallerySection({
 
   return (
     <section id="ze-wspolnej-pracy" className="workshop-section scroll-mt-space-6">
-      <h2 className="workshop-section-heading">{heading}</h2>
+      <PageHeading level="section" className="mb-heading-gap">{heading}</PageHeading>
       <PhotoGrid photos={photos} mobileCaption={mobileCaption} onOpen={lightbox.open} />
       <Lightbox
         photos={photos}

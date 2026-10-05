@@ -1,4 +1,5 @@
 import type { OfferLeadIntroSection } from "@/content/offers";
+import { PageHeading } from "@/components/core/PageHeading";
 
 export interface OfferLeadIntroProps {
   sections: OfferLeadIntroSection[];
@@ -12,17 +13,11 @@ export function OfferLeadIntro({ sections }: OfferLeadIntroProps) {
 
         return (
           <section key={section.heading} aria-labelledby={headingId}>
-            <h2
-              id={headingId}
-              className="font-serif text-size-role-section-h2-m md:text-size-role-section-h2 leading-heading text-text-h2 mb-space-4"
-            >
+            <PageHeading level="section" id={headingId} className="mb-space-4">
               {section.heading}
-            </h2>
-            {section.paragraphs.map((paragraph) => (
-              <p
-                key={paragraph}
-                className="text-size-body-lg leading-prose text-text-secondary mb-space-4 last:mb-0"
-              >
+            </PageHeading>
+            {section.paragraphs.map((paragraph, index) => (
+              <p key={paragraph} className={index > 0 ? "body-copy text-text-body mt-space-5" : "body-copy text-text-body"}>
                 {paragraph}
               </p>
             ))}

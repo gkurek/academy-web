@@ -1,6 +1,7 @@
 import type { ReactNode } from "react";
 
 import type { Interview as InterviewData } from "@/content/types";
+import { PageHeading } from "@/components/core/PageHeading";
 
 export interface InterviewProps {
   heading: string;
@@ -22,7 +23,7 @@ export function Interview({ heading, interview }: InterviewProps) {
 
   return (
     <section id="rozmowa" className="interview-section workshop-section scroll-mt-space-6">
-      <h2 className="workshop-section-heading">{heading}</h2>
+      <PageHeading level="section" className="mb-heading-gap">{heading}</PageHeading>
       <p className="interview-intro">{intro}</p>
 
       {parts.map((part, partIndex) => (

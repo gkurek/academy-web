@@ -2,6 +2,7 @@ import { SeasonAccordion } from "@/components/content/SeasonAccordion";
 import { SectionPageShell } from "@/components/layout/SectionPageShell";
 import type { LoadedLectureSeason } from "@/content/lectures";
 import { pl } from "@/i18n/pl";
+import { PageHeading } from "@/components/core/PageHeading";
 
 export interface LecturesArchivePageProps {
   seasons: LoadedLectureSeason[];
@@ -17,9 +18,9 @@ export function LecturesArchivePage({
 }: LecturesArchivePageProps) {
   return (
     <SectionPageShell path={path}>
-      <h1 className="font-serif text-size-h1-m md:text-size-h1 leading-tight text-text-h1 mb-space-5">
+      <PageHeading level="page" className="mb-space-5">
         {pl.lectures.archiveHeading}
-      </h1>
+      </PageHeading>
       <p className="text-size-lead-m md:text-size-lead leading-body text-text-secondary max-w-measure-lead mb-space-6">
         {intro}
       </p>

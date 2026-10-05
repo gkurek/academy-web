@@ -1,0 +1,61 @@
+/* Prose wrappers (core/Prose.tsx): flow rhythm for MDX and plain-text blocks.
+   Type roles come from typography.css; this file only adds colour and spacing.
+   Variants: text (text pages, articles), offer (offer pages); news lives in
+   news-article.css (.prose-news — Garamond scale from the entry mockup).
+   One paragraph gap per variant: 20 px (--space-5) for text and offer. */
+@layer components {
+  .prose-text > p,
+  .prose-offer > p {
+    color: var(--text-body);
+  }
+
+  .prose-text > p + p,
+  .prose-offer > p + p {
+    margin-top: var(--space-5);
+  }
+
+  /* Lists: kept as the old MDX mapping had them (body size, 14 px below, 8 px between items). */
+  .prose-text > ul,
+  .prose-offer > ul,
+  .prose-text > ol,
+  .prose-offer > ol {
+    margin-bottom: var(--space-4);
+    padding-left: var(--space-6);
+    font-size: var(--size-body);
+    line-height: var(--leading-body);
+    color: var(--text-body);
+  }
+
+  .prose-text > ul,
+  .prose-offer > ul {
+    list-style: disc;
+  }
+
+  .prose-text > ol,
+  .prose-offer > ol {
+    list-style: decimal;
+  }
+
+  .prose-text > ul > li,
+  .prose-offer > ul > li,
+  .prose-text > ol > li,
+  .prose-offer > ol > li {
+    margin-bottom: var(--space-2);
+  }
+
+  .prose-text > h2,
+  .prose-offer > h2 {
+    margin: var(--section-gap) 0 var(--heading-gap);
+  }
+
+  .prose-text > h2:first-child,
+  .prose-offer > h2:first-child {
+    margin-top: 0;
+  }
+
+  .prose-text > h3,
+  .prose-offer > h3 {
+    margin: var(--space-6) 0 var(--space-3);
+    scroll-margin-top: var(--space-6);
+  }
+}

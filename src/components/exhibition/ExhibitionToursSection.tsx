@@ -2,6 +2,7 @@ import { Button } from "@/components/core/Button";
 import { TextLink } from "@/components/core/TextLink";
 import { getExhibitionCopy } from "@/content/exhibition";
 import { pl } from "@/i18n/pl";
+import { PageHeading } from "@/components/core/PageHeading";
 
 export interface ExhibitionToursSectionProps {
   mailtoHref: string;
@@ -19,12 +20,9 @@ export function ExhibitionToursSection({ mailtoHref }: ExhibitionToursSectionPro
     >
       <div className="exhibition-tours-pass">
         <div className="exhibition-tours-pass__content">
-          <h2
-            id="exhibition-tours-heading"
-            className="font-serif text-size-role-section-h2-m md:text-size-role-section-h2 leading-heading text-text-h2 mb-space-2"
-          >
+          <PageHeading level="section" id="exhibition-tours-heading" className="mb-space-2">
             {tours.title}
-          </h2>
+          </PageHeading>
           <p className="exhibition-section-copy exhibition-tours-pass__intro max-w-measure-lead">
             {toursCopy.introBefore}
             <TextLink href="/aktualnosci">{tours.scheduleNewsLink}</TextLink>

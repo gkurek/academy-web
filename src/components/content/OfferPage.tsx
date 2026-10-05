@@ -13,6 +13,8 @@ import { getEnrollmentEmail } from "@/content/settings";
 import type { OfferFacts } from "@/content/types";
 import { pl } from "@/i18n/pl";
 import { fillRequiredTemplate } from "@/lib/fillTemplate";
+import { PageHeading } from "@/components/core/PageHeading";
+import { Prose } from "@/components/core/Prose";
 
 // Links are styled only in offer MDX (LY5); news, contact and articles keep their own `a` styles.
 const offerMdxLinks = { a: MdxLink };
@@ -83,16 +85,13 @@ function EnrollmentSection({
         }
       >
         <div>
-          <h2
-            id={headingId}
-            className="font-serif text-size-role-section-h2-m md:text-size-role-section-h2 leading-heading text-text-h2 mb-heading-gap"
-          >
+          <PageHeading level="section" id={headingId} className="mb-heading-gap">
             {pl.offers.enrollmentSectionTitle}
-          </h2>
+          </PageHeading>
           {paragraphs.map((paragraph) => (
             <p
               key={paragraph}
-              className="text-size-body-lg leading-prose text-text-secondary max-w-measure-prose mb-space-4 last:mb-space-5"
+              className="body-copy text-text-body mb-space-5"
             >
               {paragraph}
             </p>
@@ -128,9 +127,9 @@ export function OfferPage({ offer, path, quoteSlot, afterBodySlot, footerBand }:
               {eyebrow}
             </p>
           ) : null}
-          <h1 className="font-serif text-size-h1-m md:text-size-h1 leading-tight text-text-h1 mb-space-5">
+          <PageHeading level="page" className="mb-space-5">
             {title}
-          </h1>
+          </PageHeading>
 
           {lead && (
             <p className="text-size-lead-m md:text-size-lead leading-body text-text-secondary max-w-measure-lead mb-space-5">
@@ -139,7 +138,7 @@ export function OfferPage({ offer, path, quoteSlot, afterBodySlot, footerBand }:
           )}
 
           {leadSecondary && (
-            <p className="text-size-body-lg leading-prose text-text-secondary max-w-measure-prose">
+            <p className="body-copy text-text-secondary">
               {leadSecondary}
             </p>
           )}
@@ -156,7 +155,7 @@ export function OfferPage({ offer, path, quoteSlot, afterBodySlot, footerBand }:
         <FactsBox facts={facts} kind={kind} enrollment={getEnrollmentState(offer)} />
       </div>
 
-      <div className="offer-mdx">
+      <Prose variant="offer">
         <Content
           components={{
             ...offerMdxLinks,
@@ -164,7 +163,7 @@ export function OfferPage({ offer, path, quoteSlot, afterBodySlot, footerBand }:
             StepList: () => <StepList steps={steps} />,
           }}
         />
-      </div>
+      </Prose>
 
       {afterBodySlot}
 

@@ -5,6 +5,7 @@ import { SectionPageShell } from "@/components/layout/SectionPageShell";
 import { NavUnderlineLink } from "@/components/navigation/NavUnderlineLink";
 import { pl } from "@/i18n/pl";
 import { mainNav } from "@/navigation";
+import { PageHeading } from "@/components/core/PageHeading";
 
 export const metadata: Metadata = {
   title: pl.notFound.documentTitle,
@@ -13,9 +14,9 @@ export const metadata: Metadata = {
 export default function NotFound() {
   return (
     <SectionPageShell>
-      <h1 className="mb-space-5 font-serif text-size-h1-m leading-tight text-text-h1 md:text-size-h1">
+      <PageHeading level="page" className="mb-space-5">
         {pl.notFound.title}
-      </h1>
+      </PageHeading>
 
       <p className="mb-space-8 max-w-measure-prose text-size-body leading-body text-text-secondary md:text-size-body-lg md:leading-prose">
         {pl.notFound.lead}
@@ -26,9 +27,9 @@ export default function NotFound() {
       </div>
 
       <nav aria-label={pl.notFound.sitemapAriaLabel}>
-        <h2 className="mb-space-4 font-serif text-size-role-section-h2-m leading-heading text-text-h2 md:text-size-role-section-h2">
+        <PageHeading level="section" className="mb-space-4">
           {pl.notFound.sitemapHeading}
-        </h2>
+        </PageHeading>
         <ul className="grid grid-cols-1 gap-space-3 sm:grid-cols-2">
           {mainNav.map((item) => (
             <li key={item.href}>

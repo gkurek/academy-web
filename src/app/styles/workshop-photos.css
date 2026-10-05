@@ -1,0 +1,214 @@
+@layer components {
+  /* /pracownia — PhotoGrid (mockup 6c/6d) and workshop lightbox (6g). */
+  .photo-grid-list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--photo-grid-gap-m);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .photo-grid-item {
+    min-width: 0;
+  }
+
+  .photo-grid-tile {
+    display: block;
+    width: 100%;
+    min-height: var(--tap-min);
+    padding: 0;
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+  }
+
+  .photo-grid-image {
+    display: block;
+    width: 100%;
+    aspect-ratio: var(--photo-grid-aspect);
+    object-fit: cover;
+  }
+
+  .photo-grid-caption {
+    margin: var(--space-3) 0 0;
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: var(--size-body);
+    line-height: var(--leading-body);
+    color: var(--text-tertiary);
+  }
+
+  .photo-grid-caption-empty {
+    visibility: hidden;
+  }
+
+  .photo-grid-mobile-caption {
+    margin: var(--space-5) 0 0;
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: var(--size-body);
+    line-height: var(--leading-body);
+    color: var(--text-tertiary);
+  }
+
+  @media (min-width: 768px) {
+    .photo-grid-list {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: var(--photo-grid-gap-y) var(--photo-grid-gap-x);
+    }
+
+    .photo-grid-caption {
+      font-size: var(--size-body);
+    }
+
+    .photo-grid-mobile-caption {
+      display: none;
+    }
+  }
+
+  @media (max-width: 767px) {
+    .photo-grid-caption {
+      display: none;
+    }
+  }
+
+  .lightbox-dialog--content .lightbox-content-meta {
+    max-width: var(--measure-prose);
+    margin-inline: auto;
+    text-align: center;
+  }
+
+  .interview-intro {
+    margin: 0 0 var(--interview-intro-mb-m);
+    max-width: var(--measure-lead);
+    font-size: var(--size-lead-m);
+    line-height: var(--leading-loose);
+    color: var(--text-body);
+    text-wrap: pretty;
+  }
+
+  .interview-part-title {
+    margin: 0 0 var(--interview-part-title-mb-m);
+    font-family: var(--font-serif);
+    font-size: var(--size-h3-m);
+    font-weight: 400;
+    line-height: 1.25;
+    color: var(--text-list-title);
+  }
+
+  .interview-part--spaced {
+    margin-top: var(--interview-part-gap-m);
+  }
+
+  .interview-exchange {
+    border-top: 1px solid var(--line-neutral);
+  }
+
+  .interview-turn {
+    display: grid;
+    grid-template-columns: var(--interview-initial-col) minmax(0, 1fr);
+    gap: 0 var(--interview-turn-gap);
+  }
+
+  .interview-turn--question {
+    padding: var(--interview-exchange-y) 0 0;
+  }
+
+  .interview-turn--answer {
+    padding: 0 0 var(--interview-exchange-y);
+  }
+
+  .interview-initial {
+    padding-top: 6px;
+    font-size: var(--size-caption);
+    letter-spacing: var(--tracking-caption-wide);
+    line-height: var(--leading-body);
+  }
+
+  .interview-initial--asker {
+    color: var(--text-tertiary);
+  }
+
+  .interview-initial--answerer {
+    padding-top: 4px;
+    color: var(--accent-text);
+  }
+
+  .interview-question {
+    margin: 0;
+    max-width: var(--measure-prose);
+    font-family: var(--font-serif);
+    font-size: var(--role-row-title-m);
+    line-height: 1.4;
+    color: var(--text-list-title);
+  }
+
+  .interview-answer {
+    margin: 0;
+    max-width: var(--measure-prose);
+    font-size: var(--size-body);
+    line-height: var(--leading-prose);
+    color: var(--text-body);
+    text-wrap: pretty;
+  }
+
+  .interview-answer em {
+    font-style: italic;
+  }
+
+  .interview-exchange--closing .interview-turn--question {
+    padding-bottom: var(--interview-exchange-y);
+    border-bottom: 1px solid var(--line-neutral);
+  }
+
+  .interview-signature {
+    margin: var(--interview-signature-mt-m) 0 0;
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: var(--size-ui);
+    line-height: var(--leading-body);
+    color: var(--text-tertiary);
+  }
+
+  @media (min-width: 768px) {
+    .interview-intro {
+      margin-bottom: var(--interview-intro-mb);
+      font-size: var(--size-lead);
+    }
+
+    .interview-part-title {
+      margin-bottom: var(--interview-part-title-mb);
+      font-size: var(--size-h3);
+    }
+
+    .interview-part--spaced {
+      margin-top: var(--interview-part-gap);
+    }
+
+    .interview-question {
+      font-size: var(--role-row-title);
+    }
+
+    .interview-answer {
+      font-size: var(--size-body-lg);
+    }
+
+    .interview-signature {
+      margin-top: var(--interview-signature-mt);
+    }
+  }
+
+  @media (max-width: 767px) {
+    .about-quote-text {
+      font-size: var(--role-card-title-m);
+    }
+
+    .about-approach-comment,
+    .about-workshop-accessibility {
+      font-size: var(--size-body);
+      line-height: var(--leading-body);
+    }
+  }
+
+}

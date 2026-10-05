@@ -2,6 +2,7 @@ import { useId } from "react";
 
 import { Button } from "@/components/core/Button";
 import { pl } from "@/i18n/pl";
+import { PageHeading } from "@/components/core/PageHeading";
 
 /** K-46: no photo until a proper shoot; the button is the page's one sales CTA. */
 export function GalleryOrderTeaser() {
@@ -15,12 +16,9 @@ export function GalleryOrderTeaser() {
     >
       <div className="exhibition-tours-pass border-b-0">
         <div className="exhibition-tours-pass__content">
-          <h2
-            id={headingId}
-            className="font-serif text-size-role-section-h2-m md:text-size-role-section-h2 leading-heading text-text-h2 mb-heading-gap"
-          >
+          <PageHeading level="section" id={headingId} className="mb-heading-gap">
             {title}
-          </h2>
+          </PageHeading>
           <p className="exhibition-section-copy exhibition-tours-pass__intro max-w-measure-lead">
             {lead}
           </p>

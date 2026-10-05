@@ -3,6 +3,7 @@ import { TextLink } from "@/components/core/TextLink";
 import { getExhibitionCopy } from "@/content/exhibition";
 import type { ExhibitionTravelingPlace } from "@/content/types";
 import { pl } from "@/i18n/pl";
+import { PageHeading } from "@/components/core/PageHeading";
 
 export interface ExhibitionTravelingSectionProps {
   mailtoHref: string;
@@ -24,12 +25,9 @@ export function ExhibitionTravelingSection({
     >
       <div className="exhibition-traveling-grid">
         <div className="exhibition-traveling-grid__main min-w-0">
-          <h2
-            id="exhibition-traveling-heading"
-            className="font-serif text-size-role-section-h2-m md:text-size-role-section-h2 leading-heading text-text-h2 mb-space-5"
-          >
+          <PageHeading level="section" id="exhibition-traveling-heading" className="mb-space-5">
             {traveling.heading}
-          </h2>
+          </PageHeading>
           <p className="exhibition-section-copy">
             {travelingCopy.introBefore}
             {places.map((place, index) => (

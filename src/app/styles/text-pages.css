@@ -1,0 +1,30 @@
+@layer components {
+
+  /* /polityka-prywatnosci — mockup 3a (kierunki wizualne). */
+  .privacy-policy-content {
+    max-width: var(--publication-article-max);
+  }
+
+  .privacy-policy-section {
+    margin-top: var(--section-gap-tight);
+  }
+
+  .privacy-policy-section:first-child {
+    margin-top: 0;
+  }
+
+  .privacy-policy-contact {
+    margin: 0;
+    max-width: var(--measure-prose);
+  }
+
+  .privacy-policy-updated {
+    margin: var(--section-gap-tight) 0 0;
+    padding-top: var(--space-5);
+    border-top: 1px solid var(--line-neutral);
+    font-size: var(--size-caption);
+    line-height: var(--leading-body);
+    color: var(--text-tertiary);
+  }
+
+}

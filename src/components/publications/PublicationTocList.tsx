@@ -1,6 +1,7 @@
 import { PublicationTocItem } from "@/components/publications/PublicationTocItem";
 import type { Publication, PublicationTocEntry } from "@/content/types";
 import { pl } from "@/i18n/pl";
+import { PageHeading } from "@/components/core/PageHeading";
 
 export interface PublicationTocListProps {
   chapters: Publication["chapters"];
@@ -39,9 +40,9 @@ export function PublicationTocList({ chapters, items }: PublicationTocListProps)
 
   return (
     <section className="publication-toc" aria-labelledby="publication-toc-heading">
-      <h2 id="publication-toc-heading" className="publication-section-heading">
+      <PageHeading level="section" id="publication-toc-heading" className="mb-heading-gap">
         {pl.publications.tocHeading}
-      </h2>
+      </PageHeading>
       <p className="publication-section-lead">{pl.publications.tocLead}</p>
 
       <ol className="publication-toc-chapters">

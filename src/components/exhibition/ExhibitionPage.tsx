@@ -24,6 +24,7 @@ import type { AnnualExhibition } from "@/content/types";
 import { pl } from "@/i18n/pl";
 import { buildMailtoHref } from "@/lib/mailto";
 import { formatPolishMonthYearLocative } from "@/lib/polishMonth";
+import { PageHeading } from "@/components/core/PageHeading";
 
 export interface ExhibitionPageProps {
   /** Route path — see SectionPageShellProps["path"]. */
@@ -108,11 +109,9 @@ export function ExhibitionPage({
           >
             {copy.page.eyebrow}
           </p>
-          <h1
-            className="exhibition-hero-grid__h1 font-serif text-size-h1-m md:text-size-h1 leading-tight text-text-h1"
-          >
+          <PageHeading level="page" className="exhibition-hero-grid__h1">
             {copy.page.title}
-          </h1>
+          </PageHeading>
           <p
             className="exhibition-hero-grid__lead text-size-lead-m md:text-size-lead leading-body text-text-secondary max-w-measure-lead"
           >
@@ -144,12 +143,9 @@ export function ExhibitionPage({
               >
                 {copy.annual.eyebrow}
               </p>
-              <h2
-                id="exhibition-annual-heading"
-                className="exhibition-section-h2 font-serif text-size-role-section-h2-m md:text-size-role-section-h2 leading-heading text-text-h2"
-              >
+              <PageHeading level="section" id="exhibition-annual-heading" className="exhibition-section-h2">
                 {copy.annual.title}
-              </h2>
+              </PageHeading>
               <p className="exhibition-section-copy">
                 {titleSentence ? `${copy.annual.intro1} ${titleSentence}` : copy.annual.intro1}
               </p>
@@ -196,12 +192,9 @@ export function ExhibitionPage({
               >
                 {copy.permanent.eyebrow}
               </p>
-              <h2
-                id="exhibition-permanent-heading"
-                className="exhibition-section-h2 font-serif text-size-role-section-h2-m md:text-size-role-section-h2 leading-heading text-text-h2"
-              >
+              <PageHeading level="section" id="exhibition-permanent-heading" className="exhibition-section-h2">
                 {page.title}
-              </h2>
+              </PageHeading>
               {page.descriptionParagraphs.map((paragraph) => (
                 <p key={paragraph} className="exhibition-section-copy">
                   {paragraph}

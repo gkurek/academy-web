@@ -10,7 +10,7 @@ export interface LectureSeasonLinkProps {
 /**
  * MDX link to a lecture season's program; label and target follow the season's
  * state (hub while current, archive anchor afterwards — LK1). Plain `<a>` so
- * `.news-prose` link styles apply.
+ * `.prose-news` link styles apply.
  */
 export function LectureSeasonLink({ season }: LectureSeasonLinkProps) {
   const { label, href } = getLectureSeasonLink(season);

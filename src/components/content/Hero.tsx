@@ -1,6 +1,7 @@
 import Image from "next/image";
 import type { ReactNode } from "react";
 import type { Image as ImageType } from "@/content/types";
+import { PageHeading } from "@/components/core/PageHeading";
 
 export interface HeroProps {
   title: ReactNode;
@@ -19,9 +20,9 @@ export function Hero({ title, lead, image, children }: HeroProps) {
           resolved mockup DOM — there the <img> is an unpadded sibling of this
           text div, not nested inside its padding. */}
       <div className="px-page-margin-mobile pt-hero-pt-m pb-hero-pb-m md:p-0">
-        <h1 className="font-serif text-size-h1-m md:text-size-h1-home leading-tight text-text-h1 mb-space-4 md:mb-space-6">
+        <PageHeading level="page" variant="home" className="mb-space-4 md:mb-space-6">
           {title}
-        </h1>
+        </PageHeading>
         {lead && (
           <p className="text-size-lead-m md:text-size-lead leading-body text-text-secondary max-w-measure-lead mb-space-5 md:mb-0">
             {lead}

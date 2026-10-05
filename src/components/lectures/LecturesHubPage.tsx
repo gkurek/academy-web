@@ -6,6 +6,7 @@ import type { EnrollmentState } from "@/content/enrollment";
 import type { LoadedLectureSeason } from "@/content/lectures";
 import type { OfferFacts } from "@/content/types";
 import { pl } from "@/i18n/pl";
+import { PageHeading } from "@/components/core/PageHeading";
 
 export interface LecturesHubPageProps {
   season: LoadedLectureSeason;
@@ -38,9 +39,9 @@ export function LecturesHubPage({
           <p className="font-serif text-size-lectures-eyebrow text-accent-text mb-lectures-eyebrow-mb">
             {eyebrow}
           </p>
-          <h1 className="font-serif text-size-h1-m md:text-size-h1 leading-tight text-text-h1 mb-space-5">
+          <PageHeading level="page" className="mb-space-5">
             {season.cycleTitle}
-          </h1>
+          </PageHeading>
 
           {season.intro ? (
             <p className="text-size-lead-m md:text-size-lead leading-body text-text-secondary max-w-measure-lead mb-space-5">
@@ -49,7 +50,7 @@ export function LecturesHubPage({
           ) : null}
 
           {season.introSecondary ? (
-            <p className="text-size-body-lg leading-prose text-text-secondary max-w-measure-prose">
+            <p className="body-copy text-text-secondary">
               {season.introSecondary}
             </p>
           ) : null}
@@ -59,12 +60,9 @@ export function LecturesHubPage({
       </div>
 
       <section aria-labelledby="lectures-program-heading">
-        <h2
-          id="lectures-program-heading"
-          className="font-serif text-size-role-section-h2-m md:text-size-role-section-h2 leading-heading text-text-h2 mb-heading-gap"
-        >
+        <PageHeading level="section" id="lectures-program-heading" className="mb-heading-gap">
           {pl.lectures.programHeading}
-        </h2>
+        </PageHeading>
         <p className="text-size-body leading-body text-text-secondary mb-lectures-program-lead-mb max-w-measure-prose">
           {programLead}
         </p>
@@ -73,12 +71,9 @@ export function LecturesHubPage({
 
       <section aria-labelledby="lectures-archive-heading" className="mt-section-gap">
         <div className="flex flex-wrap items-baseline justify-between gap-x-space-4 gap-y-space-2 mb-heading-gap">
-          <h2
-            id="lectures-archive-heading"
-            className="font-serif text-size-role-section-h2-m md:text-size-role-section-h2 leading-heading text-text-h2"
-          >
+          <PageHeading level="section" id="lectures-archive-heading">
             {pl.lectures.archiveHeading}
-          </h2>
+          </PageHeading>
           <TextLink href="/wyklady/archiwum" className="text-size-body">
             {pl.lectures.archiveFullLink}
           </TextLink>

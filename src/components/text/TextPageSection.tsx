@@ -1,5 +1,7 @@
 import type { ReactNode } from "react";
+import { PageHeading } from "@/components/core/PageHeading";
 
+import { Prose } from "@/components/core/Prose";
 export interface TextPageSectionProps {
   id: string;
   heading: string;
@@ -13,10 +15,10 @@ export function TextPageSection({ id, heading, children }: TextPageSectionProps)
       id={id}
       className="mt-section-gap-loose scroll-mt-space-6 grid grid-cols-1 items-start gap-heading-gap lg:grid-cols-text-page-section lg:gap-text-page-main-gap"
     >
-      <h2 className="font-serif text-size-role-section-h2-m md:text-size-role-section-h2 leading-heading text-text-h2">
+      <PageHeading level="section">
         {heading}
-      </h2>
-      <div className="min-w-0 text-page-mdx">{children}</div>
+      </PageHeading>
+      <Prose variant="text" className="min-w-0">{children}</Prose>
     </section>
   );
 }

@@ -1,0 +1,95 @@
+/* Typographic roles — the single definition of each heading and body-copy role.
+   TSX headings use PageHeading (core/PageHeading.tsx); MDX and prose wrappers reach the
+   same rules through the grouped selectors below, so nothing else may set font-size,
+   line-height or colour on an h1–h3 or on a prose paragraph.
+   Margins are deliberately not part of a role: callers add a margin utility
+   (or the prose rules in prose.css do). */
+@layer components {
+  /* Page title (h1). Variants: --home (hero, 56 px), --entry (news article, own scale). */
+  .heading-page {
+    font-family: var(--font-serif);
+    font-size: var(--size-h1-m);
+    line-height: var(--leading-tight);
+    color: var(--text-h1);
+  }
+
+  .heading-page--entry {
+    font-size: var(--news-article-title-size-m);
+    line-height: var(--news-article-title-leading);
+    text-wrap: balance;
+  }
+
+  /* Section title (h2). */
+  .heading-section,
+  .prose-text > h2,
+  .prose-offer > h2 {
+    font-family: var(--font-serif);
+    font-size: var(--size-h2-m);
+    line-height: var(--leading-heading);
+    color: var(--text-h2);
+  }
+
+  /* Subtitle inside a section (h3): one role for MDX and component subtitles (V2-05). */
+  .heading-sub,
+  .prose-text > h3,
+  .prose-offer > h3 {
+    font-family: var(--font-serif);
+    font-size: var(--role-row-title-m);
+    line-height: var(--leading-heading);
+    color: var(--text-list-title);
+  }
+
+  /* Title of an item in a list (lecture, news card, article): one role, interline 1.2 (V2-07). */
+  .list-title {
+    font-family: var(--font-serif);
+    font-size: var(--role-list-title-m);
+    line-height: var(--leading-heading);
+    color: var(--text-list-title);
+  }
+
+  /* Body copy: text under a section heading and in prose wrappers. Colour is set by the caller. */
+  .body-copy,
+  .prose-text > p,
+  .prose-offer > p {
+    max-width: var(--measure-prose);
+    font-size: var(--size-body);
+    line-height: var(--leading-body);
+  }
+
+  @media (min-width: 768px) {
+    .heading-page {
+      font-size: var(--size-h1);
+    }
+
+    .heading-page--home {
+      font-size: var(--size-h1-home);
+    }
+
+    .heading-page--entry {
+      font-size: var(--news-article-title-size);
+    }
+
+    .heading-section,
+    .prose-text > h2,
+    .prose-offer > h2 {
+      font-size: var(--size-h2);
+    }
+
+    .heading-sub,
+    .prose-text > h3,
+    .prose-offer > h3 {
+      font-size: var(--role-row-title);
+    }
+
+    .list-title {
+      font-size: var(--role-list-title);
+    }
+
+    .body-copy,
+    .prose-text > p,
+    .prose-offer > p {
+      font-size: var(--size-body-lg);
+      line-height: var(--leading-prose);
+    }
+  }
+}

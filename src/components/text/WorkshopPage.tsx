@@ -3,6 +3,8 @@ import { LearningForms } from "@/components/text/LearningForms";
 import { TextPageShell } from "@/components/text/TextPageShell";
 import { WorkshopGallerySection } from "@/components/text/WorkshopGallerySection";
 import type { LoadedWorkshopPage } from "@/content/pages";
+import { PageHeading } from "@/components/core/PageHeading";
+import { Prose } from "@/components/core/Prose";
 
 export interface WorkshopPageProps {
   page: LoadedWorkshopPage;
@@ -22,19 +24,19 @@ export function WorkshopPage({ page, path }: WorkshopPageProps) {
       path={path}
     >
       <section id="formy-nauki" className="workshop-section scroll-mt-space-6">
-        <h2 className="workshop-section-heading">{learningForms.heading}</h2>
+        <PageHeading level="section" className="mb-heading-gap">{learningForms.heading}</PageHeading>
         <LearningForms rows={learningForms.rows} contact={learningForms.contact} />
       </section>
 
       <Interview heading={interview.heading} interview={interview} />
 
       <section id="czego-sie-uczymy" className="workshop-section scroll-mt-space-6">
-        <h2 className="workshop-section-heading">{curriculum.heading}</h2>
-        <div className="text-page-mdx">
+        <PageHeading level="section" className="mb-heading-gap">{curriculum.heading}</PageHeading>
+        <Prose variant="text">
           {curriculumParagraphs.map((paragraph, index) => (
             <p key={index}>{paragraph}</p>
           ))}
-        </div>
+        </Prose>
       </section>
 
       <WorkshopGallerySection

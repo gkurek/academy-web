@@ -3,6 +3,7 @@ import { useId } from "react";
 import type { Testimonial } from "@/content/types";
 
 import { formatAttribution } from "./formatAttribution";
+import { PageHeading } from "@/components/core/PageHeading";
 
 export interface OfferQuoteGridProps {
   heading: string;
@@ -22,12 +23,9 @@ export function OfferQuoteGrid({ heading, quotes, columns = 3 }: OfferQuoteGridP
       aria-labelledby={headingId}
       className="mt-section-gap"
     >
-      <h2
-        id={headingId}
-        className="font-serif text-size-role-section-h2-m md:text-size-role-section-h2 leading-heading text-text-h2 mb-heading-gap"
-      >
+      <PageHeading level="section" id={headingId} className="mb-heading-gap">
         {heading}
-      </h2>
+      </PageHeading>
       <div className={gridClass}>
         {quotes.map((item, index) => (
           <blockquote

@@ -1,6 +1,6 @@
 # Plan 10/R — Review serwisu (techniczne, wizualne, treść)
 
-Status: **zatwierdzony** 2026-10-04 · R0 ✅ 2026-10-04 · R1 ✅ 2026-10-04 · R2 ✅ 2026-10-04 · R3 ✅ 2026-10-04 · R4 ✅ 2026-10-04 · R5 ✅ 2026-10-04 · `10-review-fixes.md` **zatwierdzony** 2026-10-04 (D1–D10) · RF-0 ✅ 2026-10-05 (Playwright, baseline) · workflow lokalny D11 · V1 ✅ · V2 ✅ 2026-10-05 · V3 ✅ 2026-10-05 · RF-13a ✅ 2026-10-05 · V4 ✅ 2026-10-05 (brama RF-13a: założenia trzymają) · RF-15…RF-20 zatwierdzone 2026-10-05 · RF-13 ✅ 2026-10-05 (lokalnie) · następny: **RF-14**  
+Status: **zatwierdzony** 2026-10-04 · R0 ✅ 2026-10-04 · R1 ✅ 2026-10-04 · R2 ✅ 2026-10-04 · R3 ✅ 2026-10-04 · R4 ✅ 2026-10-04 · R5 ✅ 2026-10-04 · `10-review-fixes.md` **zatwierdzony** 2026-10-04 (D1–D10) · RF-0 ✅ 2026-10-05 (Playwright, baseline) · workflow lokalny D11 · V1 ✅ · V2 ✅ 2026-10-05 · V3 ✅ 2026-10-05 · RF-13a ✅ 2026-10-05 · V4 ✅ 2026-10-05 (brama RF-13a: założenia trzymają) · RF-15…RF-20 zatwierdzone 2026-10-05 · RF-13 ✅ 2026-10-05 (lokalnie) · RF-14 ✅ 2026-10-05 (lokalnie, czeka na OK) · następny: **RF-15**  
 Gałąź: `feat/10-review` od `main` — dokumenty review i paczki poprawek; k8 zostaje na `feat/10-finishing` (merge do `main` niezależnie)  
 Staging: https://academy-web-lovat.vercel.app/  
 Makiety: tokeny `design/README`, odczyt wartości `docs/design-mockup-guide.md` (tylko jako punkt odniesienia w V1–V4).

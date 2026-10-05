@@ -2,6 +2,7 @@ import { useId, type CSSProperties } from "react";
 
 import type { StepItem } from "@/content/offers";
 import { pl } from "@/i18n/pl";
+import { PageHeading } from "@/components/core/PageHeading";
 
 export interface StepListProps {
   steps: StepItem[];
@@ -15,12 +16,9 @@ export function StepList({ steps }: StepListProps) {
 
   return (
     <section aria-labelledby={headingId} className="not-prose">
-      <h2
-        id={headingId}
-        className="font-serif text-size-role-section-h2-m md:text-size-role-section-h2 leading-heading text-text-h2 mt-section-gap mb-heading-gap first:mt-0"
-      >
+      <PageHeading level="section" id={headingId} className="mt-section-gap mb-heading-gap first:mt-0">
         {pl.offers.orderStepsHeading}
-      </h2>
+      </PageHeading>
       <p className="text-size-body leading-body text-text-secondary mb-space-6">
         {pl.offers.orderStepsIntro}
       </p>

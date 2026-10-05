@@ -1,5 +1,6 @@
 import { IconGrid } from "@/components/gallery/IconGrid";
 import type { IconWork } from "@/content/types";
+import { PageHeading } from "@/components/core/PageHeading";
 
 export interface GallerySectionProps {
   id: string;
@@ -30,12 +31,9 @@ export function GallerySection({
 
   return (
     <section id={id} aria-labelledby={headingId} className={className}>
-      <h2
-        id={headingId}
-        className="font-serif text-size-role-section-h2-m md:text-size-role-section-h2 leading-heading text-text-h2 mb-heading-gap"
-      >
+      <PageHeading level="section" id={headingId} className="mb-heading-gap">
         {title}
-      </h2>
+      </PageHeading>
 
       {hasNames ? (
         <p className="text-size-body leading-body text-text-tertiary max-w-measure-prose mb-space-6">

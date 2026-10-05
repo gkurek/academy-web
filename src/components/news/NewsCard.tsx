@@ -29,7 +29,7 @@ export function NewsCard({ entry }: NewsCardProps) {
       </div>
 
       <div className="news-card-body">
-        <h3 className="news-card-title">
+        <h3 className="list-title news-card-title">
           <NewsEntryLink href={href} year={year} className="news-card-title-link">
             {entry.title}
           </NewsEntryLink>

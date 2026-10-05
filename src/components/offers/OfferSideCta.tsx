@@ -4,6 +4,7 @@ import { useId, type ReactNode } from "react";
 import { Button } from "@/components/core/Button";
 import { pl } from "@/i18n/pl";
 import { buildMailtoHref } from "@/lib/mailto";
+import { Prose } from "@/components/core/Prose";
 
 export interface OfferSideCtaProps {
   /** MDX body of the left column. */
@@ -35,7 +36,9 @@ export function OfferSideCta({
 
   return (
     <div className="grid grid-cols-1 lg:grid-cols-offer-main gap-space-7 lg:gap-offer-main-gap items-start">
-      <div className="min-w-0">{children}</div>
+      <Prose variant="offer" className="min-w-0">
+        {children}
+      </Prose>
 
       <div>
         <Image

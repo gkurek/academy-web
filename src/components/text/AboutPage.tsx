@@ -10,7 +10,9 @@ import { TextPageSection } from "@/components/text/TextPageSection";
 import { TextPageShell } from "@/components/text/TextPageShell";
 import type { LoadedAboutPage } from "@/content/pages";
 import type { Image as ContentImage, TextPageLink } from "@/content/types";
+import { PageHeading } from "@/components/core/PageHeading";
 
+import { Prose } from "@/components/core/Prose";
 export interface AboutPageProps {
   page: LoadedAboutPage;
   /** Route path — see SectionPageShellProps["path"]. */
@@ -34,7 +36,7 @@ function AboutHero({ title, lead, image }: { title: string; lead: string; image:
     <header className="about-hero mb-space-6">
       <div className="about-hero-grid">
         <div className="about-hero-copy">
-          <h1 className="about-hero-title">{title}</h1>
+          <PageHeading level="page" className="mb-space-5">{title}</PageHeading>
           <p className="about-hero-lead">{lead}</p>
         </div>
         <figure className="about-hero-figure">
@@ -77,12 +79,12 @@ export function AboutPage({ page, path }: AboutPageProps) {
       className="about-workshop-band surface-card-bleed mt-section-gap-loose scroll-mt-space-6"
     >
       <div className="about-workshop-band-inner">
-        <h2 className="about-workshop-heading font-serif text-size-role-section-h2-m md:text-size-role-section-h2 leading-heading text-text-h2">
+        <PageHeading level="section" className="mb-space-6">
           {workshop.heading}
-        </h2>
-        <div className="text-page-mdx">
+        </PageHeading>
+        <Prose variant="text">
           <p>{workshopParagraph}</p>
-        </div>
+        </Prose>
         <p className="about-workshop-accessibility">{workshop.accessibility}</p>
         <TextLinkRow links={workshop.links} />
         <div className="about-workshop-photos">
@@ -121,20 +123,20 @@ export function AboutPage({ page, path }: AboutPageProps) {
       </TextPageSection>
 
       <TextPageSection id="dla-kogo" heading={audience.heading}>
-        <div className="text-page-mdx">
+        <Prose variant="text">
           {audienceParagraphs.map((paragraph, index) => (
             <p key={index}>{paragraph}</p>
           ))}
-        </div>
+        </Prose>
       </TextPageSection>
 
       <section
         id="prowadzaca"
         className="about-person-section mt-section-gap-loose scroll-mt-space-6"
       >
-        <h2 className="about-person-heading font-serif text-size-role-section-h2-m md:text-size-role-section-h2 leading-heading text-text-h2">
+        <PageHeading level="section">
           {person.heading}
-        </h2>
+        </PageHeading>
         <PersonProfile profile={person.profile} />
       </section>
 
@@ -148,9 +150,9 @@ export function AboutPage({ page, path }: AboutPageProps) {
 
       <TextPageSection id="historia" heading={history.heading}>
         <MilestoneRow items={history.milestones} />
-        <div className="text-page-mdx mt-space-5">
+        <Prose variant="text" className="mt-space-5">
           <p>{historyParagraph}</p>
-        </div>
+        </Prose>
         <div className="mt-space-5">
           <TextLinkRow links={history.links} />
         </div>

@@ -1050,5 +1050,607 @@
     "signal": "styles",
     "width": 1920,
     "note": "archive section on --section-gap via margin (was padding 56), --heading-gap"
+  },
+  {
+    "id": "RF-14",
+    "route": "/",
+    "signal": "html",
+    "note": "class renames: PageHeading / Prose wrappers and role classes (heading-*, prose-*, list-title, body-copy) replace per-element utility strings and per-page classes"
+  },
+  {
+    "id": "RF-14",
+    "route": "/aktualnosci",
+    "signal": "html",
+    "note": "class renames: PageHeading / Prose wrappers and role classes (heading-*, prose-*, list-title, body-copy) replace per-element utility strings and per-page classes; list title colour #ece2d3 → #f0e6d5 (V1-17); excerpt line-height 1.7 → 1.6 (V2-08)"
+  },
+  {
+    "id": "RF-14",
+    "route": "/aktualnosci",
+    "signal": "styles",
+    "width": 390,
+    "note": "list title colour #ece2d3 → #f0e6d5 (V1-17); excerpt line-height 1.7 → 1.6 (V2-08)"
+  },
+  {
+    "id": "RF-14",
+    "route": "/aktualnosci",
+    "signal": "screenshot",
+    "width": 1440,
+    "note": "list title colour #ece2d3 → #f0e6d5 (V1-17); excerpt line-height 1.7 → 1.6 (V2-08)"
+  },
+  {
+    "id": "RF-14",
+    "route": "/aktualnosci",
+    "signal": "styles",
+    "width": 1440,
+    "note": "list title colour #ece2d3 → #f0e6d5 (V1-17); excerpt line-height 1.7 → 1.6 (V2-08)"
+  },
+  {
+    "id": "RF-14",
+    "route": "/aktualnosci",
+    "signal": "screenshot",
+    "width": 1920,
+    "note": "list title colour #ece2d3 → #f0e6d5 (V1-17); excerpt line-height 1.7 → 1.6 (V2-08)"
+  },
+  {
+    "id": "RF-14",
+    "route": "/aktualnosci",
+    "signal": "styles",
+    "width": 1920,
+    "note": "list title colour #ece2d3 → #f0e6d5 (V1-17); excerpt line-height 1.7 → 1.6 (V2-08)"
+  },
+  {
+    "id": "RF-14",
+    "route": "/aktualnosci/ikona-korzenie-i-owoce-wiary-mistyka-dzis-wyklady-2026-2027",
+    "signal": "html",
+    "note": "class renames: PageHeading / Prose wrappers and role classes (heading-*, prose-*, list-title, body-copy) replace per-element utility strings and per-page classes"
+  },
+  {
+    "id": "RF-14",
+    "route": "/aktualnosci/nabor-kursu-2026-2027",
+    "signal": "html",
+    "note": "class renames: PageHeading / Prose wrappers and role classes (heading-*, prose-*, list-title, body-copy) replace per-element utility strings and per-page classes"
+  },
+  {
+    "id": "RF-14",
+    "route": "/ikony",
+    "signal": "html",
+    "note": "class renames: PageHeading / Prose wrappers and role classes (heading-*, prose-*, list-title, body-copy) replace per-element utility strings and per-page classes"
+  },
+  {
+    "id": "RF-14",
+    "route": "/ikony/na-zamowienie",
+    "signal": "html",
+    "note": "class renames: PageHeading / Prose wrappers and role classes (heading-*, prose-*, list-title, body-copy) replace per-element utility strings and per-page classes; section prose colour secondary → body (V3-07); intro paragraph 17.5 → 16.5 on 390 (V2-04); paragraph gap 14 → 20 (V1-19); caption 14.5 → 15 on 390 (V1-14)"
+  },
+  {
+    "id": "RF-14",
+    "route": "/ikony/na-zamowienie",
+    "signal": "screenshot",
+    "width": 390,
+    "note": "section prose colour secondary → body (V3-07); intro paragraph 17.5 → 16.5 on 390 (V2-04); paragraph gap 14 → 20 (V1-19); caption 14.5 → 15 on 390 (V1-14)"
+  },
+  {
+    "id": "RF-14",
+    "route": "/ikony/na-zamowienie",
+    "signal": "styles",
+    "width": 390,
+    "note": "section prose colour secondary → body (V3-07); intro paragraph 17.5 → 16.5 on 390 (V2-04); paragraph gap 14 → 20 (V1-19); caption 14.5 → 15 on 390 (V1-14)"
+  },
+  {
+    "id": "RF-14",
+    "route": "/ikony/na-zamowienie",
+    "signal": "screenshot",
+    "width": 1440,
+    "note": "section prose colour secondary → body (V3-07); intro paragraph 17.5 → 16.5 on 390 (V2-04); paragraph gap 14 → 20 (V1-19); caption 14.5 → 15 on 390 (V1-14)"
+  },
+  {
+    "id": "RF-14",
+    "route": "/ikony/na-zamowienie",
+    "signal": "styles",
+    "width": 1440,
+    "note": "section prose colour secondary → body (V3-07); intro paragraph 17.5 → 16.5 on 390 (V2-04); paragraph gap 14 → 20 (V1-19); caption 14.5 → 15 on 390 (V1-14)"
+  },
+  {
+    "id": "RF-14",
+    "route": "/ikony/na-zamowienie",
+    "signal": "screenshot",
+    "width": 1920,
+    "note": "section prose colour secondary → body (V3-07); intro paragraph 17.5 → 16.5 on 390 (V2-04); paragraph gap 14 → 20 (V1-19); caption 14.5 → 15 on 390 (V1-14)"
+  },
+  {
+    "id": "RF-14",
+    "route": "/ikony/na-zamowienie",
+    "signal": "styles",
+    "width": 1920,
+    "note": "section prose colour secondary → body (V3-07); intro paragraph 17.5 → 16.5 on 390 (V2-04); paragraph gap 14 → 20 (V1-19); caption 14.5 → 15 on 390 (V1-14)"
+  },
+  {
+    "id": "RF-14",
+    "route": "/ikony/wystawy",
+    "signal": "html",
+    "note": "class renames: PageHeading / Prose wrappers and role classes (heading-*, prose-*, list-title, body-copy) replace per-element utility strings and per-page classes; caption 14.5 → 15 px on 390 (V1-14)"
+  },
+  {
+    "id": "RF-14",
+    "route": "/ikony/wystawy",
+    "signal": "screenshot",
+    "width": 390,
+    "note": "caption 14.5 → 15 px on 390 (V1-14)"
+  },
+  {
+    "id": "RF-14",
+    "route": "/ikony/wystawy",
+    "signal": "styles",
+    "width": 390,
+    "note": "caption 14.5 → 15 px on 390 (V1-14)"
+  },
+  {
+    "id": "RF-14",
+    "route": "/kontakt",
+    "signal": "html",
+    "note": "class renames: PageHeading / Prose wrappers and role classes (heading-*, prose-*, list-title, body-copy) replace per-element utility strings and per-page classes"
+  },
+  {
+    "id": "RF-14",
+    "route": "/nie-ma-takiej-strony",
+    "signal": "html",
+    "note": "class renames: PageHeading / Prose wrappers and role classes (heading-*, prose-*, list-title, body-copy) replace per-element utility strings and per-page classes"
+  },
+  {
+    "id": "RF-14",
+    "route": "/o-akademii",
+    "signal": "html",
+    "note": "class renames: PageHeading / Prose wrappers and role classes (heading-*, prose-*, list-title, body-copy) replace per-element utility strings and per-page classes; hero lead line-height 1.7 → 1.6 (V2-15)"
+  },
+  {
+    "id": "RF-14",
+    "route": "/o-akademii",
+    "signal": "screenshot",
+    "width": 390,
+    "note": "hero lead line-height 1.7 → 1.6 (V2-15)"
+  },
+  {
+    "id": "RF-14",
+    "route": "/o-akademii",
+    "signal": "screenshot",
+    "width": 1440,
+    "note": "hero lead line-height 1.7 → 1.6 (V2-15)"
+  },
+  {
+    "id": "RF-14",
+    "route": "/o-akademii",
+    "signal": "styles",
+    "width": 1440,
+    "note": "hero lead line-height 1.7 → 1.6 (V2-15)"
+  },
+  {
+    "id": "RF-14",
+    "route": "/o-akademii",
+    "signal": "screenshot",
+    "width": 1920,
+    "note": "hero lead line-height 1.7 → 1.6 (V2-15)"
+  },
+  {
+    "id": "RF-14",
+    "route": "/o-akademii",
+    "signal": "styles",
+    "width": 1920,
+    "note": "hero lead line-height 1.7 → 1.6 (V2-15)"
+  },
+  {
+    "id": "RF-14",
+    "route": "/polityka-prywatnosci",
+    "signal": "html",
+    "note": "class renames: PageHeading / Prose wrappers and role classes (heading-*, prose-*, list-title, body-copy) replace per-element utility strings and per-page classes; caption 14.5 → 15 px on 390 (V1-14)"
+  },
+  {
+    "id": "RF-14",
+    "route": "/polityka-prywatnosci",
+    "signal": "screenshot",
+    "width": 390,
+    "note": "caption 14.5 → 15 px on 390 (V1-14)"
+  },
+  {
+    "id": "RF-14",
+    "route": "/polityka-prywatnosci",
+    "signal": "styles",
+    "width": 390,
+    "note": "caption 14.5 → 15 px on 390 (V1-14)"
+  },
+  {
+    "id": "RF-14",
+    "route": "/pracownia",
+    "signal": "html",
+    "note": "class renames: PageHeading / Prose wrappers and role classes (heading-*, prose-*, list-title, body-copy) replace per-element utility strings and per-page classes; form description line-height 1.7 → 1.6 (V2-08); caption 14.5 → 15 on 390 (V1-14)"
+  },
+  {
+    "id": "RF-14",
+    "route": "/pracownia",
+    "signal": "screenshot",
+    "width": 390,
+    "note": "form description line-height 1.7 → 1.6 (V2-08); caption 14.5 → 15 on 390 (V1-14)"
+  },
+  {
+    "id": "RF-14",
+    "route": "/pracownia",
+    "signal": "styles",
+    "width": 390,
+    "note": "form description line-height 1.7 → 1.6 (V2-08); caption 14.5 → 15 on 390 (V1-14)"
+  },
+  {
+    "id": "RF-14",
+    "route": "/pracownia",
+    "signal": "screenshot",
+    "width": 1440,
+    "note": "form description line-height 1.7 → 1.6 (V2-08); caption 14.5 → 15 on 390 (V1-14)"
+  },
+  {
+    "id": "RF-14",
+    "route": "/pracownia",
+    "signal": "styles",
+    "width": 1440,
+    "note": "form description line-height 1.7 → 1.6 (V2-08); caption 14.5 → 15 on 390 (V1-14)"
+  },
+  {
+    "id": "RF-14",
+    "route": "/pracownia",
+    "signal": "screenshot",
+    "width": 1920,
+    "note": "form description line-height 1.7 → 1.6 (V2-08); caption 14.5 → 15 on 390 (V1-14)"
+  },
+  {
+    "id": "RF-14",
+    "route": "/pracownia",
+    "signal": "styles",
+    "width": 1920,
+    "note": "form description line-height 1.7 → 1.6 (V2-08); caption 14.5 → 15 on 390 (V1-14)"
+  },
+  {
+    "id": "RF-14",
+    "route": "/publikacje",
+    "signal": "html",
+    "note": "class renames: PageHeading / Prose wrappers and role classes (heading-*, prose-*, list-title, body-copy) replace per-element utility strings and per-page classes; article list title 25/21 → 22/20, line-height 1.2, colour #f0e6d5 (V2-07, V1-17); hub description and section lead 19.5 → 16.5, line-height 1.6 (V2-13, V2-08)"
+  },
+  {
+    "id": "RF-14",
+    "route": "/publikacje",
+    "signal": "screenshot",
+    "width": 390,
+    "note": "article list title 25/21 → 22/20, line-height 1.2, colour #f0e6d5 (V2-07, V1-17); hub description and section lead 19.5 → 16.5, line-height 1.6 (V2-13, V2-08)"
+  },
+  {
+    "id": "RF-14",
+    "route": "/publikacje",
+    "signal": "styles",
+    "width": 390,
+    "note": "article list title 25/21 → 22/20, line-height 1.2, colour #f0e6d5 (V2-07, V1-17); hub description and section lead 19.5 → 16.5, line-height 1.6 (V2-13, V2-08)"
+  },
+  {
+    "id": "RF-14",
+    "route": "/publikacje",
+    "signal": "screenshot",
+    "width": 1440,
+    "note": "article list title 25/21 → 22/20, line-height 1.2, colour #f0e6d5 (V2-07, V1-17); hub description and section lead 19.5 → 16.5, line-height 1.6 (V2-13, V2-08)"
+  },
+  {
+    "id": "RF-14",
+    "route": "/publikacje",
+    "signal": "styles",
+    "width": 1440,
+    "note": "article list title 25/21 → 22/20, line-height 1.2, colour #f0e6d5 (V2-07, V1-17); hub description and section lead 19.5 → 16.5, line-height 1.6 (V2-13, V2-08)"
+  },
+  {
+    "id": "RF-14",
+    "route": "/publikacje",
+    "signal": "screenshot",
+    "width": 1920,
+    "note": "article list title 25/21 → 22/20, line-height 1.2, colour #f0e6d5 (V2-07, V1-17); hub description and section lead 19.5 → 16.5, line-height 1.6 (V2-13, V2-08)"
+  },
+  {
+    "id": "RF-14",
+    "route": "/publikacje",
+    "signal": "styles",
+    "width": 1920,
+    "note": "article list title 25/21 → 22/20, line-height 1.2, colour #f0e6d5 (V2-07, V1-17); hub description and section lead 19.5 → 16.5, line-height 1.6 (V2-13, V2-08)"
+  },
+  {
+    "id": "RF-14",
+    "route": "/publikacje/cisza-ikony",
+    "signal": "html",
+    "note": "class renames: PageHeading / Prose wrappers and role classes (heading-*, prose-*, list-title, body-copy) replace per-element utility strings and per-page classes; paragraph margin-bottom 14 → 0 (gap stays 20 through margin collapse, V1-19); breadcrumb caption 14.5 → 15 on 390 (V1-14)"
+  },
+  {
+    "id": "RF-14",
+    "route": "/publikacje/cisza-ikony",
+    "signal": "screenshot",
+    "width": 390,
+    "note": "paragraph margin-bottom 14 → 0 (gap stays 20 through margin collapse, V1-19); breadcrumb caption 14.5 → 15 on 390 (V1-14)"
+  },
+  {
+    "id": "RF-14",
+    "route": "/publikacje/cisza-ikony",
+    "signal": "styles",
+    "width": 390,
+    "note": "paragraph margin-bottom 14 → 0 (gap stays 20 through margin collapse, V1-19); breadcrumb caption 14.5 → 15 on 390 (V1-14)"
+  },
+  {
+    "id": "RF-14",
+    "route": "/publikacje/cisza-ikony",
+    "signal": "styles",
+    "width": 1440,
+    "note": "paragraph margin-bottom 14 → 0 (gap stays 20 through margin collapse, V1-19); breadcrumb caption 14.5 → 15 on 390 (V1-14)"
+  },
+  {
+    "id": "RF-14",
+    "route": "/publikacje/cisza-ikony",
+    "signal": "styles",
+    "width": 1920,
+    "note": "paragraph margin-bottom 14 → 0 (gap stays 20 through margin collapse, V1-19); breadcrumb caption 14.5 → 15 on 390 (V1-14)"
+  },
+  {
+    "id": "RF-14",
+    "route": "/publikacje/ikona-dzis",
+    "signal": "html",
+    "note": "class renames: PageHeading / Prose wrappers and role classes (heading-*, prose-*, list-title, body-copy) replace per-element utility strings and per-page classes; 'O albumie' paragraphs are prose (16.5/17.5 instead of lead 19.5, body colour, 20 px gap — V2-13); breadcrumb caption 14.5 → 15 on 390 (V1-14)"
+  },
+  {
+    "id": "RF-14",
+    "route": "/publikacje/ikona-dzis",
+    "signal": "screenshot",
+    "width": 390,
+    "note": "'O albumie' paragraphs are prose (16.5/17.5 instead of lead 19.5, body colour, 20 px gap — V2-13); breadcrumb caption 14.5 → 15 on 390 (V1-14)"
+  },
+  {
+    "id": "RF-14",
+    "route": "/publikacje/ikona-dzis",
+    "signal": "styles",
+    "width": 390,
+    "note": "'O albumie' paragraphs are prose (16.5/17.5 instead of lead 19.5, body colour, 20 px gap — V2-13); breadcrumb caption 14.5 → 15 on 390 (V1-14)"
+  },
+  {
+    "id": "RF-14",
+    "route": "/publikacje/ikona-dzis",
+    "signal": "screenshot",
+    "width": 1440,
+    "note": "'O albumie' paragraphs are prose (16.5/17.5 instead of lead 19.5, body colour, 20 px gap — V2-13); breadcrumb caption 14.5 → 15 on 390 (V1-14)"
+  },
+  {
+    "id": "RF-14",
+    "route": "/publikacje/ikona-dzis",
+    "signal": "styles",
+    "width": 1440,
+    "note": "'O albumie' paragraphs are prose (16.5/17.5 instead of lead 19.5, body colour, 20 px gap — V2-13); breadcrumb caption 14.5 → 15 on 390 (V1-14)"
+  },
+  {
+    "id": "RF-14",
+    "route": "/publikacje/ikona-dzis",
+    "signal": "screenshot",
+    "width": 1920,
+    "note": "'O albumie' paragraphs are prose (16.5/17.5 instead of lead 19.5, body colour, 20 px gap — V2-13); breadcrumb caption 14.5 → 15 on 390 (V1-14)"
+  },
+  {
+    "id": "RF-14",
+    "route": "/publikacje/ikona-dzis",
+    "signal": "styles",
+    "width": 1920,
+    "note": "'O albumie' paragraphs are prose (16.5/17.5 instead of lead 19.5, body colour, 20 px gap — V2-13); breadcrumb caption 14.5 → 15 on 390 (V1-14)"
+  },
+  {
+    "id": "RF-14",
+    "route": "/warsztaty",
+    "signal": "html",
+    "note": "class renames: PageHeading / Prose wrappers and role classes (heading-*, prose-*, list-title, body-copy) replace per-element utility strings and per-page classes; second intro paragraph 17.5 → 16.5 on 390 (V2-04)"
+  },
+  {
+    "id": "RF-14",
+    "route": "/warsztaty",
+    "signal": "screenshot",
+    "width": 390,
+    "note": "second intro paragraph 17.5 → 16.5 on 390 (V2-04)"
+  },
+  {
+    "id": "RF-14",
+    "route": "/warsztaty",
+    "signal": "styles",
+    "width": 390,
+    "note": "second intro paragraph 17.5 → 16.5 on 390 (V2-04)"
+  },
+  {
+    "id": "RF-14",
+    "route": "/warsztaty/kurs-roczny-i-trzyletni",
+    "signal": "html",
+    "note": "class renames: PageHeading / Prose wrappers and role classes (heading-*, prose-*, list-title, body-copy) replace per-element utility strings and per-page classes; MDX H3 26/21 → 21/19 (V2-05); section prose colour secondary → body (V3-07); intro paragraph 17.5 → 16.5 on 390 (V2-04); paragraph gap 14 → 20 (V1-19); caption 14.5 → 15 on 390 (V1-14)"
+  },
+  {
+    "id": "RF-14",
+    "route": "/warsztaty/kurs-roczny-i-trzyletni",
+    "signal": "screenshot",
+    "width": 390,
+    "note": "MDX H3 26/21 → 21/19 (V2-05); section prose colour secondary → body (V3-07); intro paragraph 17.5 → 16.5 on 390 (V2-04); paragraph gap 14 → 20 (V1-19); caption 14.5 → 15 on 390 (V1-14)"
+  },
+  {
+    "id": "RF-14",
+    "route": "/warsztaty/kurs-roczny-i-trzyletni",
+    "signal": "styles",
+    "width": 390,
+    "note": "MDX H3 26/21 → 21/19 (V2-05); section prose colour secondary → body (V3-07); intro paragraph 17.5 → 16.5 on 390 (V2-04); paragraph gap 14 → 20 (V1-19); caption 14.5 → 15 on 390 (V1-14)"
+  },
+  {
+    "id": "RF-14",
+    "route": "/warsztaty/kurs-roczny-i-trzyletni",
+    "signal": "screenshot",
+    "width": 1440,
+    "note": "MDX H3 26/21 → 21/19 (V2-05); section prose colour secondary → body (V3-07); intro paragraph 17.5 → 16.5 on 390 (V2-04); paragraph gap 14 → 20 (V1-19); caption 14.5 → 15 on 390 (V1-14)"
+  },
+  {
+    "id": "RF-14",
+    "route": "/warsztaty/kurs-roczny-i-trzyletni",
+    "signal": "styles",
+    "width": 1440,
+    "note": "MDX H3 26/21 → 21/19 (V2-05); section prose colour secondary → body (V3-07); intro paragraph 17.5 → 16.5 on 390 (V2-04); paragraph gap 14 → 20 (V1-19); caption 14.5 → 15 on 390 (V1-14)"
+  },
+  {
+    "id": "RF-14",
+    "route": "/warsztaty/kurs-roczny-i-trzyletni",
+    "signal": "screenshot",
+    "width": 1920,
+    "note": "MDX H3 26/21 → 21/19 (V2-05); section prose colour secondary → body (V3-07); intro paragraph 17.5 → 16.5 on 390 (V2-04); paragraph gap 14 → 20 (V1-19); caption 14.5 → 15 on 390 (V1-14)"
+  },
+  {
+    "id": "RF-14",
+    "route": "/warsztaty/kurs-roczny-i-trzyletni",
+    "signal": "styles",
+    "width": 1920,
+    "note": "MDX H3 26/21 → 21/19 (V2-05); section prose colour secondary → body (V3-07); intro paragraph 17.5 → 16.5 on 390 (V2-04); paragraph gap 14 → 20 (V1-19); caption 14.5 → 15 on 390 (V1-14)"
+  },
+  {
+    "id": "RF-14",
+    "route": "/warsztaty/letnia-szkola-swiatla",
+    "signal": "html",
+    "note": "class renames: PageHeading / Prose wrappers and role classes (heading-*, prose-*, list-title, body-copy) replace per-element utility strings and per-page classes; section prose colour secondary → body (V3-07); intro paragraph 17.5 → 16.5 on 390 (V2-04); paragraph gap 14 → 20 (V1-19); caption 14.5 → 15 on 390 (V1-14)"
+  },
+  {
+    "id": "RF-14",
+    "route": "/warsztaty/letnia-szkola-swiatla",
+    "signal": "screenshot",
+    "width": 390,
+    "note": "section prose colour secondary → body (V3-07); intro paragraph 17.5 → 16.5 on 390 (V2-04); paragraph gap 14 → 20 (V1-19); caption 14.5 → 15 on 390 (V1-14)"
+  },
+  {
+    "id": "RF-14",
+    "route": "/warsztaty/letnia-szkola-swiatla",
+    "signal": "styles",
+    "width": 390,
+    "note": "section prose colour secondary → body (V3-07); intro paragraph 17.5 → 16.5 on 390 (V2-04); paragraph gap 14 → 20 (V1-19); caption 14.5 → 15 on 390 (V1-14)"
+  },
+  {
+    "id": "RF-14",
+    "route": "/warsztaty/letnia-szkola-swiatla",
+    "signal": "screenshot",
+    "width": 1440,
+    "note": "section prose colour secondary → body (V3-07); intro paragraph 17.5 → 16.5 on 390 (V2-04); paragraph gap 14 → 20 (V1-19); caption 14.5 → 15 on 390 (V1-14)"
+  },
+  {
+    "id": "RF-14",
+    "route": "/warsztaty/letnia-szkola-swiatla",
+    "signal": "styles",
+    "width": 1440,
+    "note": "section prose colour secondary → body (V3-07); intro paragraph 17.5 → 16.5 on 390 (V2-04); paragraph gap 14 → 20 (V1-19); caption 14.5 → 15 on 390 (V1-14)"
+  },
+  {
+    "id": "RF-14",
+    "route": "/warsztaty/letnia-szkola-swiatla",
+    "signal": "screenshot",
+    "width": 1920,
+    "note": "section prose colour secondary → body (V3-07); intro paragraph 17.5 → 16.5 on 390 (V2-04); paragraph gap 14 → 20 (V1-19); caption 14.5 → 15 on 390 (V1-14)"
+  },
+  {
+    "id": "RF-14",
+    "route": "/warsztaty/letnia-szkola-swiatla",
+    "signal": "styles",
+    "width": 1920,
+    "note": "section prose colour secondary → body (V3-07); intro paragraph 17.5 → 16.5 on 390 (V2-04); paragraph gap 14 → 20 (V1-19); caption 14.5 → 15 on 390 (V1-14)"
+  },
+  {
+    "id": "RF-14",
+    "route": "/wyklady",
+    "signal": "html",
+    "note": "class renames: PageHeading / Prose wrappers and role classes (heading-*, prose-*, list-title, body-copy) replace per-element utility strings and per-page classes; lecture title 18.5/18 → 22/20 and date 22 → 20 on 390 (V2-07, V3-18); intro paragraph 17.5 → 16.5 on 390 (V2-04); caption 14.5 → 15 on 390 (V1-14)"
+  },
+  {
+    "id": "RF-14",
+    "route": "/wyklady",
+    "signal": "screenshot",
+    "width": 390,
+    "note": "lecture title 18.5/18 → 22/20 and date 22 → 20 on 390 (V2-07, V3-18); intro paragraph 17.5 → 16.5 on 390 (V2-04); caption 14.5 → 15 on 390 (V1-14)"
+  },
+  {
+    "id": "RF-14",
+    "route": "/wyklady",
+    "signal": "styles",
+    "width": 390,
+    "note": "lecture title 18.5/18 → 22/20 and date 22 → 20 on 390 (V2-07, V3-18); intro paragraph 17.5 → 16.5 on 390 (V2-04); caption 14.5 → 15 on 390 (V1-14)"
+  },
+  {
+    "id": "RF-14",
+    "route": "/wyklady",
+    "signal": "screenshot",
+    "width": 1440,
+    "note": "lecture title 18.5/18 → 22/20 and date 22 → 20 on 390 (V2-07, V3-18); intro paragraph 17.5 → 16.5 on 390 (V2-04); caption 14.5 → 15 on 390 (V1-14)"
+  },
+  {
+    "id": "RF-14",
+    "route": "/wyklady",
+    "signal": "styles",
+    "width": 1440,
+    "note": "lecture title 18.5/18 → 22/20 and date 22 → 20 on 390 (V2-07, V3-18); intro paragraph 17.5 → 16.5 on 390 (V2-04); caption 14.5 → 15 on 390 (V1-14)"
+  },
+  {
+    "id": "RF-14",
+    "route": "/wyklady",
+    "signal": "screenshot",
+    "width": 1920,
+    "note": "lecture title 18.5/18 → 22/20 and date 22 → 20 on 390 (V2-07, V3-18); intro paragraph 17.5 → 16.5 on 390 (V2-04); caption 14.5 → 15 on 390 (V1-14)"
+  },
+  {
+    "id": "RF-14",
+    "route": "/wyklady",
+    "signal": "styles",
+    "width": 1920,
+    "note": "lecture title 18.5/18 → 22/20 and date 22 → 20 on 390 (V2-07, V3-18); intro paragraph 17.5 → 16.5 on 390 (V2-04); caption 14.5 → 15 on 390 (V1-14)"
+  },
+  {
+    "id": "RF-14",
+    "route": "/wyklady/archiwum",
+    "signal": "html",
+    "note": "class renames: PageHeading / Prose wrappers and role classes (heading-*, prose-*, list-title, body-copy) replace per-element utility strings and per-page classes; lecture title 18.5/18 → 22/20, date 22 → 20 on 390 (V2-07, V3-18)"
+  },
+  {
+    "id": "RF-14",
+    "route": "/wyklady/archiwum",
+    "signal": "screenshot",
+    "width": 390,
+    "note": "lecture title 18.5/18 → 22/20, date 22 → 20 on 390 (V2-07, V3-18)"
+  },
+  {
+    "id": "RF-14",
+    "route": "/wyklady/archiwum",
+    "signal": "styles",
+    "width": 390,
+    "note": "lecture title 18.5/18 → 22/20, date 22 → 20 on 390 (V2-07, V3-18)"
+  },
+  {
+    "id": "RF-14",
+    "route": "/wyklady/archiwum",
+    "signal": "styles",
+    "width": 1440,
+    "note": "lecture title 18.5/18 → 22/20, date 22 → 20 on 390 (V2-07, V3-18)"
+  },
+  {
+    "id": "RF-14",
+    "route": "/wyklady/archiwum",
+    "signal": "styles",
+    "width": 1920,
+    "note": "lecture title 18.5/18 → 22/20, date 22 → 20 on 390 (V2-07, V3-18)"
+  },
+  {
+    "id": "RF-14",
+    "route": "/wyklady/wykladowcy",
+    "signal": "html",
+    "note": "class renames: PageHeading / Prose wrappers and role classes (heading-*, prose-*, list-title, body-copy) replace per-element utility strings and per-page classes; caption 14.5 → 15 px on 390 (V1-14)"
+  },
+  {
+    "id": "RF-14",
+    "route": "/wyklady/wykladowcy",
+    "signal": "screenshot",
+    "width": 390,
+    "note": "caption 14.5 → 15 px on 390 (V1-14)"
+  },
+  {
+    "id": "RF-14",
+    "route": "/wyklady/wykladowcy",
+    "signal": "styles",
+    "width": 390,
+    "note": "caption 14.5 → 15 px on 390 (V1-14)"
   }
 ]

@@ -1,0 +1,363 @@
+@layer components {
+  /* /o-akademii — hero (6a/6b). */
+  .about-hero-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-5);
+    align-items: center;
+  }
+
+  .about-hero-lead {
+    max-width: var(--measure-lead);
+    margin: 0;
+    font-size: var(--size-lead-m);
+    line-height: var(--leading-body);
+    color: var(--text-secondary);
+  }
+
+  .about-hero-figure {
+    margin: 0;
+  }
+
+  .about-hero-image {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    object-position: 50% 34%;
+    box-shadow: var(--shadow-hero-image);
+  }
+
+  .about-hero-caption {
+    margin-top: var(--space-4);
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: var(--size-body);
+    line-height: var(--leading-body);
+    color: var(--text-tertiary);
+  }
+
+  @media (min-width: 1024px) {
+    .about-hero-grid {
+      grid-template-columns: minmax(0, 1fr) var(--about-hero-image-w);
+      gap: var(--about-hero-gap);
+    }
+
+    .about-hero-lead {
+      font-size: var(--size-lead);
+    }
+
+    .about-hero-image {
+      width: var(--about-hero-image-w);
+      height: var(--about-hero-image-h);
+      object-position: center;
+    }
+  }
+
+  /* MissionDeclarations — OA-11…14. */
+  .mission-declarations {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--mission-grid-gap-y) var(--mission-grid-gap-x);
+  }
+
+  .mission-declarations-bar {
+    width: var(--mission-bar-w);
+    height: var(--accent-bar);
+    margin-bottom: var(--space-4);
+    background: var(--accent);
+  }
+
+  .mission-declarations-highlight {
+    margin: 0 0 var(--space-3);
+    font-family: var(--font-serif);
+    font-size: var(--size-list-title);
+    line-height: 1.35;
+    color: var(--text-h2);
+  }
+
+  .mission-declarations-detail {
+    margin: 0;
+    max-width: 420px;
+    font-size: var(--size-body-lg);
+    line-height: var(--leading-prose);
+    color: var(--text-secondary);
+  }
+
+  @media (max-width: 767px) {
+    .mission-declarations {
+      grid-template-columns: 1fr;
+      gap: var(--space-6);
+    }
+
+    .mission-declarations-bar {
+      margin-bottom: var(--space-4);
+    }
+
+    .mission-declarations-highlight {
+      margin-bottom: var(--space-2);
+      font-size: var(--role-row-title-m);
+    }
+
+    .mission-declarations-detail {
+      font-size: var(--size-body);
+      line-height: var(--leading-body);
+    }
+  }
+
+  /* PersonProfile — mockup 6a/6e; section shell in AboutPage. */
+  .about-person-section {
+    display: flex;
+    flex-direction: column;
+    gap: var(--heading-gap);
+  }
+
+  .person-profile {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--space-5);
+    align-items: start;
+  }
+
+  .person-profile-portrait {
+    width: 70%;
+    max-width: var(--person-portrait-w);
+  }
+
+  .person-profile-image {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 3 / 4;
+    object-fit: cover;
+  }
+
+  .person-profile-name {
+    margin: 0 0 var(--space-2);
+    font-family: var(--font-serif);
+    font-size: var(--role-card-title-m);
+    line-height: var(--leading-heading);
+    color: var(--text-h1);
+  }
+
+  .person-profile-role {
+    margin: 0 0 var(--space-5);
+    font-size: var(--size-body);
+    line-height: var(--leading-body);
+    color: var(--accent-text);
+  }
+
+  @media (min-width: 1024px) {
+    .person-profile {
+      grid-template-columns: var(--person-portrait-w) minmax(0, 1fr);
+      gap: var(--text-page-main-gap);
+    }
+
+    .person-profile-portrait {
+      width: var(--person-portrait-w);
+    }
+
+    .person-profile-name {
+      font-size: var(--size-h2-sm);
+    }
+  }
+
+  /* MilestoneRow — OA-51…53. */
+  .milestone-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+    gap: var(--milestone-grid-gap);
+  }
+
+  .milestone-row-bar {
+    width: var(--mission-bar-w);
+    height: var(--accent-bar);
+    margin-bottom: var(--space-4);
+    background: var(--accent);
+  }
+
+  .milestone-row-value {
+    margin: 0;
+    font-family: var(--font-serif);
+    font-size: var(--milestone-value-size-m);
+    line-height: 1;
+    color: var(--bone-200);
+  }
+
+  .milestone-row-label {
+    margin: var(--space-2) 0 0;
+    max-width: 16rem;
+    font-size: var(--size-body);
+    line-height: var(--leading-body);
+    color: var(--text-secondary);
+  }
+
+  @media (min-width: 768px) {
+    .milestone-row-value {
+      font-size: var(--milestone-value-size);
+    }
+
+    .milestone-row-label {
+      font-size: var(--size-body-lg);
+      line-height: var(--leading-prose);
+    }
+  }
+
+  /* ActivityList — OA-62. */
+  .activity-list-item {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-2);
+    padding-block: var(--space-4);
+    border-top: 1px solid var(--line-neutral);
+  }
+
+  .activity-list-item:last-child {
+    border-bottom: 1px solid var(--line-neutral);
+  }
+
+  .activity-list-name {
+    margin: 0;
+    font-family: var(--font-serif);
+    font-size: var(--role-row-title-m);
+    line-height: 1.3;
+    color: var(--text-list-title);
+  }
+
+  .activity-list-note {
+    margin: 0;
+    max-width: var(--measure-prose);
+    font-size: var(--size-body);
+    line-height: 1.6;
+    color: var(--text-secondary);
+  }
+
+  @media (min-width: 768px) {
+    .activity-list-item {
+      grid-template-columns: var(--activity-name-col) minmax(0, 1fr);
+      gap: var(--space-6);
+      align-items: baseline;
+    }
+
+    .activity-list-name {
+      font-size: var(--size-list-title);
+    }
+  }
+
+  @media (max-width: 767px) {
+
+    .activity-list-note {
+      font-size: var(--size-body);
+      line-height: var(--leading-body);
+    }
+  }
+
+  /* AboutQuote — OA-41…43 (in-section, not home Testimonial). */
+  .about-quote {
+    margin: 0;
+    padding-left: var(--about-quote-pad-left);
+    border-left: var(--accent-bar) solid var(--accent);
+    max-width: 720px;
+  }
+
+  .about-quote-text {
+    margin: 0;
+    font-family: var(--font-serif);
+    font-size: var(--size-h2-sm);
+    line-height: 1.45;
+    color: var(--text-h2);
+  }
+
+  .about-quote-author {
+    margin: var(--space-4) 0 0;
+    font-size: var(--size-body);
+    line-height: var(--leading-body);
+    color: var(--text-tertiary);
+  }
+
+  .prose-text .about-approach-comment {
+    margin: var(--space-7) 0 0;
+    max-width: var(--measure-prose);
+    font-size: var(--size-body-lg);
+    line-height: var(--leading-prose);
+    color: var(--text-secondary);
+  }
+
+  .prose-text .about-section-lead {
+    margin: 0;
+    max-width: var(--measure-lead);
+    font-size: var(--size-lead-m);
+    line-height: var(--leading-body);
+    color: var(--text-body);
+  }
+
+  @media (min-width: 768px) {
+    .prose-text .about-section-lead {
+      font-size: var(--size-lead);
+      line-height: 1.65;
+    }
+  }
+
+  /* About page — workshop band and closing links. */
+  .about-workshop-band {
+    /* Rendered as the shell footerBand, so it meets the footer rule with no page-bg strip. */
+    padding-block: var(--space-11);
+  }
+
+  .about-workshop-band-inner {
+    max-width: var(--content-max);
+    margin-inline: auto;
+  }
+
+  .about-workshop-accessibility {
+    margin: 0 0 var(--space-6);
+    font-size: var(--size-body-lg);
+    line-height: var(--leading-prose);
+    color: var(--text-body);
+  }
+
+  .about-workshop-band .about-link-row {
+    margin-bottom: var(--space-7);
+  }
+
+  .about-workshop-photos {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--about-workshop-photo-gap);
+  }
+
+  .about-workshop-photo {
+    margin: 0;
+  }
+
+  .about-workshop-photo-image {
+    display: block;
+    width: 100%;
+    height: var(--about-workshop-photo-h);
+    object-fit: cover;
+  }
+
+  .about-workshop-photo-caption {
+    margin-top: var(--space-3);
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: var(--size-body);
+    line-height: var(--leading-body);
+    color: var(--text-tertiary);
+  }
+
+  @media (min-width: 768px) {
+    .about-workshop-photos {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  .about-link-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0 var(--about-link-gap);
+    margin: var(--space-4) 0 0;
+  }
+
+}

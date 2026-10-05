@@ -15,14 +15,14 @@ export function LectureList({ items }: LectureListProps) {
         >
           <time
             dateTime={item.dateIso}
-            className="font-serif text-size-lecture-date text-accent-text md:pt-lecture-date-offset"
+            className="font-serif text-size-role-list-title-m md:text-size-role-list-title text-accent-text md:pt-lecture-date-offset"
           >
             {item.date}
           </time>
           <div className="flex flex-col gap-lecture-talk-gap">
             {item.talks.map((talk, index) => (
               <div key={`${item.dateIso}-${index}`}>
-                <h3 className="font-serif text-size-role-list-title-m md:text-size-role-list-title leading-heading text-text-list-title mb-lecture-title-mb">
+                <h3 className="list-title mb-lecture-title-mb">
                   {talk.title}
                 </h3>
                 {talk.lecturer ? (

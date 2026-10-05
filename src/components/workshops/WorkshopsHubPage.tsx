@@ -6,6 +6,7 @@ import { getWorkshopsHub } from "@/content/workshops-hub";
 import type { Testimonial } from "@/content/types";
 import { pl } from "@/i18n/pl";
 import { fillRequiredTemplate } from "@/lib/fillTemplate";
+import { PageHeading } from "@/components/core/PageHeading";
 
 const hub = getWorkshopsHub();
 
@@ -44,13 +45,13 @@ export function WorkshopsHubPage({ path, offers, quotes }: WorkshopsHubPageProps
   return (
     <SectionPageShell path={path}>
       <section className="pb-section-gap-tight">
-        <h1 className="font-serif text-size-h1-m md:text-size-h1 leading-tight text-text-h1 mb-space-5">
+        <PageHeading level="page" className="mb-space-5">
           {pl.workshopsHub.title}
-        </h1>
+        </PageHeading>
         <p className="text-size-lead-m md:text-size-lead leading-body text-text-secondary max-w-measure-lead mb-space-5">
           {hub.lead}
         </p>
-        <p className="text-size-body-lg leading-prose text-text-secondary max-w-measure-prose">
+        <p className="body-copy text-text-secondary">
           {hub.leadSecondary}
         </p>
       </section>

@@ -1,5 +1,7 @@
 import Link from "next/link";
 
+import { PageHeading } from "@/components/core/PageHeading";
+import { Prose } from "@/components/core/Prose";
 import { SectionPageShell } from "@/components/layout/SectionPageShell";
 import { LightboxProvider } from "@/components/lightbox/LightboxProvider";
 import { NewsArticleCover } from "@/components/news/NewsArticleCover";
@@ -7,7 +9,6 @@ import { NewsArticleNav } from "@/components/news/NewsArticleNav";
 import { NewsEventCta } from "@/components/news/NewsEventCta";
 import { NewsFacts } from "@/components/news/NewsFacts";
 import { NewsGallery } from "@/components/news/NewsGallery";
-import { newsMdxComponents } from "@/components/news/newsMdxComponents";
 import { NewsRelated } from "@/components/news/NewsRelated";
 import { NewsDateMeta } from "@/components/news/NewsDateMeta";
 import {
@@ -104,7 +105,9 @@ export function NewsArticlePage({ entry, path }: NewsArticlePageProps) {
                 className="news-article-meta-date"
               />
             </p>
-            <h1 className="news-article-title">{entry.title}</h1>
+            <PageHeading level="page" variant="entry" className={lead ? "mb-entry-lead-gap" : undefined}>
+              {entry.title}
+            </PageHeading>
             {lead ? <p className="news-article-lead">{lead}</p> : null}
             <hr className="news-article-head-rule" />
           </header>
@@ -122,9 +125,9 @@ export function NewsArticlePage({ entry, path }: NewsArticlePageProps) {
             </div>
           ) : null}
 
-          <div className="news-article-main news-article-prose news-prose">
-            <Content components={newsMdxComponents} />
-          </div>
+          <Prose variant="news" className="news-article-main news-article-prose">
+            <Content />
+          </Prose>
 
           {showEventCta ? (
             <div className="news-article-cta">

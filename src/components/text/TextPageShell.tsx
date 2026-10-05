@@ -3,6 +3,7 @@ import type { ReactNode } from "react";
 import { SectionPageShell } from "@/components/layout/SectionPageShell";
 import { TextPageTocNav } from "@/components/text/TextPageTocNav";
 import type { TocItem } from "@/content/types";
+import { PageHeading } from "@/components/core/PageHeading";
 
 export interface TextPageShellProps {
   title: string;
@@ -59,9 +60,9 @@ export function TextPageShell({
 function TextPageHeader({ id, title, lead }: { id?: string; title: string; lead?: string }) {
   return (
     <header id={id} className="mb-section-gap-tight scroll-mt-space-6">
-      <h1 className="mb-space-5 font-serif text-size-h1-m leading-tight text-text-h1 md:text-size-h1">
+      <PageHeading level="page" className="mb-space-5">
         {title}
-      </h1>
+      </PageHeading>
       {lead ? (
         <p className="max-w-measure-lead text-size-lead-m leading-body text-text-secondary md:text-size-lead">
           {lead}

@@ -11,6 +11,8 @@ import { getNewsBySlug } from "@/content/news";
 import type { LoadedPublication } from "@/content/publications";
 import { pl } from "@/i18n/pl";
 import { publicationsLink } from "@/navigation";
+import { PageHeading } from "@/components/core/PageHeading";
+import { Prose } from "@/components/core/Prose";
 
 export interface PublicationAlbumPageProps {
   publication: LoadedPublication;
@@ -34,7 +36,7 @@ export function PublicationAlbumPage({ publication, path }: PublicationAlbumPage
         />
 
         <header className="publication-page-header">
-          <h1 className="publication-page-title">{publication.title}</h1>
+          <PageHeading level="page" className="mb-space-5">{publication.title}</PageHeading>
           <p className="publication-page-lead">{publication.lead}</p>
         </header>
 
@@ -63,21 +65,21 @@ export function PublicationAlbumPage({ publication, path }: PublicationAlbumPage
         </section>
 
         <section className="publication-spreads-section" aria-labelledby="publication-spreads-heading">
-          <h2 id="publication-spreads-heading" className="publication-section-heading">
+          <PageHeading level="section" id="publication-spreads-heading" className="mb-heading-gap">
             {pl.publications.spreadsHeading}
-          </h2>
+          </PageHeading>
           <PublicationSpreadStrip spreads={publication.spreads} columns={3} />
         </section>
 
         <section className="publication-about-section" aria-labelledby="publication-about-heading">
-          <h2 id="publication-about-heading" className="publication-section-heading">
+          <PageHeading level="section" id="publication-about-heading" className="mb-heading-gap">
             {pl.publications.aboutHeading}
-          </h2>
-          <div className="publication-about-copy">
+          </PageHeading>
+          <Prose variant="text" className="publication-about-copy">
             {publication.aboutParagraphs.map((paragraph) => (
-              <p key={paragraph} className="publication-about-paragraph">{paragraph}</p>
+              <p key={paragraph}>{paragraph}</p>
             ))}
-          </div>
+          </Prose>
         </section>
 
         <PublicationTocList chapters={publication.chapters} items={publication.toc} />
@@ -89,9 +91,9 @@ export function PublicationAlbumPage({ publication, path }: PublicationAlbumPage
 
         {relatedNews ? (
           <section className="publication-related-section" aria-labelledby="publication-related-heading">
-            <h2 id="publication-related-heading" className="publication-section-heading">
+            <PageHeading level="section" id="publication-related-heading" className="mb-heading-gap">
               {pl.publications.seeAlsoHeading}
-            </h2>
+            </PageHeading>
             <NewsCard entry={relatedNews} />
           </section>
         ) : null}

@@ -5,6 +5,8 @@ import type { LoadedArticle } from "@/content/articles";
 import { getPublicationBySlug } from "@/content/publications";
 import { pl } from "@/i18n/pl";
 import { publicationsLink } from "@/navigation";
+import { PageHeading } from "@/components/core/PageHeading";
+import { Prose } from "@/components/core/Prose";
 
 export interface ArticlePageProps {
   article: LoadedArticle;
@@ -31,13 +33,13 @@ export function ArticlePage({ article, path }: ArticlePageProps) {
         />
 
         <header className="publication-article-header">
-          <h1 className="publication-article-title">{article.title}</h1>
+          <PageHeading level="page" className="mb-space-4">{article.title}</PageHeading>
           <ArticleSourceBlock article={article} publication={publication} variant="meta" />
         </header>
 
-        <div className="publication-article-body text-page-mdx">
+        <Prose variant="text" className="publication-article-body">
           <Content />
-        </div>
+        </Prose>
 
         <ArticleSourceBlock article={article} publication={publication} variant="footer" />
       </article>

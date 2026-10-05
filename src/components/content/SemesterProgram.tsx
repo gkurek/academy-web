@@ -2,6 +2,7 @@ import { useId } from "react";
 
 import type { SemesterItem } from "@/content/offers";
 import { pl } from "@/i18n/pl";
+import { PageHeading } from "@/components/core/PageHeading";
 
 const ROMAN_NUMERALS = ["I", "II", "III", "IV", "V", "VI"] as const;
 
@@ -17,12 +18,9 @@ export function SemesterProgram({ semesters }: SemesterProgramProps) {
 
   return (
     <section aria-labelledby={headingId} className="not-prose">
-      <h2
-        id={headingId}
-        className="font-serif text-size-role-section-h2-m md:text-size-role-section-h2 leading-heading text-text-h2 mt-section-gap mb-heading-gap first:mt-0"
-      >
+      <PageHeading level="section" id={headingId} className="mt-section-gap mb-heading-gap first:mt-0">
         {pl.offers.semesterProgramHeading}
-      </h2>
+      </PageHeading>
       <p className="text-size-body leading-body text-text-secondary mb-space-6">
         {pl.offers.semesterProgramIntro}
       </p>
@@ -39,9 +37,9 @@ export function SemesterProgram({ semesters }: SemesterProgramProps) {
               {ROMAN_NUMERALS[index] ?? String(index + 1)}
             </div>
             <div className="min-w-0">
-              <h3 className="font-serif text-size-role-row-title-m md:text-size-role-row-title leading-heading text-text-list-title mb-space-2">
+              <PageHeading level="sub" className="mb-space-2">
                 {pl.offers.semesterTileHeadings[index] ?? pl.offers.semesterTileFallback.replace("{n}", String(index + 1))}
-              </h3>
+              </PageHeading>
               <p className="text-size-body leading-body text-text-secondary mb-space-2">{semester.title}</p>
               {semester.topics && semester.topics.length > 0 ? (
                 <ul className="text-size-body leading-body text-text-tertiary list-disc ps-space-5 space-y-space-1">

@@ -1,0 +1,67 @@
+@layer components {
+  /* /pracownia — section layout without 280 px H2 column (6c/6d). */
+  .workshop-section {
+    margin-top: var(--section-gap-loose);
+  }
+
+  .learning-forms-item {
+    padding: var(--learning-forms-row-y-m) 0;
+    border-top: 1px solid var(--line-neutral);
+  }
+
+  .learning-forms-item:last-child {
+    border-bottom: 1px solid var(--line-neutral);
+  }
+
+  .learning-forms-title {
+    margin: 0 0 var(--learning-forms-title-mb);
+    font-family: var(--font-serif);
+    font-size: var(--role-row-title-m);
+    line-height: 1.3;
+    color: var(--text-list-title);
+  }
+
+  .learning-forms-description {
+    margin: 0;
+    max-width: var(--measure-prose);
+    font-size: var(--size-body);
+    line-height: var(--leading-body);
+    color: var(--text-body);
+  }
+
+  .learning-forms-link {
+    margin: var(--space-3) 0 0;
+  }
+
+  .learning-forms-contact {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-5) var(--learning-forms-contact-gap);
+    margin-top: var(--learning-forms-contact-mt);
+  }
+
+  .learning-forms-mailto {
+    min-height: 48px;
+  }
+
+  .learning-forms-phone {
+    font-size: var(--size-ui);
+    line-height: var(--leading-body);
+  }
+
+  @media (min-width: 768px) {
+    .learning-forms-item {
+      padding: var(--learning-forms-row-y) 0;
+    }
+
+    .learning-forms-title {
+      font-size: var(--role-row-title);
+    }
+
+    .learning-forms-description {
+      font-size: var(--size-body);
+    }
+  }
+
+}

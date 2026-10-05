@@ -5,6 +5,8 @@ import { OnlineAside } from "@/components/contact/OnlineAside";
 import { SectionPageShell } from "@/components/layout/SectionPageShell";
 import { getPhoneHref, getSiteSettings } from "@/content/settings";
 import { pl } from "@/i18n/pl";
+import { PageHeading } from "@/components/core/PageHeading";
+import { Prose } from "@/components/core/Prose";
 
 export interface ContactPageProps {
   /** Route path — see SectionPageShellProps["path"]. */
@@ -22,9 +24,9 @@ export function ContactPage({ path, title, Content }: ContactPageProps) {
     <SectionPageShell path={path}>
       <div className="contact-page-grid">
         <div className="contact-page-top-left">
-          <h1 className="mb-space-5 font-serif text-size-h1-m leading-tight text-text-h1 md:mb-space-6 md:text-size-h1">
+          <PageHeading level="page" className="mb-space-5 md:mb-space-6">
             {title}
-          </h1>
+          </PageHeading>
 
           <address className="contact-page-emails not-italic">
             {settings.emails.map((email, index) => (
@@ -51,18 +53,18 @@ export function ContactPage({ path, title, Content }: ContactPageProps) {
         </div>
 
         <div className="contact-page-address">
-          <h2 className="mb-space-3 font-serif text-size-role-section-h2-m md:text-size-role-section-h2 leading-heading text-text-h2">
+          <PageHeading level="section" className="mb-space-3">
             {pl.contact.addressHeading}
-          </h2>
+          </PageHeading>
           <address className="mb-space-4 block not-italic text-size-lead-m leading-body text-text-secondary md:text-size-lead">
             {settings.place}
             <br />
             {settings.address}
           </address>
 
-          <div className="text-page-mdx">
+          <Prose variant="text">
             <Content />
-          </div>
+          </Prose>
 
           <p className="mt-space-4 text-size-body leading-body text-text-secondary md:text-size-body-lg md:leading-prose">
             {pl.footer.accessibilityNote}

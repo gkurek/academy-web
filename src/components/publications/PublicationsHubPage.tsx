@@ -11,6 +11,7 @@ import { getSecretariatEmail } from "@/content/settings";
 import { pl } from "@/i18n/pl";
 import { pluralize } from "@/i18n/pluralize";
 import { buildMailtoHref } from "@/lib/mailto";
+import { PageHeading } from "@/components/core/PageHeading";
 
 export interface PublicationsHubPageProps {
   /** Route path — see SectionPageShellProps["path"]. */
@@ -36,7 +37,7 @@ export function PublicationsHubPage({ path, publication, articles }: Publication
     <SectionPageShell path={path}>
       <div className="publication-page">
         <header className="publication-page-header">
-          <h1 className="publication-page-title">{pl.publications.title}</h1>
+          <PageHeading level="page" className="mb-space-5">{pl.publications.title}</PageHeading>
           <p className="publication-page-lead">{pl.publications.lead}</p>
         </header>
 
@@ -114,9 +115,9 @@ export function PublicationsHubPage({ path, publication, articles }: Publication
           className="publication-articles-section"
           aria-labelledby="publication-articles-heading"
         >
-          <h2 id="publication-articles-heading" className="publication-section-heading">
+          <PageHeading level="section" id="publication-articles-heading" className="mb-heading-gap">
             {pl.publications.articlesHeading}
-          </h2>
+          </PageHeading>
           <p className="publication-section-lead">{pl.publications.articlesLead}</p>
           <ArticleList articles={articles} />
         </section>
