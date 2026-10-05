@@ -1,6 +1,6 @@
 # Plan 10/RF — Poprawki po review (techniczne; wizualne dopisze V4)
 
-Status: **zatwierdzony** 2026-10-04 (projekt R5; decyzje D1–D10 potwierdzone przez właściciela) · RF-0 ✅ · RF-1 ✅ · RF-2 ✅ 2026-10-05 · RF-3 ✅ 2026-10-05 · RF-4 ✅ 2026-10-05 · RF-5…RF-12 ✅ 2026-10-05 (RF-5 po RF-12, po decyzji właściciela o T-R1/T-R2; RF-12 niezależnie od k8, D12) · **blok techniczny RF-0…RF-12 zamknięty lokalnie** · V1 ✅ · V2 ✅ · V3 ✅ · RF-13a ✅ 2026-10-05 (wartości w RF-13) · następny: **RF-13** (po bramie powrotnej V4), RF-14 · paczki wizualne dopisze V4 · workflow lokalny (D11, 2026-10-05)  
+Status: **zatwierdzony** 2026-10-04 (projekt R5; decyzje D1–D10 potwierdzone przez właściciela) · RF-0 ✅ · RF-1 ✅ · RF-2 ✅ 2026-10-05 · RF-3 ✅ 2026-10-05 · RF-4 ✅ 2026-10-05 · RF-5…RF-12 ✅ 2026-10-05 (RF-5 po RF-12, po decyzji właściciela o T-R1/T-R2; RF-12 niezależnie od k8, D12) · **blok techniczny RF-0…RF-12 zamknięty lokalnie** · V1 ✅ · V2 ✅ · V3 ✅ · RF-13a ✅ 2026-10-05 (wartości w RF-13) · V4 ✅ 2026-10-05 (brama powrotna: założenia trzymają, RF-13 + kreska akordeonu) · następny: **RF-13**, RF-14 · paczki wizualne RF-15…RF-20 **zatwierdzone** 2026-10-05 (V4-07: wariant domyślny) · workflow lokalny (D11, 2026-10-05)  
 Gałąź: `feat/10-review` (RV-8; merge do `main` niezależnie od k8 na `feat/10-finishing`)  
 Staging: https://academy-web-lovat.vercel.app/ — źródło baseline'u (zapis raz w RF-0); paczki weryfikowane **lokalnie**, bez deployu (D11)  
 Makiety: tokeny `design/README`, odczyt wartości `docs/design-mockup-guide.md` — tylko w paczkach „po V1”  
@@ -71,6 +71,7 @@ Zbiorczo — szczegóły w paczkach.
 RF-0 ─ RF-1 ─┐
        RF-2 ─┼─ RF-3 ─ RF-4 ─ RF-5* ─ RF-6 ─ RF-7 ─ RF-8 ─ RF-9 ─ RF-10 ─ RF-11 ─ RF-12** ─ V1 ─ V2 ─ V3 ─ RF-13a ─ RF-13 ─ RF-14
                                                                                   (V4 niezależnie; po V4 brama powrotna do RF-13a)
+                                                                                  RF-14 ─ RF-15 ─ RF-16 ─ RF-19 ─ RF-20   (RF-17, RF-18 niezależnie — projekt V4)
       │
       └ * RF-5 po zamknięciu T-R1, T-R2 (dane wykładowców) — może przesunąć się za RF-6…RF-11
         ** RF-12 niezależnie od k8 (D12): k8 rebase'uje się na main po zamknięciu review
@@ -271,10 +272,10 @@ Skrypt czyta `PLAYWRIGHT_BROWSERS_PATH`, gdy jest ustawiony, inaczej używa domy
 | `--section-gap-tight` | 34 (`--space-7`) | 26 (`--space-6`) | „lead → pierwsza sekcja” (oferty, `/wyklady`, `/aktualnosci`), podsekcje jednego tematu (wstęp ofert), `/polityka-prywatnosci`, `/kontakt` |
 | `--heading-gap` | 20 (`--space-5`) | 14 (`--space-4`) | nagłówek sekcji → pierwsza treść (V2-14): MDX `h2`, `.workshop-section-heading` (wszystkie warianty), polityka, `OfferQuoteGrid`, `StepList`, `SemesterProgram`, `TextPageSection` (mobile) |
 | dół strony | 26 z powłoki | 26 | ostatnia sekcja bez własnego `pb` / `mb` (`OfferQuoteGrid`, blok naboru, `.publication-article-body`, podpis ostatniego rzędu galerii, `.news-archive-toggle`); pas zamykający z tłem dochodzi do stopki (dół 0) |
-| `--accent-bar` | 3 px | 3 px | wszystkie złote belki i lewe kreski (FactsBox, cytaty ofert, CTA i fakty wystaw, publikacje, cytat / deklaracje / `MilestoneRow` na `/o-akademii`) |
+| `--accent-bar` | 3 px | 3 px | wszystkie złote belki i lewe kreski (FactsBox, cytaty ofert, CTA i fakty wystaw, publikacje, cytat / deklaracje / `MilestoneRow` na `/o-akademii`, lewa kreska otwartego sezonu w `SeasonAccordion` — dopisane po bramie V4) |
 
 Jeden próg 768 dla wszystkich tokenów (znika stopień 60 px przy 768–1023 i 96 od 1024). Odstępstwa świadome: 80 px poza `design/README` §3; K-29 (96 od 1024) i makieta 6a / 6b (96 / 60) przestają obowiązywać w części odstępu sekcji; K-27 (belka 2 px) zastąpione przez K-99 / `design/README` (3 px). Brama powrotna po V4.  
-**Zakres (pliki):** `src/app/globals.css` (tokeny ról: `--section-gap`, `--section-gap-tight`, `--accent-bar`; zastąpienie `exhibition-section-gap`, `publication-section-gap(-m)`, `news-article-sec`, `news-year-group-gap`, `lectures-archive-section-pt`; 7 literałów `3px` / `2px`; tokeny komponentów przez `var(--space-*)`, interlinie przez `--leading-*`, miary przez `--measure-*` — lista z R4-10 po filtrze V1), nowy `src/components/layout/PageSection.tsx` (albo klasa `.page-section`), komponenty sekcji na `/`, ofertach (`mt-space-8`), `/polityka-prywatnosci`, `GalleryOrderTeaser.tsx` (`cta-band`), `OfferQuoteGrid.tsx`.  
+**Zakres (pliki):** `src/app/globals.css` (tokeny ról: `--section-gap`, `--section-gap-tight`, `--accent-bar`; zastąpienie `exhibition-section-gap`, `publication-section-gap(-m)`, `news-article-sec`, `news-year-group-gap`, `lectures-archive-section-pt`; 7 literałów `3px` / `2px`; tokeny komponentów przez `var(--space-*)`, interlinie przez `--leading-*`, miary przez `--measure-*` — lista z R4-10 po filtrze V1), nowy `src/components/layout/PageSection.tsx` (albo klasa `.page-section`), komponenty sekcji na `/`, ofertach (`mt-space-8`), `/polityka-prywatnosci`, `GalleryOrderTeaser.tsx` (`cta-band`), `OfferQuoteGrid.tsx`, `SeasonAccordion.tsx` (`border-l-2` → `--accent-bar`; brama V4).  
 **Zmiana widoczna:** **tak, zamierzona** — odstępy sekcji wyrównane do jednej skali; każda różnica względem zrzutów „przed” musi odpowiadać tabeli wartości z V1.  
 **Gotowe:** tabela 1 z `04-cross-cutting.md` zmierzona ponownie skryptem z V1: ≤ 2 wartości odstępu sekcji per szerokość (standard + ciasny) na wszystkich trasach; `grep -c "3px\|2px" src/app/globals.css` dla belek → 0 (tylko token); `--publication-section-gap` używany na desktopie; `--section-gap` bez przeskoku na 1024 (jeden próg z resztą).  
 **Weryfikacja:** build + lint; staging wszystkie trasy 390 / 1440 / 1920; porównanie z V1 i makietami (`docs/design-mockup-guide.md`); właściciel jako arbiter (RV-6).  
@@ -289,7 +290,69 @@ Jeden próg 768 dla wszystkich tokenów (znika stopień 60 px przy 768–1023 i 
 **Weryfikacja:** build + lint; staging wszystkie trasy 390 / 1440 / 1920; zrzuty przed/po; właściciel jako arbiter.  
 **Model:** Opus 5.5. **Koszt:** L. **Commit:** `10/RF-14: one set of typographic roles and a single prose system`
 
-### — Paczki wizualne (RF-15…) — dopisze V4 —
+### — Paczki wizualne RF-15…RF-20 (projekt V4, **zatwierdzony** 2026-10-05) —
+
+Źródło: `docs/review/06-visual-4-global.md` §6 (przydział zgłoszeń V1–V4). Każda paczka wizualna **zmienia wygląd z założenia** — `check:visual` daje różnice na trasach z zakresu; wpisy do `visual-check.expected.json` per paczka, zrzuty przed / po **390 / 768 / 1024 / 1440 / 1600** (V2–V3 pokazały, że 768–1023 jest najsłabszym zakresem), właściciel jako arbiter (RV-6). Kolejność: RF-13 → RF-14 → RF-15 → RF-16 → RF-19 → RF-20 (układ i rytm na nowych tokenach); **RF-17 i RF-18 niezależnie** (stany i interakcja nie zależą od odstępów ani ról — mogą iść przed RF-13). Pozycje z dopiskiem „decyzja” czekają na odpowiedź właściciela przed startem paczki.
+
+**Dopisania do istniejących paczek (propozycja V4):**
+
+- **RF-13:** lewa kreska `SeasonAccordion` (`border-l-2 border-l-accent`, `SeasonAccordion.tsx:101, 133`) → `--accent-bar` — jedyna złota lewa kreska spoza listy RF-13 (brama powrotna V4 §5).
+- **RF-14 — źródła wizualne:** V1-14 (podpis 14,5 → 15 px na mobile), V2-04 (akapit wstępu ofert na 390), V2-05 (podtytuł w sekcji 21 vs 26), V2-07 (rola „tytuł w liście”), V2-08 (rola „opis” 16,5 / 1,6), V2-13 (lead sekcji w publikacjach), V2-15 (interlinia leadu `/o-akademii`), V3-07 (jeden kolor prozy sekcji na ofertach), V3-18 (tytuł wykładu ≥ data).
+
+### RF-15 — Układ ≥ 768: jeden próg kolumn i siatek · **po RF-13, RF-14**
+
+**Pozycje:** V2-17, V3-01, V3-02, V3-03, V3-04, V3-05 (część 768), V3-11, V3-12, V3-13, V3-24, V4-01. **Źródła:** `06-visual-2-templates.md`, `06-visual-3-pages.md`, `06-visual-4-global.md`.  
+**Reguła:** kolumna boczna o stałej szerokości, układy 3-kolumnowe i dwukolumnowe hero włączają się od **1024** (jak oferty, wpis, `/kontakt`, TOC); 768–1023 — jedna kolumna albo 2 (cytaty, filary). Header desktopowy od 1024 albo bez łamania od 768 (V4-01 — **decyzja**: hamburger do 1024 vs `nowrap`).  
+**Zakres (pliki):** `src/app/globals.css` (`@media 768` → `1024` dla `.exhibition-hero-grid` / `--exhibition-facts-w`, `--publication-metrics-w`, `.hairline-grid-2/3`, `.mission-declarations`, `--about-hero-image-w`, `.publication-hub-cover-frame` (maks. 440 px < 1024), `.year-nav-links` (jeden wzorzec — **decyzja**: przewijany wiersz zawsze vs 15 lat w wierszu od 1024), `--offer-day-rhythm-time-col` (kolumna z treści — V3-02)), `Hero.tsx`, `Pillars.tsx`, `UpcomingHighlights.tsx`, `OfferQuoteGrid.tsx`, `SemesterProgram.tsx`, `Button.tsx` (`white-space: nowrap` etykiety), `Header.tsx`.  
+**Zmiana widoczna:** tak — 768–1023 na `/`, `/warsztaty`, kursie, LSŚ, `/ikony/wystawy`, albumie, `/o-akademii`, `/publikacje`, `/aktualnosci`; header 768–1023 na wszystkich trasach; „Rytm dnia” LSŚ ≥ 768.  
+**Gotowe:** sonda V3 (`.visual/v3/probe.mjs`) przy 768 / 820 / 900 / 1024: proza ≥ 40 zn./wiersz, H1 ≤ 3 wiersze, etykiety przycisków w jednym wierszu, `scrollWidth` = okno; header 84 px przy 768–1023; w „Rytmie dnia” odstęp etykieta → opis ≥ 20 px dla najdłuższej etykiety; ≥ 1024 zrzuty bez różnic poza V3-02 i V3-13.  
+**Weryfikacja:** build + lint; zrzuty przed / po 390 / 768 / 1024 / 1440 / 1600 dla tras z zakresu; `check:visual` (różnice tylko 768–1023 + wymienione); właściciel.  
+**Model:** Opus 5.5. **Koszt:** M. **Commit:** `10/RF-15: one breakpoint for side columns and multi-column grids`
+
+### RF-16 — Mobile 390: długość stron i miara · **po RF-13, RF-14**
+
+**Pozycje:** V3-05 (część 390), V3-15, V3-16, V3-17. **Decyzje:** V3-16 rozstrzygnięte (galeria `/ikony` na mobile w 2 kolumnach, V3 §4.0); V3-17 — **decyzja** (mniejszy portret obok nazwiska vs spis nazwisk z kotwicami).  
+**Zakres (pliki):** `SemesterProgram.tsx` (< 768 numer semestru nad tytułem), `globals.css` (`.interview-exchange` < 768 inicjały nad pytaniem; reguły `JustifiedGrid` < 768), `JustifiedGrid.tsx`, `LecturerBio.tsx` / `LecturersPage` (V3-17).  
+**Zmiana widoczna:** tak — 390 na kursie, `/pracownia`, `/ikony`, `/wyklady/wykladowcy`.  
+**Gotowe:** sonda V3 na 390: punkty programu i odpowiedzi rozmowy ≥ 30 zn./wiersz; `/ikony` ≤ 15 ekranów (dziś 26,9), `/wyklady/wykladowcy` ≤ 15 (dziś 22,9) albo spis nazwisk nad listą; CLS `/ikony` 390 < 0,1.  
+**Weryfikacja:** build + lint; zrzuty 390 / 768 przed / po; smoke lightbox na `/ikony` (2 kolumny); właściciel.  
+**Model:** Opus 5.5. **Koszt:** M. **Commit:** `10/RF-16: shorter mobile pages and readable measure at 390`
+
+### RF-17 — Fokus, klawiatura, cele dotyku · **niezależnie**
+
+**Pozycje:** V4-02, V4-03, V4-08, V4-10, V4-11, V4-12, V4-13.  
+**Zakres (pliki):** `GalleryFilters.tsx` i `YearNav.tsx` (`scroll-padding-inline`, odsłanianie pozycji przy `focusin`), `globals.css` (`.year-nav-links`, reguła fokusu: `outline-color` poza przejściem, `iframe` / `:focus-within` mapy), `TextLink.tsx` (wariant samodzielny z polem 44 px), `Header.tsx` (logo 44 px), `LecturerBio.tsx` („Rozwiń notę” 44 px), `Footer.tsx` (pole 44 do 1024: kontakt, „Polityka”, „Fundacja”, kredyt), `Breadcrumb.tsx`, `IconLightboxMeta.tsx` (CTA 48 px), `useTocActiveId.ts` (stan nad pierwszą sekcją), `SeasonAccordion.tsx` (`replaceState` hasha), `MapBlock`.  
+**Zmiana widoczna:** tak, niewielka — wysokości wierszy z polem dotyku (stopka 768–1023, linki samodzielne na 390), brak „wjazdu” obrysu; reszta to zachowanie.  
+**Gotowe:** `.visual/v4/clip.mjs` → 0 przyciętych obrysów w rzędach przewijanych (390); `.visual/v4/focus.mjs` + `focus-analyze.mjs` → 0 odstępstw, 0 przycięć, `small<44` na 390 = 0 poza linkami w akapicie; `toc.mjs` → „back-top(jump)” = pierwsza pozycja; po kliknięciu sezonu hash = otwarty sezon; axe 0 na 21 trasach × 2.  
+**Weryfikacja:** build + lint; `check:visual` + smoke 11/11; skrypty V4 na lokalnym `next start`.  
+**Model:** Sonnet 5.5. **Koszt:** M. **Commit:** `10/RF-17: focus visibility in scrollers, tap targets and stateful anchors`
+
+### RF-18 — Hover, menu mobilne, lightbox · **niezależnie**
+
+**Pozycje:** V4-04, V4-05, V4-06, V4-07, V4-09, V3-22. **Decyzja (właściciel, 2026-10-05):** V4-07 — obie animacje usunięte (podkreślenie `scaleX`, obrys rysowany w dwóch etapach); linie statyczne, zmienia się tylko kolor ≤ 150 ms (`design/README` „Stany” / „Animacja”).  
+**Zakres (pliki):** `globals.css` (`.nav-link-underline`, `.btn-secondary-borders__*`, reguła `reduce` + `transition-delay: 0s`, `--surface-lightbox` pełne tło, `.publication-spread-tile` z lupą, `.publication-toc-title-link:hover`, `.contact-email-line`), `HeaderMobileMenu.tsx` (rozwinięta sekcja bieżąca; dolny wiersz 44 px), `LightboxDialogShell.tsx` (pasek i panel z pełnym tłem, kontener przewijany bez celu Tab), `Pillars.tsx` (hover tytułu filaru), `Breadcrumb.tsx` (hover), `ContactPage.tsx` (V3-22 — dane kontaktowe jako `TextLink`).  
+**Zmiana widoczna:** tak — stany hover (header, `SectionNav`, przyciski drugorzędne, filary, rozkładówki, spis albumu, `Breadcrumb`, `/kontakt`), wygląd danych na `/kontakt`, tło lightboxa na mobile, stan początkowy menu mobilnego.  
+**Gotowe:** `.visual/v4/hover.mjs` (1440) → 0 elementów klikalnych bez zmiany (poza aktywnymi), 0 przejść innych niż kolor / tło / obrys, 0 `transform` w stylach hover, czas ≤ 150 ms, opóźnienie 0; `lightbox.mjs` 390 → tło `#0d0a08` bez prześwitu, `dialog` poza cyklem Tab, CTA w pierwszym ekranie albo nad paskiem; menu 390 × 844 na kursie: rozwinięte „Warsztaty”, link bieżącej strony widoczny, dolny wiersz 44 px; axe 0 w menu i lightboxie.  
+**Weryfikacja:** build + lint; `check:visual` + smoke 11/11; zrzuty stanów hover (1440) i lightbox / menu (390) przed / po; właściciel.  
+**Model:** Opus 5.5. **Koszt:** M. **Commit:** `10/RF-18: colour-only hover states, mobile menu and lightbox surfaces`
+
+### RF-19 — Zakończenia stron, CTA i panele · **po RF-13, RF-15**
+
+**Pozycje:** V2-01, V2-02, V2-03, V2-06, V2-09, V2-10, V2-11, V2-12, V3-06, V3-08, V3-09, V3-10, V3-14, V3-23. **Decyzje rozstrzygnięte:** V3-10 (złoty zostaje „Napisz do nas”, „Zapytaj o oprowadzanie” obrysowy pod tekstem). **Decyzje otwarte:** V2-01 (kolejność końca oferty; sekcja zapisu na LSŚ), V2-02 (eyebrow we wszystkich ofertach czy w żadnej), V2-06 (sekcja czy podsekcja — dotyka `content/offers/zamowienie.mdx`, gate K-122), V2-11 (etykieta „Zobacz też” zawsze / nigdy), V3-14 (zakończenie `/o-akademii` razem z OA-80…OA-82 → C1).  
+**Zakres (pliki):** `OfferPage.tsx` (kolejność bloków końcowych, eyebrow), `FactsBox.tsx` (jedna stopka kontaktu), `ArticleSourceBlock.tsx` (notka o pierwodruku zawsze + „Wszystkie publikacje”), `PublicationsHubPage.tsx` / `ArticleList.tsx` / `LecturesHubPage.tsx` (sekcja bez danych nie renderuje się — V2-09), `.publication-see-also`, `PublicationMetricsBox.tsx` + `.publication-metrics-heading` (wariant desktopowy), `OfferSideCta.tsx` (kadr karty — V3-06), `ReadyIconsNote.tsx` (bez wcięcia — V3-08), `StepList.tsx` (`content-start`), `ExhibitionToursSection.tsx` / `ExhibitionTravelingSection.tsx` / `ExhibitionPage.tsx` (V3-10), `AboutPage.tsx` (V3-14), `PublicationTocList.tsx` (kolejność wstęp → etykieta → rozdział).  
+**Zmiana widoczna:** tak — końce ofert, artykułów z mediów, `/o-akademii`, panele `FactsBox` i albumu, CTA wystaw, pas zamówień, spis albumu.  
+**Gotowe:** każdy szablon ma jedną kolejność bloków końcowych i dół zgodny z RF-13 (26 / pas 0); `FactsBox` — jedna postać stopki kontaktu we wszystkich wariantach; ≤ 1 złoty przycisk na ekranie (sonda V3 K6); pas zamówień na linii kolumny (x nagłówka = x H1 ± 1 px); sekcja bez danych = brak H2 (test z pustą tablicą w `check:states` albo ręcznie).  
+**Weryfikacja:** build + lint; zrzuty przed / po 390 / 1440 / 1600; `check:states`; właściciel.  
+**Model:** Opus 5.5. **Koszt:** M. **Commit:** `10/RF-19: consistent page endings, CTA hierarchy and panels`
+
+### RF-20 — Miara, łamanie, polska typografia · **po RF-14**
+
+**Pozycje:** V1-20, V3-19, V3-20, V3-21.  
+**Zakres (pliki):** `globals.css` (`max-width: var(--measure-prose)` dla `.exhibition-section-copy`, `.publication-article-excerpt` i list w `PrivacyPolicyPage` / `mdx-components.tsx`; `text-wrap: balance` dla H1–H3, cytatów i tytułów kart), nowa funkcja w warstwie renderowania treści (`src/lib/typography.ts` — twarda spacja po jednoliterowych a / i / o / u / w / z; wpięta w MDX (`remark`-plugin albo komponent tekstu) i w loadery JSON), `mdx-components.tsx`, `PrivacyPolicyPage.tsx`. Ręczne ` ` w `content/pages/o-akademii.*` i `pracownia.*` zostają (treść poza zakresem — funkcja jest idempotentna).  
+**Zmiana widoczna:** tak — łamanie wierszy na wszystkich trasach (sieroty, nagłówki), szerokość prozy `/ikony/wystawy` ≥ 1440 i list polityki.  
+**Gotowe:** sonda V3 → 0 jednoliterowych słów na końcu wiersza (21 tras × 390 / 1440); proza ≤ 85 zn./wiersz przy 1600; 0 jednowyrazowych ostatnich wierszy H1–H3 i cytatów (tam, gdzie `balance` może pomóc); build bez wydłużenia > 10 %.  
+**Weryfikacja:** build + lint; `check:visual` (różnice zawijania oczekiwane na wszystkich trasach — wpis zbiorczy RF-20); zrzuty 390 / 1440 / 1600; właściciel.  
+**Model:** Opus 5.5. **Koszt:** M. **Commit:** `10/RF-20: measure caps, balanced headings and Polish non-breaking spaces`
 
 ## Dane sample dodawane w tym etapie
 
@@ -334,4 +397,10 @@ Brak. RF-12 tworzy `content/pages/home.json` i `workshops-hub.json` **z treści 
 | RF-12 — fakty §8 i treść poza `pl.ts` | Opus 5.5 | ✅ 2026-10-05 (lokalnie, bez k8 — D12) | S-17, S-18. `check:visual` (build `:3100`): 94 PASS · 53 EXPECTED (46 + wpisy RF-12: `/warsztaty` 3 zrzuty, `/publikacje/ikona-dzis` 3 zrzuty + 3 `styles`) — stan po korekcie właściciela, patrz „Korekta” niżej · 0 FAIL · smoke 11/11; punkt odniesienia na HEAD 101 · 46 · 0. Dodatkowo HTML (bez skryptów, bez hashy) HEAD vs po zmianie, 12 tras: identyczny na `/`, `/ikony/wystawy`, `/kontakt`, obu ofertach, `/wyklady`, `/ikony/na-zamowienie`, `/publikacje`, `/publikacje/ikona-dzis`, `/pracownia`; `/warsztaty` różni się tylko dwoma `<li>` (`[pole CMS]` → `[do uzupełnienia: …]`, dłuższy tekst zawija się na 390, stąd wpisy zrzutów). `build` + `lint` + `tsc` OK; knip: 0 nowych problemów (zostaje `prefersReducedMotion` z RF-11 — eksport tylko w `scroll.ts`). Kryteria: `grep -c "601 734 705" pl.ts` → 0; adresy e-mail w `src/` tylko przez `settings.ts` (w `pl.ts` zostaje zdanie „sekretariat poda w odpowiedzi” — copy, nie fakt); `pl.ts` bez pól `src`/`width`/`height`/`href`. Zrobione: `settings.json` — pole `role` (`enrollment`/`secretariat`) przy e-mailach (**gate K-122**: dodane pole, wartości z brief §8; typ `SiteSettings.emails` dostał `role` — dodanie, nie zmiana nazwy), `settings.ts` — `getEnrollmentEmail`, `getSecretariatEmail`, `getPhoneHref` (rzucają przy braku), konsumenci: Footer, ContactPage, FactsBox (telefon/e-mail jako `{phone}`/`{email}` w szablonach, 10 literałów numeru i `phoneTel` usunięte), ExhibitionPage (literał adresu usunięty), 3 komponenty publikacji (koniec dopasowania po etykiecie), oferta (`{enrollmentEmail}` w akapicie naboru). Nowe `content/pages/home.json` (hero: tytuł, lead, obraz; filary; cytat EJK), `content/pages/workshops-hub.json` (lead, 2 karty z obrazami), loadery `src/content/home.ts`, `workshops-hub.ts` z walidacją (`assertImage` w `validate.ts`: `/media/`, alt, wymiary całkowite > 0; liczba filarów; karta per oferta); `href` filarów z `navigation.ts` (`navItem`, `sectionLink`). Copy `/ikony/wystawy` (proza: lead, wstęp, zdania o temacie, harmonogram, fakty, tours/traveling intro) → `export const copy` w `content/exhibition/page.mdx`, loader `getExhibitionCopy()` (wszystkie stringi niepuste), typ `ExhibitionCopy` w `exhibition.ts` (nie w `types.ts`). W `pl.ts` zostały etykiety UI, CTA, tematy maili, placeholdery zdjęć, `nowNext`. Rok w stopce był już z daty (`currentYearInWarsaw`). Odstępstwa: (1) etykiety CTA hero i `ctaVariant` kart: CTA hero zostały w `pl.ts` (UI), `ctaLabel`/`ctaVariant` kart wędrują z kartą do JSON; (2) placeholder LSŚ: „Miejsce i termin {year} [do uzupełnienia: miejsce i termin pleneru]”, „Koszt [do uzupełnienia: koszt pleneru]” — brak numeru T-R3 w planie, do uzupełnienia przy treści; **Korekta (2026-10-05, właściciel):** placeholdery LSŚ → „Miejsce i termin {year}: szczegóły wkrótce” i „Koszt: szczegóły wkrótce” (zamiast `[do uzupełnienia: …]`; do podmiany, gdy plener będzie znany); usunięta notka „Koszt wysyłki i dane do przelewu sekretariat poda w odpowiedzi” (klucz `shippingNote`, `<p>` w `PublicationMetricsBox`, reguła `.publication-metrics-note`) — strona albumu krótsza o 58 px. (3) „karty z danych ofert” — karty zostały w osobnym JSON kluczowanym slugiem oferty (brak karty = błąd buildu), nie w MDX ofert (RF-12 nie zmienia `content/offers/`); (4) `title` huba („Warsztaty pisania ikon”) i `quotesHeading` zostały w `pl.ts` jako UI |
 | RF-13a — decyzja o odstępach i belce | Fable 5.1 | ✅ 2026-10-05 | `docs/review/06-visual-5-spacing-decision.md`; 56 / 34, luźny 80 (para O Akademii · Pracownia), ciasny 34 / 26, nagłówek 20 / 14, próg 768, dół 26 / pas 0, belka 3 px; brama powrotna po V4 |
 | RF-13 — skala odstępów (A5) | Opus 5.5 | ⬜ | **po V1**; wartości z RF-13a wpisane |
-| RF-14 — role typograficzne i proza (A4) | Opus 5.5 | ⬜ | **po V1**, D3 |
+| RF-14 — role typograficzne i proza (A4) | Opus 5.5 | ⬜ | **po V1**, D3; V4 proponuje dopisać źródła wizualne V1-14, V2-04/05/07/08/13/15, V3-07, V3-18 |
+| RF-15 — układ ≥ 768, jeden próg | Opus 5.5 | ⬜ zatwierdzone | po RF-13, RF-14; decyzje: V4-01, V3-12 |
+| RF-16 — mobile 390: długość i miara | Opus 5.5 | ⬜ zatwierdzone | po RF-13, RF-14; decyzja V3-17 |
+| RF-17 — fokus, klawiatura, cele dotyku | Sonnet 5.5 | ⬜ zatwierdzone | niezależnie |
+| RF-18 — hover, menu mobilne, lightbox | Opus 5.5 | ⬜ zatwierdzone | niezależnie; V4-07 rozstrzygnięte (tylko kolor) |
+| RF-19 — zakończenia stron, CTA, panele | Opus 5.5 | ⬜ zatwierdzone | po RF-13, RF-15; decyzje V2-01, V2-02, V2-06, V2-11, V3-14 |
+| RF-20 — miara, łamanie, typografia PL | Opus 5.5 | ⬜ zatwierdzone | po RF-14 |
