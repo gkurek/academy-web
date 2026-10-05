@@ -4608,11 +4608,6 @@
       font-size: var(--size-h2);
     }
 
-    .publication-hub-album-grid {
-      grid-template-columns: var(--publication-hub-cover) minmax(0, 1fr);
-      gap: var(--space-8);
-    }
-
     .publication-hub-facts-row {
       grid-template-columns: var(--publication-hub-facts-label-col) minmax(0, 1fr);
       gap: var(--space-6);
@@ -4682,6 +4677,14 @@
       display: flex;
       flex-wrap: wrap;
       gap: var(--space-7);
+    }
+  }
+
+  /* Fixed 440px cover column needs the lg content width; at md it overflowed the page (V2-16). */
+  @media (min-width: 1024px) {
+    .publication-hub-album-grid {
+      grid-template-columns: var(--publication-hub-cover) minmax(0, 1fr);
+      gap: var(--space-8);
     }
   }
 }
