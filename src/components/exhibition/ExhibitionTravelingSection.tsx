@@ -1,5 +1,6 @@
 import { Button } from "@/components/core/Button";
 import { TextLink } from "@/components/core/TextLink";
+import { getExhibitionCopy } from "@/content/exhibition";
 import type { ExhibitionTravelingPlace } from "@/content/types";
 import { pl } from "@/i18n/pl";
 
@@ -13,6 +14,7 @@ export function ExhibitionTravelingSection({
   places,
 }: ExhibitionTravelingSectionProps) {
   const { traveling } = pl.exhibition;
+  const travelingCopy = getExhibitionCopy().traveling;
 
   return (
     <section
@@ -29,7 +31,7 @@ export function ExhibitionTravelingSection({
             {traveling.heading}
           </h2>
           <p className="exhibition-section-copy">
-            {traveling.introBefore}
+            {travelingCopy.introBefore}
             {places.map((place, index) => (
               <span key={place.place}>
                 {index > 0
@@ -44,7 +46,7 @@ export function ExhibitionTravelingSection({
                 )}
               </span>
             ))}
-            {traveling.introAfter}
+            {travelingCopy.introAfter}
           </p>
         </div>
 

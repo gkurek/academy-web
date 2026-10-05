@@ -55,6 +55,33 @@ const siteSettings = settingsData as SiteSettings;
 
 validateUpcomingOverrides(siteSettings.upcomingOverrides ?? []);
 
+function requireEmail(role: SiteSettings["emails"][number]["role"]): string {
+  const entry = siteSettings.emails.find((email) => email.role === role);
+  if (!entry?.address.trim()) {
+    throw new Error(`settings.json: no email with role "${role}"`);
+  }
+  return entry.address;
+}
+
 export function getSiteSettings(): SiteSettings {
   return siteSettings;
+}
+
+/** General / workshops / icons contact (brief §8). */
+export function getEnrollmentEmail(): string {
+  return requireEmail("enrollment");
+}
+
+/** Lectures and album orders (brief §8). */
+export function getSecretariatEmail(): string {
+  return requireEmail("secretariat");
+}
+
+/** `tel:` href for the phone number shown as `settings.phone` (Polish numbers, +48). */
+export function getPhoneHref(): string {
+  const digits = siteSettings.phone.replace(/\D/g, "");
+  if (digits.length !== 9) {
+    throw new Error(`settings.json: phone "${siteSettings.phone}" must have 9 digits`);
+  }
+  return `tel:+48${digits}`;
 }

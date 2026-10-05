@@ -4408,13 +4408,6 @@
     gap: var(--space-3);
   }
 
-  .publication-metrics-note {
-    margin: 0;
-    font-size: var(--size-caption-m);
-    line-height: var(--leading-body);
-    color: var(--text-tertiary);
-  }
-
   .publication-about-copy {
     max-width: 34em;
   }

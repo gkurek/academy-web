@@ -1,0 +1,40 @@
+{
+  "lead": "Praca malarza ikon to życie w intymnej relacji z Panem Bogiem i świadczenie o tej relacji przez obraz. Dbanie o nią i ciągłe dojrzewanie do niej to nieustanne wyzwanie ikonografa.",
+  "leadSecondary": "Proponujemy dwie ścieżki: kurs w roku akademickim — raz w tygodniu, od października do czerwca — i tygodniowy plener latem, w trybie rekolekcyjnym. W obu pracuje się indywidualnie. Prowadzi je Elżbieta Jackowska-Kurek, praktykująca malarka ikon, od ponad dwudziestu lat z własną pracownią w Warszawie. Jej ikony tablicowe i polichromie znajdują się w świątyniach i kolekcjach prywatnych w kraju i za granicą.",
+  "cards": {
+    "kurs-roczny-i-trzyletni": {
+      "eyebrow": "Sezon {season} · zgłoszenia do {enrollmentClose}",
+      "excerpt": "Kurs roczny prowadzi przez wszystkie etapy powstawania ikony i pomaga rozeznać, czy pisanie ikon jest modlitwą dla mnie. Kurs trzyletni prowadzi dalej — od ikony lica po ikony dogmatyczne. Grupy wieczorne i dzienne, materiały na miejscu.",
+      "bullets": [
+        "Raz w tygodniu, październik–czerwiec",
+        "Pierwsze spotkanie {firstMeeting}, 18:00",
+        "Rozmowa wstępna przed zapisem, około 30 minut"
+      ],
+      "ctaLabel": "Program i zapisy",
+      "ctaVariant": "primary",
+      "image": {
+        "src": "/media/home/pracownia.jpg",
+        "alt": "Praca nad ikoną",
+        "width": 960,
+        "height": 540
+      }
+    },
+    "letnia-szkola-swiatla": {
+      "eyebrow": "Nabór na {year} od marca {year} · kolejność zgłoszeń",
+      "excerpt": "Tygodniowe plenery ikonowe od lipca do września, w trybie rekolekcyjnym: praca przy ikonie, modlitwa, wykłady i wyjścia do miejsc związanych z kultem ikon. Dla osób, które mają już za sobą pierwsze ikony.",
+      "bullets": [
+        "Tydzień, lipiec–wrzesień",
+        "Miejsce i termin {year}: szczegóły wkrótce",
+        "Koszt: szczegóły wkrótce"
+      ],
+      "ctaLabel": "O plenerze",
+      "ctaVariant": "secondary",
+      "image": {
+        "src": "/media/home/wyklad.jpg",
+        "alt": "Plener ikonowy",
+        "width": 1440,
+        "height": 810
+      }
+    }
+  }
+}

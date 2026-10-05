@@ -12,13 +12,14 @@ import { LightboxProvider } from "@/components/lightbox/LightboxProvider";
 import { SectionPageShell } from "@/components/layout/SectionPageShell";
 import {
   getAnnualExhibitionYear,
+  getExhibitionCopy,
   isAnnualExhibitionActive,
   resolveAnnualVernissage,
   type ExhibitionNowNext as ExhibitionNowNextState,
   type LoadedExhibitionPage,
 } from "@/content/exhibition";
 import { getLectureSeasonShortTheme } from "@/content/lectures";
-import { getSiteSettings } from "@/content/settings";
+import { getEnrollmentEmail } from "@/content/settings";
 import type { AnnualExhibition } from "@/content/types";
 import { pl } from "@/i18n/pl";
 import { buildMailtoHref } from "@/lib/mailto";
@@ -44,45 +45,37 @@ export function ExhibitionPage({
   nowNext,
   firstAnnualYear,
 }: ExhibitionPageProps) {
-  const settings = getSiteSettings();
   const annualActive = isAnnualExhibitionActive(latestAnnual);
-  const {
-    page: pageCopy,
-    permanent,
-    annual,
-    facts,
-    frames,
-    tours,
-    traveling,
-  } = pl.exhibition;
-  const enrollmentEmail = settings.emails[0]?.address ?? "akademiaikony@gmail.com";
+  const { page: pageLabels, permanent, annual, facts, frames, tours, traveling } = pl.exhibition;
+  const copy = getExhibitionCopy();
+  const enrollmentEmail = getEnrollmentEmail();
   const toursMailtoHref = buildMailtoHref(enrollmentEmail, tours.mailtoSubject);
   const travelingMailtoHref = buildMailtoHref(enrollmentEmail, traveling.mailtoSubject);
 
   const annualFactRows = [
-    { label: facts.where, value: facts.whereValue },
-    { label: annual.facts.when, value: annual.facts.whenValue },
-    { label: annual.facts.vernissage, value: annual.facts.vernissageValue },
-    { label: annual.facts.onDisplay, value: annual.facts.onDisplayValue },
-    { label: annual.facts.admission, value: annual.facts.admissionValue },
+    { label: facts.where, value: copy.whereValue },
+    { label: annual.facts.when, value: copy.annual.facts.whenValue },
+    { label: annual.facts.vernissage, value: copy.annual.facts.vernissageValue },
+    { label: annual.facts.onDisplay, value: copy.annual.facts.onDisplayValue },
+    { label: annual.facts.admission, value: copy.annual.facts.admissionValue },
   ];
 
   const permanentFactRows = [
-    { label: facts.where, value: facts.whereValue },
-    { label: permanent.facts.when, value: permanent.facts.whenValue },
-    { label: permanent.facts.hours, value: permanent.facts.hoursValue },
+    { label: facts.where, value: copy.whereValue },
+    { label: permanent.facts.when, value: copy.permanent.facts.whenValue },
+    { label: permanent.facts.hours, value: copy.permanent.facts.hoursValue },
     {
       label: permanent.facts.onDisplay,
-      value: permanent.facts.onDisplayValue
+      value: copy.permanent.facts.onDisplayValue
         .replace("{from}", String(page.iconCount.from))
         .replace("{to}", String(page.iconCount.to)),
     },
-    { label: permanent.facts.admission, value: permanent.facts.admissionValue },
+    { label: permanent.facts.admission, value: copy.permanent.facts.admissionValue },
   ];
 
   const titleSource = annualActive ? latestAnnual : lastFinished;
   const titleSentence = titleSource
-    ? (annualActive ? annual.titleSentenceCurrent : annual.titleSentencePast)
+    ? (annualActive ? copy.annual.titleSentenceCurrent : copy.annual.titleSentencePast)
         .replace("{year}", String(getAnnualExhibitionYear(titleSource.seasonSlug)))
         .replace("{theme}", getLectureSeasonShortTheme(titleSource.seasonSlug))
     : "";
@@ -91,8 +84,8 @@ export function ExhibitionPage({
   const monthYear = vernissage ? formatPolishMonthYearLocative(vernissage) : "";
   const scheduleNext =
     monthYear.length > 0
-      ? annual.scheduleNext.replace("{monthYear}", monthYear)
-      : annual.scheduleNextMissing;
+      ? copy.annual.scheduleNext.replace("{monthYear}", monthYear)
+      : copy.annual.scheduleNextMissing;
 
   const annualPhotos = latestAnnual.photos ?? [];
   const tilesCaption =
@@ -113,17 +106,17 @@ export function ExhibitionPage({
           <p
             className="exhibition-hero-grid__eyebrow text-size-caption uppercase tracking-caption-wide text-text-tertiary"
           >
-            {pageCopy.eyebrow}
+            {copy.page.eyebrow}
           </p>
           <h1
             className="exhibition-hero-grid__h1 font-serif text-size-h1-m md:text-size-h1 leading-tight text-text-h1"
           >
-            {pageCopy.title}
+            {copy.page.title}
           </h1>
           <p
             className="exhibition-hero-grid__lead text-size-lead-m md:text-size-lead leading-body text-text-secondary max-w-measure-lead"
           >
-            {pageCopy.lead}
+            {copy.page.lead}
           </p>
           <ExhibitionNowNext state={nowNext} className="exhibition-hero-grid__now" />
           <ExhibitionPageNav className="exhibition-hero-grid__nav" />
@@ -149,20 +142,20 @@ export function ExhibitionPage({
               <p
                 className="exhibition-section-eyebrow text-size-caption uppercase tracking-caption-wide text-text-tertiary"
               >
-                {frames.annualHeroEyebrow}
+                {copy.annual.eyebrow}
               </p>
               <h2
                 id="exhibition-annual-heading"
                 className="exhibition-section-h2 font-serif text-size-role-section-h2-m md:text-size-role-section-h2 leading-heading text-text-h2"
               >
-                {annual.title}
+                {copy.annual.title}
               </h2>
               <p className="exhibition-section-copy">
-                {titleSentence ? `${annual.intro1} ${titleSentence}` : annual.intro1}
+                {titleSentence ? `${copy.annual.intro1} ${titleSentence}` : copy.annual.intro1}
               </p>
-              <p className="exhibition-section-copy">{annual.intro3}</p>
+              <p className="exhibition-section-copy">{copy.annual.intro3}</p>
               <p className="exhibition-section-copy">
-                {annual.scheduleSince.replace("{firstYear}", String(firstAnnualYear))}{" "}
+                {copy.annual.scheduleSince.replace("{firstYear}", String(firstAnnualYear))}{" "}
                 {scheduleNext}
               </p>
               <p className="exhibition-section-copy">
@@ -201,7 +194,7 @@ export function ExhibitionPage({
               <p
                 className="exhibition-section-eyebrow text-size-caption uppercase tracking-caption-wide text-text-tertiary"
               >
-                {frames.permanentEyebrow}
+                {copy.permanent.eyebrow}
               </p>
               <h2
                 id="exhibition-permanent-heading"
@@ -247,9 +240,9 @@ export function ExhibitionPage({
       </LightboxProvider>
 
       <footer className="exhibition-page-footer">
-        <span className="exhibition-page-footer-label">{pageCopy.startHere}</span>
-        <TextLink href="/ikony">{pageCopy.galleryLink}</TextLink>
-        <TextLink href="/warsztaty">{pageCopy.workshopsLink}</TextLink>
+        <span className="exhibition-page-footer-label">{pageLabels.startHere}</span>
+        <TextLink href="/ikony">{pageLabels.galleryLink}</TextLink>
+        <TextLink href="/warsztaty">{pageLabels.workshopsLink}</TextLink>
       </footer>
       </ExhibitionHashScroll>
     </SectionPageShell>

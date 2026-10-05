@@ -4,9 +4,10 @@ import { Button } from "@/components/core/Button";
 import { TextLink } from "@/components/core/TextLink";
 import type { EnrollmentState } from "@/content/enrollment";
 import { getOfferDateValues } from "@/content/offers";
+import { getPhoneHref, getSiteSettings } from "@/content/settings";
 import type { OfferFacts } from "@/content/types";
 import { pl } from "@/i18n/pl";
-import { fillRequiredTemplate } from "@/lib/fillTemplate";
+import { fillRequiredTemplate, fillTemplate } from "@/lib/fillTemplate";
 import { buildMailtoHref } from "@/lib/mailto";
 
 export interface FactsBoxProps {
@@ -62,20 +63,23 @@ function getDesktopContactLine(
   kind: FactsBoxProps["kind"],
   enrollment: EnrollmentState,
   email: string,
+  phone: string,
 ): string {
   if (enrollment === "closed" && kind === "plener") {
-    return pl.factsBox.contactClosedPlener.replace("{email}", email);
+    return fillTemplate(pl.factsBox.contactClosedPlener, { email, phone });
   }
 
-  return pl.factsBox.phoneOr;
+  return fillTemplate(pl.factsBox.phoneOr, { phone });
 }
 
 export function FactsBox({ facts, kind, enrollment }: FactsBoxProps) {
   const headingId = useId();
   const { factsBox } = pl;
   const cta = factsBox.ctaByKind[kind][enrollment];
+  const { phone } = getSiteSettings();
+  const phoneHref = getPhoneHref();
   const mailtoHref = buildMailtoHref(facts.enrollmentEmail, facts.enrollmentSubject);
-  const desktopContact = getDesktopContactLine(kind, enrollment, facts.enrollmentEmail);
+  const desktopContact = getDesktopContactLine(kind, enrollment, facts.enrollmentEmail, phone);
   const ctaNote =
     "note" in cta
       ? fillRequiredTemplate(cta.note, getOfferDateValues(facts), `FactsBox ${kind} note`)
@@ -102,7 +106,7 @@ export function FactsBox({ facts, kind, enrollment }: FactsBoxProps) {
               {facts.enrollmentPhone ? (
                 <>
                   <br />
-                  <TextLink href={pl.factsBox.phoneTel}>{facts.enrollmentPhone}</TextLink>
+                  <TextLink href={phoneHref}>{facts.enrollmentPhone}</TextLink>
                 </>
               ) : null}
             </>
@@ -159,8 +163,8 @@ export function FactsBox({ facts, kind, enrollment }: FactsBoxProps) {
           {cta.mailtoLabel}
         </Button>
 
-        <Button href={factsBox.phoneTel} variant="secondary" block size="md" className="md:hidden">
-          {cta.telLabel}
+        <Button href={phoneHref} variant="secondary" block size="md" className="md:hidden">
+          {fillTemplate(cta.telLabel, { phone })}
         </Button>
 
         <p className="hidden md:block text-size-ui text-text-tertiary text-center">{desktopContact}</p>

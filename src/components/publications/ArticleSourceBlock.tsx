@@ -8,7 +8,7 @@ import {
 } from "@/content/articles";
 import type { PublicationFrontmatter } from "@/content/publications";
 import { formatPublicationPrice } from "@/content/publications";
-import { getSiteSettings } from "@/content/settings";
+import { getSecretariatEmail } from "@/content/settings";
 import { pl } from "@/i18n/pl";
 import { pluralize } from "@/i18n/pluralize";
 import { buildMailtoHref } from "@/lib/mailto";
@@ -71,9 +71,7 @@ function ArticleSourceMeta({
 }
 
 function AlbumBackref({ publication }: { publication: PublicationFrontmatter }) {
-  const settings = getSiteSettings();
-  const secretariatEmail = settings.emails.find((email) => email.label.includes("sekretariat"))
-    ?.address ?? settings.emails[1]?.address ?? settings.emails[0].address;
+  const secretariatEmail = getSecretariatEmail();
   const mailtoHref = buildMailtoHref(secretariatEmail, pl.publications.mailtoSubject);
   const priceLabel = formatPublicationPrice(publication.price);
   const pageWord = pluralize(publication.pages, pl.publications.pageForms);

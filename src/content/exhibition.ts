@@ -4,7 +4,7 @@ import { todayInWarsaw } from "@/lib/isoDate";
 import { assertMdxExports, assertNewsSlug } from "@/content/validate";
 import annualManifest from "../../content/exhibition/annual.json";
 import * as exhibitionBody from "../../content/exhibition/body.mdx";
-import { frontmatter as pageFrontmatter } from "../../content/exhibition/page.mdx";
+import * as pageModule from "../../content/exhibition/page.mdx";
 
 type AnnualManifest = {
   sample?: boolean;
@@ -18,8 +18,36 @@ type ExhibitionBodyExports = {
 /** Annual show closes on this day of its year unless `dateEnd` says otherwise (house convention, K-84). */
 const ANNUAL_DEFAULT_END_MONTH_DAY = "08-31";
 
+/** Prose of `/ikony/wystawy` from `content/exhibition/page.mdx`; labels and UI strings live in `pl.exhibition`. */
+export type ExhibitionCopy = {
+  page: { eyebrow: string; title: string; lead: string };
+  annual: {
+    eyebrow: string;
+    title: string;
+    intro1: string;
+    titleSentencePast: string;
+    titleSentenceCurrent: string;
+    intro3: string;
+    scheduleSince: string;
+    scheduleNext: string;
+    scheduleNextMissing: string;
+    facts: { whenValue: string; vernissageValue: string; onDisplayValue: string; admissionValue: string };
+  };
+  permanent: {
+    eyebrow: string;
+    facts: { whenValue: string; hoursValue: string; onDisplayValue: string; admissionValue: string };
+  };
+  tours: { introBefore: string; introAfter: string };
+  traveling: { introBefore: string; introAfter: string };
+  whereValue: string;
+};
+
 const manifest = annualManifest as AnnualManifest;
-const permanentExhibition = pageFrontmatter as PermanentExhibition;
+const { frontmatter: pageFrontmatter, copy: exhibitionCopy } = assertMdxExports<{
+  frontmatter: PermanentExhibition;
+  copy: ExhibitionCopy;
+}>(pageModule, ["frontmatter", "copy"], "content/exhibition/page.mdx");
+const permanentExhibition = pageFrontmatter;
 const { descriptionParagraphs } = assertMdxExports<ExhibitionBodyExports>(
   exhibitionBody,
   ["descriptionParagraphs"],
@@ -69,6 +97,28 @@ function validatePermanentExhibition(exhibition: PermanentExhibition): void {
 }
 
 validatePermanentExhibition(permanentExhibition);
+
+/** Every string in the copy block must be filled — an empty one would render a blank paragraph. */
+function assertCopyFilled(node: unknown, path: string): void {
+  if (typeof node === "string") {
+    if (!node.trim()) {
+      throw new Error(`content/exhibition/page.mdx: copy.${path} is empty`);
+    }
+    return;
+  }
+
+  if (node === null || typeof node !== "object") {
+    throw new Error(`content/exhibition/page.mdx: copy.${path} must be a string or an object`);
+  }
+
+  Object.entries(node).forEach(([key, value]) => assertCopyFilled(value, path ? `${path}.${key}` : key));
+}
+
+assertCopyFilled(exhibitionCopy, "");
+
+export function getExhibitionCopy(): ExhibitionCopy {
+  return exhibitionCopy;
+}
 
 const allAnnualExhibitions = [...manifest.exhibitions].sort(
   (a, b) => getAnnualExhibitionYear(b.seasonSlug) - getAnnualExhibitionYear(a.seasonSlug),

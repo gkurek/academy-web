@@ -536,5 +536,80 @@
     "route": "/warsztaty/letnia-szkola-swiatla",
     "signal": "html",
     "note": "OfferLeadExtra, OfferQuoteGrid: heading id from useId instead of a fixed string (R2-25)"
+  },
+  {
+    "id": "RF-12",
+    "route": "/warsztaty",
+    "signal": "html",
+    "note": "LSS hub card: [pole CMS] placeholders became the text szczegóły wkrótce (owner decision)"
+  },
+  {
+    "id": "RF-12",
+    "route": "/warsztaty",
+    "signal": "screenshot",
+    "width": 390,
+    "note": "LSS hub card: [pole CMS] placeholders became the text szczegóły wkrótce (owner decision)"
+  },
+  {
+    "id": "RF-12",
+    "route": "/warsztaty",
+    "signal": "screenshot",
+    "width": 1440,
+    "note": "LSS hub card: [pole CMS] placeholders became the text szczegóły wkrótce (owner decision)"
+  },
+  {
+    "id": "RF-12",
+    "route": "/warsztaty",
+    "signal": "screenshot",
+    "width": 1920,
+    "note": "LSS hub card: [pole CMS] placeholders became the text szczegóły wkrótce (owner decision)"
+  },
+  {
+    "id": "RF-12",
+    "route": "/publikacje/ikona-dzis",
+    "signal": "html",
+    "note": "album metrics box: shipping note paragraph removed (owner decision)"
+  },
+  {
+    "id": "RF-12",
+    "route": "/publikacje/ikona-dzis",
+    "signal": "screenshot",
+    "width": 390,
+    "note": "album metrics box: shipping note paragraph removed (owner decision); page shorter, one element fewer"
+  },
+  {
+    "id": "RF-12",
+    "route": "/publikacje/ikona-dzis",
+    "signal": "styles",
+    "width": 390,
+    "note": "album metrics box: shipping note paragraph removed (owner decision); page shorter, one element fewer"
+  },
+  {
+    "id": "RF-12",
+    "route": "/publikacje/ikona-dzis",
+    "signal": "screenshot",
+    "width": 1440,
+    "note": "album metrics box: shipping note paragraph removed (owner decision); page shorter, one element fewer"
+  },
+  {
+    "id": "RF-12",
+    "route": "/publikacje/ikona-dzis",
+    "signal": "styles",
+    "width": 1440,
+    "note": "album metrics box: shipping note paragraph removed (owner decision); page shorter, one element fewer"
+  },
+  {
+    "id": "RF-12",
+    "route": "/publikacje/ikona-dzis",
+    "signal": "screenshot",
+    "width": 1920,
+    "note": "album metrics box: shipping note paragraph removed (owner decision); page shorter, one element fewer"
+  },
+  {
+    "id": "RF-12",
+    "route": "/publikacje/ikona-dzis",
+    "signal": "styles",
+    "width": 1920,
+    "note": "album metrics box: shipping note paragraph removed (owner decision); page shorter, one element fewer"
   }
 ]

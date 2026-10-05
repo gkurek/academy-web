@@ -2,15 +2,12 @@ import { OfferCard } from "@/components/content/OfferCard";
 import { SectionPageShell } from "@/components/layout/SectionPageShell";
 import { OfferQuoteGrid } from "@/components/offers/OfferQuoteGrid";
 import { getOfferDateValues, type LoadedOffer } from "@/content/offers";
+import { getWorkshopsHub } from "@/content/workshops-hub";
 import type { Testimonial } from "@/content/types";
 import { pl } from "@/i18n/pl";
 import { fillRequiredTemplate } from "@/lib/fillTemplate";
 
-type WorkshopCard = (typeof pl.workshopsHub.cards)[keyof typeof pl.workshopsHub.cards];
-type WorkshopCardImage = (typeof pl.workshopsHub.cardImages)[keyof typeof pl.workshopsHub.cardImages];
-
-const cards: Partial<Record<string, WorkshopCard>> = pl.workshopsHub.cards;
-const cardImages: Partial<Record<string, WorkshopCardImage>> = pl.workshopsHub.cardImages;
+const hub = getWorkshopsHub();
 
 export interface WorkshopsHubPageProps {
   /** Route path — see SectionPageShellProps["path"]. */
@@ -20,15 +17,14 @@ export interface WorkshopsHubPageProps {
 }
 
 function WorkshopOfferCard({ offer }: { offer: LoadedOffer }) {
-  const card = cards[offer.slug];
-  const image = cardImages[offer.slug];
+  const card = hub.cards[offer.slug];
   // A workshop offer without its hub card would silently vanish from /warsztaty — fail the build instead.
-  if (!card || !image) {
-    throw new Error(`pl.workshopsHub: missing card or card image for offer "${offer.slug}"`);
+  if (!card) {
+    throw new Error(`content/pages/workshops-hub.json: missing card for offer "${offer.slug}"`);
   }
 
   const dateValues = getOfferDateValues(offer.facts);
-  const context = `workshopsHub.cards.${offer.slug}`;
+  const context = `workshops-hub.json cards.${offer.slug}`;
 
   return (
     <OfferCard
@@ -39,7 +35,7 @@ function WorkshopOfferCard({ offer }: { offer: LoadedOffer }) {
       href={`/warsztaty/${offer.slug}`}
       ctaLabel={card.ctaLabel}
       ctaVariant={card.ctaVariant}
-      image={image}
+      image={card.image}
     />
   );
 }
@@ -52,10 +48,10 @@ export function WorkshopsHubPage({ path, offers, quotes }: WorkshopsHubPageProps
           {pl.workshopsHub.title}
         </h1>
         <p className="text-size-lead-m md:text-size-lead leading-body text-text-secondary max-w-measure-lead mb-space-5">
-          {pl.workshopsHub.lead}
+          {hub.lead}
         </p>
         <p className="text-size-body-lg leading-prose text-text-secondary max-w-measure-prose">
-          {pl.workshopsHub.leadSecondary}
+          {hub.leadSecondary}
         </p>
       </section>
 

@@ -1,7 +1,7 @@
 import Link from "next/link";
 
 import { ExternalLink } from "@/components/core/ExternalLink";
-import { getSiteSettings } from "@/content/settings";
+import { getEnrollmentEmail, getPhoneHref, getSiteSettings } from "@/content/settings";
 import { pl } from "@/i18n/pl";
 import { fillTemplate } from "@/lib/fillTemplate";
 import { currentYearInWarsaw } from "@/lib/isoDate";
@@ -29,8 +29,8 @@ function FooterContact() {
   const settings = getSiteSettings();
   // Church name only — the full dedication (brief §8) is on /kontakt.
   const church = settings.place.split(" pw. ")[0];
-  const primaryEmail = settings.emails[0];
-  const telHref = `tel:+48${settings.phone.replace(/\s/g, "")}`;
+  const primaryEmail = getEnrollmentEmail();
+  const telHref = getPhoneHref();
 
   return (
     <div>
@@ -47,11 +47,9 @@ function FooterContact() {
       </address>
 
       <div className="mt-footer-data-mt-m flex flex-col md:mt-footer-data-mt md:gap-space-2">
-        {primaryEmail ? (
-          <a href={`mailto:${primaryEmail.address}`} className={contactDataClass}>
-            <span className={footerLinkUnderline}>{primaryEmail.address}</span>
-          </a>
-        ) : null}
+        <a href={`mailto:${primaryEmail}`} className={contactDataClass}>
+          <span className={footerLinkUnderline}>{primaryEmail}</span>
+        </a>
         <a href={telHref} className={contactDataClass}>
           <span className={footerLinkUnderline}>{settings.phone}</span>
         </a>

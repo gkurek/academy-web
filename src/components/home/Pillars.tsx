@@ -1,18 +1,22 @@
 import Image from "next/image";
 import Link from "next/link";
-import { pl } from "@/i18n/pl";
+import type { LoadedHomePillar } from "@/content/home";
 
 const pillarLinkClass =
   "text-accent-text no-underline group-hover:text-accent-hover";
 
 const pillarLinkUnderline = "link-underline-target link-underline-target--border";
 
+export interface PillarsProps {
+  pillars: LoadedHomePillar[];
+}
+
 /** "Warsztaty / Wykłady / Ikony" — three static entry points into the main sections. */
-export function Pillars() {
+export function Pillars({ pillars }: PillarsProps) {
   return (
     <section className="px-page-margin-mobile md:px-page-margin py-space-7 md:py-space-8">
       <div className="grid grid-cols-1 md:grid-cols-3 gap-space-7 md:gap-pillars-gap">
-        {pl.home.pillars.map((pillar) => (
+        {pillars.map((pillar) => (
           <article key={pillar.title} className="group">
             <Link href={pillar.href} className="block">
               <Image
@@ -32,7 +36,7 @@ export function Pillars() {
               <Link href={pillar.href} className={`text-size-ui-m md:text-size-body ${pillarLinkClass}`}>
                 <span className={pillarLinkUnderline}>{pillar.linkLabel}</span>
               </Link>
-              {"secondaryLinkLabel" in pillar && pillar.secondaryLinkLabel && pillar.secondaryHref ? (
+              {pillar.secondaryLinkLabel && pillar.secondaryHref ? (
                 <Link
                   href={pillar.secondaryHref}
                   className={`text-size-ui-m md:text-size-body ${pillarLinkClass}`}

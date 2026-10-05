@@ -409,7 +409,8 @@ export type SiteSettings = {
   orgName: string;
   place: string;
   address: string;
-  emails: { label: string; address: string; contactName?: string }[];
+  /** `role` picks the address for a purpose (enrollment mailtos vs. secretariat) — never match on `label`. */
+  emails: { role: "enrollment" | "secretariat"; label: string; address: string; contactName?: string }[];
   phone: string;
   mapEmbedUrl: string;
   blogUrl: string;

@@ -3,7 +3,7 @@ import type { ComponentType } from "react";
 import { MapBlock } from "@/components/contact/MapBlock";
 import { OnlineAside } from "@/components/contact/OnlineAside";
 import { SectionPageShell } from "@/components/layout/SectionPageShell";
-import { getSiteSettings } from "@/content/settings";
+import { getPhoneHref, getSiteSettings } from "@/content/settings";
 import { pl } from "@/i18n/pl";
 
 export interface ContactPageProps {
@@ -16,7 +16,7 @@ export interface ContactPageProps {
 
 export function ContactPage({ path, title, Content }: ContactPageProps) {
   const settings = getSiteSettings();
-  const telHref = pl.factsBox.phoneTel;
+  const telHref = getPhoneHref();
 
   return (
     <SectionPageShell path={path}>

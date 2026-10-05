@@ -1,5 +1,6 @@
 import { Button } from "@/components/core/Button";
 import { TextLink } from "@/components/core/TextLink";
+import { getExhibitionCopy } from "@/content/exhibition";
 import { pl } from "@/i18n/pl";
 
 export interface ExhibitionToursSectionProps {
@@ -8,6 +9,7 @@ export interface ExhibitionToursSectionProps {
 
 export function ExhibitionToursSection({ mailtoHref }: ExhibitionToursSectionProps) {
   const { tours } = pl.exhibition;
+  const toursCopy = getExhibitionCopy().tours;
 
   return (
     <section
@@ -24,9 +26,9 @@ export function ExhibitionToursSection({ mailtoHref }: ExhibitionToursSectionPro
             {tours.title}
           </h2>
           <p className="exhibition-section-copy exhibition-tours-pass__intro max-w-measure-lead">
-            {tours.introBefore}
+            {toursCopy.introBefore}
             <TextLink href="/aktualnosci">{tours.scheduleNewsLink}</TextLink>
-            {tours.introAfter}
+            {toursCopy.introAfter}
           </p>
         </div>
         <Button
