@@ -1,7 +1,7 @@
 "use client";
 
-import { ContentGalleryGrid } from "@/components/gallery/ContentGalleryGrid";
-import { useExhibitionLightbox } from "@/components/exhibition/ExhibitionLightboxProvider";
+import { JustifiedGrid } from "@/components/gallery/JustifiedGrid";
+import { useLightbox } from "@/components/lightbox/LightboxProvider";
 import type { Image as ContentImage } from "@/content/types";
 import { pl } from "@/i18n/pl";
 
@@ -16,20 +16,20 @@ export function ExhibitionAnnualTiles({
   placeholderLabels,
   caption,
 }: ExhibitionAnnualTilesProps) {
-  const { openPhoto } = useExhibitionLightbox();
+  const { openPhoto } = useLightbox();
   const slotCount = 4;
   const slots = Array.from({ length: slotCount }, (_, index) => photos[index] ?? null);
 
   if (photos.length > 0) {
     return (
       <div className="exhibition-annual-tiles">
-        <ContentGalleryGrid
-          photos={photos}
+        <JustifiedGrid
+          tiles={photos.map((photo) => ({
+            key: photo.src,
+            image: photo,
+            label: pl.lightbox.openPhoto.replace("{alt}", photo.alt),
+          }))}
           onSelect={(index) => openPhoto(photos, index)}
-          openPhotoAriaLabel={(photo) =>
-            pl.exhibition.lightbox.openPhoto.replace("{alt}", photo.alt)
-          }
-          captionMode="none"
         />
         {caption ? (
           <p className="exhibition-annual-tiles-caption">

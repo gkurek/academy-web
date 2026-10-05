@@ -128,5 +128,122 @@
     "signal": "screenshot",
     "width": 390,
     "note": "FactsBox contact row as mailto:/tel: links (R2-05) — accent link colour"
+  },
+  {
+    "id": "RF-4",
+    "route": "/",
+    "signal": "html",
+    "note": "justified gallery rendered on the server (JustifiedGrid rows, figure tiles with --tile-ratio); lightbox dialog without the per-page class"
+  },
+  {
+    "id": "RF-4",
+    "route": "/",
+    "signal": "screenshot",
+    "width": 390,
+    "note": "rows identical to the JS-measured layout; sub-pixel tile widths from CSS flex vs JS floats shift later rows by up to 3 px and change photo resampling"
+  },
+  {
+    "id": "RF-4",
+    "route": "/",
+    "signal": "screenshot",
+    "width": 1440,
+    "note": "rows identical to the JS-measured layout; sub-pixel tile widths from CSS flex vs JS floats shift later rows by up to 3 px and change photo resampling"
+  },
+  {
+    "id": "RF-4",
+    "route": "/",
+    "signal": "styles",
+    "width": 390,
+    "note": "tiles hidden below md are in the DOM (display: none) — element count +2"
+  },
+  {
+    "id": "RF-4",
+    "route": "/ikony",
+    "signal": "html",
+    "note": "justified gallery rendered on the server (JustifiedGrid rows, figure tiles with --tile-ratio); lightbox dialog without the per-page class; whole gallery in the HTML, filter applied in the client (R3-04)"
+  },
+  {
+    "id": "RF-4",
+    "route": "/ikony",
+    "signal": "screenshot",
+    "width": 390,
+    "note": "rows identical to the JS-measured layout; sub-pixel tile widths from CSS flex vs JS floats shift later rows by up to 3 px and change photo resampling"
+  },
+  {
+    "id": "RF-4",
+    "route": "/ikony",
+    "signal": "screenshot",
+    "width": 1440,
+    "note": "rows identical to the JS-measured layout; sub-pixel tile widths from CSS flex vs JS floats shift later rows by up to 3 px and change photo resampling"
+  },
+  {
+    "id": "RF-4",
+    "route": "/ikony",
+    "signal": "screenshot",
+    "width": 1920,
+    "note": "rows identical to the JS-measured layout; sub-pixel tile widths from CSS flex vs JS floats shift later rows by up to 3 px and change photo resampling"
+  },
+  {
+    "id": "RF-4",
+    "route": "/ikony/na-zamowienie",
+    "signal": "html",
+    "note": "justified gallery rendered on the server (JustifiedGrid rows, figure tiles with --tile-ratio); lightbox dialog without the per-page class"
+  },
+  {
+    "id": "RF-4",
+    "route": "/ikony/na-zamowienie",
+    "signal": "screenshot",
+    "width": 390,
+    "note": "rows identical to the JS-measured layout; sub-pixel tile widths from CSS flex vs JS floats shift later rows by up to 3 px and change photo resampling"
+  },
+  {
+    "id": "RF-4",
+    "route": "/ikony/na-zamowienie",
+    "signal": "screenshot",
+    "width": 1440,
+    "note": "rows identical to the JS-measured layout; sub-pixel tile widths from CSS flex vs JS floats shift later rows by up to 3 px and change photo resampling"
+  },
+  {
+    "id": "RF-4",
+    "route": "/ikony/na-zamowienie",
+    "signal": "styles",
+    "width": 390,
+    "note": "tiles hidden below md are in the DOM (display: none) — element count +2"
+  },
+  {
+    "id": "RF-4",
+    "route": "/ikony/wystawy",
+    "signal": "html",
+    "note": "lightbox dialog: workshop-lightbox-dialog class dropped (one Lightbox)"
+  },
+  {
+    "id": "RF-4",
+    "route": "/pracownia",
+    "signal": "html",
+    "note": "lightbox dialog: workshop-lightbox-dialog class dropped (one Lightbox)"
+  },
+  {
+    "id": "RF-4",
+    "route": "/publikacje",
+    "signal": "html",
+    "note": "lightbox dialog: publication-spread-lightbox class dropped (one Lightbox)"
+  },
+  {
+    "id": "RF-4",
+    "route": "/publikacje/ikona-dzis",
+    "signal": "html",
+    "note": "lightbox dialog: publication-spread-lightbox class dropped (one Lightbox)"
+  },
+  {
+    "id": "RF-4",
+    "route": "/aktualnosci/nabor-kursu-2026-2027",
+    "signal": "html",
+    "note": "one lightbox dialog per entry (LightboxProvider) instead of one per cover/gallery"
+  },
+  {
+    "id": "RF-4",
+    "route": "/aktualnosci/ikona-korzenie-i-owoce-wiary-mistyka-dzis-wyklady-2026-2027",
+    "signal": "html",
+    "note": "one lightbox dialog per entry (LightboxProvider) instead of one per cover/gallery"
   }
 ]

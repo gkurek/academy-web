@@ -149,15 +149,18 @@ async function settlePage(page: Page): Promise<void> {
       y += window.innerHeight;
     }
     window.scrollTo(0, 0);
+    // Images without a layout box (tiles hidden below a breakpoint) never load lazily — skip them.
     await Promise.all(
-      Array.from(document.images).map((img) =>
-        img.complete
-          ? null
-          : new Promise((resolve) => {
-              img.onload = resolve;
-              img.onerror = resolve;
-            }),
-      ),
+      Array.from(document.images)
+        .filter((img) => img.getClientRects().length > 0)
+        .map((img) =>
+          img.complete
+            ? null
+            : new Promise((resolve) => {
+                img.onload = resolve;
+                img.onerror = resolve;
+              }),
+        ),
     );
     await document.fonts.ready;
   });

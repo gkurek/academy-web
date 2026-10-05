@@ -1,6 +1,7 @@
 import Link from "next/link";
 
 import { SectionPageShell } from "@/components/layout/SectionPageShell";
+import { LightboxProvider } from "@/components/lightbox/LightboxProvider";
 import { NewsArticleCover } from "@/components/news/NewsArticleCover";
 import { NewsArticleNav } from "@/components/news/NewsArticleNav";
 import { NewsEventCta } from "@/components/news/NewsEventCta";
@@ -89,97 +90,99 @@ export function NewsArticlePage({ entry, active }: NewsArticlePageProps) {
 
   return (
     <SectionPageShell active={active}>
-      <article className={articleClass}>
-        <header className="news-article-head">
-          <p className="news-article-meta">
-            <span className="news-article-kind">{kindLabel}</span>
-            {" · "}
-            <NewsDateMeta
-              date={entry.date}
-              dateEnd={entry.dateEnd}
-              withYear
-              className="news-article-meta-date"
-            />
-          </p>
-          <h1 className="news-article-title">{entry.title}</h1>
-          {lead ? <p className="news-article-lead">{lead}</p> : null}
-          <hr className="news-article-head-rule" />
-        </header>
-
-        {showFacts || showColumnImage ? (
-          <div className="news-article-top">
-            {showColumnImage ? (
-              <NewsArticleCover
-                image={columnImage}
-                images={images}
-                lightboxIndex={columnImageIndex}
+      <LightboxProvider>
+        <article className={articleClass}>
+          <header className="news-article-head">
+            <p className="news-article-meta">
+              <span className="news-article-kind">{kindLabel}</span>
+              {" · "}
+              <NewsDateMeta
+                date={entry.date}
+                dateEnd={entry.dateEnd}
+                withYear
+                className="news-article-meta-date"
               />
-            ) : null}
-            {showFacts ? <NewsFacts facts={entry.facts!} /> : null}
+            </p>
+            <h1 className="news-article-title">{entry.title}</h1>
+            {lead ? <p className="news-article-lead">{lead}</p> : null}
+            <hr className="news-article-head-rule" />
+          </header>
+
+          {showFacts || showColumnImage ? (
+            <div className="news-article-top">
+              {showColumnImage ? (
+                <NewsArticleCover
+                  image={columnImage}
+                  images={images}
+                  lightboxIndex={columnImageIndex}
+                />
+              ) : null}
+              {showFacts ? <NewsFacts facts={entry.facts!} /> : null}
+            </div>
+          ) : null}
+
+          <div className="news-article-main news-article-prose news-prose">
+            <Content components={newsMdxComponents} />
           </div>
-        ) : null}
 
-        <div className="news-article-main news-article-prose news-prose">
-          <Content components={newsMdxComponents} />
-        </div>
+          {showEventCta ? (
+            <div className="news-article-cta">
+              <NewsEventCta kind={entry.kind} />
+            </div>
+          ) : null}
 
-        {showEventCta ? (
-          <div className="news-article-cta">
-            <NewsEventCta kind={entry.kind} />
+          {hasGalleryTekst ? (
+            <div className="news-article-mgal">
+              <NewsGallery
+                images={images}
+                layout={layout}
+                showHeading={galleryHeading}
+                hideOnDesktopIndex={hideOnDesktopIndex}
+              />
+            </div>
+          ) : null}
+
+          {hasGalleryWide ? (
+            <div
+              className={[
+                "news-article-gal",
+                !hasGalGridArea ? "news-article-gal--column-only-mobile" : "",
+              ]
+                .filter(Boolean)
+                .join(" ")}
+            >
+              <NewsGallery
+                images={images}
+                layout={layout}
+                showHeading={false}
+                hideOnDesktopIndex={hideOnDesktopIndex}
+              />
+            </div>
+          ) : null}
+
+          <div className="news-article-rail">
+            <div
+              className={[
+                "news-article-rail-inner",
+                railStickyOff ? "news-article-rail-inner--no-sticky" : "",
+              ]
+                .filter(Boolean)
+                .join(" ")}
+            >
+              {showRelated ? <NewsRelated links={relatedLinks} /> : null}
+              <NewsArticleNav previous={neighbors.previous} next={neighbors.next} />
+            </div>
           </div>
-        ) : null}
 
-        {hasGalleryTekst ? (
-          <div className="news-article-mgal">
-            <NewsGallery
-              images={images}
-              layout={layout}
-              showHeading={galleryHeading}
-              hideOnDesktopIndex={hideOnDesktopIndex}
-            />
-          </div>
-        ) : null}
-
-        {hasGalleryWide ? (
-          <div
-            className={[
-              "news-article-gal",
-              !hasGalGridArea ? "news-article-gal--column-only-mobile" : "",
-            ]
-              .filter(Boolean)
-              .join(" ")}
-          >
-            <NewsGallery
-              images={images}
-              layout={layout}
-              showHeading={false}
-              hideOnDesktopIndex={hideOnDesktopIndex}
-            />
-          </div>
-        ) : null}
-
-        <div className="news-article-rail">
-          <div
-            className={[
-              "news-article-rail-inner",
-              railStickyOff ? "news-article-rail-inner--no-sticky" : "",
-            ]
-              .filter(Boolean)
-              .join(" ")}
-          >
-            {showRelated ? <NewsRelated links={relatedLinks} /> : null}
-            <NewsArticleNav previous={neighbors.previous} next={neighbors.next} />
-          </div>
-        </div>
-
-        {hasGalGridArea ? (
-          <footer className="news-article-gend">
-            <Link href="/aktualnosci" className="news-article-entry-link news-article-gend-link">
-              {pl.news.allNewsLink}
-            </Link>
-          </footer>
-        ) : null}
-      </article>
+          {hasGalGridArea ? (
+            <footer className="news-article-gend">
+              <Link href="/aktualnosci" className="news-article-entry-link news-article-gend-link">
+                {pl.news.allNewsLink}
+              </Link>
+            </footer>
+          ) : null}
+        </article>
+      </LightboxProvider>
     </SectionPageShell>
   );
 }

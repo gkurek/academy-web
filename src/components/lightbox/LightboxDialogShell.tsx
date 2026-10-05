@@ -11,7 +11,6 @@ import {
 
 export type LightboxControlLabels = {
   close: string;
-  closeAria: string;
   previous: string;
   previousAria: string;
   next: string;
@@ -92,7 +91,7 @@ export function LightboxDialogShell({
             <button
               type="button"
               onClick={onClose}
-              aria-label={labels.closeAria}
+              aria-label={labels.close}
               className="flex h-tap-min cursor-pointer items-center justify-center gap-space-2 border-0 bg-surface-card/80 px-space-4 text-size-body text-text-body hover:bg-surface-card lg:w-tap-min lg:px-0"
             >
               <span className="lg:hidden">{labels.close}</span>

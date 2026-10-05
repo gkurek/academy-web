@@ -4,13 +4,13 @@ import { ExhibitionAnnualTiles } from "@/components/exhibition/ExhibitionAnnualT
 import { ExhibitionFactsPanel } from "@/components/exhibition/ExhibitionFactsPanel";
 import { ExhibitionHashScroll } from "@/components/exhibition/ExhibitionHashScroll";
 import { ExhibitionFrame } from "@/components/exhibition/ExhibitionFrame";
-import { ExhibitionLightboxProvider } from "@/components/exhibition/ExhibitionLightboxProvider";
 import { ExhibitionNowNextBlock } from "@/components/exhibition/ExhibitionNowNext";
 import { ExhibitionPageNav } from "@/components/exhibition/ExhibitionPageNav";
 import {
   ExhibitionToursSection,
   ExhibitionTravelingSection,
 } from "@/components/exhibition/ExhibitionToursSection";
+import { LightboxProvider } from "@/components/lightbox/LightboxProvider";
 import { SectionPageShell } from "@/components/layout/SectionPageShell";
 import {
   getAnnualExhibitionYear,
@@ -126,7 +126,7 @@ export function ExhibitionPage({ active, sectionActive }: ExhibitionPageProps) {
         </div>
       </header>
 
-      <ExhibitionLightboxProvider>
+      <LightboxProvider>
         <div className="exhibition-hero-frame mb-space-6">
           <ExhibitionFrame
             image={heroImage}
@@ -240,7 +240,7 @@ export function ExhibitionPage({ active, sectionActive }: ExhibitionPageProps) {
             placeholderLabel={frames.closingWide}
           />
         </div>
-      </ExhibitionLightboxProvider>
+      </LightboxProvider>
 
       <footer className="exhibition-page-footer">
         <span className="exhibition-page-footer-label">{pageCopy.startHere}</span>

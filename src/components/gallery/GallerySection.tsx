@@ -9,7 +9,7 @@ export interface GallerySectionProps {
   startIndex: number;
   /** Leading tiles that load eagerly — only the first section's first row. */
   eagerCount: number;
-  onSelect: (index: number, trigger: HTMLButtonElement) => void;
+  onSelect: (index: number) => void;
   /** Students' section: names generated from the works. */
   names?: string[];
   className?: string;
@@ -46,12 +46,7 @@ export function GallerySection({
         </p>
       ) : null}
 
-      <IconGrid
-        items={items}
-        variant="gallery"
-        eagerCount={eagerCount}
-        onSelect={(index, trigger) => onSelect(startIndex + index, trigger)}
-      />
+      <IconGrid items={items} eagerCount={eagerCount} onSelect={(index) => onSelect(startIndex + index)} />
     </section>
   );
 }

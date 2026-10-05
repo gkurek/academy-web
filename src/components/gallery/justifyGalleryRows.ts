@@ -18,8 +18,6 @@ export interface JustifyGalleryOptions {
   gap: number;
   /** FooGallery `lastRow: "smart"` — do not stretch a short last row to full width. */
   lastRowSmart: boolean;
-  /** WP mobile: one tile per row at max height, centered. */
-  singleColumn: boolean;
   /** Optional hard cap on tiles per row (e.g. fewer icons on wide desktop). */
   maxTilesPerRow?: number;
 }
@@ -65,24 +63,11 @@ export function justifyGalleryRows(
     maxRowHeight,
     gap,
     lastRowSmart,
-    singleColumn,
     maxTilesPerRow,
   }: JustifyGalleryOptions,
 ): JustifiedRow[] {
   if (aspectRatios.length === 0 || containerWidth <= 0) {
     return [];
-  }
-
-  if (singleColumn) {
-    return aspectRatios.map((ratio, index) => {
-      const height = maxRowHeight;
-      const width = Math.min(containerWidth, height * ratio);
-
-      return {
-        height,
-        tiles: [{ index, width, height }],
-      };
-    });
   }
 
   const rows: JustifiedRow[] = [];

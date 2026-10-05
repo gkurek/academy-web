@@ -39,16 +39,16 @@ export const pl = {
   },
   workshop: {
     contactMailtoLabel: "Napisz do Pracowni",
-    lightbox: {
-      close: "Zamknij",
-      closeAria: "Zamknij",
-      previous: "Poprzednie",
-      previousAria: "Poprzednie zdjęcie",
-      next: "Następne",
-      nextAria: "Następne zdjęcie",
-      position: "{index} z {total}",
-      openPhoto: "Powiększ zdjęcie: {alt}",
-    },
+  },
+  /** Shared by every lightbox (icons, photos, spreads); per-domain trigger labels stay in their sections. */
+  lightbox: {
+    close: "Zamknij",
+    previous: "Poprzednie",
+    previousAria: "Poprzednie zdjęcie",
+    next: "Następne",
+    nextAria: "Następne zdjęcie",
+    position: "{index} z {total}",
+    openPhoto: "Powiększ zdjęcie: {alt}",
   },
   home: {
     hero: {
@@ -340,13 +340,6 @@ export const pl = {
       student: "{title}, pisana ręką {authorName}",
     },
     lightbox: {
-      close: "Zamknij",
-      closeAria: "Zamknij",
-      previous: "Poprzednia",
-      previousAria: "Poprzednia",
-      next: "Następna",
-      nextAria: "Następna",
-      position: "{index} z {total}",
       openIcon: "Powiększ ikonę: {title}",
       authorLabel: "Autor:",
       // Sizes copied from WP captions are unconfirmed (they contradict the photos) — never shown as numbers.
@@ -522,9 +515,6 @@ export const pl = {
       where: "Gdzie",
       whereValue: "Kościół Środowisk Twórczych w Warszawie",
     },
-    lightbox: {
-      openPhoto: "Powiększ zdjęcie: {alt}",
-    },
   },
   publications: {
     breadcrumbHome: "Strona główna",
@@ -592,13 +582,6 @@ export const pl = {
     articleSourceOrder: "Zamów",
     articlePressReadPublisher: "Czytaj w serwisie wydawcy",
     lightbox: {
-      close: "Zamknij",
-      closeAria: "Zamknij",
-      previous: "Poprzednia",
-      previousAria: "Poprzednia rozkładówka",
-      next: "Następna",
-      nextAria: "Następna rozkładówka",
-      position: "{index} z {total}",
       openSpread: "Powiększ rozkładówkę: {alt}",
     },
   },

@@ -26,7 +26,7 @@ export function PhotoGrid({ photos, mobileCaption, onOpen }: PhotoGridProps) {
               type="button"
               className={[galleryTileButtonClass, "photo-grid-tile"].join(" ")}
               onClick={() => onOpen(index)}
-              aria-label={pl.workshop.lightbox.openPhoto.replace("{alt}", photo.alt)}
+              aria-label={pl.lightbox.openPhoto.replace("{alt}", photo.alt)}
             >
               <span className={[galleryTileFrameClass, "block w-full"].join(" ")}>
                 <Image

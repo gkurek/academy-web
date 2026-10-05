@@ -1,22 +1,19 @@
 "use client";
 
 import { useEffect, type MouseEvent } from "react";
-import { useRouter } from "next/navigation";
 
 import { FilterChip } from "@/components/core/FilterChip";
+import {
+  buildGalleryUrl,
+  replaceGalleryUrl,
+  useGalleryFilters,
+} from "@/components/gallery/useGalleryFilters";
 import type { IconFilters } from "@/content/icons";
 import { getIconTagLabel } from "@/content/icons";
 import { pl } from "@/i18n/pl";
 
 export interface GalleryFiltersProps {
   tags: string[];
-  filters: IconFilters;
-  /** Unknown `temat` or retired `autor` in the URL — replace with the canonical URL. */
-  needsUrlCleanup: boolean;
-}
-
-function buildGalleryUrl(filters: IconFilters): string {
-  return filters.tag ? `/ikony?${new URLSearchParams({ temat: filters.tag })}` : "/ikony";
 }
 
 // Chips never shrink or wrap their label: on mobile the row scrolls sideways.
@@ -32,23 +29,24 @@ const chipRowClass = [
   "md:mr-0 md:pr-0 md:flex-wrap md:overflow-visible",
 ].join(" ");
 
-export function GalleryFilters({ tags, filters, needsUrlCleanup }: GalleryFiltersProps) {
-  const router = useRouter();
-  const cleanUrl = buildGalleryUrl(filters);
+const allFilters: IconFilters = {};
 
+export function GalleryFilters({ tags }: GalleryFiltersProps) {
+  const { filters, search } = useGalleryFilters();
+  const activeTag = filters.tag;
+
+  // Unknown `temat`, a retired alias or the old `autor` param: rewrite to the canonical URL.
   useEffect(() => {
-    if (needsUrlCleanup) {
-      router.replace(`${cleanUrl}${window.location.hash}`, { scroll: false });
+    const canonicalSearch = new URL(buildGalleryUrl({ tag: activeTag }), window.location.origin).search;
+    if (search !== canonicalSearch) {
+      replaceGalleryUrl({ tag: activeTag });
     }
-  }, [needsUrlCleanup, cleanUrl, router]);
+  }, [search, activeTag]);
 
-  // The section hash (`#uczniowie`) survives a change of theme.
   const select = (event: MouseEvent<HTMLAnchorElement>, nextFilters: IconFilters) => {
     event.preventDefault();
-    router.replace(`${buildGalleryUrl(nextFilters)}${window.location.hash}`, { scroll: false });
+    replaceGalleryUrl(nextFilters);
   };
-
-  const allFilters: IconFilters = {};
 
   return (
     <div role="group" aria-label={pl.gallery.filters.themeGroupAria}>
@@ -59,14 +57,14 @@ export function GalleryFilters({ tags, filters, needsUrlCleanup }: GalleryFilter
         <div className={chipRowClass}>
           <FilterChip
             href={buildGalleryUrl(allFilters)}
-            active={filters.tag === undefined}
+            active={activeTag === undefined}
             onClick={(event) => select(event, allFilters)}
             className={chipClass}
           >
             {pl.gallery.filters.themeAll}
           </FilterChip>
           {tags.map((tag) => {
-            const active = filters.tag === tag;
+            const active = activeTag === tag;
             // Clicking the active chip is a shortcut back to "Wszystkie".
             const nextFilters: IconFilters = active ? allFilters : { tag };
 
