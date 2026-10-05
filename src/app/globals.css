@@ -5,7 +5,6 @@
    next/font via a className on <html> in layout.tsx, not declared here. */
 :root {
   /* Umbra scale */
-  --umbra-1000: #0d0a08;
   --umbra-950: #120e0b;
   --umbra-900: #18130f;
   --umbra-850: #1f1913;
@@ -57,9 +56,7 @@
   --border-button: rgba(236, 226, 211, .4);
   --border-secondary: rgba(162, 145, 124, .45);
 
-  /* Shadows — none by default, exception is the lightbox */
-  --shadow-lightbox: 0 30px 80px rgba(0, 0, 0, .7);
-  --shadow-hero-image: 0 30px 70px rgba(0, 0, 0, .55);
+  /* Scrims (shadow values live in the static @theme block below) */
   --scrim-lightbox: rgba(0, 0, 0, .7);
   --scrim-gallery-hover: rgba(0, 0, 0, .45);
 
@@ -78,8 +75,6 @@
   --size-caption: 14.5px;
 
   /* K-25 typography roles */
-  --role-section-h2: var(--size-h2);
-  --role-section-h2-m: var(--size-h2-m);
   --role-card-title: 28px;
   --role-card-title-m: 24px;
   --role-box-title: 24px;
@@ -88,7 +83,6 @@
   --role-row-title-m: 19px;
   --role-list-title: 18.5px;
   --role-list-title-m: 18px;
-  --leading-prose: 1.7;
   --size-quote: 20px;
   --size-quote-lg: 38px;
 
@@ -97,14 +91,8 @@
   --size-h2-m: 26px;
   --size-h3-m: 21px;
   --size-lead-m: 17.5px;
-  --size-body-m: 16.5px;
-  --size-ui-m: 16.5px;
   --size-caption-m: 15px;
 
-  --leading-tight: 1.12;
-  --leading-heading: 1.2;
-  --leading-body: 1.6;
-  --leading-loose: 1.75;
 
   /* Spacing scale */
   --space-1: 4px;
@@ -116,17 +104,13 @@
   --space-7: 34px;
   --space-8: 52px;
   --space-9: 56px;
-  --space-10: 80px;
   --space-11: 96px;
-  --space-12: 120px;
 
   --page-margin: 56px;
   --page-margin-mobile: 20px;
   --section-gap: 60px;
   --section-gap-mobile: 32px;
-  --card-padding: 30px 32px 32px;
   --tile-padding: 26px 30px;
-  --hairline-gap: 1px;
 
   --tap-min: 48px;
   --tap-min-mobile-header: 44px;
@@ -156,9 +140,6 @@
   --tile-py: 28px;
   --tile-px: 30px;
   --tile-py-m: 22px;
-  --tile-title-size: 21px;
-  --tile-title-size-m: 19px;
-  --tile-title-leading: 1.45;
   --tile-link-mt: 14px;
   --tile-link-mt-m: 12px;
 
@@ -171,17 +152,12 @@
      identical on mobile/desktop — literal values from the resolved
      "cytat" block, #1a desktop). */
   --measure-quote: 20em;
-  --leading-quote: 1.35;
   --testimonial-py: 52px;
   --testimonial-px: 56px;
 
-  /* "Wybrane ikony" — sizing specific to this curated home-page preview
-     (repeat(4,1fr) desktop / 2 cols mobile, height 290/200). The full
-     /ikony gallery in etap 5 uses a different height (300px per
-     design/README) — parameterize IconGrid then, not now. */
+  /* Gallery grids — tile gap shared by the home "Wybrane ikony" preview and
+     the /ikony gallery; row heights for the justified rows. */
   --icon-grid-gap: 22px;
-  --icon-grid-h: 290px;
-  --icon-grid-h-m: 200px;
   --gallery-grid-h: 300px;
   /* K-40 B: FooGallery justified on akademiaikony.pl — rowHeight 240, maxRowHeight 350; tile gap = shelf (space-4 / icon-grid-gap). */
   --gallery-justified-row-h: 240px;
@@ -202,18 +178,12 @@
   --offer-facts-y: 30px;
   --offer-facts-pb: 32px;
   --offer-facts-top: 2px;
-  --offer-facts-heading: var(--role-box-title);
-  --offer-facts-heading-m: var(--role-box-title-m);
   --offer-facts-dd-mt: 2px;
   --offer-facts-dd-mb: 16px;
-  --leading-facts: 1.55;
-  --leading-quote-offer: 1.55;
   --offer-card-image-h: 240px;
   --offer-card-x: 34px;
   --offer-card-y: 32px;
   --offer-card-pb: 36px;
-  --offer-card-title: var(--role-card-title);
-  --offer-card-title-m: var(--role-card-title-m);
   --offer-hub-lead-pb: 44px;
   --offer-quotes-gap: 22px;
   --offer-quote-x: 30px;
@@ -248,7 +218,6 @@
   --offer-step-gap: 12px;
   --offer-step-gap-m: 20px;
   --offer-ready-y: 34px;
-  --offer-ready-title: 24px;
   --offer-ready-gap-x: 24px;
   --offer-examples-heading-mb: 28px;
   --offer-examples-link-mt: 22px;
@@ -282,10 +251,7 @@
   --news-card-y-m: 22px;
   --news-year-group-gap: 52px;
   --news-year-group-gap-m: 32px;
-  --news-year-heading-mb: 20px;
-  --news-article-header-mb: 28px;
   --news-article-nav-gap: 24px;
-  --news-gallery-heading-mb: 20px;
 
   /* News article prose — design/README-wpis-aktualnosci §2 (E1). */
   --text-prose: #e6dac7;
@@ -319,17 +285,13 @@
   --prose-caption-size: 14.5px;
   --prose-caption-size-m: 15px;
   --prose-fact-size: 21px;
-  --prose-related-link-size: 17px;
   /* News article desktop grid (K3) — design/README-wpis-aktualnosci-v2 §2 + Runda 2.1. */
   --entry-main: var(--prose-measure);
   --entry-gap: 48px;
   --entry-head-pad: 34px;
   --entry-head-rule-gap: 40px;
   --entry-sticky-top: 32px;
-  --entry-sticky-min-vh: 720px;
-  --entry-crumb-gap: 34px;
   --entry-kind-gap: 12px;
-  --entry-byline-gap: 14px;
   --entry-byline-size: 17px;
   --entry-lead-gap: 24px;
   --entry-rail-gap: 32px;
@@ -390,7 +352,6 @@
   --milestone-grid-gap: 40px;
   --activity-name-col: 260px;
   --person-portrait-w: 420px;
-  --about-workshop-band-y: 60px;
   --about-workshop-photo-gap: 26px;
   --about-workshop-photo-h: 340px;
   --about-link-gap: 30px;
@@ -459,7 +420,6 @@
   --exhibition-cta-y: 26px;
 
   /* /publikacje — mockup 8a–8j (PU-*). */
-  --publication-section-gap: 64px;
   --publication-section-gap-m: 34px;
   --publication-hub-cover: 440px;
   --publication-metrics-w: 420px;
@@ -495,13 +455,38 @@
   --footer-legal-py-m: 22px;
 }
 
-/* Tailwind utility mappings for the tokens this piece actually consumes.
-   Extend as later pieces need more of the scale above. */
+/* Shadow and line-height tokens live only here, as literals in a static
+   (non-inline) theme: Tailwind emits each one once into :root, so the
+   utilities (shadow-*, leading-*) and var(--shadow-*) / var(--leading-*) in
+   components read the same declaration. An inline theme can't hold them —
+   a var() mapping would self-reference. Verified on --leading-tight. */
+@theme static {
+  /* Line-height roles from design/README §2. */
+  --leading-tight: 1.12;
+  --leading-heading: 1.2;
+  --leading-body: 1.6;
+  --leading-loose: 1.75;
+  --leading-prose: 1.7;
+  --leading-quote: 1.35;
+  --leading-facts: 1.55;
+  --leading-quote-offer: 1.55;
+
+  /* Shadows: lightbox panel and hero image only. design/README "Zasady"
+     allows both exceptions to "no shadows"; design/README §3 and CLAUDE.md
+     list only the lightbox (D1 — the hero exception is recorded in
+     CLAUDE.md by the owner). The mobile hero shadow is lighter per the
+     resolved mockup DOM (20px/50px/.5 vs 30px/70px/.55 on desktop). */
+  --shadow-lightbox: 0 30px 80px rgba(0, 0, 0, .7);
+  --shadow-hero-image: 0 30px 70px rgba(0, 0, 0, .55);
+  --shadow-hero-image-m: 0 20px 50px rgba(0, 0, 0, .5);
+}
+
+/* Tailwind utility mappings for the :root tokens above. Add a mapping only
+   with the first class that uses it; knip-style audits drop unused ones. */
 @theme inline {
   --color-surface-page: var(--surface-page);
   --color-surface-card: var(--surface-card);
   --color-surface-tile: var(--surface-tile);
-  --color-surface-footer: var(--surface-footer);
   --color-surface-lightbox: var(--surface-lightbox);
   --color-text-body: var(--text-body);
   --color-text-secondary: var(--text-secondary);
@@ -515,7 +500,6 @@
   --color-accent-hover: var(--accent-hover);
   --color-accent-veil: var(--accent-veil);
   --color-state-disabled: var(--state-disabled);
-  --color-focus-ring: var(--focus-ring);
   --color-line-gold: var(--line-gold);
   --color-line-neutral: var(--line-neutral);
   --color-border-button: var(--border-button);
@@ -525,14 +509,10 @@
   --text-size-h1: var(--size-h1);
   --text-size-h1-home: var(--size-h1-home);
   --text-size-h1-m: var(--size-h1-m);
-  /* "Wybrane ikony" heading: mockup instance is 32px desktop / 28px mobile —
-     rounded to the nearest existing scale steps (34/28, ≤2px diff, same
-     rounding precedent as etap 1's Button "lg"). */
-  --text-size-h2: var(--size-h2);
   --text-size-body: var(--size-body);
   --text-size-body-lg: var(--size-body-lg);
   --text-size-ui: var(--size-ui);
-  --text-size-ui-m: var(--size-ui-m);
+  --text-size-ui-m: var(--size-ui);
   --text-size-nav: var(--size-nav);
   --text-size-h3: var(--size-h3);
   --text-size-h3-m: var(--size-h3-m);
@@ -541,11 +521,9 @@
   --text-size-caption: var(--size-caption);
   --text-size-lead: var(--size-lead);
   --text-size-lead-m: var(--size-lead-m);
-  --text-size-h2-sm: var(--size-h2-sm);
-  --text-size-h2-m: var(--size-h2-m);
   --text-size-quote-lg: var(--size-quote-lg);
-  --text-size-role-section-h2: var(--role-section-h2);
-  --text-size-role-section-h2-m: var(--role-section-h2-m);
+  --text-size-role-section-h2: var(--size-h2);
+  --text-size-role-section-h2-m: var(--size-h2-m);
   --text-size-role-card-title: var(--role-card-title);
   --text-size-role-card-title-m: var(--role-card-title-m);
   --text-size-role-box-title: var(--role-box-title);
@@ -554,7 +532,6 @@
   --text-size-role-row-title-m: var(--role-row-title-m);
   --text-size-role-list-title: var(--role-list-title);
   --text-size-role-list-title-m: var(--role-list-title-m);
-  --leading-prose: 1.7;
   /* Logo lockup — a fixed brand element, not part of the general type scale. */
   --text-size-logo: 23px;
   --text-size-logo-subtitle: 15px;
@@ -563,24 +540,6 @@
   --tracking-logo: .14em;
   --tracking-logo-footer: .1em;
   --tracking-caption-wide: .06em;
-
-  /* Hero image shadow — the one exception to "no shadows" (design/README §3).
-     Literal values, same self-collision reason as leading-* above. Mobile
-     gets a lighter shadow per the resolved mockup DOM (20px/50px/.5 vs
-     30px/70px/.55 on desktop). */
-  --shadow-hero-image: 0 30px 70px rgba(0, 0, 0, .55);
-  --shadow-hero-image-m: 0 20px 50px rgba(0, 0, 0, .5);
-  --shadow-lightbox: 0 30px 80px rgba(0, 0, 0, .7);
-
-  /* Line-height roles from design/README §2 — named leading-* utilities.
-     Literal values (kept in sync with the Typography scale in :root above,
-     same pattern as --text-size-logo below) — a var() reference here would
-     self-collide with the :root declaration of the same name. */
-  --leading-tight: 1.12;
-  --leading-heading: 1.2;
-  --leading-body: 1.6;
-  --leading-loose: 1.75;
-  --leading-quote: 1.35;
 
   --spacing-space-1: var(--space-1);
   --spacing-space-2: var(--space-2);
@@ -591,9 +550,7 @@
   --spacing-space-7: var(--space-7);
   --spacing-space-8: var(--space-8);
   --spacing-space-9: var(--space-9);
-  --spacing-space-10: var(--space-10);
   --spacing-space-11: var(--space-11);
-  --spacing-space-12: var(--space-12);
   --spacing-section-gap: var(--section-gap);
   --spacing-section-gap-mobile: var(--section-gap-mobile);
   --spacing-page-margin: var(--page-margin);
@@ -609,7 +566,6 @@
   /* Gold underline offset under an active nav link. */
   --spacing-link-underline-gap: 2px;
   /* Footer — mockup 9e. */
-  --color-footer-contact: var(--footer-contact-bg);
   --color-footer-credit-hover: var(--footer-credit-hover);
   --text-size-footer-brand: var(--footer-brand-size);
   --text-size-footer-heading: var(--footer-heading-size);
@@ -650,10 +606,6 @@
   --spacing-tile-py-m: var(--tile-py-m);
   --spacing-tile-link-mt: var(--tile-link-mt);
   --spacing-tile-link-mt-m: var(--tile-link-mt-m);
-  --spacing-hairline-gap: var(--hairline-gap);
-  --text-size-tile-title: var(--tile-title-size);
-  --text-size-tile-title-m: var(--tile-title-size-m);
-  --leading-tile-title: var(--tile-title-leading);
 
   /* Three pillars */
   --spacing-pillars-gap: var(--pillars-gap);
@@ -673,24 +625,15 @@
   --spacing-testimonial-px: var(--testimonial-px);
 
   /* "Wybrane ikony" */
-  --spacing-icon-grid-gap: var(--icon-grid-gap);
-  --spacing-icon-grid-h: var(--icon-grid-h);
-  --spacing-icon-grid-h-m: var(--icon-grid-h-m);
-  --spacing-gallery-grid-h: var(--gallery-grid-h);
-  --spacing-gallery-justified-row-h: var(--gallery-justified-row-h);
-  --spacing-gallery-justified-row-max-h: var(--gallery-justified-row-max-h);
-  --max-height-lightbox-image: var(--lightbox-image-max-h);
   --spacing-lightbox-mobile-nav-h: var(--lightbox-mobile-nav-h);
   --spacing-lightbox-mobile-nav-gap: var(--lightbox-mobile-nav-gap);
 
   /* Offer pages */
-  --spacing-offer-sidebar-w: var(--offer-sidebar-w);
   --spacing-offer-main-gap: var(--offer-main-gap);
   --spacing-offer-facts-x: var(--offer-facts-x);
   --spacing-offer-facts-y: var(--offer-facts-y);
   --spacing-offer-facts-pb: var(--offer-facts-pb);
   --spacing-offer-facts-dd-mt: var(--offer-facts-dd-mt);
-  --spacing-offer-facts-dd-mb: var(--offer-facts-dd-mb);
   --spacing-offer-card-image-h: var(--offer-card-image-h);
   --spacing-offer-card-x: var(--offer-card-x);
   --spacing-offer-card-y: var(--offer-card-y);
@@ -699,12 +642,6 @@
   --spacing-offer-quotes-gap: var(--offer-quotes-gap);
   --spacing-offer-quote-x: var(--offer-quote-x);
   --spacing-offer-quote-y: var(--offer-quote-y);
-  --text-size-offer-card-title: var(--offer-card-title);
-  --text-size-offer-card-title-m: var(--offer-card-title-m);
-  --text-size-offer-facts-heading: var(--offer-facts-heading);
-  --text-size-offer-facts-heading-m: var(--offer-facts-heading-m);
-  --leading-facts: 1.55;
-  --leading-quote-offer: 1.55;
   --border-width-offer-facts-top: var(--offer-facts-top);
   --border-width-offer-quote-top: var(--offer-quote-top);
   --grid-template-columns-offer-main: 1fr var(--offer-sidebar-w);
@@ -727,21 +664,17 @@
   --text-size-offer-semester-num-m: var(--offer-semester-num-m);
   --text-size-offer-quote: var(--offer-quote-feature);
   --text-size-offer-quote-m: var(--offer-quote-feature-m);
-  --spacing-offer-day-rhythm-time-col: var(--offer-day-rhythm-time-col);
-  --spacing-offer-day-rhythm-gap: var(--offer-day-rhythm-gap);
-  --spacing-offer-day-rhythm-x: var(--offer-day-rhythm-x);
-  --spacing-offer-day-rhythm-y: var(--offer-day-rhythm-y);
   --spacing-offer-step-x: var(--offer-step-x);
   --spacing-offer-step-y: var(--offer-step-y);
   --spacing-offer-step-gap: var(--offer-step-gap);
   --spacing-offer-step-gap-m: var(--offer-step-gap-m);
+  --grid-template-columns-step-row: minmax(0, auto) 1fr;
   --spacing-offer-ready-y: var(--offer-ready-y);
   --spacing-offer-ready-gap-x: var(--offer-ready-gap-x);
   --spacing-offer-examples-heading-mb: var(--offer-examples-heading-mb);
   --spacing-offer-examples-link-mt: var(--offer-examples-link-mt);
   --spacing-offer-examples-pb: var(--offer-examples-pb);
   --text-size-offer-step-num: var(--offer-step-num);
-  --text-size-offer-ready-title: var(--offer-ready-title);
   /* Lectures hub + LectureList */
   --text-size-lectures-eyebrow: var(--lectures-eyebrow);
   --text-size-lecture-date: var(--lecture-date-size);
@@ -755,8 +688,9 @@
   --spacing-lecture-title-mb: var(--lecture-title-mb);
   --spacing-lecture-talk-gap: var(--lecture-talk-gap);
   --spacing-lecture-date-offset: var(--lecture-date-offset);
-  --spacing-lecture-date-col: var(--lecture-date-col);
   --grid-template-columns-lecture-row: var(--lecture-date-col) 1fr;
+  --grid-template-columns-season-head: 1fr auto;
+  --grid-template-columns-season-head-lg: auto minmax(0, 1fr) auto;
 
   /* SeasonAccordion (#2a-wyklady archive preview). */
   --text-size-season-accordion-collapsed-label: var(--season-accordion-collapsed-label);
@@ -778,13 +712,10 @@
   --grid-template-columns-lecturer-row: var(--lecturer-photo-col) 1fr;
 
   /* Text pages */
-  --spacing-text-page-heading-col: var(--text-page-heading-col);
-  --spacing-text-page-toc-col: var(--text-page-toc-col);
   --spacing-text-page-main-gap: var(--text-page-main-gap);
   --spacing-text-page-toc-sticky: var(--text-page-toc-sticky-top);
   --grid-template-columns-text-page-section: var(--text-page-heading-col) minmax(0, 1fr);
   --grid-template-columns-text-page-toc: var(--text-page-toc-col) minmax(0, 1fr);
-  --grid-template-columns-map-block: minmax(0, 1.3fr) minmax(0, 1fr);
   --spacing-contact-map: var(--contact-map-h);
   --spacing-contact-map-m: var(--contact-map-h-m);
 }
@@ -803,6 +734,15 @@
     line-height: var(--leading-body);
     -webkit-font-smoothing: antialiased;
     text-wrap: pretty;
+  }
+
+  /* Disclosure widgets draw their own chevron, never the native marker. */
+  summary {
+    list-style: none;
+  }
+
+  summary::-webkit-details-marker {
+    display: none;
   }
 
   a:focus-visible,
@@ -887,24 +827,44 @@
 }
 
 @layer utilities {
-  /* Structural gold rules span the full viewport while content stays in the max-width column. */
-  .rule-gold-b {
+  /* Full-width hairline over/under a column element: the pseudo-element spans
+     the viewport while content stays in the max-width column. --rule-color
+     picks the role (gold = structural, neutral = quiet separator). */
+  .rule-gold-t,
+  .rule-gold-b,
+  .rule-neutral-t {
     position: relative;
   }
 
+  .rule-gold-t,
+  .rule-gold-b {
+    --rule-color: var(--line-gold);
+  }
+
+  .rule-neutral-t {
+    --rule-color: var(--line-neutral);
+  }
+
+  .rule-gold-t::before,
+  .rule-neutral-t::before,
   .rule-gold-b::after {
     content: "";
     position: absolute;
     left: 50%;
-    bottom: 0;
     transform: translateX(-50%);
     width: 100vw;
-    border-bottom: 1px solid var(--line-gold);
     pointer-events: none;
   }
 
-  .rule-gold-t {
-    position: relative;
+  .rule-gold-t::before,
+  .rule-neutral-t::before {
+    top: 0;
+    border-top: 1px solid var(--rule-color);
+  }
+
+  .rule-gold-b::after {
+    bottom: 0;
+    border-bottom: 1px solid var(--rule-color);
   }
 
   /* Stacked surface tiles — border separators (grid gap + tile bg subpixel overlap hid gold). */
@@ -917,150 +877,66 @@
     border-top: 1px solid var(--line-gold);
   }
 
-  /* 2-column tile grids (md+) — borders instead of grid gap + gold bg. */
-  .hairline-grid-2 {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 0;
-  }
-
-  .hairline-grid-2 > * + * {
-    border-top: 1px solid var(--line-gold);
-  }
-
-  @media (min-width: 768px) {
-    .hairline-grid-2 {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-
-    .hairline-grid-2 > * + * {
-      border-top: none;
-    }
-
-    .hairline-grid-2 > *:nth-child(n + 3) {
-      border-top: 1px solid var(--line-gold);
-    }
-
-    .hairline-grid-2 > *:nth-child(even) {
-      border-left: 1px solid var(--line-gold);
-    }
-  }
-
-  /* 3-column tile grids (md+) — e.g. home „Najbliższe” with exhibition tile. */
+  /* Tile grids with hairline borders instead of grid gap + gold bg. One column
+     below md, --hairline-cols from md up (e.g. home „Najbliższe” with the
+     exhibition tile is 3). The first-row / first-column exceptions depend on
+     the column count, so they stay per variant (nth-child can't take var()). */
+  .hairline-grid-2,
   .hairline-grid-3 {
     display: grid;
     grid-template-columns: 1fr;
     gap: 0;
   }
 
+  .hairline-grid-2 {
+    --hairline-cols: 2;
+  }
+
+  .hairline-grid-3 {
+    --hairline-cols: 3;
+  }
+
+  .hairline-grid-2 > * + *,
   .hairline-grid-3 > * + * {
     border-top: 1px solid var(--line-gold);
   }
 
   @media (min-width: 768px) {
+    .hairline-grid-2,
     .hairline-grid-3 {
-      grid-template-columns: repeat(3, minmax(0, 1fr));
+      grid-template-columns: repeat(var(--hairline-cols), minmax(0, 1fr));
     }
 
+    .hairline-grid-2 > * + *,
     .hairline-grid-3 > * + * {
       border-top: none;
     }
 
+    .hairline-grid-2 > *:nth-child(n + 3),
     .hairline-grid-3 > *:nth-child(n + 4) {
       border-top: 1px solid var(--line-gold);
     }
 
+    .hairline-grid-2 > *:nth-child(even),
     .hairline-grid-3 > *:not(:nth-child(3n + 1)) {
       border-left: 1px solid var(--line-gold);
     }
   }
 
-  .rule-gold-t::before {
-    content: "";
-    position: absolute;
-    left: 50%;
-    top: 0;
-    transform: translateX(-50%);
-    width: 100vw;
-    border-top: 1px solid var(--line-gold);
-    pointer-events: none;
-  }
-
-  .rule-neutral-t {
-    position: relative;
-  }
-
-  .rule-neutral-t::before {
-    content: "";
-    position: absolute;
-    left: 50%;
-    top: 0;
-    transform: translateX(-50%);
-    width: 100vw;
-    border-top: 1px solid var(--line-neutral);
-    pointer-events: none;
-  }
-
-  /* Footer (and similar bands) — background spans the full viewport. */
-  .surface-footer-bleed {
-    position: relative;
-    isolation: isolate;
-  }
-
-  .surface-footer-bleed::after {
-    content: "";
-    position: absolute;
-    z-index: -1;
-    top: 0;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 100vw;
-    background: var(--surface-footer);
-  }
-
-  /* Footer contact band (mockup 9e) — lighter than the rest of the footer, full viewport. */
-  .surface-footer-contact-bleed {
-    position: relative;
-    isolation: isolate;
-  }
-
-  .surface-footer-contact-bleed::after {
-    content: "";
-    position: absolute;
-    z-index: -1;
-    top: 0;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 100vw;
-    background: var(--footer-contact-bg);
-  }
-
-  /* Offer bands (e.g. “Gotowe ikony”) — background spans the full viewport. */
-  .surface-tile-bleed {
-    position: relative;
-    isolation: isolate;
-  }
-
-  .surface-tile-bleed::after {
-    content: "";
-    position: absolute;
-    z-index: -1;
-    top: 0;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 100vw;
-    background: var(--surface-tile);
-  }
-
-  /* About page bands — background spans the full viewport on --surface-card. */
+  /* Full-viewport band behind a column element (footer, footer contact,
+     offer bands, About bands): the ::after background spans the viewport.
+     --bleed-bg picks the surface. */
+  .surface-footer-bleed,
+  .surface-footer-contact-bleed,
+  .surface-tile-bleed,
   .surface-card-bleed {
     position: relative;
     isolation: isolate;
   }
 
+  .surface-footer-bleed::after,
+  .surface-footer-contact-bleed::after,
+  .surface-tile-bleed::after,
   .surface-card-bleed::after {
     content: "";
     position: absolute;
@@ -1070,7 +946,38 @@
     left: 50%;
     transform: translateX(-50%);
     width: 100vw;
-    background: var(--surface-card);
+    background: var(--bleed-bg);
+  }
+
+  .surface-footer-bleed {
+    --bleed-bg: var(--surface-footer);
+  }
+
+  /* Footer contact band (mockup 9e) — lighter than the rest of the footer. */
+  .surface-footer-contact-bleed {
+    --bleed-bg: var(--footer-contact-bg);
+  }
+
+  .surface-tile-bleed {
+    --bleed-bg: var(--surface-tile);
+  }
+
+  .surface-card-bleed {
+    --bleed-bg: var(--surface-card);
+  }
+
+  /* Edge-to-edge on mobile: grows past the page margin on both sides, back to
+     the column width from md. */
+  .bleed-x-mobile {
+    width: calc(100% + 2 * var(--page-margin-mobile));
+    margin-inline: calc(-1 * var(--page-margin-mobile));
+  }
+
+  @media (min-width: 768px) {
+    .bleed-x-mobile {
+      width: 100%;
+      margin-inline: 0;
+    }
   }
 
   /* Underline on inner span; outer link keeps tap target (D-d). */
@@ -1254,7 +1161,7 @@
 
   @media (max-width: 767px) {
     .offer-mdx > p {
-      font-size: var(--size-body-m);
+      font-size: var(--size-body);
       line-height: var(--leading-body);
     }
   }
@@ -1336,7 +1243,7 @@
 
   @media (max-width: 767px) {
     .text-page-mdx > p {
-      font-size: var(--size-body-m);
+      font-size: var(--size-body);
       line-height: var(--leading-body);
     }
   }
@@ -1357,7 +1264,7 @@
   .privacy-policy-section-heading {
     margin: 0 0 var(--space-3);
     font-family: var(--font-serif);
-    font-size: var(--role-section-h2-m);
+    font-size: var(--size-h2-m);
     font-weight: 400;
     line-height: var(--leading-heading);
     color: var(--text-h2);
@@ -1365,7 +1272,7 @@
 
   @media (min-width: 768px) {
     .privacy-policy-section-heading {
-      font-size: var(--role-section-h2);
+      font-size: var(--size-h2);
     }
   }
 
@@ -1498,7 +1405,7 @@
     }
 
     .mission-declarations-detail {
-      font-size: var(--size-body-m);
+      font-size: var(--size-body);
       line-height: var(--leading-body);
     }
   }
@@ -1655,7 +1562,7 @@
   @media (max-width: 767px) {
 
     .activity-list-note {
-      font-size: var(--size-body-m);
+      font-size: var(--size-body);
       line-height: var(--leading-body);
     }
   }
@@ -1787,7 +1694,7 @@
   .workshop-section-heading {
     margin: 0 0 var(--workshop-section-heading-mb-m);
     font-family: var(--font-serif);
-    font-size: var(--role-section-h2-m);
+    font-size: var(--size-h2-m);
     font-weight: 400;
     line-height: var(--leading-heading);
     color: var(--text-h2);
@@ -1796,7 +1703,7 @@
   @media (min-width: 768px) {
     .workshop-section-heading {
       margin-bottom: var(--workshop-section-heading-mb);
-      font-size: var(--role-section-h2);
+      font-size: var(--size-h2);
     }
   }
 
@@ -1820,7 +1727,7 @@
   .learning-forms-description {
     margin: 0;
     max-width: var(--measure-prose);
-    font-size: var(--size-body-m);
+    font-size: var(--size-body);
     line-height: var(--leading-prose);
     color: var(--text-body);
   }
@@ -2007,7 +1914,7 @@
     margin: var(--space-3) 0 0;
     font-family: var(--font-serif);
     font-style: italic;
-    font-size: var(--size-body-m);
+    font-size: var(--size-body);
     line-height: var(--leading-body);
     color: var(--text-tertiary);
   }
@@ -2020,7 +1927,7 @@
     margin: var(--space-5) 0 0;
     font-family: var(--font-serif);
     font-style: italic;
-    font-size: var(--size-body-m);
+    font-size: var(--size-body);
     line-height: var(--leading-body);
     color: var(--text-tertiary);
   }
@@ -2120,7 +2027,7 @@
   .interview-answer {
     margin: 0;
     max-width: var(--measure-prose);
-    font-size: var(--size-body-m);
+    font-size: var(--size-body);
     line-height: var(--leading-prose);
     color: var(--text-body);
     text-wrap: pretty;
@@ -2179,7 +2086,7 @@
 
     .about-approach-comment,
     .about-workshop-accessibility {
-      font-size: var(--size-body-m);
+      font-size: var(--size-body);
       line-height: var(--leading-body);
     }
   }
@@ -2243,7 +2150,7 @@
     border: 0;
     background: transparent;
     font-family: var(--font-sans);
-    font-size: var(--size-body-m);
+    font-size: var(--size-body);
     line-height: var(--leading-body);
     color: var(--accent-text);
     text-align: left;
@@ -2295,7 +2202,7 @@
 
   .news-featured-meta {
     margin: 0;
-    font-size: var(--size-ui-m);
+    font-size: var(--size-ui);
     line-height: var(--leading-body);
   }
 
@@ -2329,13 +2236,13 @@
   .news-featured-excerpt {
     margin: 0;
     max-width: var(--measure-prose);
-    font-size: var(--size-body-m);
+    font-size: var(--size-body);
     line-height: var(--leading-body);
     color: var(--text-secondary);
   }
 
   .news-featured-read-more {
-    font-size: var(--size-ui-m);
+    font-size: var(--size-ui);
     line-height: var(--leading-body);
     color: var(--accent-text);
   }
@@ -2381,7 +2288,7 @@
 
   .news-card-meta {
     margin: 0;
-    font-size: var(--size-ui-m);
+    font-size: var(--size-ui);
     line-height: var(--leading-body);
     color: var(--accent-text);
   }
@@ -2394,7 +2301,7 @@
   .news-card-kind,
   .news-card-kind-desktop {
     margin: 0;
-    font-size: var(--size-ui-m);
+    font-size: var(--size-ui);
     line-height: var(--leading-body);
     color: var(--text-tertiary);
   }
@@ -2405,7 +2312,7 @@
 
   .news-card-gallery {
     margin: 0;
-    font-size: var(--size-ui-m);
+    font-size: var(--size-ui);
     line-height: var(--leading-body);
     color: var(--text-tertiary);
   }
@@ -2440,7 +2347,7 @@
   .news-card-excerpt {
     margin: 0;
     max-width: var(--measure-prose);
-    font-size: var(--size-body-m);
+    font-size: var(--size-body);
     line-height: var(--leading-body);
     color: var(--text-secondary);
     display: -webkit-box;
@@ -2457,7 +2364,7 @@
   }
 
   .news-card-read-more {
-    font-size: var(--size-ui-m);
+    font-size: var(--size-ui);
     line-height: var(--leading-body);
     color: var(--accent-text);
   }
@@ -3663,7 +3570,7 @@
 
   .exhibition-now-next-subline {
     margin: var(--space-2) 0 0;
-    font-size: var(--size-body-m);
+    font-size: var(--size-body);
     line-height: var(--leading-body);
     color: var(--text-body);
   }
@@ -3749,7 +3656,7 @@
 
   .exhibition-section-copy {
     margin: 0;
-    font-size: var(--size-body-m);
+    font-size: var(--size-body);
     line-height: var(--leading-prose);
     color: var(--text-secondary);
   }
@@ -3895,7 +3802,7 @@
 
   .exhibition-annual-tiles-caption {
     margin: var(--space-4) 0 0;
-    font-size: var(--size-ui-m);
+    font-size: var(--size-ui);
     line-height: var(--leading-body);
     color: var(--text-secondary);
   }
@@ -4184,7 +4091,7 @@
   .publication-section-lead {
     max-width: 34em;
     margin: 0 0 var(--space-5);
-    font-size: var(--size-body-m);
+    font-size: var(--size-body);
     line-height: var(--leading-prose);
     color: var(--text-secondary);
   }
@@ -4252,7 +4159,7 @@
 
   .publication-hub-description {
     margin: 0 0 var(--space-6);
-    font-size: var(--size-body-m);
+    font-size: var(--size-body);
     line-height: var(--leading-prose);
     color: var(--text-secondary);
   }
@@ -4282,7 +4189,7 @@
   .publication-hub-facts-row dd {
     margin: 0;
     color: var(--text-body);
-    font-size: var(--size-body-m);
+    font-size: var(--size-body);
   }
 
   .publication-hub-ctas {
@@ -4304,7 +4211,7 @@
 
   .publication-hub-spreads-note {
     margin-top: var(--space-3);
-    font-size: var(--size-ui-m);
+    font-size: var(--size-ui);
     color: var(--text-tertiary);
   }
 
@@ -4350,7 +4257,7 @@
 
   .publication-spread-caption {
     margin: var(--space-2) 0 0;
-    font-size: var(--size-ui-m);
+    font-size: var(--size-ui);
     color: var(--text-tertiary);
     text-align: center;
   }
@@ -4408,7 +4315,7 @@
   .publication-article-excerpt,
   .publication-article-authors {
     margin: 0;
-    font-size: var(--size-body-m);
+    font-size: var(--size-body);
     line-height: var(--leading-prose);
     color: var(--text-secondary);
   }
@@ -4436,7 +4343,7 @@
 
   .publication-see-also-label {
     margin: 0;
-    font-size: var(--size-body-m);
+    font-size: var(--size-body);
     color: var(--text-secondary);
   }
 
@@ -4488,7 +4395,7 @@
   .publication-metrics-value {
     margin: var(--space-1) 0 var(--space-4);
     color: var(--text-body);
-    font-size: var(--size-body-m);
+    font-size: var(--size-body);
     line-height: var(--leading-facts);
   }
 
@@ -4514,7 +4421,7 @@
 
   .publication-about-paragraph {
     margin: 0 0 var(--space-4);
-    font-size: var(--size-body-m);
+    font-size: var(--size-body);
     line-height: var(--leading-prose);
     color: var(--text-secondary);
   }
@@ -4597,7 +4504,7 @@
 
   .publication-toc-author {
     margin: var(--space-2) 0 0;
-    font-size: var(--size-ui-m);
+    font-size: var(--size-ui);
     color: var(--text-secondary);
   }
 
@@ -4628,7 +4535,7 @@
     border-top: 1px solid var(--line-gold);
     border-bottom: 1px solid var(--line-neutral);
     padding: var(--space-4) 0;
-    font-size: var(--size-ui-m);
+    font-size: var(--size-ui);
     line-height: var(--leading-prose);
     color: var(--text-secondary);
   }
@@ -4680,7 +4587,7 @@
   .publication-album-backref-text,
   .publication-album-backref-facts {
     margin: 0 0 var(--space-3);
-    font-size: var(--size-body-m);
+    font-size: var(--size-body);
     line-height: var(--leading-prose);
     color: var(--text-secondary);
   }

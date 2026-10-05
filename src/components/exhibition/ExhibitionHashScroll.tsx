@@ -3,6 +3,7 @@
 import { useEffect, useRef, type MouseEvent, type ReactNode } from "react";
 
 import { pl } from "@/i18n/pl";
+import { scrollToId } from "@/lib/scroll";
 
 const sectionIds = pl.exhibition.page.toc.map((item) => item.id);
 
@@ -13,22 +14,6 @@ function isExhibitionSectionId(id: string): boolean {
 function hashToSectionId(hash: string): string | undefined {
   const id = hash.replace(/^#/, "");
   return isExhibitionSectionId(id) ? id : undefined;
-}
-
-function prefersReducedMotion(): boolean {
-  return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-}
-
-function scrollToSectionId(id: string): void {
-  const element = document.getElementById(id);
-  if (!element) {
-    return;
-  }
-
-  element.scrollIntoView({
-    block: "start",
-    behavior: prefersReducedMotion() ? "auto" : "smooth",
-  });
 }
 
 export interface ExhibitionHashScrollProps {
@@ -42,7 +27,7 @@ export function ExhibitionHashScroll({ children }: ExhibitionHashScrollProps) {
     const runInitialScroll = () => {
       const id = hashToSectionId(window.location.hash);
       if (id) {
-        scrollToSectionId(id);
+        scrollToId(id);
       }
     };
 
@@ -51,7 +36,7 @@ export function ExhibitionHashScroll({ children }: ExhibitionHashScrollProps) {
     const handleHashChange = () => {
       const id = hashToSectionId(window.location.hash);
       if (id) {
-        scrollToSectionId(id);
+        scrollToId(id);
       }
     };
 
@@ -80,7 +65,7 @@ export function ExhibitionHashScroll({ children }: ExhibitionHashScrollProps) {
 
     event.preventDefault();
     window.history.pushState(null, "", href);
-    scrollToSectionId(id);
+    scrollToId(id);
   };
 
   return (

@@ -2,15 +2,12 @@
 
 import { useEffect, useRef, type MouseEvent } from "react";
 
-import {
-  focusNewsYearCardTitleAfterLayout,
-  newsPrefersReducedMotion,
-  scrollNewsYearIntoView,
-} from "@/components/news/focusNewsYearCardTitle";
+import { focusNewsYearCardTitleAfterLayout } from "@/components/news/focusNewsYearCardTitle";
 import { NavUnderlineLink } from "@/components/navigation/NavUnderlineLink";
 import { useYearActiveId } from "@/components/news/useYearActiveId";
 import { NEWS_ARCHIVE_EXPAND_EVENT } from "@/components/news/newsArchiveEvents";
 import { pl } from "@/i18n/pl";
+import { scrollBehavior, scrollToId } from "@/lib/scroll";
 
 export interface YearNavProps {
   years: string[];
@@ -56,7 +53,7 @@ export function YearNav({ years, archiveYears }: YearNavProps) {
     activeLink.scrollIntoView({
       inline: "nearest",
       block: "nearest",
-      behavior: newsPrefersReducedMotion() ? "auto" : "smooth",
+      behavior: scrollBehavior(),
     });
   }, [activeYear]);
 
@@ -88,7 +85,7 @@ export function YearNav({ years, archiveYears }: YearNavProps) {
 
     event.preventDefault();
     window.history.pushState(null, "", `#${year}`);
-    scrollNewsYearIntoView(year);
+    scrollToId(year);
     focusNewsYearCardTitleAfterLayout(year);
   };
 

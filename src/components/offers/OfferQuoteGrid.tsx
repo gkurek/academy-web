@@ -1,3 +1,5 @@
+import { useId } from "react";
+
 import type { Testimonial } from "@/content/types";
 
 import { formatAttribution } from "./formatAttribution";
@@ -9,6 +11,7 @@ export interface OfferQuoteGridProps {
 }
 
 export function OfferQuoteGrid({ heading, quotes, columns = 3 }: OfferQuoteGridProps) {
+  const headingId = useId();
   const gridClass =
     columns === 2
       ? "grid grid-cols-1 md:grid-cols-2 gap-offer-quotes-gap"
@@ -16,11 +19,11 @@ export function OfferQuoteGrid({ heading, quotes, columns = 3 }: OfferQuoteGridP
 
   return (
     <section
-      aria-labelledby="offer-quotes-heading"
+      aria-labelledby={headingId}
       className="mt-section-gap-mobile md:mt-section-gap pb-section-gap-mobile md:pb-section-gap"
     >
       <h2
-        id="offer-quotes-heading"
+        id={headingId}
         className="font-serif text-size-role-section-h2-m md:text-size-role-section-h2 leading-heading text-text-h2 mb-space-2"
       >
         {heading}

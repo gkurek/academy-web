@@ -76,7 +76,7 @@ function AlbumBackref({ publication }: { publication: PublicationFrontmatter }) 
     ?.address ?? settings.emails[1]?.address ?? settings.emails[0].address;
   const mailtoHref = buildMailtoHref(secretariatEmail, pl.publications.mailtoSubject);
   const priceLabel = formatPublicationPrice(publication.price);
-  const pageWord = pluralize(publication.pages, ["strona", "strony", "stron"]);
+  const pageWord = pluralize(publication.pages, pl.publications.pageForms);
   const factsLine = pl.publications.articleSourceAlbumFacts
     .replace("{pages}", String(publication.pages))
     .replace("{pageWord}", pageWord)

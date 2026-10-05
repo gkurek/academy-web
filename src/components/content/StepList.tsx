@@ -1,4 +1,4 @@
-import type { CSSProperties } from "react";
+import { useId, type CSSProperties } from "react";
 
 import type { StepItem } from "@/content/offers";
 import { pl } from "@/i18n/pl";
@@ -8,14 +8,15 @@ export interface StepListProps {
 }
 
 export function StepList({ steps }: StepListProps) {
+  const headingId = useId();
   if (steps.length === 0) {
     return null;
   }
 
   return (
-    <section aria-labelledby="order-steps-heading" className="not-prose">
+    <section aria-labelledby={headingId} className="not-prose">
       <h2
-        id="order-steps-heading"
+        id={headingId}
         className="font-serif text-size-role-section-h2-m md:text-size-role-section-h2 leading-heading text-text-h2 mt-space-8 mb-space-2 first:mt-0"
       >
         {pl.offers.orderStepsHeading}
@@ -30,7 +31,7 @@ export function StepList({ steps }: StepListProps) {
         {steps.map((step, index) => (
           <li
             key={step.title}
-            className="bg-surface-tile grid grid-cols-[minmax(0,auto)_1fr] lg:grid-cols-1 gap-offer-step-gap-m lg:gap-offer-step-gap px-offer-step-x py-offer-step-y items-baseline lg:items-start"
+            className="bg-surface-tile grid grid-cols-step-row lg:grid-cols-1 gap-offer-step-gap-m lg:gap-offer-step-gap px-offer-step-x py-offer-step-y items-baseline lg:items-start"
           >
             <span
               aria-hidden="true"

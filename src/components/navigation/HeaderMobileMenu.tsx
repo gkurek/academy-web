@@ -4,6 +4,7 @@ import { useCallback, useEffect, useId, useLayoutEffect, useRef, useState } from
 import Link from "next/link";
 import { Button } from "@/components/core/Button";
 import { ExternalLink } from "@/components/core/ExternalLink";
+import { ChevronIcon } from "@/components/core/icons";
 import { pl } from "@/i18n/pl";
 import { mainNav, navAriaCurrent, navItem, publicationsLink } from "@/navigation";
 
@@ -40,24 +41,6 @@ function MenuIcon({ open }: { open: boolean }) {
           <path d="M4 17 H20" />
         </>
       )}
-    </svg>
-  );
-}
-
-function ChevronIcon({ expanded }: { expanded: boolean }) {
-  return (
-    <svg
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.6"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      aria-hidden="true"
-    >
-      {expanded ? <path d="M5 15 L12 8 L19 15" /> : <path d="M5 9 L12 16 L19 9" />}
     </svg>
   );
 }

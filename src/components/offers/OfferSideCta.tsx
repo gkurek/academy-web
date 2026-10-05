@@ -1,5 +1,5 @@
 import Image from "next/image";
-import type { ReactNode } from "react";
+import { useId, type ReactNode } from "react";
 
 import { Button } from "@/components/core/Button";
 import { pl } from "@/i18n/pl";
@@ -30,7 +30,7 @@ export function OfferSideCta({
   email,
   subject,
 }: OfferSideCtaProps) {
-  const headingId = "offer-side-cta-heading";
+  const headingId = useId();
   const { sideCta } = pl.offers;
 
   return (

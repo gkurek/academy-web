@@ -32,7 +32,11 @@ export function ExhibitionTravelingSection({
             {traveling.introBefore}
             {places.map((place, index) => (
               <span key={place.place}>
-                {index > 0 ? (index === places.length - 1 ? " i " : ", ") : null}
+                {index > 0
+                  ? index === places.length - 1
+                    ? traveling.placesLastJoiner
+                    : traveling.placesJoiner
+                  : null}
                 {place.newsSlug ? (
                   <TextLink href={`/aktualnosci/${place.newsSlug}`}>{place.place}</TextLink>
                 ) : (

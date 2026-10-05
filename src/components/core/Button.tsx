@@ -3,7 +3,7 @@ import type { MouseEventHandler, ReactNode } from "react";
 export interface ButtonProps {
   children: ReactNode;
   /** Target href — usually a mailto: link with a subject from design/README §5. */
-  href?: string;
+  href: string;
   variant?: "primary" | "secondary";
   size?: "md" | "lg";
   /** Full width — variant used in FactsBox. */
@@ -29,7 +29,7 @@ const variantClasses: Record<NonNullable<ButtonProps["variant"]>, string> = {
 
 export function Button({
   children,
-  href = "#",
+  href,
   variant = "primary",
   size = "md",
   block = false,

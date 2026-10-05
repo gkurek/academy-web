@@ -1,4 +1,4 @@
-import { Fragment } from "react";
+import { Fragment, useId } from "react";
 
 import { TextLink } from "@/components/core/TextLink";
 import type { OfferLeadExtra as OfferLeadExtraData, OfferLeadExtraPlace } from "@/content/offers";
@@ -29,10 +29,11 @@ function OfferLeadExtraWhereWeWere({ entries }: { entries: OfferLeadExtraPlace[]
 }
 
 export function OfferLeadExtra({ leadExtra }: OfferLeadExtraProps) {
+  const headingId = useId();
   return (
-    <section aria-labelledby="offer-lead-extra-heading" className="max-w-measure-prose">
+    <section aria-labelledby={headingId} className="max-w-measure-prose">
       <h2
-        id="offer-lead-extra-heading"
+        id={headingId}
         className="font-serif text-size-role-section-h2-m md:text-size-role-section-h2 leading-heading text-text-h2 mb-space-4"
       >
         {leadExtra.heading}

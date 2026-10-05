@@ -18,16 +18,6 @@ export function NewsDateMeta({ date, dateEnd, withYear, className }: NewsDateMet
     );
   }
 
-  if (display.separator === "–") {
-    return (
-      <span className={className}>
-        <time dateTime={display.startDateTime}>{display.startLabel}</time>
-        {display.separator}
-        <time dateTime={display.endDateTime}>{display.endLabel}</time>
-      </span>
-    );
-  }
-
   return (
     <span className={className}>
       <time dateTime={display.startDateTime}>{display.startLabel}</time>

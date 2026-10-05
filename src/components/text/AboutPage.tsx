@@ -41,8 +41,8 @@ function AboutHero({ title, lead, image }: { title: string; lead: string; image:
           <Image
             src={image.src}
             alt={image.alt}
-            width={560}
-            height={420}
+            width={image.width}
+            height={image.height}
             className="about-hero-image"
             sizes="(max-width: 1023px) 100vw, 560px"
             priority
@@ -86,8 +86,8 @@ export function AboutPage({ page, path }: AboutPageProps) {
 
       <TextPageSection id="dla-kogo" heading={audience.heading}>
         <div className="text-page-mdx">
-          {audienceParagraphs.map((paragraph) => (
-            <p key={paragraph.slice(0, 32)}>{paragraph}</p>
+          {audienceParagraphs.map((paragraph, index) => (
+            <p key={index}>{paragraph}</p>
           ))}
         </div>
       </TextPageSection>

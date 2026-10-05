@@ -3,7 +3,7 @@ import type { MouseEventHandler, ReactNode } from "react";
 export interface FilterChipProps {
   children: ReactNode;
   active?: boolean;
-  href?: string;
+  href: string;
   onClick?: MouseEventHandler<HTMLAnchorElement>;
   className?: string;
 }
@@ -11,7 +11,7 @@ export interface FilterChipProps {
 export function FilterChip({
   children,
   active = false,
-  href = "#",
+  href,
   onClick,
   className,
 }: FilterChipProps) {

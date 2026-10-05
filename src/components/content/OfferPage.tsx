@@ -1,4 +1,4 @@
-import type { ReactNode } from "react";
+import { useId, type ReactNode } from "react";
 
 import { FactsBox } from "@/components/content/FactsBox";
 import { MdxLink } from "@/components/content/MdxLink";
@@ -43,17 +43,35 @@ export interface OfferPageProps {
   footerBand?: ReactNode;
 }
 
-function EnrollmentSection({ facts, quoteSlot }: { facts: OfferFacts; quoteSlot?: ReactNode }) {
+type EnrollmentCopy = (typeof pl.offers.enrollmentByKind)[keyof typeof pl.offers.enrollmentByKind];
+
+/** Enrollment copy of an offer kind; kinds without an entry have no "how to enroll" section. */
+function getEnrollmentCopy(kind: LoadedOffer["kind"]): EnrollmentCopy | undefined {
+  return kind in pl.offers.enrollmentByKind
+    ? pl.offers.enrollmentByKind[kind as keyof typeof pl.offers.enrollmentByKind]
+    : undefined;
+}
+
+function EnrollmentSection({
+  facts,
+  copy,
+  quoteSlot,
+}: {
+  facts: OfferFacts;
+  copy: EnrollmentCopy;
+  quoteSlot?: ReactNode;
+}) {
+  const headingId = useId();
   const dateValues = getOfferDateValues(facts);
-  const paragraphs = pl.offers.enrollmentByKind.kurs.paragraphs.map((paragraph) =>
-    fillRequiredTemplate(paragraph, dateValues, "offers.enrollmentByKind.kurs"),
+  const paragraphs = copy.paragraphs.map((paragraph) =>
+    fillRequiredTemplate(paragraph, dateValues, "offers.enrollmentByKind"),
   );
 
   const hasQuoteColumn = Boolean(quoteSlot);
 
   return (
     <section
-      aria-labelledby="offer-enrollment-heading"
+      aria-labelledby={headingId}
       className="rule-gold-t mt-space-8 pt-space-7 pb-space-9"
     >
       <div
@@ -65,7 +83,7 @@ function EnrollmentSection({ facts, quoteSlot }: { facts: OfferFacts; quoteSlot?
       >
         <div>
           <h2
-            id="offer-enrollment-heading"
+            id={headingId}
             className="font-serif text-size-role-section-h2-m md:text-size-role-section-h2 leading-heading text-text-h2 mb-space-5"
           >
             {pl.offers.enrollmentSectionTitle}
@@ -91,7 +109,8 @@ function EnrollmentSection({ facts, quoteSlot }: { facts: OfferFacts; quoteSlot?
 export function OfferPage({ offer, path, quoteSlot, afterBodySlot, footerBand }: OfferPageProps) {
   const { Content, title, lead, leadSecondary, facts, kind, semesters, steps, leadIntro, leadExtra, quote } = offer;
   const eyebrow = getOfferEyebrow(kind, facts.seasonLabel);
-  const showEnrollment = kind === "kurs";
+  const enrollmentCopy = getEnrollmentCopy(kind);
+  const showEnrollment = enrollmentCopy !== undefined;
   const offerQuote =
     quoteSlot ??
     (quote ? <OfferQuote quote={quote.quote} author={quote.author} role={quote.role} image={quote.image} /> : undefined);
@@ -148,7 +167,9 @@ export function OfferPage({ offer, path, quoteSlot, afterBodySlot, footerBand }:
 
       {afterBodySlot}
 
-      {showEnrollment && <EnrollmentSection facts={facts} quoteSlot={enrollmentQuoteSlot} />}
+      {enrollmentCopy && (
+        <EnrollmentSection facts={facts} copy={enrollmentCopy} quoteSlot={enrollmentQuoteSlot} />
+      )}
 
       {trailingQuoteSlot && <div className="mt-space-8">{trailingQuoteSlot}</div>}
     </SectionPageShell>

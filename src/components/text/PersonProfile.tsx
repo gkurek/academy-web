@@ -26,8 +26,8 @@ export function PersonProfile({ profile }: PersonProfileProps) {
         <p className="person-profile-name">{name}</p>
         <p className="person-profile-role">{role}</p>
         <div className="text-page-mdx">
-          {bio.map((paragraph) => (
-            <p key={paragraph.slice(0, 32)}>{paragraph}</p>
+          {bio.map((paragraph, index) => (
+            <p key={index}>{paragraph}</p>
           ))}
         </div>
         {link ? (

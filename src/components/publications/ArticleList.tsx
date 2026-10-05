@@ -2,8 +2,9 @@ import Link from "next/link";
 
 import {
   formatArticleAuthors,
-  formatArticleSourceLabel,
+  describeArticleSource,
   type ArticleFrontmatter,
+  type ArticleSourceLabel,
 } from "@/content/articles";
 import { pl } from "@/i18n/pl";
 
@@ -17,7 +18,7 @@ export function ArticleList({ articles }: ArticleListProps) {
       {articles.map((article) => (
         <li key={article.slug} className="publication-article-item">
           <p className="publication-article-source">
-            <ArticleSourceLabel sourceLabel={formatArticleSourceLabel(article.source)} />
+            <ArticleSourceText label={describeArticleSource(article.source)} />
           </p>
           <h3 className="publication-article-list-title">
             <Link href={`/publikacje/${article.slug}`} className="publication-article-list-title-link">
@@ -40,22 +41,16 @@ export function ArticleList({ articles }: ArticleListProps) {
   );
 }
 
-function ArticleSourceLabel({ sourceLabel }: { sourceLabel: string }) {
-  const albumPrefix = "Z albumu ";
-  if (sourceLabel.startsWith(albumPrefix)) {
-    const rest = sourceLabel.slice(albumPrefix.length);
-    const separatorIndex = rest.lastIndexOf(" · ");
-    const title = separatorIndex >= 0 ? rest.slice(0, separatorIndex) : rest;
-    const year = separatorIndex >= 0 ? rest.slice(separatorIndex + 3) : "";
-
-    return (
-      <>
-        {albumPrefix}
-        <span className="publication-album-short-title">«{title}»</span>
-        {year ? ` · ${year}` : null}
-      </>
-    );
+function ArticleSourceText({ label }: { label: ArticleSourceLabel }) {
+  if (label.kind === "text") {
+    return label.text;
   }
 
-  return sourceLabel;
+  return (
+    <>
+      {label.before}
+      <span className="publication-album-short-title">«{label.title}»</span>
+      {label.after}
+    </>
+  );
 }

@@ -434,5 +434,107 @@
     "signal": "styles",
     "width": 1920,
     "note": "14 season h2 wrappers added to the sampled elements (element count 569 -> 583); screenshots identical"
+  },
+  {
+    "id": "RF-10",
+    "route": "/wyklady/archiwum",
+    "signal": "html",
+    "note": "season trigger grid: arbitrary grid-cols-[...] classes -> grid-cols-season-head / lg:grid-cols-season-head-lg (same template)"
+  },
+  {
+    "id": "RF-10",
+    "route": "/pracownia",
+    "signal": "html",
+    "note": "TocCollapse summary: list-none and the [&::-webkit-details-marker] class dropped (global summary rule in base)"
+  },
+  {
+    "id": "RF-10",
+    "route": "/polityka-prywatnosci",
+    "signal": "html",
+    "note": "TocCollapse summary: list-none and the [&::-webkit-details-marker] class dropped (global summary rule in base)"
+  },
+  {
+    "id": "RF-10",
+    "route": "/warsztaty/kurs-roczny-i-trzyletni",
+    "signal": "html",
+    "note": "OfferFigure: arbitrary width + margin classes -> bleed-x-mobile (same box)"
+  },
+  {
+    "id": "RF-10",
+    "route": "/warsztaty/letnia-szkola-swiatla",
+    "signal": "html",
+    "note": "OfferFigure: arbitrary width + margin classes -> bleed-x-mobile (same box)"
+  },
+  {
+    "id": "RF-10",
+    "route": "/ikony/na-zamowienie",
+    "signal": "html",
+    "note": "OfferFigure -> bleed-x-mobile; StepList grid-cols-[minmax(0,auto)_1fr] -> grid-cols-step-row (same template)"
+  },
+  {
+    "id": "RF-11",
+    "route": "/aktualnosci/nabor-kursu-2026-2027",
+    "signal": "html",
+    "note": "NewsRelated: heading id from useId instead of a fixed string (R2-25)"
+  },
+  {
+    "id": "RF-11",
+    "route": "/aktualnosci/ikona-korzenie-i-owoce-wiary-mistyka-dzis-wyklady-2026-2027",
+    "signal": "html",
+    "note": "NewsRelated: heading id from useId instead of a fixed string (R2-25)"
+  },
+  {
+    "id": "RF-11",
+    "route": "/ikony",
+    "signal": "html",
+    "note": "GalleryOrderTeaser: heading id from useId instead of a fixed string (R2-25)"
+  },
+  {
+    "id": "RF-11",
+    "route": "/ikony/na-zamowienie",
+    "signal": "html",
+    "note": "StepList: heading id from useId instead of a fixed string (R2-25)"
+  },
+  {
+    "id": "RF-11",
+    "route": "/o-akademii",
+    "signal": "html",
+    "note": "hero image width/height from data (2048x1536) instead of 560x420 (R2-27); rendered size set by CSS"
+  },
+  {
+    "id": "RF-11",
+    "route": "/polityka-prywatnosci",
+    "signal": "html",
+    "note": "TocCollapse chevron: shared ChevronIcon, collapsed path M6 10..18 10 -> M5 9..19 9 (pixel-identical screenshots)"
+  },
+  {
+    "id": "RF-11",
+    "route": "/pracownia",
+    "signal": "html",
+    "note": "TocCollapse chevron: shared ChevronIcon, collapsed path M6 10..18 10 -> M5 9..19 9 (pixel-identical screenshots)"
+  },
+  {
+    "id": "RF-11",
+    "route": "/publikacje/ikona-dzis",
+    "signal": "html",
+    "note": "PublicationMetricsBox: heading id from useId instead of a fixed string (R2-25)"
+  },
+  {
+    "id": "RF-11",
+    "route": "/warsztaty",
+    "signal": "html",
+    "note": "OfferQuoteGrid: heading id from useId instead of a fixed string (R2-25)"
+  },
+  {
+    "id": "RF-11",
+    "route": "/warsztaty/kurs-roczny-i-trzyletni",
+    "signal": "html",
+    "note": "OfferLeadExtra, SemesterProgram, OfferSideCta, enrollment section: heading id from useId instead of a fixed string (R2-25)"
+  },
+  {
+    "id": "RF-11",
+    "route": "/warsztaty/letnia-szkola-swiatla",
+    "signal": "html",
+    "note": "OfferLeadExtra, OfferQuoteGrid: heading id from useId instead of a fixed string (R2-25)"
   }
 ]

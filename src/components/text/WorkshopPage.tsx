@@ -31,8 +31,8 @@ export function WorkshopPage({ page, path }: WorkshopPageProps) {
       <section id="czego-sie-uczymy" className="workshop-section scroll-mt-space-6">
         <h2 className="workshop-section-heading">{curriculum.heading}</h2>
         <div className="text-page-mdx">
-          {curriculumParagraphs.map((paragraph) => (
-            <p key={paragraph.slice(0, 32)}>{paragraph}</p>
+          {curriculumParagraphs.map((paragraph, index) => (
+            <p key={index}>{paragraph}</p>
           ))}
         </div>
       </section>

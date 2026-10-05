@@ -26,18 +26,18 @@ function PrivacyPolicySectionBlock({
     <section id={section.id} className="privacy-policy-section scroll-mt-space-6">
       <h2 className="privacy-policy-section-heading">{sectionHeading(toc, section.id)}</h2>
       <div className="text-page-mdx">
-        {section.paragraphs.map((paragraph) => (
-          <p key={paragraph.slice(0, 48)}>{paragraph}</p>
+        {section.paragraphs.map((paragraph, index) => (
+          <p key={index}>{paragraph}</p>
         ))}
         {section.list ? (
           <ul className="mb-space-4 list-disc pl-space-6 text-size-body leading-body text-text-body">
-            {section.list.map((item) => (
-              <li key={item.slice(0, 48)} className="mb-space-2">{item}</li>
+            {section.list.map((item, index) => (
+              <li key={index} className="mb-space-2">{item}</li>
             ))}
           </ul>
         ) : null}
-        {section.paragraphsAfterList?.map((paragraph) => (
-          <p key={paragraph.slice(0, 48)}>{paragraph}</p>
+        {section.paragraphsAfterList?.map((paragraph, index) => (
+          <p key={index}>{paragraph}</p>
         ))}
       </div>
     </section>

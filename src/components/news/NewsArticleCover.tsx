@@ -3,6 +3,7 @@
 import Image from "next/image";
 import type { CSSProperties } from "react";
 
+import { ZoomIcon } from "@/components/core/icons";
 import { useLightbox } from "@/components/lightbox/LightboxProvider";
 import type { Image as ContentImage } from "@/content/types";
 import { pl } from "@/i18n/pl";
@@ -17,24 +18,6 @@ function formatEnlargeAria(index: number, total: number): string {
   return pl.news.enlargePhotoAria
     .replace("{n}", String(index + 1))
     .replace("{total}", String(total));
-}
-
-function NewsArticleCoverZoomIcon() {
-  return (
-    <svg
-      width="20"
-      height="20"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.6"
-      strokeLinecap="round"
-      aria-hidden="true"
-    >
-      <circle cx="10.5" cy="10.5" r="6" />
-      <path d="M15 15 L20 20" />
-    </svg>
-  );
 }
 
 export function NewsArticleCover({ image, images, lightboxIndex }: NewsArticleCoverProps) {
@@ -67,7 +50,7 @@ export function NewsArticleCover({ image, images, lightboxIndex }: NewsArticleCo
             className="news-article-cover-image"
           />
           <span className="news-article-cover-zoom" aria-hidden="true">
-            <NewsArticleCoverZoomIcon />
+            <ZoomIcon size={20} />
           </span>
         </span>
       </button>

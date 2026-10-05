@@ -30,7 +30,7 @@ export function PublicationsHubPage({ path, publication, articles }: Publication
     publication.availability === "dostepny"
       ? pl.publications.facts.availabilityAvailableShort
       : pl.publications.facts.availabilitySoldOut;
-  const pageWord = pluralize(publication.pages, ["strona", "strony", "stron"]);
+  const pageWord = pluralize(publication.pages, pl.publications.pageForms);
   const imprint = pl.publications.imprint.replace("{year}", String(publication.year));
   const hubSpreads = publication.spreads.slice(0, 4);
 

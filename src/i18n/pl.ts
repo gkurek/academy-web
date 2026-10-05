@@ -259,6 +259,7 @@ export const pl = {
     semesterProgramHeading: "Program kursu trzyletniego",
     semesterProgramIntro:
       "Sześć semestrów, każdy zamknięty własnym zadaniem malarskim.",
+    semesterTileFallback: "Semestr {n}",
     semesterTileHeadings: [
       "Semestr pierwszy",
       "Semestr drugi",
@@ -498,6 +499,8 @@ export const pl = {
       heading: "Wystawy wyjazdowe",
       introBefore:
         "Ikony Elżbiety Jackowskiej-Kurek pokazujemy też poza naszym kościołem – w kościołach, muzeach i domach kultury. Byliśmy m.in. w ",
+      placesLastJoiner: " i ",
+      placesJoiner: ", ",
       introAfter:
         ". Wystawę przygotowujemy razem z gospodarzem: dobieramy ikony do wnętrza i pomagamy je zawiesić. Każdy wyjazd ma swoją relację w Aktualnościach.",
       inviteCta: "Chcesz zaprosić wystawę do swojego miejsca?",
@@ -548,6 +551,7 @@ export const pl = {
     articlesLead:
       "Teksty wykładowców Akademii, wybrane pozycje z albumu oraz artykuły Elżbiety Jackowskiej-Kurek z mediów.",
     sampleTag: "[przykład]",
+    // Rendered by ArticleList around the italic album title: {title} stays a separate element.
     sourceFromAlbum: "Z albumu {title} · {year}",
     sourceFromMedia: "{outlet} · {year}",
     sourceAlbumMeta: "Z albumu",
@@ -567,6 +571,7 @@ export const pl = {
     articleSourceHeading: "Źródło tekstu",
     articleSourceAlbumSentence:
       "Ten tekst pochodzi z albumu {title} wydanego przez Fundację IKONA DZIŚ.",
+    pageForms: ["strona", "strony", "stron"],
     articleSourceAlbumFacts: "{pages} {pageWord} · {format} · {price}",
     articleSourceViewAlbum: "Zobacz album",
     articleSourceOrder: "Zamów",

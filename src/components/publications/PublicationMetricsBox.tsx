@@ -1,3 +1,5 @@
+import { useId } from "react";
+
 import { Button } from "@/components/core/Button";
 import type { PublicationFrontmatter } from "@/content/publications";
 import { formatPublicationPrice } from "@/content/publications";
@@ -10,6 +12,7 @@ export interface PublicationMetricsBoxProps {
 }
 
 export function PublicationMetricsBox({ publication }: PublicationMetricsBoxProps) {
+  const headingId = useId();
   const { facts, mailtoSubject, orderAlbumMailto } = pl.publications;
   const settings = getSiteSettings();
   const secretariatEmail = settings.emails.find((email) => email.label.includes("sekretariat"))
@@ -33,7 +36,7 @@ export function PublicationMetricsBox({ publication }: PublicationMetricsBoxProp
   return (
     <div className="publication-metrics">
       <h2
-        id="publication-metrics-heading"
+        id={headingId}
         className="publication-metrics-heading"
       >
         {facts.heading}

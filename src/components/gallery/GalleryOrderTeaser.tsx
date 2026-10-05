@@ -1,19 +1,22 @@
+import { useId } from "react";
+
 import { Button } from "@/components/core/Button";
 import { pl } from "@/i18n/pl";
 
 /** K-46: no photo until a proper shoot; the button is the page's one sales CTA. */
 export function GalleryOrderTeaser() {
+  const headingId = useId();
   const { title, lead, linkLabel } = pl.gallery.orderTeaser;
 
   return (
     <section
-      aria-labelledby="gallery-order-teaser-heading"
+      aria-labelledby={headingId}
       className="mt-section-gap-mobile md:mt-section-gap"
     >
       <div className="exhibition-tours-pass border-b-0">
         <div className="exhibition-tours-pass__content">
           <h2
-            id="gallery-order-teaser-heading"
+            id={headingId}
             className="font-serif text-size-role-section-h2-m md:text-size-role-section-h2 leading-heading text-text-h2 mb-space-2"
           >
             {title}

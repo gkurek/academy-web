@@ -2,15 +2,13 @@
 
 import { useCallback, useEffect, useState, type ReactNode } from "react";
 
-import {
-  focusNewsYearCardTitleAfterLayout,
-  scrollNewsYearIntoView,
-} from "@/components/news/focusNewsYearCardTitle";
+import { focusNewsYearCardTitleAfterLayout } from "@/components/news/focusNewsYearCardTitle";
 import {
   NEWS_ARCHIVE_EXPAND_EVENT,
   type NewsArchiveExpandDetail,
 } from "@/components/news/newsArchiveEvents";
 import { pl } from "@/i18n/pl";
+import { scrollToId } from "@/lib/scroll";
 
 const entryPluralRules = new Intl.PluralRules("pl");
 
@@ -57,7 +55,7 @@ export function NewsArchiveShell({
       requestAnimationFrame(() => {
         if (targetYear) {
           window.history.pushState(null, "", `#${targetYear}`);
-          scrollNewsYearIntoView(targetYear);
+          scrollToId(targetYear);
           focusNewsYearCardTitleAfterLayout(targetYear);
           return;
         }

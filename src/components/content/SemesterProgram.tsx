@@ -1,3 +1,5 @@
+import { useId } from "react";
+
 import type { SemesterItem } from "@/content/offers";
 import { pl } from "@/i18n/pl";
 
@@ -8,14 +10,15 @@ export interface SemesterProgramProps {
 }
 
 export function SemesterProgram({ semesters }: SemesterProgramProps) {
+  const headingId = useId();
   if (semesters.length === 0) {
     return null;
   }
 
   return (
-    <section aria-labelledby="semester-program-heading" className="not-prose">
+    <section aria-labelledby={headingId} className="not-prose">
       <h2
-        id="semester-program-heading"
+        id={headingId}
         className="font-serif text-size-role-section-h2-m md:text-size-role-section-h2 leading-heading text-text-h2 mt-space-8 mb-space-2 first:mt-0"
       >
         {pl.offers.semesterProgramHeading}
@@ -37,7 +40,7 @@ export function SemesterProgram({ semesters }: SemesterProgramProps) {
             </div>
             <div className="min-w-0">
               <h3 className="font-serif text-size-role-row-title-m md:text-size-role-row-title leading-heading text-text-list-title mb-space-2">
-                {pl.offers.semesterTileHeadings[index] ?? `Semestr ${index + 1}`}
+                {pl.offers.semesterTileHeadings[index] ?? pl.offers.semesterTileFallback.replace("{n}", String(index + 1))}
               </h3>
               <p className="text-size-body leading-body text-text-secondary mb-space-2">{semester.title}</p>
               {semester.topics && semester.topics.length > 0 ? (
