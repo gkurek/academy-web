@@ -2,10 +2,9 @@
  * Import-time checks shared by the content loaders. Each helper throws, so broken content
  * fails `next build` with a message naming the file and field instead of rendering a 404 or blank.
  */
-import newsManifest from "../../content/news/manifest.json";
+import { hasNewsSlug } from "@/content/news-manifest";
 import { FEATURED_ICON_SLUGS, getIconWorks } from "@/content/icons";
 
-const newsSlugs = new Set((newsManifest as Array<{ slug: string }>).map((entry) => entry.slug));
 const iconSlugs = new Set(getIconWorks().map((icon) => icon.slug));
 
 /** Named MDX exports (`export const aboutParagraphs = …`) must all be present — returns the module typed. */
@@ -26,13 +25,13 @@ export function assertMdxExports<T extends object>(
 
 /** A link to `/aktualnosci/{slug}` must point at an entry in `content/news/manifest.json`. */
 export function assertNewsSlug(slug: string, context: string): void {
-  if (!newsSlugs.has(slug)) {
+  if (!hasNewsSlug(slug)) {
     throw new Error(`${context}: unknown newsSlug "${slug}" — no entry in content/news/manifest.json`);
   }
 }
 
 /** A curated icon slug must exist in `content/icons.json`. */
-export function assertIconSlug(slug: string, context: string): void {
+function assertIconSlug(slug: string, context: string): void {
   if (!iconSlugs.has(slug)) {
     throw new Error(`${context}: unknown icon slug "${slug}" — no work in content/icons.json`);
   }

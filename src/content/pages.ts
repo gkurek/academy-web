@@ -30,13 +30,16 @@ const { curriculumParagraphs } = assertMdxExports<WorkshopParagraphExports>(
   "content/pages/pracownia.mdx",
 );
 
-export type LoadedAboutPage = AboutPageData & {
+/** Page metadata from JSON — the MDX body is rendered by the route, so `body` is never loaded. */
+type WithoutBody<T> = Omit<T, "body">;
+
+export type LoadedAboutPage = WithoutBody<AboutPageData> & {
   audienceParagraphs: string[];
   historyParagraph: string;
   workshopParagraph: string;
 };
 
-export type LoadedWorkshopPage = WorkshopPageData & {
+export type LoadedWorkshopPage = WithoutBody<WorkshopPageData> & {
   curriculumParagraphs: string[];
 };
 
@@ -44,16 +47,15 @@ export type LoadedContactPage = {
   Content: typeof ContactContent;
 };
 
-export type LoadedPrivacyPolicyPage = PrivacyPolicyPageData;
+export type LoadedPrivacyPolicyPage = WithoutBody<PrivacyPolicyPageData>;
 
-const aboutPageMeta = oAkademiiMeta as AboutPageData;
-const workshopPageMeta = pracowniaMeta as WorkshopPageData;
-const privacyPolicyPageMeta = privacyPolicyMeta as PrivacyPolicyPageData;
+const aboutPageMeta = oAkademiiMeta as WithoutBody<AboutPageData>;
+const workshopPageMeta = pracowniaMeta as WithoutBody<WorkshopPageData>;
+const privacyPolicyPageMeta = privacyPolicyMeta as WithoutBody<PrivacyPolicyPageData>;
 
 export function getAboutPage(): LoadedAboutPage {
   return {
     ...aboutPageMeta,
-    body: "",
     audienceParagraphs,
     historyParagraph,
     workshopParagraph,
@@ -63,7 +65,6 @@ export function getAboutPage(): LoadedAboutPage {
 export function getWorkshopPage(): LoadedWorkshopPage {
   return {
     ...workshopPageMeta,
-    body: "",
     curriculumParagraphs,
   };
 }
@@ -75,6 +76,5 @@ export function getContactPage(): LoadedContactPage {
 export function getPrivacyPolicyPage(): LoadedPrivacyPolicyPage {
   return {
     ...privacyPolicyPageMeta,
-    body: "",
   };
 }

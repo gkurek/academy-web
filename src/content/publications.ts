@@ -6,6 +6,7 @@ import { articleModules } from "@/content/articles-registry";
 import { publicationModules } from "@/content/publications-registry";
 import { validatePublicationSlugCollisions } from "@/content/publication-slugs";
 import { assertMdxExports, assertNewsSlug } from "@/content/validate";
+import { pl } from "@/i18n/pl";
 import * as ikonaDzisBody from "../../content/publications/ikona-dzis-body.mdx";
 
 export type PublicationFrontmatter = Publication & {
@@ -159,5 +160,5 @@ export function formatPublicationPrice(price?: number): string | undefined {
     return undefined;
   }
 
-  return `${price} zł`;
+  return pl.publications.facts.priceValue.replace("{price}", String(price));
 }

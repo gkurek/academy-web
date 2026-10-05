@@ -2,7 +2,7 @@ import { Fragment } from "react";
 import Link from "next/link";
 import { pl } from "@/i18n/pl";
 
-export interface BreadcrumbItem {
+interface BreadcrumbItem {
   label: string;
   href?: string;
 }
@@ -11,8 +11,8 @@ export interface BreadcrumbProps {
   items: BreadcrumbItem[];
 }
 
-// Only used on a news entry — never a single item, never alongside SectionNav
-// (design/README §4). Not wired into any route yet; that lands in etap 06.
+// Used on publication pages (articles and the album) — never a single item,
+// never alongside SectionNav (design/README §4).
 export function Breadcrumb({ items }: BreadcrumbProps) {
   return (
     <nav

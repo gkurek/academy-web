@@ -21,7 +21,7 @@ import { assertLecturerPairing } from "@/content/validate";
 import { formatDateRange } from "@/lib/formatDateRange";
 
 /** The current lecture season — the only place to change at a season rollover (with its JSON import below). */
-export const CURRENT_SEASON_SLUG = "2026-2027";
+const CURRENT_SEASON_SLUG = "2026-2027";
 const LECTURE_TITLE_SEPARATOR = " · ";
 
 type LectureSeasonFile = LectureSeason & { sample?: boolean };
@@ -44,7 +44,7 @@ const seasonModules: Record<string, LectureSeasonFile> = {
   "2012-2013": season20122013Data as LectureSeasonFile,
 };
 
-export type LectureTalk = {
+type LectureTalk = {
   title: string;
   lecturer?: string;
   lecturerHref?: string;
@@ -91,7 +91,7 @@ function buildLecturerLabel(entry: {
   return entry.affiliation ? `${label}, ${entry.affiliation}` : label;
 }
 
-export function formatLecturerLabel(slug: string): string {
+function formatLecturerLabel(slug: string): string {
   const directoryEntry = getLecturerDirectoryEntry(slug);
   const profileEntry = getLecturer(slug);
 
@@ -315,22 +315,4 @@ export function getLectureSeasonShortTheme(seasonSlug: string): string {
   }
 
   return cycleTitle;
-}
-
-/** ISO date and location for future JSON-LD Event emission (etap 7). */
-export function getLectureEventData(season: LectureSeason): Array<{
-  date: string;
-  title: string;
-  location: string;
-}> {
-  const location =
-    "Kościół Środowisk Twórczych św. Andrzeja Apostoła i św. Brata Alberta Chmielowskiego, Plac Teatralny, Warszawa";
-
-  return season.lectures.flatMap((lecture) =>
-    splitLectureTitles(lecture.title).map((title) => ({
-      date: lecture.date,
-      title,
-      location,
-    })),
-  );
 }

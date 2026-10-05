@@ -1,14 +1,13 @@
-"use client";
-
 import type { CSSProperties } from "react";
 
+import type { StepItem } from "@/content/offers";
 import { pl } from "@/i18n/pl";
 
-import { useOfferContent } from "./OfferContentContext";
+export interface StepListProps {
+  steps: StepItem[];
+}
 
-export function StepList() {
-  const { steps } = useOfferContent();
-
+export function StepList({ steps }: StepListProps) {
   if (steps.length === 0) {
     return null;
   }

@@ -1,8 +1,6 @@
 import { getSeason } from "@/content/lectures";
 import type { AnnualExhibition, PermanentExhibition } from "@/content/types";
-import { formatDateRange } from "@/lib/formatDateRange";
 import { todayInWarsaw } from "@/lib/isoDate";
-import { pl } from "@/i18n/pl";
 import { assertMdxExports, assertNewsSlug } from "@/content/validate";
 import annualManifest from "../../content/exhibition/annual.json";
 import * as exhibitionBody from "../../content/exhibition/body.mdx";
@@ -80,7 +78,7 @@ export type LoadedExhibitionPage = PermanentExhibition & {
   descriptionParagraphs: string[];
 };
 
-export type ExhibitionNowNextSection = "ekspozycja" | "doroczna";
+type ExhibitionNowNextSection = "ekspozycja" | "doroczna";
 
 export type ExhibitionNowNextRow = {
   section: ExhibitionNowNextSection;
@@ -115,11 +113,6 @@ export function getPermanentExhibition(): PermanentExhibition {
 
 export function getAnnualExhibitions(): AnnualExhibition[] {
   return [...allAnnualExhibitions];
-}
-
-/** Annual exhibition linked to a news article — undefined when slug is unknown or unlinked (K-103). */
-export function getAnnualExhibitionByNewsSlug(slug: string): AnnualExhibition | undefined {
-  return getAnnualExhibitions().find((exhibition) => exhibition.newsSlug === slug);
 }
 
 export function getLatestAnnualExhibition(): AnnualExhibition {
@@ -212,23 +205,6 @@ export function getExhibitionNowNext(today: string = todayInWarsaw()): Exhibitio
       vernissageDate: vernissage,
     },
   };
-}
-
-export function getAnnualIconCountLabel(): string {
-  return pl.exhibition.annual.facts.onDisplayValue;
-}
-
-export function getAnnualOpenPeriodLabel(
-  exhibition: AnnualExhibition,
-  today: string = todayInWarsaw(),
-): string {
-  const dateEnd = resolveAnnualDateEnd(exhibition);
-
-  if (isAnnualExhibitionActive(exhibition, today)) {
-    return `do ${formatDateRange(dateEnd, undefined, { withYear: true })}`;
-  }
-
-  return "Czerwiec – 31 sierpnia";
 }
 
 export function getExhibitionPage(): LoadedExhibitionPage {

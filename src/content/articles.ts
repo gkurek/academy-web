@@ -28,10 +28,6 @@ export function getArticles(): ArticleFrontmatter[] {
   return [...articleEntries].sort(compareByYearDesc);
 }
 
-export function getArticleBySlug(slug: string): ArticleFrontmatter | undefined {
-  return articleModules[slug]?.frontmatter;
-}
-
 export function loadArticleBySlug(slug: string): LoadedArticle | undefined {
   const articleModule = articleModules[slug];
   if (!articleModule) {

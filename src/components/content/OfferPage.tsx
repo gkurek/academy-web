@@ -2,7 +2,8 @@ import type { ReactNode } from "react";
 
 import { FactsBox } from "@/components/content/FactsBox";
 import { MdxLink } from "@/components/content/MdxLink";
-import { OfferContentProvider } from "@/components/content/OfferContentContext";
+import { SemesterProgram } from "@/components/content/SemesterProgram";
+import { StepList } from "@/components/content/StepList";
 import { SectionPageShell } from "@/components/layout/SectionPageShell";
 import { getEnrollmentState, getOfferDateValues, type LoadedOffer } from "@/content/offers";
 import type { OfferFacts } from "@/content/types";
@@ -11,7 +12,7 @@ import { fillRequiredTemplate } from "@/lib/fillTemplate";
 import type { SectionKey } from "@/navigation";
 
 // Links are styled only in offer MDX (LY5); news, contact and articles keep their own `a` styles.
-const offerMdxComponents = { a: MdxLink };
+const offerMdxLinks = { a: MdxLink };
 
 function getOfferEyebrow(kind: LoadedOffer["kind"], seasonLabel?: string): string | null {
   if (!seasonLabel) {
@@ -133,11 +134,15 @@ export function OfferPage({
         <FactsBox facts={facts} kind={kind} enrollment={getEnrollmentState(offer)} />
       </div>
 
-      <OfferContentProvider semesters={semesters} steps={steps}>
-        <div className="offer-mdx">
-          <Content components={offerMdxComponents} />
-        </div>
-      </OfferContentProvider>
+      <div className="offer-mdx">
+        <Content
+          components={{
+            ...offerMdxLinks,
+            SemesterProgram: () => <SemesterProgram semesters={semesters} />,
+            StepList: () => <StepList steps={steps} />,
+          }}
+        />
+      </div>
 
       {afterBodySlot}
 

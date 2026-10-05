@@ -1,11 +1,11 @@
 import Link from "next/link";
 
-import type { ExhibitionNowNext, ExhibitionNowNextRow } from "@/content/exhibition";
+import type { ExhibitionNowNext as ExhibitionNowNextState, ExhibitionNowNextRow } from "@/content/exhibition";
 import { pl } from "@/i18n/pl";
 import { formatDateRange } from "@/lib/formatDateRange";
 
 export interface ExhibitionNowNextProps {
-  state: ExhibitionNowNext;
+  state: ExhibitionNowNextState;
   className?: string;
 }
 
@@ -62,7 +62,7 @@ function nextSubline(row: ExhibitionNowNextRow, copy: typeof pl.exhibition.nowNe
   );
 }
 
-export function ExhibitionNowNextBlock({ state, className }: ExhibitionNowNextProps) {
+export function ExhibitionNowNext({ state, className }: ExhibitionNowNextProps) {
   const copy = pl.exhibition.nowNext;
   const { now, next } = state;
   const rootClass = ["exhibition-now-next", className].filter(Boolean).join(" ");

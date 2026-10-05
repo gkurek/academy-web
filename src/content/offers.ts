@@ -1,7 +1,6 @@
 import type { MDXProps } from "mdx/types";
 import type { ComponentType } from "react";
 import type { ExhibitionTravelingPlace, Image, Offer, OfferFacts, Testimonial } from "@/content/types";
-import type { SemesterItem, StepItem } from "@/components/content/OfferContentContext";
 import {
   parseYear,
   resolveEnrollmentState,
@@ -31,7 +30,19 @@ export type OfferLeadIntroSection = {
   paragraphs: string[];
 };
 
-export type OfferFrontmatter = {
+export type SemesterItem = {
+  title: string;
+  /** Short paragraph when there is no bullet list (e.g. semesters V–VI). */
+  body?: string;
+  topics?: string[];
+};
+
+export type StepItem = {
+  title: string;
+  body?: string;
+};
+
+type OfferFrontmatter = {
   slug: string;
   title: string;
   lead?: string;
@@ -45,16 +56,15 @@ export type OfferFrontmatter = {
   semesters?: SemesterItem[];
   steps?: StepItem[];
   quote?: Testimonial & { image?: Image };
-  exampleSlugs?: string[];
 };
 
-export type LoadedOffer = Offer & {
+/** The MDX body is the `Content` component, and the quote comes from frontmatter — not `body` / `testimonials`. */
+export type LoadedOffer = Omit<Offer, "body" | "testimonials"> & {
   leadSecondary?: string;
   leadExtra?: OfferLeadExtra;
   leadIntro?: OfferLeadIntroSection[];
   semesters: SemesterItem[];
   steps: StepItem[];
-  exampleSlugs: string[];
   quote?: Testimonial & { image?: Image };
   Content: ComponentType<MDXProps>;
 };
@@ -102,9 +112,7 @@ function toOffer(offerModule: OfferModule): LoadedOffer {
     hero: frontmatter.hero,
     semesters: frontmatter.semesters ?? [],
     steps: frontmatter.steps ?? [],
-    exampleSlugs: frontmatter.exampleSlugs ?? [],
     quote: frontmatter.quote,
-    body: "",
     Content,
   };
 }
@@ -116,10 +124,6 @@ export function requireOffer(slug: OfferSlug): LoadedOffer {
     throw new Error(`content/offers: no offer "${slug}" — the route that needs it cannot render`);
   }
   return toOffer(offerModule);
-}
-
-export function getOffers(): LoadedOffer[] {
-  return Object.values(offerModules).map(toOffer);
 }
 
 export function getWorkshopOffers(): LoadedOffer[] {

@@ -9,7 +9,7 @@ import {
   LightboxMobileNavButton,
 } from "@/components/lightbox/LightboxControls";
 
-export type LightboxControlLabels = {
+type LightboxControlLabels = {
   close: string;
   previous: string;
   previousAria: string;

@@ -1,5 +1,5 @@
 /** One tile after layout — index into the source items array plus pixel size. */
-export interface JustifiedTile {
+interface JustifiedTile {
   index: number;
   width: number;
   height: number;

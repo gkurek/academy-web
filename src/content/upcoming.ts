@@ -1,4 +1,3 @@
-import newsManifest from "../../content/news/manifest.json";
 import {
   getLatestAnnualExhibition,
   getPermanentExhibition,
@@ -8,6 +7,8 @@ import {
 import { getLecturerDirectoryEntry } from "@/content/lecturer-directory";
 import { getLecturer } from "@/content/lecturers";
 import { formatLectureDate, getAllSeasonLectures } from "@/content/lectures";
+import { newsManifestEntries } from "@/content/news-manifest";
+import type { NewsFrontmatter } from "@/content/news";
 import { getSiteSettings } from "@/content/settings";
 import {
   ENROLLMENT_FALLBACK_CLOSE_MONTH_DAY,
@@ -43,7 +44,7 @@ const PLENER_ROUTE = "/warsztaty/letnia-szkola-swiatla";
 const LECTURES_ROUTE = "/wyklady";
 const EXHIBITION_ROUTE = "/ikony/wystawy";
 
-export type UpcomingSource = "auto" | "override";
+type UpcomingSource = "auto" | "override";
 
 export type UpcomingTile = {
   slot: UpcomingSlot;
@@ -61,14 +62,6 @@ type SlotDefault = Omit<UpcomingTile, "slot" | "source">;
 /** Workshop offer facts the Warsztaty slot is computed from (N6, N7). Passed in so this module stays free of MDX imports. */
 export type UpcomingOfferFacts = WorkshopOfferFacts;
 
-type NewsManifestEntry = {
-  slug: string;
-  date: string;
-  kind: NewsKind;
-};
-
-const newsEntries = newsManifest as NewsManifestEntry[];
-
 function formatFullDate(isoDate: string): string {
   return formatDateRange(isoDate, undefined, { withYear: true });
 }
@@ -78,13 +71,12 @@ function seasonLabel(startYear: number): string {
 }
 
 /** Newest news entry of the slot's kinds dated no more than FRESH_NEWS_DAYS ago (future dates count). */
-function findFreshNews(slot: UpcomingSlot, today: string): NewsManifestEntry | undefined {
+function findFreshNews(slot: UpcomingSlot, today: string): NewsFrontmatter | undefined {
   const oldestFresh = addDays(today, -FRESH_NEWS_DAYS);
   const kinds = SLOT_NEWS_KINDS[slot];
 
-  return newsEntries
-    .filter((entry) => kinds.includes(entry.kind) && entry.date >= oldestFresh)
-    .sort((a, b) => b.date.localeCompare(a.date))[0];
+  // The manifest is newest first.
+  return newsManifestEntries.find((entry) => kinds.includes(entry.kind) && entry.date >= oldestFresh);
 }
 
 function withFreshNewsLink(slot: UpcomingSlot, today: string, tile: SlotDefault): SlotDefault {
@@ -286,7 +278,7 @@ function findActiveOverride(slot: UpcomingSlot, today: string) {
   );
 }
 
-export function resolveUpcomingSlot(
+function resolveUpcomingSlot(
   slot: UpcomingSlot,
   offers: UpcomingOfferFacts,
   today: string = todayInWarsaw(),

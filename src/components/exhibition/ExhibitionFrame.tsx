@@ -2,7 +2,7 @@ import Image from "next/image";
 
 import type { Image as ContentImage } from "@/content/types";
 
-export type ExhibitionFrameAspect =
+type ExhibitionFrameAspect =
   | "wide"
   | "standard"
   | "square"

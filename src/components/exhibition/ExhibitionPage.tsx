@@ -4,12 +4,10 @@ import { ExhibitionAnnualTiles } from "@/components/exhibition/ExhibitionAnnualT
 import { ExhibitionFactsPanel } from "@/components/exhibition/ExhibitionFactsPanel";
 import { ExhibitionHashScroll } from "@/components/exhibition/ExhibitionHashScroll";
 import { ExhibitionFrame } from "@/components/exhibition/ExhibitionFrame";
-import { ExhibitionNowNextBlock } from "@/components/exhibition/ExhibitionNowNext";
+import { ExhibitionNowNext } from "@/components/exhibition/ExhibitionNowNext";
 import { ExhibitionPageNav } from "@/components/exhibition/ExhibitionPageNav";
-import {
-  ExhibitionToursSection,
-  ExhibitionTravelingSection,
-} from "@/components/exhibition/ExhibitionToursSection";
+import { ExhibitionToursSection } from "@/components/exhibition/ExhibitionToursSection";
+import { ExhibitionTravelingSection } from "@/components/exhibition/ExhibitionTravelingSection";
 import { LightboxProvider } from "@/components/lightbox/LightboxProvider";
 import { SectionPageShell } from "@/components/layout/SectionPageShell";
 import {
@@ -121,7 +119,7 @@ export function ExhibitionPage({ active, sectionActive }: ExhibitionPageProps) {
           >
             {pageCopy.lead}
           </p>
-          <ExhibitionNowNextBlock state={nowNext} className="exhibition-hero-grid__now" />
+          <ExhibitionNowNext state={nowNext} className="exhibition-hero-grid__now" />
           <ExhibitionPageNav className="exhibition-hero-grid__nav" />
         </div>
       </header>

@@ -1,14 +1,13 @@
-"use client";
-
+import type { SemesterItem } from "@/content/offers";
 import { pl } from "@/i18n/pl";
-
-import { useOfferContent } from "./OfferContentContext";
 
 const ROMAN_NUMERALS = ["I", "II", "III", "IV", "V", "VI"] as const;
 
-export function SemesterProgram() {
-  const { semesters } = useOfferContent();
+export interface SemesterProgramProps {
+  semesters: SemesterItem[];
+}
 
+export function SemesterProgram({ semesters }: SemesterProgramProps) {
   if (semesters.length === 0) {
     return null;
   }

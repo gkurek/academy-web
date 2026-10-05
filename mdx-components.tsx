@@ -3,8 +3,6 @@ import Image from "next/image";
 import type { ComponentPropsWithoutRef } from "react";
 
 import { OfferFigure } from "@/components/content/OfferFigure";
-import { SemesterProgram } from "@/components/content/SemesterProgram";
-import { StepList } from "@/components/content/StepList";
 import { OfferSideCta } from "@/components/offers/OfferSideCta";
 type ImgProps = ComponentPropsWithoutRef<"img">;
 
@@ -67,8 +65,6 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     Heading3: MdxHeading3,
     OfferFigure,
     OfferSideCta,
-    SemesterProgram,
-    StepList,
     ...components,
   };
 }

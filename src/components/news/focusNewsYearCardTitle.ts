@@ -16,7 +16,7 @@ export function scrollNewsYearIntoView(year: string): void {
 }
 
 /** Moves focus to the entry title link for a year anchor on the news list. */
-export function focusNewsYearCardTitle(year: string): void {
+function focusNewsYearCardTitle(year: string): void {
   const item = document.getElementById(year);
   const link = item?.querySelector<HTMLElement>(".news-card-title-link");
   link?.focus({ preventScroll: true });

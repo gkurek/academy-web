@@ -1135,14 +1135,6 @@
     min-height: var(--tap-min-mobile-header);
   }
 
-  /* Stacked footer sitemap links — block row, not inline with siblings. */
-  .tap-target-nav-block {
-    display: flex;
-    align-items: center;
-    width: 100%;
-    min-height: var(--tap-min-mobile-header);
-  }
-
   /* Secondary button — border lines only: top/bottom first, then sides (≤150ms each). */
   .btn-secondary {
     position: relative;
@@ -1265,13 +1257,6 @@
       font-size: var(--size-body-m);
       line-height: var(--leading-body);
     }
-  }
-
-  .offer-mdx .offer-day-rhythm-label {
-    font-size: var(--size-caption);
-    line-height: var(--leading-body);
-    color: var(--text-tertiary);
-    margin: 0 0 var(--space-2);
   }
 
   .offer-mdx .offer-day-rhythm-grid {
@@ -2065,10 +2050,6 @@
     max-width: var(--measure-prose);
     margin-inline: auto;
     text-align: center;
-  }
-
-  .workshop-lightbox-meta {
-    max-width: var(--measure-prose);
   }
 
   .interview-intro {
@@ -3766,8 +3747,7 @@
     aspect-ratio: var(--exhibition-aspect-tile);
   }
 
-  .exhibition-section-copy,
-  .exhibition-section-lead {
+  .exhibition-section-copy {
     margin: 0;
     font-size: var(--size-body-m);
     line-height: var(--leading-prose);
@@ -3913,25 +3893,6 @@
     margin: 0;
   }
 
-  .exhibition-annual-tile-button {
-    display: block;
-    width: 100%;
-    min-height: var(--tap-min);
-    padding: 0;
-    border: 0;
-    background: transparent;
-    cursor: pointer;
-  }
-
-
-  .exhibition-annual-tile-frame {
-    width: 100%;
-  }
-
-  .exhibition-annual-tile-image {
-    object-fit: contain;
-  }
-
   .exhibition-annual-tiles-caption {
     margin: var(--space-4) 0 0;
     font-size: var(--size-ui-m);
@@ -3981,7 +3942,6 @@
     color: var(--text-tertiary);
   }
 
-  .exhibition-tours-grid,
   .exhibition-traveling-grid {
     display: grid;
     grid-template-columns: 1fr;
@@ -4063,8 +4023,7 @@
       margin-top: var(--exhibition-section-gap);
     }
 
-    .exhibition-section-copy,
-    .exhibition-section-lead {
+    .exhibition-section-copy {
       font-size: var(--size-body-lg);
       line-height: var(--leading-prose);
     }
@@ -4188,7 +4147,6 @@
       aspect-ratio: var(--exhibition-aspect-tile-pair-lead);
     }
 
-    .exhibition-tours-grid,
     .exhibition-traveling-grid {
       grid-template-columns: minmax(0, 1fr) var(--exhibition-facts-w);
       gap: var(--exhibition-section-col-gap);
@@ -4229,10 +4187,6 @@
     font-size: var(--size-body-m);
     line-height: var(--leading-prose);
     color: var(--text-secondary);
-  }
-
-  .publication-placeholder-note {
-    color: var(--text-tertiary);
   }
 
   .publication-hub-album {
@@ -4490,7 +4444,6 @@
   .publication-spreads-section,
   .publication-about-section,
   .publication-toc,
-  .publication-excerpts-section,
   .publication-related-section {
     margin-top: var(--publication-section-gap-m);
   }
@@ -4648,31 +4601,6 @@
     color: var(--text-secondary);
   }
 
-  .publication-excerpts-list {
-    display: grid;
-    gap: var(--space-7);
-    max-width: 34em;
-  }
-
-  .publication-excerpt {
-    margin: 0;
-    border-left: 3px solid var(--accent);
-    padding-left: var(--space-6);
-  }
-
-  .publication-excerpt-quote {
-    margin: 0 0 var(--space-3);
-    font-family: var(--font-serif);
-    font-size: var(--size-h3-m);
-    line-height: 1.45;
-    color: var(--text-body);
-  }
-
-  .publication-excerpt-footer {
-    font-size: var(--size-ui-m);
-    color: var(--text-tertiary);
-  }
-
   .publication-album-footer-links {
     display: grid;
     gap: var(--space-2);
@@ -4750,8 +4678,7 @@
   }
 
   .publication-album-backref-text,
-  .publication-album-backref-facts,
-  .publication-press-note-text {
+  .publication-album-backref-facts {
     margin: 0 0 var(--space-3);
     font-size: var(--size-body-m);
     line-height: var(--leading-prose);
@@ -4842,10 +4769,6 @@
       text-transform: uppercase;
       color: var(--accent-text);
       text-align: right;
-    }
-
-    .publication-excerpt-quote {
-      font-size: var(--size-h3);
     }
 
     .publication-see-also-row {

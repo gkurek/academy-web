@@ -1,6 +1,5 @@
 import lecturersPageMeta from "../../content/lecturers-page.json";
 import lecturersData from "../../content/lecturers.json";
-import { getTotalSeasonCount } from "@/content/lectures";
 import type { Lecturer } from "@/content/types";
 
 const lecturers = lecturersData as Lecturer[];
@@ -29,12 +28,12 @@ export function getLecturerProfileHref(slug: string): string | undefined {
   return `/wyklady/wykladowcy#${slug}`;
 }
 
-export function getLecturersPageIntro(): string {
+export function getLecturersPageIntro(totalSeasons: number): string {
   const { intro } = lecturersPageMeta as LecturersPageMeta;
-  return intro.replace("{totalSeasons}", String(getTotalSeasonCount()));
+  return intro.replace("{totalSeasons}", String(totalSeasons));
 }
 
-export function formatLecturerTitles(titles: string): string {
+function formatLecturerTitles(titles: string): string {
   return titles.charAt(0).toUpperCase() + titles.slice(1);
 }
 

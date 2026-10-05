@@ -11,7 +11,7 @@ import { useLightboxDialog } from "@/components/lightbox/useLightboxDialog";
 import type { Image as ContentImage } from "@/content/types";
 import { pl } from "@/i18n/pl";
 
-export interface LightboxMetaContext {
+interface LightboxMetaContext {
   photo: ContentImage;
   index: number;
   positionLabel: string;

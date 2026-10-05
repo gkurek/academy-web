@@ -10,5 +10,8 @@
     "scripts/check-media.ts",
     "scripts/visual-check.ts"
   ],
-  "ignoreDependencies": ["sharp"]
+  "ignoreDependencies": ["sharp"],
+  "ignoreIssues": {
+    "src/content/types.ts": ["types"]
+  }
 }

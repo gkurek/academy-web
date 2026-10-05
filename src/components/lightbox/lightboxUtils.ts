@@ -11,7 +11,7 @@ export type LightboxImageDimensions = {
   height: number;
 };
 
-export function getLightboxImageRatio(image: LightboxImageDimensions): string {
+function getLightboxImageRatio(image: LightboxImageDimensions): string {
   return (image.width / image.height).toFixed(4);
 }
 
