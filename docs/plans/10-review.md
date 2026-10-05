@@ -1,6 +1,6 @@
 # Plan 10/R — Review serwisu (techniczne, wizualne, treść)
 
-Status: **zatwierdzony** 2026-10-04 · R0 ✅ 2026-10-04 · R1 ✅ 2026-10-04 · R2 ✅ 2026-10-04 · R3 ✅ 2026-10-04 · R4 ✅ 2026-10-04 · R5 ✅ 2026-10-04 · `10-review-fixes.md` **zatwierdzony** 2026-10-04 (D1–D10) · następny: **RF-0** (Playwright, punkt odniesienia)  
+Status: **zatwierdzony** 2026-10-04 · R0 ✅ 2026-10-04 · R1 ✅ 2026-10-04 · R2 ✅ 2026-10-04 · R3 ✅ 2026-10-04 · R4 ✅ 2026-10-04 · R5 ✅ 2026-10-04 · `10-review-fixes.md` **zatwierdzony** 2026-10-04 (D1–D10) · RF-0 ✅ 2026-10-05 (Playwright, baseline) · workflow lokalny D11 · następny: **RF-1**  
 Gałąź: `feat/10-review` od `main` — dokumenty review i paczki poprawek; k8 zostaje na `feat/10-finishing` (merge do `main` niezależnie)  
 Staging: https://academy-web-lovat.vercel.app/  
 Makiety: tokeny `design/README`, odczyt wartości `docs/design-mockup-guide.md` (tylko jako punkt odniesienia w V1–V4).
@@ -135,7 +135,7 @@ Brak — review nie dotyka `content/`.
 ## Kryteria ukończenia
 
 - [ ] R0–R5 zakończone, `05-tech-synthesis.md` i `10-review-fixes.md` zatwierdzone;
-- [ ] poprawki techniczne wdrożone na stagingu;
+- [ ] poprawki techniczne gotowe lokalnie (każda paczka porównana z baseline'em z RF-0, bez deployu per paczka — D11 w `10-review-fixes.md`), potem jeden deploy na staging;
 - [ ] V1–V4 zakończone, paczki wizualne w `10-review-fixes.md`;
 - [ ] poprawki wizualne wdrożone;
 - [ ] C1–C2 zakończone (po EJK);

@@ -1,8 +1,8 @@
 # Plan 10/RF — Poprawki po review (techniczne; wizualne dopisze V4)
 
-Status: **zatwierdzony** 2026-10-04 (projekt R5; decyzje D1–D10 potwierdzone przez właściciela) · następny: **RF-0** · paczki wizualne dopisze V4  
+Status: **zatwierdzony** 2026-10-04 (projekt R5; decyzje D1–D10 potwierdzone przez właściciela) · RF-0 ✅ 2026-10-05 · następny: **RF-1** · paczki wizualne dopisze V4 · workflow lokalny (D11, 2026-10-05)  
 Gałąź: `feat/10-review` (RV-8; merge do `main` niezależnie od k8 na `feat/10-finishing`)  
-Staging: https://academy-web-lovat.vercel.app/ — weryfikacja każdej paczki po deployu  
+Staging: https://academy-web-lovat.vercel.app/ — źródło baseline'u (zapis raz w RF-0); paczki weryfikowane **lokalnie**, bez deployu (D11)  
 Makiety: tokeny `design/README`, odczyt wartości `docs/design-mockup-guide.md` — tylko w paczkach „po V1”  
 Źródło: `docs/review/05-tech-synthesis.md` (pozycje S-01…S-34, uproszczenia A1–A5, decyzje D1–D9)
 
@@ -12,11 +12,12 @@ Wdrożyć poprawki techniczne z bloku R (R1–R5) w paczkach, które da się zbu
 
 **Zasady dla każdej paczki:**
 
-- jeden checkpoint = jedna paczka; meldunek wg `CLAUDE.md`; „OK” przed następną;
+- jeden checkpoint = jedna paczka; meldunek wg `CLAUDE.md`; **następną paczkę zaczynam bez czekania na „OK”**, o ile `check:visual` daje 0 FAIL, a wszystkie różnice mieszczą się w skumulowanej liście oczekiwanych (D11); stop przy FAIL, różnicy spoza listy albo pytaniu do decyzji;
 - paczka nie zmienia wyglądu, chyba że jej opis mówi inaczej („zmiana widoczna: …”); zrzuty 390 / 1440 przed i po dla tras z zakresu;
 - przed każdą paczką `npm run build` + `npm run lint` jako punkt odniesienia; po — bez regresji;
 - bez wartości arbitralnych Tailwind, bez tekstu UI w JSX, bez zmiany nazw pól w `src/content/types.ts` (`CLAUDE.md`);
-- komunikat commita `10/RF-N: <short description>` (RV-8); w sesji cloud commit i push po „OK” (K-120);
+- komunikat commita `10/RF-N: <short description>` (RV-8); **commit lokalny po zielonej paczce robi właściciel — bez pusha i bez deployu** (D11); nie commituję sam; deploy na staging raz, po zamknięciu bloku technicznego;
+- gdzie linia „Weryfikacja” / „Gotowe” w paczkach mówi „staging” albo `curl staging/…`, czytaj: lokalny `npm run build && npm run start` (`http://localhost:3000`); porównanie zawsze z baseline'em z RF-0;
 - **każda paczka kończy się porównaniem przed/po** wg sekcji „Weryfikacja: wygląd i zachowanie” niżej — wynik (liczba stron z różnicą, które i dlaczego zaakceptowane) wchodzi do meldunku w linii „Build/lint”.
 
 **Modele (RV-5 dla paczek RF, 2026-10-04):** każda paczka w świeżej sesji. Kryterium wyboru:
@@ -44,7 +45,8 @@ Odpowiedzi z `05-tech-synthesis.md` §5 — **potwierdzone przez właściciela 2
 | **D7** | `.publication-excerpt*` i `publications.originHeading` usunięte | RF-7 |
 | **D8** | Filtr galerii: `history.replaceState` | RF-4 |
 | **D9** | `existsSync` usunięte z renderu; `check:media` przy buildzie | RF-3 |
-| **D10** | `playwright` jako `devDependency` (zgoda 2026-10-04); skrypt `scripts/visual-check.ts` porównuje zrzuty i wyliczone style dwóch adresów; punkt odniesienia = **adres deployu**, nie pliki w repo | RF-0 |
+| **D10** | `playwright` jako `devDependency` (zgoda 2026-10-04); skrypt `scripts/visual-check.ts` porównuje zrzuty, wyliczone style i HTML | RF-0 |
+| **D11** | (2026-10-05) Workflow lokalny: **jeden baseline** zapisany raz ze stagingu (`bb7b0cb`) w `.visual/baseline/` (poza repo); każda paczka porównywana z **tym samym** baseline'em na lokalnym `build && start`; wynik = 0 FAIL → następna paczka bez commita, pusha i deployu; commit lokalny robi właściciel; różnice zamierzone gromadzone w skumulowanej liście `scripts/visual-check.expected.json` (wpis per paczka); daty maskowane; deploy raz po bloku technicznym | wszystkie |
 
 ## Pliki i komponenty
 
@@ -76,9 +78,9 @@ RF-0 przed wszystkim (punkt odniesienia i narzędzie). Potem bugi (RF-1, RF-2, R
 
 ## Weryfikacja: wygląd i zachowanie (obowiązuje każdą paczkę)
 
-**Zasada.** Paczka techniczna nie zmienia wyglądu ani zachowania serwisu poza tym, co jej opis wymienia w linii „Zmiana widoczna”. Sprawdzamy to narzędziem, nie okiem: `npm run check:visual -- --base <adres> --head <adres>` (RF-0) renderuje obie wersje i porównuje.
+**Zasada.** Paczka techniczna nie zmienia wyglądu ani zachowania serwisu poza tym, co jej opis wymienia w linii „Zmiana widoczna”. Sprawdzamy to narzędziem, nie okiem: `npm run check:visual -- --head http://localhost:3000` (RF-0) renderuje lokalny build i porównuje go z baseline'em (`--save-baseline <adres>` zapisuje baseline).
 
-**Punkt odniesienia = adres deployu, nie pliki.** Vercel zachowuje adres każdego deployu (`academy-web-<hash>.vercel.app`), więc bazą dla paczki N jest deploy paczki N−1 (dla RF-1: deploy `bb7b0cb` — adres z panelu Vercel wpisać tu po RF-0: `[do uzupełnienia: adres deployu bb7b0cb]`). Dzięki temu w repo nie ma obrazów, a porównanie da się powtórzyć z każdej maszyny. Po zaakceptowaniu paczki jej deploy staje się bazą dla następnej.
+**Punkt odniesienia = jeden baseline ze stagingu (D11).** W RF-0 skrypt zapisuje raz stan stagingu `bb7b0cb` (zrzuty, wyliczone style, HTML, wyniki smoke) w `.visual/baseline/` (w `.gitignore`, poza repo). **Każda** paczka jest porównywana z tym samym baseline'em, nie z poprzednią paczką — dlatego różnice zamierzone z paczek N−1, N−2… są już w skumulowanej liście `scripts/visual-check.expected.json` (wpis per paczka: trasa, sygnał, powód) i nie dają FAIL. Paczka dopisuje do listy tylko własne różnice z linii „Zmiana widoczna”. Baseline odświeżamy dopiero po deployu bloku technicznego (wtedy staging = nowy punkt odniesienia dla V1 i RF-13/14). Kopia `.visual/baseline/` zostaje na dysku właściciela; jeśli zginie, odtworzyć z deployu `bb7b0cb` (adres z panelu Vercel).
 
 **Co porównujemy** (19 tras × 390 / 1440 / 1920 — K-30):
 
@@ -92,8 +94,8 @@ RF-0 przed wszystkim (punkt odniesienia i narzędzie). Potem bugi (RF-1, RF-2, R
 | | Sesja cloud (Claude Code on the web) | Sesja lokalna |
 | --- | --- | --- |
 | Przeglądarka | Chromium preinstalowany (`PLAYWRIGHT_BROWSERS_PATH=/opt/pw-browsers`); **nie** uruchamiać `playwright install` | raz: `npx playwright install chromium` (~150 MB, poza repo) |
-| `head` | deploy preview gałęzi po pushu paczki (adres z Vercel / GitHub Deployments) | j.w. **albo** `npm run build && npm run start` → `http://localhost:3000` (fonty i obrazy te same, więc zrzuty porównywalne; różnice w `next/image` przez brak CDN — patrz lista oczekiwanych) |
-| `base` | adres deployu poprzedniej paczki | j.w. |
+| `head` | (nie dotyczy — D11) | `npm run build && npm run start` → `http://localhost:3000` (nie `dev`; fonty i obrazy te same, więc zrzuty porównywalne; różnice w `next/image` przez brak CDN — patrz lista oczekiwanych) |
+| `base` | (nie dotyczy — D11) | `.visual/baseline/` zapisany raz w RF-0 ze stagingu |
 | Wynik | katalog `.visual/` (w `.gitignore`): zrzuty, diffy, `report.md` z tabelą trasa × szerokość | j.w. |
 
 Skrypt czyta `PLAYWRIGHT_BROWSERS_PATH`, gdy jest ustawiony, inaczej używa domyślnej lokalizacji Playwrighta — ten sam kod w obu środowiskach.
@@ -105,7 +107,7 @@ Skrypt czyta `PLAYWRIGHT_BROWSERS_PATH`, gdy jest ustawiony, inaczej używa domy
 - różnice między deployami Vercel w parametrach `next/image` (`?w=…&q=…`, hash w `/_next/static/`) i w `id` generowanych przez `useId` — ignorowane przez normalizację HTML;
 - antyaliasing fontów i cienie o różnicy ≤ 0,1 % pikseli bez zmiany w wyliczonych stylach;
 - `iframe` mapy Google (treść zewnętrzna);
-- zmiany treści scalone z `main` (k8) między bazą a głową — wtedy porównać z deployem `main` po merge jako bazą, nie z poprzednią paczką.
+- zmiany treści scalone z `main` (k8) między baseline'em a głową — wtedy zapisać nowy baseline z deployu `main` po merge i odnotować to w meldunku.
 
 **Różnice nieoczekiwane (FAIL — paczka nie dostaje „OK”):** każda zmiana wyliczonego stylu poza listą deklarowaną; strona z > 0,1 % różnych pikseli bez wytłumaczenia z listy wyżej; dowolny punkt smoke, który przestał działać; zmiana HTML poza `aria-current` / `title` / `id`.
 
@@ -121,9 +123,9 @@ Skrypt czyta `PLAYWRIGHT_BROWSERS_PATH`, gdy jest ustawiony, inaczej używa domy
 
 **Pozycje:** brak zgłoszeń — infrastruktura weryfikacji (D10). **Decyzja:** D10 (zgoda na `playwright`).  
 **Zakres (pliki):** `package.json` (`devDependencies`: `playwright`; skrypt `check:visual`; `tsx` — jeśli RF-6 jeszcze nie weszło, dopisać tu, bo skrypt go potrzebuje), `package-lock.json`, nowy `scripts/visual-check.ts`, nowy `scripts/visual-check.routes.json` (19 tras z `00-scope.md` §2.2 + reprezentanci `[slug]` z R0; maski per trasa), `.gitignore` (`.visual/`), `knip.json` (`entry` + skrypt — jeśli RF-6 później, utworzyć tu minimalny), ten plik (adres deployu `bb7b0cb` wpisany w sekcji „Weryfikacja”).  
-**Co:** skrypt z flagami `--base`, `--head`, `--widths 390,1440,1920`, `--routes`, `--only screenshots|styles|html|smoke`; zrzuty pełnej strony po `networkidle` i po wyłączeniu animacji (`prefers-reduced-motion`), porównanie pikselowe (biblioteka porównania wchodząca w skład Playwrighta — bez dodatkowych zależności), maski z JSON; wyliczone style wg listy z sekcji „Weryfikacja” do JSON + diff; HTML przez `fetch` z normalizacją; smoke jako lista kroków z asercjami; `report.md` z tabelą trasa × szerokość × sygnał (PASS / EXPECTED / FAIL) i linkami do diffów. Pierwszy przebieg: `--base` = `--head` = deploy `bb7b0cb` (ma dać 0 różnic — test narzędzia), drugi: `bb7b0cb` vs lokalny `npm run start` (pokazuje szum lokalny do skalibrowania progu).  
+**Co:** skrypt z flagami `--save-baseline <adres>` (zapis do `.visual/baseline/`), `--head <adres>` (domyślnie `http://localhost:3000`), `--widths 390,1440,1920`, `--routes`, `--only screenshots|styles|html|smoke`; wczytuje skumulowaną listę `scripts/visual-check.expected.json` (D11) i oznacza pokryte nią różnice jako EXPECTED; zrzuty pełnej strony po `networkidle` i po wyłączeniu animacji (`prefers-reduced-motion`), porównanie pikselowe (biblioteka porównania wchodząca w skład Playwrighta — bez dodatkowych zależności), maski z JSON; wyliczone style wg listy z sekcji „Weryfikacja” do JSON + diff; HTML przez `fetch` z normalizacją; smoke jako lista kroków z asercjami; `report.md` z tabelą trasa × szerokość × sygnał (PASS / EXPECTED / FAIL) i linkami do diffów. Pierwszy przebieg: `--save-baseline` ze stagingu `bb7b0cb`, a następnie `--head` = ten sam staging (ma dać 0 różnic — test narzędzia, w tym stabilności maskowania dat); drugi: baseline vs lokalny `npm run build && npm run start` na niezmienionym `src/` (pokazuje szum lokalny do skalibrowania progu).  
 **Zmiana widoczna:** brak (zero zmian w `src/`).  
-**Gotowe:** przebieg `bb7b0cb` vs `bb7b0cb` → 57 PASS; przebieg vs lokalny build → tylko różnice z listy oczekiwanych (parametry obrazów), próg skalibrowany i wpisany do skryptu; smoke na stagingu: wszystkie punkty zielone (jeśli któryś jest czerwony **przed** RF-1, to nowe zgłoszenie do `05-tech-synthesis.md`, nie poprawka); skrypt działa w cloud (`/opt/pw-browsers`) i lokalnie (`npx playwright install chromium`) — sprawdzone w obu; czas przebiegu < 5 min.  
+**Gotowe:** baseline zapisany w `.visual/baseline/`; staging vs baseline → 147 PASS (21 tras × 3 szerokości × zrzut + style, plus 21 × HTML); baseline vs lokalny build → tylko różnice z listy oczekiwanych (parametry obrazów), próg skalibrowany i wpisany do skryptu; smoke na stagingu: wszystkie punkty zielone (jeśli któryś jest czerwony **przed** RF-1, to nowe zgłoszenie do `05-tech-synthesis.md`, nie poprawka); skrypt działa w cloud (`/opt/pw-browsers`) i lokalnie (`npx playwright install chromium`) — sprawdzone w obu; czas przebiegu < 5 min.  
 **Weryfikacja:** build + lint bez zmian; `npm run check:visual` na dwóch adresach.  
 **Model:** Sonnet 5.5. **Koszt:** S–M. **Commit:** `10/RF-0: add visual and behavior regression check with Playwright`
 
@@ -272,7 +274,7 @@ Brak. RF-12 tworzy `content/pages/home.json` i `workshops-hub.json` **z treści 
 
 ## Kryteria ukończenia (część techniczna)
 
-- [ ] RF-0 … RF-11 wdrożone na stagingu; każda z zielonym build + lint, raportem `check:visual` (0 FAIL) i meldunkiem;
+- [ ] RF-0 … RF-11 gotowe lokalnie, potem jeden deploy na staging (D11); każda paczka z zielonym build + lint, raportem `check:visual` względem baseline'u (0 FAIL) i meldunkiem;
 - [ ] axe na 21 trasach × 2 szerokości (jak R0) → 0 naruszeń;
 - [ ] CLS `/ikony` < 0,1 (390 i 1440); `/ikony` statyczna w buildzie;
 - [ ] `npx knip` z `knip.json` → czysto; `npx jscpd src` → klony TSX = 0, CSS ≤ 15 (do RF-14: ≤ 5);
@@ -294,7 +296,7 @@ Brak. RF-12 tworzy `content/pages/home.json` i `workshops-hub.json` **z treści 
 
 | Paczka | Model | Status | Uwagi z checkpointu |
 | --- | --- | --- | --- |
-| RF-0 — punkt odniesienia, `check:visual` | Sonnet 5.5 | ⬜ | D10 |
+| RF-0 — punkt odniesienia, `check:visual` | Sonnet 5.5 | ✅ 2026-10-05 (bez commita) | D10, D11. Baseline ze stagingu `bb7b0cb` w `.visual/baseline/` (21 tras × 390 / 1440 / 1920, 11 testów zachowań, wszystkie zielone na stagingu). Staging vs baseline: 147 PASS; lokalny `build && start` vs baseline: 147 PASS (zero szumu, więc progi: 0,1 % pikseli, tolerancja kanału 16). Test czułości: podmiana zrzutu, wartości stylu i znacznika HTML → FAIL w każdym sygnale. Przebieg ~2 min lokalnie. Zrzuty bez piksela różnicy dzięki wyłączonym animacjom i `reduced-motion`. Uwaga Git Bash: ścieżki tras w `--routes` wymagają `MSYS_NO_PATHCONV=1` (albo PowerShell) |
 | RF-1 — a11y: dialog, linki, landmarki, fokus | Sonnet 5.5 | ⬜ | |
 | RF-2 — daty, sezon, stan zapisów (A1) | Opus 5.5 | ⬜ | D5 |
 | RF-3 — wymagana treść, walidacje, `prebuild` check | Opus 5.5 | ⬜ | D2, D9 |
