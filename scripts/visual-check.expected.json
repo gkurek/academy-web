@@ -611,5 +611,24 @@
     "signal": "styles",
     "width": 1920,
     "note": "album metrics box: shipping note paragraph removed (owner decision); page shorter, one element fewer"
+  },
+  {
+    "id": "RF-5",
+    "route": "/wyklady",
+    "signal": "html",
+    "note": "lecturer labels follow the profile registry (RF-5): Szymuła, Klejnowski-Różycki titles/affiliation, Kocój, Tatarova, Biskup (no short affiliation in profile)"
+  },
+  {
+    "id": "RF-5",
+    "route": "/wyklady/archiwum",
+    "signal": "html",
+    "note": "lecturer labels follow the profile registry (RF-5): Szymuła, Klejnowski-Różycki titles/affiliation, Kocój, Tatarova, Biskup (no short affiliation in profile)"
+  },
+  {
+    "id": "RF-5",
+    "route": "/wyklady",
+    "signal": "screenshot",
+    "width": 390,
+    "note": "lecturer labels follow the profile registry (RF-5): Szymuła, Klejnowski-Różycki titles/affiliation, Kocój, Tatarova, Biskup (no short affiliation in profile); one label wraps differently"
   }
 ]

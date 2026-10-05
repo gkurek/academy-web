@@ -14,8 +14,7 @@ import season20232024Data from "../../content/lectures/2023-2024.json";
 import season20242025Data from "../../content/lectures/2024-2025.json";
 import season20252026Data from "../../content/lectures/2025-2026.json";
 import currentSeasonData from "../../content/lectures/2026-2027.json";
-import { getLecturerDirectoryEntry } from "@/content/lecturer-directory";
-import { formatLecturerDisplayName, getLecturer, getLecturerProfileHref } from "@/content/lecturers";
+import { formatLecturerDisplayName, getLecturerProfileHref, resolveLecturer } from "@/content/lecturers";
 import type { Lecture, LectureSeason } from "@/content/types";
 import { assertLecturerPairing } from "@/content/validate";
 import { formatDateRange } from "@/lib/formatDateRange";
@@ -74,36 +73,10 @@ export function formatLectureDate(isoDate: string): string {
   return formatDateRange(isoDate, undefined, { withYear: false });
 }
 
-function slugToDisplayName(slug: string): string {
-  return slug
-    .split("-")
-    .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
-    .join(" ");
-}
-
-function buildLecturerLabel(entry: {
-  name: string;
-  titles?: string;
-  affiliation?: string;
-}): string {
-  const label = formatLecturerDisplayName(entry);
-  return entry.affiliation ? `${label}, ${entry.affiliation}` : label;
-}
-
 function formatLecturerLabel(slug: string): string {
-  const directoryEntry = getLecturerDirectoryEntry(slug);
-  const profileEntry = getLecturer(slug);
-
-  const name = directoryEntry?.name ?? profileEntry?.name;
-  if (!name) {
-    return slugToDisplayName(slug);
-  }
-
-  return buildLecturerLabel({
-    name,
-    titles: directoryEntry?.titles ?? profileEntry?.titles,
-    affiliation: directoryEntry?.affiliation ?? profileEntry?.affiliation,
-  });
+  const lecturer = resolveLecturer(slug);
+  const label = formatLecturerDisplayName(lecturer);
+  return lecturer.affiliation ? `${label}, ${lecturer.affiliation}` : label;
 }
 
 function splitLectureTitles(title: string): string[] {
@@ -134,6 +107,16 @@ function pairTitlesWithLecturers(
 
 Object.values(seasonModules).forEach((season) => {
   season.lectures.forEach((lecture) => {
+    // `""` = a talk without a lecturer (see `assertLecturerPairing`); every other slug must resolve.
+    lecture.lecturerSlugs
+      .filter((slug) => slug !== "")
+      .forEach((slug) => {
+        try {
+          resolveLecturer(slug);
+        } catch (error) {
+          throw new Error(`content/lectures/${season.slug}.json lecture ${lecture.date}: ${(error as Error).message}`);
+        }
+      });
     assertLecturerPairing(
       splitLectureTitles(lecture.title),
       lecture.lecturerSlugs,

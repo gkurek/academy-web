@@ -4,8 +4,7 @@ import {
   resolveAnnualDateEnd,
   resolveAnnualVernissage,
 } from "@/content/exhibition";
-import { getLecturerDirectoryEntry } from "@/content/lecturer-directory";
-import { getLecturer } from "@/content/lecturers";
+import { resolveLecturer } from "@/content/lecturers";
 import { formatLectureDate, getAllSeasonLectures } from "@/content/lectures";
 import { newsManifestEntries } from "@/content/news-manifest";
 import type { NewsFrontmatter } from "@/content/news";
@@ -168,17 +167,12 @@ function resolveWarsztaty(today: string, offers: UpcomingOfferFacts): SlotDefaul
 
 // --- Wykłady (N5) ---
 
-function lecturerName(slug: string): string | undefined {
-  return getLecturer(slug)?.name ?? getLecturerDirectoryEntry(slug)?.name;
-}
-
 function buildLectureTitle(date: string, lecturerSlugs: string[]): string {
   const strings = pl.home.upcoming.wyklady.next;
   const dateLabel = formatLectureDate(date);
   const names = lecturerSlugs
     .filter((slug) => slug.trim().length > 0)
-    .map(lecturerName)
-    .filter((name): name is string => name !== undefined);
+    .map((slug) => resolveLecturer(slug).name);
 
   if (names.length === 0) {
     return fill(strings.titleNoLecturers, { date: dateLabel });
