@@ -6,7 +6,9 @@ import { Testimonial } from "@/components/content/Testimonial";
 import { UpcomingHighlights } from "@/components/home/UpcomingHighlights";
 import { Pillars } from "@/components/home/Pillars";
 import { FeaturedIcons } from "@/components/home/FeaturedIcons";
+import { getCurrentSeasonLabel } from "@/content/lectures";
 import { pl } from "@/i18n/pl";
+import { fillTemplate } from "@/lib/fillTemplate";
 
 export const revalidate = 86400;
 
@@ -23,7 +25,7 @@ export default function Home() {
               {hero.ctaPrimary}
             </Button>
             <Button href="/wyklady" size="lg" variant="secondary">
-              {hero.ctaSecondary}
+              {fillTemplate(hero.ctaSecondary, { season: getCurrentSeasonLabel() })}
             </Button>
           </div>
         </Hero>

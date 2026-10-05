@@ -1,6 +1,6 @@
 import { LecturesHubPage } from "@/components/lectures/LecturesHubPage";
 import { getCurrentSeason, getHubArchiveIntro } from "@/content/lectures";
-import { getOffer } from "@/content/offers";
+import { getEnrollmentState, getOffer } from "@/content/offers";
 import { mainNav, sectionNav } from "@/navigation";
 import { notFound } from "next/navigation";
 
@@ -21,6 +21,7 @@ export default function LecturesPage() {
       season={season}
       archiveIntro={archiveIntro}
       facts={offer.facts}
+      enrollment={getEnrollmentState(offer)}
       section="wyklady"
       sectionActive={sectionActive}
       active={mainNavActive}

@@ -21,11 +21,13 @@ const dayMonthYearFormatter = new Intl.DateTimeFormat("pl-PL", {
   day: "numeric",
   month: "long",
   year: "numeric",
+  // Parsed and formatted in UTC, so the host time zone never shifts the calendar day.
+  timeZone: "UTC",
 });
 
 function parseIsoDate(isoDate: string): Date {
   const [year, month, day] = isoDate.split("-").map(Number);
-  return new Date(year, month - 1, day);
+  return new Date(Date.UTC(year, month - 1, day));
 }
 
 function getDateParts(isoDate: string): DateParts {
@@ -65,8 +67,8 @@ export function getDateRangeDisplay(
   const start = parseIsoDate(date);
   const end = parseIsoDate(dateEnd);
   const sameMonth =
-    start.getFullYear() === end.getFullYear() && start.getMonth() === end.getMonth();
-  const sameYear = start.getFullYear() === end.getFullYear();
+    start.getUTCFullYear() === end.getUTCFullYear() && start.getUTCMonth() === end.getUTCMonth();
+  const sameYear = start.getUTCFullYear() === end.getUTCFullYear();
 
   if (sameMonth) {
     const monthYearSuffix = withYear

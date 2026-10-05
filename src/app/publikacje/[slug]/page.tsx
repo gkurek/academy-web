@@ -7,6 +7,9 @@ import { articleModules } from "@/content/articles-registry";
 import { loadArticleBySlug } from "@/content/articles";
 import { getPublications, loadPublicationBySlug } from "@/content/publications";
 
+// Every slug is known at build time; unknown ones are a static 404.
+export const dynamicParams = false;
+
 type PublicationSlugRouteProps = {
   params: Promise<{ slug: string }>;
 };

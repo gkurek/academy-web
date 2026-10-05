@@ -2,11 +2,11 @@ import { getSeason } from "@/content/lectures";
 import newsManifest from "../../content/news/manifest.json";
 import type { AnnualExhibition, PermanentExhibition } from "@/content/types";
 import { formatDateRange } from "@/lib/formatDateRange";
+import { todayInWarsaw } from "@/lib/isoDate";
 import { pl } from "@/i18n/pl";
 import annualManifest from "../../content/exhibition/annual.json";
 import * as exhibitionBody from "../../content/exhibition/body.mdx";
 import { frontmatter as pageFrontmatter } from "../../content/exhibition/page.mdx";
-import archiveMeta from "../../content/lectures/archive.json";
 
 type AnnualManifest = {
   sample?: boolean;
@@ -17,27 +17,15 @@ type ExhibitionBodyExports = {
   descriptionParagraphs: string[];
 };
 
-const CURRENT_SEASON_SLUG = "2026-2027";
+/** Annual show closes on this day of its year unless `dateEnd` says otherwise (house convention, K-84). */
+const ANNUAL_DEFAULT_END_MONTH_DAY = "08-31";
 
 const manifest = annualManifest as AnnualManifest;
 const permanentExhibition = pageFrontmatter as PermanentExhibition;
 const { descriptionParagraphs } = exhibitionBody as unknown as ExhibitionBodyExports;
 
-function parseSeasonStartYear(seasonSlug: string): number {
-  return Number(seasonSlug.split("-")[0]);
-}
-
-function isKnownLectureSeasonSlug(seasonSlug: string): void {
-  if (seasonSlug === CURRENT_SEASON_SLUG) {
-    return;
-  }
-
-  const { firstSeason, lastSeason } = archiveMeta;
-  const startYear = parseSeasonStartYear(firstSeason);
-  const endYear = parseSeasonStartYear(lastSeason);
-  const slugStartYear = parseSeasonStartYear(seasonSlug);
-
-  if (slugStartYear < startYear || slugStartYear > endYear) {
+function assertKnownLectureSeason(seasonSlug: string): void {
+  if (!getSeason(seasonSlug)) {
     throw new Error(
       `exhibition/annual.json: unknown seasonSlug "${seasonSlug}" — no matching LectureSeason`,
     );
@@ -56,7 +44,7 @@ function validateAnnualExhibitions(exhibitions: AnnualExhibition[]): void {
       );
     }
 
-    isKnownLectureSeasonSlug(exhibition.seasonSlug);
+    assertKnownLectureSeason(exhibition.seasonSlug);
 
     if (exhibition.newsSlug && !newsSlugs.has(exhibition.newsSlug)) {
       throw new Error(
@@ -148,68 +136,31 @@ export function getLatestAnnualExhibition(): AnnualExhibition {
   return latest;
 }
 
+/** Explicit vernissage only — without it the show is „termin wkrótce” (S-12: never guess dates). */
 export function resolveAnnualVernissage(exhibition: AnnualExhibition): string | undefined {
-  if (exhibition.vernissage) {
-    return exhibition.vernissage;
-  }
-
-  const season = getSeason(exhibition.seasonSlug);
-  if (!season || season.lectures.length === 0) {
-    return undefined;
-  }
-
-  const vernissageLecture =
-    season.lectures.find((lecture) => lecture.note?.toLowerCase().includes("wernisaż")) ??
-    season.lectures[season.lectures.length - 1];
-
-  return vernissageLecture?.dateIso;
+  return exhibition.vernissage;
 }
 
-export function resolveAnnualDateEnd(exhibition: AnnualExhibition): string | undefined {
-  if (exhibition.dateEnd) {
-    return exhibition.dateEnd;
-  }
-
-  const vernissage = resolveAnnualVernissage(exhibition);
-  if (!vernissage) {
-    return undefined;
-  }
-
-  const vernissageYear = Number(vernissage.split("-")[0]);
-  return `${vernissageYear}-08-31`;
+/** Explicit `dateEnd`, else 31 August of the exhibition year (derived from the season, not from guessed dates). */
+export function resolveAnnualDateEnd(exhibition: AnnualExhibition): string {
+  return (
+    exhibition.dateEnd ??
+    `${getAnnualExhibitionYear(exhibition.seasonSlug)}-${ANNUAL_DEFAULT_END_MONTH_DAY}`
+  );
 }
 
 export function isAnnualExhibitionActive(
   exhibition: AnnualExhibition,
-  now: Date = new Date(),
+  today: string = todayInWarsaw(),
 ): boolean {
   const vernissage = resolveAnnualVernissage(exhibition);
-  const dateEnd = resolveAnnualDateEnd(exhibition);
-
-  if (!vernissage || !dateEnd) {
-    return false;
-  }
-
-  const start = new Date(vernissage);
-  const end = new Date(dateEnd);
-  end.setHours(23, 59, 59, 999);
-
-  return now >= start && now <= end;
+  return vernissage !== undefined && vernissage <= today && today <= resolveAnnualDateEnd(exhibition);
 }
 
 export function getLastFinishedAnnualExhibition(
-  now: Date = new Date(),
+  today: string = todayInWarsaw(),
 ): AnnualExhibition | undefined {
-  return getAnnualExhibitions().find((exhibition) => {
-    const dateEnd = resolveAnnualDateEnd(exhibition);
-    if (!dateEnd) {
-      return false;
-    }
-
-    const end = new Date(dateEnd);
-    end.setHours(23, 59, 59, 999);
-    return now > end;
-  });
+  return getAnnualExhibitions().find((exhibition) => today > resolveAnnualDateEnd(exhibition));
 }
 
 /** Smallest vernissage year in `annual.json` (K-127). */
@@ -230,14 +181,14 @@ export function getLatestAnnualExhibitionWithPhotos(): AnnualExhibition | undefi
 }
 
 /** Hero „Teraz w kościele / Następnie” — date-driven state only (K-85, K-127). */
-export function getExhibitionNowNext(now: Date = new Date()): ExhibitionNowNext {
+export function getExhibitionNowNext(today: string = todayInWarsaw()): ExhibitionNowNext {
   const latest = getLatestAnnualExhibition();
   const permanent = getPermanentExhibition();
   const vernissage = resolveAnnualVernissage(latest);
   const dateEnd = resolveAnnualDateEnd(latest);
   const annualYear = getAnnualExhibitionYear(latest.seasonSlug);
 
-  if (isAnnualExhibitionActive(latest, now)) {
+  if (isAnnualExhibitionActive(latest, today)) {
     return {
       now: {
         section: "doroczna",
@@ -273,11 +224,11 @@ export function getAnnualIconCountLabel(): string {
 
 export function getAnnualOpenPeriodLabel(
   exhibition: AnnualExhibition,
-  now: Date = new Date(),
+  today: string = todayInWarsaw(),
 ): string {
   const dateEnd = resolveAnnualDateEnd(exhibition);
 
-  if (isAnnualExhibitionActive(exhibition, now) && dateEnd) {
+  if (isAnnualExhibitionActive(exhibition, today)) {
     return `do ${formatDateRange(dateEnd, undefined, { withYear: true })}`;
   }
 

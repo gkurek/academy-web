@@ -61,5 +61,72 @@
     "route": "/wyklady/wykladowcy",
     "signal": "html",
     "note": "LecturerBio focus classes removed, photo placeholder text aria-hidden"
+  },
+  {
+    "id": "RF-2",
+    "route": "/warsztaty/kurs-roczny-i-trzyletni",
+    "signal": "html",
+    "note": "FactsBox closed state (D5): note + secondary CTA; useId format after dropping use client"
+  },
+  {
+    "id": "RF-2",
+    "route": "/warsztaty/kurs-roczny-i-trzyletni",
+    "signal": "screenshot",
+    "width": 390,
+    "note": "FactsBox closed state (D5): note + secondary CTA"
+  },
+  {
+    "id": "RF-2",
+    "route": "/warsztaty/kurs-roczny-i-trzyletni",
+    "signal": "styles",
+    "width": 390,
+    "note": "FactsBox closed state (D5): note + secondary CTA"
+  },
+  {
+    "id": "RF-2",
+    "route": "/warsztaty/kurs-roczny-i-trzyletni",
+    "signal": "screenshot",
+    "width": 1440,
+    "note": "FactsBox closed state (D5): note + secondary CTA"
+  },
+  {
+    "id": "RF-2",
+    "route": "/warsztaty/kurs-roczny-i-trzyletni",
+    "signal": "styles",
+    "width": 1440,
+    "note": "FactsBox closed state (D5): note + secondary CTA"
+  },
+  {
+    "id": "RF-2",
+    "route": "/warsztaty/kurs-roczny-i-trzyletni",
+    "signal": "screenshot",
+    "width": 1920,
+    "note": "FactsBox closed state (D5): note + secondary CTA"
+  },
+  {
+    "id": "RF-2",
+    "route": "/warsztaty/kurs-roczny-i-trzyletni",
+    "signal": "styles",
+    "width": 1920,
+    "note": "FactsBox closed state (D5): note + secondary CTA"
+  },
+  {
+    "id": "RF-2",
+    "route": "/wyklady",
+    "signal": "html",
+    "note": "FactsBox server component: useId format _R_ -> _S_1_"
+  },
+  {
+    "id": "RF-2",
+    "route": "/ikony/na-zamowienie",
+    "signal": "html",
+    "note": "FactsBox contact row as mailto:/tel: links (R2-05); useId format"
+  },
+  {
+    "id": "RF-2",
+    "route": "/ikony/na-zamowienie",
+    "signal": "screenshot",
+    "width": 390,
+    "note": "FactsBox contact row as mailto:/tel: links (R2-05) — accent link colour"
   }
 ]

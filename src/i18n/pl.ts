@@ -55,7 +55,7 @@ export const pl = {
       title: "Uczymy pisania ikon od 2010 roku.",
       lead: "Warsztaty, wykłady i galeria ikon w Kościele Środowisk Twórczych na Placu Teatralnym w Warszawie. Praca indywidualna z każdym uczestnikiem, raz w tygodniu, od października do czerwca.",
       ctaPrimary: "Warsztaty pisania ikon",
-      ctaSecondary: "Wykłady 2026/2027",
+      ctaSecondary: "Wykłady {season}",
       image: {
         src: "/media/icons/chrystus.jpg",
         alt: "Ikona Chrystusa Pantokratora",
@@ -224,7 +224,7 @@ export const pl = {
         closed: {
           mailtoLabel: "Powiadom mnie o naborze",
           telLabel: "Zadzwoń: 601 734 705",
-          note: "Nabór na plenery 2027 ruszy w marcu — napisz, jeśli chcesz dostać wiadomość.",
+          note: "Nabór na plenery {year} ruszy w marcu — napisz, jeśli chcesz dostać wiadomość.",
         },
       },
       wyklady: {
@@ -287,8 +287,8 @@ export const pl = {
     enrollmentByKind: {
       kurs: {
         paragraphs: [
-          "Zgłoszenie wysyłamy mailem na adres akademiaikony@gmail.com do 24 września 2026. Potem zapraszamy na krótką rozmowę wstępną, około trzydziestu minut — ma na celu wzajemne poznanie się i dobór grupy. Chętnie zobaczymy wcześniejsze prace artystyczne, ale to nie jest warunek przyjęcia.",
-          "Pierwsze spotkanie sezonu odbywa się 6 października 2026 o 18:00. Dokumenty zgłoszeniowe są dostępne na miejscu.",
+          "Zgłoszenie wysyłamy mailem na adres akademiaikony@gmail.com do {enrollmentClose}. Potem zapraszamy na krótką rozmowę wstępną, około trzydziestu minut — ma na celu wzajemne poznanie się i dobór grupy. Chętnie zobaczymy wcześniejsze prace artystyczne, ale to nie jest warunek przyjęcia.",
+          "Pierwsze spotkanie sezonu odbywa się {firstMeeting} o 18:00. Dokumenty zgłoszeniowe są dostępne na miejscu.",
         ],
       },
     },
@@ -373,24 +373,24 @@ export const pl = {
     quotesHeading: "Głosy uczestników",
     cards: {
       "kurs-roczny-i-trzyletni": {
-        eyebrow: "Sezon 2026/2027 · zgłoszenia do 24 września 2026",
+        eyebrow: "Sezon {season} · zgłoszenia do {enrollmentClose}",
         excerpt:
           "Kurs roczny prowadzi przez wszystkie etapy powstawania ikony i pomaga rozeznać, czy pisanie ikon jest modlitwą dla mnie. Kurs trzyletni prowadzi dalej — od ikony lica po ikony dogmatyczne. Grupy wieczorne i dzienne, materiały na miejscu.",
         bullets: [
           "Raz w tygodniu, październik–czerwiec",
-          "Pierwsze spotkanie 6 października 2026, 18:00",
+          "Pierwsze spotkanie {firstMeeting}, 18:00",
           "Rozmowa wstępna przed zapisem, około 30 minut",
         ],
         ctaLabel: "Program i zapisy",
         ctaVariant: "primary" as const,
       },
       "letnia-szkola-swiatla": {
-        eyebrow: "Nabór na 2027 od marca 2027 · kolejność zgłoszeń",
+        eyebrow: "Nabór na {year} od marca {year} · kolejność zgłoszeń",
         excerpt:
           "Tygodniowe plenery ikonowe od lipca do września, w trybie rekolekcyjnym: praca przy ikonie, modlitwa, wykłady i wyjścia do miejsc związanych z kultem ikon. Dla osób, które mają już za sobą pierwsze ikony.",
         bullets: [
           "Tydzień, lipiec–wrzesień",
-          "Miejsce i termin 2027 [pole CMS]",
+          "Miejsce i termin {year} [pole CMS]",
           "Koszt [pole CMS]",
         ],
         ctaLabel: "O plenerze",
@@ -688,7 +688,7 @@ export const pl = {
   },
   footer: {
     sitemapAriaLabel: "Mapa strony",
-    copyright: "© 2026 Akademia Ikony",
+    copyright: "© {year} Akademia Ikony",
     // Verbatim from brief-claude-code.md §8.
     accessibilityNote: "Przestrzeń bez barier architektonicznych",
     organizerLabel: "Organizator",

@@ -18,7 +18,7 @@ type RedirectsFile = {
 };
 
 export function loadPermanentRedirects(): NextRedirect[] {
-  const path = join(process.cwd(), "docs", "redirects.json");
+  const path = join(process.cwd(), "src", "config", "redirects.json");
   const data = JSON.parse(readFileSync(path, "utf8")) as RedirectsFile;
 
   return data.redirects.map(

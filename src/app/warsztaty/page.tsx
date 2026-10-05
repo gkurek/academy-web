@@ -1,9 +1,10 @@
 import { OfferCard } from "@/components/content/OfferCard";
 import { SectionPageShell } from "@/components/layout/SectionPageShell";
 import { OfferQuoteGrid } from "@/components/offers/OfferQuoteGrid";
-import { getWorkshopOffers } from "@/content/offers";
+import { getOfferDateValues, getWorkshopOffers } from "@/content/offers";
 import { getWorkshopTestimonials } from "@/content/testimonials";
 import { pl } from "@/i18n/pl";
+import { fillRequiredTemplate } from "@/lib/fillTemplate";
 import { mainNav, sectionNav } from "@/navigation";
 
 const mainNavActive = mainNav.find((item) => item.href === "/warsztaty")!.label;
@@ -36,13 +37,16 @@ export default function WorkshopsPage() {
               return null;
             }
 
+            const dateValues = getOfferDateValues(offer.facts);
+            const context = `workshopsHub.cards.${offer.slug}`;
+
             return (
               <OfferCard
                 key={offer.slug}
-                eyebrow={card.eyebrow}
+                eyebrow={fillRequiredTemplate(card.eyebrow, dateValues, context)}
                 title={offer.title}
                 excerpt={card.excerpt}
-                bullets={card.bullets}
+                bullets={card.bullets.map((bullet) => fillRequiredTemplate(bullet, dateValues, context))}
                 href={`/warsztaty/${offer.slug}`}
                 ctaLabel={card.ctaLabel}
                 ctaVariant={card.ctaVariant}

@@ -2,6 +2,14 @@ import type { MDXProps } from "mdx/types";
 import type { ComponentType } from "react";
 import type { Image, Offer, OfferFacts, Testimonial } from "@/content/types";
 import type { SemesterItem, StepItem } from "@/components/content/OfferContentContext";
+import {
+  parseYear,
+  resolveEnrollmentState,
+  type EnrollmentState,
+  type WorkshopOfferFacts,
+} from "@/content/enrollment";
+import { formatDateRange } from "@/lib/formatDateRange";
+import { assertIsoDate, todayInWarsaw } from "@/lib/isoDate";
 import KursContent, { frontmatter as kursFrontmatter } from "../../content/offers/kurs-roczny-i-trzyletni.mdx";
 import PlenerContent, { frontmatter as plenerFrontmatter } from "../../content/offers/letnia-szkola-swiatla.mdx";
 import WykladyContent, { frontmatter as wykladyFrontmatter } from "../../content/offers/wyklady.mdx";
@@ -124,32 +132,13 @@ const ISO_DATE_FIELDS: (keyof OfferFacts)[] = [
   "dateEnd",
 ];
 
-const ISO_DATE_RE = /^\d{4}-\d{2}-\d{2}$/;
-
-function assertIsoDateField(value: string, context: string): void {
-  if (!ISO_DATE_RE.test(value)) {
-    throw new Error(`${context}: expected ISO date YYYY-MM-DD, got "${value}"`);
-  }
-
-  const [year, month, day] = value.split("-").map((part) => Number(part));
-  const parsed = new Date(Date.UTC(year, month - 1, day));
-
-  if (
-    parsed.getUTCFullYear() !== year ||
-    parsed.getUTCMonth() !== month - 1 ||
-    parsed.getUTCDate() !== day
-  ) {
-    throw new Error(`${context}: invalid calendar date "${value}"`);
-  }
-}
-
 function validateOfferFactsIsoDates(offerModule: OfferModule): void {
   const { slug, facts } = offerModule.frontmatter;
 
   ISO_DATE_FIELDS.forEach((field) => {
     const value = facts[field];
     if (typeof value === "string" && value.length > 0) {
-      assertIsoDateField(value, `content/offers/${slug}.mdx facts.${field}`);
+      assertIsoDate(value, `content/offers/${slug}.mdx facts.${field}`);
     }
   });
 }
@@ -162,9 +151,33 @@ workshopSlugs.forEach((slug) => {
 });
 
 /** Facts the home „Najbliższe” Warsztaty slot is computed from (plan 10-k4 N6). */
-export function getUpcomingOfferFacts(): { kurs: OfferFacts; plener: OfferFacts } {
+export function getUpcomingOfferFacts(): WorkshopOfferFacts {
   return {
     kurs: offerModules["kurs-roczny-i-trzyletni"].frontmatter.facts,
     plener: offerModules["letnia-szkola-swiatla"].frontmatter.facts,
+  };
+}
+
+/** Enrollment state of an offer on `today` — the same windows as „Najbliższe” on `/` (D5). */
+export function getEnrollmentState(
+  offer: Pick<Offer, "kind" | "facts">,
+  today: string = todayInWarsaw(),
+): EnrollmentState {
+  return resolveEnrollmentState(offer.kind, offer.facts, getUpcomingOfferFacts(), today);
+}
+
+/** Values for `{season}`, `{year}`, `{enrollmentClose}`, `{firstMeeting}` in offer copy (`pl.ts`). */
+export function getOfferDateValues(facts: OfferFacts): Record<string, string | undefined> {
+  const year = parseYear(facts.dateStart) ?? parseYear(facts.seasonLabel);
+
+  return {
+    season: facts.seasonLabel,
+    year: year === undefined ? undefined : String(year),
+    enrollmentClose: facts.enrollmentClose
+      ? formatDateRange(facts.enrollmentClose, undefined, { withYear: true })
+      : undefined,
+    firstMeeting: facts.firstMeetingDate
+      ? formatDateRange(facts.firstMeetingDate, undefined, { withYear: true })
+      : undefined,
   };
 }

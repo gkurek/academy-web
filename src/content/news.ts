@@ -5,6 +5,7 @@ import newsManifest from "../../content/news/manifest.json";
 import { newsModules } from "@/content/news-registry";
 import { NEWS_ARCHIVE_UNTIL_YEAR } from "@/config/news";
 import { formatDateRange } from "@/lib/formatDateRange";
+import { todayInWarsaw } from "@/lib/isoDate";
 import { getLectureSeasonHref, getSeason, isCurrentLectureSeason } from "@/content/lectures";
 import { pl } from "@/i18n/pl";
 
@@ -379,9 +380,8 @@ function getNewsEventEndDate(entry: NewsFrontmatter): string {
   return entry.dateEnd ?? entry.date;
 }
 
-/** True when the build-day calendar date is after the event end (E7: `dateEnd` = koniec wydarzenia). */
-export function isNewsEventEnded(entry: NewsFrontmatter, now: Date = new Date()): boolean {
-  const today = now.toISOString().slice(0, 10);
+/** True when `today` (Warsaw) is after the event end (E7: `dateEnd` = koniec wydarzenia). */
+export function isNewsEventEnded(entry: NewsFrontmatter, today: string = todayInWarsaw()): boolean {
   return today > getNewsEventEndDate(entry);
 }
 
@@ -390,14 +390,14 @@ export type NewsEventPhase = "zapowiedz" | "relacja" | "po-terminie";
 /** Phase for `layout: wydarzenie` only (README §5, E3). */
 export function getNewsEventPhase(
   entry: NewsFrontmatter,
-  now: Date = new Date(),
+  today: string = todayInWarsaw(),
 ): NewsEventPhase | null {
   if (getEffectiveNewsLayout(entry) !== "wydarzenie") {
     return null;
   }
 
   const imageCount = entry.images?.length ?? 0;
-  if (!isNewsEventEnded(entry, now)) {
+  if (!isNewsEventEnded(entry, today)) {
     return "zapowiedz";
   }
   if (imageCount > 0) {

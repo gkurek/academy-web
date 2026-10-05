@@ -9,8 +9,17 @@ import { getLecturerDirectoryEntry } from "@/content/lecturer-directory";
 import { getLecturer } from "@/content/lecturers";
 import { formatLectureDate, getAllSeasonLectures } from "@/content/lectures";
 import { getSiteSettings } from "@/content/settings";
-import type { NewsKind, OfferFacts, UpcomingSlot } from "@/content/types";
+import {
+  ENROLLMENT_FALLBACK_CLOSE_MONTH_DAY,
+  isWithin,
+  resolveCourseEnrollment,
+  resolvePlenerRegistration,
+  type WorkshopOfferFacts,
+} from "@/content/enrollment";
+import type { NewsKind, UpcomingSlot } from "@/content/types";
+import { fillTemplate as fill } from "@/lib/fillTemplate";
 import { formatDateRange } from "@/lib/formatDateRange";
+import { addDays, todayInWarsaw } from "@/lib/isoDate";
 import { pl } from "@/i18n/pl";
 
 /** Fixed tile order — matches `Pillars` below the section (N1). */
@@ -28,15 +37,6 @@ const FRESH_NEWS_DAYS = 30;
 
 /** Vernissage announcement shows this many days before the vernissage (N4). */
 const VERNISSAGE_LEAD_DAYS = 30;
-
-/** Fallback start of the course enrollment window when `enrollmentOpens` is empty (N6: „od czerwca”). */
-const ENROLLMENT_FALLBACK_OPENS_MONTH_DAY = "06-01";
-/** Fallback end of the enrollment window when neither `enrollmentClose` nor `firstMeetingDate` is set. */
-const ENROLLMENT_FALLBACK_CLOSE_MONTH_DAY = "09-30";
-/** Course runs October–June; after this day of the second season year the season is over. */
-const COURSE_SEASON_END_MONTH_DAY = "06-30";
-/** Letnia Szkoła Światła registration window opens in March (N6). */
-const PLENER_REGISTRATION_OPENS_MONTH_DAY = "03-01";
 
 const KURS_ROUTE = "/warsztaty/kurs-roczny-i-trzyletni";
 const PLENER_ROUTE = "/warsztaty/letnia-szkola-swiatla";
@@ -59,10 +59,7 @@ export type UpcomingTile = {
 type SlotDefault = Omit<UpcomingTile, "slot" | "source">;
 
 /** Workshop offer facts the Warsztaty slot is computed from (N6, N7). Passed in so this module stays free of MDX imports. */
-export type UpcomingOfferFacts = {
-  kurs: OfferFacts;
-  plener: OfferFacts;
-};
+export type UpcomingOfferFacts = WorkshopOfferFacts;
 
 type NewsManifestEntry = {
   slug: string;
@@ -72,41 +69,12 @@ type NewsManifestEntry = {
 
 const newsEntries = newsManifest as NewsManifestEntry[];
 
-const warsawDateFormatter = new Intl.DateTimeFormat("en-CA", {
-  timeZone: "Europe/Warsaw",
-  year: "numeric",
-  month: "2-digit",
-  day: "2-digit",
-});
-
-/** Calendar day in Warsaw as YYYY-MM-DD — build hosts may run in UTC. */
-export function toWarsawIsoDate(now: Date): string {
-  return warsawDateFormatter.format(now);
-}
-
-function addDays(isoDate: string, days: number): string {
-  const [year, month, day] = isoDate.split("-").map(Number);
-  return new Date(Date.UTC(year, month - 1, day + days)).toISOString().slice(0, 10);
-}
-
-function fill(template: string, values: Record<string, string | number>): string {
-  return Object.entries(values).reduce(
-    (result, [key, value]) => result.replaceAll(`{${key}}`, String(value)),
-    template,
-  );
-}
-
 function formatFullDate(isoDate: string): string {
   return formatDateRange(isoDate, undefined, { withYear: true });
 }
 
 function seasonLabel(startYear: number): string {
   return `${startYear}/${startYear + 1}`;
-}
-
-function parseYear(value: string | undefined): number | undefined {
-  const year = Number(value?.slice(0, 4));
-  return Number.isInteger(year) && year > 0 ? year : undefined;
 }
 
 /** Newest news entry of the slot's kinds dated no more than FRESH_NEWS_DAYS ago (future dates count). */
@@ -134,68 +102,12 @@ function withFreshNewsLink(slot: UpcomingSlot, today: string, tile: SlotDefault)
 
 // --- Warsztaty (N6) ---
 
-type Window = { start: string; end: string };
-
-function isWithin(today: string, window: Window): boolean {
-  return window.start <= today && today <= window.end;
-}
-
-function enrollmentOpensFor(year: number, facts: OfferFacts, courseStartYear: number): string {
-  const known = year === courseStartYear ? facts.enrollmentOpens : undefined;
-  return known ?? `${year}-${ENROLLMENT_FALLBACK_OPENS_MONTH_DAY}`;
-}
-
-function resolvePlenerWindow(
-  today: string,
-  plenerFacts: OfferFacts,
-  kursFacts: OfferFacts,
-  courseStartYear: number,
-): { window: Window; year: number; registrationClose?: string } {
-  const dataYear = parseYear(plenerFacts.dateStart) ?? parseYear(plenerFacts.seasonLabel);
-  const todayYear = Number(today.slice(0, 4));
-  // Stale data (last year's plener) falls back to the current year without dates.
-  const year = Math.max(dataYear ?? todayYear, todayYear);
-  const registrationClose =
-    year === dataYear ? plenerFacts.registrationClose : undefined;
-
-  // Without a known deadline the plener yields as soon as course enrollment opens.
-  const end =
-    registrationClose ?? addDays(enrollmentOpensFor(year, kursFacts, courseStartYear), -1);
-
-  return {
-    window: { start: `${year}-${PLENER_REGISTRATION_OPENS_MONTH_DAY}`, end },
-    year,
-    registrationClose,
-  };
-}
-
 function resolveWarsztaty(today: string, offers: UpcomingOfferFacts): SlotDefault {
   const strings = pl.home.upcoming.warsztaty;
-  const kursFacts = offers.kurs;
-  const dataStartYear = parseYear(kursFacts.firstMeetingDate) ?? parseYear(kursFacts.seasonLabel);
-
-  if (!dataStartYear) {
-    throw new Error(`upcoming: kurs offer needs facts.seasonLabel or facts.firstMeetingDate`);
-  }
-
-  const seasonOver = today > `${dataStartYear + 1}-${COURSE_SEASON_END_MONTH_DAY}`;
-  // Stale course data (season already finished): next season, no dates (N6 — never guess dates).
-  const startYear = seasonOver ? dataStartYear + 1 : dataStartYear;
-  const facts: OfferFacts = seasonOver
-    ? { ...kursFacts, enrollmentOpens: undefined, enrollmentClose: undefined, firstMeetingDate: undefined }
-    : kursFacts;
+  const { startYear, facts, window: enrollmentWindow } = resolveCourseEnrollment(today, offers.kurs);
   const season = seasonLabel(startYear);
 
-  const enrollmentWindow: Window = {
-    start: enrollmentOpensFor(startYear, facts, startYear),
-    end:
-      facts.enrollmentClose ??
-      (facts.firstMeetingDate
-        ? addDays(facts.firstMeetingDate, -1)
-        : `${startYear}-${ENROLLMENT_FALLBACK_CLOSE_MONTH_DAY}`),
-  };
-
-  const plener = resolvePlenerWindow(today, offers.plener, kursFacts, dataStartYear);
+  const plener = resolvePlenerRegistration(today, offers);
   const plenerActive = isWithin(today, plener.window);
   const enrollmentActive = isWithin(today, enrollmentWindow);
 
@@ -377,9 +289,8 @@ function findActiveOverride(slot: UpcomingSlot, today: string) {
 export function resolveUpcomingSlot(
   slot: UpcomingSlot,
   offers: UpcomingOfferFacts,
-  now: Date = new Date(),
+  today: string = todayInWarsaw(),
 ): UpcomingTile {
-  const today = toWarsawIsoDate(now);
   const override = findActiveOverride(slot, today);
 
   // Manual override wins over the computed tile (N2).
@@ -403,6 +314,9 @@ export function resolveUpcomingSlot(
 }
 
 /** Always three tiles in `UPCOMING_SLOTS` order (N1). State is computed at build / revalidation time (N9). */
-export function getUpcomingTiles(offers: UpcomingOfferFacts, now: Date = new Date()): UpcomingTile[] {
-  return UPCOMING_SLOTS.map((slot) => resolveUpcomingSlot(slot, offers, now));
+export function getUpcomingTiles(
+  offers: UpcomingOfferFacts,
+  today: string = todayInWarsaw(),
+): UpcomingTile[] {
+  return UPCOMING_SLOTS.map((slot) => resolveUpcomingSlot(slot, offers, today));
 }

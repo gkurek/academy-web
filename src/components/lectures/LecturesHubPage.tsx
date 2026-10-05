@@ -2,6 +2,7 @@ import { FactsBox } from "@/components/content/FactsBox";
 import { LectureList } from "@/components/content/LectureList";
 import { TextLink } from "@/components/core/TextLink";
 import { SectionPageShell } from "@/components/layout/SectionPageShell";
+import type { EnrollmentState } from "@/content/enrollment";
 import type { LoadedLectureSeason } from "@/content/lectures";
 import type { OfferFacts } from "@/content/types";
 import { pl } from "@/i18n/pl";
@@ -11,6 +12,7 @@ export interface LecturesHubPageProps {
   season: LoadedLectureSeason;
   archiveIntro: string;
   facts: OfferFacts;
+  enrollment: EnrollmentState;
   section: SectionKey;
   sectionActive: string;
   active: string;
@@ -20,6 +22,7 @@ export function LecturesHubPage({
   season,
   archiveIntro,
   facts,
+  enrollment,
   section,
   sectionActive,
   active,
@@ -56,7 +59,7 @@ export function LecturesHubPage({
           ) : null}
         </div>
 
-        <FactsBox facts={facts} kind="wyklady" />
+        <FactsBox facts={facts} kind="wyklady" enrollment={enrollment} />
       </div>
 
       <section aria-labelledby="lectures-program-heading">

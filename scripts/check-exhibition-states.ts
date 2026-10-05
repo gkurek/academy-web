@@ -8,12 +8,15 @@ import { join } from "node:path";
 
 import { pl } from "../src/i18n/pl";
 import {
+  getAnnualExhibitions,
   getExhibitionNowNext,
   getLatestAnnualExhibition,
   isAnnualExhibitionActive,
   resolveAnnualDateEnd,
   resolveAnnualVernissage,
 } from "../src/content/exhibition";
+import { getSeason } from "../src/content/lectures";
+import { addDays, todayInWarsaw } from "../src/lib/isoDate";
 
 const ROOT = process.cwd();
 const NEWS_DIR = join(ROOT, "content/news");
@@ -26,19 +29,14 @@ type Scenario = {
   at: string;
 };
 
-function parseIsoDate(iso: string): Date {
-  const [year, month, day] = iso.split("-").map(Number);
-  return new Date(year, month - 1, day, 12, 0, 0, 0);
-}
-
-function assertConsistency(label: string, now: Date): string[] {
+function assertConsistency(label: string, today: string): string[] {
   const errors: string[] = [];
   const latest = getLatestAnnualExhibition();
   const vernissage = resolveAnnualVernissage(latest);
   const dateEnd = resolveAnnualDateEnd(latest);
-  const active = isAnnualExhibitionActive(latest, now);
-  const beforeVernissage = Boolean(vernissage && parseIsoDate(vernissage) > now);
-  const nowNext = getExhibitionNowNext(now);
+  const active = isAnnualExhibitionActive(latest, today);
+  const beforeVernissage = Boolean(vernissage && vernissage > today);
+  const nowNext = getExhibitionNowNext(today);
 
   if (active) {
     if (nowNext.now.section !== "doroczna") {
@@ -66,11 +64,11 @@ function assertConsistency(label: string, now: Date): string[] {
   }
 
   const summary = [
-    label,
+    `${today}  ${label}`,
     `  active=${active} beforeVernissage=${beforeVernissage}`,
     `  now=${nowNext.now.section} next=${nowNext.next.section}`,
-    vernissage ? `  vernissage=${vernissage}` : "",
-    dateEnd ? `  dateEnd=${dateEnd}` : "",
+    `  vernissage=${vernissage ?? "(none — termin wkrótce)"}`,
+    `  dateEnd=${dateEnd}`,
   ]
     .filter(Boolean)
     .join("\n");
@@ -141,42 +139,50 @@ function validateExhibitionAnchors(): string[] {
   return errors;
 }
 
+/**
+ * S-12: vernissage dates are never guessed in the site. The old heuristic (lecture `note` with
+ * „wernisaż”) survives only here, as a hint for editors to add an explicit `vernissage`.
+ */
+function warnMissingVernissage(): string[] {
+  return getAnnualExhibitions()
+    .filter((exhibition) => !exhibition.vernissage)
+    .flatMap((exhibition) => {
+      const hinted = getSeason(exhibition.seasonSlug)?.lectures.find((lecture) =>
+        lecture.note?.toLowerCase().includes("wernisaż"),
+      );
+      return hinted
+        ? [
+            `annual.json "${exhibition.seasonSlug}": no vernissage, but lecture ${hinted.dateIso} mentions „wernisaż” — add vernissage if confirmed`,
+          ]
+        : [];
+    });
+}
+
 function main(): void {
   const latest = getLatestAnnualExhibition();
   const vernissage = resolveAnnualVernissage(latest);
   const dateEnd = resolveAnnualDateEnd(latest);
+  const today = todayInWarsaw();
 
-  if (!vernissage || !dateEnd) {
-    console.error("Could not resolve vernissage/dateEnd for latest annual exhibition.");
-    process.exit(1);
-  }
-
-  const vernissageDate = parseIsoDate(vernissage);
-  const dayBeforeVernissage = new Date(vernissageDate);
-  dayBeforeVernissage.setDate(dayBeforeVernissage.getDate() - 1);
-
-  const endDate = parseIsoDate(dateEnd);
-  const dayAfterEnd = new Date(endDate);
-  dayAfterEnd.setDate(dayAfterEnd.getDate() + 1);
+  const vernissageScenarios: Scenario[] = vernissage
+    ? [
+        { label: "before vernissage (vernissage - 1d)", at: addDays(vernissage, -1) },
+        { label: "vernissage day", at: vernissage },
+        { label: "during annual show", at: addDays(vernissage, 14) },
+      ]
+    : [];
 
   const scenarios: Scenario[] = [
-    { label: "before vernissage (vernissage - 1d)", at: dayBeforeVernissage.toISOString().slice(0, 10) },
-    { label: "vernissage day", at: vernissage },
-    {
-      label: "during annual show",
-      at: new Date(vernissageDate.getTime() + 14 * 24 * 60 * 60 * 1000)
-        .toISOString()
-        .slice(0, 10),
-    },
-    { label: "day after annual end", at: dayAfterEnd.toISOString().slice(0, 10) },
-    { label: "today (build host)", at: new Date().toISOString().slice(0, 10) },
+    ...vernissageScenarios,
+    { label: "day after annual end", at: addDays(dateEnd, 1) },
+    { label: "today (Warsaw)", at: today },
   ];
 
-  console.log("Exhibition helper states (computed at noon local for each date):\n");
+  console.log("Exhibition helper states (calendar days in Warsaw):\n");
   const allErrors: string[] = [];
 
   scenarios.forEach((scenario) => {
-    const lines = assertConsistency(scenario.label, parseIsoDate(scenario.at));
+    const lines = assertConsistency(scenario.label, scenario.at);
     console.log(lines.join("\n"));
     console.log("");
     lines
@@ -185,6 +191,12 @@ function main(): void {
   });
 
   allErrors.push(...validateExhibitionAnchors());
+
+  const warnings = warnMissingVernissage();
+  if (warnings.length > 0) {
+    console.warn("\nWarnings:");
+    warnings.forEach((message) => console.warn(`  - ${message}`));
+  }
 
   if (allErrors.length > 0) {
     console.error("\nCheck failed:");

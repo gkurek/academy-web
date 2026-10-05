@@ -4,8 +4,10 @@ import { FactsBox } from "@/components/content/FactsBox";
 import { MdxLink } from "@/components/content/MdxLink";
 import { OfferContentProvider } from "@/components/content/OfferContentContext";
 import { SectionPageShell } from "@/components/layout/SectionPageShell";
-import type { LoadedOffer } from "@/content/offers";
+import { getEnrollmentState, getOfferDateValues, type LoadedOffer } from "@/content/offers";
+import type { OfferFacts } from "@/content/types";
 import { pl } from "@/i18n/pl";
+import { fillRequiredTemplate } from "@/lib/fillTemplate";
 import type { SectionKey } from "@/navigation";
 
 // Links are styled only in offer MDX (LY5); news, contact and articles keep their own `a` styles.
@@ -39,8 +41,11 @@ export interface OfferPageProps {
   leadExtraSlot?: ReactNode;
 }
 
-function EnrollmentSection({ quoteSlot }: { quoteSlot?: ReactNode }) {
-  const enrollment = pl.offers.enrollmentByKind.kurs;
+function EnrollmentSection({ facts, quoteSlot }: { facts: OfferFacts; quoteSlot?: ReactNode }) {
+  const dateValues = getOfferDateValues(facts);
+  const paragraphs = pl.offers.enrollmentByKind.kurs.paragraphs.map((paragraph) =>
+    fillRequiredTemplate(paragraph, dateValues, "offers.enrollmentByKind.kurs"),
+  );
 
   const hasQuoteColumn = Boolean(quoteSlot);
 
@@ -63,7 +68,7 @@ function EnrollmentSection({ quoteSlot }: { quoteSlot?: ReactNode }) {
           >
             {pl.offers.enrollmentSectionTitle}
           </h2>
-          {enrollment.paragraphs.map((paragraph) => (
+          {paragraphs.map((paragraph) => (
             <p
               key={paragraph}
               className="text-size-body-lg leading-prose text-text-secondary max-w-measure-prose mb-space-4 last:mb-space-5"
@@ -125,7 +130,7 @@ export function OfferPage({
           {leadExtraSlot && <div className="mt-space-6">{leadExtraSlot}</div>}
         </div>
 
-        <FactsBox facts={facts} kind={kind} />
+        <FactsBox facts={facts} kind={kind} enrollment={getEnrollmentState(offer)} />
       </div>
 
       <OfferContentProvider semesters={semesters} steps={steps}>
@@ -136,7 +141,7 @@ export function OfferPage({
 
       {afterBodySlot}
 
-      {showEnrollment && <EnrollmentSection quoteSlot={enrollmentQuoteSlot} />}
+      {showEnrollment && <EnrollmentSection facts={facts} quoteSlot={enrollmentQuoteSlot} />}
 
       {trailingQuoteSlot && <div className="mt-space-8">{trailingQuoteSlot}</div>}
     </SectionPageShell>

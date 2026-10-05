@@ -48,6 +48,10 @@ export type OfferFacts = {
   dateStart?: string;
   /** ISO date (YYYY-MM-DD) — LSŚ: plener end (N7). */
   dateEnd?: string;
+  /**
+   * Manual override only (D5): `true` forces „open” outside the date window; `false` changes nothing —
+   * the state is computed from the ISO dates above by `getEnrollmentState` (src/content/offers.ts).
+   */
   enrollmentOpen: boolean;
   leadTime?: string; // orders: approximate lead time
 };

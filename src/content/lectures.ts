@@ -17,8 +17,10 @@ import currentSeasonData from "../../content/lectures/2026-2027.json";
 import { getLecturerDirectoryEntry } from "@/content/lecturer-directory";
 import { formatLecturerDisplayName, getLecturer, getLecturerProfileHref } from "@/content/lecturers";
 import type { Lecture, LectureSeason } from "@/content/types";
+import { formatDateRange } from "@/lib/formatDateRange";
 
-const CURRENT_SEASON_SLUG = "2026-2027";
+/** The current lecture season — the only place to change at a season rollover (with its JSON import below). */
+export const CURRENT_SEASON_SLUG = "2026-2027";
 const LECTURE_TITLE_SEPARATOR = " · ";
 
 type LectureSeasonFile = LectureSeason & { sample?: boolean };
@@ -40,21 +42,6 @@ const seasonModules: Record<string, LectureSeasonFile> = {
   "2013-2014": season20132014Data as LectureSeasonFile,
   "2012-2013": season20122013Data as LectureSeasonFile,
 };
-
-const monthNamesGenitive = [
-  "stycznia",
-  "lutego",
-  "marca",
-  "kwietnia",
-  "maja",
-  "czerwca",
-  "lipca",
-  "sierpnia",
-  "września",
-  "października",
-  "listopada",
-  "grudnia",
-] as const;
 
 export type LectureTalk = {
   title: string;
@@ -82,16 +69,9 @@ type ArchiveMeta = {
   lastSeason: string;
 };
 
+/** e.g. `2026-10-06` → `6 października` (genitive month from `Intl`). */
 export function formatLectureDate(isoDate: string): string {
-  const [, month, day] = isoDate.split("-");
-  const monthIndex = Number(month) - 1;
-  const dayNumber = Number(day);
-
-  if (monthIndex < 0 || monthIndex > 11 || Number.isNaN(dayNumber)) {
-    return isoDate;
-  }
-
-  return `${dayNumber} ${monthNamesGenitive[monthIndex]}`;
+  return formatDateRange(isoDate, undefined, { withYear: false });
 }
 
 function slugToDisplayName(slug: string): string {
@@ -224,6 +204,22 @@ function getArchiveMeta(): ArchiveMeta {
   return archiveMeta as ArchiveMeta;
 }
 
+function validateSeasons(): void {
+  if (!seasonModules[CURRENT_SEASON_SLUG]) {
+    throw new Error(`lectures: no season file for CURRENT_SEASON_SLUG "${CURRENT_SEASON_SLUG}"`);
+  }
+
+  const expectedLastSeason = buildSeasonSlug(parseSeasonStartYear(CURRENT_SEASON_SLUG) - 1);
+  const { lastSeason } = getArchiveMeta();
+  if (lastSeason !== expectedLastSeason) {
+    throw new Error(
+      `content/lectures/archive.json: lastSeason "${lastSeason}" must be the season before CURRENT_SEASON_SLUG ("${expectedLastSeason}")`,
+    );
+  }
+}
+
+validateSeasons();
+
 /** Fills season placeholders in archive copy, so a season rollover needs no copy edit (LK5). */
 function fillArchivePlaceholders(text: string): string {
   const { firstSeason, lastSeason } = getArchiveMeta();
@@ -257,6 +253,11 @@ export function getLectureSeasonHref(slug: string): string {
     throw new Error(`lectures: unknown season "${slug}"`);
   }
   return isCurrentLectureSeason(slug) ? "/wyklady" : `/wyklady/archiwum#season-${slug}`;
+}
+
+/** e.g. `2026/2027` — fills `{season}` in UI copy. */
+export function getCurrentSeasonLabel(): string {
+  return slugToSeasonLabel(CURRENT_SEASON_SLUG);
 }
 
 export function getCurrentSeason(): LoadedLectureSeason {

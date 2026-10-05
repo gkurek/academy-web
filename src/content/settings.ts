@@ -1,44 +1,28 @@
 import settingsData from "../../content/settings.json";
 import type { SiteSettings, UpcomingOverride } from "@/content/types";
+import { assertIsoDate } from "@/lib/isoDate";
 
-const ISO_DATE_RE = /^\d{4}-\d{2}-\d{2}$/;
+type DateInterval = { start: string; end: string };
 
-function parseIsoDateOnly(value: string, context: string): number {
-  if (!ISO_DATE_RE.test(value)) {
-    throw new Error(`${context}: expected ISO date YYYY-MM-DD, got "${value}"`);
-  }
+/** Open start sorts before every ISO date. */
+const OPEN_START = "";
 
-  const [year, month, day] = value.split("-").map((part) => Number(part));
-  const utc = Date.UTC(year, month - 1, day);
-  const parsed = new Date(utc);
-
-  if (
-    parsed.getUTCFullYear() !== year ||
-    parsed.getUTCMonth() !== month - 1 ||
-    parsed.getUTCDate() !== day
-  ) {
-    throw new Error(`${context}: invalid calendar date "${value}"`);
-  }
-
-  return utc;
-}
-
-function overrideInterval(override: UpcomingOverride): { start: number; end: number } {
+function overrideInterval(override: UpcomingOverride): DateInterval {
   const context = `settings.json upcomingOverrides (slot "${override.slot}")`;
-  const end = parseIsoDateOnly(override.until, `${context}.until`);
+  assertIsoDate(override.until, `${context}.until`);
 
   if (override.from !== undefined) {
-    const start = parseIsoDateOnly(override.from, `${context}.from`);
-    if (start > end) {
+    assertIsoDate(override.from, `${context}.from`);
+    if (override.from > override.until) {
       throw new Error(`${context}: from (${override.from}) must not be after until (${override.until})`);
     }
-    return { start, end };
+    return { start: override.from, end: override.until };
   }
 
-  return { start: Number.NEGATIVE_INFINITY, end };
+  return { start: OPEN_START, end: override.until };
 }
 
-function intervalsOverlap(a: { start: number; end: number }, b: { start: number; end: number }): boolean {
+function intervalsOverlap(a: DateInterval, b: DateInterval): boolean {
   return a.start <= b.end && b.start <= a.end;
 }
 
@@ -51,7 +35,7 @@ function validateUpcomingOverrides(overrides: UpcomingOverride[]): void {
     overrideInterval(override);
   });
 
-  const bySlot = new Map<UpcomingOverride["slot"], { override: UpcomingOverride; interval: { start: number; end: number } }[]>();
+  const bySlot = new Map<UpcomingOverride["slot"], { override: UpcomingOverride; interval: DateInterval }[]>();
 
   overrides.forEach((override) => {
     const interval = overrideInterval(override);

@@ -25,7 +25,7 @@ Strona jest częścią szerszego ekosystemu (Akademia + Fundacja + planowana str
 - **Obrazy:** `next/image`; oryginały z WP zmigrowane do `public/media/` (na start) lub object storage; automatyczne WebP/AVIF.
 - **Zapisy (v1):** przyciski `mailto:` z ujednoliconymi tematami (lista w §6) + `tel:+48601734705`. Żaden backend formularzy w v1.
 - **Analityka:** Plausible lub Umami (bez ciasteczek), zdarzenia na klikach CTA zapisów, telefonu, `mailto:`. **Brak banera cookies** (nic go nie wymaga w v1).
-- **Hosting:** dowolny wspierający Next.js; przekierowania 301 w `next.config.ts` z `docs/redirects.json`.
+- **Hosting:** dowolny wspierający Next.js; przekierowania 301 w `next.config.ts` z `src/config/redirects.json`.
 - **Język:** PL only w v1; wszystkie stringi UI w `src/i18n/pl.ts` (nie hardkodować w JSX) — przygotowanie pod EN w przyszłości.
 - **Repo:** osobne (nie monorepo). Wspólne typy/tokeny dla przyszłej strony EJK trzymane jako plik do skopiowania, nie jako workspace.
 

@@ -3,6 +3,8 @@ import Link from "next/link";
 import { ExternalLink } from "@/components/core/ExternalLink";
 import { getSiteSettings } from "@/content/settings";
 import { pl } from "@/i18n/pl";
+import { fillTemplate } from "@/lib/fillTemplate";
+import { currentYearInWarsaw } from "@/lib/isoDate";
 import {
   footerLegalLink,
   footerSitemapFlat,
@@ -120,7 +122,7 @@ export function Footer() {
       </div>
 
       <div className="rule-neutral-t flex flex-col gap-space-3 px-page-margin-mobile py-footer-legal-py-m text-size-caption-m leading-footer-text text-text-tertiary md:flex-row md:flex-wrap md:items-center md:gap-x-space-4 md:px-page-margin md:py-space-5 md:text-size-caption">
-        <span>{pl.footer.copyright}</span>
+        <span>{fillTemplate(pl.footer.copyright, { year: currentYearInWarsaw() })}</span>
         <span aria-hidden="true" className="hidden md:inline">
           {pl.footer.legalSeparator}
         </span>

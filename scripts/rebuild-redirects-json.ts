@@ -7,7 +7,7 @@ import { readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 
 const ROOT = process.cwd();
-const REDIRECTS_PATH = join(ROOT, "docs", "redirects.json");
+const REDIRECTS_PATH = join(ROOT, "src", "config", "redirects.json");
 const MANIFEST_PATH = join(ROOT, "content", "news", "manifest.json");
 
 type RedirectEntry = {

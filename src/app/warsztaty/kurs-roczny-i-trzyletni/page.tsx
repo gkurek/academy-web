@@ -6,6 +6,9 @@ import { OfferQuote } from "@/components/offers/OfferQuote";
 import { getOffer } from "@/content/offers";
 import { mainNav, sectionNav } from "@/navigation";
 
+// Enrollment state depends on the date — rebuild daily like `/` so both agree (D5, K-85).
+export const revalidate = 86400;
+
 const slug = "kurs-roczny-i-trzyletni";
 const mainNavActive = mainNav.find((item) => item.href === "/warsztaty")!.label;
 const sectionItem = sectionNav.warsztaty.find((link) => link.href === `/warsztaty/${slug}`)!;

@@ -5,6 +5,11 @@ import { NewsArticlePage } from "@/components/news/NewsArticlePage";
 import { getNews, loadNewsBySlug } from "@/content/news";
 import { pl } from "@/i18n/pl";
 
+// Event phase (zapowiedź / relacja) depends on the date — rebuild daily like `/` (K-85, B9).
+export const revalidate = 86400;
+// Every slug is known at build time; unknown ones are a static 404.
+export const dynamicParams = false;
+
 type NewsArticleRouteProps = {
   params: Promise<{ slug: string }>;
 };

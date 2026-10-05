@@ -1,16 +1,19 @@
-"use client";
-
 import { useId } from "react";
 
 import { Button } from "@/components/core/Button";
 import { TextLink } from "@/components/core/TextLink";
+import type { EnrollmentState } from "@/content/enrollment";
+import { getOfferDateValues } from "@/content/offers";
 import type { OfferFacts } from "@/content/types";
 import { pl } from "@/i18n/pl";
+import { fillRequiredTemplate } from "@/lib/fillTemplate";
 import { buildMailtoHref } from "@/lib/mailto";
 
 export interface FactsBoxProps {
   facts: OfferFacts;
   kind: keyof typeof pl.factsBox.ctaByKind;
+  /** Computed in the data layer (`getEnrollmentState`), never read from `facts.enrollmentOpen` here (D5). */
+  enrollment: EnrollmentState;
 }
 
 type FactsRowKey =
@@ -57,24 +60,26 @@ function getHeading(kind: FactsBoxProps["kind"], seasonLabel?: string): string {
 
 function getDesktopContactLine(
   kind: FactsBoxProps["kind"],
-  enrollmentOpen: boolean,
+  enrollment: EnrollmentState,
   email: string,
 ): string {
-  if (!enrollmentOpen && kind === "plener") {
+  if (enrollment === "closed" && kind === "plener") {
     return pl.factsBox.contactClosedPlener.replace("{email}", email);
   }
 
   return pl.factsBox.phoneOr;
 }
 
-export function FactsBox({ facts, kind }: FactsBoxProps) {
+export function FactsBox({ facts, kind, enrollment }: FactsBoxProps) {
   const headingId = useId();
   const { factsBox } = pl;
-  const enrollmentState = facts.enrollmentOpen ? "open" : "closed";
-  const cta = factsBox.ctaByKind[kind][enrollmentState];
+  const cta = factsBox.ctaByKind[kind][enrollment];
   const mailtoHref = buildMailtoHref(facts.enrollmentEmail, facts.enrollmentSubject);
-  const desktopContact = getDesktopContactLine(kind, facts.enrollmentOpen, facts.enrollmentEmail);
-  const ctaNote = "note" in cta ? cta.note : undefined;
+  const desktopContact = getDesktopContactLine(kind, enrollment, facts.enrollmentEmail);
+  const ctaNote =
+    "note" in cta
+      ? fillRequiredTemplate(cta.note, getOfferDateValues(facts), `FactsBox ${kind} note`)
+      : undefined;
 
   const rows = rowKeysByKind[kind]
     .filter((key) => {
@@ -93,9 +98,13 @@ export function FactsBox({ facts, kind }: FactsBoxProps) {
           label: pl.factsBox.rowsByKind.zamowienie.contact,
           value: (
             <>
-              {facts.enrollmentEmail}
-              <br />
-              {facts.enrollmentPhone}
+              <TextLink href={mailtoHref}>{facts.enrollmentEmail}</TextLink>
+              {facts.enrollmentPhone ? (
+                <>
+                  <br />
+                  <TextLink href={pl.factsBox.phoneTel}>{facts.enrollmentPhone}</TextLink>
+                </>
+              ) : null}
             </>
           ),
         }
@@ -143,7 +152,7 @@ export function FactsBox({ facts, kind }: FactsBoxProps) {
 
         <Button
           href={mailtoHref}
-          variant={facts.enrollmentOpen ? "primary" : "secondary"}
+          variant={enrollment === "open" ? "primary" : "secondary"}
           block
           size="md"
         >
