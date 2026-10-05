@@ -45,9 +45,11 @@ function scrollToSeasonAnchor(slug: string): void {
   }
 }
 
+/** Only the fields the accordion renders — keeps the RSC payload free of intros and galleries. */
+type SeasonAccordionItem = Pick<LoadedLectureSeason, "slug" | "label" | "cycleTitle" | "lectures">;
+
 export interface SeasonAccordionProps {
-  seasons: LoadedLectureSeason[];
-  defaultExpandedSlug?: string;
+  seasons: SeasonAccordionItem[];
 }
 
 function ChevronIcon({ expanded }: { expanded: boolean }) {
@@ -69,9 +71,8 @@ function ChevronIcon({ expanded }: { expanded: boolean }) {
   );
 }
 
-export function SeasonAccordion({ seasons, defaultExpandedSlug }: SeasonAccordionProps) {
-  const initialSlug = defaultExpandedSlug ?? null;
-  const [expandedSlug, setExpandedSlug] = useState<string | null>(initialSlug);
+export function SeasonAccordion({ seasons }: SeasonAccordionProps) {
+  const [expandedSlug, setExpandedSlug] = useState<string | null>(null);
   const seasonSlugs = useMemo(() => seasons.map((season) => season.slug), [seasons]);
 
   useEffect(() => {
@@ -112,42 +113,44 @@ export function SeasonAccordion({ seasons, defaultExpandedSlug }: SeasonAccordio
 
         return (
           <div key={season.slug} id={seasonAnchorId(season.slug)} className="scroll-mt-space-6">
-            <button
-              type="button"
-              id={triggerId}
-              aria-expanded={isExpanded}
-              aria-controls={panelId}
-              onClick={() => toggleSeason(season.slug)}
-              className={[
-                "w-full cursor-pointer text-left grid grid-cols-[1fr_auto] lg:grid-cols-[auto_minmax(0,1fr)_auto]",
-                "gap-x-season-accordion-header-mb gap-y-space-1 lg:gap-y-0 lg:items-baseline",
-                "px-season-accordion-expanded-x pt-season-accordion-expanded-y-top",
-                isExpanded
-                  ? "bg-surface-card pb-season-accordion-header-mb border-b border-line-neutral border-l-2 border-l-accent"
-                  : "bg-surface-tile hover:bg-surface-card pb-season-accordion-collapsed-y",
-              ].join(" ")}
-            >
-              <span
-                className="col-start-1 row-start-1 self-baseline shrink-0 font-serif text-size-season-accordion-collapsed-label text-accent-text"
-              >
-                {season.label}
-              </span>
-              <span
+            <h2>
+              <button
+                type="button"
+                id={triggerId}
+                aria-expanded={isExpanded}
+                aria-controls={panelId}
+                onClick={() => toggleSeason(season.slug)}
                 className={[
-                  "col-start-2 row-start-1 self-start lg:col-start-3 lg:self-baseline",
-                  "inline-flex items-center gap-space-2 text-size-season-accordion-toggle whitespace-nowrap",
-                  isExpanded ? "text-text-tertiary" : "text-accent-text",
+                  "w-full cursor-pointer text-left grid grid-cols-[1fr_auto] lg:grid-cols-[auto_minmax(0,1fr)_auto]",
+                  "gap-x-season-accordion-header-mb gap-y-space-1 lg:gap-y-0 lg:items-baseline",
+                  "px-season-accordion-expanded-x pt-season-accordion-expanded-y-top",
+                  isExpanded
+                    ? "bg-surface-card pb-season-accordion-header-mb border-b border-line-neutral border-l-2 border-l-accent"
+                    : "bg-surface-tile hover:bg-surface-card pb-season-accordion-collapsed-y",
                 ].join(" ")}
               >
-                {isExpanded ? pl.lectures.accordionCollapse : pl.lectures.accordionExpand}
-                <ChevronIcon expanded={isExpanded} />
-              </span>
-              <span
-                className="col-span-2 min-w-0 self-baseline font-serif text-size-season-accordion-collapsed-label text-text-list-title lg:col-span-1 lg:col-start-2 lg:row-start-1"
-              >
-                {season.cycleTitle || pl.lectures.cycleTitlePlaceholder}
-              </span>
-            </button>
+                <span
+                  className="col-start-1 row-start-1 self-baseline shrink-0 font-serif text-size-season-accordion-collapsed-label text-accent-text"
+                >
+                  {season.label}
+                </span>
+                <span
+                  className={[
+                    "col-start-2 row-start-1 self-start lg:col-start-3 lg:self-baseline",
+                    "inline-flex items-center gap-space-2 font-sans text-size-season-accordion-toggle whitespace-nowrap",
+                    isExpanded ? "text-text-tertiary" : "text-accent-text",
+                  ].join(" ")}
+                >
+                  {isExpanded ? pl.lectures.accordionCollapse : pl.lectures.accordionExpand}
+                  <ChevronIcon expanded={isExpanded} />
+                </span>
+                <span
+                  className="col-span-2 min-w-0 self-baseline font-serif text-size-season-accordion-collapsed-label text-text-list-title lg:col-span-1 lg:col-start-2 lg:row-start-1"
+                >
+                  {season.cycleTitle || pl.lectures.cycleTitlePlaceholder}
+                </span>
+              </button>
+            </h2>
 
             <div
               id={panelId}
@@ -156,13 +159,7 @@ export function SeasonAccordion({ seasons, defaultExpandedSlug }: SeasonAccordio
               hidden={!isExpanded}
               className="bg-surface-card border-l-2 border-l-accent md:pl-tile-px"
             >
-              {season.placeholder ? (
-                <p className="px-lecture-row-x text-size-body leading-body text-text-secondary">
-                  {pl.lectures.placeholderMessage}
-                </p>
-              ) : (
-                <LectureList items={season.lectures} />
-              )}
+              <LectureList items={season.lectures} />
             </div>
           </div>
         );

@@ -295,7 +295,6 @@ export const pl = {
     programLead: "{count} spotkań w sezonie {seasonLabel}.",
     archiveHeading: "Archiwum sezonów",
     archiveFullLink: "Pełne archiwum",
-    placeholderMessage: "W trakcie przygotowania",
     cycleTitlePlaceholder: "[do uzupełnienia]",
     accordionExpand: "rozwiń",
     accordionCollapse: "zwiń",

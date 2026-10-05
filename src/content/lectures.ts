@@ -59,7 +59,6 @@ export type LectureListItem = {
 
 export type LoadedLectureSeason = Omit<LectureSeason, "lectures"> & {
   lectures: LectureListItem[];
-  placeholder?: boolean;
 };
 
 type ArchiveMeta = {
@@ -194,16 +193,6 @@ function buildArchiveSlugs(firstSeason: string, lastSeason: string): string[] {
   );
 }
 
-function buildPlaceholderSeason(slug: string): LoadedLectureSeason {
-  return {
-    slug,
-    label: slugToSeasonLabel(slug),
-    cycleTitle: "",
-    lectures: [],
-    placeholder: true,
-  };
-}
-
 function getArchiveMeta(): ArchiveMeta {
   return archiveMeta as ArchiveMeta;
 }
@@ -274,9 +263,10 @@ export function getArchiveSeasons(): LoadedLectureSeason[] {
 
   return buildArchiveSlugs(firstSeason, lastSeason).map((slug) => {
     const season = seasonModules[slug];
-    return season && season.slug !== CURRENT_SEASON_SLUG
-      ? toLoadedSeason(season)
-      : buildPlaceholderSeason(slug);
+    if (!season) {
+      throw new Error(`lectures: archive range of content/lectures/archive.json has no season file for "${slug}"`);
+    }
+    return toLoadedSeason(season);
   });
 }
 

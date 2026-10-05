@@ -407,5 +407,32 @@
     "signal": "styles",
     "width": 1920,
     "note": "footerBand slot: main padding-bottom 26px -> 0 and ReadyIconsNote margin-bottom -26px -> 0 (offsets cancelled each other); screenshots identical"
+  },
+  {
+    "id": "RF-9",
+    "route": "/wyklady/archiwum",
+    "signal": "html",
+    "note": "season trigger button wrapped in h2 (APG accordion); toggle label gets explicit font-sans (h2 base rule sets the serif font)"
+  },
+  {
+    "id": "RF-9",
+    "route": "/wyklady/archiwum",
+    "signal": "styles",
+    "width": 390,
+    "note": "14 season h2 wrappers added to the sampled elements (element count 569 -> 583); screenshots identical"
+  },
+  {
+    "id": "RF-9",
+    "route": "/wyklady/archiwum",
+    "signal": "styles",
+    "width": 1440,
+    "note": "14 season h2 wrappers added to the sampled elements (element count 569 -> 583); screenshots identical"
+  },
+  {
+    "id": "RF-9",
+    "route": "/wyklady/archiwum",
+    "signal": "styles",
+    "width": 1920,
+    "note": "14 season h2 wrappers added to the sampled elements (element count 569 -> 583); screenshots identical"
   }
 ]

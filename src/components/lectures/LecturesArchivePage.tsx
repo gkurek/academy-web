@@ -23,7 +23,14 @@ export function LecturesArchivePage({
       <p className="text-size-lead-m md:text-size-lead leading-body text-text-secondary max-w-measure-lead mb-space-6">
         {intro}
       </p>
-      <SeasonAccordion seasons={seasons} />
+      <SeasonAccordion
+        seasons={seasons.map(({ slug, label, cycleTitle, lectures }) => ({
+          slug,
+          label,
+          cycleTitle,
+          lectures,
+        }))}
+      />
     </SectionPageShell>
   );
 }
