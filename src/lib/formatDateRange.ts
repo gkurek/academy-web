@@ -119,9 +119,5 @@ export function formatDateRange(
     return display.startLabel;
   }
 
-  if (display.separator === "–") {
-    return `${display.startLabel}${display.separator}${display.endLabel}`;
-  }
-
   return `${display.startLabel}${display.separator ?? " – "}${display.endLabel}`;
 }

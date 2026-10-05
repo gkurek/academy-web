@@ -3,8 +3,7 @@ import { notFound } from "next/navigation";
 
 import { ArticlePage } from "@/components/publications/ArticlePage";
 import { PublicationAlbumPage } from "@/components/publications/PublicationAlbumPage";
-import { articleModules } from "@/content/articles-registry";
-import { loadArticleBySlug } from "@/content/articles";
+import { getArticles, loadArticleBySlug } from "@/content/articles";
 import { getPublications, loadPublicationBySlug } from "@/content/publications";
 
 // Every slug is known at build time; unknown ones are a static 404.
@@ -16,7 +15,7 @@ type PublicationSlugRouteProps = {
 
 export function generateStaticParams() {
   const publicationSlugs = getPublications().map((publication) => ({ slug: publication.slug }));
-  const articleSlugs = Object.keys(articleModules).map((slug) => ({ slug }));
+  const articleSlugs = getArticles().map((article) => ({ slug: article.slug }));
 
   return [...publicationSlugs, ...articleSlugs];
 }

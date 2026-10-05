@@ -85,6 +85,10 @@ export type LecturerDirectoryEntry = {
 export type Lecture = {
   date: string;
   title: string;
+  /**
+   * Pairs by index with the titles joined by " · " in `title`: none, exactly one (shared by
+   * every title) or one per title — anything else fails the build. `""` = that talk has no lecturer.
+   */
   lecturerSlugs: string[];
   note?: string;
 };

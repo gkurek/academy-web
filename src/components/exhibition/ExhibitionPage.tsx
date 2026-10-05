@@ -27,7 +27,6 @@ import { getLectureSeasonShortTheme } from "@/content/lectures";
 import { getSiteSettings } from "@/content/settings";
 import { pl } from "@/i18n/pl";
 import { buildMailtoHref } from "@/lib/mailto";
-import { filterExistingPhotos } from "@/lib/mediaFileExists";
 import { formatPolishMonthYearLocative } from "@/lib/polishMonth";
 
 export interface ExhibitionPageProps {
@@ -91,7 +90,7 @@ export function ExhibitionPage({ active, sectionActive }: ExhibitionPageProps) {
       ? annual.scheduleNext.replace("{monthYear}", monthYear)
       : annual.scheduleNextMissing;
 
-  const annualPhotos = filterExistingPhotos(latestAnnual.photos ?? []);
+  const annualPhotos = latestAnnual.photos ?? [];
   const tilesCaption =
     latestWithPhotos && (latestWithPhotos.photos?.length ?? 0) > 0
       ? annual.tilesCaption
@@ -99,14 +98,8 @@ export function ExhibitionPage({ active, sectionActive }: ExhibitionPageProps) {
           .replace("{count}", String(latestWithPhotos.photos?.length ?? 0))
       : undefined;
 
-  const heroImage = page.heroImage ? filterExistingPhotos([page.heroImage])[0] : undefined;
-  const permanentImage = page.permanentImage
-    ? filterExistingPhotos([page.permanentImage])[0]
-    : undefined;
-  const permanentImage2 = page.permanentImage2
-    ? filterExistingPhotos([page.permanentImage2])[0]
-    : undefined;
-  const closingImage = page.closingImage ? filterExistingPhotos([page.closingImage])[0] : undefined;
+  // Media paths are trusted here; `npm run check:media` verifies the files exist at build (D9).
+  const { heroImage, permanentImage, permanentImage2, closingImage } = page;
 
   return (
     <SectionPageShell active={active} section="ikony" sectionActive={sectionActive}>

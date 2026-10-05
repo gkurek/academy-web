@@ -5,6 +5,7 @@ import pracowniaMeta from "../../content/pages/pracownia.json";
 import * as aboutParagraphs from "../../content/pages/o-akademii.mdx";
 import ContactContent from "../../content/pages/kontakt.mdx";
 import * as workshopParagraphs from "../../content/pages/pracownia.mdx";
+import { assertMdxExports } from "@/content/validate";
 
 type AboutParagraphExports = {
   audienceParagraphs: string[];
@@ -13,13 +14,21 @@ type AboutParagraphExports = {
 };
 
 const { audienceParagraphs, historyParagraph, workshopParagraph } =
-  aboutParagraphs as unknown as AboutParagraphExports;
+  assertMdxExports<AboutParagraphExports>(
+    aboutParagraphs,
+    ["audienceParagraphs", "historyParagraph", "workshopParagraph"],
+    "content/pages/o-akademii.mdx",
+  );
 
 type WorkshopParagraphExports = {
   curriculumParagraphs: string[];
 };
 
-const { curriculumParagraphs } = workshopParagraphs as unknown as WorkshopParagraphExports;
+const { curriculumParagraphs } = assertMdxExports<WorkshopParagraphExports>(
+  workshopParagraphs,
+  ["curriculumParagraphs"],
+  "content/pages/pracownia.mdx",
+);
 
 export type LoadedAboutPage = AboutPageData & {
   audienceParagraphs: string[];
@@ -41,7 +50,7 @@ const aboutPageMeta = oAkademiiMeta as AboutPageData;
 const workshopPageMeta = pracowniaMeta as WorkshopPageData;
 const privacyPolicyPageMeta = privacyPolicyMeta as PrivacyPolicyPageData;
 
-export function getAboutPage(): LoadedAboutPage | undefined {
+export function getAboutPage(): LoadedAboutPage {
   return {
     ...aboutPageMeta,
     body: "",
@@ -51,7 +60,7 @@ export function getAboutPage(): LoadedAboutPage | undefined {
   };
 }
 
-export function getWorkshopPage(): LoadedWorkshopPage | undefined {
+export function getWorkshopPage(): LoadedWorkshopPage {
   return {
     ...workshopPageMeta,
     body: "",

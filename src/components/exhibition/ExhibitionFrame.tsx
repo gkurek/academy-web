@@ -1,7 +1,6 @@
 import Image from "next/image";
 
 import type { Image as ContentImage } from "@/content/types";
-import { mediaFileExists } from "@/lib/mediaFileExists";
 
 export type ExhibitionFrameAspect =
   | "wide"
@@ -32,11 +31,10 @@ export function ExhibitionFrame({
   className,
 }: ExhibitionFrameProps) {
   const rootClass = ["exhibition-frame", aspectClass[aspect], className].filter(Boolean).join(" ");
-  const hasImage = image?.src && mediaFileExists(image.src);
 
   return (
     <figure className={rootClass}>
-      {hasImage && image ? (
+      {image?.src ? (
         <span className="exhibition-frame-media">
           <Image
             src={image.src}

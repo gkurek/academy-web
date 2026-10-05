@@ -17,6 +17,7 @@ import currentSeasonData from "../../content/lectures/2026-2027.json";
 import { getLecturerDirectoryEntry } from "@/content/lecturer-directory";
 import { formatLecturerDisplayName, getLecturer, getLecturerProfileHref } from "@/content/lecturers";
 import type { Lecture, LectureSeason } from "@/content/types";
+import { assertLecturerPairing } from "@/content/validate";
 import { formatDateRange } from "@/lib/formatDateRange";
 
 /** The current lecture season — the only place to change at a season rollover (with its JSON import below). */
@@ -129,15 +130,18 @@ function pairTitlesWithLecturers(
     return titles.map((title, index) => ({ title, slug: slugs[index] }));
   }
 
-  if (slugs.length === 1) {
-    return titles.map((title) => ({ title, slug: slugs[0] }));
-  }
-
-  return titles.map((title, index) => ({
-    title,
-    slug: slugs[Math.min(index, slugs.length - 1)],
-  }));
+  return titles.map((title) => ({ title, slug: slugs[0] }));
 }
+
+Object.values(seasonModules).forEach((season) => {
+  season.lectures.forEach((lecture) => {
+    assertLecturerPairing(
+      splitLectureTitles(lecture.title),
+      lecture.lecturerSlugs,
+      `content/lectures/${season.slug}.json lecture ${lecture.date}`,
+    );
+  });
+});
 
 function toLectureListItem(lecture: Lecture): LectureListItem {
   const titles = splitLectureTitles(lecture.title);

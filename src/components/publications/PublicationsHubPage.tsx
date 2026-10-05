@@ -6,11 +6,7 @@ import { SectionPageShell } from "@/components/layout/SectionPageShell";
 import { ArticleList } from "@/components/publications/ArticleList";
 import { PublicationSpreadStrip } from "@/components/publications/PublicationSpreadStrip";
 import { getArticles } from "@/content/articles";
-import {
-  formatPublicationPrice,
-  getHubSpreadPreview,
-  getPublications,
-} from "@/content/publications";
+import { formatPublicationPrice, requirePublication } from "@/content/publications";
 import { getSiteSettings } from "@/content/settings";
 import { pl } from "@/i18n/pl";
 import { pluralize } from "@/i18n/pluralize";
@@ -19,16 +15,12 @@ import { footerSitemapFlat } from "@/navigation";
 
 export function PublicationsHubPage() {
   const publicationsLabel = footerSitemapFlat.find((item) => item.href === "/publikacje")!.label;
-  const [publication] = getPublications();
+  const publication = requirePublication();
   const articles = getArticles();
   const settings = getSiteSettings();
   const secretariatEmail = settings.emails.find((email) => email.label.includes("sekretariat"))
     ?.address ?? settings.emails[1]?.address ?? settings.emails[0].address;
   const mailtoHref = buildMailtoHref(secretariatEmail, pl.publications.mailtoSubject);
-
-  if (!publication) {
-    return null;
-  }
 
   const priceLabel = formatPublicationPrice(publication.price);
   const availabilityLabel =
@@ -37,7 +29,7 @@ export function PublicationsHubPage() {
       : pl.publications.facts.availabilitySoldOut;
   const pageWord = pluralize(publication.pages, ["strona", "strony", "stron"]);
   const imprint = pl.publications.imprint.replace("{year}", String(publication.year));
-  const hubSpreads = getHubSpreadPreview(publication.spreads, 4);
+  const hubSpreads = publication.spreads.slice(0, 4);
 
   return (
     <SectionPageShell active={publicationsLabel}>

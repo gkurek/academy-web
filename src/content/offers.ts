@@ -1,6 +1,6 @@
 import type { MDXProps } from "mdx/types";
 import type { ComponentType } from "react";
-import type { Image, Offer, OfferFacts, Testimonial } from "@/content/types";
+import type { ExhibitionTravelingPlace, Image, Offer, OfferFacts, Testimonial } from "@/content/types";
 import type { SemesterItem, StepItem } from "@/components/content/OfferContentContext";
 import {
   parseYear,
@@ -9,16 +9,15 @@ import {
   type WorkshopOfferFacts,
 } from "@/content/enrollment";
 import { formatDateRange } from "@/lib/formatDateRange";
+import { assertNewsSlug } from "@/content/validate";
 import { assertIsoDate, todayInWarsaw } from "@/lib/isoDate";
 import KursContent, { frontmatter as kursFrontmatter } from "../../content/offers/kurs-roczny-i-trzyletni.mdx";
 import PlenerContent, { frontmatter as plenerFrontmatter } from "../../content/offers/letnia-szkola-swiatla.mdx";
 import WykladyContent, { frontmatter as wykladyFrontmatter } from "../../content/offers/wyklady.mdx";
 import ZamowienieContent, { frontmatter as zamowienieFrontmatter } from "../../content/offers/zamowienie.mdx";
 
-export type OfferLeadExtraPlace = {
-  place: string;
-  newsSlug?: string;
-};
+/** Same shape as the exhibition's traveling places — one list-of-places type (S-15). */
+export type OfferLeadExtraPlace = ExhibitionTravelingPlace;
 
 /** Short block under the lead, left of the FactsBox on desktop. */
 export type OfferLeadExtra = {
@@ -65,7 +64,10 @@ type OfferModule = {
   frontmatter: OfferFrontmatter;
 };
 
-const offerModules: Record<string, OfferModule> = {
+/** Offers behind fixed routes — a missing module is a build error, never a 404 (S-08). */
+export type OfferSlug = "kurs-roczny-i-trzyletni" | "letnia-szkola-swiatla" | "wyklady" | "zamowienie";
+
+const offerModules: Record<OfferSlug, OfferModule> = {
   "kurs-roczny-i-trzyletni": {
     Content: KursContent,
     frontmatter: kursFrontmatter as OfferFrontmatter,
@@ -84,7 +86,7 @@ const offerModules: Record<string, OfferModule> = {
   },
 };
 
-const workshopSlugs = ["kurs-roczny-i-trzyletni", "letnia-szkola-swiatla"] as const;
+const workshopSlugs = ["kurs-roczny-i-trzyletni", "letnia-szkola-swiatla"] as const satisfies readonly OfferSlug[];
 
 function toOffer(offerModule: OfferModule): LoadedOffer {
   const { frontmatter, Content } = offerModule;
@@ -107,9 +109,13 @@ function toOffer(offerModule: OfferModule): LoadedOffer {
   };
 }
 
-export function getOffer(slug: string): LoadedOffer | undefined {
+/** The offer behind a fixed route; throws when its MDX is missing (build fails instead of a 404). */
+export function requireOffer(slug: OfferSlug): LoadedOffer {
   const offerModule = offerModules[slug];
-  return offerModule ? toOffer(offerModule) : undefined;
+  if (!offerModule) {
+    throw new Error(`content/offers: no offer "${slug}" — the route that needs it cannot render`);
+  }
+  return toOffer(offerModule);
 }
 
 export function getOffers(): LoadedOffer[] {
@@ -117,10 +123,7 @@ export function getOffers(): LoadedOffer[] {
 }
 
 export function getWorkshopOffers(): LoadedOffer[] {
-  return workshopSlugs
-    .map((slug) => offerModules[slug])
-    .filter((offerModule): offerModule is OfferModule => offerModule !== undefined)
-    .map(toOffer);
+  return workshopSlugs.map(requireOffer);
 }
 
 const ISO_DATE_FIELDS: (keyof OfferFacts)[] = [
@@ -143,12 +146,30 @@ function validateOfferFactsIsoDates(offerModule: OfferModule): void {
   });
 }
 
-workshopSlugs.forEach((slug) => {
-  const offerModule = offerModules[slug];
-  if (offerModule) {
-    validateOfferFactsIsoDates(offerModule);
+function validateOfferModule(key: OfferSlug, offerModule: OfferModule): void {
+  const { slug, leadExtra } = offerModule.frontmatter;
+
+  if (slug !== key) {
+    throw new Error(`content/offers: frontmatter slug "${slug}" does not match registry key "${key}"`);
   }
-});
+
+  validateOfferFactsIsoDates(offerModule);
+
+  leadExtra?.items.forEach((item, itemIndex) => {
+    item.whereWeWere?.forEach((entry, placeIndex) => {
+      if (entry.newsSlug) {
+        assertNewsSlug(
+          entry.newsSlug,
+          `content/offers/${slug}.mdx leadExtra.items[${itemIndex}].whereWeWere[${placeIndex}]`,
+        );
+      }
+    });
+  });
+}
+
+(Object.entries(offerModules) as [OfferSlug, OfferModule][]).forEach(([key, offerModule]) =>
+  validateOfferModule(key, offerModule),
+);
 
 /** Facts the home „Najbliższe” Warsztaty slot is computed from (plan 10-k4 N6). */
 export function getUpcomingOfferFacts(): WorkshopOfferFacts {

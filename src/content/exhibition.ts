@@ -1,9 +1,9 @@
 import { getSeason } from "@/content/lectures";
-import newsManifest from "../../content/news/manifest.json";
 import type { AnnualExhibition, PermanentExhibition } from "@/content/types";
 import { formatDateRange } from "@/lib/formatDateRange";
 import { todayInWarsaw } from "@/lib/isoDate";
 import { pl } from "@/i18n/pl";
+import { assertMdxExports, assertNewsSlug } from "@/content/validate";
 import annualManifest from "../../content/exhibition/annual.json";
 import * as exhibitionBody from "../../content/exhibition/body.mdx";
 import { frontmatter as pageFrontmatter } from "../../content/exhibition/page.mdx";
@@ -22,7 +22,11 @@ const ANNUAL_DEFAULT_END_MONTH_DAY = "08-31";
 
 const manifest = annualManifest as AnnualManifest;
 const permanentExhibition = pageFrontmatter as PermanentExhibition;
-const { descriptionParagraphs } = exhibitionBody as unknown as ExhibitionBodyExports;
+const { descriptionParagraphs } = assertMdxExports<ExhibitionBodyExports>(
+  exhibitionBody,
+  ["descriptionParagraphs"],
+  "content/exhibition/body.mdx",
+);
 
 function assertKnownLectureSeason(seasonSlug: string): void {
   if (!getSeason(seasonSlug)) {
@@ -31,10 +35,6 @@ function assertKnownLectureSeason(seasonSlug: string): void {
     );
   }
 }
-
-const newsSlugs = new Set(
-  (newsManifest as Array<{ slug: string }>).map((entry) => entry.slug),
-);
 
 function validateAnnualExhibitions(exhibitions: AnnualExhibition[]): void {
   exhibitions.forEach((exhibition) => {
@@ -46,10 +46,8 @@ function validateAnnualExhibitions(exhibitions: AnnualExhibition[]): void {
 
     assertKnownLectureSeason(exhibition.seasonSlug);
 
-    if (exhibition.newsSlug && !newsSlugs.has(exhibition.newsSlug)) {
-      throw new Error(
-        `exhibition/annual.json: unknown newsSlug "${exhibition.newsSlug}" for season "${exhibition.seasonSlug}"`,
-      );
+    if (exhibition.newsSlug) {
+      assertNewsSlug(exhibition.newsSlug, `exhibition/annual.json season "${exhibition.seasonSlug}"`);
     }
   });
 }
@@ -66,10 +64,8 @@ function validatePermanentExhibition(exhibition: PermanentExhibition): void {
       throw new Error(`exhibition/page.mdx: travelingPlaces[${index}] missing place`);
     }
 
-    if (entry.newsSlug && !newsSlugs.has(entry.newsSlug)) {
-      throw new Error(
-        `exhibition/page.mdx: unknown newsSlug "${entry.newsSlug}" in travelingPlaces[${index}]`,
-      );
+    if (entry.newsSlug) {
+      assertNewsSlug(entry.newsSlug, `exhibition/page.mdx travelingPlaces[${index}]`);
     }
   });
 }

@@ -14,6 +14,8 @@ const eslintConfig = defineConfig([
     "next-env.d.ts",
     // Claude Design handoff mockups — not part of the app build
     "design/**",
+    // Local visual-check output and ad-hoc probes (gitignored)
+    ".visual/**",
   ]),
 ]);
 
