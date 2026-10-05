@@ -1,5 +1,6 @@
 /**
  * Content integrity check — runs in `prebuild` (D2), so `npm run build` stops before Next starts.
+ * When to run: automatically before every `npm run build`; by hand after editing `content/` or registries.
  * Usage (from repo root): npm run check:content
  *
  * 1. Every `content/` file imported by `src/` exists — a renamed MDX fails here with its path.

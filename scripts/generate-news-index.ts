@@ -4,8 +4,8 @@
  * Next.js/Turbopack does not resolve import.meta.glob for content/news/*.mdx.
  * The list page reads frontmatter from the manifest; article pages import MDX individually.
  *
- * Usage: npx tsx -e "import { generateNewsManifest } from './scripts/generate-news-index.ts'; generateNewsManifest();"
- * Also invoked at the end of scripts/generate-news-sample.ts.
+ * When to run: after adding, renaming or removing a news MDX file, or editing its frontmatter.
+ * Usage: npm run content:index (runs this and generate-publications-index.ts)
  * `scripts/check-content.ts` (prebuild) compares the committed files with `buildNewsIndex()`.
  */
 

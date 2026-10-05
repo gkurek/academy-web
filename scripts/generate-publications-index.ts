@@ -1,7 +1,8 @@
 /**
  * Generate article/publication registries for src/content/articles.ts and publications.ts.
  *
- * Usage: npx tsx -e "import { generatePublicationsIndex } from './scripts/generate-publications-index.ts'; generatePublicationsIndex();"
+ * When to run: after adding, renaming or removing an article or publication MDX file, or editing its frontmatter.
+ * Usage: npm run content:index (runs this and generate-news-index.ts)
  * `scripts/check-content.ts` (prebuild) compares the committed files with `buildPublicationsIndex()`.
  */
 

@@ -245,5 +245,26 @@
     "route": "/aktualnosci/ikona-korzenie-i-owoce-wiary-mistyka-dzis-wyklady-2026-2027",
     "signal": "html",
     "note": "one lightbox dialog per entry (LightboxProvider) instead of one per cover/gallery"
+  },
+  {
+    "id": "RF-4",
+    "route": "/",
+    "signal": "screenshot",
+    "width": 1920,
+    "note": "sub-pixel tile widths at 1920 px (CSS flex rows vs JS floats); owner-checked 2026-10-05"
+  },
+  {
+    "id": "RF-4",
+    "route": "/ikony/na-zamowienie",
+    "signal": "screenshot",
+    "width": 1920,
+    "note": "sub-pixel tile widths at 1920 px (CSS flex rows vs JS floats); owner-checked 2026-10-05"
+  },
+  {
+    "id": "RF-4",
+    "route": "/nie-ma-takiej-strony",
+    "signal": "screenshot",
+    "width": 390,
+    "note": "0.108 % pixels, environment noise (cloud vs local); owner-checked 2026-10-05"
   }
 ]

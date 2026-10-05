@@ -8,6 +8,7 @@
  * Prints a before/after size report and the dimensions to copy into ikona-dzis.mdx.
  * Original PNGs of JPEG-converted files are left in place — delete them after the visual check.
  *
+ * When to run: only when the owner delivers new original album scans.
  * Usage: npx tsx scripts/optimize-album-media.ts [sourceDir]
  *   sourceDir must hold the original PNG scans (cover.png, spread-NN.png, spread-NN-thumb.png);
  *   it defaults to the media folder itself, which only holds them on the first run (k5c delivery).

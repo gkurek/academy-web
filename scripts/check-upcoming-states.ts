@@ -1,6 +1,7 @@
 /**
  * Home „Najbliższe” — prints the state of all three slots across a year (plan 10-k4 4.2).
- * Usage (from repo root): npx tsx scripts/check-upcoming-states.ts [YYYY-MM-DD ...]
+ * When to run: after changing enrollment, upcoming-tile or date logic (`src/content/upcoming.ts`, `enrollment.ts`).
+ * Usage (from repo root): npm run check:states, or npx tsx scripts/check-upcoming-states.ts [YYYY-MM-DD ...]
  */
 
 import { readFileSync } from "node:fs";

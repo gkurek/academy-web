@@ -1,6 +1,7 @@
 /**
  * Media check — runs in `prebuild` (D9): every `/media/…` path referenced in `content/` exists in
  * `public/`. Replaces the `existsSync` that used to run while rendering `/ikony/wystawy` (S-11).
+ * When to run: automatically before every `npm run build`; by hand after moving or deleting files in `public/media/`.
  * Usage (from repo root): npm run check:media
  */
 

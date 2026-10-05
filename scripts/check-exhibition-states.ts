@@ -1,6 +1,7 @@
 /**
  * Regression check for exhibition date helpers (k3 A6).
- * Usage (from repo root): npx tsx scripts/check-exhibition-states.ts
+ * When to run: after changing exhibition date or season logic (`src/content/exhibition.ts`, `lectures.ts`).
+ * Usage (from repo root): npm run check:states, or npx tsx scripts/check-exhibition-states.ts
  */
 
 import { readdirSync, readFileSync } from "node:fs";
