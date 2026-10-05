@@ -1,6 +1,6 @@
 # Plan 10/RF — Poprawki po review (techniczne; wizualne dopisze V4)
 
-Status: **zatwierdzony** 2026-10-04 (projekt R5; decyzje D1–D10 potwierdzone przez właściciela) · RF-0 ✅ · RF-1 ✅ · RF-2 ✅ 2026-10-05 · RF-3 ✅ 2026-10-05 · RF-4 ✅ 2026-10-05 (cloud, czeka na „OK” i commit) · RF-5…RF-12 ✅ 2026-10-05 (RF-5 po RF-12, po decyzji właściciela o T-R1/T-R2) · następny: **V1** → RF-13, RF-14 (RF-12 niezależnie od k8, D12) (RF-5 czeka na T-R1, T-R2) · paczki wizualne dopisze V4 · workflow lokalny (D11, 2026-10-05)  
+Status: **zatwierdzony** 2026-10-04 (projekt R5; decyzje D1–D10 potwierdzone przez właściciela) · RF-0 ✅ · RF-1 ✅ · RF-2 ✅ 2026-10-05 · RF-3 ✅ 2026-10-05 · RF-4 ✅ 2026-10-05 · RF-5…RF-12 ✅ 2026-10-05 (RF-5 po RF-12, po decyzji właściciela o T-R1/T-R2; RF-12 niezależnie od k8, D12) · **blok techniczny RF-0…RF-12 zamknięty lokalnie** · V1 ✅ 2026-10-05 · następny: V2 → V3 → **RF-13a** (decyzja o odstępach, RV-9) → RF-13, RF-14 · paczki wizualne dopisze V4 · workflow lokalny (D11, 2026-10-05)  
 Gałąź: `feat/10-review` (RV-8; merge do `main` niezależnie od k8 na `feat/10-finishing`)  
 Staging: https://academy-web-lovat.vercel.app/ — źródło baseline'u (zapis raz w RF-0); paczki weryfikowane **lokalnie**, bez deployu (D11)  
 Makiety: tokeny `design/README`, odczyt wartości `docs/design-mockup-guide.md` — tylko w paczkach „po V1”  
@@ -26,7 +26,7 @@ Wdrożyć poprawki techniczne z bloku R (R1–R5) w paczkach, które da się zbu
 | --- | --- | --- |
 | **Sonnet 5.5** | zmiana mechaniczna albo lokalna, kryterium „gotowe” sprawdzalne narzędziem (knip, grep, axe, zrzuty identyczne), bez decyzji po drodze | RF-0, RF-1, RF-6, RF-7, RF-9, RF-10, RF-11 |
 | **Opus 5.5** | refaktor przekrojowy: wiele plików, zmiana sygnatur lub konwencji, trzeba rozstrzygać przypadki brzegowe w trakcie | RF-2, RF-3, RF-5, RF-8, RF-12, RF-13, RF-14 |
-| **Fable 5.1** | wyjątkowo: przepisanie logiki od nowa z twardym kryterium wydajnościowym i ryzykiem wizualnym | RF-4 |
+| **Fable 5.1** | wyjątkowo: przepisanie logiki od nowa z twardym kryterium wydajnościowym i ryzykiem wizualnym; sesje decyzyjne łączące wiele źródeł i historię | RF-4, RF-13a |
 
 Jeśli paczka Sonneta trafi na nieoczekiwaną decyzję architektoniczną — przerwać, zameldować, dokończyć w sesji Opusa (jak „plan okazuje się błędny” w `CLAUDE.md`).
 
@@ -69,13 +69,14 @@ Zbiorczo — szczegóły w paczkach.
 
 ```
 RF-0 ─ RF-1 ─┐
-       RF-2 ─┼─ RF-3 ─ RF-4 ─ RF-5* ─ RF-6 ─ RF-7 ─ RF-8 ─ RF-9 ─ RF-10 ─ RF-11 ─ RF-12** ─ V1 ─ RF-13 ─ RF-14
+       RF-2 ─┼─ RF-3 ─ RF-4 ─ RF-5* ─ RF-6 ─ RF-7 ─ RF-8 ─ RF-9 ─ RF-10 ─ RF-11 ─ RF-12** ─ V1 ─ V2 ─ V3 ─ RF-13a ─ RF-13 ─ RF-14
+                                                                                  (V4 niezależnie; po V4 brama powrotna do RF-13a)
       │
       └ * RF-5 po zamknięciu T-R1, T-R2 (dane wykładowców) — może przesunąć się za RF-6…RF-11
         ** RF-12 niezależnie od k8 (D12): k8 rebase'uje się na main po zamknięciu review
 ```
 
-RF-0 przed wszystkim (punkt odniesienia i narzędzie). Potem bugi (RF-1, RF-2, RF-4) i paczki bez zmian wizualnych; RF-13 i RF-14 **po V1** (RV-7: pomiar przed wartościami docelowymi). RF-3 przed RF-4, bo walidacje przy buildzie wyłapią błędy wprowadzane w kolejnych refaktorach.
+RF-0 przed wszystkim (punkt odniesienia i narzędzie). Potem bugi (RF-1, RF-2, RF-4) i paczki bez zmian wizualnych; RF-13 i RF-14 **po V1** (RV-7: pomiar przed wartościami docelowymi); RF-13 dodatkowo **po RF-13a** (RV-9: decyzja o odstępach po V2–V3, z bramą powrotną po V4). RF-3 przed RF-4, bo walidacje przy buildzie wyłapią błędy wprowadzane w kolejnych refaktorach.
 
 ## Weryfikacja: wygląd i zachowanie (obowiązuje każdą paczkę)
 
@@ -250,9 +251,17 @@ Skrypt czyta `PLAYWRIGHT_BROWSERS_PATH`, gdy jest ustawiony, inaczej używa domy
 **Weryfikacja:** build + lint; staging `/`, `/warsztaty`, `/ikony/wystawy`, `/kontakt`, stopka (390 / 1440); zrzuty przed/po.  
 **Model:** Opus 5.5. **Koszt:** M. **Commit:** `10/RF-12: read site facts from settings and move editorial copy out of pl.ts`
 
-### RF-13 — Skala odstępów sekcji (A5) · **po V1**
+### RF-13a — Decyzja o skali odstępów i belce · **po V3, przed RF-13**
 
-**Pozycje:** S-30 (+ `cta-band` z S-20). **Źródła:** R4-04, R4-05, R4-08, R4-10, R2-16 (teaser). **Warunek:** V1 zakończone, wartości docelowe (`--section-gap` desktop / mobile, próg, wariant „ciasny”, `--accent-bar`) ustalone z właścicielem i wpisane tu przed startem.  
+**Charakter:** sesja doradcza, bez kodu produkcyjnego (poza tymczasowym przełącznikiem wariantów `--section-gap` 56 / 64 / 96 + „ciasny”, usuwanym po decyzji). **Powód:** V1 pokazało konflikt źródeł (bazowy `design/README` §3: 56–64 vs `README-o-akademii-pracownia.md` pkt 7: 96 px, przyjęte globalnie w `8bdf59a`); wybór zmienia wygląd całego serwisu.  
+**Zakres:** przegląd V1–V3 i makiet; **archiwum i historia** (`docs/archive/`, `plan-claude-code-historia.md`, `git log -S`) — skąd 96 px i czy coś przeoczyliśmy; ocena UX opcji (rytm, granice sekcji, długość stron, mobile, zgodność z makietą); 4 trasy testowe (`/`, `/o-akademii`, `/warsztaty/letnia-szkola-swiatla`, `/ikony`) × 390 / 1440 × warianty, kryteria spisane przed oglądaniem; ocena na żywo przez właściciela.  
+**Wyjście:** `docs/review/06-visual-5-spacing-decision.md` + wartości docelowe wpisane w RF-13 (`--section-gap` desktop / mobile, próg, „ciasny”, `--accent-bar`) + propozycja reguły do `CLAUDE.md`. Decyzja należy do właściciela (RV-6).  
+**Brama powrotna:** po V4 sprawdzenie, czy założenia nadal trzymają; jeśli nie — ponowne otwarcie przed RF-13.  
+**Model:** **Fable 5.1** (jak R5: synteza wielu źródeł, ocena kompromisów, praca z historią decyzji). **Koszt:** M. **Commit:** `docs: spacing scale decision (10/RF-13a)`
+
+### RF-13 — Skala odstępów sekcji (A5) · **po RF-13a**
+
+**Pozycje:** S-30 (+ `cta-band` z S-20). **Źródła:** R4-04, R4-05, R4-08, R4-10, R2-16 (teaser). **Warunek:** V1–V3 i RF-13a zakończone; wartości docelowe (`--section-gap` desktop / mobile, próg, wariant „ciasny”, `--accent-bar`) z decyzji RF-13a wpisane tu przed startem (propozycja V1 §6 to tylko punkt wyjścia).  
 **Zakres (pliki):** `src/app/globals.css` (tokeny ról: `--section-gap`, `--section-gap-tight`, `--accent-bar`; zastąpienie `exhibition-section-gap`, `publication-section-gap(-m)`, `news-article-sec`, `news-year-group-gap`, `lectures-archive-section-pt`; 7 literałów `3px` / `2px`; tokeny komponentów przez `var(--space-*)`, interlinie przez `--leading-*`, miary przez `--measure-*` — lista z R4-10 po filtrze V1), nowy `src/components/layout/PageSection.tsx` (albo klasa `.page-section`), komponenty sekcji na `/`, ofertach (`mt-space-8`), `/polityka-prywatnosci`, `GalleryOrderTeaser.tsx` (`cta-band`), `OfferQuoteGrid.tsx`.  
 **Zmiana widoczna:** **tak, zamierzona** — odstępy sekcji wyrównane do jednej skali; każda różnica względem zrzutów „przed” musi odpowiadać tabeli wartości z V1.  
 **Gotowe:** tabela 1 z `04-cross-cutting.md` zmierzona ponownie skryptem z V1: ≤ 2 wartości odstępu sekcji per szerokość (standard + ciasny) na wszystkich trasach; `grep -c "3px\|2px" src/app/globals.css` dla belek → 0 (tylko token); `--publication-section-gap` używany na desktopie; `--section-gap` bez przeskoku na 1024 (jeden próg z resztą).  
@@ -276,7 +285,7 @@ Brak. RF-12 tworzy `content/pages/home.json` i `workshops-hub.json` **z treści 
 
 ## Kryteria ukończenia (część techniczna)
 
-- [ ] RF-0 … RF-11 gotowe lokalnie, potem jeden deploy na staging (D11); każda paczka z zielonym build + lint, raportem `check:visual` względem baseline'u (0 FAIL) i meldunkiem;
+- [x] RF-0 … RF-12 gotowe lokalnie (deploy na staging czeka), potem jeden deploy na staging (D11); każda paczka z zielonym build + lint, raportem `check:visual` względem baseline'u (0 FAIL) i meldunkiem;
 - [ ] axe na 21 trasach × 2 szerokości (jak R0) → 0 naruszeń;
 - [ ] CLS `/ikony` < 0,1 (390 i 1440); `/ikony` statyczna w buildzie;
 - [ ] `npx knip` z `knip.json` → czysto; `npx jscpd src` → klony TSX = 0, CSS ≤ 15 (do RF-14: ≤ 5);
@@ -286,7 +295,7 @@ Brak. RF-12 tworzy `content/pages/home.json` i `workshops-hub.json` **z treści 
 
 ## Ryzyka i pytania otwarte
 
-- **Przecięcie z k8 na `content/`** — RF-12 nie czeka na k8 (D12), konflikty rozstrzyga rebase k8 po review; RF-5 czeka na T-R1 / T-R2. Jeśli k8 się przeciąga, RF-5 można zrobić z walidacją jako **ostrzeżeniem** (konsola przy buildzie) i podnieść do błędu po danych — do decyzji przy meldunku RF-4.
+- **Przecięcie z k8 na `content/`** — RF-12 nie czeka na k8 (D12), konflikty rozstrzyga rebase k8 po review; RF-5 zamknięte po decyzji właściciela o T-R1 / T-R2 (walidacja od razu jako błąd buildu).
 - **RF-4 zmienia liczbę kafli w rzędzie** względem pomiaru JS — ryzyko wizualne; zrzuty 390 / 1440 / 1920 w meldunku, właściciel akceptuje.
 - **Zachowanie Tailwind v4 przy scalaniu `leading-*` / `shadow-*`** (RF-10) — komentarz w `globals.css` mówi o „self-collision”; sprawdzić na jednym tokenie przed hurtową zmianą; w razie problemu zostawić duplikat z komentarzem i zgłosić.
 - **`prebuild` na Vercel** — `check:content` czyta `content/**/*.mdx` przez `tsx`; sprawdzić czas (budżet < 10 s) i że `tsx` z `devDependencies` jest instalowane w buildzie (Vercel instaluje dev deps domyślnie).

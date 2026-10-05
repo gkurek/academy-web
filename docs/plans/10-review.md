@@ -28,6 +28,7 @@ Kompleksowy przegląd tego, co jest zaimplementowane i widoczne na stagingu, w t
 | **RV-5** | Model: **Opus 5.5** dla wszystkich faz **poza R5** (synteza techniczna — **Fable 5.1**). Każda faza w **świeżej sesji**. |
 | **RV-6** | Ograniczanie biasu „ten sam model ocenia swój kod”: świeża sesja na fazę; w R1–R4 bez sięgania po uzasadnienia decyzji z archiwum (tylko `CLAUDE.md`, brief, kod); twarde dane z narzędzi (R0) i pomiar (V1) przed oceną okiem; ostateczny arbiter w fazie wizualnej — właściciel. |
 | **RV-8** | Osobna gałąź `feat/10-review` od `main`: review i jego poprawki (`src/`) idą równolegle do k8 (`content/` na `feat/10-finishing`), więc rozdzielamy historię i merge'ujemy niezależnie. Komunikaty commitów: `10/R0: …`, `10/R5: …`, poprawki `10/RF-N: …`. |
+| **RV-9** | (2026-10-05) Wartości docelowe odstępów to decyzja wizualna o dużym skutku, więc ma osobny krok **RF-13a** (Fable 5.1, doradztwo z dostępem do archiwum, przełącznik wariantów). Kolejność: V1 → V2 → V3 → **RF-13a** → RF-13; V4 niezależnie, po nim brama powrotna. Powód: decyzja ma być spójna z ustaleniami V2/V3, a RF-13 nie startuje z liczb zgadniętych z samego pomiaru. |
 | **RV-7** | Kolejność: R0 → R1–R4 → R5 → *poprawki techniczne* → V1–V4 → *poprawki wizualne* → (po EJK) C1–C2. Techniczne przed wizualnym, bo refaktory wspólnych wrapperów i spacingu same usuną część niespójności wizualnych. |
 
 ## Format zgłoszenia (wspólny dla wszystkich faz)
@@ -112,6 +113,18 @@ Gotowe: `docs/review/06-visual-2-templates.md`.
 Zakres: każda trasa, zrzuty 390 / 1440 / 1600: czytelność, hierarchia, niejasny układ, rytm pionowy, długość wierszy, łamanie.
 Gotowe: `docs/review/06-visual-3-pages.md`.
 
+### RF-13a — Decyzja o skali odstępów i belce (Fable 5.1) · warunek: V1–V3 zamknięte
+
+Zakres: sesja doradcza z właścicielem, **bez kodu produkcyjnego**. Model:
+1. czyta V1 §3–§6, V2, V3 oraz bazowy `design/README` §3 i `README-o-akademii-pracownia.md` pkt 7 (96 px) — źródło konfliktu 56–64 vs 96;
+2. **sięga do archiwum i historii** (`docs/archive/`, `plan-claude-code-historia.md`, `git log -S` na `--section-gap`, `8bdf59a`) — tylko tu wolno (RV-6 dotyczyło R1–R4): skąd 96 px, które decyzje K-xx dotykają odstępów, czy coś ważnego przeoczyliśmy;
+3. ocenia UX każdej opcji (rytm, czytelność granic sekcji, długość stron, spójność z makietą, mobile) i **rekomenduje**; właściciel decyduje (RV-6);
+4. dodaje tymczasowy przełącznik wariantów `--section-gap` (56 / 64 / 96) + wariant „ciasny”; zrzuty 4 tras testowych (`/`, `/o-akademii`, `/warsztaty/letnia-szkola-swiatla`, `/ikony`) × 390 / 1440 × warianty; kryteria spisane **przed** oglądaniem; ocena także na żywo (przewijanie);
+5. zapisuje decyzję (wartości, powód, odrzucone alternatywy) w `10-review-fixes.md` (warunek startu RF-13) i jako regułę w `CLAUDE.md` (propozycja do właściciela). Przełącznik usuwany po decyzji.
+
+Brama powrotna: po V4 krótkie sprawdzenie, czy V4 nie zmienia założeń; jeśli tak — decyzję otwieramy ponownie przed RF-13. Po RF-13 wartość można korygować jednym tokenem.
+Gotowe: `docs/review/06-visual-5-spacing-decision.md` (analiza, kryteria, zrzuty, rekomendacja, decyzja właściciela).
+
 ### V4 — Elementy globalne i stany (Opus 5.5)
 
 Zakres: `Header`, menu mobile, `SectionNav`, `Breadcrumb`, `Footer`, `Lightbox`, akordeony; fokus, hover, stany puste, 404.
@@ -137,6 +150,7 @@ Brak — review nie dotyka `content/`.
 - [ ] R0–R5 zakończone, `05-tech-synthesis.md` i `10-review-fixes.md` zatwierdzone;
 - [ ] poprawki techniczne gotowe lokalnie (każda paczka porównana z baseline'em z RF-0, bez deployu per paczka — D11 w `10-review-fixes.md`), potem jeden deploy na staging;
 - [ ] V1–V4 zakończone, paczki wizualne w `10-review-fixes.md`;
+- [ ] RF-13a: decyzja o skali odstępów i belce zapisana (po V3, z bramą powrotną po V4);
 - [ ] poprawki wizualne wdrożone;
 - [ ] C1–C2 zakończone (po EJK);
 - [ ] build + lint bez regresji po każdej paczce poprawek.
@@ -157,11 +171,12 @@ Brak — review nie dotyka `content/`.
 | R3 — trasy | Opus 5.5 | ✅ 2026-10-04 | `docs/review/03-routes.md`: 11 zgłoszeń (0 bug, 2 ryzyko, 4 niespójność, 3 upraszczanie, 2 drobiazg); rozstrzygnięte punkty z R1/R2: R1-07 potwierdzone (3 trasy zależne od daty, tylko `/aktualnosci/[slug]` bez `revalidate`), R2-12 → `resolveNav(path)` (R3-03), R2-08 → wymagana treść = błąd buildu (R3-01); na stagingu: `aria-current="page"` na sekcji nadrzędnej, `/ikony` `no-store` + żądanie RSC na każdy filtr, `/ikony/wystawa` 308 z konfiguracji (plik trasy martwy), 12/19 tras z domyślnym `<title>` (→ k9) |
 | R4 — przekrojowe | Opus 5.5 | ✅ 2026-10-04 | `docs/review/04-cross-cutting.md`: 21 zgłoszeń (0 bug, 3 ryzyko, 9 niespójność, 6 upraszczanie, 3 drobiazg); mapa 10+ mechanizmów odstępu sekcji (26–96 px) jako wejście V1; na stagingu: `--section-gap` 96 px na ≥ 1024 (poza `design/README` 56–64), sekcje publikacji 34 px na desktopie (token 64 nieużyty), złote belki paneli 2 px (oferty) vs 3 px (wystawy, publikacje), akapity MDX 20 vs 14 px (warstwy `components` vs `utilities`), menu mobilne z podwójnymi Aktualnościami / Kontaktem, `[pole CMS]` na `/warsztaty`; 43 nieużywane tokeny, 15 martwych klas, 19 nieużywanych kluczy `pl.ts`; B4 rozwiązane; korekta R3-02 (kolizje slugów są walidowane) |
 | R5 — synteza | Fable 5.1 | ✅ 2026-10-04 | `docs/review/05-tech-synthesis.md`: 82 zgłoszenia → **34 pozycje S** (6 bug, 12 ryzyko, 12 niespójność/upraszczanie, 2 decyzja, 2 drobiazg), 5 uproszczeń A1–A5 (daty i sezon, `resolveNav(path)`, galeria SSR, role typograficzne, skala odstępów), 9 decyzji właściciela D1–D9 z domyślnymi odpowiedziami, 6 pozycji do backlogu T (T-R1…T-R6); korekta R3-02 potwierdzona (`publications.ts:32`), B4 zamknięte (0 wartości arbitralnych), `design/` w `.gitignore` → R4-09 do potwierdzenia przez właściciela; projekt `docs/plans/10-review-fixes.md`: **14 paczek RF-1…RF-14**, RF-12 po k8, RF-13–RF-14 po V1 (RV-7) — **zatwierdzony 2026-10-04, decyzje D1–D9 potwierdzone w wersji domyślnej** |
-| Poprawki techniczne | — | ⬜ | |
-| V1 — pomiar | Opus 5.5 | ⬜ | |
+| Poprawki techniczne | — | ✅ RF-0…RF-12 lokalnie 2026-10-05 (RF-13, RF-14 po V1) | deploy na staging → V1 |
+| V1 — pomiar | Opus 5.5 | ✅ 2026-10-05 (czeka na decyzję właściciela o wartościach §6) | `docs/review/06-visual-1-measure.md`: 21 tras × 390 / 1440 / 1600 na nowym stagingu (`1428105`), skrypt `scripts/visual-measure.ts`; nowy baseline (stary → `.visual/baseline-bb7b0cb`), staging vs baseline 0 FAIL, smoke 11/11; **21 zgłoszeń V1-01…V1-21** (odstępy sekcji desktop w trzech skupiskach 94–98 / 48–56 / 28–38 przy makiecie 56–64, mobile 30–34 zgodne poza ofertami 50–56; dół strony 0–122 przy wzorcu 26; belki 2 vs 3 px — `design/README` mówi 3 px, korekta R4-08; podpisy 14,5 px na 390 poniżej minimum 15; H3 26 px poza skalą; interlinie 1,25–1,45; akapity 20 / 14 / 40; miara wystaw rośnie z oknem); 0 kolorów i rozmiarów spoza tokenów; axe 0 naruszeń (42), CLS 0 na `/`, `/ikony`, `/ikony/na-zamowienie`; propozycja wartości RF-13 (56 / 34, próg 768, ciasny 34 / 26, `--accent-bar` 3 px) i RF-14 — **nie wpisana** do `10-review-fixes.md` |
 | V2 — szablony | Opus 5.5 | ⬜ | |
 | V3 — strony | Opus 5.5 | ⬜ | |
-| V4 — globalne i stany | Opus 5.5 | ⬜ | |
+| RF-13a — decyzja o odstępach | Fable 5.1 | ⬜ (po V3; przed RF-13) | doradztwo + archiwum + przełącznik wariantów; decyzja właściciela |
+| V4 — globalne i stany | Opus 5.5 | ⬜ | niezależne od RF-13a; po V4 brama powrotna do decyzji |
 | Poprawki wizualne | — | ⬜ | |
 | C1 — zgodność z planem | Opus 5.5 | ⬜ (po EJK) | |
 | C2 — treść | Opus 5.5 | ⬜ (po EJK) | |
