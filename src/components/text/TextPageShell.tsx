@@ -3,18 +3,14 @@ import type { ReactNode } from "react";
 import { SectionPageShell } from "@/components/layout/SectionPageShell";
 import { TextPageTocNav } from "@/components/text/TextPageTocNav";
 import type { TocItem } from "@/content/types";
-import type { SectionKey } from "@/navigation";
 
 export interface TextPageShellProps {
   title: string;
   lead?: string;
   toc?: TocItem[];
   children: ReactNode;
-  /** Main nav item to underline gold in the Header — read from navigation.ts. */
-  active?: string;
-  section?: SectionKey;
-  /** Label of the current SectionNav item — see SectionNavProps["active"]. */
-  sectionActive?: string;
+  /** Route path — see SectionPageShellProps["path"]. */
+  path: string;
   /** Optional id on the page header — for in-page TOC anchors (mockup 3a). */
   headerId?: string;
   /** When true, AboutPage (or similar) renders its own hero header. */
@@ -26,37 +22,33 @@ export function TextPageShell({
   lead,
   toc,
   children,
-  active,
-  section,
-  sectionActive,
+  path,
   headerId,
   hideHeader = false,
 }: TextPageShellProps) {
   const hasToc = Boolean(toc && toc.length > 0);
 
   return (
-    <SectionPageShell active={active} section={section} sectionActive={sectionActive}>
-      <div className="mx-auto w-full max-w-content-max">
-        {hasToc ? (
-          <div className="grid grid-cols-1 items-start lg:grid-cols-text-page-toc lg:gap-text-page-main-gap">
-            <div className="hidden self-start lg:sticky lg:top-text-page-toc-sticky lg:block">
-              <TextPageTocNav items={toc!} variant="sidebar" />
-            </div>
-            <div className="min-w-0">
-              {!hideHeader ? <TextPageHeader id={headerId} title={title} lead={lead} /> : null}
-              <div className="mb-space-5 lg:hidden">
-                <TextPageTocNav items={toc!} variant="collapse" />
-              </div>
-              {children}
-            </div>
+    <SectionPageShell path={path}>
+      {hasToc ? (
+        <div className="grid grid-cols-1 items-start lg:grid-cols-text-page-toc lg:gap-text-page-main-gap">
+          <div className="hidden self-start lg:sticky lg:top-text-page-toc-sticky lg:block">
+            <TextPageTocNav items={toc!} variant="sidebar" />
           </div>
-        ) : (
-          <>
+          <div className="min-w-0">
             {!hideHeader ? <TextPageHeader id={headerId} title={title} lead={lead} /> : null}
+            <div className="mb-space-5 lg:hidden">
+              <TextPageTocNav items={toc!} variant="collapse" />
+            </div>
             {children}
-          </>
-        )}
-      </div>
+          </div>
+        </div>
+      ) : (
+        <>
+          {!hideHeader ? <TextPageHeader id={headerId} title={title} lead={lead} /> : null}
+          {children}
+        </>
+      )}
     </SectionPageShell>
   );
 }

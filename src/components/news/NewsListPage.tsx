@@ -13,7 +13,8 @@ export interface NewsListPageProps {
   archiveYearRange: string;
   years: string[];
   archiveYears: string[];
-  active: string;
+  /** Route path — see SectionPageShellProps["path"]. */
+  path: string;
   featured?: NewsListEntry;
 }
 
@@ -23,11 +24,11 @@ export function NewsListPage({
   archiveYearRange,
   years,
   archiveYears,
-  active,
+  path,
   featured,
 }: NewsListPageProps) {
   return (
-    <SectionPageShell active={active}>
+    <SectionPageShell path={path}>
       <NewsListScrollRestore years={years} archiveYears={archiveYears} />
       <h1 className="font-serif text-size-h1-m md:text-size-h1 leading-tight text-text-h1 mb-space-5">
         {pl.news.title}

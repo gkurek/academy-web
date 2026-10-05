@@ -5,11 +5,13 @@ import { MdxLink } from "@/components/content/MdxLink";
 import { SemesterProgram } from "@/components/content/SemesterProgram";
 import { StepList } from "@/components/content/StepList";
 import { SectionPageShell } from "@/components/layout/SectionPageShell";
+import { OfferLeadExtra } from "@/components/offers/OfferLeadExtra";
+import { OfferLeadIntro } from "@/components/offers/OfferLeadIntro";
+import { OfferQuote } from "@/components/offers/OfferQuote";
 import { getEnrollmentState, getOfferDateValues, type LoadedOffer } from "@/content/offers";
 import type { OfferFacts } from "@/content/types";
 import { pl } from "@/i18n/pl";
 import { fillRequiredTemplate } from "@/lib/fillTemplate";
-import type { SectionKey } from "@/navigation";
 
 // Links are styled only in offer MDX (LY5); news, contact and articles keep their own `a` styles.
 const offerMdxLinks = { a: MdxLink };
@@ -32,14 +34,13 @@ function getOfferEyebrow(kind: LoadedOffer["kind"], seasonLabel?: string): strin
 
 export interface OfferPageProps {
   offer: LoadedOffer;
-  section: SectionKey;
-  sectionActive: string;
-  /** Main nav item to underline gold in the Header — read from navigation.ts. */
-  active: string;
+  /** Route path — see SectionPageShellProps["path"]. */
+  path: string;
+  /** Replaces the quote from the offer's data (`quote` → OfferQuote), e.g. plener testimonials. */
   quoteSlot?: ReactNode;
   afterBodySlot?: ReactNode;
-  /** Extra heading + copy rendered in the left column, below leadSecondary — fills tall FactsBox columns. */
-  leadExtraSlot?: ReactNode;
+  /** See SectionPageShellProps["footerBand"]. */
+  footerBand?: ReactNode;
 }
 
 function EnrollmentSection({ facts, quoteSlot }: { facts: OfferFacts; quoteSlot?: ReactNode }) {
@@ -87,23 +88,18 @@ function EnrollmentSection({ facts, quoteSlot }: { facts: OfferFacts; quoteSlot?
   );
 }
 
-export function OfferPage({
-  offer,
-  section,
-  sectionActive,
-  active,
-  quoteSlot,
-  afterBodySlot,
-  leadExtraSlot,
-}: OfferPageProps) {
-  const { Content, title, lead, leadSecondary, facts, kind, semesters, steps } = offer;
+export function OfferPage({ offer, path, quoteSlot, afterBodySlot, footerBand }: OfferPageProps) {
+  const { Content, title, lead, leadSecondary, facts, kind, semesters, steps, leadIntro, leadExtra, quote } = offer;
   const eyebrow = getOfferEyebrow(kind, facts.seasonLabel);
   const showEnrollment = kind === "kurs";
-  const enrollmentQuoteSlot = showEnrollment ? quoteSlot : undefined;
-  const trailingQuoteSlot = !showEnrollment ? quoteSlot : undefined;
+  const offerQuote =
+    quoteSlot ??
+    (quote ? <OfferQuote quote={quote.quote} author={quote.author} role={quote.role} image={quote.image} /> : undefined);
+  const enrollmentQuoteSlot = showEnrollment ? offerQuote : undefined;
+  const trailingQuoteSlot = !showEnrollment ? offerQuote : undefined;
 
   return (
-    <SectionPageShell active={active} section={section} sectionActive={sectionActive}>
+    <SectionPageShell path={path} footerBand={footerBand}>
       {/* Single FactsBox instance: stacks below the lead column on mobile, sidebar on lg. */}
       <div className="grid grid-cols-1 lg:grid-cols-offer-main gap-space-6 lg:gap-offer-main-gap items-start mb-space-7">
         <div className="min-w-0">
@@ -128,7 +124,13 @@ export function OfferPage({
             </p>
           )}
 
-          {leadExtraSlot && <div className="mt-space-6">{leadExtraSlot}</div>}
+          {/* Extra copy below leadSecondary — fills the column beside a tall FactsBox. */}
+          {(leadIntro || leadExtra) && (
+            <div className="mt-space-6">
+              {leadIntro && <OfferLeadIntro sections={leadIntro} />}
+              {leadExtra && <OfferLeadExtra leadExtra={leadExtra} />}
+            </div>
+          )}
         </div>
 
         <FactsBox facts={facts} kind={kind} enrollment={getEnrollmentState(offer)} />

@@ -24,7 +24,8 @@ import { pl } from "@/i18n/pl";
 
 export interface NewsArticlePageProps {
   entry: LoadedNews;
-  active: string;
+  /** Route path — see SectionPageShellProps["path"]. */
+  path: string;
 }
 
 function newsArticleGridClass(flags: {
@@ -49,7 +50,7 @@ function newsArticleGridClass(flags: {
   return parts.join(" ");
 }
 
-export function NewsArticlePage({ entry, active }: NewsArticlePageProps) {
+export function NewsArticlePage({ entry, path }: NewsArticlePageProps) {
   const { Content } = entry;
   const kindLabel = getNewsKindLabel(entry.kind);
   const neighbors = getNewsNeighbors(entry.slug);
@@ -89,7 +90,7 @@ export function NewsArticlePage({ entry, active }: NewsArticlePageProps) {
   });
 
   return (
-    <SectionPageShell active={active}>
+    <SectionPageShell path={path}>
       <LightboxProvider>
         <article className={articleClass}>
           <header className="news-article-head">

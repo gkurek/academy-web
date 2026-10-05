@@ -1,9 +1,15 @@
-import { GalleryPage } from "@/components/gallery/GalleryPage";
-import { mainNav, sectionNav } from "@/navigation";
+import type { Metadata } from "next";
 
-const mainNavActive = mainNav.find((item) => item.href === "/ikony")!.label;
-const sectionActive = sectionNav.ikony[0].label;
+import { GalleryPage } from "@/components/gallery/GalleryPage";
+import { getIconTags, getIconWorks } from "@/content/icons";
+import { navTitle } from "@/navigation";
+
+const path = "/ikony";
+
+export const metadata: Metadata = {
+  title: navTitle(path),
+};
 
 export default function IconsPage() {
-  return <GalleryPage active={mainNavActive} sectionActive={sectionActive} />;
+  return <GalleryPage path={path} works={getIconWorks()} tags={getIconTags()} />;
 }

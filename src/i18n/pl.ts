@@ -4,6 +4,8 @@ export const pl = {
     // Site name, verbatim from brief-claude-code.md §8.
     siteName: "AKADEMIA IKONY – Studium Ikonograficzne św. Andrzeja Apostoła",
     titleBrand: "Akademia Ikony",
+    // Joins document title parts: "Archiwum · Wykłady · Akademia Ikony".
+    titleSeparator: " · ",
     // Same name split into the two lines the logo lockup uses.
     orgShortName: "AKADEMIA IKONY",
     orgSubtitle: "Studium Ikonograficzne św. Andrzeja Apostoła",
@@ -20,8 +22,6 @@ export const pl = {
     sectionCollapseLabel: "Zwiń sekcję",
     primaryCta: "Zapisy na warsztaty",
     contactCta: "Kontakt",
-    newsLink: "Aktualności",
-    publicationsLink: "Publikacje",
     blogLink: "Blog",
   },
   sectionNav: {
@@ -640,18 +640,15 @@ export const pl = {
     showAllGallery: "Pokaż wszystkie ({count})",
     enlargePhotoAria: "Powiększ zdjęcie {n} z {total}",
     relatedHeading: "Powiązane",
+    // Default „Powiązane” for kinds whose label is not a nav label (the rest come from navigation.ts).
     relatedDefaults: {
-      warsztaty: "Kurs roczny i trzyletni",
-      wyklady: "Wykłady",
       wystawa: "Wystawy w Kościele Środowisk Twórczych",
-      wyjazd: "Letnia Szkoła Światła",
     },
     relatedLectureArchive: "Archiwum wykładów",
     eventCta: {
       warsztaty: "Jak się zapisać na kurs",
       wyklady: "Program wykładów",
       wystawa: "Wystawy w Kościele Środowisk Twórczych",
-      wyjazd: "Letnia Szkoła Światła",
     },
   },
   footer: {

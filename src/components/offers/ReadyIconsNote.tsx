@@ -9,7 +9,7 @@ export function ReadyIconsNote({ email }: ReadyIconsNoteProps) {
   return (
     <section
       aria-labelledby="ready-icons-heading"
-      className="rule-gold-t surface-tile-bleed -mb-space-6 px-page-margin-mobile md:px-page-margin py-offer-ready-y flex flex-col md:flex-row md:flex-wrap md:items-baseline gap-y-space-3 gap-x-offer-ready-gap-x"
+      className="rule-gold-t surface-tile-bleed px-page-margin-mobile md:px-page-margin py-offer-ready-y flex flex-col md:flex-row md:flex-wrap md:items-baseline gap-y-space-3 gap-x-offer-ready-gap-x"
     >
       <h2
         id="ready-icons-heading"

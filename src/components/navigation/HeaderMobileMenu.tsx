@@ -5,11 +5,13 @@ import Link from "next/link";
 import { Button } from "@/components/core/Button";
 import { ExternalLink } from "@/components/core/ExternalLink";
 import { pl } from "@/i18n/pl";
-import { mainNav } from "@/navigation";
+import { mainNav, navAriaCurrent, navItem, publicationsLink } from "@/navigation";
 
 export interface HeaderMobileMenuProps {
-  /** Label of the main nav item to highlight gold, e.g. "Wykłady". */
-  active?: string;
+  /** Route path — `aria-current="page"` on the link to it. */
+  path?: string;
+  /** Href of the main nav item to highlight gold (resolveNav). */
+  activeHref?: string;
   phone: string;
   blogUrl: string;
 }
@@ -68,7 +70,7 @@ function getFocusableElements(container: HTMLElement): HTMLElement[] {
   ).filter((element) => !element.hasAttribute("disabled"));
 }
 
-export function HeaderMobileMenu({ active, phone, blogUrl }: HeaderMobileMenuProps) {
+export function HeaderMobileMenu({ path, activeHref, phone, blogUrl }: HeaderMobileMenuProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [expandedSection, setExpandedSection] = useState<string | null>(null);
   const [headerBarHeight, setHeaderBarHeight] = useState(0);
@@ -78,7 +80,8 @@ export function HeaderMobileMenu({ active, phone, blogUrl }: HeaderMobileMenuPro
   const dialogRef = useRef<HTMLDivElement>(null);
   const menuButtonRef = useRef<HTMLButtonElement>(null);
 
-  const iconsNavItem = mainNav.find((item) => item.href === "/ikony");
+  const iconsLabel = navItem("/ikony").label;
+  const newsLink = navItem("/aktualnosci");
 
   const closeMenu = useCallback(() => {
     setIsOpen(false);
@@ -88,8 +91,8 @@ export function HeaderMobileMenu({ active, phone, blogUrl }: HeaderMobileMenuPro
 
   const openMenu = useCallback(() => {
     setIsOpen(true);
-    setExpandedSection(iconsNavItem?.label ?? null);
-  }, [iconsNavItem?.label]);
+    setExpandedSection(iconsLabel);
+  }, [iconsLabel]);
 
   useLayoutEffect(() => {
     const headerBar = headerBarRef.current;
@@ -217,16 +220,19 @@ export function HeaderMobileMenu({ active, phone, blogUrl }: HeaderMobileMenuPro
         >
           <nav className="grid">
             {mainNav.map((item) => {
+              const isActive = item.href === activeHref;
+              const ariaCurrent = navAriaCurrent(item.href, activeHref, path);
+
               if (!item.children) {
                 return (
                   <Link
                     key={item.label}
                     href={item.href}
                     onClick={closeMenu}
-                    aria-current={item.label === active ? "page" : undefined}
+                    aria-current={ariaCurrent}
                     className={
                       "border-b border-line-neutral px-page-margin-mobile py-space-5 text-size-h3-m " +
-                      (item.label === active ? "text-accent-text" : "text-text-list-title")
+                      (isActive ? "text-accent-text" : "text-text-list-title")
                     }
                   >
                     {item.label}
@@ -243,10 +249,10 @@ export function HeaderMobileMenu({ active, phone, blogUrl }: HeaderMobileMenuPro
                     <Link
                       href={item.href}
                       onClick={closeMenu}
-                      aria-current={item.label === active ? "page" : undefined}
+                      aria-current={ariaCurrent}
                       className={
                         "flex-1 px-page-margin-mobile py-space-5 text-size-h3-m " +
-                        (item.label === active ? "text-accent-text" : "text-text-list-title")
+                        (isActive ? "text-accent-text" : "text-text-list-title")
                       }
                     >
                       {item.label}
@@ -269,6 +275,7 @@ export function HeaderMobileMenu({ active, phone, blogUrl }: HeaderMobileMenuPro
                           key={child.label}
                           href={child.href}
                           onClick={closeMenu}
+                          aria-current={child.href === path ? "page" : undefined}
                           className="block py-space-4 pr-page-margin-mobile pl-menu-indent text-size-ui-m text-text-secondary"
                         >
                           {child.label}
@@ -289,12 +296,12 @@ export function HeaderMobileMenu({ active, phone, blogUrl }: HeaderMobileMenuPro
               {pl.header.contactCta} · {phone}
             </Button>
             <div className="mt-space-6 text-size-ui text-text-tertiary">
-              <Link href="/aktualnosci" onClick={closeMenu}>
-                {pl.header.newsLink}
+              <Link href={newsLink.href} onClick={closeMenu}>
+                {newsLink.label}
               </Link>
               {" · "}
-              <Link href="/publikacje" onClick={closeMenu}>
-                {pl.header.publicationsLink}
+              <Link href={publicationsLink.href} onClick={closeMenu}>
+                {publicationsLink.label}
               </Link>
               {" · "}
               <ExternalLink href={blogUrl} showIcon={false} onClick={closeMenu}>

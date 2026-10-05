@@ -18,7 +18,7 @@ const ibmPlexSans = IBM_Plex_Sans({
 export const metadata: Metadata = {
   title: {
     default: pl.meta.siteName,
-    template: `%s · ${pl.meta.titleBrand}`,
+    template: `%s${pl.meta.titleSeparator}${pl.meta.titleBrand}`,
   },
 };
 

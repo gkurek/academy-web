@@ -12,34 +12,40 @@ import { LightboxProvider } from "@/components/lightbox/LightboxProvider";
 import { SectionPageShell } from "@/components/layout/SectionPageShell";
 import {
   getAnnualExhibitionYear,
-  getExhibitionNowNext,
-  getExhibitionPage,
-  getFirstAnnualExhibitionYear,
-  getLastFinishedAnnualExhibition,
-  getLatestAnnualExhibition,
-  getLatestAnnualExhibitionWithPhotos,
   isAnnualExhibitionActive,
   resolveAnnualVernissage,
+  type ExhibitionNowNext as ExhibitionNowNextState,
+  type LoadedExhibitionPage,
 } from "@/content/exhibition";
 import { getLectureSeasonShortTheme } from "@/content/lectures";
 import { getSiteSettings } from "@/content/settings";
+import type { AnnualExhibition } from "@/content/types";
 import { pl } from "@/i18n/pl";
 import { buildMailtoHref } from "@/lib/mailto";
 import { formatPolishMonthYearLocative } from "@/lib/polishMonth";
 
 export interface ExhibitionPageProps {
-  active: string;
-  sectionActive: string;
+  /** Route path — see SectionPageShellProps["path"]. */
+  path: string;
+  page: LoadedExhibitionPage;
+  latestAnnual: AnnualExhibition;
+  lastFinished?: AnnualExhibition;
+  latestWithPhotos?: AnnualExhibition;
+  nowNext: ExhibitionNowNextState;
+  firstAnnualYear: number;
 }
 
-export function ExhibitionPage({ active, sectionActive }: ExhibitionPageProps) {
-  const page = getExhibitionPage();
+export function ExhibitionPage({
+  path,
+  page,
+  latestAnnual,
+  lastFinished,
+  latestWithPhotos,
+  nowNext,
+  firstAnnualYear,
+}: ExhibitionPageProps) {
   const settings = getSiteSettings();
-  const latestAnnual = getLatestAnnualExhibition();
   const annualActive = isAnnualExhibitionActive(latestAnnual);
-  const lastFinished = getLastFinishedAnnualExhibition();
-  const latestWithPhotos = getLatestAnnualExhibitionWithPhotos();
-  const nowNext = getExhibitionNowNext();
   const {
     page: pageCopy,
     permanent,
@@ -100,7 +106,7 @@ export function ExhibitionPage({ active, sectionActive }: ExhibitionPageProps) {
   const { heroImage, permanentImage, permanentImage2, closingImage } = page;
 
   return (
-    <SectionPageShell active={active} section="ikony" sectionActive={sectionActive}>
+    <SectionPageShell path={path}>
       <ExhibitionHashScroll>
       <header>
         <div className="exhibition-hero-grid">
@@ -156,7 +162,7 @@ export function ExhibitionPage({ active, sectionActive }: ExhibitionPageProps) {
               </p>
               <p className="exhibition-section-copy">{annual.intro3}</p>
               <p className="exhibition-section-copy">
-                {annual.scheduleSince.replace("{firstYear}", String(getFirstAnnualExhibitionYear()))}{" "}
+                {annual.scheduleSince.replace("{firstYear}", String(firstAnnualYear))}{" "}
                 {scheduleNext}
               </p>
               <p className="exhibition-section-copy">

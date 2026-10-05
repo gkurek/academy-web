@@ -1,8 +1,15 @@
+import type { Metadata } from "next";
+
 import { AboutPage } from "@/components/text/AboutPage";
 import { getAboutPage } from "@/content/pages";
+import { navTitle } from "@/navigation";
+
+const path = "/o-akademii";
+
+export const metadata: Metadata = {
+  title: navTitle(path),
+};
 
 export default function AboutRoutePage() {
-  const page = getAboutPage();
-
-  return <AboutPage page={page} />;
+  return <AboutPage page={getAboutPage()} path={path} />;
 }

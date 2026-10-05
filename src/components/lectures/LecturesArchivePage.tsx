@@ -2,25 +2,21 @@ import { SeasonAccordion } from "@/components/content/SeasonAccordion";
 import { SectionPageShell } from "@/components/layout/SectionPageShell";
 import type { LoadedLectureSeason } from "@/content/lectures";
 import { pl } from "@/i18n/pl";
-import type { SectionKey } from "@/navigation";
 
 export interface LecturesArchivePageProps {
   seasons: LoadedLectureSeason[];
   intro: string;
-  section: SectionKey;
-  sectionActive: string;
-  active: string;
+  /** Route path — see SectionPageShellProps["path"]. */
+  path: string;
 }
 
 export function LecturesArchivePage({
   seasons,
   intro,
-  section,
-  sectionActive,
-  active,
+  path,
 }: LecturesArchivePageProps) {
   return (
-    <SectionPageShell active={active} section={section} sectionActive={sectionActive}>
+    <SectionPageShell path={path}>
       <h1 className="font-serif text-size-h1-m md:text-size-h1 leading-tight text-text-h1 mb-space-5">
         {pl.lectures.archiveHeading}
       </h1>

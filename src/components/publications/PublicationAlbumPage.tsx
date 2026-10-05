@@ -10,24 +10,25 @@ import { Breadcrumb } from "@/components/navigation/Breadcrumb";
 import { getNewsBySlug } from "@/content/news";
 import type { LoadedPublication } from "@/content/publications";
 import { pl } from "@/i18n/pl";
-import { footerSitemapFlat } from "@/navigation";
+import { publicationsLink } from "@/navigation";
 
 export interface PublicationAlbumPageProps {
   publication: LoadedPublication;
+  /** Route path — see SectionPageShellProps["path"]. */
+  path: string;
 }
 
-export function PublicationAlbumPage({ publication }: PublicationAlbumPageProps) {
-  const publicationsLabel = footerSitemapFlat.find((item) => item.href === "/publikacje")!.label;
+export function PublicationAlbumPage({ publication, path }: PublicationAlbumPageProps) {
   const relatedNews = publication.relatedNewsSlug
     ? getNewsBySlug(publication.relatedNewsSlug)
     : undefined;
   return (
-    <SectionPageShell active={publicationsLabel}>
-      <div className="mx-auto w-full max-w-content-max publication-page">
+    <SectionPageShell path={path}>
+      <div className="publication-page">
         <Breadcrumb
           items={[
             { label: pl.publications.breadcrumbHome, href: "/" },
-            { label: publicationsLabel, href: "/publikacje" },
+            { label: publicationsLink.label, href: publicationsLink.href },
             { label: publication.title },
           ]}
         />

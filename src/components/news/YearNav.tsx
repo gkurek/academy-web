@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import { useEffect, useRef, type MouseEvent } from "react";
 
 import {
@@ -8,6 +7,7 @@ import {
   newsPrefersReducedMotion,
   scrollNewsYearIntoView,
 } from "@/components/news/focusNewsYearCardTitle";
+import { NavUnderlineLink } from "@/components/navigation/NavUnderlineLink";
 import { useYearActiveId } from "@/components/news/useYearActiveId";
 import { NEWS_ARCHIVE_EXPAND_EVENT } from "@/components/news/newsArchiveEvents";
 import { pl } from "@/i18n/pl";
@@ -104,20 +104,16 @@ export function YearNav({ years, archiveYears }: YearNavProps) {
         {years.map((year) => {
           const isActive = year === activeYear;
           return (
-            <Link
+            <NavUnderlineLink
               key={year}
               href={`#${year}`}
-              aria-current={isActive ? "true" : undefined}
+              label={year}
+              variant="section"
+              isActive={isActive}
+              ariaCurrent={isActive ? "true" : undefined}
               onClick={(event) => handleYearClick(event, year)}
-              className={
-                (isActive
-                  ? "nav-link-underline nav-link-underline-section nav-link-underline-active text-accent-text"
-                  : "nav-link-underline nav-link-underline-section text-text-secondary hover:text-accent-hover") +
-                " tap-target-nav year-nav-link"
-              }
-            >
-              <span className="link-underline-target">{year}</span>
-            </Link>
+              className="year-nav-link"
+            />
           );
         })}
       </div>

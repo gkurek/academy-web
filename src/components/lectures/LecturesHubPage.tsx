@@ -6,16 +6,14 @@ import type { EnrollmentState } from "@/content/enrollment";
 import type { LoadedLectureSeason } from "@/content/lectures";
 import type { OfferFacts } from "@/content/types";
 import { pl } from "@/i18n/pl";
-import type { SectionKey } from "@/navigation";
 
 export interface LecturesHubPageProps {
   season: LoadedLectureSeason;
   archiveIntro: string;
   facts: OfferFacts;
   enrollment: EnrollmentState;
-  section: SectionKey;
-  sectionActive: string;
-  active: string;
+  /** Route path — see SectionPageShellProps["path"]. */
+  path: string;
 }
 
 export function LecturesHubPage({
@@ -23,9 +21,7 @@ export function LecturesHubPage({
   archiveIntro,
   facts,
   enrollment,
-  section,
-  sectionActive,
-  active,
+  path,
 }: LecturesHubPageProps) {
   const eyebrow = pl.lectures.eyebrow.replace("{seasonLabel}", season.label);
   const programLead = pl.lectures.programLead
@@ -33,7 +29,7 @@ export function LecturesHubPage({
     .replace("{seasonLabel}", season.label);
 
   return (
-    <SectionPageShell active={active} section={section} sectionActive={sectionActive}>
+    <SectionPageShell path={path}>
       <div
         id="zapisy"
         className="scroll-mt-space-6 grid grid-cols-1 lg:grid-cols-offer-main gap-space-6 lg:gap-offer-main-gap items-start mb-space-7"

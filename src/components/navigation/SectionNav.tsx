@@ -1,39 +1,31 @@
-import Link from "next/link";
+import { NavUnderlineLink } from "@/components/navigation/NavUnderlineLink";
 import { pl } from "@/i18n/pl";
-import type { NavLink } from "@/navigation";
+import { navAriaCurrent, type NavLink } from "@/navigation";
 
 export interface SectionNavProps {
   items: NavLink[];
-  /** Label of the current item, e.g. "Archiwum" — the first item stands in for the hub itself. */
-  active?: string;
-  /** Overrides the default section nav aria-label when reused (e.g. YearNav). */
-  ariaLabel?: string;
+  /** Route path — `aria-current="page"` on the link to it. */
+  path?: string;
+  /** Href of the current item (the first item stands in for the hub itself). */
+  activeHref?: string;
 }
 
-export function SectionNav({ items, active, ariaLabel }: SectionNavProps) {
+export function SectionNav({ items, path, activeHref }: SectionNavProps) {
   return (
     <nav
-      aria-label={ariaLabel ?? pl.sectionNav.ariaLabel}
+      aria-label={pl.sectionNav.ariaLabel}
       className="flex flex-wrap gap-x-space-6 gap-y-space-3 pb-space-4 mb-space-6 text-size-nav font-sans"
     >
-      {items.map((item) => {
-        const isActive = item.label === active;
-        return (
-          <Link
-            key={item.label}
-            href={item.href}
-            aria-current={isActive ? "page" : undefined}
-            className={
-              (isActive
-                ? "nav-link-underline nav-link-underline-section nav-link-underline-active text-accent-text"
-                : "nav-link-underline nav-link-underline-section text-text-secondary hover:text-accent-hover") +
-              " tap-target-nav"
-            }
-          >
-            <span className="link-underline-target">{item.label}</span>
-          </Link>
-        );
-      })}
+      {items.map((item) => (
+        <NavUnderlineLink
+          key={item.label}
+          href={item.href}
+          label={item.label}
+          variant="section"
+          isActive={item.href === activeHref}
+          ariaCurrent={navAriaCurrent(item.href, activeHref, path)}
+        />
+      ))}
     </nav>
   );
 }

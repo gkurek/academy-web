@@ -7,6 +7,7 @@ import { NEWS_ARCHIVE_UNTIL_YEAR } from "@/config/news";
 import { todayInWarsaw } from "@/lib/isoDate";
 import { getLectureSeasonHref, getSeason, isCurrentLectureSeason } from "@/content/lectures";
 import { pl } from "@/i18n/pl";
+import { navItem, sectionLink } from "@/navigation";
 
 /** Manifest / MDX frontmatter entry: the `News` model minus the MDX body, plus build-time fields. */
 export type NewsFrontmatter = Omit<News, "body"> & {
@@ -371,17 +372,17 @@ export function getNewsEventPhase(
 }
 
 const DEFAULT_RELATED_BY_KIND: Partial<Record<NewsKind, NewsRelatedLink>> = {
-  warsztaty: { label: pl.news.relatedDefaults.warsztaty, href: "/warsztaty/kurs-roczny-i-trzyletni" },
-  wyklady: { label: pl.news.relatedDefaults.wyklady, href: "/wyklady" },
+  warsztaty: sectionLink("/warsztaty/kurs-roczny-i-trzyletni"),
+  wyklady: { label: navItem("/wyklady").label, href: "/wyklady" },
   wystawa: { label: pl.news.relatedDefaults.wystawa, href: "/ikony/wystawy" },
-  wyjazd: { label: pl.news.relatedDefaults.wyjazd, href: "/warsztaty/letnia-szkola-swiatla" },
+  wyjazd: sectionLink("/warsztaty/letnia-szkola-swiatla"),
 };
 
 /** Link to a lecture season's program — hub while current, archive anchor afterwards (LK1). */
 export function getLectureSeasonLink(seasonSlug: string): NewsRelatedLink {
   return {
     label: isCurrentLectureSeason(seasonSlug)
-      ? pl.news.relatedDefaults.wyklady
+      ? navItem("/wyklady").label
       : pl.news.relatedLectureArchive,
     href: getLectureSeasonHref(seasonSlug),
   };
@@ -413,12 +414,8 @@ export function getNewsEventCta(kind: NewsKind): NewsEventCtaLink | undefined {
     return undefined;
   }
 
+  // Kinds without their own CTA copy link with the page's nav label (wyjazd → Letnia Szkoła Światła).
   const ctaLabels = pl.news.eventCta as Partial<Record<NewsKind, string>>;
-  const ctaLabel = ctaLabels[kind];
-  if (!ctaLabel) {
-    return undefined;
-  }
-
-  return { label: ctaLabel, href: related.href };
+  return { label: ctaLabels[kind] ?? related.label, href: related.href };
 }
 

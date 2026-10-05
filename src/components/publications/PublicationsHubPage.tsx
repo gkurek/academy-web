@@ -5,18 +5,21 @@ import { TextLink } from "@/components/core/TextLink";
 import { SectionPageShell } from "@/components/layout/SectionPageShell";
 import { ArticleList } from "@/components/publications/ArticleList";
 import { PublicationSpreadStrip } from "@/components/publications/PublicationSpreadStrip";
-import { getArticles } from "@/content/articles";
-import { formatPublicationPrice, requirePublication } from "@/content/publications";
+import type { ArticleFrontmatter } from "@/content/articles";
+import { formatPublicationPrice, type PublicationFrontmatter } from "@/content/publications";
 import { getSiteSettings } from "@/content/settings";
 import { pl } from "@/i18n/pl";
 import { pluralize } from "@/i18n/pluralize";
 import { buildMailtoHref } from "@/lib/mailto";
-import { footerSitemapFlat } from "@/navigation";
 
-export function PublicationsHubPage() {
-  const publicationsLabel = footerSitemapFlat.find((item) => item.href === "/publikacje")!.label;
-  const publication = requirePublication();
-  const articles = getArticles();
+export interface PublicationsHubPageProps {
+  /** Route path — see SectionPageShellProps["path"]. */
+  path: string;
+  publication: PublicationFrontmatter;
+  articles: ArticleFrontmatter[];
+}
+
+export function PublicationsHubPage({ path, publication, articles }: PublicationsHubPageProps) {
   const settings = getSiteSettings();
   const secretariatEmail = settings.emails.find((email) => email.label.includes("sekretariat"))
     ?.address ?? settings.emails[1]?.address ?? settings.emails[0].address;
@@ -32,8 +35,8 @@ export function PublicationsHubPage() {
   const hubSpreads = publication.spreads.slice(0, 4);
 
   return (
-    <SectionPageShell active={publicationsLabel}>
-      <div className="mx-auto w-full max-w-content-max publication-page">
+    <SectionPageShell path={path}>
+      <div className="publication-page">
         <header className="publication-page-header">
           <h1 className="publication-page-title">{pl.publications.title}</h1>
           <p className="publication-page-lead">{pl.publications.lead}</p>

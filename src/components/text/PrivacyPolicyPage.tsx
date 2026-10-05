@@ -7,6 +7,8 @@ import { formatDateRange } from "@/lib/formatDateRange";
 
 export interface PrivacyPolicyPageProps {
   page: LoadedPrivacyPolicyPage;
+  /** Route path — see SectionPageShellProps["path"]. */
+  path: string;
 }
 
 function sectionHeading(toc: TocItem[], id: string): string {
@@ -42,12 +44,12 @@ function PrivacyPolicySectionBlock({
   );
 }
 
-export function PrivacyPolicyPage({ page }: PrivacyPolicyPageProps) {
+export function PrivacyPolicyPage({ page, path }: PrivacyPolicyPageProps) {
   const { title, lead, toc, sections, lastUpdated, contactEmail } = page;
   const lastUpdatedLabel = formatDateRange(lastUpdated, undefined, { withYear: true });
 
   return (
-    <TextPageShell title={title} lead={lead} toc={toc}>
+    <TextPageShell title={title} lead={lead} toc={toc} path={path}>
       <div className="privacy-policy-content">
         {sections.map((section) => (
           <PrivacyPolicySectionBlock key={section.id} section={section} toc={toc ?? []} />

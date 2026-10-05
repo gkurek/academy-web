@@ -1,10 +1,10 @@
 "use client";
 
-import Link from "next/link";
 import { useState } from "react";
 
 import type { TocItem } from "@/content/types";
 import { pl } from "@/i18n/pl";
+import { TocLink } from "@/components/text/TocLink";
 
 export interface TocCollapseProps {
   items: TocItem[];
@@ -30,35 +30,6 @@ function ChevronIcon({ expanded }: { expanded: boolean }) {
   );
 }
 
-function TocCollapseLink({
-  item,
-  activeId,
-  nested = false,
-  onNavigate,
-}: {
-  item: TocItem;
-  activeId?: string;
-  nested?: boolean;
-  onNavigate: () => void;
-}) {
-  const isActive = item.id === activeId;
-
-  return (
-    <Link
-      href={`#${item.id}`}
-      onClick={onNavigate}
-      aria-current={isActive ? "location" : undefined}
-      className={[
-        "tap-target-nav flex items-center text-size-body leading-body",
-        nested ? "pl-space-4 text-size-ui text-text-tertiary" : "",
-        isActive ? "text-accent-text" : nested ? "text-text-tertiary" : "text-text-secondary",
-      ].join(" ")}
-    >
-      {item.label}
-    </Link>
-  );
-}
-
 export function TocCollapse({ items, activeId }: TocCollapseProps) {
   const [open, setOpen] = useState(false);
 
@@ -79,13 +50,14 @@ export function TocCollapse({ items, activeId }: TocCollapseProps) {
       <nav aria-label={pl.textPage.tocAriaLabel} className="flex flex-col pb-space-3">
         {items.map((item) => (
           <div key={item.id}>
-            <TocCollapseLink item={item} activeId={activeId} onNavigate={closeOnNavigate} />
+            <TocLink item={item} activeId={activeId} variant="collapse" onNavigate={closeOnNavigate} />
             {item.children?.map((child) => (
-              <TocCollapseLink
+              <TocLink
                 key={child.id}
                 item={child}
                 activeId={activeId}
                 nested
+                variant="collapse"
                 onNavigate={closeOnNavigate}
               />
             ))}

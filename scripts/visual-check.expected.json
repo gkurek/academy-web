@@ -266,5 +266,146 @@
     "signal": "screenshot",
     "width": 390,
     "note": "0.108 % pixels, environment noise (cloud vs local); owner-checked 2026-10-05"
+  },
+  {
+    "id": "RF-8",
+    "route": "/warsztaty",
+    "signal": "html",
+    "note": "<title> from navTitle(path) (D4)"
+  },
+  {
+    "id": "RF-8",
+    "route": "/wyklady",
+    "signal": "html",
+    "note": "<title> from navTitle(path) (D4)"
+  },
+  {
+    "id": "RF-8",
+    "route": "/aktualnosci",
+    "signal": "html",
+    "note": "<title> from navTitle(path) (D4)"
+  },
+  {
+    "id": "RF-8",
+    "route": "/ikony",
+    "signal": "html",
+    "note": "<title> from navTitle(path) (D4)"
+  },
+  {
+    "id": "RF-8",
+    "route": "/warsztaty/kurs-roczny-i-trzyletni",
+    "signal": "html",
+    "note": "<title> from navTitle(path) (D4); aria-current page -> true on the parent section link in the Header"
+  },
+  {
+    "id": "RF-8",
+    "route": "/warsztaty/letnia-szkola-swiatla",
+    "signal": "html",
+    "note": "<title> from navTitle(path) (D4); aria-current page -> true on the parent section link in the Header"
+  },
+  {
+    "id": "RF-8",
+    "route": "/wyklady/archiwum",
+    "signal": "html",
+    "note": "<title> from navTitle(path) (D4); aria-current page -> true on the parent section link in the Header"
+  },
+  {
+    "id": "RF-8",
+    "route": "/wyklady/wykladowcy",
+    "signal": "html",
+    "note": "<title> from navTitle(path) (D4); aria-current page -> true on the parent section link in the Header"
+  },
+  {
+    "id": "RF-8",
+    "route": "/ikony/wystawy",
+    "signal": "html",
+    "note": "<title> from navTitle(path) (D4) (was pl.exhibition.page.title); aria-current page -> true on the parent section link in the Header"
+  },
+  {
+    "id": "RF-8",
+    "route": "/ikony/na-zamowienie",
+    "signal": "html",
+    "note": "<title> from navTitle(path) (D4); aria-current page -> true on the parent section link in the Header; ReadyIconsNote in the shell footerBand slot: main py -> pt, note without -mb-space-6"
+  },
+  {
+    "id": "RF-8",
+    "route": "/aktualnosci/nabor-kursu-2026-2027",
+    "signal": "html",
+    "note": "aria-current page -> true on the parent section link in the Header"
+  },
+  {
+    "id": "RF-8",
+    "route": "/aktualnosci/ikona-korzenie-i-owoce-wiary-mistyka-dzis-wyklady-2026-2027",
+    "signal": "html",
+    "note": "aria-current page -> true on the parent section link in the Header"
+  },
+  {
+    "id": "RF-8",
+    "route": "/pracownia",
+    "signal": "html",
+    "note": "<title> from navTitle(path) (D4); aria-current page -> true on the parent section link in the Header; inner mx-auto w-full max-w-content-max removed (layout already limits the width, R3-09)"
+  },
+  {
+    "id": "RF-8",
+    "route": "/o-akademii",
+    "signal": "html",
+    "note": "<title> from navTitle(path) (D4); inner mx-auto w-full max-w-content-max removed (layout already limits the width, R3-09)"
+  },
+  {
+    "id": "RF-8",
+    "route": "/kontakt",
+    "signal": "html",
+    "note": "inner mx-auto w-full max-w-content-max removed (layout already limits the width, R3-09)"
+  },
+  {
+    "id": "RF-8",
+    "route": "/polityka-prywatnosci",
+    "signal": "html",
+    "note": "inner mx-auto w-full max-w-content-max removed (layout already limits the width, R3-09)"
+  },
+  {
+    "id": "RF-8",
+    "route": "/publikacje",
+    "signal": "html",
+    "note": "inner mx-auto w-full max-w-content-max removed (layout already limits the width, R3-09)"
+  },
+  {
+    "id": "RF-8",
+    "route": "/publikacje/ikona-dzis",
+    "signal": "html",
+    "note": "inner mx-auto w-full max-w-content-max removed (layout already limits the width, R3-09)"
+  },
+  {
+    "id": "RF-8",
+    "route": "/publikacje/cisza-ikony",
+    "signal": "html",
+    "note": "inner mx-auto w-full max-w-content-max removed (layout already limits the width, R3-09)"
+  },
+  {
+    "id": "RF-8",
+    "route": "/nie-ma-takiej-strony",
+    "signal": "html",
+    "note": "rendered through SectionPageShell; inner mx-auto w-full max-w-content-max removed (layout already limits the width, R3-09); sitemap links via NavUnderlineLink (same classes, new order)"
+  },
+  {
+    "id": "RF-8",
+    "route": "/ikony/na-zamowienie",
+    "signal": "styles",
+    "width": 390,
+    "note": "footerBand slot: main padding-bottom 26px -> 0 and ReadyIconsNote margin-bottom -26px -> 0 (offsets cancelled each other); screenshots identical"
+  },
+  {
+    "id": "RF-8",
+    "route": "/ikony/na-zamowienie",
+    "signal": "styles",
+    "width": 1440,
+    "note": "footerBand slot: main padding-bottom 26px -> 0 and ReadyIconsNote margin-bottom -26px -> 0 (offsets cancelled each other); screenshots identical"
+  },
+  {
+    "id": "RF-8",
+    "route": "/ikony/na-zamowienie",
+    "signal": "styles",
+    "width": 1920,
+    "note": "footerBand slot: main padding-bottom 26px -> 0 and ReadyIconsNote margin-bottom -26px -> 0 (offsets cancelled each other); screenshots identical"
   }
 ]

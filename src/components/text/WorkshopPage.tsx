@@ -3,18 +3,14 @@ import { LearningForms } from "@/components/text/LearningForms";
 import { TextPageShell } from "@/components/text/TextPageShell";
 import { WorkshopGallerySection } from "@/components/text/WorkshopGallerySection";
 import type { LoadedWorkshopPage } from "@/content/pages";
-import { mainNav, sectionNav } from "@/navigation";
-
-const slug = "pracownia";
-
-const mainNavActive = mainNav.find((item) => item.href === "/o-akademii")!.label;
-const sectionActive = sectionNav["o-akademii"].find((link) => link.href === `/${slug}`)!.label;
 
 export interface WorkshopPageProps {
   page: LoadedWorkshopPage;
+  /** Route path — see SectionPageShellProps["path"]. */
+  path: string;
 }
 
-export function WorkshopPage({ page }: WorkshopPageProps) {
+export function WorkshopPage({ page, path }: WorkshopPageProps) {
   const { title, lead, toc, learningForms, interview, curriculum, curriculumParagraphs, gallery } =
     page;
 
@@ -23,9 +19,7 @@ export function WorkshopPage({ page }: WorkshopPageProps) {
       title={title}
       lead={lead}
       toc={toc}
-      active={mainNavActive}
-      section="o-akademii"
-      sectionActive={sectionActive}
+      path={path}
     >
       <section id="formy-nauki" className="workshop-section scroll-mt-space-6">
         <h2 className="workshop-section-heading">{learningForms.heading}</h2>

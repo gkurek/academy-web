@@ -1,15 +1,18 @@
+import type { Metadata } from "next";
+
 import { ContactPage } from "@/components/contact/ContactPage";
 import { getContactPage } from "@/content/pages";
-import { mainNav } from "@/navigation";
+import { navTitle } from "@/navigation";
 
-const contactLabel = mainNav.find((item) => item.href === "/kontakt")!.label;
+const path = "/kontakt";
+const title = navTitle(path);
+
+export const metadata: Metadata = {
+  title,
+};
 
 export default function ContactRoutePage() {
   const { Content } = getContactPage();
 
-  return <ContactPage Content={Content} />;
+  return <ContactPage path={path} title={title} Content={Content} />;
 }
-
-export const metadata = {
-  title: contactLabel,
-};

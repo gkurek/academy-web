@@ -10,14 +10,11 @@ import { TextPageSection } from "@/components/text/TextPageSection";
 import { TextPageShell } from "@/components/text/TextPageShell";
 import type { LoadedAboutPage } from "@/content/pages";
 import type { Image as ContentImage, TextPageLink } from "@/content/types";
-import { mainNav, sectionNav } from "@/navigation";
-
-const slug = "o-akademii";
-const mainNavActive = mainNav.find((item) => item.href === `/${slug}`)!.label;
-const sectionActive = sectionNav["o-akademii"].find((link) => link.href === `/${slug}`)!.label;
 
 export interface AboutPageProps {
   page: LoadedAboutPage;
+  /** Route path — see SectionPageShellProps["path"]. */
+  path: string;
 }
 
 function TextLinkRow({ links }: { links: TextPageLink[] }) {
@@ -57,7 +54,7 @@ function AboutHero({ title, lead, image }: { title: string; lead: string; image:
   );
 }
 
-export function AboutPage({ page }: AboutPageProps) {
+export function AboutPage({ page, path }: AboutPageProps) {
   const {
     title,
     lead,
@@ -78,9 +75,7 @@ export function AboutPage({ page }: AboutPageProps) {
     <TextPageShell
       title={title}
       lead={lead}
-      active={mainNavActive}
-      section="o-akademii"
-      sectionActive={sectionActive}
+      path={path}
       hideHeader
     >
       <AboutHero title={title} lead={lead ?? ""} image={hero} />
