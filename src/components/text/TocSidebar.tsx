@@ -22,6 +22,7 @@ function TocLink({
   return (
     <Link
       href={`#${item.id}`}
+      aria-current={isActive ? "location" : undefined}
       className={[
         "tap-target-nav flex items-center text-size-body leading-body",
         nested ? "pl-space-4 text-size-ui" : "",

@@ -180,7 +180,7 @@ export function ExhibitionTravelingSection({
 
 
 
-        <aside className="exhibition-cta-block">
+        <div className="exhibition-cta-block">
 
           <p className="exhibition-cta-intro">{traveling.inviteCta}</p>
 
@@ -190,7 +190,7 @@ export function ExhibitionTravelingSection({
 
           </Button>
 
-        </aside>
+        </div>
 
       </div>
 

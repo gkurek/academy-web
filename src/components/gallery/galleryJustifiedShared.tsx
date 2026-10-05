@@ -16,10 +16,7 @@ export const JUSTIFIED_DESKTOP_MAX_ROW_HEIGHT = 400;
 export const JUSTIFIED_DESKTOP_MAX_TILES_PER_ROW = 4;
 export const JUSTIFIED_SINGLE_COLUMN_MAX_W = 480;
 
-export const galleryTileButtonClass = [
-  "group block cursor-pointer border-0 bg-transparent p-0",
-  "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus-ring",
-].join(" ");
+export const galleryTileButtonClass = "group block cursor-pointer border-0 bg-transparent p-0";
 
 export const galleryTileFrameClass = "relative overflow-hidden bg-surface-tile";
 

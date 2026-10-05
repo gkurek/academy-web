@@ -38,7 +38,7 @@ export function LecturerCard({ lecturer }: LecturerCardProps) {
             role="img"
             aria-label={pl.lecturers.photoPlaceholder}
           >
-            <p className="lecturer-photo-placeholder-text">{pl.lecturers.photoPlaceholder}</p>
+            <p className="lecturer-photo-placeholder-text" aria-hidden="true">{pl.lecturers.photoPlaceholder}</p>
           </div>
         )}
       </div>

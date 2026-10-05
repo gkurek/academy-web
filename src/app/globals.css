@@ -804,7 +804,9 @@
   }
 
   a:focus-visible,
-  button:focus-visible {
+  button:focus-visible,
+  summary:focus-visible,
+  [tabindex]:not([tabindex="-1"]):focus-visible {
     outline: 2px solid var(--focus-ring);
     outline-offset: 2px;
   }
@@ -2279,10 +2281,6 @@
     text-decoration: underline;
   }
 
-  .news-featured-title-link:focus-visible {
-    outline: 2px solid var(--focus-ring);
-    outline-offset: 2px;
-  }
 
   .news-list {
     display: grid;
@@ -2369,10 +2367,6 @@
     inset: 0;
   }
 
-  .news-card-title-link:focus-visible {
-    outline: 2px solid var(--focus-ring);
-    outline-offset: 2px;
-  }
 
   .news-card-excerpt {
     margin: 0;
@@ -2763,10 +2757,6 @@
     text-decoration-color: var(--prose-link-hover);
   }
 
-  .news-prose a:focus-visible {
-    outline: 2px solid var(--focus-ring);
-    outline-offset: 2px;
-  }
 
   .news-article-event-cta {
     margin-bottom: var(--news-article-blk-m);
@@ -2798,10 +2788,6 @@
     color: var(--accent-hover);
   }
 
-  .news-article-entry-link:focus-visible {
-    outline: 2px solid var(--focus-ring);
-    outline-offset: 2px;
-  }
 
   .news-article-related-block {
     padding-top: var(--entry-rail-pad);
@@ -2948,10 +2934,6 @@
     cursor: pointer;
   }
 
-  .news-article-cover-tile:focus-visible {
-    outline: 2px solid var(--focus-ring);
-    outline-offset: 2px;
-  }
 
   .news-article-cover-frame {
     position: relative;
@@ -2990,10 +2972,6 @@
     cursor: pointer;
   }
 
-  .news-gallery-tile:focus-visible {
-    outline: 2px solid var(--focus-ring);
-    outline-offset: 2px;
-  }
 
   .news-gallery-tile-frame {
     position: relative;
@@ -3019,10 +2997,6 @@
     border-color: var(--accent-text);
   }
 
-  .news-gallery-show-all:focus-visible {
-    outline: 2px solid var(--focus-ring);
-    outline-offset: 2px;
-  }
 
   .news-gallery-mobile-caption {
     margin: var(--space-4) 0 0;
@@ -3076,10 +3050,6 @@
     color: var(--accent-hover);
   }
 
-  .news-article-nav-row:focus-visible {
-    outline: 2px solid var(--focus-ring);
-    outline-offset: 2px;
-  }
 
   .news-article-nav-all {
     align-self: flex-start;
@@ -3621,10 +3591,6 @@
     color: var(--accent-text);
   }
 
-  .exhibition-now-next-title:focus-visible {
-    outline: 2px solid var(--focus-ring);
-    outline-offset: 2px;
-  }
 
   .exhibition-now-next-subline {
     margin: var(--space-2) 0 0;
@@ -3668,10 +3634,6 @@
     color: var(--accent-hover);
   }
 
-  .exhibition-page-nav-link:focus-visible {
-    outline: 2px solid var(--focus-ring);
-    outline-offset: 2px;
-  }
 
   .exhibition-section {
     margin-top: var(--exhibition-section-gap-m);
@@ -3873,10 +3835,6 @@
     cursor: pointer;
   }
 
-  .exhibition-annual-tile-button:focus-visible {
-    outline: 2px solid var(--focus-ring);
-    outline-offset: 2px;
-  }
 
   .exhibition-annual-tile-frame {
     width: 100%;
@@ -3908,10 +3866,6 @@
     border-bottom-color: var(--accent-hover);
   }
 
-  .exhibition-annual-tiles-caption-button:focus-visible {
-    outline: 2px solid var(--focus-ring);
-    outline-offset: 2px;
-  }
 
   .exhibition-media-placeholder {
     box-sizing: border-box;
@@ -4338,10 +4292,6 @@
     cursor: pointer;
   }
 
-  .publication-spread-tile:focus-visible {
-    outline: 2px solid var(--focus-ring);
-    outline-offset: 2px;
-  }
 
   .publication-spread-frame {
     position: relative;
@@ -4412,10 +4362,6 @@
     color: var(--accent-text);
   }
 
-  .publication-article-list-title-link:focus-visible {
-    outline: 2px solid var(--focus-ring);
-    outline-offset: 2px;
-  }
 
   .publication-article-excerpt,
   .publication-article-authors {

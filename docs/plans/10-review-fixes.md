@@ -297,7 +297,7 @@ Brak. RF-12 tworzy `content/pages/home.json` i `workshops-hub.json` **z treści 
 | Paczka | Model | Status | Uwagi z checkpointu |
 | --- | --- | --- | --- |
 | RF-0 — punkt odniesienia, `check:visual` | Sonnet 5.5 | ✅ 2026-10-05 (bez commita) | D10, D11. Baseline ze stagingu `bb7b0cb` w `.visual/baseline/` (21 tras × 390 / 1440 / 1920, 11 testów zachowań, wszystkie zielone na stagingu). Staging vs baseline: 147 PASS; lokalny `build && start` vs baseline: 147 PASS (zero szumu, więc progi: 0,1 % pikseli, tolerancja kanału 16). Test czułości: podmiana zrzutu, wartości stylu i znacznika HTML → FAIL w każdym sygnale. Przebieg ~2 min lokalnie. Zrzuty bez piksela różnicy dzięki wyłączonym animacjom i `reduced-motion`. Uwaga Git Bash: ścieżki tras w `--routes` wymagają `MSYS_NO_PATHCONV=1` (albo PowerShell) |
-| RF-1 — a11y: dialog, linki, landmarki, fokus | Sonnet 5.5 | ⬜ | |
+| RF-1 — a11y: dialog, linki, landmarki, fokus | Sonnet 5.5 | ✅ 2026-10-05 (lokalnie) | `check:visual`: 137 PASS · 10 EXPECTED (wpisy RF-1 w `visual-check.expected.json`) · 0 FAIL · smoke 11/11; zrzuty wszystkich 63 kombinacji bez różnic. axe (wcag2a/aa, 21a/aa, best-practice) na 3 trasach → 0 naruszeń. Menu 390: dialog obejmuje ×, Tab dochodzi do ×, `main` i stopka `inert`, Esc zwraca fokus; `summary` na `/pracownia` ma obrys 2 px `#e8c765` / 2 px. `focus-visible` w `globals.css` −14 reguł. Odstępstwo: `ExhibitionFactsPanel` traci `useId` (brak `aria-labelledby` na `div`) — `"use client"` zostaje do RF-7 |
 | RF-2 — daty, sezon, stan zapisów (A1) | Opus 5.5 | ⬜ | D5 |
 | RF-3 — wymagana treść, walidacje, `prebuild` check | Opus 5.5 | ⬜ | D2, D9 |
 | RF-4 — galeria na serwerze, jeden lightbox (A3) | Fable 5.1 | ⬜ | D8 |

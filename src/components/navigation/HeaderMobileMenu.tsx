@@ -75,6 +75,7 @@ export function HeaderMobileMenu({ active, phone, blogUrl }: HeaderMobileMenuPro
   const drawerId = useId();
   const headerBarRef = useRef<HTMLDivElement>(null);
   const drawerRef = useRef<HTMLDivElement>(null);
+  const dialogRef = useRef<HTMLDivElement>(null);
   const menuButtonRef = useRef<HTMLButtonElement>(null);
 
   const iconsNavItem = mainNav.find((item) => item.href === "/ikony");
@@ -118,18 +119,29 @@ export function HeaderMobileMenu({ active, phone, blogUrl }: HeaderMobileMenuPro
     };
   }, [isOpen]);
 
+  // The page behind the open menu is inert, so the dialog is the only reachable content.
   useEffect(() => {
     if (!isOpen) {
       return undefined;
     }
 
-    const drawer = drawerRef.current;
-    if (!drawer) {
+    const background = Array.from(document.querySelectorAll("#main-content, footer:not(main footer)"));
+    background.forEach((element) => element.setAttribute("inert", ""));
+    return () => background.forEach((element) => element.removeAttribute("inert"));
+  }, [isOpen]);
+
+  useEffect(() => {
+    if (!isOpen) {
       return undefined;
     }
 
-    const focusable = getFocusableElements(drawer);
-    focusable[0]?.focus();
+    const dialog = dialogRef.current;
+    const drawer = drawerRef.current;
+    if (!dialog || !drawer) {
+      return undefined;
+    }
+
+    getFocusableElements(drawer)[0]?.focus();
 
     const onKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
@@ -142,7 +154,8 @@ export function HeaderMobileMenu({ active, phone, blogUrl }: HeaderMobileMenuPro
         return;
       }
 
-      const elements = getFocusableElements(drawer);
+      // The trap spans the header bar too, so the close button stays reachable.
+      const elements = getFocusableElements(dialog);
       if (elements.length === 0) {
         return;
       }
@@ -168,7 +181,12 @@ export function HeaderMobileMenu({ active, phone, blogUrl }: HeaderMobileMenuPro
   }, [closeMenu, isOpen]);
 
   return (
-    <>
+    <div
+      ref={dialogRef}
+      role={isOpen ? "dialog" : undefined}
+      aria-modal={isOpen ? true : undefined}
+      aria-label={isOpen ? pl.header.menuToggleLabel : undefined}
+    >
       <div
         ref={headerBarRef}
         className="relative z-50 flex items-center justify-between gap-space-4 bg-surface-page px-page-margin-mobile py-space-5"
@@ -194,9 +212,6 @@ export function HeaderMobileMenu({ active, phone, blogUrl }: HeaderMobileMenuPro
         <div
           ref={drawerRef}
           id={drawerId}
-          role="dialog"
-          aria-modal="true"
-          aria-label={pl.header.menuToggleLabel}
           className="fixed inset-x-0 bottom-0 z-40 overflow-y-auto bg-surface-page motion-safe:transition-none"
           style={{ top: headerBarHeight }}
         >
@@ -208,6 +223,7 @@ export function HeaderMobileMenu({ active, phone, blogUrl }: HeaderMobileMenuPro
                     key={item.label}
                     href={item.href}
                     onClick={closeMenu}
+                    aria-current={item.label === active ? "page" : undefined}
                     className={
                       "border-b border-line-neutral px-page-margin-mobile py-space-5 text-size-h3-m " +
                       (item.label === active ? "text-accent-text" : "text-text-list-title")
@@ -227,6 +243,7 @@ export function HeaderMobileMenu({ active, phone, blogUrl }: HeaderMobileMenuPro
                     <Link
                       href={item.href}
                       onClick={closeMenu}
+                      aria-current={item.label === active ? "page" : undefined}
                       className={
                         "flex-1 px-page-margin-mobile py-space-5 text-size-h3-m " +
                         (item.label === active ? "text-accent-text" : "text-text-list-title")
@@ -287,6 +304,6 @@ export function HeaderMobileMenu({ active, phone, blogUrl }: HeaderMobileMenuPro
           </div>
         </div>
       )}
-    </>
+    </div>
   );
 }

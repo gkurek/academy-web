@@ -1,1 +1,65 @@
-[]
+[
+  {
+    "id": "RF-1",
+    "route": "/",
+    "signal": "html",
+    "note": "Pillars: redundant focus-visible classes removed (global rule covers links)"
+  },
+  {
+    "id": "RF-1",
+    "route": "/ikony/wystawy",
+    "signal": "html",
+    "note": "facts panel and CTA block: aside -> div, panel heading p -> h3"
+  },
+  {
+    "id": "RF-1",
+    "route": "/ikony/wystawy",
+    "signal": "styles",
+    "width": 390,
+    "note": "p -> h3 shifts element indexes; screenshots identical"
+  },
+  {
+    "id": "RF-1",
+    "route": "/ikony/wystawy",
+    "signal": "styles",
+    "width": 1440,
+    "note": "p -> h3 shifts element indexes; screenshots identical"
+  },
+  {
+    "id": "RF-1",
+    "route": "/ikony/wystawy",
+    "signal": "styles",
+    "width": 1920,
+    "note": "p -> h3 shifts element indexes; screenshots identical"
+  },
+  {
+    "id": "RF-1",
+    "route": "/polityka-prywatnosci",
+    "signal": "html",
+    "note": "TOC links: aria-current=location on active item"
+  },
+  {
+    "id": "RF-1",
+    "route": "/pracownia",
+    "signal": "html",
+    "note": "TOC links: aria-current=location on active item"
+  },
+  {
+    "id": "RF-1",
+    "route": "/publikacje/ikona-dzis",
+    "signal": "html",
+    "note": "metrics box: aside -> div"
+  },
+  {
+    "id": "RF-1",
+    "route": "/warsztaty/letnia-szkola-swiatla",
+    "signal": "html",
+    "note": "place links via TextLink (underline span)"
+  },
+  {
+    "id": "RF-1",
+    "route": "/wyklady/wykladowcy",
+    "signal": "html",
+    "note": "LecturerBio focus classes removed, photo placeholder text aria-hidden"
+  }
+]

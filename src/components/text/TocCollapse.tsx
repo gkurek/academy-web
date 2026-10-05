@@ -47,6 +47,7 @@ function TocCollapseLink({
     <Link
       href={`#${item.id}`}
       onClick={onNavigate}
+      aria-current={isActive ? "location" : undefined}
       className={[
         "tap-target-nav flex items-center text-size-body leading-body",
         nested ? "pl-space-4 text-size-ui text-text-tertiary" : "",

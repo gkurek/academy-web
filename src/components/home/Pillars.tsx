@@ -14,10 +14,7 @@ export function Pillars() {
       <div className="grid grid-cols-1 md:grid-cols-3 gap-space-7 md:gap-pillars-gap">
         {pl.home.pillars.map((pillar) => (
           <article key={pillar.title} className="group">
-            <Link
-              href={pillar.href}
-              className="block focus-visible:outline-2 focus-visible:outline-focus-ring focus-visible:outline-offset-2"
-            >
+            <Link href={pillar.href} className="block">
               <Image
                 src={pillar.image.src}
                 alt={pillar.image.alt}

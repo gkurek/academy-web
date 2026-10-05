@@ -31,7 +31,7 @@ export function PublicationMetricsBox({ publication }: PublicationMetricsBoxProp
   ];
 
   return (
-    <aside className="publication-metrics" aria-labelledby="publication-metrics-heading">
+    <div className="publication-metrics">
       <h2
         id="publication-metrics-heading"
         className="publication-metrics-heading"
@@ -63,6 +63,6 @@ export function PublicationMetricsBox({ publication }: PublicationMetricsBoxProp
         </Button>
         <p className="publication-metrics-note">{facts.shippingNote}</p>
       </div>
-    </aside>
+    </div>
   );
 }
