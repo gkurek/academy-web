@@ -11,7 +11,7 @@ export function UpcomingHighlights() {
     <section aria-labelledby="upcoming-heading" className="md:px-page-margin">
       <h2
         id="upcoming-heading"
-        className="font-serif text-size-role-row-title-m md:text-size-role-row-title leading-heading text-text-h2 mb-space-5 px-page-margin-mobile md:px-0"
+        className="font-serif text-size-role-row-title-m md:text-size-role-row-title leading-heading text-text-h2 mb-heading-gap px-page-margin-mobile md:px-0"
       >
         {pl.home.upcomingHeading}
       </h2>

@@ -11,13 +11,13 @@ export function GalleryOrderTeaser() {
   return (
     <section
       aria-labelledby={headingId}
-      className="mt-section-gap-mobile md:mt-section-gap"
+      className="mt-section-gap"
     >
       <div className="exhibition-tours-pass border-b-0">
         <div className="exhibition-tours-pass__content">
           <h2
             id={headingId}
-            className="font-serif text-size-role-section-h2-m md:text-size-role-section-h2 leading-heading text-text-h2 mb-space-2"
+            className="font-serif text-size-role-section-h2-m md:text-size-role-section-h2 leading-heading text-text-h2 mb-heading-gap"
           >
             {title}
           </h2>

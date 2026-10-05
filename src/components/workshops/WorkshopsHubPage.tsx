@@ -43,7 +43,7 @@ function WorkshopOfferCard({ offer }: { offer: LoadedOffer }) {
 export function WorkshopsHubPage({ path, offers, quotes }: WorkshopsHubPageProps) {
   return (
     <SectionPageShell path={path}>
-      <section className="pb-offer-hub-lead-pb">
+      <section className="pb-section-gap-tight">
         <h1 className="font-serif text-size-h1-m md:text-size-h1 leading-tight text-text-h1 mb-space-5">
           {pl.workshopsHub.title}
         </h1>

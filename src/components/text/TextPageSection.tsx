@@ -11,7 +11,7 @@ export function TextPageSection({ id, heading, children }: TextPageSectionProps)
   return (
     <section
       id={id}
-      className="mt-section-gap-mobile scroll-mt-space-6 md:mt-section-gap grid grid-cols-1 items-start gap-space-5 lg:grid-cols-text-page-section lg:gap-text-page-main-gap"
+      className="mt-section-gap-loose scroll-mt-space-6 grid grid-cols-1 items-start gap-heading-gap lg:grid-cols-text-page-section lg:gap-text-page-main-gap"
     >
       <h2 className="font-serif text-size-role-section-h2-m md:text-size-role-section-h2 leading-heading text-text-h2">
         {heading}

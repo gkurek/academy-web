@@ -71,12 +71,48 @@ export function AboutPage({ page, path }: AboutPageProps) {
     workshopParagraph,
   } = page;
 
+  const workshopBand = (
+    <section
+      id="pracownia-i-miejsce"
+      className="about-workshop-band surface-card-bleed mt-section-gap-loose scroll-mt-space-6"
+    >
+      <div className="about-workshop-band-inner">
+        <h2 className="about-workshop-heading font-serif text-size-role-section-h2-m md:text-size-role-section-h2 leading-heading text-text-h2">
+          {workshop.heading}
+        </h2>
+        <div className="text-page-mdx">
+          <p>{workshopParagraph}</p>
+        </div>
+        <p className="about-workshop-accessibility">{workshop.accessibility}</p>
+        <TextLinkRow links={workshop.links} />
+        <div className="about-workshop-photos">
+          {workshop.photos.map((photo) => (
+            <figure key={photo.src} className="about-workshop-photo">
+              <Image
+                src={photo.src}
+                alt={photo.alt}
+                width={photo.width}
+                height={photo.height}
+                className="about-workshop-photo-image"
+                sizes="(max-width: 767px) 100vw, 50vw"
+              />
+              {photo.caption ? (
+                <figcaption className="about-workshop-photo-caption">{photo.caption}</figcaption>
+              ) : null}
+            </figure>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+
   return (
     <TextPageShell
       title={title}
       lead={lead}
       path={path}
       hideHeader
+      footerBand={workshopBand}
     >
       <AboutHero title={title} lead={lead ?? ""} image={hero} />
 
@@ -94,7 +130,7 @@ export function AboutPage({ page, path }: AboutPageProps) {
 
       <section
         id="prowadzaca"
-        className="about-person-section mt-section-gap-mobile scroll-mt-space-6 md:mt-section-gap"
+        className="about-person-section mt-section-gap-loose scroll-mt-space-6"
       >
         <h2 className="about-person-heading font-serif text-size-role-section-h2-m md:text-size-role-section-h2 leading-heading text-text-h2">
           {person.heading}
@@ -130,38 +166,6 @@ export function AboutPage({ page, path }: AboutPageProps) {
         </div>
       </TextPageSection>
 
-      <section
-        id="pracownia-i-miejsce"
-        className="about-workshop-band surface-card-bleed mt-section-gap-mobile scroll-mt-space-6 md:mt-section-gap"
-      >
-        <div className="about-workshop-band-inner">
-          <h2 className="about-workshop-heading font-serif text-size-role-section-h2-m md:text-size-role-section-h2 leading-heading text-text-h2">
-            {workshop.heading}
-          </h2>
-          <div className="text-page-mdx">
-            <p>{workshopParagraph}</p>
-          </div>
-          <p className="about-workshop-accessibility">{workshop.accessibility}</p>
-          <TextLinkRow links={workshop.links} />
-          <div className="about-workshop-photos">
-            {workshop.photos.map((photo) => (
-              <figure key={photo.src} className="about-workshop-photo">
-                <Image
-                  src={photo.src}
-                  alt={photo.alt}
-                  width={photo.width}
-                  height={photo.height}
-                  className="about-workshop-photo-image"
-                  sizes="(max-width: 767px) 100vw, 50vw"
-                />
-                {photo.caption ? (
-                  <figcaption className="about-workshop-photo-caption">{photo.caption}</figcaption>
-                ) : null}
-              </figure>
-            ))}
-          </div>
-        </div>
-      </section>
     </TextPageShell>
   );
 }

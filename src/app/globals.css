@@ -104,12 +104,17 @@
   --space-7: 34px;
   --space-8: 52px;
   --space-9: 56px;
+  --space-10: 80px;
   --space-11: 96px;
 
   --page-margin: 56px;
   --page-margin-mobile: 20px;
-  --section-gap: 60px;
-  --section-gap-mobile: 32px;
+  /* Section rhythm (RF-13): three roles + heading gap, one breakpoint (768 — see @media below). */
+  --section-gap: var(--space-7);
+  --section-gap-tight: var(--space-6);
+  --section-gap-loose: var(--space-7);
+  --heading-gap: var(--space-4);
+  --accent-bar: 3px;
   --tile-padding: 26px 30px;
 
   --tap-min: 48px;
@@ -122,7 +127,7 @@
   /* Home hero — larger than the generic Hero.jsx padding/type scale
      (mirrors --size-h1-home already being a distinct "home" step). */
   --hero-pt: 64px;
-  --hero-pb: 60px;
+  --hero-pb: var(--space-9);
   --hero-pt-m: 26px;
   --hero-pb-m: 34px;
   /* K-33 opcja A (04b): larger hero than review recommendation min(760px, 68vh).
@@ -152,7 +157,7 @@
      identical on mobile/desktop — literal values from the resolved
      "cytat" block, #1a desktop). */
   --measure-quote: 20em;
-  --testimonial-py: 52px;
+  --testimonial-py: var(--section-gap);
   --testimonial-px: 56px;
 
   /* Gallery grids — tile gap shared by the home "Wybrane ikony" preview and
@@ -177,18 +182,17 @@
   --offer-facts-x: 32px;
   --offer-facts-y: 30px;
   --offer-facts-pb: 32px;
-  --offer-facts-top: 2px;
+  --offer-facts-top: var(--accent-bar);
   --offer-facts-dd-mt: 2px;
   --offer-facts-dd-mb: 16px;
   --offer-card-image-h: 240px;
   --offer-card-x: 34px;
   --offer-card-y: 32px;
   --offer-card-pb: 36px;
-  --offer-hub-lead-pb: 44px;
   --offer-quotes-gap: 22px;
   --offer-quote-x: 30px;
   --offer-quote-y: 28px;
-  --offer-quote-top: 2px;
+  --offer-quote-top: var(--accent-bar);
   --offer-semester-num: 34px;
   --offer-semester-num-m: 28px;
   --offer-semester-num-width: 34px;
@@ -219,16 +223,12 @@
   --offer-step-gap-m: 20px;
   --offer-ready-y: 34px;
   --offer-ready-gap-x: 24px;
-  --offer-examples-heading-mb: 28px;
   --offer-examples-link-mt: 22px;
-  --offer-examples-pb: 56px;
 
   /* Lectures hub + LectureList (#2a-wyklady). */
   --lectures-eyebrow: var(--size-body);
   --lectures-eyebrow-mb: 12px;
-  --lectures-program-heading-mb: 8px;
   --lectures-program-lead-mb: 26px;
-  --lectures-archive-section-pt: 56px;
   --lecture-date-col: 160px;
   --lecture-date-size: 22px;
   --lecture-row-gap: 28px;
@@ -249,8 +249,6 @@
   --news-card-y: 26px;
   --news-card-x-m: 22px;
   --news-card-y-m: 22px;
-  --news-year-group-gap: 52px;
-  --news-year-group-gap-m: 32px;
   --news-article-nav-gap: 24px;
 
   /* News article prose — design/README-wpis-aktualnosci §2 (E1). */
@@ -312,8 +310,6 @@
   --news-article-meta-size: 15px;
   --news-article-blk: 34px;
   --news-article-blk-m: 26px;
-  --news-article-sec: 56px;
-  --news-article-sec-m: 40px;
   --news-gallery-gap: 10px;
   --news-gallery-gap-m: 8px;
   --news-gallery-tile-zoom: 36px;
@@ -361,14 +357,6 @@
   --about-quote-pad-left: 34px;
 
   /* /pracownia — LearningForms, Interview (mockup 6c/6d/6i). */
-  --workshop-section-heading-mb: var(--space-6);
-  --workshop-section-heading-mb-m: 18px;
-  --workshop-interview-heading-mb-m: var(--space-4);
-  --workshop-interview-heading-mb: var(--workshop-section-heading-mb-m);
-  --workshop-curriculum-heading-mb-m: 16px;
-  --workshop-curriculum-heading-mb: var(--interview-exchange-y);
-  --workshop-gallery-heading-mb-m: 16px;
-  --workshop-gallery-heading-mb: var(--interview-exchange-y);
   --photo-grid-gap-x: 20px;
   --photo-grid-gap-y: 24px;
   --photo-grid-gap-m: 16px;
@@ -399,8 +387,6 @@
   --contact-aside-offset: var(--space-6);
 
   /* /ikony/wystawy — mockup 9a–9e (WY-*). */
-  --exhibition-section-gap: 64px;
-  --exhibition-section-gap-m: 30px;
   --exhibition-aspect-wide: 21 / 8;
   --exhibition-aspect-standard: 3 / 2;
   --exhibition-aspect-square: 1 / 1;
@@ -412,7 +398,7 @@
   --exhibition-section-col-gap: 56px;
   /* 13a: padding-top 52px przed kadrem 21:8; 14a: margin-top 30px po TOC. */
   --exhibition-hero-frame-mt: var(--space-8);
-  --exhibition-hero-frame-mt-m: var(--exhibition-section-gap-m);
+  --exhibition-hero-frame-mt-m: var(--section-gap);
   /* 13a — eyebrow → H2: 10px; H2 → pierwszy akapit: 22px. */
   --exhibition-section-eyebrow-mb: var(--space-3);
   --exhibition-section-h2-mb: var(--icon-grid-gap);
@@ -420,7 +406,6 @@
   --exhibition-cta-y: 26px;
 
   /* /publikacje — mockup 8a–8j (PU-*). */
-  --publication-section-gap-m: 34px;
   --publication-hub-cover: 440px;
   --publication-metrics-w: 420px;
   --publication-hub-facts-label-col: 170px;
@@ -550,9 +535,12 @@
   --spacing-space-7: var(--space-7);
   --spacing-space-8: var(--space-8);
   --spacing-space-9: var(--space-9);
+  --spacing-space-10: var(--space-10);
   --spacing-space-11: var(--space-11);
   --spacing-section-gap: var(--section-gap);
-  --spacing-section-gap-mobile: var(--section-gap-mobile);
+  --spacing-section-gap-tight: var(--section-gap-tight);
+  --spacing-section-gap-loose: var(--section-gap-loose);
+  --spacing-heading-gap: var(--heading-gap);
   --spacing-page-margin: var(--page-margin);
   --spacing-page-margin-mobile: var(--page-margin-mobile);
   --spacing-tap-min: var(--tap-min);
@@ -638,10 +626,10 @@
   --spacing-offer-card-x: var(--offer-card-x);
   --spacing-offer-card-y: var(--offer-card-y);
   --spacing-offer-card-pb: var(--offer-card-pb);
-  --spacing-offer-hub-lead-pb: var(--offer-hub-lead-pb);
   --spacing-offer-quotes-gap: var(--offer-quotes-gap);
   --spacing-offer-quote-x: var(--offer-quote-x);
   --spacing-offer-quote-y: var(--offer-quote-y);
+  --border-width-accent-bar: var(--accent-bar);
   --border-width-offer-facts-top: var(--offer-facts-top);
   --border-width-offer-quote-top: var(--offer-quote-top);
   --grid-template-columns-offer-main: 1fr var(--offer-sidebar-w);
@@ -671,17 +659,13 @@
   --grid-template-columns-step-row: minmax(0, auto) 1fr;
   --spacing-offer-ready-y: var(--offer-ready-y);
   --spacing-offer-ready-gap-x: var(--offer-ready-gap-x);
-  --spacing-offer-examples-heading-mb: var(--offer-examples-heading-mb);
   --spacing-offer-examples-link-mt: var(--offer-examples-link-mt);
-  --spacing-offer-examples-pb: var(--offer-examples-pb);
   --text-size-offer-step-num: var(--offer-step-num);
   /* Lectures hub + LectureList */
   --text-size-lectures-eyebrow: var(--lectures-eyebrow);
   --text-size-lecture-date: var(--lecture-date-size);
   --spacing-lectures-eyebrow-mb: var(--lectures-eyebrow-mb);
-  --spacing-lectures-program-heading-mb: var(--lectures-program-heading-mb);
   --spacing-lectures-program-lead-mb: var(--lectures-program-lead-mb);
-  --spacing-lectures-archive-section-pt: var(--lectures-archive-section-pt);
   --spacing-lecture-row-gap: var(--lecture-row-gap);
   --spacing-lecture-row-x: var(--lecture-row-x);
   --spacing-lecture-row-y: var(--lecture-row-y);
@@ -1133,9 +1117,12 @@
   }
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 768px) {
   :root {
-    --section-gap: 96px;
+    --section-gap: var(--space-9);
+    --section-gap-tight: var(--space-7);
+    --section-gap-loose: var(--space-10);
+    --heading-gap: var(--space-5);
   }
 }
 
@@ -1254,7 +1241,7 @@
   }
 
   .privacy-policy-section {
-    margin-top: var(--space-6);
+    margin-top: var(--section-gap-tight);
   }
 
   .privacy-policy-section:first-child {
@@ -1262,7 +1249,7 @@
   }
 
   .privacy-policy-section-heading {
-    margin: 0 0 var(--space-3);
+    margin: 0 0 var(--heading-gap);
     font-family: var(--font-serif);
     font-size: var(--size-h2-m);
     font-weight: 400;
@@ -1282,7 +1269,7 @@
   }
 
   .privacy-policy-updated {
-    margin: var(--space-6) 0 0;
+    margin: var(--section-gap-tight) 0 0;
     padding-top: var(--space-5);
     border-top: 1px solid var(--line-neutral);
     font-size: var(--size-caption);
@@ -1368,7 +1355,7 @@
 
   .mission-declarations-bar {
     width: var(--mission-bar-w);
-    height: 2px;
+    height: var(--accent-bar);
     margin-bottom: var(--space-4);
     background: var(--accent);
   }
@@ -1414,13 +1401,7 @@
   .about-person-section {
     display: flex;
     flex-direction: column;
-    gap: var(--space-5);
-  }
-
-  @media (min-width: 1024px) {
-    .about-person-section {
-      gap: var(--space-7);
-    }
+    gap: var(--heading-gap);
   }
 
   .about-person-heading {
@@ -1486,7 +1467,7 @@
 
   .milestone-row-bar {
     width: var(--mission-bar-w);
-    height: 2px;
+    height: var(--accent-bar);
     margin-bottom: var(--space-4);
     background: var(--accent);
   }
@@ -1571,7 +1552,7 @@
   .about-quote {
     margin: 0;
     padding-left: var(--about-quote-pad-left);
-    border-left: 2px solid var(--accent);
+    border-left: var(--accent-bar) solid var(--accent);
     max-width: 720px;
   }
 
@@ -1615,10 +1596,8 @@
 
   /* About page — workshop band and closing links. */
   .about-workshop-band {
+    /* Rendered as the shell footerBand, so it meets the footer rule with no page-bg strip. */
     padding-block: var(--space-11);
-    /* Cancel main py-space-6 so card band meets footer gold rule (no page-bg strip). */
-    margin-bottom: calc(-1 * var(--space-6));
-    padding-bottom: calc(var(--space-11) + var(--space-6));
   }
 
   .about-workshop-band-inner {
@@ -1682,17 +1661,11 @@
 
   /* /pracownia — section layout without 280 px H2 column (6c/6d). */
   .workshop-section {
-    margin-top: var(--section-gap-mobile);
-  }
-
-  @media (min-width: 768px) {
-    .workshop-section {
-      margin-top: var(--section-gap);
-    }
+    margin-top: var(--section-gap-loose);
   }
 
   .workshop-section-heading {
-    margin: 0 0 var(--workshop-section-heading-mb-m);
+    margin: 0 0 var(--heading-gap);
     font-family: var(--font-serif);
     font-size: var(--size-h2-m);
     font-weight: 400;
@@ -1702,7 +1675,6 @@
 
   @media (min-width: 768px) {
     .workshop-section-heading {
-      margin-bottom: var(--workshop-section-heading-mb);
       font-size: var(--size-h2);
     }
   }
@@ -1764,32 +1736,6 @@
 
     .learning-forms-description {
       font-size: var(--size-body);
-    }
-  }
-
-  .interview-section > .workshop-section-heading {
-    margin-bottom: var(--workshop-interview-heading-mb-m);
-  }
-
-  #czego-sie-uczymy > .workshop-section-heading {
-    margin-bottom: var(--workshop-curriculum-heading-mb-m);
-  }
-
-  #ze-wspolnej-pracy > .workshop-section-heading {
-    margin-bottom: var(--workshop-gallery-heading-mb-m);
-  }
-
-  @media (min-width: 768px) {
-    .interview-section > .workshop-section-heading {
-      margin-bottom: var(--workshop-interview-heading-mb);
-    }
-
-    #czego-sie-uczymy > .workshop-section-heading {
-      margin-bottom: var(--workshop-curriculum-heading-mb);
-    }
-
-    #ze-wspolnej-pracy > .workshop-section-heading {
-      margin-bottom: var(--workshop-gallery-heading-mb);
     }
   }
 
@@ -2145,7 +2091,7 @@
     display: flex;
     align-items: center;
     width: 100%;
-    margin: 0 0 var(--space-6);
+    margin: 0;
     padding: 0;
     border: 0;
     background: transparent;
@@ -2165,7 +2111,7 @@
   .news-archive-content {
     display: flex;
     flex-direction: column;
-    gap: var(--news-year-group-gap-m);
+    gap: var(--section-gap);
   }
 
   .news-year-start {
@@ -2380,10 +2326,6 @@
   }
 
   @media (min-width: 768px) {
-    .news-archive-content {
-      gap: var(--news-year-group-gap);
-    }
-
     .year-nav {
       display: flex;
       align-items: center;
@@ -2484,7 +2426,6 @@
     flex-direction: column;
     align-items: stretch;
     max-width: var(--content-max);
-    padding-bottom: var(--news-article-sec-m);
   }
 
   .news-article-head {
@@ -2565,7 +2506,7 @@
   }
 
   .news-article-rail {
-    margin-top: var(--news-article-sec-m);
+    margin-top: var(--section-gap);
   }
 
   .news-article-gend {
@@ -3034,10 +2975,6 @@
   }
 
   @media (min-width: 768px) {
-    .news-article {
-      padding-bottom: var(--news-article-sec);
-    }
-
     .news-article-title {
       font-size: var(--news-article-title-size);
     }
@@ -3429,7 +3366,7 @@
   /* /kontakt — two-row grid aligns Adres with Organizator (mockup 2a-kontakt). */
   .contact-page-grid {
     display: grid;
-    gap: var(--space-7);
+    gap: var(--section-gap-tight);
   }
 
   .contact-page-emails {
@@ -3612,7 +3549,7 @@
 
 
   .exhibition-section {
-    margin-top: var(--exhibition-section-gap-m);
+    margin-top: var(--section-gap);
   }
 
   .exhibition-section-grid {
@@ -3685,7 +3622,7 @@
   }
 
   .exhibition-facts {
-    border-top: 3px solid var(--accent);
+    border-top: var(--accent-bar) solid var(--accent);
     padding: var(--lecturer-row-y) var(--news-card-x-m) var(--space-6);
   }
 
@@ -3709,7 +3646,7 @@
   .exhibition-now-next {
     padding: var(--offer-facts-y) var(--offer-facts-x) var(--offer-facts-pb);
     border: 0;
-    border-top: 3px solid var(--accent);
+    border-top: var(--accent-bar) solid var(--accent);
     background: var(--surface-card);
   }
 
@@ -3926,10 +3863,6 @@
       padding-top: var(--space-6);
     }
 
-    .exhibition-section {
-      margin-top: var(--exhibition-section-gap);
-    }
-
     .exhibition-section-copy {
       font-size: var(--size-body-lg);
       line-height: var(--leading-prose);
@@ -3963,7 +3896,7 @@
     .exhibition-hero-grid__h1 {
       grid-column: 1;
       grid-row: 2;
-      margin-bottom: var(--workshop-section-heading-mb-m);
+      margin-bottom: var(--space-5);
     }
 
     .exhibition-hero-grid__lead {
@@ -4081,7 +4014,7 @@
   }
 
   .publication-section-heading {
-    margin: 0 0 var(--space-4);
+    margin: 0 0 var(--heading-gap);
     font-family: var(--font-serif);
     font-size: var(--size-h2-m);
     line-height: var(--leading-heading);
@@ -4263,7 +4196,7 @@
   }
 
   .publication-articles-section {
-    margin-top: var(--publication-section-gap-m);
+    margin-top: var(--section-gap);
   }
 
   .publication-article-list {
@@ -4330,7 +4263,7 @@
   }
 
   .publication-see-also {
-    margin-top: var(--publication-section-gap-m);
+    margin-top: var(--section-gap);
     padding-top: var(--space-7);
     border-top: 1px solid var(--line-gold);
   }
@@ -4352,7 +4285,7 @@
   .publication-about-section,
   .publication-toc,
   .publication-related-section {
-    margin-top: var(--publication-section-gap-m);
+    margin-top: var(--section-gap);
   }
 
   .publication-album-hero-grid {
@@ -4363,7 +4296,7 @@
 
   .publication-metrics {
     background: var(--surface-card);
-    border-top: 3px solid var(--accent);
+    border-top: var(--accent-bar) solid var(--accent);
     padding: var(--space-6) var(--space-7);
   }
 
@@ -4471,7 +4404,7 @@
   }
 
   .publication-toc-item-linked {
-    border-left: 3px solid var(--accent);
+    border-left: var(--accent-bar) solid var(--accent);
     background: var(--surface-card);
   }
 
@@ -4538,13 +4471,9 @@
     color: var(--accent-text);
   }
 
-  .publication-article-body {
-    margin-bottom: var(--space-7);
-  }
-
   .publication-album-backref,
   .publication-press-note {
-    border-top: 3px solid var(--accent);
+    border-top: var(--accent-bar) solid var(--accent);
     background: var(--surface-card);
     padding: var(--space-6) var(--space-7);
   }

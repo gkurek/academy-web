@@ -20,11 +20,11 @@ export function OfferQuoteGrid({ heading, quotes, columns = 3 }: OfferQuoteGridP
   return (
     <section
       aria-labelledby={headingId}
-      className="mt-section-gap-mobile md:mt-section-gap pb-section-gap-mobile md:pb-section-gap"
+      className="mt-section-gap"
     >
       <h2
         id={headingId}
-        className="font-serif text-size-role-section-h2-m md:text-size-role-section-h2 leading-heading text-text-h2 mb-space-2"
+        className="font-serif text-size-role-section-h2-m md:text-size-role-section-h2 leading-heading text-text-h2 mb-heading-gap"
       >
         {heading}
       </h2>

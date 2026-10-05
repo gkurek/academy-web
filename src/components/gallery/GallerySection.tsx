@@ -32,10 +32,7 @@ export function GallerySection({
     <section id={id} aria-labelledby={headingId} className={className}>
       <h2
         id={headingId}
-        className={[
-          "font-serif text-size-role-section-h2-m md:text-size-role-section-h2 leading-heading text-text-h2",
-          id === "ejk" ? "mb-space-6" : "mb-space-5",
-        ].join(" ")}
+        className="font-serif text-size-role-section-h2-m md:text-size-role-section-h2 leading-heading text-text-h2 mb-heading-gap"
       >
         {title}
       </h2>

@@ -44,7 +44,7 @@ function MdxImage({ src, alt, width, height }: ImgProps) {
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
     h2: ({ children }) => (
-      <h2 className="font-serif text-size-role-section-h2-m md:text-size-role-section-h2 leading-heading text-text-h2 mt-space-8 mb-space-4 first:mt-0">
+      <h2 className="font-serif text-size-role-section-h2-m md:text-size-role-section-h2 leading-heading text-text-h2 mt-section-gap mb-heading-gap first:mt-0">
         {children}
       </h2>
     ),

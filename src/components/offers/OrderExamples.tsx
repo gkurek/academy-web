@@ -10,11 +10,11 @@ export function OrderExamples() {
   return (
     <section
       aria-labelledby="order-examples-heading"
-      className="mt-space-8 pb-offer-examples-pb"
+      className="mt-section-gap"
     >
       <h2
         id="order-examples-heading"
-        className="font-serif text-size-role-section-h2-m md:text-size-role-section-h2 leading-heading text-text-h2 mb-offer-examples-heading-mb"
+        className="font-serif text-size-role-section-h2-m md:text-size-role-section-h2 leading-heading text-text-h2 mb-heading-gap"
       >
         {pl.offers.orderExamplesHeading}
       </h2>

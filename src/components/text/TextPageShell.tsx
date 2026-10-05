@@ -15,6 +15,8 @@ export interface TextPageShellProps {
   headerId?: string;
   /** When true, AboutPage (or similar) renders its own hero header. */
   hideHeader?: boolean;
+  /** See SectionPageShellProps["footerBand"]. */
+  footerBand?: ReactNode;
 }
 
 export function TextPageShell({
@@ -25,11 +27,12 @@ export function TextPageShell({
   path,
   headerId,
   hideHeader = false,
+  footerBand,
 }: TextPageShellProps) {
   const hasToc = Boolean(toc && toc.length > 0);
 
   return (
-    <SectionPageShell path={path}>
+    <SectionPageShell path={path} footerBand={footerBand}>
       {hasToc ? (
         <div className="grid grid-cols-1 items-start lg:grid-cols-text-page-toc lg:gap-text-page-main-gap">
           <div className="hidden self-start lg:sticky lg:top-text-page-toc-sticky lg:block">
@@ -55,7 +58,7 @@ export function TextPageShell({
 
 function TextPageHeader({ id, title, lead }: { id?: string; title: string; lead?: string }) {
   return (
-    <header id={id} className="mb-space-6 scroll-mt-space-6">
+    <header id={id} className="mb-section-gap-tight scroll-mt-space-6">
       <h1 className="mb-space-5 font-serif text-size-h1-m leading-tight text-text-h1 md:text-size-h1">
         {title}
       </h1>

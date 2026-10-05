@@ -73,7 +73,7 @@ function EnrollmentSection({
   return (
     <section
       aria-labelledby={headingId}
-      className="rule-gold-t mt-space-8 pt-space-7 pb-space-9"
+      className="rule-gold-t mt-section-gap pt-space-7"
     >
       <div
         className={
@@ -85,7 +85,7 @@ function EnrollmentSection({
         <div>
           <h2
             id={headingId}
-            className="font-serif text-size-role-section-h2-m md:text-size-role-section-h2 leading-heading text-text-h2 mb-space-5"
+            className="font-serif text-size-role-section-h2-m md:text-size-role-section-h2 leading-heading text-text-h2 mb-heading-gap"
           >
             {pl.offers.enrollmentSectionTitle}
           </h2>
@@ -121,7 +121,7 @@ export function OfferPage({ offer, path, quoteSlot, afterBodySlot, footerBand }:
   return (
     <SectionPageShell path={path} footerBand={footerBand}>
       {/* Single FactsBox instance: stacks below the lead column on mobile, sidebar on lg. */}
-      <div className="grid grid-cols-1 lg:grid-cols-offer-main gap-space-6 lg:gap-offer-main-gap items-start mb-space-7">
+      <div className="grid grid-cols-1 lg:grid-cols-offer-main gap-space-6 lg:gap-offer-main-gap items-start mb-section-gap-tight">
         <div className="min-w-0">
           {eyebrow ? (
             <p className="font-serif text-size-body text-accent-text mb-lectures-eyebrow-mb">
@@ -172,7 +172,7 @@ export function OfferPage({ offer, path, quoteSlot, afterBodySlot, footerBand }:
         <EnrollmentSection facts={facts} copy={enrollmentCopy} quoteSlot={enrollmentQuoteSlot} />
       )}
 
-      {trailingQuoteSlot && <div className="mt-space-8">{trailingQuoteSlot}</div>}
+      {trailingQuoteSlot && <div className="mt-section-gap">{trailingQuoteSlot}</div>}
     </SectionPageShell>
   );
 }

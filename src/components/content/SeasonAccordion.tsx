@@ -98,7 +98,7 @@ export function SeasonAccordion({ seasons }: SeasonAccordionProps) {
                   "gap-x-season-accordion-header-mb gap-y-space-1 lg:gap-y-0 lg:items-baseline",
                   "px-season-accordion-expanded-x pt-season-accordion-expanded-y-top",
                   isExpanded
-                    ? "bg-surface-card pb-season-accordion-header-mb border-b border-line-neutral border-l-2 border-l-accent"
+                    ? "bg-surface-card pb-season-accordion-header-mb border-b border-line-neutral border-l-accent-bar border-l-accent"
                     : "bg-surface-tile hover:bg-surface-card pb-season-accordion-collapsed-y",
                 ].join(" ")}
               >
@@ -130,7 +130,7 @@ export function SeasonAccordion({ seasons }: SeasonAccordionProps) {
               role="region"
               aria-labelledby={triggerId}
               hidden={!isExpanded}
-              className="bg-surface-card border-l-2 border-l-accent md:pl-tile-px"
+              className="bg-surface-card border-l-accent-bar border-l-accent md:pl-tile-px"
             >
               <LectureList items={season.lectures} />
             </div>

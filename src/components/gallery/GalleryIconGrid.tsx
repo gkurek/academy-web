@@ -58,7 +58,7 @@ export function GalleryIconGrid({ works }: GalleryIconGridProps) {
           names={section.names}
           className={
             index > 0
-              ? "mt-section-gap-mobile md:mt-section-gap border-t border-line-gold pt-space-5 md:pt-space-6"
+              ? "mt-section-gap border-t border-line-gold pt-space-5 md:pt-space-6"
               : undefined
           }
         />

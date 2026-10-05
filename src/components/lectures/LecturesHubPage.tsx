@@ -32,7 +32,7 @@ export function LecturesHubPage({
     <SectionPageShell path={path}>
       <div
         id="zapisy"
-        className="scroll-mt-space-6 grid grid-cols-1 lg:grid-cols-offer-main gap-space-6 lg:gap-offer-main-gap items-start mb-space-7"
+        className="scroll-mt-space-6 grid grid-cols-1 lg:grid-cols-offer-main gap-space-6 lg:gap-offer-main-gap items-start mb-section-gap-tight"
       >
         <div className="min-w-0">
           <p className="font-serif text-size-lectures-eyebrow text-accent-text mb-lectures-eyebrow-mb">
@@ -61,7 +61,7 @@ export function LecturesHubPage({
       <section aria-labelledby="lectures-program-heading">
         <h2
           id="lectures-program-heading"
-          className="font-serif text-size-role-section-h2-m md:text-size-role-section-h2 leading-heading text-text-h2 mb-lectures-program-heading-mb"
+          className="font-serif text-size-role-section-h2-m md:text-size-role-section-h2 leading-heading text-text-h2 mb-heading-gap"
         >
           {pl.lectures.programHeading}
         </h2>
@@ -71,8 +71,8 @@ export function LecturesHubPage({
         <LectureList items={season.lectures} />
       </section>
 
-      <section aria-labelledby="lectures-archive-heading" className="pt-lectures-archive-section-pt">
-        <div className="flex flex-wrap items-baseline justify-between gap-x-space-4 gap-y-space-2 mb-space-2">
+      <section aria-labelledby="lectures-archive-heading" className="mt-section-gap">
+        <div className="flex flex-wrap items-baseline justify-between gap-x-space-4 gap-y-space-2 mb-heading-gap">
           <h2
             id="lectures-archive-heading"
             className="font-serif text-size-role-section-h2-m md:text-size-role-section-h2 leading-heading text-text-h2"

@@ -14,7 +14,7 @@ export interface PillarsProps {
 /** "Warsztaty / Wykłady / Ikony" — three static entry points into the main sections. */
 export function Pillars({ pillars }: PillarsProps) {
   return (
-    <section className="px-page-margin-mobile md:px-page-margin py-space-7 md:py-space-8">
+    <section className="px-page-margin-mobile md:px-page-margin pt-section-gap pb-section-gap">
       <div className="grid grid-cols-1 md:grid-cols-3 gap-space-7 md:gap-pillars-gap">
         {pillars.map((pillar) => (
           <article key={pillar.title} className="group">

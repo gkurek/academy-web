@@ -630,5 +630,425 @@
     "signal": "screenshot",
     "width": 390,
     "note": "lecturer labels follow the profile registry (RF-5): Szymuła, Klejnowski-Różycki titles/affiliation, Kocój, Tatarova, Biskup (no short affiliation in profile); one label wraps differently"
+  },
+  {
+    "id": "RF-13",
+    "route": "/",
+    "signal": "styles",
+    "width": 1440,
+    "note": "section rhythm 56 (hero bottom, Pillars, Testimonial, FeaturedIcons via --section-gap); bottom 26 from shell"
+  },
+  {
+    "id": "RF-13",
+    "route": "/",
+    "signal": "styles",
+    "width": 1920,
+    "note": "section rhythm 56 (hero bottom, Pillars, Testimonial, FeaturedIcons via --section-gap); bottom 26 from shell"
+  },
+  {
+    "id": "RF-13",
+    "route": "/aktualnosci",
+    "signal": "screenshot",
+    "width": 390,
+    "note": "archive toggle loses own margin-bottom (page bottom from shell); year groups on --section-gap"
+  },
+  {
+    "id": "RF-13",
+    "route": "/aktualnosci",
+    "signal": "styles",
+    "width": 390,
+    "note": "archive toggle loses own margin-bottom (page bottom from shell); year groups on --section-gap"
+  },
+  {
+    "id": "RF-13",
+    "route": "/aktualnosci",
+    "signal": "screenshot",
+    "width": 1440,
+    "note": "archive toggle loses own margin-bottom (page bottom from shell); year groups on --section-gap"
+  },
+  {
+    "id": "RF-13",
+    "route": "/aktualnosci",
+    "signal": "styles",
+    "width": 1440,
+    "note": "archive toggle loses own margin-bottom (page bottom from shell); year groups on --section-gap"
+  },
+  {
+    "id": "RF-13",
+    "route": "/aktualnosci",
+    "signal": "screenshot",
+    "width": 1920,
+    "note": "archive toggle loses own margin-bottom (page bottom from shell); year groups on --section-gap"
+  },
+  {
+    "id": "RF-13",
+    "route": "/aktualnosci",
+    "signal": "styles",
+    "width": 1920,
+    "note": "archive toggle loses own margin-bottom (page bottom from shell); year groups on --section-gap"
+  },
+  {
+    "id": "RF-13",
+    "route": "/aktualnosci/ikona-korzenie-i-owoce-wiary-mistyka-dzis-wyklady-2026-2027",
+    "signal": "screenshot",
+    "width": 390,
+    "note": "article: own padding-bottom removed (page bottom from shell); rail on --section-gap"
+  },
+  {
+    "id": "RF-13",
+    "route": "/aktualnosci/ikona-korzenie-i-owoce-wiary-mistyka-dzis-wyklady-2026-2027",
+    "signal": "screenshot",
+    "width": 1440,
+    "note": "article: own padding-bottom removed (page bottom from shell); rail on --section-gap"
+  },
+  {
+    "id": "RF-13",
+    "route": "/aktualnosci/ikona-korzenie-i-owoce-wiary-mistyka-dzis-wyklady-2026-2027",
+    "signal": "screenshot",
+    "width": 1920,
+    "note": "article: own padding-bottom removed (page bottom from shell); rail on --section-gap"
+  },
+  {
+    "id": "RF-13",
+    "route": "/aktualnosci/nabor-kursu-2026-2027",
+    "signal": "screenshot",
+    "width": 390,
+    "note": "article: own padding-bottom removed (page bottom from shell); rail on --section-gap"
+  },
+  {
+    "id": "RF-13",
+    "route": "/aktualnosci/nabor-kursu-2026-2027",
+    "signal": "screenshot",
+    "width": 1440,
+    "note": "article: own padding-bottom removed (page bottom from shell); rail on --section-gap"
+  },
+  {
+    "id": "RF-13",
+    "route": "/aktualnosci/nabor-kursu-2026-2027",
+    "signal": "screenshot",
+    "width": 1920,
+    "note": "article: own padding-bottom removed (page bottom from shell); rail on --section-gap"
+  },
+  {
+    "id": "RF-13",
+    "route": "/ikony",
+    "signal": "styles",
+    "width": 390,
+    "note": "sections on --section-gap 56/34; H2 -> content on --heading-gap"
+  },
+  {
+    "id": "RF-13",
+    "route": "/ikony",
+    "signal": "styles",
+    "width": 1440,
+    "note": "sections on --section-gap 56/34; H2 -> content on --heading-gap"
+  },
+  {
+    "id": "RF-13",
+    "route": "/ikony",
+    "signal": "styles",
+    "width": 1920,
+    "note": "sections on --section-gap 56/34; H2 -> content on --heading-gap"
+  },
+  {
+    "id": "RF-13",
+    "route": "/ikony/wystawy",
+    "signal": "screenshot",
+    "width": 390,
+    "note": "exhibition sections on --section-gap; accent bars 3 px token"
+  },
+  {
+    "id": "RF-13",
+    "route": "/ikony/wystawy",
+    "signal": "screenshot",
+    "width": 1440,
+    "note": "exhibition sections on --section-gap; accent bars 3 px token"
+  },
+  {
+    "id": "RF-13",
+    "route": "/ikony/wystawy",
+    "signal": "screenshot",
+    "width": 1920,
+    "note": "exhibition sections on --section-gap; accent bars 3 px token"
+  },
+  {
+    "id": "RF-13",
+    "route": "/kontakt",
+    "signal": "screenshot",
+    "width": 390,
+    "note": "grid gap on --section-gap-tight (26 on mobile)"
+  },
+  {
+    "id": "RF-13",
+    "route": "/o-akademii",
+    "signal": "screenshot",
+    "width": 390,
+    "note": "sections on --section-gap-loose 80 desktop / 34 mobile; workshop band as footerBand"
+  },
+  {
+    "id": "RF-13",
+    "route": "/o-akademii",
+    "signal": "styles",
+    "width": 390,
+    "note": "sections on --section-gap-loose 80 desktop / 34 mobile; workshop band as footerBand"
+  },
+  {
+    "id": "RF-13",
+    "route": "/o-akademii",
+    "signal": "screenshot",
+    "width": 1440,
+    "note": "sections on --section-gap-loose 80 desktop / 34 mobile; workshop band as footerBand"
+  },
+  {
+    "id": "RF-13",
+    "route": "/o-akademii",
+    "signal": "styles",
+    "width": 1440,
+    "note": "sections on --section-gap-loose 80 desktop / 34 mobile; workshop band as footerBand"
+  },
+  {
+    "id": "RF-13",
+    "route": "/o-akademii",
+    "signal": "screenshot",
+    "width": 1920,
+    "note": "sections on --section-gap-loose 80 desktop / 34 mobile; workshop band as footerBand"
+  },
+  {
+    "id": "RF-13",
+    "route": "/o-akademii",
+    "signal": "styles",
+    "width": 1920,
+    "note": "sections on --section-gap-loose 80 desktop / 34 mobile; workshop band as footerBand"
+  },
+  {
+    "id": "RF-13",
+    "route": "/polityka-prywatnosci",
+    "signal": "screenshot",
+    "width": 390,
+    "note": "sections on --section-gap-tight, H2 -> content on --heading-gap"
+  },
+  {
+    "id": "RF-13",
+    "route": "/polityka-prywatnosci",
+    "signal": "styles",
+    "width": 390,
+    "note": "sections on --section-gap-tight, H2 -> content on --heading-gap"
+  },
+  {
+    "id": "RF-13",
+    "route": "/polityka-prywatnosci",
+    "signal": "screenshot",
+    "width": 1440,
+    "note": "sections on --section-gap-tight, H2 -> content on --heading-gap"
+  },
+  {
+    "id": "RF-13",
+    "route": "/polityka-prywatnosci",
+    "signal": "styles",
+    "width": 1440,
+    "note": "sections on --section-gap-tight, H2 -> content on --heading-gap"
+  },
+  {
+    "id": "RF-13",
+    "route": "/polityka-prywatnosci",
+    "signal": "screenshot",
+    "width": 1920,
+    "note": "sections on --section-gap-tight, H2 -> content on --heading-gap"
+  },
+  {
+    "id": "RF-13",
+    "route": "/polityka-prywatnosci",
+    "signal": "styles",
+    "width": 1920,
+    "note": "sections on --section-gap-tight, H2 -> content on --heading-gap"
+  },
+  {
+    "id": "RF-13",
+    "route": "/pracownia",
+    "signal": "screenshot",
+    "width": 390,
+    "note": "sections on --section-gap-loose, H2 -> content on --heading-gap"
+  },
+  {
+    "id": "RF-13",
+    "route": "/pracownia",
+    "signal": "styles",
+    "width": 390,
+    "note": "sections on --section-gap-loose, H2 -> content on --heading-gap"
+  },
+  {
+    "id": "RF-13",
+    "route": "/pracownia",
+    "signal": "screenshot",
+    "width": 1440,
+    "note": "sections on --section-gap-loose, H2 -> content on --heading-gap"
+  },
+  {
+    "id": "RF-13",
+    "route": "/pracownia",
+    "signal": "styles",
+    "width": 1440,
+    "note": "sections on --section-gap-loose, H2 -> content on --heading-gap"
+  },
+  {
+    "id": "RF-13",
+    "route": "/pracownia",
+    "signal": "screenshot",
+    "width": 1920,
+    "note": "sections on --section-gap-loose, H2 -> content on --heading-gap"
+  },
+  {
+    "id": "RF-13",
+    "route": "/pracownia",
+    "signal": "styles",
+    "width": 1920,
+    "note": "sections on --section-gap-loose, H2 -> content on --heading-gap"
+  },
+  {
+    "id": "RF-13",
+    "route": "/publikacje",
+    "signal": "screenshot",
+    "width": 1440,
+    "note": "sections on --section-gap (was 34 on desktop), --heading-gap"
+  },
+  {
+    "id": "RF-13",
+    "route": "/publikacje",
+    "signal": "styles",
+    "width": 1440,
+    "note": "sections on --section-gap (was 34 on desktop), --heading-gap"
+  },
+  {
+    "id": "RF-13",
+    "route": "/publikacje",
+    "signal": "screenshot",
+    "width": 1920,
+    "note": "sections on --section-gap (was 34 on desktop), --heading-gap"
+  },
+  {
+    "id": "RF-13",
+    "route": "/publikacje",
+    "signal": "styles",
+    "width": 1920,
+    "note": "sections on --section-gap (was 34 on desktop), --heading-gap"
+  },
+  {
+    "id": "RF-13",
+    "route": "/publikacje/cisza-ikony",
+    "signal": "screenshot",
+    "width": 390,
+    "note": "article body margin-bottom removed; sections on --section-gap"
+  },
+  {
+    "id": "RF-13",
+    "route": "/publikacje/cisza-ikony",
+    "signal": "screenshot",
+    "width": 1440,
+    "note": "article body margin-bottom removed; sections on --section-gap"
+  },
+  {
+    "id": "RF-13",
+    "route": "/publikacje/cisza-ikony",
+    "signal": "screenshot",
+    "width": 1920,
+    "note": "article body margin-bottom removed; sections on --section-gap"
+  },
+  {
+    "id": "RF-13",
+    "route": "/warsztaty",
+    "signal": "styles",
+    "width": 390,
+    "note": "hub lead on --section-gap-tight, quote section on --section-gap without own padding-bottom"
+  },
+  {
+    "id": "RF-13",
+    "route": "/warsztaty",
+    "signal": "styles",
+    "width": 1440,
+    "note": "hub lead on --section-gap-tight, quote section on --section-gap without own padding-bottom"
+  },
+  {
+    "id": "RF-13",
+    "route": "/warsztaty",
+    "signal": "styles",
+    "width": 1920,
+    "note": "hub lead on --section-gap-tight, quote section on --section-gap without own padding-bottom"
+  },
+  {
+    "id": "RF-13",
+    "route": "/warsztaty/letnia-szkola-swiatla",
+    "signal": "screenshot",
+    "width": 390,
+    "note": "MDX h2 / quotes on --section-gap and --heading-gap; page bottom from shell"
+  },
+  {
+    "id": "RF-13",
+    "route": "/warsztaty/letnia-szkola-swiatla",
+    "signal": "styles",
+    "width": 390,
+    "note": "MDX h2 / quotes on --section-gap and --heading-gap; page bottom from shell"
+  },
+  {
+    "id": "RF-13",
+    "route": "/warsztaty/letnia-szkola-swiatla",
+    "signal": "screenshot",
+    "width": 1440,
+    "note": "MDX h2 / quotes on --section-gap and --heading-gap; page bottom from shell"
+  },
+  {
+    "id": "RF-13",
+    "route": "/warsztaty/letnia-szkola-swiatla",
+    "signal": "styles",
+    "width": 1440,
+    "note": "MDX h2 / quotes on --section-gap and --heading-gap; page bottom from shell"
+  },
+  {
+    "id": "RF-13",
+    "route": "/warsztaty/letnia-szkola-swiatla",
+    "signal": "screenshot",
+    "width": 1920,
+    "note": "MDX h2 / quotes on --section-gap and --heading-gap; page bottom from shell"
+  },
+  {
+    "id": "RF-13",
+    "route": "/warsztaty/letnia-szkola-swiatla",
+    "signal": "styles",
+    "width": 1920,
+    "note": "MDX h2 / quotes on --section-gap and --heading-gap; page bottom from shell"
+  },
+  {
+    "id": "RF-13",
+    "route": "/wyklady",
+    "signal": "styles",
+    "width": 390,
+    "note": "archive section on --section-gap via margin (was padding 56), --heading-gap"
+  },
+  {
+    "id": "RF-13",
+    "route": "/wyklady",
+    "signal": "screenshot",
+    "width": 1440,
+    "note": "archive section on --section-gap via margin (was padding 56), --heading-gap"
+  },
+  {
+    "id": "RF-13",
+    "route": "/wyklady",
+    "signal": "styles",
+    "width": 1440,
+    "note": "archive section on --section-gap via margin (was padding 56), --heading-gap"
+  },
+  {
+    "id": "RF-13",
+    "route": "/wyklady",
+    "signal": "screenshot",
+    "width": 1920,
+    "note": "archive section on --section-gap via margin (was padding 56), --heading-gap"
+  },
+  {
+    "id": "RF-13",
+    "route": "/wyklady",
+    "signal": "styles",
+    "width": 1920,
+    "note": "archive section on --section-gap via margin (was padding 56), --heading-gap"
   }
 ]
