@@ -170,7 +170,7 @@
     border-bottom-color: var(--accent-hover);
   }
 
-  /* Main nav link — underline grows from center on hover (design/README: color transition ≤150ms). */
+  /* Main nav link — static 1px underline; only its colour changes on hover (design/README: colour transition ≤150ms). */
   .nav-link-underline {
     transition: color 150ms ease-out;
   }
@@ -183,20 +183,11 @@
     bottom: 0;
     height: 1px;
     background-color: var(--nav-underline-color, transparent);
-    transform: scaleX(var(--nav-underline-scale, 0));
-    transform-origin: center;
-    transition:
-      transform 150ms ease-out,
-      background-color 150ms ease-out;
-  }
-
-  .nav-link-underline:hover {
-    --nav-underline-scale: 1;
+    transition: background-color 150ms ease-out;
   }
 
   .nav-link-underline-active {
     --nav-underline-color: var(--accent);
-    --nav-underline-scale: 1;
   }
 
   .nav-link-underline:not(.nav-link-underline-active):hover {
@@ -214,93 +205,52 @@
     min-height: var(--tap-min-mobile-header);
   }
 
-  /* Secondary button — border lines only: top/bottom first, then sides (≤150ms each). */
+  /* Same 44 px field, but only below lg — where touch is the main input (footer, standalone links). */
+  .tap-target-below-lg {
+    display: inline-flex;
+    align-items: center;
+    min-height: var(--tap-min-mobile-header);
+  }
+
+  @media (min-width: 1024px) {
+    .tap-target-below-lg {
+      display: inline-block;
+      min-height: 0;
+    }
+  }
+
+  /* Colour transition without outline-color, so the focus ring never fades in from the text colour. */
+  .transition-ui-colors {
+    transition:
+      color 150ms ease-out,
+      background-color 150ms ease-out,
+      border-color 150ms ease-out;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .transition-ui-colors {
+      transition: none;
+    }
+  }
+
+  /* Horizontally scrolling row: keeps the focus ring of an off-screen item inside the scrollport. */
+  .scroll-row {
+    scroll-padding-inline: var(--page-margin-mobile);
+  }
+
+  /* Secondary button — static 1px border; only its colour changes on hover (≤150ms). */
   .btn-secondary {
-    position: relative;
-    isolation: isolate;
-    border-color: transparent;
-    transition: color 150ms ease-out;
+    border-color: var(--border-button);
+    transition:
+      color 150ms ease-out,
+      border-color 150ms ease-out;
   }
 
-  .btn-secondary-borders {
-    position: absolute;
-    inset: -1px;
-    pointer-events: none;
-    z-index: 0;
+  .btn-secondary:hover:not([aria-disabled="true"]) {
+    border-color: var(--accent);
   }
 
-  .btn-secondary-borders::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    border: 1px solid var(--border-button);
-  }
-
-  .btn-secondary-borders__top,
-  .btn-secondary-borders__bottom,
-  .btn-secondary-borders__left,
-  .btn-secondary-borders__right {
-    position: absolute;
-    background-color: var(--accent);
-  }
-
-  .btn-secondary-borders__top {
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 1px;
-    transform: scaleX(0);
-    transform-origin: center;
-    /* Mouse leave: retract after sides. */
-    transition: transform 150ms ease-out 150ms;
-  }
-
-  .btn-secondary-borders__bottom {
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 1px;
-    transform: scaleX(0);
-    transform-origin: center;
-    transition: transform 150ms ease-out 150ms;
-  }
-
-  .btn-secondary-borders__left {
-    top: 0;
-    bottom: 0;
-    left: 0;
-    width: 1px;
-    transform: scaleY(0);
-    transform-origin: center;
-    /* Mouse leave: retract first. */
-    transition: transform 150ms ease-out;
-  }
-
-  .btn-secondary-borders__right {
-    top: 0;
-    bottom: 0;
-    right: 0;
-    width: 1px;
-    transform: scaleY(0);
-    transform-origin: center;
-    transition: transform 150ms ease-out;
-  }
-
-  .btn-secondary:hover:not([aria-disabled="true"]) .btn-secondary-borders__top,
-  .btn-secondary:hover:not([aria-disabled="true"]) .btn-secondary-borders__bottom {
-    transform: scaleX(1);
-    /* Mouse enter: expand first. */
-    transition: transform 150ms ease-out;
-  }
-
-  .btn-secondary:hover:not([aria-disabled="true"]) .btn-secondary-borders__left,
-  .btn-secondary:hover:not([aria-disabled="true"]) .btn-secondary-borders__right {
-    transform: scaleY(1);
-    /* Mouse enter: expand after top/bottom. */
-    transition: transform 150ms ease-out 150ms;
-  }
-
-  .btn-secondary[aria-disabled="true"] .btn-secondary-borders::before {
+  .btn-secondary[aria-disabled="true"] {
     border-color: var(--line-neutral);
   }
 }

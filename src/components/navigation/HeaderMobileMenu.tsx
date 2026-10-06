@@ -63,7 +63,6 @@ export function HeaderMobileMenu({ path, activeHref, phone, blogUrl }: HeaderMob
   const dialogRef = useRef<HTMLDivElement>(null);
   const menuButtonRef = useRef<HTMLButtonElement>(null);
 
-  const iconsLabel = navItem("/ikony").label;
   const newsLink = navItem("/aktualnosci");
 
   const closeMenu = useCallback(() => {
@@ -74,8 +73,9 @@ export function HeaderMobileMenu({ path, activeHref, phone, blogUrl }: HeaderMob
 
   const openMenu = useCallback(() => {
     setIsOpen(true);
-    setExpandedSection(iconsLabel);
-  }, [iconsLabel]);
+    // Only the current section opens, so its link to the current page is visible.
+    setExpandedSection(mainNav.find((item) => item.children && item.href === activeHref)?.label ?? null);
+  }, [activeHref]);
 
   useLayoutEffect(() => {
     const headerBar = headerBarRef.current;
@@ -177,7 +177,7 @@ export function HeaderMobileMenu({ path, activeHref, phone, blogUrl }: HeaderMob
         ref={headerBarRef}
         className="relative z-50 flex items-center justify-between gap-space-4 bg-surface-page px-page-margin-mobile py-space-5"
       >
-        <Link href="/" className="font-serif leading-tight">
+        <Link href="/" className="flex min-h-tap-min-mobile-header flex-col justify-center font-serif leading-tight">
           <div className="text-size-logo-m text-text-h2">{pl.meta.orgShortName}</div>
           <div className="text-size-caption-m text-text-tertiary">{pl.meta.orgSubtitle}</div>
         </Link>
@@ -278,16 +278,16 @@ export function HeaderMobileMenu({ path, activeHref, phone, blogUrl }: HeaderMob
             <Button block size="lg" variant="secondary" href="/kontakt" onClick={closeMenu}>
               {pl.header.contactCta} · {phone}
             </Button>
-            <div className="mt-space-6 text-size-ui text-text-tertiary">
-              <Link href={newsLink.href} onClick={closeMenu}>
+            <div className="mt-space-4 flex flex-wrap items-center gap-x-space-3 text-size-ui text-text-tertiary">
+              <Link href={newsLink.href} onClick={closeMenu} className="tap-target-nav">
                 {newsLink.label}
               </Link>
-              {" · "}
-              <Link href={publicationsLink.href} onClick={closeMenu}>
+              <span aria-hidden="true">·</span>
+              <Link href={publicationsLink.href} onClick={closeMenu} className="tap-target-nav">
                 {publicationsLink.label}
               </Link>
-              {" · "}
-              <ExternalLink href={blogUrl} showIcon={false} onClick={closeMenu}>
+              <span aria-hidden="true">·</span>
+              <ExternalLink href={blogUrl} showIcon={false} onClick={closeMenu} className="tap-target-nav">
                 {pl.header.blogLink}
               </ExternalLink>
             </div>

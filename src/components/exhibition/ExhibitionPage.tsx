@@ -155,7 +155,7 @@ export function ExhibitionPage({
                 {scheduleNext}
               </p>
               <p className="exhibition-section-copy">
-                <TextLink href="/aktualnosci">{annual.photoArchiveLink}</TextLink>
+                <TextLink standalone href="/aktualnosci">{annual.photoArchiveLink}</TextLink>
               </p>
             </div>
             <div className="exhibition-section-grid__facts min-w-0">
@@ -234,8 +234,8 @@ export function ExhibitionPage({
 
       <footer className="exhibition-page-footer">
         <span className="exhibition-page-footer-label">{pageLabels.startHere}</span>
-        <TextLink href="/ikony">{pageLabels.galleryLink}</TextLink>
-        <TextLink href="/warsztaty">{pageLabels.workshopsLink}</TextLink>
+        <TextLink standalone href="/ikony">{pageLabels.galleryLink}</TextLink>
+        <TextLink standalone href="/warsztaty">{pageLabels.workshopsLink}</TextLink>
       </footer>
       </ExhibitionHashScroll>
     </SectionPageShell>

@@ -96,8 +96,8 @@ export function PublicationAlbumPage({ publication, path }: PublicationAlbumPage
         <footer className="publication-see-also">
           <div className="publication-see-also-row">
             <span className="publication-see-also-label">{pl.publications.seeAlsoLabel}</span>
-            <TextLink href="/publikacje">{pl.publications.allPublications}</TextLink>
-            <TextLink href="/wyklady">{pl.publications.lecturesScheduleLink}</TextLink>
+            <TextLink standalone href="/publikacje">{pl.publications.allPublications}</TextLink>
+            <TextLink standalone href="/wyklady">{pl.publications.lecturesScheduleLink}</TextLink>
           </div>
         </footer>
       </div>

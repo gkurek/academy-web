@@ -398,6 +398,11 @@
 
   .publication-toc-title-link {
     text-decoration: none;
+    transition: color 150ms ease-out;
+  }
+
+  .publication-toc-title-link:hover {
+    color: var(--accent-hover);
   }
 
   .publication-toc-author {

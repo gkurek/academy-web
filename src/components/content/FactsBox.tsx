@@ -105,7 +105,7 @@ export function FactsBox({ facts, kind, enrollment }: FactsBoxProps) {
           <div>
             <dt className="text-size-caption text-text-tertiary">{factsBox.publicationsRowLabel}</dt>
             <dd className="mt-offer-facts-dd-mt pb-space-6 text-text-body">
-              <TextLink href="/publikacje">{factsBox.publicationsLink}</TextLink>
+              <TextLink standalone href="/publikacje">{factsBox.publicationsLink}</TextLink>
             </dd>
           </div>
         ) : null}

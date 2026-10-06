@@ -23,8 +23,8 @@ export function Breadcrumb({ items }: BreadcrumbProps) {
         <Fragment key={item.label}>
           {index > 0 && <span aria-hidden="true">›</span>}
           {item.href ? (
-            <Link href={item.href} className="text-text-tertiary border-b border-border-secondary">
-              {item.label}
+            <Link href={item.href} className="inline-flex min-h-tap-min-mobile-header items-center text-text-tertiary transition-ui-colors hover:text-accent-hover lg:inline lg:min-h-0 lg:border-b lg:border-border-secondary">
+              <span className="border-b border-border-secondary lg:border-b-0">{item.label}</span>
             </Link>
           ) : (
             <span className="text-text-secondary">{item.label}</span>

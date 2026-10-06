@@ -77,7 +77,7 @@ export function LecturesHubPage({
           <PageHeading level="section" id="lectures-archive-heading">
             {pl.lectures.archiveHeading}
           </PageHeading>
-          <TextLink href="/wyklady/archiwum" className="text-size-body">
+          <TextLink standalone href="/wyklady/archiwum" className="text-size-body">
             {pl.lectures.archiveFullLink}
           </TextLink>
         </div>

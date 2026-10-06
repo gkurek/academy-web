@@ -128,8 +128,8 @@ export function PublicationsHubPage({ path, publication, articles }: Publication
         <footer className="publication-see-also">
           <div className="publication-see-also-row">
             <span className="publication-see-also-label">{pl.publications.seeAlsoLabel}</span>
-            <TextLink href="/ikony/wystawy">{pl.publications.exhibitionLink}</TextLink>
-            <TextLink href="/wyklady">{pl.publications.lecturesLinkFooter}</TextLink>
+            <TextLink standalone href="/ikony/wystawy">{pl.publications.exhibitionLink}</TextLink>
+            <TextLink standalone href="/wyklady">{pl.publications.lecturesLinkFooter}</TextLink>
           </div>
         </footer>
       </div>

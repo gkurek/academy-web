@@ -26,7 +26,8 @@
   a:focus-visible,
   button:focus-visible,
   summary:focus-visible,
-  [tabindex]:not([tabindex="-1"]):focus-visible {
+  [tabindex]:not([tabindex="-1"]):focus-visible,
+  .map-frame[data-focused] {
     outline: 2px solid var(--focus-ring);
     outline-offset: 2px;
   }

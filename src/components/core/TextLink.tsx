@@ -7,6 +7,8 @@ export interface TextLinkProps extends AnchorHTMLAttributes<HTMLAnchorElement> {
   href: string;
   /** Appends ↗ and opens in a new tab — external links only (blog, social). */
   external?: boolean;
+  /** Link standing on its own line (not inside a sentence): gets a 44 px touch field below lg. */
+  standalone?: boolean;
   children: ReactNode;
 }
 
@@ -15,8 +17,17 @@ const linkClass =
 
 const underlineTargetClass = "link-underline-target link-underline-target--border";
 
-export function TextLink({ href, external = false, children, className, ...rest }: TextLinkProps) {
-  const classes = [linkClass, className].filter(Boolean).join(" ");
+export function TextLink({
+  href,
+  external = false,
+  standalone = false,
+  children,
+  className,
+  ...rest
+}: TextLinkProps) {
+  const classes = [linkClass, standalone ? "tap-target-below-lg" : "", className]
+    .filter(Boolean)
+    .join(" ");
 
   if (external) {
     return (

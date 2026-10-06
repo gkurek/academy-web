@@ -27,7 +27,7 @@
   --surface-card: var(--umbra-800);
   --surface-tile: var(--umbra-850);
   --surface-footer: var(--umbra-950);
-  --surface-lightbox: rgb(13 10 8 / .85);
+  --surface-lightbox: #0d0a08;
 
   /* Text */
   --text-body: var(--bone-400);

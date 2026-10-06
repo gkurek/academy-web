@@ -22,7 +22,7 @@ export function FilterChip({
       aria-current={active ? "true" : undefined}
       className={[
         "inline-block rounded-none px-space-5 py-space-3 text-size-ui no-underline",
-        "transition-colors duration-150 ease-out",
+        "transition-ui-colors",
         active
           ? "border border-accent bg-accent font-semibold text-text-on-gold"
           : "border border-border-button bg-transparent font-normal text-text-body hover:border-accent-text hover:text-accent-text",

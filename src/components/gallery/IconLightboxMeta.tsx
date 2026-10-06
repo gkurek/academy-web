@@ -28,7 +28,7 @@ export function IconLightboxMeta({ item, positionLabel }: IconLightboxMetaProps)
       {item.author === "ejk" ? (
         <TextLink
           href="/ikony/na-zamowienie"
-          className="inline-flex min-h-tap-min-mobile-header items-center text-size-body"
+          className="inline-flex min-h-tap-min items-center text-size-body"
         >
           {pl.gallery.lightbox.orderLink}
         </TextLink>

@@ -25,7 +25,7 @@ function TextLinkRow({ links, label }: { links: TextPageLink[]; label?: string }
     <div className="about-link-row">
       {label ? <span className="about-link-row-label">{label}</span> : null}
       {links.map((link) => (
-        <TextLink key={link.href} href={link.href}>
+        <TextLink standalone key={link.href} href={link.href}>
           {link.label}
         </TextLink>
       ))}
@@ -146,7 +146,7 @@ export function AboutPage({ page, path }: AboutPageProps) {
         <AboutQuote quote={approach.quote} author={person.profile.name} />
         <p className="about-approach-comment">{approach.comment}</p>
         <p className="mt-space-5">
-          <TextLink href={approach.readMore.href}>{approach.readMore.label}</TextLink>
+          <TextLink standalone href={approach.readMore.href}>{approach.readMore.label}</TextLink>
         </p>
       </TextPageSection>
 

@@ -23,7 +23,7 @@ export default function NotFound() {
       </p>
 
       <div className="mb-space-8">
-        <TextLink href="/">{pl.notFound.homeLink}</TextLink>
+        <TextLink standalone href="/">{pl.notFound.homeLink}</TextLink>
       </div>
 
       <nav aria-label={pl.notFound.sitemapAriaLabel}>

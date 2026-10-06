@@ -37,8 +37,6 @@ export function Button({
   onClick,
   className,
 }: ButtonProps) {
-  const isSecondary = variant === "secondary";
-
   return (
     <a
       href={disabled ? undefined : href}
@@ -54,19 +52,7 @@ export function Button({
         .filter(Boolean)
         .join(" ")}
     >
-      {isSecondary ? (
-        <>
-          <span className="btn-secondary-borders" aria-hidden="true">
-            <span className="btn-secondary-borders__top" />
-            <span className="btn-secondary-borders__bottom" />
-            <span className="btn-secondary-borders__left" />
-            <span className="btn-secondary-borders__right" />
-          </span>
-          <span className="relative z-10">{children}</span>
-        </>
-      ) : (
-        children
-      )}
+      {children}
     </a>
   );
 }

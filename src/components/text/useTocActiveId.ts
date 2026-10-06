@@ -38,7 +38,20 @@ export function useTocActiveId(items: TocItem[]): string | undefined {
 
     elements.forEach((element) => observer.observe(element));
 
-    return () => observer.disconnect();
+    // Above the first section nothing crosses the observed band, so the last active entry would stick.
+    const firstElement = elements[0];
+    const resetAboveFirstSection = () => {
+      if (firstElement.getBoundingClientRect().top > window.innerHeight * 0.2) {
+        setActiveId(firstElement.id);
+      }
+    };
+    window.addEventListener("scroll", resetAboveFirstSection, { passive: true });
+    resetAboveFirstSection();
+
+    return () => {
+      observer.disconnect();
+      window.removeEventListener("scroll", resetAboveFirstSection);
+    };
   }, [items]);
 
   return activeId;

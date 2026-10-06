@@ -3,6 +3,7 @@
 import { useEffect, type MouseEvent } from "react";
 
 import { FilterChip } from "@/components/core/FilterChip";
+import { useRevealFocus } from "@/components/core/useRevealFocus";
 import {
   buildGalleryUrl,
   replaceGalleryUrl,
@@ -23,7 +24,7 @@ const chipRowClass = [
   // K-44 (mobile): below md a single scrollable row that bleeds to the screen edge (the cut-off
   // last chip signals scrolling); from md up the chips wrap. Padding with negative margins leaves
   // room for the focus ring, which overflow-x would otherwise clip.
-  "flex min-w-0 gap-space-3 overflow-x-auto",
+  "scroll-row flex min-w-0 gap-space-3 overflow-x-auto",
   "-ml-space-2 pl-space-2 -my-space-2 py-space-2",
   "-mr-page-margin-mobile pr-page-margin-mobile",
   "md:mr-0 md:pr-0 md:flex-wrap md:overflow-visible",
@@ -33,6 +34,7 @@ const allFilters: IconFilters = {};
 
 export function GalleryFilters({ tags }: GalleryFiltersProps) {
   const { filters, search } = useGalleryFilters();
+  const rowRef = useRevealFocus<HTMLDivElement>();
   const activeTag = filters.tag;
 
   // Unknown `temat`, a retired alias or the old `autor` param: rewrite to the canonical URL.
@@ -54,7 +56,7 @@ export function GalleryFilters({ tags }: GalleryFiltersProps) {
         {pl.gallery.filters.themeLabel}
       </p>
       <div className="flex flex-wrap items-center justify-between gap-x-space-6 gap-y-space-3">
-        <div className={chipRowClass}>
+        <div ref={rowRef} className={chipRowClass}>
           <FilterChip
             href={buildGalleryUrl(allFilters)}
             active={activeTag === undefined}

@@ -2171,5 +2171,334 @@
     "signal": "styles",
     "width": 1920,
     "note": "enrollment section added; quotes after it; FactsBox contact footer"
+  },
+  {
+    "id": "RF-17",
+    "route": "/",
+    "signal": "html",
+    "note": "tap-target fields (standalone links, footer, breadcrumb, bio button, logo), map-frame wrapper, scroll-row / transition-ui-colors classes"
+  },
+  {
+    "id": "RF-17",
+    "route": "/",
+    "signal": "screenshot",
+    "note": "taller rows from 44 px touch fields (390); footer legal bar",
+    "width": 390
+  },
+  {
+    "id": "RF-17",
+    "route": "/aktualnosci",
+    "signal": "html",
+    "note": "tap-target fields (standalone links, footer, breadcrumb, bio button, logo), map-frame wrapper, scroll-row / transition-ui-colors classes"
+  },
+  {
+    "id": "RF-17",
+    "route": "/aktualnosci",
+    "signal": "screenshot",
+    "note": "taller rows from 44 px touch fields (390); footer legal bar",
+    "width": 390
+  },
+  {
+    "id": "RF-17",
+    "route": "/aktualnosci/ikona-korzenie-i-owoce-wiary-mistyka-dzis-wyklady-2026-2027",
+    "signal": "html",
+    "note": "tap-target fields (standalone links, footer, breadcrumb, bio button, logo), map-frame wrapper, scroll-row / transition-ui-colors classes"
+  },
+  {
+    "id": "RF-17",
+    "route": "/aktualnosci/ikona-korzenie-i-owoce-wiary-mistyka-dzis-wyklady-2026-2027",
+    "signal": "screenshot",
+    "note": "taller rows from 44 px touch fields (390); footer legal bar",
+    "width": 390
+  },
+  {
+    "id": "RF-17",
+    "route": "/aktualnosci/nabor-kursu-2026-2027",
+    "signal": "html",
+    "note": "tap-target fields (standalone links, footer, breadcrumb, bio button, logo), map-frame wrapper, scroll-row / transition-ui-colors classes"
+  },
+  {
+    "id": "RF-17",
+    "route": "/aktualnosci/nabor-kursu-2026-2027",
+    "signal": "screenshot",
+    "note": "taller rows from 44 px touch fields (390); footer legal bar",
+    "width": 390
+  },
+  {
+    "id": "RF-17",
+    "route": "/ikony",
+    "signal": "html",
+    "note": "tap-target fields (standalone links, footer, breadcrumb, bio button, logo), map-frame wrapper, scroll-row / transition-ui-colors classes"
+  },
+  {
+    "id": "RF-17",
+    "route": "/ikony",
+    "signal": "screenshot",
+    "note": "taller rows from 44 px touch fields (390); footer legal bar",
+    "width": 390
+  },
+  {
+    "id": "RF-17",
+    "route": "/ikony/na-zamowienie",
+    "signal": "html",
+    "note": "tap-target fields (standalone links, footer, breadcrumb, bio button, logo), map-frame wrapper, scroll-row / transition-ui-colors classes"
+  },
+  {
+    "id": "RF-17",
+    "route": "/ikony/na-zamowienie",
+    "signal": "screenshot",
+    "note": "taller rows from 44 px touch fields (390); footer legal bar",
+    "width": 390
+  },
+  {
+    "id": "RF-17",
+    "route": "/ikony/wystawy",
+    "signal": "html",
+    "note": "tap-target fields (standalone links, footer, breadcrumb, bio button, logo), map-frame wrapper, scroll-row / transition-ui-colors classes"
+  },
+  {
+    "id": "RF-17",
+    "route": "/ikony/wystawy",
+    "signal": "screenshot",
+    "note": "taller rows from 44 px touch fields (390); footer legal bar",
+    "width": 390
+  },
+  {
+    "id": "RF-17",
+    "route": "/kontakt",
+    "signal": "html",
+    "note": "tap-target fields (standalone links, footer, breadcrumb, bio button, logo), map-frame wrapper, scroll-row / transition-ui-colors classes"
+  },
+  {
+    "id": "RF-17",
+    "route": "/kontakt",
+    "signal": "screenshot",
+    "note": "taller rows from 44 px touch fields (390); footer legal bar",
+    "width": 390
+  },
+  {
+    "id": "RF-17",
+    "route": "/nie-ma-takiej-strony",
+    "signal": "html",
+    "note": "tap-target fields (standalone links, footer, breadcrumb, bio button, logo), map-frame wrapper, scroll-row / transition-ui-colors classes"
+  },
+  {
+    "id": "RF-17",
+    "route": "/nie-ma-takiej-strony",
+    "signal": "screenshot",
+    "note": "taller rows from 44 px touch fields (390); footer legal bar",
+    "width": 390
+  },
+  {
+    "id": "RF-17",
+    "route": "/o-akademii",
+    "signal": "html",
+    "note": "tap-target fields (standalone links, footer, breadcrumb, bio button, logo), map-frame wrapper, scroll-row / transition-ui-colors classes"
+  },
+  {
+    "id": "RF-17",
+    "route": "/o-akademii",
+    "signal": "screenshot",
+    "note": "taller rows from 44 px touch fields (390); footer legal bar",
+    "width": 390
+  },
+  {
+    "id": "RF-17",
+    "route": "/polityka-prywatnosci",
+    "signal": "html",
+    "note": "tap-target fields (standalone links, footer, breadcrumb, bio button, logo), map-frame wrapper, scroll-row / transition-ui-colors classes"
+  },
+  {
+    "id": "RF-17",
+    "route": "/polityka-prywatnosci",
+    "signal": "screenshot",
+    "note": "taller rows from 44 px touch fields (390); footer legal bar",
+    "width": 390
+  },
+  {
+    "id": "RF-17",
+    "route": "/polityka-prywatnosci",
+    "signal": "styles",
+    "note": "TOC: first entry active above the first section (V4-11); breadcrumb border moved to inner span below lg",
+    "width": 390
+  },
+  {
+    "id": "RF-17",
+    "route": "/pracownia",
+    "signal": "html",
+    "note": "tap-target fields (standalone links, footer, breadcrumb, bio button, logo), map-frame wrapper, scroll-row / transition-ui-colors classes"
+  },
+  {
+    "id": "RF-17",
+    "route": "/pracownia",
+    "signal": "screenshot",
+    "note": "taller rows from 44 px touch fields (390); footer legal bar",
+    "width": 390
+  },
+  {
+    "id": "RF-17",
+    "route": "/pracownia",
+    "signal": "styles",
+    "note": "TOC: first entry active above the first section (V4-11); breadcrumb border moved to inner span below lg",
+    "width": 390
+  },
+  {
+    "id": "RF-17",
+    "route": "/pracownia",
+    "signal": "styles",
+    "note": "TOC: first entry active above the first section (V4-11); breadcrumb border moved to inner span below lg",
+    "width": 1440
+  },
+  {
+    "id": "RF-17",
+    "route": "/pracownia",
+    "signal": "styles",
+    "note": "TOC: first entry active above the first section (V4-11); breadcrumb border moved to inner span below lg",
+    "width": 1920
+  },
+  {
+    "id": "RF-17",
+    "route": "/publikacje",
+    "signal": "html",
+    "note": "tap-target fields (standalone links, footer, breadcrumb, bio button, logo), map-frame wrapper, scroll-row / transition-ui-colors classes"
+  },
+  {
+    "id": "RF-17",
+    "route": "/publikacje",
+    "signal": "screenshot",
+    "note": "taller rows from 44 px touch fields (390); footer legal bar",
+    "width": 390
+  },
+  {
+    "id": "RF-17",
+    "route": "/publikacje/cisza-ikony",
+    "signal": "html",
+    "note": "tap-target fields (standalone links, footer, breadcrumb, bio button, logo), map-frame wrapper, scroll-row / transition-ui-colors classes"
+  },
+  {
+    "id": "RF-17",
+    "route": "/publikacje/cisza-ikony",
+    "signal": "screenshot",
+    "note": "taller rows from 44 px touch fields (390); footer legal bar",
+    "width": 390
+  },
+  {
+    "id": "RF-17",
+    "route": "/publikacje/cisza-ikony",
+    "signal": "styles",
+    "note": "TOC: first entry active above the first section (V4-11); breadcrumb border moved to inner span below lg",
+    "width": 390
+  },
+  {
+    "id": "RF-17",
+    "route": "/publikacje/ikona-dzis",
+    "signal": "html",
+    "note": "tap-target fields (standalone links, footer, breadcrumb, bio button, logo), map-frame wrapper, scroll-row / transition-ui-colors classes"
+  },
+  {
+    "id": "RF-17",
+    "route": "/publikacje/ikona-dzis",
+    "signal": "screenshot",
+    "note": "taller rows from 44 px touch fields (390); footer legal bar",
+    "width": 390
+  },
+  {
+    "id": "RF-17",
+    "route": "/publikacje/ikona-dzis",
+    "signal": "styles",
+    "note": "TOC: first entry active above the first section (V4-11); breadcrumb border moved to inner span below lg",
+    "width": 390
+  },
+  {
+    "id": "RF-17",
+    "route": "/warsztaty",
+    "signal": "html",
+    "note": "tap-target fields (standalone links, footer, breadcrumb, bio button, logo), map-frame wrapper, scroll-row / transition-ui-colors classes"
+  },
+  {
+    "id": "RF-17",
+    "route": "/warsztaty",
+    "signal": "screenshot",
+    "note": "taller rows from 44 px touch fields (390); footer legal bar",
+    "width": 390
+  },
+  {
+    "id": "RF-17",
+    "route": "/warsztaty/kurs-roczny-i-trzyletni",
+    "signal": "html",
+    "note": "tap-target fields (standalone links, footer, breadcrumb, bio button, logo), map-frame wrapper, scroll-row / transition-ui-colors classes"
+  },
+  {
+    "id": "RF-17",
+    "route": "/warsztaty/kurs-roczny-i-trzyletni",
+    "signal": "screenshot",
+    "note": "taller rows from 44 px touch fields (390); footer legal bar",
+    "width": 390
+  },
+  {
+    "id": "RF-17",
+    "route": "/warsztaty/letnia-szkola-swiatla",
+    "signal": "html",
+    "note": "tap-target fields (standalone links, footer, breadcrumb, bio button, logo), map-frame wrapper, scroll-row / transition-ui-colors classes"
+  },
+  {
+    "id": "RF-17",
+    "route": "/warsztaty/letnia-szkola-swiatla",
+    "signal": "screenshot",
+    "note": "taller rows from 44 px touch fields (390); footer legal bar",
+    "width": 390
+  },
+  {
+    "id": "RF-17",
+    "route": "/wyklady",
+    "signal": "html",
+    "note": "tap-target fields (standalone links, footer, breadcrumb, bio button, logo), map-frame wrapper, scroll-row / transition-ui-colors classes"
+  },
+  {
+    "id": "RF-17",
+    "route": "/wyklady",
+    "signal": "screenshot",
+    "note": "taller rows from 44 px touch fields (390); footer legal bar",
+    "width": 390
+  },
+  {
+    "id": "RF-17",
+    "route": "/wyklady/archiwum",
+    "signal": "html",
+    "note": "tap-target fields (standalone links, footer, breadcrumb, bio button, logo), map-frame wrapper, scroll-row / transition-ui-colors classes"
+  },
+  {
+    "id": "RF-17",
+    "route": "/wyklady/archiwum",
+    "signal": "screenshot",
+    "note": "taller rows from 44 px touch fields (390); footer legal bar",
+    "width": 390
+  },
+  {
+    "id": "RF-17",
+    "route": "/wyklady/wykladowcy",
+    "signal": "html",
+    "note": "tap-target fields (standalone links, footer, breadcrumb, bio button, logo), map-frame wrapper, scroll-row / transition-ui-colors classes"
+  },
+  {
+    "id": "RF-17",
+    "route": "/wyklady/wykladowcy",
+    "signal": "screenshot",
+    "note": "taller rows from 44 px touch fields (390); footer legal bar",
+    "width": 390
+  },
+  {
+    "id": "RF-18",
+    "route": "/kontakt",
+    "signal": "screenshot",
+    "note": "contact e-mails and phone as text links (accent colour, underline) instead of plain text (V3-22)",
+    "width": 1440
+  },
+  {
+    "id": "RF-18",
+    "route": "/kontakt",
+    "signal": "screenshot",
+    "note": "contact e-mails and phone as text links (accent colour, underline) instead of plain text (V3-22)",
+    "width": 1920
   }
 ]

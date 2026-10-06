@@ -31,7 +31,6 @@
     width: fit-content;
     font-size: var(--role-row-title-m);
     line-height: var(--leading-body);
-    color: var(--text-list-title);
     margin-bottom: var(--contact-email-line-mb);
   }
 

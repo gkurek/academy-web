@@ -74,7 +74,13 @@ export function SeasonAccordion({ seasons }: SeasonAccordionProps) {
   }, [expandedSlug, seasonSlugs]);
 
   const toggleSeason = (slug: string) => {
-    setExpandedSlug((current) => (current === slug ? null : slug));
+    const nextSlug = expandedSlug === slug ? null : slug;
+    setExpandedSlug(nextSlug);
+
+    // Keep the address in step with what is open: hash of the open season, none when all are closed.
+    const { pathname, search } = window.location;
+    const hash = nextSlug ? `#${seasonAnchorId(nextSlug)}` : "";
+    window.history.replaceState(window.history.state, "", `${pathname}${search}${hash}`);
   };
 
   return (

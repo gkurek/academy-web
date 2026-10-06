@@ -26,8 +26,9 @@ export function UpcomingHighlights() {
               {item.title}
             </div>
             <TextLink
+              standalone
               href={item.href}
-              className="inline-block mt-tile-link-mt-m md:mt-tile-link-mt text-size-ui-m md:text-size-ui"
+              className="mt-tile-link-mt-m md:mt-tile-link-mt text-size-ui-m md:text-size-ui"
             >
               {item.linkLabel}
             </TextLink>

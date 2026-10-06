@@ -75,6 +75,8 @@ export function LightboxDialogShell({
       onClose={onClose}
       aria-label={ariaLabel}
       aria-hidden={!isOpen}
+      // Scroll container only: keeps the dialog itself out of the Tab order.
+      tabIndex={-1}
     >
       {isOpen ? (
         <div

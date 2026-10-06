@@ -17,11 +17,11 @@ import {
 // + four sitemap columns at xl (the sitemap columns follow the outer grid).
 // The full contact (people, both e-mails, the church dedication) lives on /kontakt.
 // Below lg the contact block stacks above the sitemap. The legal bar is a row from md.
-const colorTransition = "transition-colors duration-150 motion-reduce:transition-none";
+const colorTransition = "transition-ui-colors";
 const sectionHeadingClass = `flex min-h-tap-min-mobile-header items-center font-serif text-size-footer-heading leading-heading text-text-list-title hover:text-accent-text lg:min-h-0 lg:w-fit ${colorTransition}`;
 const subLinkClass = `flex min-h-tap-min-mobile-header items-center text-size-nav text-text-secondary hover:text-accent-hover lg:min-h-0 lg:w-fit lg:text-size-footer-sublink lg:leading-footer-sublink ${colorTransition}`;
 const footerLinkUnderline = "link-underline-target link-underline-target--border";
-const contactDataClass = `flex w-fit min-h-tap-min-mobile-header items-center whitespace-nowrap text-size-ui leading-footer-text text-accent-text no-underline hover:text-accent-hover md:min-h-0 ${colorTransition}`;
+const contactDataClass = `flex w-fit min-h-tap-min-mobile-header items-center whitespace-nowrap text-size-ui leading-footer-text text-accent-text no-underline hover:text-accent-hover lg:min-h-0 ${colorTransition}`;
 const socialLinkClass = `inline-flex min-h-tap-min items-center border border-border-secondary px-footer-social-px text-size-caption-m lg:px-space-4 leading-footer-text text-text-secondary hover:border-accent-text hover:text-accent-text md:min-h-tap-min-mobile-header ${colorTransition}`;
 const legalLinkClass = `no-underline hover:text-accent-text ${colorTransition}`;
 
@@ -124,9 +124,9 @@ export function Footer() {
         <span aria-hidden="true" className="hidden md:inline">
           {pl.footer.legalSeparator}
         </span>
-        <span>
+        <span className="flex items-center gap-space-1 lg:block">
           {pl.footer.organizerLabel}:{" "}
-          <ExternalLink href={settings.ecosystem.foundationUrl} className={legalLinkClass}>
+          <ExternalLink href={settings.ecosystem.foundationUrl} className={`tap-target-below-lg ${legalLinkClass}`}>
             <span className={footerLinkUnderline}>{pl.footer.organizerName}</span>
           </ExternalLink>
         </span>
@@ -135,16 +135,16 @@ export function Footer() {
         </span>
         <Link
           href={footerLegalLink.href}
-          className={`flex w-fit min-h-tap-min-mobile-header items-center md:inline md:min-h-0 ${legalLinkClass}`}
+          className={`flex w-fit min-h-tap-min-mobile-header items-center lg:inline lg:min-h-0 ${legalLinkClass}`}
         >
           <span className={footerLinkUnderline}>{footerLegalLink.label}</span>
         </Link>
-        <span className="md:ml-auto">
+        <span className="flex items-center gap-space-1 md:ml-auto lg:block">
           {pl.footer.designCreditLabel}:{" "}
           <ExternalLink
             href={pl.footer.designCreditUrl}
             showIcon={false}
-            className={`hover:text-footer-credit-hover ${colorTransition}`}
+            className={`tap-target-below-lg hover:text-footer-credit-hover ${colorTransition}`}
           >
             {pl.footer.designCreditName}
           </ExternalLink>

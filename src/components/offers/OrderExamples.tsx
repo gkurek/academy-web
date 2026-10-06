@@ -17,7 +17,7 @@ export function OrderExamples() {
         {pl.offers.orderExamplesHeading}
       </PageHeading>
       <FeaturedIconsGallery icons={icons} />
-      <TextLink href="/ikony" className="inline-block mt-offer-examples-link-mt text-size-body">
+      <TextLink standalone href="/ikony" className="mt-offer-examples-link-mt text-size-body">
         {pl.home.icons.seeAllLabel}
       </TextLink>
     </section>

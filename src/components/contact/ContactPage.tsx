@@ -1,6 +1,9 @@
+import type { MDXComponents } from "mdx/types";
 import type { ComponentType } from "react";
 
+import { TextLink } from "@/components/core/TextLink";
 import { MapBlock } from "@/components/contact/MapBlock";
+import { MdxLink } from "@/components/content/MdxLink";
 import { OnlineAside } from "@/components/contact/OnlineAside";
 import { SectionPageShell } from "@/components/layout/SectionPageShell";
 import { getPhoneHref, getSiteSettings } from "@/content/settings";
@@ -13,7 +16,7 @@ export interface ContactPageProps {
   path: string;
   /** Page heading — the nav label, same as the document title. */
   title: string;
-  Content: ComponentType;
+  Content: ComponentType<{ components?: MDXComponents }>;
 }
 
 export function ContactPage({ path, title, Content }: ContactPageProps) {
@@ -32,13 +35,13 @@ export function ContactPage({ path, title, Content }: ContactPageProps) {
             {settings.emails.map((email, index) => (
               <div key={email.address} className="contact-email-card">
                 <div className="contact-email-label">{email.label}</div>
-                <a href={`mailto:${email.address}`} className="contact-email-line">
+                <TextLink href={`mailto:${email.address}`} className="contact-email-line">
                   {email.address}
-                </a>
+                </TextLink>
                 {index === 0 ? (
-                  <a href={telHref} className="contact-email-line">
+                  <TextLink href={telHref} className="contact-email-line">
                     {settings.phone}
-                  </a>
+                  </TextLink>
                 ) : null}
                 {email.contactName ? (
                   <div className="contact-email-name">{email.contactName}</div>
@@ -63,7 +66,7 @@ export function ContactPage({ path, title, Content }: ContactPageProps) {
           </address>
 
           <Prose variant="text">
-            <Content />
+            <Content components={{ a: MdxLink }} />
           </Prose>
 
           <p className="mt-space-4 text-size-body leading-body text-text-secondary md:text-size-body-lg md:leading-prose">

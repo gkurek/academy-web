@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 
+import { GalleryTileHoverOverlay } from "@/components/gallery/galleryJustifiedShared";
 import { Lightbox } from "@/components/lightbox/Lightbox";
 import { useLightboxIndex } from "@/components/lightbox/useLightboxIndex";
 import type { Image as ContentImage } from "@/content/types";
@@ -48,7 +49,7 @@ export function PublicationSpreadStrip({
             <li key={spread.src} className="publication-spread-item">
               <button
                 type="button"
-                className="publication-spread-tile"
+                className="publication-spread-tile group"
                 onClick={() => lightbox.open(index)}
                 aria-label={labels.openSpread.replace("{alt}", spread.alt)}
               >
@@ -71,6 +72,7 @@ export function PublicationSpreadStrip({
                     }
                     className="publication-spread-image"
                   />
+                  <GalleryTileHoverOverlay />
                 </span>
               </button>
               {spread.caption ? (

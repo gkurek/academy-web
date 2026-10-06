@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, type MouseEvent } from "react";
 
+import { useRevealFocus } from "@/components/core/useRevealFocus";
 import { focusNewsYearCardTitleAfterLayout } from "@/components/news/focusNewsYearCardTitle";
 import { NavUnderlineLink } from "@/components/navigation/NavUnderlineLink";
 import { useYearActiveId } from "@/components/news/useYearActiveId";
@@ -16,6 +17,7 @@ export interface YearNavProps {
 
 export function YearNav({ years, archiveYears }: YearNavProps) {
   const navRef = useRef<HTMLElement>(null);
+  const linksRef = useRevealFocus<HTMLDivElement>();
   const activeYear = useYearActiveId(years);
   const archiveYearSet = new Set(archiveYears);
 
@@ -97,7 +99,7 @@ export function YearNav({ years, archiveYears }: YearNavProps) {
       className="year-nav"
     >
       <p className="year-nav-label">{pl.news.yearNavLabel}</p>
-      <div className="year-nav-links">
+      <div ref={linksRef} className="year-nav-links">
         {years.map((year) => {
           const isActive = year === activeYear;
           return (

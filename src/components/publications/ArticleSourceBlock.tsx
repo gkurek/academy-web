@@ -99,10 +99,10 @@ function AlbumBackref({ publication }: { publication: PublicationFrontmatter }) 
         </p>
         <p className="publication-album-backref-facts">{factsLine}</p>
         <div className="publication-album-backref-links">
-          <TextLink href={`/publikacje/${publication.slug}`}>
+          <TextLink standalone href={`/publikacje/${publication.slug}`}>
             {pl.publications.articleSourceViewAlbum}
           </TextLink>
-          <TextLink href={mailtoHref}>{pl.publications.articleSourceOrder}</TextLink>
+          <TextLink standalone href={mailtoHref}>{pl.publications.articleSourceOrder}</TextLink>
         </div>
       </div>
     </aside>
@@ -128,7 +128,7 @@ function PressFooter({ article }: { article: LoadedArticle }) {
             {pl.publications.articlePressReadPublisher}
           </ExternalLink>
         ) : null}
-        <TextLink href="/publikacje">{pl.publications.allPublications}</TextLink>
+        <TextLink standalone href="/publikacje">{pl.publications.allPublications}</TextLink>
       </div>
     </aside>
   );
