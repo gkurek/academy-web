@@ -44,7 +44,7 @@ const DESKTOP_GAP = 22;
 const DESKTOP_MAX_TILES_PER_ROW = 4;
 
 const tileImageSizes =
-  "(min-width: 1024px) 25vw, (min-width: 768px) 33vw, (min-width: 481px) 50vw, 90vw";
+  "(min-width: 1024px) 25vw, (min-width: 768px) 33vw, 50vw";
 
 const captionClass =
   "font-serif text-size-body text-text-tertiary text-center mt-space-2 md:mt-space-3 pb-space-5 md:pb-space-7";

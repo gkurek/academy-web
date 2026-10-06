@@ -16,7 +16,7 @@ export function OfferQuoteGrid({ heading, quotes, columns = 3 }: OfferQuoteGridP
   const gridClass =
     columns === 2
       ? "grid grid-cols-1 md:grid-cols-2 gap-offer-quotes-gap"
-      : "grid grid-cols-1 md:grid-cols-3 gap-offer-quotes-gap";
+      : "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-offer-quotes-gap";
 
   return (
     <section

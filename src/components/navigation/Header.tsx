@@ -16,7 +16,7 @@ export function Header({ path }: HeaderProps) {
 
   return (
     <header className="rule-gold-b">
-      <div className="hidden md:flex items-center justify-between gap-space-6 px-page-margin py-space-5">
+      <div className="hidden lg:flex items-center justify-between gap-space-6 px-page-margin py-space-5">
         <Link href="/" className="font-serif leading-tight">
           <div className="text-size-logo tracking-logo text-text-h2">
             {pl.meta.orgShortName}
@@ -38,7 +38,7 @@ export function Header({ path }: HeaderProps) {
         </nav>
       </div>
 
-      <div className="md:hidden">
+      <div className="lg:hidden">
         <HeaderMobileMenu path={path} activeHref={activeHref} phone={settings.phone} blogUrl={settings.blogUrl} />
       </div>
     </header>

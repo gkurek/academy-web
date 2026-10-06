@@ -1652,5 +1652,224 @@
     "signal": "styles",
     "width": 390,
     "note": "caption 14.5 → 15 px on 390 (V1-14)"
+  },
+  {
+    "id": "RF-15",
+    "route": "/",
+    "signal": "html",
+    "note": "Header: desktop nav from lg (V4-01); Hero: two columns from lg, image centred below (V3-03); Pillars: three columns from lg (V3-04)"
+  },
+  {
+    "id": "RF-15",
+    "route": "/aktualnosci",
+    "signal": "html",
+    "note": "Header: desktop nav from lg, hamburger below (V4-01)"
+  },
+  {
+    "id": "RF-15",
+    "route": "/aktualnosci",
+    "signal": "screenshot",
+    "width": 1440,
+    "note": "Year nav: one scrolling row at every width, no wrapped second row (V3-12)"
+  },
+  {
+    "id": "RF-15",
+    "route": "/aktualnosci/ikona-korzenie-i-owoce-wiary-mistyka-dzis-wyklady-2026-2027",
+    "signal": "html",
+    "note": "Header: desktop nav from lg, hamburger below (V4-01)"
+  },
+  {
+    "id": "RF-15",
+    "route": "/aktualnosci/nabor-kursu-2026-2027",
+    "signal": "html",
+    "note": "Header: desktop nav from lg, hamburger below (V4-01)"
+  },
+  {
+    "id": "RF-15",
+    "route": "/ikony",
+    "signal": "html",
+    "note": "Header: desktop nav from lg, hamburger below (V4-01)"
+  },
+  {
+    "id": "RF-15",
+    "route": "/ikony/na-zamowienie",
+    "signal": "html",
+    "note": "Header: desktop nav from lg, hamburger below (V4-01)"
+  },
+  {
+    "id": "RF-15",
+    "route": "/ikony/wystawy",
+    "signal": "html",
+    "note": "Header: desktop nav from lg, hamburger below (V4-01)"
+  },
+  {
+    "id": "RF-15",
+    "route": "/kontakt",
+    "signal": "html",
+    "note": "Header: desktop nav from lg, hamburger below (V4-01)"
+  },
+  {
+    "id": "RF-15",
+    "route": "/nie-ma-takiej-strony",
+    "signal": "html",
+    "note": "Header: desktop nav from lg, hamburger below (V4-01)"
+  },
+  {
+    "id": "RF-15",
+    "route": "/o-akademii",
+    "signal": "html",
+    "note": "Header: desktop nav from lg, hamburger below (V4-01)"
+  },
+  {
+    "id": "RF-15",
+    "route": "/polityka-prywatnosci",
+    "signal": "html",
+    "note": "Header: desktop nav from lg, hamburger below (V4-01)"
+  },
+  {
+    "id": "RF-15",
+    "route": "/pracownia",
+    "signal": "html",
+    "note": "Header: desktop nav from lg, hamburger below (V4-01)"
+  },
+  {
+    "id": "RF-15",
+    "route": "/publikacje",
+    "signal": "html",
+    "note": "Header: desktop nav from lg, hamburger below (V4-01)"
+  },
+  {
+    "id": "RF-15",
+    "route": "/publikacje/cisza-ikony",
+    "signal": "html",
+    "note": "Header: desktop nav from lg, hamburger below (V4-01)"
+  },
+  {
+    "id": "RF-15",
+    "route": "/publikacje/ikona-dzis",
+    "signal": "html",
+    "note": "Header: desktop nav from lg, hamburger below (V4-01)"
+  },
+  {
+    "id": "RF-15",
+    "route": "/warsztaty",
+    "signal": "html",
+    "note": "Header from lg (V4-01); OfferQuoteGrid: 2 columns at md, 3 from lg (V3-01)"
+  },
+  {
+    "id": "RF-15",
+    "route": "/warsztaty/kurs-roczny-i-trzyletni",
+    "signal": "html",
+    "note": "Header: desktop nav from lg, hamburger below (V4-01)"
+  },
+  {
+    "id": "RF-15",
+    "route": "/warsztaty/letnia-szkola-swiatla",
+    "signal": "html",
+    "note": "Header: desktop nav from lg, hamburger below (V4-01)"
+  },
+  {
+    "id": "RF-15",
+    "route": "/warsztaty/letnia-szkola-swiatla",
+    "signal": "screenshot",
+    "width": 1440,
+    "note": "Day rhythm: shared label column grows with the longest label (V3-02)"
+  },
+  {
+    "id": "RF-15",
+    "route": "/warsztaty/letnia-szkola-swiatla",
+    "signal": "screenshot",
+    "width": 1920,
+    "note": "Day rhythm: shared label column grows with the longest label (V3-02)"
+  },
+  {
+    "id": "RF-15",
+    "route": "/wyklady",
+    "signal": "html",
+    "note": "Header: desktop nav from lg, hamburger below (V4-01)"
+  },
+  {
+    "id": "RF-15",
+    "route": "/wyklady/archiwum",
+    "signal": "html",
+    "note": "Header: desktop nav from lg, hamburger below (V4-01)"
+  },
+  {
+    "id": "RF-15",
+    "route": "/wyklady/wykladowcy",
+    "signal": "html",
+    "note": "Header: desktop nav from lg, hamburger below (V4-01)"
+  },
+  {
+    "id": "RF-16",
+    "route": "/",
+    "signal": "screenshot",
+    "width": 390,
+    "note": "Gallery: two equal columns below md (V3-16)"
+  },
+  {
+    "id": "RF-16",
+    "route": "/",
+    "signal": "html",
+    "note": "JustifiedGrid sizes: 50vw below md (V3-16)"
+  },
+  {
+    "id": "RF-16",
+    "route": "/ikony",
+    "signal": "screenshot",
+    "width": 390,
+    "note": "Gallery: two equal columns below md (V3-16)"
+  },
+  {
+    "id": "RF-16",
+    "route": "/ikony",
+    "signal": "html",
+    "note": "JustifiedGrid sizes: 50vw below md (V3-16)"
+  },
+  {
+    "id": "RF-16",
+    "route": "/ikony/na-zamowienie",
+    "signal": "screenshot",
+    "width": 390,
+    "note": "Gallery: two equal columns below md (V3-16)"
+  },
+  {
+    "id": "RF-16",
+    "route": "/ikony/na-zamowienie",
+    "signal": "html",
+    "note": "JustifiedGrid sizes: 50vw below md (V3-16)"
+  },
+  {
+    "id": "RF-16",
+    "route": "/pracownia",
+    "signal": "screenshot",
+    "width": 390,
+    "note": "Interview: initials above the text below md (V3-15)"
+  },
+  {
+    "id": "RF-16",
+    "route": "/warsztaty/kurs-roczny-i-trzyletni",
+    "signal": "screenshot",
+    "width": 390,
+    "note": "Semester program: numeral above title below md, tighter padding (V3-05)"
+  },
+  {
+    "id": "RF-16",
+    "route": "/warsztaty/kurs-roczny-i-trzyletni",
+    "signal": "html",
+    "note": "Semester program: stacked layout classes (V3-05)"
+  },
+  {
+    "id": "RF-16",
+    "route": "/wyklady/wykladowcy",
+    "signal": "screenshot",
+    "width": 390,
+    "note": "Lecturer card: 96 px portrait beside name below md (V3-17)"
+  },
+  {
+    "id": "RF-16",
+    "route": "/wyklady/wykladowcy",
+    "signal": "html",
+    "note": "Lecturer card: portrait/name layout classes (V3-17)"
   }
 ]

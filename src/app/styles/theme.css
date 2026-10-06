@@ -247,6 +247,7 @@
   --text-size-lecturer-affiliation: var(--lecturer-affiliation-size);
   --aspect-lecturer-photo: var(--lecturer-photo-aspect);
   --grid-template-columns-lecturer-row: var(--lecturer-photo-col) 1fr;
+  --grid-template-columns-lecturer-row-m: var(--lecturer-photo-col-m) 1fr;
 
   /* Text pages */
   --spacing-text-page-main-gap: var(--text-page-main-gap);

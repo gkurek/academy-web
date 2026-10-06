@@ -15,7 +15,7 @@ export interface PillarsProps {
 export function Pillars({ pillars }: PillarsProps) {
   return (
     <section className="px-page-margin-mobile md:px-page-margin pt-section-gap pb-section-gap">
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-space-7 md:gap-pillars-gap">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-space-7 md:gap-pillars-gap">
         {pillars.map((pillar) => (
           <article key={pillar.title} className="group">
             <Link href={pillar.href} className="block">

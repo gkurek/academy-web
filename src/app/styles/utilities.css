@@ -50,7 +50,7 @@
   }
 
   /* Tile grids with hairline borders instead of grid gap + gold bg. One column
-     below md, --hairline-cols from md up (e.g. home „Najbliższe” with the
+     below lg, --hairline-cols from lg up (e.g. home „Najbliższe” with the
      exhibition tile is 3). The first-row / first-column exceptions depend on
      the column count, so they stay per variant (nth-child can't take var()). */
   .hairline-grid-2,
@@ -73,7 +73,7 @@
     border-top: 1px solid var(--line-gold);
   }
 
-  @media (min-width: 768px) {
+  @media (min-width: 1024px) {
     .hairline-grid-2,
     .hairline-grid-3 {
       grid-template-columns: repeat(var(--hairline-cols), minmax(0, 1fr));

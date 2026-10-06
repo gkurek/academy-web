@@ -17,11 +17,11 @@ export function LecturerCard({ lecturer }: LecturerCardProps) {
     <article
       id={lecturer.slug}
       className={[
-        "scroll-mt-space-6 grid grid-cols-1 md:grid-cols-lecturer-row items-start gap-x-lecturer-row-gap gap-y-space-4 md:gap-y-0",
-        "px-lecturer-row-x py-lecturer-row-y bg-surface-tile",
+        "scroll-mt-space-6 grid grid-cols-lecturer-row-m md:grid-cols-lecturer-row items-start gap-x-space-4 md:gap-x-lecturer-row-gap gap-y-space-4 md:gap-y-0",
+        "px-space-5 md:px-lecturer-row-x py-space-4 md:py-lecturer-row-y bg-surface-tile",
       ].join(" ")}
     >
-      <div className="w-full md:w-lecturer-photo-col md:max-w-none max-w-lecturer-photo-col shrink-0">
+      <div className="w-full md:w-lecturer-photo-col shrink-0">
         {lecturer.photo ? (
           <div className="relative overflow-hidden border border-line-gold bg-surface-card w-full aspect-lecturer-photo">
             <Image
@@ -43,15 +43,20 @@ export function LecturerCard({ lecturer }: LecturerCardProps) {
         )}
       </div>
 
-      <div className="min-w-0">
-        <h2 className="font-serif text-size-role-card-title-m md:text-size-role-card-title leading-heading text-text-h2 mb-lecturer-name-mb">
-          {displayName}
-        </h2>
-        <p className="font-serif text-size-lecturer-affiliation leading-body text-accent-text mb-lecturer-affiliation-mb">
-          {affiliationFull}
-        </p>
+      {/* Below md the wrapper dissolves: name and affiliation sit beside the portrait, the bio spans both columns. */}
+      <div className="contents md:block md:min-w-0">
+        <div className="min-w-0">
+          <h2 className="font-serif text-size-role-card-title-m md:text-size-role-card-title leading-heading text-text-h2 mb-lecturer-name-mb">
+            {displayName}
+          </h2>
+          <p className="font-serif text-size-lecturer-affiliation leading-body text-accent-text mb-lecturer-affiliation-mb">
+            {affiliationFull}
+          </p>
+        </div>
         {lecturer.bio ? (
-          <LecturerBio bio={lecturer.bio} collapsible={isLongLecturerBio(lecturer.bio)} name={displayName} />
+          <div className="col-span-2 md:col-span-1 min-w-0">
+            <LecturerBio bio={lecturer.bio} collapsible={isLongLecturerBio(lecturer.bio)} name={displayName} />
+          </div>
         ) : null}
       </div>
     </article>

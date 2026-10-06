@@ -21,9 +21,16 @@
     color: var(--text-secondary);
   }
 
+  /* Rows share one label column that grows with the longest label (subgrid), never narrower
+     than the design value (V3-02). The row padding sits inside the shared track. */
   @media (min-width: 768px) {
+    .prose-offer .offer-day-rhythm-grid {
+      grid-template-columns: minmax(calc(var(--offer-day-rhythm-time-col) + var(--offer-day-rhythm-x)), max-content) 1fr;
+    }
+
     .prose-offer .offer-day-rhythm-row {
-      grid-template-columns: var(--offer-day-rhythm-time-col) 1fr;
+      grid-column: 1 / -1;
+      grid-template-columns: subgrid;
       gap: var(--offer-day-rhythm-gap);
     }
   }

@@ -298,10 +298,8 @@
 
     .year-nav-links {
       flex: 1;
-      flex-wrap: wrap;
-      overflow-x: visible;
-      margin: calc(-1 * var(--space-2)) 0;
-      padding: var(--space-2) 0;
+      margin: calc(-1 * var(--space-2));
+      padding: var(--space-2);
     }
 
     .news-featured-section {

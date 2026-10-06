@@ -428,6 +428,38 @@
       margin-top: var(--exhibition-hero-frame-mt);
     }
 
+    .exhibition-now-next-title--primary {
+      font-size: var(--text-size-role-card-title);
+    }
+
+    .exhibition-now-next-title--secondary {
+      font-size: var(--text-size-role-row-title);
+    }
+
+    .exhibition-now-next-subline {
+      font-size: var(--size-body-lg);
+    }
+
+    .exhibition-tours-pass {
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: var(--exhibition-section-col-gap);
+      align-items: center;
+      padding: var(--space-6) 0;
+    }
+
+    .exhibition-tours-pass__cta {
+      width: auto;
+      flex: none;
+    }
+
+    .exhibition-annual-tiles-row {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: var(--space-4);
+    }
+  }
+
+  /* Side column (facts / now-next panel) from 1024 — one breakpoint for fixed-width side columns (V2-17). */
+  @media (min-width: 1024px) {
     .exhibition-hero-grid {
       grid-template-columns: minmax(0, 1fr) var(--exhibition-facts-w);
       grid-template-rows: auto auto auto 1fr;
@@ -468,35 +500,6 @@
 
     .exhibition-hero-grid__nav.exhibition-page-nav {
       margin-top: auto;
-    }
-
-    .exhibition-now-next-title--primary {
-      font-size: var(--text-size-role-card-title);
-    }
-
-    .exhibition-now-next-title--secondary {
-      font-size: var(--text-size-role-row-title);
-    }
-
-    .exhibition-now-next-subline {
-      font-size: var(--size-body-lg);
-    }
-
-    .exhibition-tours-pass {
-      grid-template-columns: minmax(0, 1fr) auto;
-      gap: var(--exhibition-section-col-gap);
-      align-items: center;
-      padding: var(--space-6) 0;
-    }
-
-    .exhibition-tours-pass__cta {
-      width: auto;
-      flex: none;
-    }
-
-    .exhibition-annual-tiles-row {
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: var(--space-4);
     }
 
     .exhibition-section-grid--text-facts {

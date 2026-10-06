@@ -3,7 +3,7 @@
      layout width (JustifiedGrid); each tile carries its photo ratio in --tile-ratio and takes
      that share of the row width (flex-grow), so the row height follows the real container with
      no measurement in JS. Below lg the row wrappers dissolve (display: contents) and the grid
-     wraps like FooGallery at the mobile target height; up to 480px every photo stands alone. */
+     wraps like FooGallery at the mobile target height; below md it is two equal columns. */
   .justified-grid {
     --justified-tile-h: var(--gallery-justified-row-max-h);
     display: flex;
@@ -38,19 +38,28 @@
     height: auto;
   }
 
-  /* Single column (WP mobile): every photo in a box of the max row height, cropped when wider than tall. */
-  @media (max-width: 480px) {
+  /* Two columns below md (V3-16): one portrait frame per tile, the photo contained so icons are never cropped. */
+  @media (max-width: 767px) {
+    .justified-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
     .justified-grid-tile {
-      flex-basis: 100%;
+      max-width: none;
+    }
+
+    .justified-grid-filler {
+      display: none;
     }
 
     .justified-grid-frame {
-      height: var(--gallery-justified-row-max-h);
+      aspect-ratio: var(--gallery-mobile-tile-aspect);
     }
 
     .justified-grid-image {
       height: 100%;
-      object-fit: cover;
+      object-fit: contain;
     }
   }
 

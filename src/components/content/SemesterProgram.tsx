@@ -28,11 +28,11 @@ export function SemesterProgram({ semesters }: SemesterProgramProps) {
         {semesters.map((semester, index) => (
           <article
             key={`${index}-${semester.title}`}
-            className="bg-surface-tile flex gap-offer-semester-gap-m md:gap-offer-semester-gap px-offer-semester-x-m py-offer-semester-y-m md:px-offer-semester-x md:py-offer-semester-y"
+            className="bg-surface-tile flex flex-col md:flex-row gap-offer-semester-gap-m md:gap-offer-semester-gap px-space-4 py-offer-semester-y-m md:px-offer-semester-x md:py-offer-semester-y"
           >
             <div
               aria-hidden="true"
-              className="font-serif text-size-offer-semester-num-m md:text-size-offer-semester-num leading-none text-accent-text shrink-0 w-offer-semester-num-width-m md:w-offer-semester-num-width text-left"
+              className="font-serif text-size-offer-semester-num-m md:text-size-offer-semester-num leading-none text-accent-text md:shrink-0 md:w-offer-semester-num-width text-left"
             >
               {ROMAN_NUMERALS[index] ?? String(index + 1)}
             </div>
@@ -42,7 +42,7 @@ export function SemesterProgram({ semesters }: SemesterProgramProps) {
               </PageHeading>
               <p className="text-size-body leading-body text-text-secondary mb-space-2">{semester.title}</p>
               {semester.topics && semester.topics.length > 0 ? (
-                <ul className="text-size-body leading-body text-text-tertiary list-disc ps-space-5 space-y-space-1">
+                <ul className="text-size-body leading-body text-text-tertiary list-disc ps-space-4 md:ps-space-5 space-y-space-1">
                   {semester.topics.map((topic) => (
                     <li key={topic}>{topic}</li>
                   ))}

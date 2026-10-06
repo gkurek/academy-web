@@ -33,6 +33,7 @@
   .publication-hub-cover-frame {
     position: relative;
     aspect-ratio: 1 / 1;
+    max-width: var(--publication-hub-cover);
     background: var(--surface-tile);
     overflow: hidden;
   }
@@ -516,11 +517,6 @@
       grid-template-columns: repeat(3, minmax(0, 1fr));
     }
 
-    .publication-album-hero-grid {
-      grid-template-columns: minmax(0, 1fr) var(--publication-metrics-w);
-      gap: var(--space-8);
-    }
-
     .publication-toc-chapter-title {
       font-size: var(--size-h3);
     }
@@ -565,6 +561,15 @@
 
   /* Fixed 440px cover column needs the lg content width; at md it overflowed the page (V2-16). */
   @media (min-width: 1024px) {
+    .publication-album-hero-grid {
+      grid-template-columns: minmax(0, 1fr) var(--publication-metrics-w);
+      gap: var(--space-8);
+    }
+
+    .publication-hub-cover-frame {
+      max-width: none;
+    }
+
     .publication-hub-album-grid {
       grid-template-columns: var(--publication-hub-cover) minmax(0, 1fr);
       gap: var(--space-8);

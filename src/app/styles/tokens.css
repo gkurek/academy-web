@@ -167,6 +167,8 @@
   --gallery-justified-row-max-h: 350px;
   /* From lg the target row height is --gallery-grid-h (300) and rows cap at 400 (K-40 B, was a JS constant). */
   --gallery-justified-row-max-h-desktop: 400px;
+  /* Below md the gallery is two equal columns; every tile gets the same portrait frame (icons are mostly 4:5, V3-16). */
+  --gallery-mobile-tile-aspect: 4 / 5;
 
   /* Lightbox — desktop panel (design/components/gallery/Lightbox.jsx). */
   --lightbox-image-max-h: 80vh; /* K-45: was 460px, i.e. half the window */
@@ -322,6 +324,7 @@
 
   /* LecturerCard + LecturersPage (#3a-wykladowcy layout, WP row with photo). */
   --lecturer-photo-col: 240px;
+  --lecturer-photo-col-m: 96px;
   --lecturer-row-gap: 28px;
   --lecturer-row-x: 28px;
   --lecturer-row-y: 24px;
@@ -337,7 +340,7 @@
   --text-page-toc-sticky-top: 20px;
 
   /* /o-akademii — hero, PersonProfile, MilestoneRow, ActivityList (mockup 6a/6b). */
-  --about-hero-image-w: 560px;
+  --about-hero-image-w: clamp(400px, 44vw, 560px);
   --about-hero-image-h: 420px;
   --about-hero-gap: 56px;
   --milestone-value-size: 44px;

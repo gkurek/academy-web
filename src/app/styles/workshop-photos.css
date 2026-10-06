@@ -105,10 +105,10 @@
     border-top: 1px solid var(--line-neutral);
   }
 
+  /* Below md the initials stand above the text, so answers keep the full column width (V3-15). */
   .interview-turn {
     display: grid;
-    grid-template-columns: var(--interview-initial-col) minmax(0, 1fr);
-    gap: 0 var(--interview-turn-gap);
+    grid-template-columns: minmax(0, 1fr);
   }
 
   .interview-turn--question {
@@ -172,6 +172,11 @@
   }
 
   @media (min-width: 768px) {
+    .interview-turn {
+      grid-template-columns: var(--interview-initial-col) minmax(0, 1fr);
+      gap: 0 var(--interview-turn-gap);
+    }
+
     .interview-intro {
       margin-bottom: var(--interview-intro-mb);
       font-size: var(--size-lead);

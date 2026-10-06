@@ -85,12 +85,15 @@
     color: var(--text-secondary);
   }
 
-  @media (max-width: 767px) {
+  /* Two declaration columns need the 1280 content width next to the heading column (V3-13). */
+  @media (max-width: 1279px) {
     .mission-declarations {
       grid-template-columns: 1fr;
       gap: var(--space-6);
     }
+  }
 
+  @media (max-width: 767px) {
     .mission-declarations-bar {
       margin-bottom: var(--space-4);
     }
