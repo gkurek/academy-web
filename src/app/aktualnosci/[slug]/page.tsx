@@ -1,3 +1,4 @@
+import { plainText } from "@/lib/typography";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
@@ -26,7 +27,7 @@ export async function generateMetadata({ params }: NewsArticleRouteProps): Promi
   }
 
   return {
-    title: entry.title,
+    title: plainText(entry.title),
   };
 }
 

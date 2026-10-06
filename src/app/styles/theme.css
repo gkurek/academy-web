@@ -11,8 +11,8 @@
 
   /* Shadows: lightbox panel and hero image only. design/README "Zasady"
      allows both exceptions to "no shadows"; design/README §3 and CLAUDE.md
-     list only the lightbox (D1 — the hero exception is recorded in
-     CLAUDE.md by the owner). The mobile hero shadow is lighter per the
+     list only the lightbox (D1 — the hero exception is confirmed by the
+     owner and recorded in CLAUDE.md, K-140). The mobile hero shadow is lighter per the
      resolved mockup DOM (20px/50px/.5 vs 30px/70px/.55 on desktop). */
   --shadow-lightbox: 0 30px 80px rgba(0, 0, 0, .7);
   --shadow-hero-image: 0 30px 70px rgba(0, 0, 0, .55);
@@ -52,7 +52,6 @@
   --text-size-ui: var(--size-ui);
   --text-size-ui-m: var(--size-ui);
   --text-size-nav: var(--size-nav);
-  --text-size-h3: var(--size-h3);
   --text-size-h3-m: var(--size-h3-m);
   --text-size-quote: var(--size-quote);
   --text-size-caption-m: var(--size-caption-m);

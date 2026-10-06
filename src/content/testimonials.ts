@@ -1,3 +1,4 @@
+import { nbspDeep } from "@/lib/typography";
 import testimonialsData from "../../content/testimonials.json";
 import type { Testimonial } from "@/content/types";
 
@@ -10,11 +11,11 @@ type TestimonialsFile = {
 };
 
 export function getWorkshopTestimonials(): Testimonial[] {
-  const data = testimonialsData as TestimonialsFile;
+  const data = nbspDeep(testimonialsData as TestimonialsFile);
   return data.items.filter((item) => item.scope !== "plener").slice(0, WORKSHOP_TESTIMONIALS_LIMIT);
 }
 
 export function getPlenerTestimonials(): Testimonial[] {
-  const data = testimonialsData as TestimonialsFile;
+  const data = nbspDeep(testimonialsData as TestimonialsFile);
   return data.items.filter((item) => item.scope === "plener");
 }

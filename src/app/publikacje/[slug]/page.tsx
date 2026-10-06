@@ -1,3 +1,4 @@
+import { plainText } from "@/lib/typography";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
@@ -30,7 +31,7 @@ export async function generateMetadata({ params }: PublicationSlugRouteProps): P
     return {};
   }
 
-  return { title };
+  return { title: plainText(title) };
 }
 
 export default async function PublicationSlugRoute({ params }: PublicationSlugRouteProps) {

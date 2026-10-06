@@ -1,3 +1,4 @@
+import { nbspDeep } from "@/lib/typography";
 import type { MDXProps } from "mdx/types";
 import type { ComponentType } from "react";
 import type { ExhibitionTravelingPlace, Image, Offer, OfferFacts, Testimonial } from "@/content/types";
@@ -80,19 +81,19 @@ export type OfferSlug = "kurs-roczny-i-trzyletni" | "letnia-szkola-swiatla" | "w
 const offerModules: Record<OfferSlug, OfferModule> = {
   "kurs-roczny-i-trzyletni": {
     Content: KursContent,
-    frontmatter: kursFrontmatter as OfferFrontmatter,
+    frontmatter: nbspDeep(kursFrontmatter as OfferFrontmatter),
   },
   "letnia-szkola-swiatla": {
     Content: PlenerContent,
-    frontmatter: plenerFrontmatter as OfferFrontmatter,
+    frontmatter: nbspDeep(plenerFrontmatter as OfferFrontmatter),
   },
   wyklady: {
     Content: WykladyContent,
-    frontmatter: wykladyFrontmatter as OfferFrontmatter,
+    frontmatter: nbspDeep(wykladyFrontmatter as OfferFrontmatter),
   },
   zamowienie: {
     Content: ZamowienieContent,
-    frontmatter: zamowienieFrontmatter as OfferFrontmatter,
+    frontmatter: nbspDeep(zamowienieFrontmatter as OfferFrontmatter),
   },
 };
 

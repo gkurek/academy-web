@@ -1,3 +1,4 @@
+import { nbspDeep } from "@/lib/typography";
 import iconsData from "../../content/icons.json";
 import { pl } from "@/i18n/pl";
 import type { IconWork } from "@/content/types";
@@ -33,8 +34,10 @@ export type IconSection = {
   works: IconWork[];
 };
 
+const iconWorks = nbspDeep(iconsData as IconWork[]);
+
 export function getIconWorks(): IconWork[] {
-  return iconsData as IconWork[];
+  return iconWorks;
 }
 
 export function getFeaturedIconWorks(): IconWork[] {

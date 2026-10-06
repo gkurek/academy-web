@@ -60,7 +60,7 @@ export function PublicationTocList({ chapters, items }: PublicationTocListProps)
                 {pl.publications.tocPages.replace("{pages}", group.pages)}
               </p>
             ) : null}
-            {group.title ? <h3 className="publication-toc-chapter-title">{group.title}</h3> : null}
+            {group.title ? <h3 className="publication-toc-chapter-title heading-sub">{group.title}</h3> : null}
             {group.entries.length > 0 ? (
               <ul className="publication-toc-list">
                 {group.entries.map((item) => (

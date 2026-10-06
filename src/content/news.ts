@@ -1,3 +1,4 @@
+import { nbspDeep } from "@/lib/typography";
 import type { MDXProps } from "mdx/types";
 import type { ComponentType } from "react";
 import type { News, NewsKind, NewsLayout, NewsRelatedLink } from "@/content/types";
@@ -259,7 +260,7 @@ export function loadNewsBySlug(slug: string): LoadedNews | undefined {
     return undefined;
   }
 
-  const entry = enrichListEntry(newsModule.frontmatter);
+  const entry = enrichListEntry(nbspDeep(newsModule.frontmatter));
 
   return {
     ...entry,

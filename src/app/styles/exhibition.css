@@ -141,6 +141,7 @@
   }
 
   .exhibition-section-copy {
+    max-width: var(--measure-prose);
     margin: 0;
     font-size: var(--size-body);
     line-height: var(--leading-prose);

@@ -1,10 +1,11 @@
+import { nbspDeep } from "@/lib/typography";
 import lecturersPageMeta from "../../content/lecturers-page.json";
 import lecturerDirectoryData from "../../content/lecturer-directory.json";
 import lecturersData from "../../content/lecturers.json";
 import type { Lecturer, LecturerDirectoryEntry } from "@/content/types";
 
-const lecturers = lecturersData as Lecturer[];
-const directory = lecturerDirectoryData as LecturerDirectoryEntry[];
+const lecturers = nbspDeep(lecturersData as Lecturer[]);
+const directory = nbspDeep(lecturerDirectoryData as LecturerDirectoryEntry[]);
 
 /** Fields a lecturer shows in programs and mentions: the profile page's values, else the directory's. */
 export type ResolvedLecturer = Pick<Lecturer, "slug" | "name" | "titles" | "affiliation">;
@@ -77,7 +78,7 @@ export function getLecturerProfileHref(slug: string): string | undefined {
 }
 
 export function getLecturersPageIntro(totalSeasons: number): string {
-  const { intro } = lecturersPageMeta as LecturersPageMeta;
+  const { intro } = nbspDeep(lecturersPageMeta as LecturersPageMeta);
   return intro.replace("{totalSeasons}", String(totalSeasons));
 }
 

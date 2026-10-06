@@ -1,8 +1,8 @@
 import Image from "next/image";
 
-import { TextLink } from "@/components/core/TextLink";
 import { SectionPageShell } from "@/components/layout/SectionPageShell";
 import { NewsCard } from "@/components/news/NewsCard";
+import { PublicationSeeAlso } from "@/components/publications/PublicationSeeAlso";
 import { PublicationMetricsBox } from "@/components/publications/PublicationMetricsBox";
 import { PublicationSpreadStrip } from "@/components/publications/PublicationSpreadStrip";
 import { PublicationTocList } from "@/components/publications/PublicationTocList";
@@ -93,13 +93,9 @@ export function PublicationAlbumPage({ publication, path }: PublicationAlbumPage
           </section>
         ) : null}
 
-        <footer className="publication-see-also">
-          <div className="publication-see-also-row">
-            <span className="publication-see-also-label">{pl.publications.seeAlsoLabel}</span>
-            <TextLink standalone href="/publikacje">{pl.publications.allPublications}</TextLink>
-            <TextLink standalone href="/wyklady">{pl.publications.lecturesScheduleLink}</TextLink>
-          </div>
-        </footer>
+        <PublicationSeeAlso
+          links={[{ href: "/publikacje", label: pl.publications.allPublications }, { href: "/wyklady", label: pl.publications.lecturesScheduleLink }]}
+        />
       </div>
     </SectionPageShell>
   );

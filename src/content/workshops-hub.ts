@@ -1,3 +1,4 @@
+import { nbspDeep } from "@/lib/typography";
 import hubData from "../../content/pages/workshops-hub.json";
 import type { Image } from "@/content/types";
 import { assertImage } from "@/content/validate";
@@ -18,7 +19,7 @@ export type WorkshopsHubData = {
   cards: Record<string, WorkshopHubCard>;
 };
 
-const hub = hubData as WorkshopsHubData;
+const hub = nbspDeep(hubData as WorkshopsHubData);
 
 function validateHub(data: WorkshopsHubData): void {
   if (!data.lead?.trim() || !data.leadSecondary?.trim()) {

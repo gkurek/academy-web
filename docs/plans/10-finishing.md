@@ -100,6 +100,6 @@ Z `docs/plan-claude-code.md` §3, etap 10:
 | --- | --- | --- |
 | 1–7 — fala 1 | ✅ | 2026-10-03 … 2026-10-04; tabela „Fala 1 — podsumowanie” wyżej |
 | 8 — treść EJK | ⬜ | backlog T1–T30 (`docs/plan-claude-code.md` §5) |
-| R — review serwisu | 🔵 | plan zatwierdzony 2026-10-04; następny R0; postęp w `10-review.md` |
+| R — review serwisu | ✅ część techniczna i wizualna 2026-10-06 | R0–R5, RF-0…RF-20, V1–V4 zamknięte; zostaje C1–C2 po k8; postęp w `10-review.md`, `10-review-fixes.md` |
 | 9 — SEO / analityka | ⬜ | |
 | 10 — audyty / docs | ⬜ | okrojony przez RV-1 |

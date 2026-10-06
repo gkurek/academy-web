@@ -2500,5 +2500,40 @@
     "signal": "screenshot",
     "note": "contact e-mails and phone as text links (accent colour, underline) instead of plain text (V3-22)",
     "width": 1920
+  },
+  {
+    "id": "RF-20",
+    "route": "/kontakt",
+    "signal": "styles",
+    "note": "panel titles Organizator / Akademia w sieci: box-title role 22 px (V1-15)",
+    "width": 390
+  },
+  {
+    "id": "RF-20",
+    "route": "/kontakt",
+    "signal": "styles",
+    "note": "panel titles Organizator / Akademia w sieci: box-title role 24 px (V1-15)",
+    "width": 1440
+  },
+  {
+    "id": "RF-20",
+    "route": "/kontakt",
+    "signal": "styles",
+    "note": "panel titles Organizator / Akademia w sieci: box-title role 24 px (V1-15)",
+    "width": 1920
+  },
+  {
+    "id": "RF-20",
+    "route": "/wyklady/wykladowcy",
+    "signal": "screenshot",
+    "note": "non-breaking spaces after single-letter words and balanced headings change line breaks (V3-19, V3-20)",
+    "width": 1440
+  },
+  {
+    "id": "RF-20",
+    "route": "/wyklady/wykladowcy",
+    "signal": "screenshot",
+    "note": "non-breaking spaces after single-letter words and balanced headings change line breaks (V3-19, V3-20)",
+    "width": 1920
   }
 ]

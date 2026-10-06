@@ -1,3 +1,4 @@
+import { nbspDeep } from "@/lib/typography";
 import archiveMeta from "../../content/lectures/archive.json";
 import season20122013Data from "../../content/lectures/2012-2013.json";
 import season20132014Data from "../../content/lectures/2013-2014.json";
@@ -26,21 +27,21 @@ const LECTURE_TITLE_SEPARATOR = " · ";
 type LectureSeasonFile = LectureSeason & { sample?: boolean };
 
 const seasonModules: Record<string, LectureSeasonFile> = {
-  "2026-2027": currentSeasonData as LectureSeasonFile,
-  "2025-2026": season20252026Data as LectureSeasonFile,
-  "2024-2025": season20242025Data as LectureSeasonFile,
-  "2023-2024": season20232024Data as LectureSeasonFile,
-  "2022-2023": season20222023Data as LectureSeasonFile,
-  "2021-2022": season20212022Data as LectureSeasonFile,
-  "2020-2021": season20202021Data as LectureSeasonFile,
-  "2019-2020": season20192020Data as LectureSeasonFile,
-  "2018-2019": season20182019Data as LectureSeasonFile,
-  "2017-2018": season20172018Data as LectureSeasonFile,
-  "2016-2017": season20162017Data as LectureSeasonFile,
-  "2015-2016": season20152016Data as LectureSeasonFile,
-  "2014-2015": season20142015Data as LectureSeasonFile,
-  "2013-2014": season20132014Data as LectureSeasonFile,
-  "2012-2013": season20122013Data as LectureSeasonFile,
+  "2026-2027": nbspDeep(currentSeasonData as LectureSeasonFile),
+  "2025-2026": nbspDeep(season20252026Data as LectureSeasonFile),
+  "2024-2025": nbspDeep(season20242025Data as LectureSeasonFile),
+  "2023-2024": nbspDeep(season20232024Data as LectureSeasonFile),
+  "2022-2023": nbspDeep(season20222023Data as LectureSeasonFile),
+  "2021-2022": nbspDeep(season20212022Data as LectureSeasonFile),
+  "2020-2021": nbspDeep(season20202021Data as LectureSeasonFile),
+  "2019-2020": nbspDeep(season20192020Data as LectureSeasonFile),
+  "2018-2019": nbspDeep(season20182019Data as LectureSeasonFile),
+  "2017-2018": nbspDeep(season20172018Data as LectureSeasonFile),
+  "2016-2017": nbspDeep(season20162017Data as LectureSeasonFile),
+  "2015-2016": nbspDeep(season20152016Data as LectureSeasonFile),
+  "2014-2015": nbspDeep(season20142015Data as LectureSeasonFile),
+  "2013-2014": nbspDeep(season20132014Data as LectureSeasonFile),
+  "2012-2013": nbspDeep(season20122013Data as LectureSeasonFile),
 };
 
 type LectureTalk = {
@@ -177,7 +178,7 @@ function buildArchiveSlugs(firstSeason: string, lastSeason: string): string[] {
 }
 
 function getArchiveMeta(): ArchiveMeta {
-  return archiveMeta as ArchiveMeta;
+  return nbspDeep(archiveMeta as ArchiveMeta);
 }
 
 function validateSeasons(): void {

@@ -20,6 +20,7 @@
   .prose-text > ol,
   .prose-offer > ol {
     margin-bottom: var(--space-4);
+    max-width: var(--measure-prose);
     padding-left: var(--space-6);
     font-size: var(--size-body);
     line-height: var(--leading-body);

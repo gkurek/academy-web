@@ -1,3 +1,4 @@
+import { nbspDeep } from "@/lib/typography";
 import type { ComponentType } from "react";
 
 import type { Article, ArticleSource, Author } from "@/content/types";
@@ -12,7 +13,7 @@ export type LoadedArticle = ArticleFrontmatter & {
   Content: ComponentType;
 };
 
-const articleEntries = Object.values(articleModules).map((module) => module.frontmatter);
+const articleEntries = Object.values(articleModules).map((module) => nbspDeep(module.frontmatter));
 
 articleEntries.forEach((article) => {
   article.authors.forEach((author) => {
@@ -45,7 +46,7 @@ export function loadArticleBySlug(slug: string): LoadedArticle | undefined {
   }
 
   return {
-    ...articleModule.frontmatter,
+    ...nbspDeep(articleModule.frontmatter),
     Content: articleModule.Content,
   };
 }

@@ -14,6 +14,14 @@
     text-wrap: pretty;
   }
 
+  /* Short blocks (headings, card titles, quotes) break evenly — no one-word last lines (V3-20). */
+  h1,
+  h2,
+  h3,
+  blockquote {
+    text-wrap: balance;
+  }
+
   /* Disclosure widgets draw their own chevron, never the native marker. */
   summary {
     list-style: none;

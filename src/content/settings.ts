@@ -1,3 +1,4 @@
+import { nbspDeep } from "@/lib/typography";
 import settingsData from "../../content/settings.json";
 import type { SiteSettings, UpcomingOverride } from "@/content/types";
 import { assertIsoDate } from "@/lib/isoDate";
@@ -51,7 +52,7 @@ function validateUpcomingOverrides(overrides: UpcomingOverride[]): void {
   });
 }
 
-const siteSettings = settingsData as SiteSettings;
+const siteSettings = nbspDeep(settingsData as SiteSettings);
 
 validateUpcomingOverrides(siteSettings.upcomingOverrides ?? []);
 

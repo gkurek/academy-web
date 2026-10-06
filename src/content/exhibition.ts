@@ -1,3 +1,4 @@
+import { nbspDeep } from "@/lib/typography";
 import { getSeason } from "@/content/lectures";
 import type { AnnualExhibition, PermanentExhibition } from "@/content/types";
 import { todayInWarsaw } from "@/lib/isoDate";
@@ -42,17 +43,20 @@ export type ExhibitionCopy = {
   whereValue: string;
 };
 
-const manifest = annualManifest as AnnualManifest;
-const { frontmatter: pageFrontmatter, copy: exhibitionCopy } = assertMdxExports<{
+const manifest = nbspDeep(annualManifest as AnnualManifest);
+const { frontmatter: pageFrontmatter, copy: rawExhibitionCopy } = assertMdxExports<{
   frontmatter: PermanentExhibition;
   copy: ExhibitionCopy;
 }>(pageModule, ["frontmatter", "copy"], "content/exhibition/page.mdx");
-const permanentExhibition = pageFrontmatter;
-const { descriptionParagraphs } = assertMdxExports<ExhibitionBodyExports>(
+const exhibitionCopy = nbspDeep(rawExhibitionCopy);
+const permanentExhibition = nbspDeep(pageFrontmatter);
+const { descriptionParagraphs: rawDescriptionParagraphs } = assertMdxExports<ExhibitionBodyExports>(
   exhibitionBody,
   ["descriptionParagraphs"],
   "content/exhibition/body.mdx",
 );
+
+const descriptionParagraphs = nbspDeep(rawDescriptionParagraphs);
 
 function assertKnownLectureSeason(seasonSlug: string): void {
   if (!getSeason(seasonSlug)) {

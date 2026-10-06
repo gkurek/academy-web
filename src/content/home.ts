@@ -1,3 +1,4 @@
+import { nbspDeep } from "@/lib/typography";
 import homeData from "../../content/pages/home.json";
 import type { Image } from "@/content/types";
 import { assertImage } from "@/content/validate";
@@ -22,7 +23,7 @@ type HomePageData = {
   testimonial: { quote: string; author: string };
 };
 
-const home = homeData as HomePageData;
+const home = nbspDeep(homeData as HomePageData);
 
 function assertText(value: string, context: string): void {
   if (!value?.trim()) {

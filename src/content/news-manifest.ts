@@ -1,3 +1,4 @@
+import { nbspDeep } from "@/lib/typography";
 import type { NewsFrontmatter } from "@/content/news";
 import newsManifest from "../../content/news/manifest.json";
 
@@ -6,7 +7,7 @@ import newsManifest from "../../content/news/manifest.json";
  * Kept apart from `news.ts` so `validate.ts` and the `tsx` check scripts can read it
  * without importing the lectures layer or the MDX registry.
  */
-export const newsManifestEntries = [...(newsManifest as NewsFrontmatter[])].sort((a, b) =>
+export const newsManifestEntries = [...nbspDeep(newsManifest as NewsFrontmatter[])].sort((a, b) =>
   b.date.localeCompare(a.date),
 );
 

@@ -1,3 +1,4 @@
+import { nbspDeep } from "@/lib/typography";
 import type { AboutPageData, PrivacyPolicyPageData, WorkshopPageData } from "@/content/types";
 import oAkademiiMeta from "../../content/pages/o-akademii.json";
 import privacyPolicyMeta from "../../content/pages/polityka-prywatnosci.json";
@@ -13,21 +14,24 @@ type AboutParagraphExports = {
   workshopParagraph: string;
 };
 
-const { audienceParagraphs, historyParagraph, workshopParagraph } =
+const { audienceParagraphs, historyParagraph, workshopParagraph } = nbspDeep(
   assertMdxExports<AboutParagraphExports>(
     aboutParagraphs,
     ["audienceParagraphs", "historyParagraph", "workshopParagraph"],
     "content/pages/o-akademii.mdx",
-  );
+  ),
+);
 
 type WorkshopParagraphExports = {
   curriculumParagraphs: string[];
 };
 
-const { curriculumParagraphs } = assertMdxExports<WorkshopParagraphExports>(
-  workshopParagraphs,
-  ["curriculumParagraphs"],
-  "content/pages/pracownia.mdx",
+const { curriculumParagraphs } = nbspDeep(
+  assertMdxExports<WorkshopParagraphExports>(
+    workshopParagraphs,
+    ["curriculumParagraphs"],
+    "content/pages/pracownia.mdx",
+  ),
 );
 
 /** Page metadata from JSON — the MDX body is rendered by the route, so `body` is never loaded. */
@@ -49,9 +53,9 @@ export type LoadedContactPage = {
 
 export type LoadedPrivacyPolicyPage = WithoutBody<PrivacyPolicyPageData>;
 
-const aboutPageMeta = oAkademiiMeta as WithoutBody<AboutPageData>;
-const workshopPageMeta = pracowniaMeta as WithoutBody<WorkshopPageData>;
-const privacyPolicyPageMeta = privacyPolicyMeta as WithoutBody<PrivacyPolicyPageData>;
+const aboutPageMeta = nbspDeep(oAkademiiMeta as WithoutBody<AboutPageData>);
+const workshopPageMeta = nbspDeep(pracowniaMeta as WithoutBody<WorkshopPageData>);
+const privacyPolicyPageMeta = nbspDeep(privacyPolicyMeta as WithoutBody<PrivacyPolicyPageData>);
 
 export function getAboutPage(): LoadedAboutPage {
   return {

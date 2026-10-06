@@ -1,5 +1,7 @@
+import { nbspDeep } from "@/lib/typography";
+
 // UI strings — extend as later pieces need more (menu, accordion, CTAs).
-export const pl = {
+const plSource = {
   meta: {
     // Site name, verbatim from brief-claude-code.md §8.
     siteName: "AKADEMIA IKONY – Studium Ikonograficzne św. Andrzeja Apostoła",
@@ -543,3 +545,8 @@ export const pl = {
     designCreditUrl: "https://grzegorzkurek.pl/",
   },
 } as const;
+
+// Single-letter words glued with a non-breaking space; `meta` feeds `<title>` and stays plain.
+const { meta, ...plBody } = plSource;
+
+export const pl = { meta, ...nbspDeep(plBody) };

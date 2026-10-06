@@ -14,7 +14,7 @@ export function OnlineAside() {
   return (
     <div className="hairline-stack">
       <div className="bg-surface-tile px-space-5 py-space-5 md:px-space-6 md:py-space-6">
-        <h2 className="mb-space-3 font-serif text-size-h3-m md:text-size-h3 leading-heading text-text-h2">
+        <h2 className="mb-space-3 font-serif text-size-role-box-title-m md:text-size-role-box-title leading-heading text-text-h2">
           {contact.organizerHeading}
         </h2>
         <p className="text-size-body leading-body text-text-secondary md:text-size-body-lg md:leading-prose">
@@ -26,7 +26,7 @@ export function OnlineAside() {
         </p>
       </div>
       <div className="bg-surface-tile px-space-5 py-space-5 md:px-space-6 md:py-space-6">
-        <h2 className="mb-space-3 font-serif text-size-h3-m md:text-size-h3 leading-heading text-text-h2">
+        <h2 className="mb-space-3 font-serif text-size-role-box-title-m md:text-size-role-box-title leading-heading text-text-h2">
           {contact.onlineHeading}
         </h2>
         <div className="grid gap-space-2 text-size-ui leading-body">

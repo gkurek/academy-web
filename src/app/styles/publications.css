@@ -68,7 +68,6 @@
   .publication-hub-album-title {
     margin: 0 0 var(--space-2);
     font-family: var(--font-serif);
-    font-size: var(--size-h2-m);
     line-height: var(--leading-heading);
     color: var(--text-h2);
   }
@@ -234,6 +233,7 @@
 
   .publication-article-excerpt,
   .publication-article-authors {
+    max-width: var(--measure-prose);
     margin: 0;
     font-size: var(--size-body);
     line-height: var(--leading-body);
@@ -348,10 +348,6 @@
 
   .publication-toc-chapter-title {
     margin: 0 0 var(--space-4);
-    font-family: var(--font-serif);
-    font-size: var(--size-h3-m);
-    line-height: var(--leading-heading);
-    color: var(--text-h2);
   }
 
   .publication-toc-list {
@@ -521,9 +517,6 @@
       grid-template-columns: repeat(3, minmax(0, 1fr));
     }
 
-    .publication-toc-chapter-title {
-      font-size: var(--size-h3);
-    }
 
     .publication-toc-pages {
       font-size: var(--size-caption);

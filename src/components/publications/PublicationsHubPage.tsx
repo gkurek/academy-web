@@ -1,8 +1,8 @@
 import Image from "next/image";
 
 import { Button } from "@/components/core/Button";
-import { TextLink } from "@/components/core/TextLink";
 import { SectionPageShell } from "@/components/layout/SectionPageShell";
+import { PublicationSeeAlso } from "@/components/publications/PublicationSeeAlso";
 import { ArticleList } from "@/components/publications/ArticleList";
 import { PublicationSpreadStrip } from "@/components/publications/PublicationSpreadStrip";
 import type { ArticleFrontmatter } from "@/content/articles";
@@ -59,7 +59,10 @@ export function PublicationsHubPage({ path, publication, articles }: Publication
 
             <div className="publication-hub-album-copy">
               <p className="publication-hub-eyebrow">{pl.publications.albumEyebrow}</p>
-              <h2 id="publication-hub-album-title" className="publication-hub-album-title">
+              <h2
+                id="publication-hub-album-title"
+                className="publication-hub-album-title text-size-role-card-title-m md:text-size-role-card-title"
+              >
                 {publication.title}
               </h2>
               <p className="publication-hub-imprint">{imprint}</p>
@@ -125,13 +128,9 @@ export function PublicationsHubPage({ path, publication, articles }: Publication
           </section>
         ) : null}
 
-        <footer className="publication-see-also">
-          <div className="publication-see-also-row">
-            <span className="publication-see-also-label">{pl.publications.seeAlsoLabel}</span>
-            <TextLink standalone href="/ikony/wystawy">{pl.publications.exhibitionLink}</TextLink>
-            <TextLink standalone href="/wyklady">{pl.publications.lecturesLinkFooter}</TextLink>
-          </div>
-        </footer>
+        <PublicationSeeAlso
+          links={[{ href: "/ikony/wystawy", label: pl.publications.exhibitionLink }, { href: "/wyklady", label: pl.publications.lecturesLinkFooter }]}
+        />
       </div>
     </SectionPageShell>
   );

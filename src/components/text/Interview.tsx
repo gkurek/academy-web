@@ -28,7 +28,7 @@ export function Interview({ heading, interview }: InterviewProps) {
 
       {parts.map((part, partIndex) => (
         <div key={part.id} className={partIndex > 0 ? "interview-part interview-part--spaced" : "interview-part"}>
-          <h3 id={part.id} className="interview-part-title scroll-mt-space-6">
+          <h3 id={part.id} className="interview-part-title heading-sub scroll-mt-space-6">
             {part.title}
           </h3>
 

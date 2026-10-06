@@ -1,3 +1,4 @@
+import { nbspDeep } from "@/lib/typography";
 import type { ComponentType } from "react";
 
 import type { Publication } from "@/content/types";
@@ -33,7 +34,7 @@ const bodyBySlug: Record<string, PublicationBodyExports> = {
   ),
 };
 
-const publicationEntries = Object.values(publicationModules).map((module) => module.frontmatter);
+const publicationEntries = Object.values(publicationModules).map((module) => nbspDeep(module.frontmatter));
 
 validatePublicationSlugCollisions(
   publicationEntries.map((entry) => entry.slug),
@@ -134,12 +135,13 @@ export function requirePublication(): PublicationFrontmatter {
 }
 
 export function getPublicationBySlug(slug: string): PublicationFrontmatter | undefined {
-  return publicationModules[slug]?.frontmatter;
+  return publicationEntries.find((entry) => entry.slug === slug);
 }
 
 export function loadPublicationBySlug(slug: string): LoadedPublication | undefined {
   const publicationModule = publicationModules[slug];
-  if (!publicationModule) {
+  const publication = getPublicationBySlug(slug);
+  if (!publicationModule || !publication) {
     return undefined;
   }
 
@@ -149,8 +151,8 @@ export function loadPublicationBySlug(slug: string): LoadedPublication | undefin
   }
 
   return {
-    ...publicationModule.frontmatter,
-    aboutParagraphs: body.aboutParagraphs,
+    ...publication,
+    aboutParagraphs: nbspDeep(body.aboutParagraphs),
     Content: publicationModule.Content,
   };
 }

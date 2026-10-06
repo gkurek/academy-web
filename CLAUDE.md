@@ -27,7 +27,7 @@ Przy konflikcie: `CLAUDE.md` > plan etapu > `brief-claude-code.md` > `brief-full
 - Stringi UI w `src/i18n/pl.ts` – nie hardkodować w JSX.
 - Obrazy tylko przez `next/image` z podanymi wymiarami. Fonty przez `next/font`, subsety `latin` + `latin-ext`.
 - Dostępność: każdy interaktywny element ma widoczny fokus (obrys 2px `#e8c765`, odstęp 2px); `alt` obowiązkowy; respektuj `prefers-reduced-motion`.
-- Tokeny designu z `design/README`; nie zmieniać bez wyraźnej prośby. Zakazane w produkcji: `#8d7d69`, rozmiar 13px, zaokrąglenia i cienie poza `Lightbox`, IBM Plex Mono.
+- Tokeny designu z `design/README`; nie zmieniać bez wyraźnej prośby. Zakazane w produkcji: `#8d7d69`, rozmiar 13px, zaokrąglenia i cienie poza `Lightbox` i zdjęciem hero (`/`, `/o-akademii`) — wyjątek potwierdzony przez właściciela 2026-10-05 (K-140), IBM Plex Mono.
 - Klasa semantyczna i narzędzie Tailwind nie ustawiają tej samej właściwości na tym samym elemencie. Rola typograficzna (`PageHeading`, `.list-title`, `.body-copy`, `.prose-*`) nie ustawia marginesów; margines dodaje wywołujący.
 - Komentarze w kodzie, nazwy zmiennych, komunikaty commitów i PR: po angielsku. Treść widoczna dla użytkownika: po polsku, przez `pl.ts` lub `content/`.
 
