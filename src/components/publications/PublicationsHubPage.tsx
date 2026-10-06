@@ -110,17 +110,20 @@ export function PublicationsHubPage({ path, publication, articles }: Publication
           </div>
         </section>
 
-        <section
-          id="artykuly"
-          className="publication-articles-section"
-          aria-labelledby="publication-articles-heading"
-        >
-          <PageHeading level="section" id="publication-articles-heading" className="mb-heading-gap">
-            {pl.publications.articlesHeading}
-          </PageHeading>
-          <p className="publication-section-lead">{pl.publications.articlesLead}</p>
-          <ArticleList articles={articles} />
-        </section>
+        {/* A section without data is not rendered at all — no heading, no gap. */}
+        {articles.length > 0 ? (
+          <section
+            id="artykuly"
+            className="publication-articles-section"
+            aria-labelledby="publication-articles-heading"
+          >
+            <PageHeading level="section" id="publication-articles-heading" className="mb-heading-gap">
+              {pl.publications.articlesHeading}
+            </PageHeading>
+            <p className="publication-section-lead">{pl.publications.articlesLead}</p>
+            <ArticleList articles={articles} />
+          </section>
+        ) : null}
 
         <footer className="publication-see-also">
           <div className="publication-see-also-row">

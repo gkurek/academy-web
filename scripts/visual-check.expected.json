@@ -1871,5 +1871,305 @@
     "route": "/wyklady/wykladowcy",
     "signal": "html",
     "note": "Lecturer card: portrait/name layout classes (V3-17)"
+  },
+  {
+    "id": "RF-19",
+    "route": "/ikony/na-zamowienie",
+    "signal": "html",
+    "note": "FactsBox single contact footer, ready-icons band on the column line"
+  },
+  {
+    "id": "RF-19",
+    "route": "/ikony/na-zamowienie",
+    "signal": "screenshot",
+    "width": 390,
+    "note": "FactsBox single contact footer, ready-icons band on the column line"
+  },
+  {
+    "id": "RF-19",
+    "route": "/ikony/na-zamowienie",
+    "signal": "styles",
+    "width": 390,
+    "note": "FactsBox single contact footer, ready-icons band on the column line"
+  },
+  {
+    "id": "RF-19",
+    "route": "/ikony/na-zamowienie",
+    "signal": "screenshot",
+    "width": 1440,
+    "note": "FactsBox single contact footer, ready-icons band on the column line"
+  },
+  {
+    "id": "RF-19",
+    "route": "/ikony/na-zamowienie",
+    "signal": "styles",
+    "width": 1440,
+    "note": "FactsBox single contact footer, ready-icons band on the column line"
+  },
+  {
+    "id": "RF-19",
+    "route": "/ikony/na-zamowienie",
+    "signal": "screenshot",
+    "width": 1920,
+    "note": "FactsBox single contact footer, ready-icons band on the column line"
+  },
+  {
+    "id": "RF-19",
+    "route": "/ikony/na-zamowienie",
+    "signal": "styles",
+    "width": 1920,
+    "note": "FactsBox single contact footer, ready-icons band on the column line"
+  },
+  {
+    "id": "RF-19",
+    "route": "/ikony/wystawy",
+    "signal": "html",
+    "note": "tours CTA secondary and under the text"
+  },
+  {
+    "id": "RF-19",
+    "route": "/ikony/wystawy",
+    "signal": "screenshot",
+    "width": 390,
+    "note": "tours CTA secondary and under the text"
+  },
+  {
+    "id": "RF-19",
+    "route": "/ikony/wystawy",
+    "signal": "screenshot",
+    "width": 1440,
+    "note": "tours CTA secondary and under the text"
+  },
+  {
+    "id": "RF-19",
+    "route": "/ikony/wystawy",
+    "signal": "screenshot",
+    "width": 1920,
+    "note": "tours CTA secondary and under the text"
+  },
+  {
+    "id": "RF-19",
+    "route": "/o-akademii",
+    "signal": "html",
+    "note": "exit links after the workshop photos, with a label"
+  },
+  {
+    "id": "RF-19",
+    "route": "/o-akademii",
+    "signal": "screenshot",
+    "width": 390,
+    "note": "exit links after the workshop photos, with a label"
+  },
+  {
+    "id": "RF-19",
+    "route": "/o-akademii",
+    "signal": "screenshot",
+    "width": 1440,
+    "note": "exit links after the workshop photos, with a label"
+  },
+  {
+    "id": "RF-19",
+    "route": "/o-akademii",
+    "signal": "screenshot",
+    "width": 1920,
+    "note": "exit links after the workshop photos, with a label"
+  },
+  {
+    "id": "RF-19",
+    "route": "/publikacje/cisza-ikony",
+    "signal": "html",
+    "note": "closing note for media articles"
+  },
+  {
+    "id": "RF-19",
+    "route": "/publikacje/cisza-ikony",
+    "signal": "screenshot",
+    "width": 390,
+    "note": "closing note for media articles"
+  },
+  {
+    "id": "RF-19",
+    "route": "/publikacje/cisza-ikony",
+    "signal": "styles",
+    "width": 390,
+    "note": "closing note for media articles"
+  },
+  {
+    "id": "RF-19",
+    "route": "/publikacje/cisza-ikony",
+    "signal": "screenshot",
+    "width": 1440,
+    "note": "closing note for media articles"
+  },
+  {
+    "id": "RF-19",
+    "route": "/publikacje/cisza-ikony",
+    "signal": "styles",
+    "width": 1440,
+    "note": "closing note for media articles"
+  },
+  {
+    "id": "RF-19",
+    "route": "/publikacje/cisza-ikony",
+    "signal": "screenshot",
+    "width": 1920,
+    "note": "closing note for media articles"
+  },
+  {
+    "id": "RF-19",
+    "route": "/publikacje/cisza-ikony",
+    "signal": "styles",
+    "width": 1920,
+    "note": "closing note for media articles"
+  },
+  {
+    "id": "RF-19",
+    "route": "/publikacje/ikona-dzis",
+    "signal": "html",
+    "note": "metrics heading role, closing row with label after related news"
+  },
+  {
+    "id": "RF-19",
+    "route": "/publikacje/ikona-dzis",
+    "signal": "screenshot",
+    "width": 390,
+    "note": "metrics heading role, closing row with label after related news"
+  },
+  {
+    "id": "RF-19",
+    "route": "/publikacje/ikona-dzis",
+    "signal": "styles",
+    "width": 390,
+    "note": "metrics heading role, closing row with label after related news"
+  },
+  {
+    "id": "RF-19",
+    "route": "/publikacje/ikona-dzis",
+    "signal": "screenshot",
+    "width": 1440,
+    "note": "metrics heading role, closing row with label after related news"
+  },
+  {
+    "id": "RF-19",
+    "route": "/publikacje/ikona-dzis",
+    "signal": "styles",
+    "width": 1440,
+    "note": "metrics heading role, closing row with label after related news"
+  },
+  {
+    "id": "RF-19",
+    "route": "/publikacje/ikona-dzis",
+    "signal": "screenshot",
+    "width": 1920,
+    "note": "metrics heading role, closing row with label after related news"
+  },
+  {
+    "id": "RF-19",
+    "route": "/publikacje/ikona-dzis",
+    "signal": "styles",
+    "width": 1920,
+    "note": "metrics heading role, closing row with label after related news"
+  },
+  {
+    "id": "RF-19",
+    "route": "/warsztaty",
+    "signal": "html",
+    "note": "quote grid wrapper moved to the hub"
+  },
+  {
+    "id": "RF-19",
+    "route": "/warsztaty",
+    "signal": "styles",
+    "width": 390,
+    "note": "quote grid wrapper moved to the hub"
+  },
+  {
+    "id": "RF-19",
+    "route": "/warsztaty",
+    "signal": "styles",
+    "width": 1440,
+    "note": "quote grid wrapper moved to the hub"
+  },
+  {
+    "id": "RF-19",
+    "route": "/warsztaty",
+    "signal": "styles",
+    "width": 1920,
+    "note": "quote grid wrapper moved to the hub"
+  },
+  {
+    "id": "RF-19",
+    "route": "/warsztaty/kurs-roczny-i-trzyletni",
+    "signal": "html",
+    "note": "one offer ending: enrollment then quotes; side photo landscape"
+  },
+  {
+    "id": "RF-19",
+    "route": "/warsztaty/kurs-roczny-i-trzyletni",
+    "signal": "screenshot",
+    "width": 390,
+    "note": "one offer ending: enrollment then quotes; side photo landscape"
+  },
+  {
+    "id": "RF-19",
+    "route": "/warsztaty/kurs-roczny-i-trzyletni",
+    "signal": "screenshot",
+    "width": 1440,
+    "note": "one offer ending: enrollment then quotes; side photo landscape"
+  },
+  {
+    "id": "RF-19",
+    "route": "/warsztaty/kurs-roczny-i-trzyletni",
+    "signal": "screenshot",
+    "width": 1920,
+    "note": "one offer ending: enrollment then quotes; side photo landscape"
+  },
+  {
+    "id": "RF-19",
+    "route": "/warsztaty/letnia-szkola-swiatla",
+    "signal": "html",
+    "note": "enrollment section added; quotes after it; FactsBox contact footer"
+  },
+  {
+    "id": "RF-19",
+    "route": "/warsztaty/letnia-szkola-swiatla",
+    "signal": "screenshot",
+    "width": 390,
+    "note": "enrollment section added; quotes after it; FactsBox contact footer"
+  },
+  {
+    "id": "RF-19",
+    "route": "/warsztaty/letnia-szkola-swiatla",
+    "signal": "styles",
+    "width": 390,
+    "note": "enrollment section added; quotes after it; FactsBox contact footer"
+  },
+  {
+    "id": "RF-19",
+    "route": "/warsztaty/letnia-szkola-swiatla",
+    "signal": "screenshot",
+    "width": 1440,
+    "note": "enrollment section added; quotes after it; FactsBox contact footer"
+  },
+  {
+    "id": "RF-19",
+    "route": "/warsztaty/letnia-szkola-swiatla",
+    "signal": "styles",
+    "width": 1440,
+    "note": "enrollment section added; quotes after it; FactsBox contact footer"
+  },
+  {
+    "id": "RF-19",
+    "route": "/warsztaty/letnia-szkola-swiatla",
+    "signal": "screenshot",
+    "width": 1920,
+    "note": "enrollment section added; quotes after it; FactsBox contact footer"
+  },
+  {
+    "id": "RF-19",
+    "route": "/warsztaty/letnia-szkola-swiatla",
+    "signal": "styles",
+    "width": 1920,
+    "note": "enrollment section added; quotes after it; FactsBox contact footer"
   }
 ]

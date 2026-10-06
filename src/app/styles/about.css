@@ -320,8 +320,9 @@
     color: var(--text-body);
   }
 
+  /* Exit links close the page, after the photos. */
   .about-workshop-band .about-link-row {
-    margin-bottom: var(--space-7);
+    margin-top: var(--space-7);
   }
 
   .about-workshop-photos {
@@ -363,4 +364,9 @@
     margin: var(--space-4) 0 0;
   }
 
+  .about-link-row-label {
+    margin-inline-end: var(--space-5);
+    font-size: var(--size-body);
+    color: var(--text-secondary);
+  }
 }

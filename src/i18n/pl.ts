@@ -33,6 +33,7 @@ export const pl = {
   textPage: {
     tocLabel: "Na tej stronie",
     tocAriaLabel: "Na tej stronie",
+    seeAlsoLabel: "Zobacz też",
   },
   workshop: {
     contactMailtoLabel: "Napisz do Pracowni",
@@ -138,11 +139,9 @@ export const pl = {
         where: "Technika",
         leadTime: "Orientacyjny czas realizacji",
         price: "Koszt",
-        contact: "Kontakt",
       },
     },
     phoneOr: "lub {phone}",
-    contactClosedPlener: "{email} · {phone}",
     publicationsRowLabel: "Publikacje",
     publicationsLink: "Album i artykuły Akademii",
     ctaByKind: {
@@ -232,6 +231,12 @@ export const pl = {
         paragraphs: [
           "Zgłoszenie wysyłamy mailem na adres {enrollmentEmail} do {enrollmentClose}. Potem zapraszamy na krótką rozmowę wstępną, około trzydziestu minut — ma na celu wzajemne poznanie się i dobór grupy. Chętnie zobaczymy wcześniejsze prace artystyczne, ale to nie jest warunek przyjęcia.",
           "Pierwsze spotkanie sezonu odbywa się {firstMeeting} o 18:00. Dokumenty zgłoszeniowe są dostępne na miejscu.",
+        ],
+      },
+      // Draft built only from the plener facts (mail, individual talk, order of applications) — EJK to confirm.
+      plener: {
+        paragraphs: [
+          "Zgłoszenie wysyłamy mailem na adres {enrollmentEmail}. O udziale rozmawiamy indywidualnie, a zgłoszenia przyjmujemy w kolejności ich nadejścia.",
         ],
       },
     },

@@ -452,6 +452,16 @@
       flex: none;
     }
 
+    /* Exhibition tours: the CTA sits under the text, aligned to the column (V3-10). */
+    .exhibition-tours-pass--stacked {
+      grid-template-columns: 1fr;
+      gap: var(--space-5);
+    }
+
+    .exhibition-tours-pass--stacked .exhibition-tours-pass__cta {
+      justify-self: start;
+    }
+
     .exhibition-annual-tiles-row {
       grid-template-columns: repeat(4, minmax(0, 1fr));
       gap: var(--space-4);

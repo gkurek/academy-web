@@ -55,53 +55,29 @@ function getEnrollmentCopy(kind: LoadedOffer["kind"]): EnrollmentCopy | undefine
     : undefined;
 }
 
-function EnrollmentSection({
-  facts,
-  copy,
-  quoteSlot,
-}: {
-  facts: OfferFacts;
-  copy: EnrollmentCopy;
-  quoteSlot?: ReactNode;
-}) {
+function EnrollmentSection({ facts, copy }: { facts: OfferFacts; copy: EnrollmentCopy }) {
   const headingId = useId();
   const values = { ...getOfferDateValues(facts), enrollmentEmail: getEnrollmentEmail() };
   const paragraphs = copy.paragraphs.map((paragraph) =>
     fillRequiredTemplate(paragraph, values, "offers.enrollmentByKind"),
   );
 
-  const hasQuoteColumn = Boolean(quoteSlot);
-
   return (
     <section
       aria-labelledby={headingId}
       className="rule-gold-t mt-section-gap pt-space-7"
     >
-      <div
-        className={
-          hasQuoteColumn
-            ? "grid grid-cols-1 lg:grid-cols-2 gap-offer-enrollment-gap items-start"
-            : undefined
-        }
-      >
-        <div>
-          <PageHeading level="section" id={headingId} className="mb-heading-gap">
-            {pl.offers.enrollmentSectionTitle}
-          </PageHeading>
-          {paragraphs.map((paragraph) => (
-            <p
-              key={paragraph}
-              className="body-copy text-text-body mb-space-5"
-            >
-              {paragraph}
-            </p>
-          ))}
-          <p className="text-size-caption leading-body text-text-tertiary max-w-measure-prose pt-space-5 border-t border-line-neutral">
-            {pl.offers.legalNote}
-          </p>
-        </div>
-        {quoteSlot}
-      </div>
+      <PageHeading level="section" id={headingId} className="mb-heading-gap">
+        {pl.offers.enrollmentSectionTitle}
+      </PageHeading>
+      {paragraphs.map((paragraph) => (
+        <p key={paragraph} className="body-copy text-text-body mb-space-5">
+          {paragraph}
+        </p>
+      ))}
+      <p className="text-size-caption leading-body text-text-tertiary max-w-measure-prose pt-space-5 border-t border-line-neutral">
+        {pl.offers.legalNote}
+      </p>
     </section>
   );
 }
@@ -110,12 +86,9 @@ export function OfferPage({ offer, path, quoteSlot, afterBodySlot, footerBand }:
   const { Content, title, lead, leadSecondary, facts, kind, semesters, steps, leadIntro, leadExtra, quote } = offer;
   const eyebrow = getOfferEyebrow(kind, facts.seasonLabel);
   const enrollmentCopy = getEnrollmentCopy(kind);
-  const showEnrollment = enrollmentCopy !== undefined;
   const offerQuote =
     quoteSlot ??
     (quote ? <OfferQuote quote={quote.quote} author={quote.author} role={quote.role} image={quote.image} /> : undefined);
-  const enrollmentQuoteSlot = showEnrollment ? offerQuote : undefined;
-  const trailingQuoteSlot = !showEnrollment ? offerQuote : undefined;
 
   return (
     <SectionPageShell path={path} footerBand={footerBand}>
@@ -167,11 +140,10 @@ export function OfferPage({ offer, path, quoteSlot, afterBodySlot, footerBand }:
 
       {afterBodySlot}
 
-      {enrollmentCopy && (
-        <EnrollmentSection facts={facts} copy={enrollmentCopy} quoteSlot={enrollmentQuoteSlot} />
-      )}
+      {/* One ending for every offer: enrollment → quotes → footer band (V2-01). */}
+      {enrollmentCopy && <EnrollmentSection facts={facts} copy={enrollmentCopy} />}
 
-      {trailingQuoteSlot && <div className="mt-section-gap">{trailingQuoteSlot}</div>}
+      {offerQuote && <div className="mt-section-gap">{offerQuote}</div>}
     </SectionPageShell>
   );
 }

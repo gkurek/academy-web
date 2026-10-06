@@ -47,7 +47,7 @@ export function OfferSideCta({
           width={imageWidth}
           height={imageHeight}
           sizes="(min-width: 1024px) 400px, 100vw"
-          className="w-full aspect-lecturer-photo object-cover"
+          className="w-full aspect-offer-side-photo object-cover"
         />
         <aside
           aria-labelledby={headingId}

@@ -332,6 +332,8 @@
   --lecturer-affiliation-size: var(--size-body-lg);
   --lecturer-affiliation-mb: 14px;
   --lecturer-photo-aspect: 4 / 5;
+  /* Offer side photo: landscape crop keeps the right column close to the text height (V3-06). */
+  --offer-side-photo-aspect: 4 / 3;
 
   /* Text pages — /o-akademii section rows (6a) and /pracownia TocSidebar (6c/6i). */
   --text-page-heading-col: 280px;

@@ -64,7 +64,9 @@ export function WorkshopsHubPage({ path, offers, quotes }: WorkshopsHubPageProps
         </div>
       </section>
 
-      <OfferQuoteGrid heading={pl.workshopsHub.quotesHeading} quotes={quotes} />
+      <div className="mt-section-gap">
+        <OfferQuoteGrid heading={pl.workshopsHub.quotesHeading} quotes={quotes} />
+      </div>
     </SectionPageShell>
   );
 }

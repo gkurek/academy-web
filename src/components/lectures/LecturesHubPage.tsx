@@ -59,15 +59,18 @@ export function LecturesHubPage({
         <FactsBox facts={facts} kind="wyklady" enrollment={enrollment} />
       </div>
 
-      <section aria-labelledby="lectures-program-heading">
-        <PageHeading level="section" id="lectures-program-heading" className="mb-heading-gap">
-          {pl.lectures.programHeading}
-        </PageHeading>
-        <p className="text-size-body leading-body text-text-secondary mb-lectures-program-lead-mb max-w-measure-prose">
-          {programLead}
-        </p>
-        <LectureList items={season.lectures} />
-      </section>
+      {/* A section without data is not rendered at all — no heading, no gap. */}
+      {season.lectures.length > 0 ? (
+        <section aria-labelledby="lectures-program-heading">
+          <PageHeading level="section" id="lectures-program-heading" className="mb-heading-gap">
+            {pl.lectures.programHeading}
+          </PageHeading>
+          <p className="text-size-body leading-body text-text-secondary mb-lectures-program-lead-mb max-w-measure-prose">
+            {programLead}
+          </p>
+          <LectureList items={season.lectures} />
+        </section>
+      ) : null}
 
       <section aria-labelledby="lectures-archive-heading" className="mt-section-gap">
         <div className="flex flex-wrap items-baseline justify-between gap-x-space-4 gap-y-space-2 mb-heading-gap">

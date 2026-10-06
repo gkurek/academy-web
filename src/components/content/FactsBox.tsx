@@ -59,19 +59,6 @@ function getHeading(kind: FactsBoxProps["kind"], seasonLabel?: string): string {
   return template.replace("{seasonLabel}", seasonLabel);
 }
 
-function getDesktopContactLine(
-  kind: FactsBoxProps["kind"],
-  enrollment: EnrollmentState,
-  email: string,
-  phone: string,
-): string {
-  if (enrollment === "closed" && kind === "plener") {
-    return fillTemplate(pl.factsBox.contactClosedPlener, { email, phone });
-  }
-
-  return fillTemplate(pl.factsBox.phoneOr, { phone });
-}
-
 export function FactsBox({ facts, kind, enrollment }: FactsBoxProps) {
   const headingId = useId();
   const { factsBox } = pl;
@@ -79,7 +66,6 @@ export function FactsBox({ facts, kind, enrollment }: FactsBoxProps) {
   const { phone } = getSiteSettings();
   const phoneHref = getPhoneHref();
   const mailtoHref = buildMailtoHref(facts.enrollmentEmail, facts.enrollmentSubject);
-  const desktopContact = getDesktopContactLine(kind, enrollment, facts.enrollmentEmail, phone);
   const ctaNote =
     "note" in cta
       ? fillRequiredTemplate(cta.note, getOfferDateValues(facts), `FactsBox ${kind} note`)
@@ -95,24 +81,6 @@ export function FactsBox({ facts, kind, enrollment }: FactsBoxProps) {
       label: getRowLabel(kind, key),
       value: facts[key as keyof OfferFacts] as string,
     }));
-
-  const contactRow =
-    kind === "zamowienie"
-      ? {
-          label: pl.factsBox.rowsByKind.zamowienie.contact,
-          value: (
-            <>
-              <TextLink href={mailtoHref}>{facts.enrollmentEmail}</TextLink>
-              {facts.enrollmentPhone ? (
-                <>
-                  <br />
-                  <TextLink href={phoneHref}>{facts.enrollmentPhone}</TextLink>
-                </>
-              ) : null}
-            </>
-          ),
-        }
-      : null;
 
   return (
     <aside
@@ -133,12 +101,6 @@ export function FactsBox({ facts, kind, enrollment }: FactsBoxProps) {
             <dd className="mt-offer-facts-dd-mt pb-space-6 text-text-body">{row.value}</dd>
           </div>
         ))}
-        {contactRow ? (
-          <div>
-            <dt className="text-size-caption text-text-tertiary">{contactRow.label}</dt>
-            <dd className="mt-offer-facts-dd-mt mb-0 text-text-body">{contactRow.value}</dd>
-          </div>
-        ) : null}
         {kind === "wyklady" ? (
           <div>
             <dt className="text-size-caption text-text-tertiary">{factsBox.publicationsRowLabel}</dt>
@@ -167,7 +129,7 @@ export function FactsBox({ facts, kind, enrollment }: FactsBoxProps) {
           {fillTemplate(cta.telLabel, { phone })}
         </Button>
 
-        <p className="hidden md:block text-size-ui text-text-tertiary text-center">{desktopContact}</p>
+        <p className="hidden md:block text-size-ui text-text-tertiary text-center">{fillTemplate(factsBox.phoneOr, { phone })}</p>
       </div>
     </aside>
   );

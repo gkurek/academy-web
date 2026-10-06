@@ -111,15 +111,25 @@ function AlbumBackref({ publication }: { publication: PublicationFrontmatter }) 
 
 function PressFooter({ article }: { article: LoadedArticle }) {
   const { source } = article;
-  if (source.kind !== "media" || !source.url) {
+  if (source.kind !== "media") {
     return null;
   }
 
   return (
     <aside className="publication-press-note">
-      <ExternalLink href={source.url} className="publication-press-note-link">
-        {pl.publications.articlePressReadPublisher}
-      </ExternalLink>
+      <p className="publication-press-note-text">
+        {pl.publications.sourcePressFirstPrint
+          .replace("{title}", article.title)
+          .replace("{date}", formatDateRange(source.date, undefined, { withYear: true }))}
+      </p>
+      <div className="publication-press-note-links">
+        {source.url ? (
+          <ExternalLink href={source.url} className="publication-press-note-link">
+            {pl.publications.articlePressReadPublisher}
+          </ExternalLink>
+        ) : null}
+        <TextLink href="/publikacje">{pl.publications.allPublications}</TextLink>
+      </div>
     </aside>
   );
 }

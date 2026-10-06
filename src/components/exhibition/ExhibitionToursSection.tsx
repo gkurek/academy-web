@@ -18,7 +18,7 @@ export function ExhibitionToursSection({ mailtoHref }: ExhibitionToursSectionPro
       className="exhibition-section scroll-mt-space-6"
       aria-labelledby="exhibition-tours-heading"
     >
-      <div className="exhibition-tours-pass">
+      <div className="exhibition-tours-pass exhibition-tours-pass--stacked">
         <div className="exhibition-tours-pass__content">
           <PageHeading level="section" id="exhibition-tours-heading" className="mb-space-2">
             {tours.title}
@@ -31,7 +31,7 @@ export function ExhibitionToursSection({ mailtoHref }: ExhibitionToursSectionPro
         </div>
         <Button
           href={mailtoHref}
-          variant="primary"
+          variant="secondary"
           block
           size="lg"
           className="exhibition-tours-pass__cta md:inline-block"

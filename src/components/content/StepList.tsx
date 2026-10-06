@@ -29,7 +29,7 @@ export function StepList({ steps }: StepListProps) {
         {steps.map((step, index) => (
           <li
             key={step.title}
-            className="bg-surface-tile grid grid-cols-step-row lg:grid-cols-1 gap-offer-step-gap-m lg:gap-offer-step-gap px-offer-step-x py-offer-step-y items-baseline lg:items-start"
+            className="bg-surface-tile grid grid-cols-step-row lg:grid-cols-1 gap-offer-step-gap-m lg:gap-offer-step-gap px-offer-step-x py-offer-step-y items-baseline lg:items-start lg:content-start"
           >
             <span
               aria-hidden="true"

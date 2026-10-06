@@ -84,11 +84,6 @@ export function PublicationAlbumPage({ publication, path }: PublicationAlbumPage
 
         <PublicationTocList chapters={publication.chapters} items={publication.toc} />
 
-        <section className="publication-see-also publication-album-footer-links">
-          <TextLink href="/publikacje">{pl.publications.allPublications}</TextLink>
-          <TextLink href="/wyklady">{pl.publications.lecturesScheduleLink}</TextLink>
-        </section>
-
         {relatedNews ? (
           <section className="publication-related-section" aria-labelledby="publication-related-heading">
             <PageHeading level="section" id="publication-related-heading" className="mb-heading-gap">
@@ -97,6 +92,14 @@ export function PublicationAlbumPage({ publication, path }: PublicationAlbumPage
             <NewsCard entry={relatedNews} />
           </section>
         ) : null}
+
+        <footer className="publication-see-also">
+          <div className="publication-see-also-row">
+            <span className="publication-see-also-label">{pl.publications.seeAlsoLabel}</span>
+            <TextLink href="/publikacje">{pl.publications.allPublications}</TextLink>
+            <TextLink href="/wyklady">{pl.publications.lecturesScheduleLink}</TextLink>
+          </div>
+        </footer>
       </div>
     </SectionPageShell>
   );

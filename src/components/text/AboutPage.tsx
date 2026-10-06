@@ -8,6 +8,7 @@ import { MilestoneRow } from "@/components/text/MilestoneRow";
 import { PersonProfile } from "@/components/text/PersonProfile";
 import { TextPageSection } from "@/components/text/TextPageSection";
 import { TextPageShell } from "@/components/text/TextPageShell";
+import { pl } from "@/i18n/pl";
 import type { LoadedAboutPage } from "@/content/pages";
 import type { Image as ContentImage, TextPageLink } from "@/content/types";
 import { PageHeading } from "@/components/core/PageHeading";
@@ -19,9 +20,10 @@ export interface AboutPageProps {
   path: string;
 }
 
-function TextLinkRow({ links }: { links: TextPageLink[] }) {
+function TextLinkRow({ links, label }: { links: TextPageLink[]; label?: string }) {
   return (
     <div className="about-link-row">
+      {label ? <span className="about-link-row-label">{label}</span> : null}
       {links.map((link) => (
         <TextLink key={link.href} href={link.href}>
           {link.label}
@@ -86,7 +88,6 @@ export function AboutPage({ page, path }: AboutPageProps) {
           <p>{workshopParagraph}</p>
         </Prose>
         <p className="about-workshop-accessibility">{workshop.accessibility}</p>
-        <TextLinkRow links={workshop.links} />
         <div className="about-workshop-photos">
           {workshop.photos.map((photo) => (
             <figure key={photo.src} className="about-workshop-photo">
@@ -104,6 +105,7 @@ export function AboutPage({ page, path }: AboutPageProps) {
             </figure>
           ))}
         </div>
+        <TextLinkRow links={workshop.links} label={pl.textPage.seeAlsoLabel} />
       </div>
     </section>
   );

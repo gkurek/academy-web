@@ -19,10 +19,7 @@ export function OfferQuoteGrid({ heading, quotes, columns = 3 }: OfferQuoteGridP
       : "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-offer-quotes-gap";
 
   return (
-    <section
-      aria-labelledby={headingId}
-      className="mt-section-gap"
-    >
+    <section aria-labelledby={headingId}>
       <PageHeading level="section" id={headingId} className="mb-heading-gap">
         {heading}
       </PageHeading>

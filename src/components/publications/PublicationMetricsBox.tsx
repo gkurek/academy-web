@@ -35,7 +35,7 @@ export function PublicationMetricsBox({ publication }: PublicationMetricsBoxProp
     <div className="publication-metrics">
       <h2
         id={headingId}
-        className="publication-metrics-heading"
+        className="font-serif text-size-role-box-title-m md:text-size-role-box-title leading-heading text-text-h2 mb-space-5"
       >
         {facts.heading}
       </h2>
