@@ -1,3 +1,4 @@
+import { nbspDeep } from "@/lib/typography";
 import iconsData from "../../content/icons.json";
 import { pl } from "@/i18n/pl";
 import type { IconWork } from "@/content/types";
@@ -14,7 +15,7 @@ export const FEATURED_ICON_SLUGS = [
  * Every work needs at least one of these tags, every theme at least one work
  * (checked by validateIconTaxonomy below).
  */
-export const ICON_THEMES = ["chrystus", "matka-bozy", "aniolowie", "swieci", "swieta"] as const;
+const ICON_THEMES = ["chrystus", "matka-bozy", "aniolowie", "swieci", "swieta"] as const;
 
 /** Retired `?temat=` slugs — normalized to canonical theme and cleaned from the URL. */
 const ICON_THEME_LEGACY_ALIASES: Record<string, (typeof ICON_THEMES)[number]> = {
@@ -26,22 +27,24 @@ export type IconFilters = {
 };
 
 /** Section ids double as URL hashes (`/ikony#uczniowie`). */
-export type IconSectionId = "ejk" | "uczniowie";
+type IconSectionId = "ejk" | "uczniowie";
 
 export type IconSection = {
   id: IconSectionId;
   works: IconWork[];
 };
 
+const iconWorks = nbspDeep(iconsData as IconWork[]);
+
 export function getIconWorks(): IconWork[] {
-  return iconsData as IconWork[];
+  return iconWorks;
 }
 
 export function getFeaturedIconWorks(): IconWork[] {
   return getIconWorksBySlugs([...FEATURED_ICON_SLUGS]);
 }
 
-export function getIconWorksBySlugs(slugs: string[]): IconWork[] {
+function getIconWorksBySlugs(slugs: string[]): IconWork[] {
   const icons = getIconWorks();
   return slugs
     .map((slug) => icons.find((icon) => icon.slug === slug))

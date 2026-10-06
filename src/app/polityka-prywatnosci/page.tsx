@@ -1,13 +1,15 @@
+import type { Metadata } from "next";
+
 import { PrivacyPolicyPage } from "@/components/text/PrivacyPolicyPage";
 import { getPrivacyPolicyPage } from "@/content/pages";
-import { footerLegalLink } from "@/navigation";
+import { navTitle } from "@/navigation";
+
+const path = "/polityka-prywatnosci";
+
+export const metadata: Metadata = {
+  title: navTitle(path),
+};
 
 export default function PrivacyPolicyRoutePage() {
-  const page = getPrivacyPolicyPage();
-
-  return <PrivacyPolicyPage page={page} />;
+  return <PrivacyPolicyPage page={getPrivacyPolicyPage()} path={path} />;
 }
-
-export const metadata = {
-  title: footerLegalLink.label,
-};

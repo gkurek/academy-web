@@ -1,38 +1,18 @@
-import { notFound } from "next/navigation";
+import type { Metadata } from "next";
 
 import { OfferPage } from "@/components/content/OfferPage";
-import { OfferLeadExtra } from "@/components/offers/OfferLeadExtra";
-import { OfferQuote } from "@/components/offers/OfferQuote";
-import { getOffer } from "@/content/offers";
-import { mainNav, sectionNav } from "@/navigation";
+import { requireOffer } from "@/content/offers";
+import { navTitle } from "@/navigation";
 
-const slug = "kurs-roczny-i-trzyletni";
-const mainNavActive = mainNav.find((item) => item.href === "/warsztaty")!.label;
-const sectionItem = sectionNav.warsztaty.find((link) => link.href === `/warsztaty/${slug}`)!;
+// Enrollment state depends on the date — rebuild daily like `/` so both agree (D5, K-85).
+export const revalidate = 86400;
+
+const path = "/warsztaty/kurs-roczny-i-trzyletni";
+
+export const metadata: Metadata = {
+  title: navTitle(path),
+};
 
 export default function AnnualAndThreeYearCoursePage() {
-  const offer = getOffer(slug);
-  if (!offer) {
-    notFound();
-  }
-
-  const quoteSlot = offer.quote ? (
-    <OfferQuote
-      quote={offer.quote.quote}
-      author={offer.quote.author}
-      role={offer.quote.role}
-      image={offer.quote.image}
-    />
-  ) : undefined;
-
-  return (
-    <OfferPage
-      offer={offer}
-      section="warsztaty"
-      sectionActive={sectionItem.label}
-      active={mainNavActive}
-      quoteSlot={quoteSlot}
-      leadExtraSlot={offer.leadExtra ? <OfferLeadExtra leadExtra={offer.leadExtra} /> : undefined}
-    />
-  );
+  return <OfferPage offer={requireOffer("kurs-roczny-i-trzyletni")} path={path} />;
 }

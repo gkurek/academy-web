@@ -1,0 +1,97 @@
+@layer components {
+  /* Justified gallery (K-40 B, RF-4). The server groups the tiles into rows for the desktop
+     layout width (JustifiedGrid); each tile carries its photo ratio in --tile-ratio and takes
+     that share of the row width (flex-grow), so the row height follows the real container with
+     no measurement in JS. Below lg the row wrappers dissolve (display: contents) and the grid
+     wraps like FooGallery at the mobile target height; below md it is two equal columns. */
+  .justified-grid {
+    --justified-tile-h: var(--gallery-justified-row-max-h);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    column-gap: var(--space-4);
+    row-gap: var(--space-3);
+  }
+
+  .justified-grid-row {
+    display: contents;
+  }
+
+  .justified-grid-tile {
+    flex-grow: calc(var(--tile-ratio));
+    flex-shrink: 1;
+    flex-basis: calc(var(--tile-ratio) * var(--gallery-justified-row-h));
+    min-width: 0;
+    max-width: calc(var(--tile-ratio) * var(--justified-tile-h));
+  }
+
+  /* FooGallery `lastRow: smart` — the filler takes the leftover width of the last line, so its
+     tiles keep the target height instead of stretching. Sorted last by `order`. */
+  .justified-grid-filler {
+    order: 1;
+    flex: 9999 1 0;
+  }
+
+  .justified-grid-image {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  /* Two columns below md (V3-16): one portrait frame per tile, the photo contained so icons are never cropped. */
+  @media (max-width: 767px) {
+    .justified-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .justified-grid-tile {
+      max-width: none;
+    }
+
+    .justified-grid-filler {
+      display: none;
+    }
+
+    .justified-grid-frame {
+      aspect-ratio: var(--gallery-mobile-tile-aspect);
+    }
+
+    .justified-grid-image {
+      height: 100%;
+      object-fit: contain;
+    }
+  }
+
+  @media (min-width: 768px) {
+    .justified-grid {
+      column-gap: var(--icon-grid-gap);
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .justified-grid {
+      --justified-tile-h: var(--gallery-justified-row-max-h-desktop);
+      display: grid;
+    }
+
+    .justified-grid-row {
+      display: flex;
+      justify-content: center;
+      column-gap: var(--icon-grid-gap);
+    }
+
+    .justified-grid-row--smart-last {
+      --justified-tile-h: var(--gallery-grid-h);
+    }
+
+    .justified-grid-tile {
+      flex-basis: 0;
+    }
+
+    .justified-grid-filler {
+      display: none;
+    }
+  }
+
+}

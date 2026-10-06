@@ -1,12 +1,14 @@
 import Link from "next/link";
 
+import { PageHeading } from "@/components/core/PageHeading";
+import { Prose } from "@/components/core/Prose";
 import { SectionPageShell } from "@/components/layout/SectionPageShell";
+import { LightboxProvider } from "@/components/lightbox/LightboxProvider";
 import { NewsArticleCover } from "@/components/news/NewsArticleCover";
 import { NewsArticleNav } from "@/components/news/NewsArticleNav";
 import { NewsEventCta } from "@/components/news/NewsEventCta";
 import { NewsFacts } from "@/components/news/NewsFacts";
 import { NewsGallery } from "@/components/news/NewsGallery";
-import { newsMdxComponents } from "@/components/news/newsMdxComponents";
 import { NewsRelated } from "@/components/news/NewsRelated";
 import { NewsDateMeta } from "@/components/news/NewsDateMeta";
 import {
@@ -23,7 +25,8 @@ import { pl } from "@/i18n/pl";
 
 export interface NewsArticlePageProps {
   entry: LoadedNews;
-  active: string;
+  /** Route path — see SectionPageShellProps["path"]. */
+  path: string;
 }
 
 function newsArticleGridClass(flags: {
@@ -48,7 +51,7 @@ function newsArticleGridClass(flags: {
   return parts.join(" ");
 }
 
-export function NewsArticlePage({ entry, active }: NewsArticlePageProps) {
+export function NewsArticlePage({ entry, path }: NewsArticlePageProps) {
   const { Content } = entry;
   const kindLabel = getNewsKindLabel(entry.kind);
   const neighbors = getNewsNeighbors(entry.slug);
@@ -88,98 +91,102 @@ export function NewsArticlePage({ entry, active }: NewsArticlePageProps) {
   });
 
   return (
-    <SectionPageShell active={active}>
-      <article className={articleClass}>
-        <header className="news-article-head">
-          <p className="news-article-meta">
-            <span className="news-article-kind">{kindLabel}</span>
-            {" · "}
-            <NewsDateMeta
-              date={entry.date}
-              dateEnd={entry.dateEnd}
-              withYear
-              className="news-article-meta-date"
-            />
-          </p>
-          <h1 className="news-article-title">{entry.title}</h1>
-          {lead ? <p className="news-article-lead">{lead}</p> : null}
-          <hr className="news-article-head-rule" />
-        </header>
-
-        {showFacts || showColumnImage ? (
-          <div className="news-article-top">
-            {showColumnImage ? (
-              <NewsArticleCover
-                image={columnImage}
-                images={images}
-                lightboxIndex={columnImageIndex}
+    <SectionPageShell path={path}>
+      <LightboxProvider>
+        <article className={articleClass}>
+          <header className="news-article-head">
+            <p className="news-article-meta">
+              <span className="news-article-kind">{kindLabel}</span>
+              {" · "}
+              <NewsDateMeta
+                date={entry.date}
+                dateEnd={entry.dateEnd}
+                withYear
+                className="news-article-meta-date"
               />
-            ) : null}
-            {showFacts ? <NewsFacts facts={entry.facts!} /> : null}
+            </p>
+            <PageHeading level="page" variant="entry" className={lead ? "mb-entry-lead-gap" : undefined}>
+              {entry.title}
+            </PageHeading>
+            {lead ? <p className="news-article-lead">{lead}</p> : null}
+            <hr className="news-article-head-rule" />
+          </header>
+
+          {showFacts || showColumnImage ? (
+            <div className="news-article-top">
+              {showColumnImage ? (
+                <NewsArticleCover
+                  image={columnImage}
+                  images={images}
+                  lightboxIndex={columnImageIndex}
+                />
+              ) : null}
+              {showFacts ? <NewsFacts facts={entry.facts!} /> : null}
+            </div>
+          ) : null}
+
+          <Prose variant="news" className="news-article-main news-article-prose">
+            <Content />
+          </Prose>
+
+          {showEventCta ? (
+            <div className="news-article-cta">
+              <NewsEventCta kind={entry.kind} />
+            </div>
+          ) : null}
+
+          {hasGalleryTekst ? (
+            <div className="news-article-mgal">
+              <NewsGallery
+                images={images}
+                layout={layout}
+                showHeading={galleryHeading}
+                hideOnDesktopIndex={hideOnDesktopIndex}
+              />
+            </div>
+          ) : null}
+
+          {hasGalleryWide ? (
+            <div
+              className={[
+                "news-article-gal",
+                !hasGalGridArea ? "news-article-gal--column-only-mobile" : "",
+              ]
+                .filter(Boolean)
+                .join(" ")}
+            >
+              <NewsGallery
+                images={images}
+                layout={layout}
+                showHeading={false}
+                hideOnDesktopIndex={hideOnDesktopIndex}
+              />
+            </div>
+          ) : null}
+
+          <div className="news-article-rail">
+            <div
+              className={[
+                "news-article-rail-inner",
+                railStickyOff ? "news-article-rail-inner--no-sticky" : "",
+              ]
+                .filter(Boolean)
+                .join(" ")}
+            >
+              {showRelated ? <NewsRelated links={relatedLinks} /> : null}
+              <NewsArticleNav previous={neighbors.previous} next={neighbors.next} />
+            </div>
           </div>
-        ) : null}
 
-        <div className="news-article-main news-article-prose news-prose">
-          <Content components={newsMdxComponents} />
-        </div>
-
-        {showEventCta ? (
-          <div className="news-article-cta">
-            <NewsEventCta kind={entry.kind} />
-          </div>
-        ) : null}
-
-        {hasGalleryTekst ? (
-          <div className="news-article-mgal">
-            <NewsGallery
-              images={images}
-              layout={layout}
-              showHeading={galleryHeading}
-              hideOnDesktopIndex={hideOnDesktopIndex}
-            />
-          </div>
-        ) : null}
-
-        {hasGalleryWide ? (
-          <div
-            className={[
-              "news-article-gal",
-              !hasGalGridArea ? "news-article-gal--column-only-mobile" : "",
-            ]
-              .filter(Boolean)
-              .join(" ")}
-          >
-            <NewsGallery
-              images={images}
-              layout={layout}
-              showHeading={false}
-              hideOnDesktopIndex={hideOnDesktopIndex}
-            />
-          </div>
-        ) : null}
-
-        <div className="news-article-rail">
-          <div
-            className={[
-              "news-article-rail-inner",
-              railStickyOff ? "news-article-rail-inner--no-sticky" : "",
-            ]
-              .filter(Boolean)
-              .join(" ")}
-          >
-            {showRelated ? <NewsRelated links={relatedLinks} /> : null}
-            <NewsArticleNav previous={neighbors.previous} next={neighbors.next} />
-          </div>
-        </div>
-
-        {hasGalGridArea ? (
-          <footer className="news-article-gend">
-            <Link href="/aktualnosci" className="news-article-entry-link news-article-gend-link">
-              {pl.news.allNewsLink}
-            </Link>
-          </footer>
-        ) : null}
-      </article>
+          {hasGalGridArea ? (
+            <footer className="news-article-gend">
+              <Link href="/aktualnosci" className="news-article-entry-link news-article-gend-link">
+                {pl.news.allNewsLink}
+              </Link>
+            </footer>
+          ) : null}
+        </article>
+      </LightboxProvider>
     </SectionPageShell>
   );
 }

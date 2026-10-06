@@ -1,0 +1,264 @@
+@layer utilities {
+  /* Full-width hairline over/under a column element: the pseudo-element spans
+     the viewport while content stays in the max-width column. --rule-color
+     picks the role (gold = structural, neutral = quiet separator). */
+  .rule-gold-t,
+  .rule-gold-b,
+  .rule-neutral-t {
+    position: relative;
+  }
+
+  .rule-gold-t,
+  .rule-gold-b {
+    --rule-color: var(--line-gold);
+  }
+
+  .rule-neutral-t {
+    --rule-color: var(--line-neutral);
+  }
+
+  .rule-gold-t::before,
+  .rule-neutral-t::before,
+  .rule-gold-b::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100vw;
+    pointer-events: none;
+  }
+
+  .rule-gold-t::before,
+  .rule-neutral-t::before {
+    top: 0;
+    border-top: 1px solid var(--rule-color);
+  }
+
+  .rule-gold-b::after {
+    bottom: 0;
+    border-bottom: 1px solid var(--rule-color);
+  }
+
+  /* Stacked surface tiles — border separators (grid gap + tile bg subpixel overlap hid gold). */
+  .hairline-stack {
+    display: grid;
+    gap: 0;
+  }
+
+  .hairline-stack > * + * {
+    border-top: 1px solid var(--line-gold);
+  }
+
+  /* Tile grids with hairline borders instead of grid gap + gold bg. One column
+     below lg, --hairline-cols from lg up (e.g. home „Najbliższe” with the
+     exhibition tile is 3). The first-row / first-column exceptions depend on
+     the column count, so they stay per variant (nth-child can't take var()). */
+  .hairline-grid-2,
+  .hairline-grid-3 {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .hairline-grid-2 {
+    --hairline-cols: 2;
+  }
+
+  .hairline-grid-3 {
+    --hairline-cols: 3;
+  }
+
+  .hairline-grid-2 > * + *,
+  .hairline-grid-3 > * + * {
+    border-top: 1px solid var(--line-gold);
+  }
+
+  @media (min-width: 1024px) {
+    .hairline-grid-2,
+    .hairline-grid-3 {
+      grid-template-columns: repeat(var(--hairline-cols), minmax(0, 1fr));
+    }
+
+    .hairline-grid-2 > * + *,
+    .hairline-grid-3 > * + * {
+      border-top: none;
+    }
+
+    .hairline-grid-2 > *:nth-child(n + 3),
+    .hairline-grid-3 > *:nth-child(n + 4) {
+      border-top: 1px solid var(--line-gold);
+    }
+
+    .hairline-grid-2 > *:nth-child(even),
+    .hairline-grid-3 > *:not(:nth-child(3n + 1)) {
+      border-left: 1px solid var(--line-gold);
+    }
+  }
+
+  /* Full-viewport band behind a column element (footer, footer contact,
+     offer bands, About bands): the ::after background spans the viewport.
+     --bleed-bg picks the surface. */
+  .surface-footer-bleed,
+  .surface-footer-contact-bleed,
+  .surface-tile-bleed,
+  .surface-card-bleed {
+    position: relative;
+    isolation: isolate;
+  }
+
+  .surface-footer-bleed::after,
+  .surface-footer-contact-bleed::after,
+  .surface-tile-bleed::after,
+  .surface-card-bleed::after {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100vw;
+    background: var(--bleed-bg);
+  }
+
+  .surface-footer-bleed {
+    --bleed-bg: var(--surface-footer);
+  }
+
+  /* Footer contact band (mockup 9e) — lighter than the rest of the footer. */
+  .surface-footer-contact-bleed {
+    --bleed-bg: var(--footer-contact-bg);
+  }
+
+  .surface-tile-bleed {
+    --bleed-bg: var(--surface-tile);
+  }
+
+  .surface-card-bleed {
+    --bleed-bg: var(--surface-card);
+  }
+
+  /* Edge-to-edge on mobile: grows past the page margin on both sides, back to
+     the column width from md. */
+  .bleed-x-mobile {
+    width: calc(100% + 2 * var(--page-margin-mobile));
+    margin-inline: calc(-1 * var(--page-margin-mobile));
+  }
+
+  @media (min-width: 768px) {
+    .bleed-x-mobile {
+      width: 100%;
+      margin-inline: 0;
+    }
+  }
+
+  /* Underline on inner span; outer link keeps tap target (D-d). */
+  .link-underline-target {
+    position: relative;
+    padding-bottom: var(--spacing-link-underline-gap);
+  }
+
+  .link-underline-target--border {
+    border-bottom: 1px solid var(--accent-veil);
+  }
+
+  :where(a, button):hover .link-underline-target--border {
+    border-bottom-color: var(--accent-hover);
+  }
+
+  .group:hover .link-underline-target--border {
+    border-bottom-color: var(--accent-hover);
+  }
+
+  /* Main nav link — static 1px underline; only its colour changes on hover (design/README: colour transition ≤150ms). */
+  .nav-link-underline {
+    transition: color 150ms ease-out;
+  }
+
+  .nav-link-underline .link-underline-target::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 1px;
+    background-color: var(--nav-underline-color, transparent);
+    transition: background-color 150ms ease-out;
+  }
+
+  .nav-link-underline-active {
+    --nav-underline-color: var(--accent);
+  }
+
+  .nav-link-underline:not(.nav-link-underline-active):hover {
+    --nav-underline-color: var(--accent);
+  }
+
+  .nav-link-underline-section:not(.nav-link-underline-active):hover {
+    --nav-underline-color: var(--accent-hover);
+  }
+
+  /* Nav/footer tap targets — min 44 px height (K-23, K-24, K-25). */
+  .tap-target-nav {
+    display: inline-flex;
+    align-items: center;
+    min-height: var(--tap-min-mobile-header);
+  }
+
+  /* Same 44 px field, but only below lg — where touch is the main input (footer, standalone links). */
+  .tap-target-below-lg {
+    display: inline-flex;
+    align-items: center;
+    min-height: var(--tap-min-mobile-header);
+  }
+
+  @media (min-width: 1024px) {
+    .tap-target-below-lg {
+      display: inline-block;
+      min-height: 0;
+    }
+  }
+
+  /* Colour transition without outline-color, so the focus ring never fades in from the text colour. */
+  .transition-ui-colors {
+    transition:
+      color 150ms ease-out,
+      background-color 150ms ease-out,
+      border-color 150ms ease-out;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .transition-ui-colors {
+      transition: none;
+    }
+  }
+
+  /* Horizontally scrolling row: keeps the focus ring of an off-screen item inside the scrollport. */
+  .scroll-row {
+    scroll-padding-inline: var(--page-margin-mobile);
+  }
+
+  /* Secondary button — static 1px border; only its colour changes on hover (≤150ms). */
+  .btn-secondary {
+    border-color: var(--border-button);
+    transition:
+      color 150ms ease-out,
+      border-color 150ms ease-out;
+  }
+
+  .btn-secondary:hover:not([aria-disabled="true"]) {
+    border-color: var(--accent);
+  }
+
+  .btn-secondary[aria-disabled="true"] {
+    border-color: var(--line-neutral);
+  }
+
+  /* Component sections inside Prose (SemesterProgram, OfferQuoteGrid) — no prose measure. */
+  .prose-text .not-prose,
+  .prose-offer .not-prose,
+  .prose-text .not-prose :where(p, ul, ol, blockquote),
+  .prose-offer .not-prose :where(p, ul, ol, blockquote) {
+    max-width: none;
+  }
+}

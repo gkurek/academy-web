@@ -8,7 +8,7 @@ import {
 } from "@/content/articles";
 import type { PublicationFrontmatter } from "@/content/publications";
 import { formatPublicationPrice } from "@/content/publications";
-import { getSiteSettings } from "@/content/settings";
+import { getSecretariatEmail } from "@/content/settings";
 import { pl } from "@/i18n/pl";
 import { pluralize } from "@/i18n/pluralize";
 import { buildMailtoHref } from "@/lib/mailto";
@@ -71,12 +71,10 @@ function ArticleSourceMeta({
 }
 
 function AlbumBackref({ publication }: { publication: PublicationFrontmatter }) {
-  const settings = getSiteSettings();
-  const secretariatEmail = settings.emails.find((email) => email.label.includes("sekretariat"))
-    ?.address ?? settings.emails[1]?.address ?? settings.emails[0].address;
+  const secretariatEmail = getSecretariatEmail();
   const mailtoHref = buildMailtoHref(secretariatEmail, pl.publications.mailtoSubject);
   const priceLabel = formatPublicationPrice(publication.price);
-  const pageWord = pluralize(publication.pages, ["strona", "strony", "stron"]);
+  const pageWord = pluralize(publication.pages, pl.publications.pageForms);
   const factsLine = pl.publications.articleSourceAlbumFacts
     .replace("{pages}", String(publication.pages))
     .replace("{pageWord}", pageWord)
@@ -101,10 +99,10 @@ function AlbumBackref({ publication }: { publication: PublicationFrontmatter }) 
         </p>
         <p className="publication-album-backref-facts">{factsLine}</p>
         <div className="publication-album-backref-links">
-          <TextLink href={`/publikacje/${publication.slug}`}>
+          <TextLink standalone href={`/publikacje/${publication.slug}`}>
             {pl.publications.articleSourceViewAlbum}
           </TextLink>
-          <TextLink href={mailtoHref}>{pl.publications.articleSourceOrder}</TextLink>
+          <TextLink standalone href={mailtoHref}>{pl.publications.articleSourceOrder}</TextLink>
         </div>
       </div>
     </aside>
@@ -113,15 +111,25 @@ function AlbumBackref({ publication }: { publication: PublicationFrontmatter }) 
 
 function PressFooter({ article }: { article: LoadedArticle }) {
   const { source } = article;
-  if (source.kind !== "media" || !source.url) {
+  if (source.kind !== "media") {
     return null;
   }
 
   return (
     <aside className="publication-press-note">
-      <ExternalLink href={source.url} className="publication-press-note-link">
-        {pl.publications.articlePressReadPublisher}
-      </ExternalLink>
+      <p className="publication-press-note-text">
+        {pl.publications.sourcePressFirstPrint
+          .replace("{title}", article.title)
+          .replace("{date}", formatDateRange(source.date, undefined, { withYear: true }))}
+      </p>
+      <div className="publication-press-note-links">
+        {source.url ? (
+          <ExternalLink href={source.url} className="publication-press-note-link">
+            {pl.publications.articlePressReadPublisher}
+          </ExternalLink>
+        ) : null}
+        <TextLink standalone href="/publikacje">{pl.publications.allPublications}</TextLink>
+      </div>
     </aside>
   );
 }

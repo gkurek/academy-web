@@ -1,7 +1,9 @@
+import { useId } from "react";
+
 import { Button } from "@/components/core/Button";
 import type { PublicationFrontmatter } from "@/content/publications";
 import { formatPublicationPrice } from "@/content/publications";
-import { getSiteSettings } from "@/content/settings";
+import { getSecretariatEmail } from "@/content/settings";
 import { pl } from "@/i18n/pl";
 import { buildMailtoHref } from "@/lib/mailto";
 
@@ -10,10 +12,9 @@ export interface PublicationMetricsBoxProps {
 }
 
 export function PublicationMetricsBox({ publication }: PublicationMetricsBoxProps) {
+  const headingId = useId();
   const { facts, mailtoSubject, orderAlbumMailto } = pl.publications;
-  const settings = getSiteSettings();
-  const secretariatEmail = settings.emails.find((email) => email.label.includes("sekretariat"))
-    ?.address ?? settings.emails[1]?.address ?? settings.emails[0].address;
+  const secretariatEmail = getSecretariatEmail();
   const mailtoHref = buildMailtoHref(secretariatEmail, mailtoSubject);
   const priceLabel = formatPublicationPrice(publication.price);
   const availabilityLabel =
@@ -31,10 +32,10 @@ export function PublicationMetricsBox({ publication }: PublicationMetricsBoxProp
   ];
 
   return (
-    <aside className="publication-metrics" aria-labelledby="publication-metrics-heading">
+    <div className="publication-metrics">
       <h2
-        id="publication-metrics-heading"
-        className="publication-metrics-heading"
+        id={headingId}
+        className="font-serif text-size-role-box-title-m md:text-size-role-box-title leading-heading text-text-h2 mb-space-5"
       >
         {facts.heading}
       </h2>
@@ -61,8 +62,7 @@ export function PublicationMetricsBox({ publication }: PublicationMetricsBoxProp
         >
           {orderAlbumMailto}
         </Button>
-        <p className="publication-metrics-note">{facts.shippingNote}</p>
       </div>
-    </aside>
+    </div>
   );
 }

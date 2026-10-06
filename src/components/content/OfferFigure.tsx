@@ -15,7 +15,7 @@ export interface OfferFigureProps {
 export function OfferFigure({ src, alt, width, height, caption }: OfferFigureProps) {
   return (
     <figure
-      className="offer-figure w-[calc(100%+2*var(--spacing-page-margin-mobile))] -mx-page-margin-mobile md:mx-0 md:w-full mb-space-3 md:mb-space-4"
+      className="offer-figure bleed-x-mobile mb-space-3 md:mb-space-4"
     >
       <Image
         src={src}

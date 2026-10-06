@@ -1,0 +1,114 @@
+@layer base {
+  html {
+    scrollbar-gutter: stable;
+  }
+
+  body {
+    margin: 0;
+    background: var(--surface-page);
+    color: var(--text-body);
+    font-family: var(--font-sans);
+    font-size: var(--size-body);
+    line-height: var(--leading-body);
+    -webkit-font-smoothing: antialiased;
+    text-wrap: pretty;
+  }
+
+  /* Short blocks (headings, card titles, quotes) break evenly — no one-word last lines (V3-20). */
+  h1,
+  h2,
+  h3,
+  blockquote {
+    text-wrap: balance;
+  }
+
+  /* Disclosure widgets draw their own chevron, never the native marker. */
+  summary {
+    list-style: none;
+  }
+
+  summary::-webkit-details-marker {
+    display: none;
+  }
+
+  a:focus-visible,
+  button:focus-visible,
+  summary:focus-visible,
+  [tabindex]:not([tabindex="-1"]):focus-visible,
+  .map-frame[data-focused] {
+    outline: 2px solid var(--focus-ring);
+    outline-offset: 2px;
+  }
+
+  .skip-link {
+    position: absolute;
+    left: -9999px;
+    top: var(--space-3);
+    z-index: 100;
+    padding: var(--space-3) var(--space-4);
+    background: var(--surface-card);
+    color: var(--text-body);
+    font-family: var(--font-sans);
+    font-size: var(--size-ui);
+    text-decoration: none;
+    border: 1px solid var(--border-button);
+  }
+
+  .skip-link:focus {
+    position: fixed;
+    left: var(--space-3);
+    top: var(--space-3);
+  }
+
+  .lightbox-dialog {
+    border: 0;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    max-width: 100%;
+    height: 100%;
+    max-height: 100%;
+    background: transparent;
+    /* Mobile content can outgrow a short window (long meta) — the sticky nav bar
+       needs this scroll container; scroll never chains to the page underneath. */
+    overflow-x: hidden;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+  }
+
+  /* Lightbox image viewport ceiling (K-45): 60svh stacked, 80vh from lg. Display size is
+     min(intrinsic px, this ceiling) — see getLightboxImageDisplayStyle (k2 D2). */
+  .lightbox-dialog {
+    --lightbox-image-h: var(--lightbox-image-max-h-m);
+  }
+
+  @media (min-width: 1024px) {
+    .lightbox-dialog {
+      --lightbox-image-h: var(--lightbox-image-max-h);
+    }
+  }
+
+  .lightbox-dialog::backdrop {
+    background: var(--scrim-lightbox);
+  }
+
+  /* showModal() does not stop the page underneath from scrolling. The
+     scrollbar gutter is already reserved on html, so the layout does not shift. */
+  html:has(dialog[open]) {
+    overflow: hidden;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .lightbox-dialog[open]::backdrop {
+      transition: background-color 150ms ease-out;
+    }
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-serif);
+    font-weight: 400;
+    margin: 0;
+  }
+}

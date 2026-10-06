@@ -4,82 +4,79 @@ import { ExhibitionAnnualTiles } from "@/components/exhibition/ExhibitionAnnualT
 import { ExhibitionFactsPanel } from "@/components/exhibition/ExhibitionFactsPanel";
 import { ExhibitionHashScroll } from "@/components/exhibition/ExhibitionHashScroll";
 import { ExhibitionFrame } from "@/components/exhibition/ExhibitionFrame";
-import { ExhibitionLightboxProvider } from "@/components/exhibition/ExhibitionLightboxProvider";
-import { ExhibitionNowNextBlock } from "@/components/exhibition/ExhibitionNowNext";
+import { ExhibitionNowNext } from "@/components/exhibition/ExhibitionNowNext";
 import { ExhibitionPageNav } from "@/components/exhibition/ExhibitionPageNav";
-import {
-  ExhibitionToursSection,
-  ExhibitionTravelingSection,
-} from "@/components/exhibition/ExhibitionToursSection";
+import { ExhibitionToursSection } from "@/components/exhibition/ExhibitionToursSection";
+import { ExhibitionTravelingSection } from "@/components/exhibition/ExhibitionTravelingSection";
+import { LightboxProvider } from "@/components/lightbox/LightboxProvider";
 import { SectionPageShell } from "@/components/layout/SectionPageShell";
 import {
   getAnnualExhibitionYear,
-  getExhibitionNowNext,
-  getExhibitionPage,
-  getFirstAnnualExhibitionYear,
-  getLastFinishedAnnualExhibition,
-  getLatestAnnualExhibition,
-  getLatestAnnualExhibitionWithPhotos,
+  getExhibitionCopy,
   isAnnualExhibitionActive,
   resolveAnnualVernissage,
+  type ExhibitionNowNext as ExhibitionNowNextState,
+  type LoadedExhibitionPage,
 } from "@/content/exhibition";
 import { getLectureSeasonShortTheme } from "@/content/lectures";
-import { getSiteSettings } from "@/content/settings";
+import { getEnrollmentEmail } from "@/content/settings";
+import type { AnnualExhibition } from "@/content/types";
 import { pl } from "@/i18n/pl";
 import { buildMailtoHref } from "@/lib/mailto";
-import { filterExistingPhotos } from "@/lib/mediaFileExists";
 import { formatPolishMonthYearLocative } from "@/lib/polishMonth";
+import { PageHeading } from "@/components/core/PageHeading";
 
 export interface ExhibitionPageProps {
-  active: string;
-  sectionActive: string;
+  /** Route path — see SectionPageShellProps["path"]. */
+  path: string;
+  page: LoadedExhibitionPage;
+  latestAnnual: AnnualExhibition;
+  lastFinished?: AnnualExhibition;
+  latestWithPhotos?: AnnualExhibition;
+  nowNext: ExhibitionNowNextState;
+  firstAnnualYear: number;
 }
 
-export function ExhibitionPage({ active, sectionActive }: ExhibitionPageProps) {
-  const page = getExhibitionPage();
-  const settings = getSiteSettings();
-  const latestAnnual = getLatestAnnualExhibition();
+export function ExhibitionPage({
+  path,
+  page,
+  latestAnnual,
+  lastFinished,
+  latestWithPhotos,
+  nowNext,
+  firstAnnualYear,
+}: ExhibitionPageProps) {
   const annualActive = isAnnualExhibitionActive(latestAnnual);
-  const lastFinished = getLastFinishedAnnualExhibition();
-  const latestWithPhotos = getLatestAnnualExhibitionWithPhotos();
-  const nowNext = getExhibitionNowNext();
-  const {
-    page: pageCopy,
-    permanent,
-    annual,
-    facts,
-    frames,
-    tours,
-    traveling,
-  } = pl.exhibition;
-  const enrollmentEmail = settings.emails[0]?.address ?? "akademiaikony@gmail.com";
+  const { page: pageLabels, permanent, annual, facts, frames, tours, traveling } = pl.exhibition;
+  const copy = getExhibitionCopy();
+  const enrollmentEmail = getEnrollmentEmail();
   const toursMailtoHref = buildMailtoHref(enrollmentEmail, tours.mailtoSubject);
   const travelingMailtoHref = buildMailtoHref(enrollmentEmail, traveling.mailtoSubject);
 
   const annualFactRows = [
-    { label: facts.where, value: facts.whereValue },
-    { label: annual.facts.when, value: annual.facts.whenValue },
-    { label: annual.facts.vernissage, value: annual.facts.vernissageValue },
-    { label: annual.facts.onDisplay, value: annual.facts.onDisplayValue },
-    { label: annual.facts.admission, value: annual.facts.admissionValue },
+    { label: facts.where, value: copy.whereValue },
+    { label: annual.facts.when, value: copy.annual.facts.whenValue },
+    { label: annual.facts.vernissage, value: copy.annual.facts.vernissageValue },
+    { label: annual.facts.onDisplay, value: copy.annual.facts.onDisplayValue },
+    { label: annual.facts.admission, value: copy.annual.facts.admissionValue },
   ];
 
   const permanentFactRows = [
-    { label: facts.where, value: facts.whereValue },
-    { label: permanent.facts.when, value: permanent.facts.whenValue },
-    { label: permanent.facts.hours, value: permanent.facts.hoursValue },
+    { label: facts.where, value: copy.whereValue },
+    { label: permanent.facts.when, value: copy.permanent.facts.whenValue },
+    { label: permanent.facts.hours, value: copy.permanent.facts.hoursValue },
     {
       label: permanent.facts.onDisplay,
-      value: permanent.facts.onDisplayValue
+      value: copy.permanent.facts.onDisplayValue
         .replace("{from}", String(page.iconCount.from))
         .replace("{to}", String(page.iconCount.to)),
     },
-    { label: permanent.facts.admission, value: permanent.facts.admissionValue },
+    { label: permanent.facts.admission, value: copy.permanent.facts.admissionValue },
   ];
 
   const titleSource = annualActive ? latestAnnual : lastFinished;
   const titleSentence = titleSource
-    ? (annualActive ? annual.titleSentenceCurrent : annual.titleSentencePast)
+    ? (annualActive ? copy.annual.titleSentenceCurrent : copy.annual.titleSentencePast)
         .replace("{year}", String(getAnnualExhibitionYear(titleSource.seasonSlug)))
         .replace("{theme}", getLectureSeasonShortTheme(titleSource.seasonSlug))
     : "";
@@ -88,10 +85,10 @@ export function ExhibitionPage({ active, sectionActive }: ExhibitionPageProps) {
   const monthYear = vernissage ? formatPolishMonthYearLocative(vernissage) : "";
   const scheduleNext =
     monthYear.length > 0
-      ? annual.scheduleNext.replace("{monthYear}", monthYear)
-      : annual.scheduleNextMissing;
+      ? copy.annual.scheduleNext.replace("{monthYear}", monthYear)
+      : copy.annual.scheduleNextMissing;
 
-  const annualPhotos = filterExistingPhotos(latestAnnual.photos ?? []);
+  const annualPhotos = latestAnnual.photos ?? [];
   const tilesCaption =
     latestWithPhotos && (latestWithPhotos.photos?.length ?? 0) > 0
       ? annual.tilesCaption
@@ -99,41 +96,33 @@ export function ExhibitionPage({ active, sectionActive }: ExhibitionPageProps) {
           .replace("{count}", String(latestWithPhotos.photos?.length ?? 0))
       : undefined;
 
-  const heroImage = page.heroImage ? filterExistingPhotos([page.heroImage])[0] : undefined;
-  const permanentImage = page.permanentImage
-    ? filterExistingPhotos([page.permanentImage])[0]
-    : undefined;
-  const permanentImage2 = page.permanentImage2
-    ? filterExistingPhotos([page.permanentImage2])[0]
-    : undefined;
-  const closingImage = page.closingImage ? filterExistingPhotos([page.closingImage])[0] : undefined;
+  // Media paths are trusted here; `npm run check:media` verifies the files exist at build (D9).
+  const { heroImage, permanentImage, permanentImage2, closingImage } = page;
 
   return (
-    <SectionPageShell active={active} section="ikony" sectionActive={sectionActive}>
+    <SectionPageShell path={path}>
       <ExhibitionHashScroll>
       <header>
         <div className="exhibition-hero-grid">
           <p
             className="exhibition-hero-grid__eyebrow text-size-caption uppercase tracking-caption-wide text-text-tertiary"
           >
-            {pageCopy.eyebrow}
+            {copy.page.eyebrow}
           </p>
-          <h1
-            className="exhibition-hero-grid__h1 font-serif text-size-h1-m md:text-size-h1 leading-tight text-text-h1"
-          >
-            {pageCopy.title}
-          </h1>
+          <PageHeading level="page" className="exhibition-hero-grid__h1">
+            {copy.page.title}
+          </PageHeading>
           <p
             className="exhibition-hero-grid__lead text-size-lead-m md:text-size-lead leading-body text-text-secondary max-w-measure-lead"
           >
-            {pageCopy.lead}
+            {copy.page.lead}
           </p>
-          <ExhibitionNowNextBlock state={nowNext} className="exhibition-hero-grid__now" />
+          <ExhibitionNowNext state={nowNext} className="exhibition-hero-grid__now" />
           <ExhibitionPageNav className="exhibition-hero-grid__nav" />
         </div>
       </header>
 
-      <ExhibitionLightboxProvider>
+      <LightboxProvider>
         <div className="exhibition-hero-frame mb-space-6">
           <ExhibitionFrame
             image={heroImage}
@@ -152,24 +141,21 @@ export function ExhibitionPage({ active, sectionActive }: ExhibitionPageProps) {
               <p
                 className="exhibition-section-eyebrow text-size-caption uppercase tracking-caption-wide text-text-tertiary"
               >
-                {frames.annualHeroEyebrow}
+                {copy.annual.eyebrow}
               </p>
-              <h2
-                id="exhibition-annual-heading"
-                className="exhibition-section-h2 font-serif text-size-role-section-h2-m md:text-size-role-section-h2 leading-heading text-text-h2"
-              >
-                {annual.title}
-              </h2>
+              <PageHeading level="section" id="exhibition-annual-heading" className="exhibition-section-h2">
+                {copy.annual.title}
+              </PageHeading>
               <p className="exhibition-section-copy">
-                {titleSentence ? `${annual.intro1} ${titleSentence}` : annual.intro1}
+                {titleSentence ? `${copy.annual.intro1} ${titleSentence}` : copy.annual.intro1}
               </p>
-              <p className="exhibition-section-copy">{annual.intro3}</p>
+              <p className="exhibition-section-copy">{copy.annual.intro3}</p>
               <p className="exhibition-section-copy">
-                {annual.scheduleSince.replace("{firstYear}", String(getFirstAnnualExhibitionYear()))}{" "}
+                {copy.annual.scheduleSince.replace("{firstYear}", String(firstAnnualYear))}{" "}
                 {scheduleNext}
               </p>
               <p className="exhibition-section-copy">
-                <TextLink href="/aktualnosci">{annual.photoArchiveLink}</TextLink>
+                <TextLink standalone href="/aktualnosci">{annual.photoArchiveLink}</TextLink>
               </p>
             </div>
             <div className="exhibition-section-grid__facts min-w-0">
@@ -204,14 +190,11 @@ export function ExhibitionPage({ active, sectionActive }: ExhibitionPageProps) {
               <p
                 className="exhibition-section-eyebrow text-size-caption uppercase tracking-caption-wide text-text-tertiary"
               >
-                {frames.permanentEyebrow}
+                {copy.permanent.eyebrow}
               </p>
-              <h2
-                id="exhibition-permanent-heading"
-                className="exhibition-section-h2 font-serif text-size-role-section-h2-m md:text-size-role-section-h2 leading-heading text-text-h2"
-              >
+              <PageHeading level="section" id="exhibition-permanent-heading" className="exhibition-section-h2">
                 {page.title}
-              </h2>
+              </PageHeading>
               {page.descriptionParagraphs.map((paragraph) => (
                 <p key={paragraph} className="exhibition-section-copy">
                   {paragraph}
@@ -247,12 +230,12 @@ export function ExhibitionPage({ active, sectionActive }: ExhibitionPageProps) {
             placeholderLabel={frames.closingWide}
           />
         </div>
-      </ExhibitionLightboxProvider>
+      </LightboxProvider>
 
       <footer className="exhibition-page-footer">
-        <span className="exhibition-page-footer-label">{pageCopy.startHere}</span>
-        <TextLink href="/ikony">{pageCopy.galleryLink}</TextLink>
-        <TextLink href="/warsztaty">{pageCopy.workshopsLink}</TextLink>
+        <span className="exhibition-page-footer-label">{pageLabels.startHere}</span>
+        <TextLink standalone href="/ikony">{pageLabels.galleryLink}</TextLink>
+        <TextLink standalone href="/warsztaty">{pageLabels.workshopsLink}</TextLink>
       </footer>
       </ExhibitionHashScroll>
     </SectionPageShell>

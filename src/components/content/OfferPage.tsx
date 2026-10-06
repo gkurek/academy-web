@@ -1,15 +1,23 @@
-import type { ReactNode } from "react";
+import { useId, type ReactNode } from "react";
 
 import { FactsBox } from "@/components/content/FactsBox";
 import { MdxLink } from "@/components/content/MdxLink";
-import { OfferContentProvider } from "@/components/content/OfferContentContext";
+import { SemesterProgram } from "@/components/content/SemesterProgram";
+import { StepList } from "@/components/content/StepList";
 import { SectionPageShell } from "@/components/layout/SectionPageShell";
-import type { LoadedOffer } from "@/content/offers";
+import { OfferLeadExtra } from "@/components/offers/OfferLeadExtra";
+import { OfferLeadIntro } from "@/components/offers/OfferLeadIntro";
+import { OfferQuote } from "@/components/offers/OfferQuote";
+import { getEnrollmentState, getOfferDateValues, type LoadedOffer } from "@/content/offers";
+import { getEnrollmentEmail } from "@/content/settings";
+import type { OfferFacts } from "@/content/types";
 import { pl } from "@/i18n/pl";
-import type { SectionKey } from "@/navigation";
+import { fillRequiredTemplate } from "@/lib/fillTemplate";
+import { PageHeading } from "@/components/core/PageHeading";
+import { Prose } from "@/components/core/Prose";
 
 // Links are styled only in offer MDX (LY5); news, contact and articles keep their own `a` styles.
-const offerMdxComponents = { a: MdxLink };
+const offerMdxLinks = { a: MdxLink };
 
 function getOfferEyebrow(kind: LoadedOffer["kind"], seasonLabel?: string): string | null {
   if (!seasonLabel) {
@@ -29,86 +37,100 @@ function getOfferEyebrow(kind: LoadedOffer["kind"], seasonLabel?: string): strin
 
 export interface OfferPageProps {
   offer: LoadedOffer;
-  section: SectionKey;
-  sectionActive: string;
-  /** Main nav item to underline gold in the Header — read from navigation.ts. */
-  active: string;
+  /** Route path — see SectionPageShellProps["path"]. */
+  path: string;
+  /** Replaces the quote from the offer's data (`quote` → OfferQuote), e.g. plener testimonials. */
   quoteSlot?: ReactNode;
   afterBodySlot?: ReactNode;
-  /** Extra heading + copy rendered in the left column, below leadSecondary — fills tall FactsBox columns. */
-  leadExtraSlot?: ReactNode;
+  /** See SectionPageShellProps["footerBand"]. */
+  footerBand?: ReactNode;
 }
 
-function EnrollmentSection({ quoteSlot }: { quoteSlot?: ReactNode }) {
-  const enrollment = pl.offers.enrollmentByKind.kurs;
+type EnrollmentCopy = (typeof pl.offers.enrollmentByKind)[keyof typeof pl.offers.enrollmentByKind];
 
-  const hasQuoteColumn = Boolean(quoteSlot);
+/** Enrollment copy of an offer kind; kinds without an entry have no "how to enroll" section. */
+function getEnrollmentCopy(kind: LoadedOffer["kind"]): EnrollmentCopy | undefined {
+  return kind in pl.offers.enrollmentByKind
+    ? pl.offers.enrollmentByKind[kind as keyof typeof pl.offers.enrollmentByKind]
+    : undefined;
+}
+
+function EnrollmentSection({
+  facts,
+  copy,
+  quoteSlot,
+}: {
+  facts: OfferFacts;
+  copy: EnrollmentCopy;
+  quoteSlot?: ReactNode;
+}) {
+  const headingId = useId();
+  const values = { ...getOfferDateValues(facts), enrollmentEmail: getEnrollmentEmail() };
+  const paragraphs = copy.paragraphs.map((paragraph) =>
+    fillRequiredTemplate(paragraph, values, "offers.enrollmentByKind"),
+  );
+
+  const copyBlock = (
+    <>
+      <PageHeading level="section" id={headingId} className="mb-heading-gap">
+        {pl.offers.enrollmentSectionTitle}
+      </PageHeading>
+      {paragraphs.map((paragraph) => (
+        <p key={paragraph} className="body-copy text-text-body mb-space-5">
+          {paragraph}
+        </p>
+      ))}
+      <p className="text-size-caption leading-body text-text-tertiary max-w-measure-prose pt-space-5 border-t border-line-neutral">
+        {pl.offers.legalNote}
+      </p>
+    </>
+  );
 
   return (
     <section
-      aria-labelledby="offer-enrollment-heading"
-      className="rule-gold-t mt-space-8 pt-space-7 pb-space-9"
+      aria-labelledby={headingId}
+      className={
+        quoteSlot
+          ? "mt-section-gap-tight md:mt-section-gap md:pt-space-7"
+          : "mt-section-gap pt-space-7"
+      }
     >
-      <div
-        className={
-          hasQuoteColumn
-            ? "grid grid-cols-1 lg:grid-cols-2 gap-offer-enrollment-gap items-start"
-            : undefined
-        }
-      >
-        <div>
-          <h2
-            id="offer-enrollment-heading"
-            className="font-serif text-size-role-section-h2-m md:text-size-role-section-h2 leading-heading text-text-h2 mb-space-5"
-          >
-            {pl.offers.enrollmentSectionTitle}
-          </h2>
-          {enrollment.paragraphs.map((paragraph) => (
-            <p
-              key={paragraph}
-              className="text-size-body-lg leading-prose text-text-secondary max-w-measure-prose mb-space-4 last:mb-space-5"
-            >
-              {paragraph}
-            </p>
-          ))}
-          <p className="text-size-caption leading-body text-text-tertiary max-w-measure-prose pt-space-5 border-t border-line-neutral">
-            {pl.offers.legalNote}
-          </p>
+      {quoteSlot ? (
+        <div className="offer-enrollment-grid gap-space-6 lg:gap-offer-main-gap">
+          {quoteSlot}
+          <div className="min-w-0">{copyBlock}</div>
         </div>
-        {quoteSlot}
-      </div>
+      ) : (
+        copyBlock
+      )}
     </section>
   );
 }
 
-export function OfferPage({
-  offer,
-  section,
-  sectionActive,
-  active,
-  quoteSlot,
-  afterBodySlot,
-  leadExtraSlot,
-}: OfferPageProps) {
-  const { Content, title, lead, leadSecondary, facts, kind, semesters, steps } = offer;
+export function OfferPage({ offer, path, quoteSlot, afterBodySlot, footerBand }: OfferPageProps) {
+  const { Content, title, lead, leadSecondary, facts, kind, semesters, steps, leadIntro, leadExtra, quote } = offer;
   const eyebrow = getOfferEyebrow(kind, facts.seasonLabel);
-  const showEnrollment = kind === "kurs";
-  const enrollmentQuoteSlot = showEnrollment ? quoteSlot : undefined;
-  const trailingQuoteSlot = !showEnrollment ? quoteSlot : undefined;
+  const enrollmentCopy = getEnrollmentCopy(kind);
+  const offerQuote =
+    quoteSlot ??
+    (quote ? <OfferQuote quote={quote.quote} author={quote.author} role={quote.role} image={quote.image} /> : undefined);
+  /** Single featured quote beside enrollment (kurs); grids and offers without enrollment stay full width below. */
+  const enrollmentQuoteSlot = enrollmentCopy && offerQuote && !quoteSlot ? offerQuote : undefined;
+  const trailingQuoteSlot = offerQuote && !enrollmentQuoteSlot ? offerQuote : undefined;
 
   return (
-    <SectionPageShell active={active} section={section} sectionActive={sectionActive}>
+    <SectionPageShell path={path} footerBand={footerBand}>
       {/* Single FactsBox instance: stacks below the lead column on mobile, sidebar on lg. */}
-      <div className="grid grid-cols-1 lg:grid-cols-offer-main gap-space-6 lg:gap-offer-main-gap items-start mb-space-7">
+      <div className="grid grid-cols-1 lg:grid-cols-offer-main gap-space-6 lg:gap-offer-main-gap items-start mb-section-gap-tight">
         <div className="min-w-0">
           {eyebrow ? (
             <p className="font-serif text-size-body text-accent-text mb-lectures-eyebrow-mb">
               {eyebrow}
             </p>
           ) : null}
-          <h1 className="font-serif text-size-h1-m md:text-size-h1 leading-tight text-text-h1 mb-space-5">
+          <PageHeading level="page" className="mb-space-5">
             {title}
-          </h1>
+          </PageHeading>
 
           {lead && (
             <p className="text-size-lead-m md:text-size-lead leading-body text-text-secondary max-w-measure-lead mb-space-5">
@@ -117,28 +139,41 @@ export function OfferPage({
           )}
 
           {leadSecondary && (
-            <p className="text-size-body-lg leading-prose text-text-secondary max-w-measure-prose">
+            <p className="body-copy text-text-secondary">
               {leadSecondary}
             </p>
           )}
 
-          {leadExtraSlot && <div className="mt-space-6">{leadExtraSlot}</div>}
+          {/* Extra copy below leadSecondary — fills the column beside a tall FactsBox. */}
+          {(leadIntro || leadExtra) && (
+            <div className="mt-space-6">
+              {leadIntro && <OfferLeadIntro sections={leadIntro} />}
+              {leadExtra && <OfferLeadExtra leadExtra={leadExtra} />}
+            </div>
+          )}
         </div>
 
-        <FactsBox facts={facts} kind={kind} />
+        <FactsBox facts={facts} kind={kind} enrollment={getEnrollmentState(offer)} />
       </div>
 
-      <OfferContentProvider semesters={semesters} steps={steps}>
-        <div className="offer-mdx">
-          <Content components={offerMdxComponents} />
-        </div>
-      </OfferContentProvider>
+      <Prose variant="offer">
+        <Content
+          components={{
+            ...offerMdxLinks,
+            SemesterProgram: () => <SemesterProgram semesters={semesters} />,
+            StepList: () => <StepList steps={steps} />,
+          }}
+        />
+      </Prose>
 
       {afterBodySlot}
 
-      {showEnrollment && <EnrollmentSection quoteSlot={enrollmentQuoteSlot} />}
+      {/* Offer ending (V2-01): kurs — enrollment + quote in sidebar; plener — quote grid; zamówienie — footer band. */}
+      {enrollmentCopy && (
+        <EnrollmentSection facts={facts} copy={enrollmentCopy} quoteSlot={enrollmentQuoteSlot} />
+      )}
 
-      {trailingQuoteSlot && <div className="mt-space-8">{trailingQuoteSlot}</div>}
+      {trailingQuoteSlot && <div className="mt-section-gap">{trailingQuoteSlot}</div>}
     </SectionPageShell>
   );
 }

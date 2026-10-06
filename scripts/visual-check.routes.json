@@ -1,0 +1,26 @@
+{
+  "widths": [390, 1440, 1920],
+  "routes": [
+    { "path": "/", "mask": ["[aria-label=\"Najbliższe\"]"] },
+    { "path": "/warsztaty" },
+    { "path": "/wyklady" },
+    { "path": "/warsztaty/kurs-roczny-i-trzyletni" },
+    { "path": "/warsztaty/letnia-szkola-swiatla" },
+    { "path": "/ikony/na-zamowienie" },
+    { "path": "/aktualnosci" },
+    { "path": "/wyklady/archiwum" },
+    { "path": "/wyklady/wykladowcy" },
+    { "path": "/publikacje" },
+    { "path": "/aktualnosci/nabor-kursu-2026-2027" },
+    { "path": "/aktualnosci/ikona-korzenie-i-owoce-wiary-mistyka-dzis-wyklady-2026-2027" },
+    { "path": "/publikacje/ikona-dzis" },
+    { "path": "/publikacje/cisza-ikony" },
+    { "path": "/ikony" },
+    { "path": "/ikony/wystawy" },
+    { "path": "/o-akademii" },
+    { "path": "/pracownia" },
+    { "path": "/kontakt", "mask": ["iframe"] },
+    { "path": "/polityka-prywatnosci" },
+    { "path": "/nie-ma-takiej-strony" }
+  ]
+}

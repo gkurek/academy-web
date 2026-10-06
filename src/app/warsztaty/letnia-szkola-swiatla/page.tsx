@@ -1,41 +1,29 @@
-import { notFound } from "next/navigation";
+import type { Metadata } from "next";
 
 import { OfferPage } from "@/components/content/OfferPage";
-import { OfferLeadExtra } from "@/components/offers/OfferLeadExtra";
 import { OfferQuoteGrid } from "@/components/offers/OfferQuoteGrid";
-import { getOffer } from "@/content/offers";
+import { requireOffer } from "@/content/offers";
 import { getPlenerTestimonials } from "@/content/testimonials";
 import { pl } from "@/i18n/pl";
-import { mainNav, sectionNav } from "@/navigation";
+import { navTitle } from "@/navigation";
 
-const slug = "letnia-szkola-swiatla";
-const mainNavActive = mainNav.find((item) => item.href === "/warsztaty")!.label;
-const sectionItem = sectionNav.warsztaty.find((link) => link.href === `/warsztaty/${slug}`)!;
+// Enrollment state depends on the date — rebuild daily like `/` so both agree (D5, K-85).
+export const revalidate = 86400;
+
+const path = "/warsztaty/letnia-szkola-swiatla";
+
+export const metadata: Metadata = {
+  title: navTitle(path),
+};
 
 export default function SummerSchoolOfLightPage() {
-  const offer = getOffer(slug);
-  if (!offer) {
-    notFound();
-  }
-
-  const quotes = getPlenerTestimonials();
-
-  const quoteSlot = (
-    <OfferQuoteGrid
-      heading={pl.offers.plenerQuotesHeading}
-      quotes={quotes}
-      columns={2}
-    />
-  );
-
   return (
     <OfferPage
-      offer={offer}
-      section="warsztaty"
-      sectionActive={sectionItem.label}
-      active={mainNavActive}
-      quoteSlot={quoteSlot}
-      leadExtraSlot={offer.leadExtra ? <OfferLeadExtra leadExtra={offer.leadExtra} /> : undefined}
+      offer={requireOffer("letnia-szkola-swiatla")}
+      path={path}
+      quoteSlot={
+        <OfferQuoteGrid heading={pl.offers.plenerQuotesHeading} quotes={getPlenerTestimonials()} columns={2} />
+      }
     />
   );
 }

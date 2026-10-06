@@ -1,26 +1,26 @@
-"use client";
+import { useId } from "react";
 
+import type { SemesterItem } from "@/content/offers";
 import { pl } from "@/i18n/pl";
-
-import { useOfferContent } from "./OfferContentContext";
+import { PageHeading } from "@/components/core/PageHeading";
 
 const ROMAN_NUMERALS = ["I", "II", "III", "IV", "V", "VI"] as const;
 
-export function SemesterProgram() {
-  const { semesters } = useOfferContent();
+export interface SemesterProgramProps {
+  semesters: SemesterItem[];
+}
 
+export function SemesterProgram({ semesters }: SemesterProgramProps) {
+  const headingId = useId();
   if (semesters.length === 0) {
     return null;
   }
 
   return (
-    <section aria-labelledby="semester-program-heading" className="not-prose">
-      <h2
-        id="semester-program-heading"
-        className="font-serif text-size-role-section-h2-m md:text-size-role-section-h2 leading-heading text-text-h2 mt-space-8 mb-space-2 first:mt-0"
-      >
+    <section aria-labelledby={headingId} className="not-prose">
+      <PageHeading level="section" id={headingId} className="mt-section-gap mb-heading-gap first:mt-0">
         {pl.offers.semesterProgramHeading}
-      </h2>
+      </PageHeading>
       <p className="text-size-body leading-body text-text-secondary mb-space-6">
         {pl.offers.semesterProgramIntro}
       </p>
@@ -28,21 +28,21 @@ export function SemesterProgram() {
         {semesters.map((semester, index) => (
           <article
             key={`${index}-${semester.title}`}
-            className="bg-surface-tile flex gap-offer-semester-gap-m md:gap-offer-semester-gap px-offer-semester-x-m py-offer-semester-y-m md:px-offer-semester-x md:py-offer-semester-y"
+            className="bg-surface-tile flex flex-col md:flex-row gap-offer-semester-gap-m md:gap-offer-semester-gap px-space-4 py-offer-semester-y-m md:px-offer-semester-x md:py-offer-semester-y"
           >
             <div
               aria-hidden="true"
-              className="font-serif text-size-offer-semester-num-m md:text-size-offer-semester-num leading-none text-accent-text shrink-0 w-offer-semester-num-width-m md:w-offer-semester-num-width text-left"
+              className="font-serif text-size-offer-semester-num-m md:text-size-offer-semester-num leading-none text-accent-text md:shrink-0 md:w-offer-semester-num-width text-left"
             >
               {ROMAN_NUMERALS[index] ?? String(index + 1)}
             </div>
             <div className="min-w-0">
-              <h3 className="font-serif text-size-role-row-title-m md:text-size-role-row-title leading-heading text-text-list-title mb-space-2">
-                {pl.offers.semesterTileHeadings[index] ?? `Semestr ${index + 1}`}
-              </h3>
+              <PageHeading level="sub" className="mb-space-2">
+                {pl.offers.semesterTileHeadings[index] ?? pl.offers.semesterTileFallback.replace("{n}", String(index + 1))}
+              </PageHeading>
               <p className="text-size-body leading-body text-text-secondary mb-space-2">{semester.title}</p>
               {semester.topics && semester.topics.length > 0 ? (
-                <ul className="text-size-body leading-body text-text-tertiary list-disc ps-space-5 space-y-space-1">
+                <ul className="text-size-body leading-body text-text-tertiary list-disc ps-space-4 md:ps-space-5 space-y-space-1">
                   {semester.topics.map((topic) => (
                     <li key={topic}>{topic}</li>
                   ))}

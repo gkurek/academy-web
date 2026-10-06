@@ -1,18 +1,16 @@
 /**
  * Home „Najbliższe” — prints the state of all three slots across a year (plan 10-k4 4.2).
- * Usage (from repo root): npx tsx scripts/check-upcoming-states.ts [YYYY-MM-DD ...]
+ * When to run: after changing enrollment, upcoming-tile or date logic (`src/content/upcoming.ts`, `enrollment.ts`).
+ * Usage (from repo root): npm run check:states, or npx tsx scripts/check-upcoming-states.ts [YYYY-MM-DD ...]
  */
 
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
 
+import { resolveEnrollmentState } from "../src/content/enrollment";
 import type { OfferFacts } from "../src/content/types";
-import {
-  getUpcomingTiles,
-  toWarsawIsoDate,
-  UPCOMING_SLOTS,
-  type UpcomingOfferFacts,
-} from "../src/content/upcoming";
+import { getUpcomingTiles, UPCOMING_SLOTS, type UpcomingOfferFacts } from "../src/content/upcoming";
+import { addDays, todayInWarsaw } from "../src/lib/isoDate";
 
 type Scenario = {
   label: string;
@@ -38,15 +36,8 @@ const offers: UpcomingOfferFacts = {
   plener: readOfferFacts("letnia-szkola-swiatla"),
 };
 
-function parseIsoDate(iso: string): Date {
-  const [year, month, day] = iso.split("-").map(Number);
-  // Noon UTC keeps the Warsaw calendar day equal to `iso`.
-  return new Date(Date.UTC(year, month - 1, day, 12, 0, 0, 0));
-}
-
 function monthlyScenarios(): Scenario[] {
-  const today = toWarsawIsoDate(new Date());
-  const [year, month] = today.split("-").map(Number);
+  const [year, month] = todayInWarsaw().split("-").map(Number);
 
   return Array.from({ length: 12 }, (_, index) => {
     const date = new Date(Date.UTC(year, month - 1 + index, 15));
@@ -56,9 +47,16 @@ function monthlyScenarios(): Scenario[] {
 }
 
 function boundaryScenarios(): Scenario[] {
+  const close = offers.kurs.enrollmentClose;
+  const kursBoundaries: Scenario[] = close
+    ? [
+        { label: "enrollment close (kurs)", at: close },
+        { label: "day after enrollment close", at: addDays(close, 1) },
+      ]
+    : [];
+
   return [
-    { label: "enrollment close (kurs)", at: "2026-09-24" },
-    { label: "day after enrollment close", at: "2026-09-25" },
+    ...kursBoundaries,
     { label: "first meeting (kurs)", at: "2026-10-06" },
     { label: "day after first lecture", at: "2026-10-07" },
     { label: "plener registration opens", at: "2027-03-01" },
@@ -74,8 +72,15 @@ function cliScenarios(): Scenario[] {
 }
 
 function check(scenario: Scenario): string[] {
-  const tiles = getUpcomingTiles(offers, parseIsoDate(scenario.at));
+  const tiles = getUpcomingTiles(offers, scenario.at);
   const errors: string[] = [];
+
+  // FactsBox and the Warsztaty tile read the same window (D5): an "enrollment" tile means the course is open.
+  const kursState = resolveEnrollmentState("kurs", offers.kurs, offers, scenario.at);
+  const warsztaty = tiles.find((tile) => tile.slot === "warsztaty");
+  if (warsztaty?.state.startsWith("enrollment") && kursState !== "open") {
+    errors.push(`${scenario.at}: Warsztaty tile shows enrollment but the course FactsBox is ${kursState}`);
+  }
 
   if (tiles.length !== UPCOMING_SLOTS.length) {
     errors.push(`${scenario.at}: expected ${UPCOMING_SLOTS.length} tiles, got ${tiles.length}`);
@@ -97,7 +102,7 @@ function check(scenario: Scenario): string[] {
     });
   });
 
-  console.log(`${scenario.at}  ${scenario.label}`);
+  console.log(`${scenario.at}  ${scenario.label}  (kurs FactsBox: ${kursState})`);
   tiles.forEach((tile) => {
     const source = tile.source === "override" ? " [override]" : "";
     console.log(`  ${tile.slot.padEnd(9)} ${tile.state.padEnd(19)} ${tile.text} | ${tile.title}${source}`);
@@ -113,7 +118,7 @@ function main(): void {
   const scenarios =
     custom.length > 0
       ? custom
-      : [{ label: "today", at: toWarsawIsoDate(new Date()) }, ...monthlyScenarios(), ...boundaryScenarios()];
+      : [{ label: "today", at: todayInWarsaw() }, ...monthlyScenarios(), ...boundaryScenarios()];
 
   const errors = scenarios.flatMap(check);
 

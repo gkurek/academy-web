@@ -1,3 +1,4 @@
+import { useId } from "react";
 import Link from "next/link";
 
 import type { NewsRelatedLink } from "@/content/types";
@@ -8,6 +9,7 @@ export interface NewsRelatedProps {
 }
 
 export function NewsRelated({ links }: NewsRelatedProps) {
+  const headingId = useId();
   if (links.length === 0) {
     return null;
   }
@@ -15,9 +17,9 @@ export function NewsRelated({ links }: NewsRelatedProps) {
   return (
     <aside
       className="news-article-related-block news-article-rail-block"
-      aria-labelledby="news-related-heading"
+      aria-labelledby={headingId}
     >
-      <h2 id="news-related-heading" className="news-article-entry-label news-article-related-heading">
+      <h2 id={headingId} className="news-article-entry-label news-article-related-heading">
         {pl.news.relatedHeading}
       </h2>
       <ul className="news-article-related-list">

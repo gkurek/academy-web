@@ -8,7 +8,7 @@
 - `docs/brief-claude-code.md` – wymagania, architektura tras (§3), model treści (§4), fakty stałe (§8); czytaj przy pytaniach „co ma być”.
 - `docs/brief-full.md` – kontekst biznesowy; tylko przy niejasnościach co do treści lub copy, nie przy pytaniach technicznych.
 - `design/README` + `design/*.dc.html` – makiety i tokeny. Obowiązuje kierunek 1a i jego rozwinięcia 2a/3a/3b;
-- `docs/design-mockup-guide.md` – **czytaj zawsze, zanim weźmiesz obraz albo dokładną wartość stylu wprost z `.dc.html`.** Jak znaleźć właściwy plik (`design/uploads/`, nie tylko `design/assets/`) i jak odczytać realne, rozwiązane wartości placeholderów `{{ }}` (lokalny serwer zamiast `file://`) — spisane po dwóch złych zgadnięciach w etapie 2.
+- `docs/design-mockup-guide.md` – **czytaj zawsze, zanim weźmiesz obraz albo dokładną wartość stylu wprost z** `.dc.html`**.** Jak znaleźć właściwy plik (`design/uploads/`, nie tylko `design/assets/`) i jak odczytać realne, rozwiązane wartości placeholderów `{{ }}` (lokalny serwer zamiast `file://`) — spisane po dwóch złych zgadnięciach w etapie 2.
 
 Przy konflikcie: `CLAUDE.md` > plan etapu > `brief-claude-code.md` > `brief-full.md` > makieta. Archiwum przegrywa z każdym z nich — zapisuje stan na dzień zamknięcia, nie stan docelowy. Rozbieżność zgłaszasz w meldunku, nie rozstrzygasz sam.
 
@@ -27,7 +27,8 @@ Przy konflikcie: `CLAUDE.md` > plan etapu > `brief-claude-code.md` > `brief-full
 - Stringi UI w `src/i18n/pl.ts` – nie hardkodować w JSX.
 - Obrazy tylko przez `next/image` z podanymi wymiarami. Fonty przez `next/font`, subsety `latin` + `latin-ext`.
 - Dostępność: każdy interaktywny element ma widoczny fokus (obrys 2px `#e8c765`, odstęp 2px); `alt` obowiązkowy; respektuj `prefers-reduced-motion`.
-- Tokeny designu z `design/README`; nie zmieniać bez wyraźnej prośby. Zakazane w produkcji: `#8d7d69`, rozmiar 13px, zaokrąglenia i cienie poza `Lightbox`, IBM Plex Mono.
+- Tokeny designu z `design/README`; nie zmieniać bez wyraźnej prośby. Zakazane w produkcji: `#8d7d69`, rozmiar 13px, zaokrąglenia, `box-shadow` (makieta może mieć cień hero/lightbox — w kodzie nie; K-140 odwołane 2026-10-06), IBM Plex Mono.
+- Klasa semantyczna i narzędzie Tailwind nie ustawiają tej samej właściwości na tym samym elemencie. Rola typograficzna (`PageHeading`, `.list-title`, `.body-copy`, `.prose-*`) nie ustawia marginesów; margines dodaje wywołujący.
 - Komentarze w kodzie, nazwy zmiennych, komunikaty commitów i PR: po angielsku. Treść widoczna dla użytkownika: po polsku, przez `pl.ts` lub `content/`.
 
 ### Język w kodzie vs. polski w produkcie (K-11)
@@ -47,7 +48,7 @@ Przy konflikcie: `CLAUDE.md` > plan etapu > `brief-claude-code.md` > `brief-full
 
 - Foldery w `src/app/` są po polsku, bo w App Routerze nazwa folderu = segment URL (brief §3). To nie jest wyjątek od K-11 — to powierzchnia publiczna, nie identyfikator kodu.
 - `SectionKey` (`"o-akademii" | "warsztaty" | "wyklady" | …`) celowo powiela slugi tras — spójność z routingiem; para O Akademii · Pracownia (K-48).
-- Prop `active` w `Header`/`SectionNav` przyjmuje **label z `navigation.ts`** (polski tekst UI), nie własny klucz — na v1 PL-only wystarczy; przy i18n zamienić na stabilny klucz sekcji.
+- Prop `active` w `Header`/`SectionNav` przyjmuje **label z** `navigation.ts` (polski tekst UI), nie własny klucz — na v1 PL-only wystarczy; przy i18n zamienić na stabilny klucz sekcji.
 - Nazwy domyślnych exportów w `page.tsx`: angielski (`WorkshopsPage`, nie `WarsztatyPage`).
 - Nie duplikuj etykiet nawigacji na sztywno w `page.tsx` — czytaj z `mainNav` / `sectionNav` (np. `sectionNav.ikony[0].label`).
 
@@ -95,3 +96,4 @@ Przy konflikcie: `CLAUDE.md` > plan etapu > `brief-claude-code.md` > `brief-full
 - Nie dotykaj `.env*`, `next.config.ts` (poza uzgodnionymi przekierowaniami 301 w etapie 9) ani plików w `design/`.
 - Nie usuwaj i nie przenoś plików poza zakresem kawałka; nie „porządkuj przy okazji”.
 - Nie dodawaj banera cookies, `localStorage`, zewnętrznych skryptów ani analityki bez planu, w którym to jest zapisane.
+- Nie rozpisuj sie zanadto w odpowiedziach, bądź krótki i treściwy.

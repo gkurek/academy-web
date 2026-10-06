@@ -100,8 +100,9 @@ zamiast zgadywać.
   ta konkretna instancja na stronie głównej).
 - **Realny rozmiar** (z rozwiązanego DOM, odczytany przez lokalny serwer):
   - desktop: `height: 760px; width: auto; max-width: 100%; object-fit: contain;
-    margin: 0 auto; box-shadow: 0 30px 70px rgba(0,0,0,.55)`
+    margin: 0 auto; box-shadow: 0 30px 70px rgba(0,0,0,.55)` — **w produkcji
+    bez cienia** (K-140 odwołane 2026-10-06).
   - mobile: `width: 62%; height: auto; margin: 0 auto; box-shadow: 0 20px 50px
-    rgba(0,0,0,.5)` — i obraz na mobile jest **nieopakowanym rodzeństwem**
+    rgba(0,0,0,.5)` — **w produkcji bez cienia** — i obraz na mobile jest **nieopakowanym rodzeństwem**
     karty w DOM, więc `62%` liczy się od pełnej szerokości karty (390px), nie
     od kolumny tekstu już pomniejszonej o jej własny padding boczny.

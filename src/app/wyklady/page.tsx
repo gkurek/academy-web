@@ -1,29 +1,26 @@
+import type { Metadata } from "next";
+
 import { LecturesHubPage } from "@/components/lectures/LecturesHubPage";
 import { getCurrentSeason, getHubArchiveIntro } from "@/content/lectures";
-import { getOffer } from "@/content/offers";
-import { mainNav, sectionNav } from "@/navigation";
-import { notFound } from "next/navigation";
+import { getEnrollmentState, requireOffer } from "@/content/offers";
+import { navTitle } from "@/navigation";
 
-const mainNavActive = mainNav.find((item) => item.href === "/wyklady")!.label;
-const sectionActive = sectionNav.wyklady[0].label;
+const path = "/wyklady";
+
+export const metadata: Metadata = {
+  title: navTitle(path),
+};
 
 export default function LecturesPage() {
-  const season = getCurrentSeason();
-  const archiveIntro = getHubArchiveIntro();
-  const offer = getOffer("wyklady");
-
-  if (!offer) {
-    notFound();
-  }
+  const offer = requireOffer("wyklady");
 
   return (
     <LecturesHubPage
-      season={season}
-      archiveIntro={archiveIntro}
+      season={getCurrentSeason()}
+      archiveIntro={getHubArchiveIntro()}
       facts={offer.facts}
-      section="wyklady"
-      sectionActive={sectionActive}
-      active={mainNavActive}
+      enrollment={getEnrollmentState(offer)}
+      path={path}
     />
   );
 }

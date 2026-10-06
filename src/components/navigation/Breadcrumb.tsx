@@ -2,7 +2,7 @@ import { Fragment } from "react";
 import Link from "next/link";
 import { pl } from "@/i18n/pl";
 
-export interface BreadcrumbItem {
+interface BreadcrumbItem {
   label: string;
   href?: string;
 }
@@ -11,8 +11,8 @@ export interface BreadcrumbProps {
   items: BreadcrumbItem[];
 }
 
-// Only used on a news entry — never a single item, never alongside SectionNav
-// (design/README §4). Not wired into any route yet; that lands in etap 06.
+// Used on publication pages (articles and the album) — never a single item,
+// never alongside SectionNav (design/README §4).
 export function Breadcrumb({ items }: BreadcrumbProps) {
   return (
     <nav
@@ -23,8 +23,8 @@ export function Breadcrumb({ items }: BreadcrumbProps) {
         <Fragment key={item.label}>
           {index > 0 && <span aria-hidden="true">›</span>}
           {item.href ? (
-            <Link href={item.href} className="text-text-tertiary border-b border-border-secondary">
-              {item.label}
+            <Link href={item.href} className="inline-flex min-h-tap-min-mobile-header items-center text-text-tertiary transition-ui-colors hover:text-accent-hover lg:inline lg:min-h-0 lg:border-b lg:border-border-secondary">
+              <span className="border-b border-border-secondary lg:border-b-0">{item.label}</span>
             </Link>
           ) : (
             <span className="text-text-secondary">{item.label}</span>

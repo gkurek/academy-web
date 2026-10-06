@@ -1,0 +1,2530 @@
+[
+  {
+    "id": "RF-1",
+    "route": "/",
+    "signal": "html",
+    "note": "Pillars: redundant focus-visible classes removed (global rule covers links)"
+  },
+  {
+    "id": "RF-1",
+    "route": "/ikony/wystawy",
+    "signal": "html",
+    "note": "facts panel and CTA block: aside -> div, panel heading p -> h3"
+  },
+  {
+    "id": "RF-1",
+    "route": "/ikony/wystawy",
+    "signal": "styles",
+    "width": 390,
+    "note": "p -> h3 shifts element indexes; screenshots identical"
+  },
+  {
+    "id": "RF-1",
+    "route": "/ikony/wystawy",
+    "signal": "styles",
+    "width": 1440,
+    "note": "p -> h3 shifts element indexes; screenshots identical"
+  },
+  {
+    "id": "RF-1",
+    "route": "/ikony/wystawy",
+    "signal": "styles",
+    "width": 1920,
+    "note": "p -> h3 shifts element indexes; screenshots identical"
+  },
+  {
+    "id": "RF-1",
+    "route": "/polityka-prywatnosci",
+    "signal": "html",
+    "note": "TOC links: aria-current=location on active item"
+  },
+  {
+    "id": "RF-1",
+    "route": "/pracownia",
+    "signal": "html",
+    "note": "TOC links: aria-current=location on active item"
+  },
+  {
+    "id": "RF-1",
+    "route": "/publikacje/ikona-dzis",
+    "signal": "html",
+    "note": "metrics box: aside -> div"
+  },
+  {
+    "id": "RF-1",
+    "route": "/warsztaty/letnia-szkola-swiatla",
+    "signal": "html",
+    "note": "place links via TextLink (underline span)"
+  },
+  {
+    "id": "RF-1",
+    "route": "/wyklady/wykladowcy",
+    "signal": "html",
+    "note": "LecturerBio focus classes removed, photo placeholder text aria-hidden"
+  },
+  {
+    "id": "RF-2",
+    "route": "/warsztaty/kurs-roczny-i-trzyletni",
+    "signal": "html",
+    "note": "FactsBox closed state (D5): note + secondary CTA; useId format after dropping use client"
+  },
+  {
+    "id": "RF-2",
+    "route": "/warsztaty/kurs-roczny-i-trzyletni",
+    "signal": "screenshot",
+    "width": 390,
+    "note": "FactsBox closed state (D5): note + secondary CTA"
+  },
+  {
+    "id": "RF-2",
+    "route": "/warsztaty/kurs-roczny-i-trzyletni",
+    "signal": "styles",
+    "width": 390,
+    "note": "FactsBox closed state (D5): note + secondary CTA"
+  },
+  {
+    "id": "RF-2",
+    "route": "/warsztaty/kurs-roczny-i-trzyletni",
+    "signal": "screenshot",
+    "width": 1440,
+    "note": "FactsBox closed state (D5): note + secondary CTA"
+  },
+  {
+    "id": "RF-2",
+    "route": "/warsztaty/kurs-roczny-i-trzyletni",
+    "signal": "styles",
+    "width": 1440,
+    "note": "FactsBox closed state (D5): note + secondary CTA"
+  },
+  {
+    "id": "RF-2",
+    "route": "/warsztaty/kurs-roczny-i-trzyletni",
+    "signal": "screenshot",
+    "width": 1920,
+    "note": "FactsBox closed state (D5): note + secondary CTA"
+  },
+  {
+    "id": "RF-2",
+    "route": "/warsztaty/kurs-roczny-i-trzyletni",
+    "signal": "styles",
+    "width": 1920,
+    "note": "FactsBox closed state (D5): note + secondary CTA"
+  },
+  {
+    "id": "RF-2",
+    "route": "/wyklady",
+    "signal": "html",
+    "note": "FactsBox server component: useId format _R_ -> _S_1_"
+  },
+  {
+    "id": "RF-2",
+    "route": "/ikony/na-zamowienie",
+    "signal": "html",
+    "note": "FactsBox contact row as mailto:/tel: links (R2-05); useId format"
+  },
+  {
+    "id": "RF-2",
+    "route": "/ikony/na-zamowienie",
+    "signal": "screenshot",
+    "width": 390,
+    "note": "FactsBox contact row as mailto:/tel: links (R2-05) — accent link colour"
+  },
+  {
+    "id": "RF-4",
+    "route": "/",
+    "signal": "html",
+    "note": "justified gallery rendered on the server (JustifiedGrid rows, figure tiles with --tile-ratio); lightbox dialog without the per-page class"
+  },
+  {
+    "id": "RF-4",
+    "route": "/",
+    "signal": "screenshot",
+    "width": 390,
+    "note": "rows identical to the JS-measured layout; sub-pixel tile widths from CSS flex vs JS floats shift later rows by up to 3 px and change photo resampling"
+  },
+  {
+    "id": "RF-4",
+    "route": "/",
+    "signal": "screenshot",
+    "width": 1440,
+    "note": "rows identical to the JS-measured layout; sub-pixel tile widths from CSS flex vs JS floats shift later rows by up to 3 px and change photo resampling"
+  },
+  {
+    "id": "RF-4",
+    "route": "/ikony",
+    "signal": "html",
+    "note": "justified gallery rendered on the server (JustifiedGrid rows, figure tiles with --tile-ratio); lightbox dialog without the per-page class; whole gallery in the HTML, filter applied in the client (R3-04)"
+  },
+  {
+    "id": "RF-4",
+    "route": "/ikony",
+    "signal": "screenshot",
+    "width": 390,
+    "note": "rows identical to the JS-measured layout; sub-pixel tile widths from CSS flex vs JS floats shift later rows by up to 3 px and change photo resampling"
+  },
+  {
+    "id": "RF-4",
+    "route": "/ikony",
+    "signal": "screenshot",
+    "width": 1440,
+    "note": "rows identical to the JS-measured layout; sub-pixel tile widths from CSS flex vs JS floats shift later rows by up to 3 px and change photo resampling"
+  },
+  {
+    "id": "RF-4",
+    "route": "/ikony",
+    "signal": "screenshot",
+    "width": 1920,
+    "note": "rows identical to the JS-measured layout; sub-pixel tile widths from CSS flex vs JS floats shift later rows by up to 3 px and change photo resampling"
+  },
+  {
+    "id": "RF-4",
+    "route": "/ikony/na-zamowienie",
+    "signal": "html",
+    "note": "justified gallery rendered on the server (JustifiedGrid rows, figure tiles with --tile-ratio); lightbox dialog without the per-page class"
+  },
+  {
+    "id": "RF-4",
+    "route": "/ikony/na-zamowienie",
+    "signal": "screenshot",
+    "width": 390,
+    "note": "rows identical to the JS-measured layout; sub-pixel tile widths from CSS flex vs JS floats shift later rows by up to 3 px and change photo resampling"
+  },
+  {
+    "id": "RF-4",
+    "route": "/ikony/na-zamowienie",
+    "signal": "screenshot",
+    "width": 1440,
+    "note": "rows identical to the JS-measured layout; sub-pixel tile widths from CSS flex vs JS floats shift later rows by up to 3 px and change photo resampling"
+  },
+  {
+    "id": "RF-4",
+    "route": "/ikony/na-zamowienie",
+    "signal": "styles",
+    "width": 390,
+    "note": "tiles hidden below md are in the DOM (display: none) — element count +2"
+  },
+  {
+    "id": "RF-4",
+    "route": "/ikony/wystawy",
+    "signal": "html",
+    "note": "lightbox dialog: workshop-lightbox-dialog class dropped (one Lightbox)"
+  },
+  {
+    "id": "RF-4",
+    "route": "/pracownia",
+    "signal": "html",
+    "note": "lightbox dialog: workshop-lightbox-dialog class dropped (one Lightbox)"
+  },
+  {
+    "id": "RF-4",
+    "route": "/publikacje",
+    "signal": "html",
+    "note": "lightbox dialog: publication-spread-lightbox class dropped (one Lightbox)"
+  },
+  {
+    "id": "RF-4",
+    "route": "/publikacje/ikona-dzis",
+    "signal": "html",
+    "note": "lightbox dialog: publication-spread-lightbox class dropped (one Lightbox)"
+  },
+  {
+    "id": "RF-4",
+    "route": "/aktualnosci/nabor-kursu-2026-2027",
+    "signal": "html",
+    "note": "one lightbox dialog per entry (LightboxProvider) instead of one per cover/gallery"
+  },
+  {
+    "id": "RF-4",
+    "route": "/aktualnosci/ikona-korzenie-i-owoce-wiary-mistyka-dzis-wyklady-2026-2027",
+    "signal": "html",
+    "note": "one lightbox dialog per entry (LightboxProvider) instead of one per cover/gallery"
+  },
+  {
+    "id": "RF-4",
+    "route": "/",
+    "signal": "screenshot",
+    "width": 1920,
+    "note": "sub-pixel tile widths at 1920 px (CSS flex rows vs JS floats); owner-checked 2026-10-05"
+  },
+  {
+    "id": "RF-4",
+    "route": "/ikony/na-zamowienie",
+    "signal": "screenshot",
+    "width": 1920,
+    "note": "sub-pixel tile widths at 1920 px (CSS flex rows vs JS floats); owner-checked 2026-10-05"
+  },
+  {
+    "id": "RF-4",
+    "route": "/nie-ma-takiej-strony",
+    "signal": "screenshot",
+    "width": 390,
+    "note": "0.108 % pixels, environment noise (cloud vs local); owner-checked 2026-10-05"
+  },
+  {
+    "id": "RF-8",
+    "route": "/warsztaty",
+    "signal": "html",
+    "note": "<title> from navTitle(path) (D4)"
+  },
+  {
+    "id": "RF-8",
+    "route": "/wyklady",
+    "signal": "html",
+    "note": "<title> from navTitle(path) (D4)"
+  },
+  {
+    "id": "RF-8",
+    "route": "/aktualnosci",
+    "signal": "html",
+    "note": "<title> from navTitle(path) (D4)"
+  },
+  {
+    "id": "RF-8",
+    "route": "/ikony",
+    "signal": "html",
+    "note": "<title> from navTitle(path) (D4)"
+  },
+  {
+    "id": "RF-8",
+    "route": "/warsztaty/kurs-roczny-i-trzyletni",
+    "signal": "html",
+    "note": "<title> from navTitle(path) (D4); aria-current page -> true on the parent section link in the Header"
+  },
+  {
+    "id": "RF-8",
+    "route": "/warsztaty/letnia-szkola-swiatla",
+    "signal": "html",
+    "note": "<title> from navTitle(path) (D4); aria-current page -> true on the parent section link in the Header"
+  },
+  {
+    "id": "RF-8",
+    "route": "/wyklady/archiwum",
+    "signal": "html",
+    "note": "<title> from navTitle(path) (D4); aria-current page -> true on the parent section link in the Header"
+  },
+  {
+    "id": "RF-8",
+    "route": "/wyklady/wykladowcy",
+    "signal": "html",
+    "note": "<title> from navTitle(path) (D4); aria-current page -> true on the parent section link in the Header"
+  },
+  {
+    "id": "RF-8",
+    "route": "/ikony/wystawy",
+    "signal": "html",
+    "note": "<title> from navTitle(path) (D4) (was pl.exhibition.page.title); aria-current page -> true on the parent section link in the Header"
+  },
+  {
+    "id": "RF-8",
+    "route": "/ikony/na-zamowienie",
+    "signal": "html",
+    "note": "<title> from navTitle(path) (D4); aria-current page -> true on the parent section link in the Header; ReadyIconsNote in the shell footerBand slot: main py -> pt, note without -mb-space-6"
+  },
+  {
+    "id": "RF-8",
+    "route": "/aktualnosci/nabor-kursu-2026-2027",
+    "signal": "html",
+    "note": "aria-current page -> true on the parent section link in the Header"
+  },
+  {
+    "id": "RF-8",
+    "route": "/aktualnosci/ikona-korzenie-i-owoce-wiary-mistyka-dzis-wyklady-2026-2027",
+    "signal": "html",
+    "note": "aria-current page -> true on the parent section link in the Header"
+  },
+  {
+    "id": "RF-8",
+    "route": "/pracownia",
+    "signal": "html",
+    "note": "<title> from navTitle(path) (D4); aria-current page -> true on the parent section link in the Header; inner mx-auto w-full max-w-content-max removed (layout already limits the width, R3-09)"
+  },
+  {
+    "id": "RF-8",
+    "route": "/o-akademii",
+    "signal": "html",
+    "note": "<title> from navTitle(path) (D4); inner mx-auto w-full max-w-content-max removed (layout already limits the width, R3-09)"
+  },
+  {
+    "id": "RF-8",
+    "route": "/kontakt",
+    "signal": "html",
+    "note": "inner mx-auto w-full max-w-content-max removed (layout already limits the width, R3-09)"
+  },
+  {
+    "id": "RF-8",
+    "route": "/polityka-prywatnosci",
+    "signal": "html",
+    "note": "inner mx-auto w-full max-w-content-max removed (layout already limits the width, R3-09)"
+  },
+  {
+    "id": "RF-8",
+    "route": "/publikacje",
+    "signal": "html",
+    "note": "inner mx-auto w-full max-w-content-max removed (layout already limits the width, R3-09)"
+  },
+  {
+    "id": "RF-8",
+    "route": "/publikacje/ikona-dzis",
+    "signal": "html",
+    "note": "inner mx-auto w-full max-w-content-max removed (layout already limits the width, R3-09)"
+  },
+  {
+    "id": "RF-8",
+    "route": "/publikacje/cisza-ikony",
+    "signal": "html",
+    "note": "inner mx-auto w-full max-w-content-max removed (layout already limits the width, R3-09)"
+  },
+  {
+    "id": "RF-8",
+    "route": "/nie-ma-takiej-strony",
+    "signal": "html",
+    "note": "rendered through SectionPageShell; inner mx-auto w-full max-w-content-max removed (layout already limits the width, R3-09); sitemap links via NavUnderlineLink (same classes, new order)"
+  },
+  {
+    "id": "RF-8",
+    "route": "/ikony/na-zamowienie",
+    "signal": "styles",
+    "width": 390,
+    "note": "footerBand slot: main padding-bottom 26px -> 0 and ReadyIconsNote margin-bottom -26px -> 0 (offsets cancelled each other); screenshots identical"
+  },
+  {
+    "id": "RF-8",
+    "route": "/ikony/na-zamowienie",
+    "signal": "styles",
+    "width": 1440,
+    "note": "footerBand slot: main padding-bottom 26px -> 0 and ReadyIconsNote margin-bottom -26px -> 0 (offsets cancelled each other); screenshots identical"
+  },
+  {
+    "id": "RF-8",
+    "route": "/ikony/na-zamowienie",
+    "signal": "styles",
+    "width": 1920,
+    "note": "footerBand slot: main padding-bottom 26px -> 0 and ReadyIconsNote margin-bottom -26px -> 0 (offsets cancelled each other); screenshots identical"
+  },
+  {
+    "id": "RF-9",
+    "route": "/wyklady/archiwum",
+    "signal": "html",
+    "note": "season trigger button wrapped in h2 (APG accordion); toggle label gets explicit font-sans (h2 base rule sets the serif font)"
+  },
+  {
+    "id": "RF-9",
+    "route": "/wyklady/archiwum",
+    "signal": "styles",
+    "width": 390,
+    "note": "14 season h2 wrappers added to the sampled elements (element count 569 -> 583); screenshots identical"
+  },
+  {
+    "id": "RF-9",
+    "route": "/wyklady/archiwum",
+    "signal": "styles",
+    "width": 1440,
+    "note": "14 season h2 wrappers added to the sampled elements (element count 569 -> 583); screenshots identical"
+  },
+  {
+    "id": "RF-9",
+    "route": "/wyklady/archiwum",
+    "signal": "styles",
+    "width": 1920,
+    "note": "14 season h2 wrappers added to the sampled elements (element count 569 -> 583); screenshots identical"
+  },
+  {
+    "id": "RF-10",
+    "route": "/wyklady/archiwum",
+    "signal": "html",
+    "note": "season trigger grid: arbitrary grid-cols-[...] classes -> grid-cols-season-head / lg:grid-cols-season-head-lg (same template)"
+  },
+  {
+    "id": "RF-10",
+    "route": "/pracownia",
+    "signal": "html",
+    "note": "TocCollapse summary: list-none and the [&::-webkit-details-marker] class dropped (global summary rule in base)"
+  },
+  {
+    "id": "RF-10",
+    "route": "/polityka-prywatnosci",
+    "signal": "html",
+    "note": "TocCollapse summary: list-none and the [&::-webkit-details-marker] class dropped (global summary rule in base)"
+  },
+  {
+    "id": "RF-10",
+    "route": "/warsztaty/kurs-roczny-i-trzyletni",
+    "signal": "html",
+    "note": "OfferFigure: arbitrary width + margin classes -> bleed-x-mobile (same box)"
+  },
+  {
+    "id": "RF-10",
+    "route": "/warsztaty/letnia-szkola-swiatla",
+    "signal": "html",
+    "note": "OfferFigure: arbitrary width + margin classes -> bleed-x-mobile (same box)"
+  },
+  {
+    "id": "RF-10",
+    "route": "/ikony/na-zamowienie",
+    "signal": "html",
+    "note": "OfferFigure -> bleed-x-mobile; StepList grid-cols-[minmax(0,auto)_1fr] -> grid-cols-step-row (same template)"
+  },
+  {
+    "id": "RF-11",
+    "route": "/aktualnosci/nabor-kursu-2026-2027",
+    "signal": "html",
+    "note": "NewsRelated: heading id from useId instead of a fixed string (R2-25)"
+  },
+  {
+    "id": "RF-11",
+    "route": "/aktualnosci/ikona-korzenie-i-owoce-wiary-mistyka-dzis-wyklady-2026-2027",
+    "signal": "html",
+    "note": "NewsRelated: heading id from useId instead of a fixed string (R2-25)"
+  },
+  {
+    "id": "RF-11",
+    "route": "/ikony",
+    "signal": "html",
+    "note": "GalleryOrderTeaser: heading id from useId instead of a fixed string (R2-25)"
+  },
+  {
+    "id": "RF-11",
+    "route": "/ikony/na-zamowienie",
+    "signal": "html",
+    "note": "StepList: heading id from useId instead of a fixed string (R2-25)"
+  },
+  {
+    "id": "RF-11",
+    "route": "/o-akademii",
+    "signal": "html",
+    "note": "hero image width/height from data (2048x1536) instead of 560x420 (R2-27); rendered size set by CSS"
+  },
+  {
+    "id": "RF-11",
+    "route": "/polityka-prywatnosci",
+    "signal": "html",
+    "note": "TocCollapse chevron: shared ChevronIcon, collapsed path M6 10..18 10 -> M5 9..19 9 (pixel-identical screenshots)"
+  },
+  {
+    "id": "RF-11",
+    "route": "/pracownia",
+    "signal": "html",
+    "note": "TocCollapse chevron: shared ChevronIcon, collapsed path M6 10..18 10 -> M5 9..19 9 (pixel-identical screenshots)"
+  },
+  {
+    "id": "RF-11",
+    "route": "/publikacje/ikona-dzis",
+    "signal": "html",
+    "note": "PublicationMetricsBox: heading id from useId instead of a fixed string (R2-25)"
+  },
+  {
+    "id": "RF-11",
+    "route": "/warsztaty",
+    "signal": "html",
+    "note": "OfferQuoteGrid: heading id from useId instead of a fixed string (R2-25)"
+  },
+  {
+    "id": "RF-11",
+    "route": "/warsztaty/kurs-roczny-i-trzyletni",
+    "signal": "html",
+    "note": "OfferLeadExtra, SemesterProgram, OfferSideCta, enrollment section: heading id from useId instead of a fixed string (R2-25)"
+  },
+  {
+    "id": "RF-11",
+    "route": "/warsztaty/letnia-szkola-swiatla",
+    "signal": "html",
+    "note": "OfferLeadExtra, OfferQuoteGrid: heading id from useId instead of a fixed string (R2-25)"
+  },
+  {
+    "id": "RF-12",
+    "route": "/warsztaty",
+    "signal": "html",
+    "note": "LSS hub card: [pole CMS] placeholders became the text szczegóły wkrótce (owner decision)"
+  },
+  {
+    "id": "RF-12",
+    "route": "/warsztaty",
+    "signal": "screenshot",
+    "width": 390,
+    "note": "LSS hub card: [pole CMS] placeholders became the text szczegóły wkrótce (owner decision)"
+  },
+  {
+    "id": "RF-12",
+    "route": "/warsztaty",
+    "signal": "screenshot",
+    "width": 1440,
+    "note": "LSS hub card: [pole CMS] placeholders became the text szczegóły wkrótce (owner decision)"
+  },
+  {
+    "id": "RF-12",
+    "route": "/warsztaty",
+    "signal": "screenshot",
+    "width": 1920,
+    "note": "LSS hub card: [pole CMS] placeholders became the text szczegóły wkrótce (owner decision)"
+  },
+  {
+    "id": "RF-12",
+    "route": "/publikacje/ikona-dzis",
+    "signal": "html",
+    "note": "album metrics box: shipping note paragraph removed (owner decision)"
+  },
+  {
+    "id": "RF-12",
+    "route": "/publikacje/ikona-dzis",
+    "signal": "screenshot",
+    "width": 390,
+    "note": "album metrics box: shipping note paragraph removed (owner decision); page shorter, one element fewer"
+  },
+  {
+    "id": "RF-12",
+    "route": "/publikacje/ikona-dzis",
+    "signal": "styles",
+    "width": 390,
+    "note": "album metrics box: shipping note paragraph removed (owner decision); page shorter, one element fewer"
+  },
+  {
+    "id": "RF-12",
+    "route": "/publikacje/ikona-dzis",
+    "signal": "screenshot",
+    "width": 1440,
+    "note": "album metrics box: shipping note paragraph removed (owner decision); page shorter, one element fewer"
+  },
+  {
+    "id": "RF-12",
+    "route": "/publikacje/ikona-dzis",
+    "signal": "styles",
+    "width": 1440,
+    "note": "album metrics box: shipping note paragraph removed (owner decision); page shorter, one element fewer"
+  },
+  {
+    "id": "RF-12",
+    "route": "/publikacje/ikona-dzis",
+    "signal": "screenshot",
+    "width": 1920,
+    "note": "album metrics box: shipping note paragraph removed (owner decision); page shorter, one element fewer"
+  },
+  {
+    "id": "RF-12",
+    "route": "/publikacje/ikona-dzis",
+    "signal": "styles",
+    "width": 1920,
+    "note": "album metrics box: shipping note paragraph removed (owner decision); page shorter, one element fewer"
+  },
+  {
+    "id": "RF-5",
+    "route": "/wyklady",
+    "signal": "html",
+    "note": "lecturer labels follow the profile registry (RF-5): Szymuła, Klejnowski-Różycki titles/affiliation, Kocój, Tatarova, Biskup (no short affiliation in profile)"
+  },
+  {
+    "id": "RF-5",
+    "route": "/wyklady/archiwum",
+    "signal": "html",
+    "note": "lecturer labels follow the profile registry (RF-5): Szymuła, Klejnowski-Różycki titles/affiliation, Kocój, Tatarova, Biskup (no short affiliation in profile)"
+  },
+  {
+    "id": "RF-5",
+    "route": "/wyklady",
+    "signal": "screenshot",
+    "width": 390,
+    "note": "lecturer labels follow the profile registry (RF-5): Szymuła, Klejnowski-Różycki titles/affiliation, Kocój, Tatarova, Biskup (no short affiliation in profile); one label wraps differently"
+  },
+  {
+    "id": "RF-13",
+    "route": "/",
+    "signal": "styles",
+    "width": 1440,
+    "note": "section rhythm 56 (hero bottom, Pillars, Testimonial, FeaturedIcons via --section-gap); bottom 26 from shell"
+  },
+  {
+    "id": "RF-13",
+    "route": "/",
+    "signal": "styles",
+    "width": 1920,
+    "note": "section rhythm 56 (hero bottom, Pillars, Testimonial, FeaturedIcons via --section-gap); bottom 26 from shell"
+  },
+  {
+    "id": "RF-13",
+    "route": "/aktualnosci",
+    "signal": "screenshot",
+    "width": 390,
+    "note": "archive toggle loses own margin-bottom (page bottom from shell); year groups on --section-gap"
+  },
+  {
+    "id": "RF-13",
+    "route": "/aktualnosci",
+    "signal": "styles",
+    "width": 390,
+    "note": "archive toggle loses own margin-bottom (page bottom from shell); year groups on --section-gap"
+  },
+  {
+    "id": "RF-13",
+    "route": "/aktualnosci",
+    "signal": "screenshot",
+    "width": 1440,
+    "note": "archive toggle loses own margin-bottom (page bottom from shell); year groups on --section-gap"
+  },
+  {
+    "id": "RF-13",
+    "route": "/aktualnosci",
+    "signal": "styles",
+    "width": 1440,
+    "note": "archive toggle loses own margin-bottom (page bottom from shell); year groups on --section-gap"
+  },
+  {
+    "id": "RF-13",
+    "route": "/aktualnosci",
+    "signal": "screenshot",
+    "width": 1920,
+    "note": "archive toggle loses own margin-bottom (page bottom from shell); year groups on --section-gap"
+  },
+  {
+    "id": "RF-13",
+    "route": "/aktualnosci",
+    "signal": "styles",
+    "width": 1920,
+    "note": "archive toggle loses own margin-bottom (page bottom from shell); year groups on --section-gap"
+  },
+  {
+    "id": "RF-13",
+    "route": "/aktualnosci/ikona-korzenie-i-owoce-wiary-mistyka-dzis-wyklady-2026-2027",
+    "signal": "screenshot",
+    "width": 390,
+    "note": "article: own padding-bottom removed (page bottom from shell); rail on --section-gap"
+  },
+  {
+    "id": "RF-13",
+    "route": "/aktualnosci/ikona-korzenie-i-owoce-wiary-mistyka-dzis-wyklady-2026-2027",
+    "signal": "screenshot",
+    "width": 1440,
+    "note": "article: own padding-bottom removed (page bottom from shell); rail on --section-gap"
+  },
+  {
+    "id": "RF-13",
+    "route": "/aktualnosci/ikona-korzenie-i-owoce-wiary-mistyka-dzis-wyklady-2026-2027",
+    "signal": "screenshot",
+    "width": 1920,
+    "note": "article: own padding-bottom removed (page bottom from shell); rail on --section-gap"
+  },
+  {
+    "id": "RF-13",
+    "route": "/aktualnosci/nabor-kursu-2026-2027",
+    "signal": "screenshot",
+    "width": 390,
+    "note": "article: own padding-bottom removed (page bottom from shell); rail on --section-gap"
+  },
+  {
+    "id": "RF-13",
+    "route": "/aktualnosci/nabor-kursu-2026-2027",
+    "signal": "screenshot",
+    "width": 1440,
+    "note": "article: own padding-bottom removed (page bottom from shell); rail on --section-gap"
+  },
+  {
+    "id": "RF-13",
+    "route": "/aktualnosci/nabor-kursu-2026-2027",
+    "signal": "screenshot",
+    "width": 1920,
+    "note": "article: own padding-bottom removed (page bottom from shell); rail on --section-gap"
+  },
+  {
+    "id": "RF-13",
+    "route": "/ikony",
+    "signal": "styles",
+    "width": 390,
+    "note": "sections on --section-gap 56/34; H2 -> content on --heading-gap"
+  },
+  {
+    "id": "RF-13",
+    "route": "/ikony",
+    "signal": "styles",
+    "width": 1440,
+    "note": "sections on --section-gap 56/34; H2 -> content on --heading-gap"
+  },
+  {
+    "id": "RF-13",
+    "route": "/ikony",
+    "signal": "styles",
+    "width": 1920,
+    "note": "sections on --section-gap 56/34; H2 -> content on --heading-gap"
+  },
+  {
+    "id": "RF-13",
+    "route": "/ikony/wystawy",
+    "signal": "screenshot",
+    "width": 390,
+    "note": "exhibition sections on --section-gap; accent bars 3 px token"
+  },
+  {
+    "id": "RF-13",
+    "route": "/ikony/wystawy",
+    "signal": "screenshot",
+    "width": 1440,
+    "note": "exhibition sections on --section-gap; accent bars 3 px token"
+  },
+  {
+    "id": "RF-13",
+    "route": "/ikony/wystawy",
+    "signal": "screenshot",
+    "width": 1920,
+    "note": "exhibition sections on --section-gap; accent bars 3 px token"
+  },
+  {
+    "id": "RF-13",
+    "route": "/kontakt",
+    "signal": "screenshot",
+    "width": 390,
+    "note": "grid gap on --section-gap-tight (26 on mobile)"
+  },
+  {
+    "id": "RF-13",
+    "route": "/o-akademii",
+    "signal": "screenshot",
+    "width": 390,
+    "note": "sections on --section-gap-loose 80 desktop / 34 mobile; workshop band as footerBand"
+  },
+  {
+    "id": "RF-13",
+    "route": "/o-akademii",
+    "signal": "styles",
+    "width": 390,
+    "note": "sections on --section-gap-loose 80 desktop / 34 mobile; workshop band as footerBand"
+  },
+  {
+    "id": "RF-13",
+    "route": "/o-akademii",
+    "signal": "screenshot",
+    "width": 1440,
+    "note": "sections on --section-gap-loose 80 desktop / 34 mobile; workshop band as footerBand"
+  },
+  {
+    "id": "RF-13",
+    "route": "/o-akademii",
+    "signal": "styles",
+    "width": 1440,
+    "note": "sections on --section-gap-loose 80 desktop / 34 mobile; workshop band as footerBand"
+  },
+  {
+    "id": "RF-13",
+    "route": "/o-akademii",
+    "signal": "screenshot",
+    "width": 1920,
+    "note": "sections on --section-gap-loose 80 desktop / 34 mobile; workshop band as footerBand"
+  },
+  {
+    "id": "RF-13",
+    "route": "/o-akademii",
+    "signal": "styles",
+    "width": 1920,
+    "note": "sections on --section-gap-loose 80 desktop / 34 mobile; workshop band as footerBand"
+  },
+  {
+    "id": "RF-13",
+    "route": "/polityka-prywatnosci",
+    "signal": "screenshot",
+    "width": 390,
+    "note": "sections on --section-gap-tight, H2 -> content on --heading-gap"
+  },
+  {
+    "id": "RF-13",
+    "route": "/polityka-prywatnosci",
+    "signal": "styles",
+    "width": 390,
+    "note": "sections on --section-gap-tight, H2 -> content on --heading-gap"
+  },
+  {
+    "id": "RF-13",
+    "route": "/polityka-prywatnosci",
+    "signal": "screenshot",
+    "width": 1440,
+    "note": "sections on --section-gap-tight, H2 -> content on --heading-gap"
+  },
+  {
+    "id": "RF-13",
+    "route": "/polityka-prywatnosci",
+    "signal": "styles",
+    "width": 1440,
+    "note": "sections on --section-gap-tight, H2 -> content on --heading-gap"
+  },
+  {
+    "id": "RF-13",
+    "route": "/polityka-prywatnosci",
+    "signal": "screenshot",
+    "width": 1920,
+    "note": "sections on --section-gap-tight, H2 -> content on --heading-gap"
+  },
+  {
+    "id": "RF-13",
+    "route": "/polityka-prywatnosci",
+    "signal": "styles",
+    "width": 1920,
+    "note": "sections on --section-gap-tight, H2 -> content on --heading-gap"
+  },
+  {
+    "id": "RF-13",
+    "route": "/pracownia",
+    "signal": "screenshot",
+    "width": 390,
+    "note": "sections on --section-gap-loose, H2 -> content on --heading-gap"
+  },
+  {
+    "id": "RF-13",
+    "route": "/pracownia",
+    "signal": "styles",
+    "width": 390,
+    "note": "sections on --section-gap-loose, H2 -> content on --heading-gap"
+  },
+  {
+    "id": "RF-13",
+    "route": "/pracownia",
+    "signal": "screenshot",
+    "width": 1440,
+    "note": "sections on --section-gap-loose, H2 -> content on --heading-gap"
+  },
+  {
+    "id": "RF-13",
+    "route": "/pracownia",
+    "signal": "styles",
+    "width": 1440,
+    "note": "sections on --section-gap-loose, H2 -> content on --heading-gap"
+  },
+  {
+    "id": "RF-13",
+    "route": "/pracownia",
+    "signal": "screenshot",
+    "width": 1920,
+    "note": "sections on --section-gap-loose, H2 -> content on --heading-gap"
+  },
+  {
+    "id": "RF-13",
+    "route": "/pracownia",
+    "signal": "styles",
+    "width": 1920,
+    "note": "sections on --section-gap-loose, H2 -> content on --heading-gap"
+  },
+  {
+    "id": "RF-13",
+    "route": "/publikacje",
+    "signal": "screenshot",
+    "width": 1440,
+    "note": "sections on --section-gap (was 34 on desktop), --heading-gap"
+  },
+  {
+    "id": "RF-13",
+    "route": "/publikacje",
+    "signal": "styles",
+    "width": 1440,
+    "note": "sections on --section-gap (was 34 on desktop), --heading-gap"
+  },
+  {
+    "id": "RF-13",
+    "route": "/publikacje",
+    "signal": "screenshot",
+    "width": 1920,
+    "note": "sections on --section-gap (was 34 on desktop), --heading-gap"
+  },
+  {
+    "id": "RF-13",
+    "route": "/publikacje",
+    "signal": "styles",
+    "width": 1920,
+    "note": "sections on --section-gap (was 34 on desktop), --heading-gap"
+  },
+  {
+    "id": "RF-13",
+    "route": "/publikacje/cisza-ikony",
+    "signal": "screenshot",
+    "width": 390,
+    "note": "article body margin-bottom removed; sections on --section-gap"
+  },
+  {
+    "id": "RF-13",
+    "route": "/publikacje/cisza-ikony",
+    "signal": "screenshot",
+    "width": 1440,
+    "note": "article body margin-bottom removed; sections on --section-gap"
+  },
+  {
+    "id": "RF-13",
+    "route": "/publikacje/cisza-ikony",
+    "signal": "screenshot",
+    "width": 1920,
+    "note": "article body margin-bottom removed; sections on --section-gap"
+  },
+  {
+    "id": "RF-13",
+    "route": "/warsztaty",
+    "signal": "styles",
+    "width": 390,
+    "note": "hub lead on --section-gap-tight, quote section on --section-gap without own padding-bottom"
+  },
+  {
+    "id": "RF-13",
+    "route": "/warsztaty",
+    "signal": "styles",
+    "width": 1440,
+    "note": "hub lead on --section-gap-tight, quote section on --section-gap without own padding-bottom"
+  },
+  {
+    "id": "RF-13",
+    "route": "/warsztaty",
+    "signal": "styles",
+    "width": 1920,
+    "note": "hub lead on --section-gap-tight, quote section on --section-gap without own padding-bottom"
+  },
+  {
+    "id": "RF-13",
+    "route": "/warsztaty/letnia-szkola-swiatla",
+    "signal": "screenshot",
+    "width": 390,
+    "note": "MDX h2 / quotes on --section-gap and --heading-gap; page bottom from shell"
+  },
+  {
+    "id": "RF-13",
+    "route": "/warsztaty/letnia-szkola-swiatla",
+    "signal": "styles",
+    "width": 390,
+    "note": "MDX h2 / quotes on --section-gap and --heading-gap; page bottom from shell"
+  },
+  {
+    "id": "RF-13",
+    "route": "/warsztaty/letnia-szkola-swiatla",
+    "signal": "screenshot",
+    "width": 1440,
+    "note": "MDX h2 / quotes on --section-gap and --heading-gap; page bottom from shell"
+  },
+  {
+    "id": "RF-13",
+    "route": "/warsztaty/letnia-szkola-swiatla",
+    "signal": "styles",
+    "width": 1440,
+    "note": "MDX h2 / quotes on --section-gap and --heading-gap; page bottom from shell"
+  },
+  {
+    "id": "RF-13",
+    "route": "/warsztaty/letnia-szkola-swiatla",
+    "signal": "screenshot",
+    "width": 1920,
+    "note": "MDX h2 / quotes on --section-gap and --heading-gap; page bottom from shell"
+  },
+  {
+    "id": "RF-13",
+    "route": "/warsztaty/letnia-szkola-swiatla",
+    "signal": "styles",
+    "width": 1920,
+    "note": "MDX h2 / quotes on --section-gap and --heading-gap; page bottom from shell"
+  },
+  {
+    "id": "RF-13",
+    "route": "/wyklady",
+    "signal": "styles",
+    "width": 390,
+    "note": "archive section on --section-gap via margin (was padding 56), --heading-gap"
+  },
+  {
+    "id": "RF-13",
+    "route": "/wyklady",
+    "signal": "screenshot",
+    "width": 1440,
+    "note": "archive section on --section-gap via margin (was padding 56), --heading-gap"
+  },
+  {
+    "id": "RF-13",
+    "route": "/wyklady",
+    "signal": "styles",
+    "width": 1440,
+    "note": "archive section on --section-gap via margin (was padding 56), --heading-gap"
+  },
+  {
+    "id": "RF-13",
+    "route": "/wyklady",
+    "signal": "screenshot",
+    "width": 1920,
+    "note": "archive section on --section-gap via margin (was padding 56), --heading-gap"
+  },
+  {
+    "id": "RF-13",
+    "route": "/wyklady",
+    "signal": "styles",
+    "width": 1920,
+    "note": "archive section on --section-gap via margin (was padding 56), --heading-gap"
+  },
+  {
+    "id": "RF-14",
+    "route": "/",
+    "signal": "html",
+    "note": "class renames: PageHeading / Prose wrappers and role classes (heading-*, prose-*, list-title, body-copy) replace per-element utility strings and per-page classes"
+  },
+  {
+    "id": "RF-14",
+    "route": "/aktualnosci",
+    "signal": "html",
+    "note": "class renames: PageHeading / Prose wrappers and role classes (heading-*, prose-*, list-title, body-copy) replace per-element utility strings and per-page classes; list title colour #ece2d3 → #f0e6d5 (V1-17); excerpt line-height 1.7 → 1.6 (V2-08)"
+  },
+  {
+    "id": "RF-14",
+    "route": "/aktualnosci",
+    "signal": "styles",
+    "width": 390,
+    "note": "list title colour #ece2d3 → #f0e6d5 (V1-17); excerpt line-height 1.7 → 1.6 (V2-08)"
+  },
+  {
+    "id": "RF-14",
+    "route": "/aktualnosci",
+    "signal": "screenshot",
+    "width": 1440,
+    "note": "list title colour #ece2d3 → #f0e6d5 (V1-17); excerpt line-height 1.7 → 1.6 (V2-08)"
+  },
+  {
+    "id": "RF-14",
+    "route": "/aktualnosci",
+    "signal": "styles",
+    "width": 1440,
+    "note": "list title colour #ece2d3 → #f0e6d5 (V1-17); excerpt line-height 1.7 → 1.6 (V2-08)"
+  },
+  {
+    "id": "RF-14",
+    "route": "/aktualnosci",
+    "signal": "screenshot",
+    "width": 1920,
+    "note": "list title colour #ece2d3 → #f0e6d5 (V1-17); excerpt line-height 1.7 → 1.6 (V2-08)"
+  },
+  {
+    "id": "RF-14",
+    "route": "/aktualnosci",
+    "signal": "styles",
+    "width": 1920,
+    "note": "list title colour #ece2d3 → #f0e6d5 (V1-17); excerpt line-height 1.7 → 1.6 (V2-08)"
+  },
+  {
+    "id": "RF-14",
+    "route": "/aktualnosci/ikona-korzenie-i-owoce-wiary-mistyka-dzis-wyklady-2026-2027",
+    "signal": "html",
+    "note": "class renames: PageHeading / Prose wrappers and role classes (heading-*, prose-*, list-title, body-copy) replace per-element utility strings and per-page classes"
+  },
+  {
+    "id": "RF-14",
+    "route": "/aktualnosci/nabor-kursu-2026-2027",
+    "signal": "html",
+    "note": "class renames: PageHeading / Prose wrappers and role classes (heading-*, prose-*, list-title, body-copy) replace per-element utility strings and per-page classes"
+  },
+  {
+    "id": "RF-14",
+    "route": "/ikony",
+    "signal": "html",
+    "note": "class renames: PageHeading / Prose wrappers and role classes (heading-*, prose-*, list-title, body-copy) replace per-element utility strings and per-page classes"
+  },
+  {
+    "id": "RF-14",
+    "route": "/ikony/na-zamowienie",
+    "signal": "html",
+    "note": "class renames: PageHeading / Prose wrappers and role classes (heading-*, prose-*, list-title, body-copy) replace per-element utility strings and per-page classes; section prose colour secondary → body (V3-07); intro paragraph 17.5 → 16.5 on 390 (V2-04); paragraph gap 14 → 20 (V1-19); caption 14.5 → 15 on 390 (V1-14)"
+  },
+  {
+    "id": "RF-14",
+    "route": "/ikony/na-zamowienie",
+    "signal": "screenshot",
+    "width": 390,
+    "note": "section prose colour secondary → body (V3-07); intro paragraph 17.5 → 16.5 on 390 (V2-04); paragraph gap 14 → 20 (V1-19); caption 14.5 → 15 on 390 (V1-14)"
+  },
+  {
+    "id": "RF-14",
+    "route": "/ikony/na-zamowienie",
+    "signal": "styles",
+    "width": 390,
+    "note": "section prose colour secondary → body (V3-07); intro paragraph 17.5 → 16.5 on 390 (V2-04); paragraph gap 14 → 20 (V1-19); caption 14.5 → 15 on 390 (V1-14)"
+  },
+  {
+    "id": "RF-14",
+    "route": "/ikony/na-zamowienie",
+    "signal": "screenshot",
+    "width": 1440,
+    "note": "section prose colour secondary → body (V3-07); intro paragraph 17.5 → 16.5 on 390 (V2-04); paragraph gap 14 → 20 (V1-19); caption 14.5 → 15 on 390 (V1-14)"
+  },
+  {
+    "id": "RF-14",
+    "route": "/ikony/na-zamowienie",
+    "signal": "styles",
+    "width": 1440,
+    "note": "section prose colour secondary → body (V3-07); intro paragraph 17.5 → 16.5 on 390 (V2-04); paragraph gap 14 → 20 (V1-19); caption 14.5 → 15 on 390 (V1-14)"
+  },
+  {
+    "id": "RF-14",
+    "route": "/ikony/na-zamowienie",
+    "signal": "screenshot",
+    "width": 1920,
+    "note": "section prose colour secondary → body (V3-07); intro paragraph 17.5 → 16.5 on 390 (V2-04); paragraph gap 14 → 20 (V1-19); caption 14.5 → 15 on 390 (V1-14)"
+  },
+  {
+    "id": "RF-14",
+    "route": "/ikony/na-zamowienie",
+    "signal": "styles",
+    "width": 1920,
+    "note": "section prose colour secondary → body (V3-07); intro paragraph 17.5 → 16.5 on 390 (V2-04); paragraph gap 14 → 20 (V1-19); caption 14.5 → 15 on 390 (V1-14)"
+  },
+  {
+    "id": "RF-14",
+    "route": "/ikony/wystawy",
+    "signal": "html",
+    "note": "class renames: PageHeading / Prose wrappers and role classes (heading-*, prose-*, list-title, body-copy) replace per-element utility strings and per-page classes; caption 14.5 → 15 px on 390 (V1-14)"
+  },
+  {
+    "id": "RF-14",
+    "route": "/ikony/wystawy",
+    "signal": "screenshot",
+    "width": 390,
+    "note": "caption 14.5 → 15 px on 390 (V1-14)"
+  },
+  {
+    "id": "RF-14",
+    "route": "/ikony/wystawy",
+    "signal": "styles",
+    "width": 390,
+    "note": "caption 14.5 → 15 px on 390 (V1-14)"
+  },
+  {
+    "id": "RF-14",
+    "route": "/kontakt",
+    "signal": "html",
+    "note": "class renames: PageHeading / Prose wrappers and role classes (heading-*, prose-*, list-title, body-copy) replace per-element utility strings and per-page classes"
+  },
+  {
+    "id": "RF-14",
+    "route": "/nie-ma-takiej-strony",
+    "signal": "html",
+    "note": "class renames: PageHeading / Prose wrappers and role classes (heading-*, prose-*, list-title, body-copy) replace per-element utility strings and per-page classes"
+  },
+  {
+    "id": "RF-14",
+    "route": "/o-akademii",
+    "signal": "html",
+    "note": "class renames: PageHeading / Prose wrappers and role classes (heading-*, prose-*, list-title, body-copy) replace per-element utility strings and per-page classes; hero lead line-height 1.7 → 1.6 (V2-15)"
+  },
+  {
+    "id": "RF-14",
+    "route": "/o-akademii",
+    "signal": "screenshot",
+    "width": 390,
+    "note": "hero lead line-height 1.7 → 1.6 (V2-15)"
+  },
+  {
+    "id": "RF-14",
+    "route": "/o-akademii",
+    "signal": "screenshot",
+    "width": 1440,
+    "note": "hero lead line-height 1.7 → 1.6 (V2-15)"
+  },
+  {
+    "id": "RF-14",
+    "route": "/o-akademii",
+    "signal": "styles",
+    "width": 1440,
+    "note": "hero lead line-height 1.7 → 1.6 (V2-15)"
+  },
+  {
+    "id": "RF-14",
+    "route": "/o-akademii",
+    "signal": "screenshot",
+    "width": 1920,
+    "note": "hero lead line-height 1.7 → 1.6 (V2-15)"
+  },
+  {
+    "id": "RF-14",
+    "route": "/o-akademii",
+    "signal": "styles",
+    "width": 1920,
+    "note": "hero lead line-height 1.7 → 1.6 (V2-15)"
+  },
+  {
+    "id": "RF-14",
+    "route": "/polityka-prywatnosci",
+    "signal": "html",
+    "note": "class renames: PageHeading / Prose wrappers and role classes (heading-*, prose-*, list-title, body-copy) replace per-element utility strings and per-page classes; caption 14.5 → 15 px on 390 (V1-14)"
+  },
+  {
+    "id": "RF-14",
+    "route": "/polityka-prywatnosci",
+    "signal": "screenshot",
+    "width": 390,
+    "note": "caption 14.5 → 15 px on 390 (V1-14)"
+  },
+  {
+    "id": "RF-14",
+    "route": "/polityka-prywatnosci",
+    "signal": "styles",
+    "width": 390,
+    "note": "caption 14.5 → 15 px on 390 (V1-14)"
+  },
+  {
+    "id": "RF-14",
+    "route": "/pracownia",
+    "signal": "html",
+    "note": "class renames: PageHeading / Prose wrappers and role classes (heading-*, prose-*, list-title, body-copy) replace per-element utility strings and per-page classes; form description line-height 1.7 → 1.6 (V2-08); caption 14.5 → 15 on 390 (V1-14)"
+  },
+  {
+    "id": "RF-14",
+    "route": "/pracownia",
+    "signal": "screenshot",
+    "width": 390,
+    "note": "form description line-height 1.7 → 1.6 (V2-08); caption 14.5 → 15 on 390 (V1-14)"
+  },
+  {
+    "id": "RF-14",
+    "route": "/pracownia",
+    "signal": "styles",
+    "width": 390,
+    "note": "form description line-height 1.7 → 1.6 (V2-08); caption 14.5 → 15 on 390 (V1-14)"
+  },
+  {
+    "id": "RF-14",
+    "route": "/pracownia",
+    "signal": "screenshot",
+    "width": 1440,
+    "note": "form description line-height 1.7 → 1.6 (V2-08); caption 14.5 → 15 on 390 (V1-14)"
+  },
+  {
+    "id": "RF-14",
+    "route": "/pracownia",
+    "signal": "styles",
+    "width": 1440,
+    "note": "form description line-height 1.7 → 1.6 (V2-08); caption 14.5 → 15 on 390 (V1-14)"
+  },
+  {
+    "id": "RF-14",
+    "route": "/pracownia",
+    "signal": "screenshot",
+    "width": 1920,
+    "note": "form description line-height 1.7 → 1.6 (V2-08); caption 14.5 → 15 on 390 (V1-14)"
+  },
+  {
+    "id": "RF-14",
+    "route": "/pracownia",
+    "signal": "styles",
+    "width": 1920,
+    "note": "form description line-height 1.7 → 1.6 (V2-08); caption 14.5 → 15 on 390 (V1-14)"
+  },
+  {
+    "id": "RF-14",
+    "route": "/publikacje",
+    "signal": "html",
+    "note": "class renames: PageHeading / Prose wrappers and role classes (heading-*, prose-*, list-title, body-copy) replace per-element utility strings and per-page classes; article list title 25/21 → 22/20, line-height 1.2, colour #f0e6d5 (V2-07, V1-17); hub description and section lead 19.5 → 16.5, line-height 1.6 (V2-13, V2-08)"
+  },
+  {
+    "id": "RF-14",
+    "route": "/publikacje",
+    "signal": "screenshot",
+    "width": 390,
+    "note": "article list title 25/21 → 22/20, line-height 1.2, colour #f0e6d5 (V2-07, V1-17); hub description and section lead 19.5 → 16.5, line-height 1.6 (V2-13, V2-08)"
+  },
+  {
+    "id": "RF-14",
+    "route": "/publikacje",
+    "signal": "styles",
+    "width": 390,
+    "note": "article list title 25/21 → 22/20, line-height 1.2, colour #f0e6d5 (V2-07, V1-17); hub description and section lead 19.5 → 16.5, line-height 1.6 (V2-13, V2-08)"
+  },
+  {
+    "id": "RF-14",
+    "route": "/publikacje",
+    "signal": "screenshot",
+    "width": 1440,
+    "note": "article list title 25/21 → 22/20, line-height 1.2, colour #f0e6d5 (V2-07, V1-17); hub description and section lead 19.5 → 16.5, line-height 1.6 (V2-13, V2-08)"
+  },
+  {
+    "id": "RF-14",
+    "route": "/publikacje",
+    "signal": "styles",
+    "width": 1440,
+    "note": "article list title 25/21 → 22/20, line-height 1.2, colour #f0e6d5 (V2-07, V1-17); hub description and section lead 19.5 → 16.5, line-height 1.6 (V2-13, V2-08)"
+  },
+  {
+    "id": "RF-14",
+    "route": "/publikacje",
+    "signal": "screenshot",
+    "width": 1920,
+    "note": "article list title 25/21 → 22/20, line-height 1.2, colour #f0e6d5 (V2-07, V1-17); hub description and section lead 19.5 → 16.5, line-height 1.6 (V2-13, V2-08)"
+  },
+  {
+    "id": "RF-14",
+    "route": "/publikacje",
+    "signal": "styles",
+    "width": 1920,
+    "note": "article list title 25/21 → 22/20, line-height 1.2, colour #f0e6d5 (V2-07, V1-17); hub description and section lead 19.5 → 16.5, line-height 1.6 (V2-13, V2-08)"
+  },
+  {
+    "id": "RF-14",
+    "route": "/publikacje/cisza-ikony",
+    "signal": "html",
+    "note": "class renames: PageHeading / Prose wrappers and role classes (heading-*, prose-*, list-title, body-copy) replace per-element utility strings and per-page classes; paragraph margin-bottom 14 → 0 (gap stays 20 through margin collapse, V1-19); breadcrumb caption 14.5 → 15 on 390 (V1-14)"
+  },
+  {
+    "id": "RF-14",
+    "route": "/publikacje/cisza-ikony",
+    "signal": "screenshot",
+    "width": 390,
+    "note": "paragraph margin-bottom 14 → 0 (gap stays 20 through margin collapse, V1-19); breadcrumb caption 14.5 → 15 on 390 (V1-14)"
+  },
+  {
+    "id": "RF-14",
+    "route": "/publikacje/cisza-ikony",
+    "signal": "styles",
+    "width": 390,
+    "note": "paragraph margin-bottom 14 → 0 (gap stays 20 through margin collapse, V1-19); breadcrumb caption 14.5 → 15 on 390 (V1-14)"
+  },
+  {
+    "id": "RF-14",
+    "route": "/publikacje/cisza-ikony",
+    "signal": "styles",
+    "width": 1440,
+    "note": "paragraph margin-bottom 14 → 0 (gap stays 20 through margin collapse, V1-19); breadcrumb caption 14.5 → 15 on 390 (V1-14)"
+  },
+  {
+    "id": "RF-14",
+    "route": "/publikacje/cisza-ikony",
+    "signal": "styles",
+    "width": 1920,
+    "note": "paragraph margin-bottom 14 → 0 (gap stays 20 through margin collapse, V1-19); breadcrumb caption 14.5 → 15 on 390 (V1-14)"
+  },
+  {
+    "id": "RF-14",
+    "route": "/publikacje/ikona-dzis",
+    "signal": "html",
+    "note": "class renames: PageHeading / Prose wrappers and role classes (heading-*, prose-*, list-title, body-copy) replace per-element utility strings and per-page classes; 'O albumie' paragraphs are prose (16.5/17.5 instead of lead 19.5, body colour, 20 px gap — V2-13); breadcrumb caption 14.5 → 15 on 390 (V1-14)"
+  },
+  {
+    "id": "RF-14",
+    "route": "/publikacje/ikona-dzis",
+    "signal": "screenshot",
+    "width": 390,
+    "note": "'O albumie' paragraphs are prose (16.5/17.5 instead of lead 19.5, body colour, 20 px gap — V2-13); breadcrumb caption 14.5 → 15 on 390 (V1-14)"
+  },
+  {
+    "id": "RF-14",
+    "route": "/publikacje/ikona-dzis",
+    "signal": "styles",
+    "width": 390,
+    "note": "'O albumie' paragraphs are prose (16.5/17.5 instead of lead 19.5, body colour, 20 px gap — V2-13); breadcrumb caption 14.5 → 15 on 390 (V1-14)"
+  },
+  {
+    "id": "RF-14",
+    "route": "/publikacje/ikona-dzis",
+    "signal": "screenshot",
+    "width": 1440,
+    "note": "'O albumie' paragraphs are prose (16.5/17.5 instead of lead 19.5, body colour, 20 px gap — V2-13); breadcrumb caption 14.5 → 15 on 390 (V1-14)"
+  },
+  {
+    "id": "RF-14",
+    "route": "/publikacje/ikona-dzis",
+    "signal": "styles",
+    "width": 1440,
+    "note": "'O albumie' paragraphs are prose (16.5/17.5 instead of lead 19.5, body colour, 20 px gap — V2-13); breadcrumb caption 14.5 → 15 on 390 (V1-14)"
+  },
+  {
+    "id": "RF-14",
+    "route": "/publikacje/ikona-dzis",
+    "signal": "screenshot",
+    "width": 1920,
+    "note": "'O albumie' paragraphs are prose (16.5/17.5 instead of lead 19.5, body colour, 20 px gap — V2-13); breadcrumb caption 14.5 → 15 on 390 (V1-14)"
+  },
+  {
+    "id": "RF-14",
+    "route": "/publikacje/ikona-dzis",
+    "signal": "styles",
+    "width": 1920,
+    "note": "'O albumie' paragraphs are prose (16.5/17.5 instead of lead 19.5, body colour, 20 px gap — V2-13); breadcrumb caption 14.5 → 15 on 390 (V1-14)"
+  },
+  {
+    "id": "RF-14",
+    "route": "/warsztaty",
+    "signal": "html",
+    "note": "class renames: PageHeading / Prose wrappers and role classes (heading-*, prose-*, list-title, body-copy) replace per-element utility strings and per-page classes; second intro paragraph 17.5 → 16.5 on 390 (V2-04)"
+  },
+  {
+    "id": "RF-14",
+    "route": "/warsztaty",
+    "signal": "screenshot",
+    "width": 390,
+    "note": "second intro paragraph 17.5 → 16.5 on 390 (V2-04)"
+  },
+  {
+    "id": "RF-14",
+    "route": "/warsztaty",
+    "signal": "styles",
+    "width": 390,
+    "note": "second intro paragraph 17.5 → 16.5 on 390 (V2-04)"
+  },
+  {
+    "id": "RF-14",
+    "route": "/warsztaty/kurs-roczny-i-trzyletni",
+    "signal": "html",
+    "note": "class renames: PageHeading / Prose wrappers and role classes (heading-*, prose-*, list-title, body-copy) replace per-element utility strings and per-page classes; MDX H3 26/21 → 21/19 (V2-05); section prose colour secondary → body (V3-07); intro paragraph 17.5 → 16.5 on 390 (V2-04); paragraph gap 14 → 20 (V1-19); caption 14.5 → 15 on 390 (V1-14)"
+  },
+  {
+    "id": "RF-14",
+    "route": "/warsztaty/kurs-roczny-i-trzyletni",
+    "signal": "screenshot",
+    "width": 390,
+    "note": "MDX H3 26/21 → 21/19 (V2-05); section prose colour secondary → body (V3-07); intro paragraph 17.5 → 16.5 on 390 (V2-04); paragraph gap 14 → 20 (V1-19); caption 14.5 → 15 on 390 (V1-14)"
+  },
+  {
+    "id": "RF-14",
+    "route": "/warsztaty/kurs-roczny-i-trzyletni",
+    "signal": "styles",
+    "width": 390,
+    "note": "MDX H3 26/21 → 21/19 (V2-05); section prose colour secondary → body (V3-07); intro paragraph 17.5 → 16.5 on 390 (V2-04); paragraph gap 14 → 20 (V1-19); caption 14.5 → 15 on 390 (V1-14)"
+  },
+  {
+    "id": "RF-14",
+    "route": "/warsztaty/kurs-roczny-i-trzyletni",
+    "signal": "screenshot",
+    "width": 1440,
+    "note": "MDX H3 26/21 → 21/19 (V2-05); section prose colour secondary → body (V3-07); intro paragraph 17.5 → 16.5 on 390 (V2-04); paragraph gap 14 → 20 (V1-19); caption 14.5 → 15 on 390 (V1-14)"
+  },
+  {
+    "id": "RF-14",
+    "route": "/warsztaty/kurs-roczny-i-trzyletni",
+    "signal": "styles",
+    "width": 1440,
+    "note": "MDX H3 26/21 → 21/19 (V2-05); section prose colour secondary → body (V3-07); intro paragraph 17.5 → 16.5 on 390 (V2-04); paragraph gap 14 → 20 (V1-19); caption 14.5 → 15 on 390 (V1-14)"
+  },
+  {
+    "id": "RF-14",
+    "route": "/warsztaty/kurs-roczny-i-trzyletni",
+    "signal": "screenshot",
+    "width": 1920,
+    "note": "MDX H3 26/21 → 21/19 (V2-05); section prose colour secondary → body (V3-07); intro paragraph 17.5 → 16.5 on 390 (V2-04); paragraph gap 14 → 20 (V1-19); caption 14.5 → 15 on 390 (V1-14)"
+  },
+  {
+    "id": "RF-14",
+    "route": "/warsztaty/kurs-roczny-i-trzyletni",
+    "signal": "styles",
+    "width": 1920,
+    "note": "MDX H3 26/21 → 21/19 (V2-05); section prose colour secondary → body (V3-07); intro paragraph 17.5 → 16.5 on 390 (V2-04); paragraph gap 14 → 20 (V1-19); caption 14.5 → 15 on 390 (V1-14)"
+  },
+  {
+    "id": "RF-14",
+    "route": "/warsztaty/letnia-szkola-swiatla",
+    "signal": "html",
+    "note": "class renames: PageHeading / Prose wrappers and role classes (heading-*, prose-*, list-title, body-copy) replace per-element utility strings and per-page classes; section prose colour secondary → body (V3-07); intro paragraph 17.5 → 16.5 on 390 (V2-04); paragraph gap 14 → 20 (V1-19); caption 14.5 → 15 on 390 (V1-14)"
+  },
+  {
+    "id": "RF-14",
+    "route": "/warsztaty/letnia-szkola-swiatla",
+    "signal": "screenshot",
+    "width": 390,
+    "note": "section prose colour secondary → body (V3-07); intro paragraph 17.5 → 16.5 on 390 (V2-04); paragraph gap 14 → 20 (V1-19); caption 14.5 → 15 on 390 (V1-14)"
+  },
+  {
+    "id": "RF-14",
+    "route": "/warsztaty/letnia-szkola-swiatla",
+    "signal": "styles",
+    "width": 390,
+    "note": "section prose colour secondary → body (V3-07); intro paragraph 17.5 → 16.5 on 390 (V2-04); paragraph gap 14 → 20 (V1-19); caption 14.5 → 15 on 390 (V1-14)"
+  },
+  {
+    "id": "RF-14",
+    "route": "/warsztaty/letnia-szkola-swiatla",
+    "signal": "screenshot",
+    "width": 1440,
+    "note": "section prose colour secondary → body (V3-07); intro paragraph 17.5 → 16.5 on 390 (V2-04); paragraph gap 14 → 20 (V1-19); caption 14.5 → 15 on 390 (V1-14)"
+  },
+  {
+    "id": "RF-14",
+    "route": "/warsztaty/letnia-szkola-swiatla",
+    "signal": "styles",
+    "width": 1440,
+    "note": "section prose colour secondary → body (V3-07); intro paragraph 17.5 → 16.5 on 390 (V2-04); paragraph gap 14 → 20 (V1-19); caption 14.5 → 15 on 390 (V1-14)"
+  },
+  {
+    "id": "RF-14",
+    "route": "/warsztaty/letnia-szkola-swiatla",
+    "signal": "screenshot",
+    "width": 1920,
+    "note": "section prose colour secondary → body (V3-07); intro paragraph 17.5 → 16.5 on 390 (V2-04); paragraph gap 14 → 20 (V1-19); caption 14.5 → 15 on 390 (V1-14)"
+  },
+  {
+    "id": "RF-14",
+    "route": "/warsztaty/letnia-szkola-swiatla",
+    "signal": "styles",
+    "width": 1920,
+    "note": "section prose colour secondary → body (V3-07); intro paragraph 17.5 → 16.5 on 390 (V2-04); paragraph gap 14 → 20 (V1-19); caption 14.5 → 15 on 390 (V1-14)"
+  },
+  {
+    "id": "RF-14",
+    "route": "/wyklady",
+    "signal": "html",
+    "note": "class renames: PageHeading / Prose wrappers and role classes (heading-*, prose-*, list-title, body-copy) replace per-element utility strings and per-page classes; lecture title 18.5/18 → 22/20 and date 22 → 20 on 390 (V2-07, V3-18); intro paragraph 17.5 → 16.5 on 390 (V2-04); caption 14.5 → 15 on 390 (V1-14)"
+  },
+  {
+    "id": "RF-14",
+    "route": "/wyklady",
+    "signal": "screenshot",
+    "width": 390,
+    "note": "lecture title 18.5/18 → 22/20 and date 22 → 20 on 390 (V2-07, V3-18); intro paragraph 17.5 → 16.5 on 390 (V2-04); caption 14.5 → 15 on 390 (V1-14)"
+  },
+  {
+    "id": "RF-14",
+    "route": "/wyklady",
+    "signal": "styles",
+    "width": 390,
+    "note": "lecture title 18.5/18 → 22/20 and date 22 → 20 on 390 (V2-07, V3-18); intro paragraph 17.5 → 16.5 on 390 (V2-04); caption 14.5 → 15 on 390 (V1-14)"
+  },
+  {
+    "id": "RF-14",
+    "route": "/wyklady",
+    "signal": "screenshot",
+    "width": 1440,
+    "note": "lecture title 18.5/18 → 22/20 and date 22 → 20 on 390 (V2-07, V3-18); intro paragraph 17.5 → 16.5 on 390 (V2-04); caption 14.5 → 15 on 390 (V1-14)"
+  },
+  {
+    "id": "RF-14",
+    "route": "/wyklady",
+    "signal": "styles",
+    "width": 1440,
+    "note": "lecture title 18.5/18 → 22/20 and date 22 → 20 on 390 (V2-07, V3-18); intro paragraph 17.5 → 16.5 on 390 (V2-04); caption 14.5 → 15 on 390 (V1-14)"
+  },
+  {
+    "id": "RF-14",
+    "route": "/wyklady",
+    "signal": "screenshot",
+    "width": 1920,
+    "note": "lecture title 18.5/18 → 22/20 and date 22 → 20 on 390 (V2-07, V3-18); intro paragraph 17.5 → 16.5 on 390 (V2-04); caption 14.5 → 15 on 390 (V1-14)"
+  },
+  {
+    "id": "RF-14",
+    "route": "/wyklady",
+    "signal": "styles",
+    "width": 1920,
+    "note": "lecture title 18.5/18 → 22/20 and date 22 → 20 on 390 (V2-07, V3-18); intro paragraph 17.5 → 16.5 on 390 (V2-04); caption 14.5 → 15 on 390 (V1-14)"
+  },
+  {
+    "id": "RF-14",
+    "route": "/wyklady/archiwum",
+    "signal": "html",
+    "note": "class renames: PageHeading / Prose wrappers and role classes (heading-*, prose-*, list-title, body-copy) replace per-element utility strings and per-page classes; lecture title 18.5/18 → 22/20, date 22 → 20 on 390 (V2-07, V3-18)"
+  },
+  {
+    "id": "RF-14",
+    "route": "/wyklady/archiwum",
+    "signal": "screenshot",
+    "width": 390,
+    "note": "lecture title 18.5/18 → 22/20, date 22 → 20 on 390 (V2-07, V3-18)"
+  },
+  {
+    "id": "RF-14",
+    "route": "/wyklady/archiwum",
+    "signal": "styles",
+    "width": 390,
+    "note": "lecture title 18.5/18 → 22/20, date 22 → 20 on 390 (V2-07, V3-18)"
+  },
+  {
+    "id": "RF-14",
+    "route": "/wyklady/archiwum",
+    "signal": "styles",
+    "width": 1440,
+    "note": "lecture title 18.5/18 → 22/20, date 22 → 20 on 390 (V2-07, V3-18)"
+  },
+  {
+    "id": "RF-14",
+    "route": "/wyklady/archiwum",
+    "signal": "styles",
+    "width": 1920,
+    "note": "lecture title 18.5/18 → 22/20, date 22 → 20 on 390 (V2-07, V3-18)"
+  },
+  {
+    "id": "RF-14",
+    "route": "/wyklady/wykladowcy",
+    "signal": "html",
+    "note": "class renames: PageHeading / Prose wrappers and role classes (heading-*, prose-*, list-title, body-copy) replace per-element utility strings and per-page classes; caption 14.5 → 15 px on 390 (V1-14)"
+  },
+  {
+    "id": "RF-14",
+    "route": "/wyklady/wykladowcy",
+    "signal": "screenshot",
+    "width": 390,
+    "note": "caption 14.5 → 15 px on 390 (V1-14)"
+  },
+  {
+    "id": "RF-14",
+    "route": "/wyklady/wykladowcy",
+    "signal": "styles",
+    "width": 390,
+    "note": "caption 14.5 → 15 px on 390 (V1-14)"
+  },
+  {
+    "id": "RF-15",
+    "route": "/",
+    "signal": "html",
+    "note": "Header: desktop nav from lg (V4-01); Hero: two columns from lg, image centred below (V3-03); Pillars: three columns from lg (V3-04)"
+  },
+  {
+    "id": "RF-15",
+    "route": "/aktualnosci",
+    "signal": "html",
+    "note": "Header: desktop nav from lg, hamburger below (V4-01)"
+  },
+  {
+    "id": "RF-15",
+    "route": "/aktualnosci",
+    "signal": "screenshot",
+    "width": 1440,
+    "note": "Year nav: one scrolling row at every width, no wrapped second row (V3-12)"
+  },
+  {
+    "id": "RF-15",
+    "route": "/aktualnosci/ikona-korzenie-i-owoce-wiary-mistyka-dzis-wyklady-2026-2027",
+    "signal": "html",
+    "note": "Header: desktop nav from lg, hamburger below (V4-01)"
+  },
+  {
+    "id": "RF-15",
+    "route": "/aktualnosci/nabor-kursu-2026-2027",
+    "signal": "html",
+    "note": "Header: desktop nav from lg, hamburger below (V4-01)"
+  },
+  {
+    "id": "RF-15",
+    "route": "/ikony",
+    "signal": "html",
+    "note": "Header: desktop nav from lg, hamburger below (V4-01)"
+  },
+  {
+    "id": "RF-15",
+    "route": "/ikony/na-zamowienie",
+    "signal": "html",
+    "note": "Header: desktop nav from lg, hamburger below (V4-01)"
+  },
+  {
+    "id": "RF-15",
+    "route": "/ikony/wystawy",
+    "signal": "html",
+    "note": "Header: desktop nav from lg, hamburger below (V4-01)"
+  },
+  {
+    "id": "RF-15",
+    "route": "/kontakt",
+    "signal": "html",
+    "note": "Header: desktop nav from lg, hamburger below (V4-01)"
+  },
+  {
+    "id": "RF-15",
+    "route": "/nie-ma-takiej-strony",
+    "signal": "html",
+    "note": "Header: desktop nav from lg, hamburger below (V4-01)"
+  },
+  {
+    "id": "RF-15",
+    "route": "/o-akademii",
+    "signal": "html",
+    "note": "Header: desktop nav from lg, hamburger below (V4-01)"
+  },
+  {
+    "id": "RF-15",
+    "route": "/polityka-prywatnosci",
+    "signal": "html",
+    "note": "Header: desktop nav from lg, hamburger below (V4-01)"
+  },
+  {
+    "id": "RF-15",
+    "route": "/pracownia",
+    "signal": "html",
+    "note": "Header: desktop nav from lg, hamburger below (V4-01)"
+  },
+  {
+    "id": "RF-15",
+    "route": "/publikacje",
+    "signal": "html",
+    "note": "Header: desktop nav from lg, hamburger below (V4-01)"
+  },
+  {
+    "id": "RF-15",
+    "route": "/publikacje/cisza-ikony",
+    "signal": "html",
+    "note": "Header: desktop nav from lg, hamburger below (V4-01)"
+  },
+  {
+    "id": "RF-15",
+    "route": "/publikacje/ikona-dzis",
+    "signal": "html",
+    "note": "Header: desktop nav from lg, hamburger below (V4-01)"
+  },
+  {
+    "id": "RF-15",
+    "route": "/warsztaty",
+    "signal": "html",
+    "note": "Header from lg (V4-01); OfferQuoteGrid: 2 columns at md, 3 from lg (V3-01)"
+  },
+  {
+    "id": "RF-15",
+    "route": "/warsztaty/kurs-roczny-i-trzyletni",
+    "signal": "html",
+    "note": "Header: desktop nav from lg, hamburger below (V4-01)"
+  },
+  {
+    "id": "RF-15",
+    "route": "/warsztaty/letnia-szkola-swiatla",
+    "signal": "html",
+    "note": "Header: desktop nav from lg, hamburger below (V4-01)"
+  },
+  {
+    "id": "RF-15",
+    "route": "/warsztaty/letnia-szkola-swiatla",
+    "signal": "screenshot",
+    "width": 1440,
+    "note": "Day rhythm: shared label column grows with the longest label (V3-02)"
+  },
+  {
+    "id": "RF-15",
+    "route": "/warsztaty/letnia-szkola-swiatla",
+    "signal": "screenshot",
+    "width": 1920,
+    "note": "Day rhythm: shared label column grows with the longest label (V3-02)"
+  },
+  {
+    "id": "RF-15",
+    "route": "/wyklady",
+    "signal": "html",
+    "note": "Header: desktop nav from lg, hamburger below (V4-01)"
+  },
+  {
+    "id": "RF-15",
+    "route": "/wyklady/archiwum",
+    "signal": "html",
+    "note": "Header: desktop nav from lg, hamburger below (V4-01)"
+  },
+  {
+    "id": "RF-15",
+    "route": "/wyklady/wykladowcy",
+    "signal": "html",
+    "note": "Header: desktop nav from lg, hamburger below (V4-01)"
+  },
+  {
+    "id": "RF-16",
+    "route": "/",
+    "signal": "screenshot",
+    "width": 390,
+    "note": "Gallery: two equal columns below md (V3-16)"
+  },
+  {
+    "id": "RF-16",
+    "route": "/",
+    "signal": "html",
+    "note": "JustifiedGrid sizes: 50vw below md (V3-16)"
+  },
+  {
+    "id": "RF-16",
+    "route": "/ikony",
+    "signal": "screenshot",
+    "width": 390,
+    "note": "Gallery: two equal columns below md (V3-16)"
+  },
+  {
+    "id": "RF-16",
+    "route": "/ikony",
+    "signal": "html",
+    "note": "JustifiedGrid sizes: 50vw below md (V3-16)"
+  },
+  {
+    "id": "RF-16",
+    "route": "/ikony/na-zamowienie",
+    "signal": "screenshot",
+    "width": 390,
+    "note": "Gallery: two equal columns below md (V3-16)"
+  },
+  {
+    "id": "RF-16",
+    "route": "/ikony/na-zamowienie",
+    "signal": "html",
+    "note": "JustifiedGrid sizes: 50vw below md (V3-16)"
+  },
+  {
+    "id": "RF-16",
+    "route": "/pracownia",
+    "signal": "screenshot",
+    "width": 390,
+    "note": "Interview: initials above the text below md (V3-15)"
+  },
+  {
+    "id": "RF-16",
+    "route": "/warsztaty/kurs-roczny-i-trzyletni",
+    "signal": "screenshot",
+    "width": 390,
+    "note": "Semester program: numeral above title below md, tighter padding (V3-05)"
+  },
+  {
+    "id": "RF-16",
+    "route": "/warsztaty/kurs-roczny-i-trzyletni",
+    "signal": "html",
+    "note": "Semester program: stacked layout classes (V3-05)"
+  },
+  {
+    "id": "RF-16",
+    "route": "/wyklady/wykladowcy",
+    "signal": "screenshot",
+    "width": 390,
+    "note": "Lecturer card: 96 px portrait beside name below md (V3-17)"
+  },
+  {
+    "id": "RF-16",
+    "route": "/wyklady/wykladowcy",
+    "signal": "html",
+    "note": "Lecturer card: portrait/name layout classes (V3-17)"
+  },
+  {
+    "id": "RF-19",
+    "route": "/ikony/na-zamowienie",
+    "signal": "html",
+    "note": "FactsBox single contact footer, ready-icons band on the column line"
+  },
+  {
+    "id": "RF-19",
+    "route": "/ikony/na-zamowienie",
+    "signal": "screenshot",
+    "width": 390,
+    "note": "FactsBox single contact footer, ready-icons band on the column line"
+  },
+  {
+    "id": "RF-19",
+    "route": "/ikony/na-zamowienie",
+    "signal": "styles",
+    "width": 390,
+    "note": "FactsBox single contact footer, ready-icons band on the column line"
+  },
+  {
+    "id": "RF-19",
+    "route": "/ikony/na-zamowienie",
+    "signal": "screenshot",
+    "width": 1440,
+    "note": "FactsBox single contact footer, ready-icons band on the column line"
+  },
+  {
+    "id": "RF-19",
+    "route": "/ikony/na-zamowienie",
+    "signal": "styles",
+    "width": 1440,
+    "note": "FactsBox single contact footer, ready-icons band on the column line"
+  },
+  {
+    "id": "RF-19",
+    "route": "/ikony/na-zamowienie",
+    "signal": "screenshot",
+    "width": 1920,
+    "note": "FactsBox single contact footer, ready-icons band on the column line"
+  },
+  {
+    "id": "RF-19",
+    "route": "/ikony/na-zamowienie",
+    "signal": "styles",
+    "width": 1920,
+    "note": "FactsBox single contact footer, ready-icons band on the column line"
+  },
+  {
+    "id": "RF-19",
+    "route": "/ikony/wystawy",
+    "signal": "html",
+    "note": "tours CTA secondary and under the text"
+  },
+  {
+    "id": "RF-19",
+    "route": "/ikony/wystawy",
+    "signal": "screenshot",
+    "width": 390,
+    "note": "tours CTA secondary and under the text"
+  },
+  {
+    "id": "RF-19",
+    "route": "/ikony/wystawy",
+    "signal": "screenshot",
+    "width": 1440,
+    "note": "tours CTA secondary and under the text"
+  },
+  {
+    "id": "RF-19",
+    "route": "/ikony/wystawy",
+    "signal": "screenshot",
+    "width": 1920,
+    "note": "tours CTA secondary and under the text"
+  },
+  {
+    "id": "RF-19",
+    "route": "/o-akademii",
+    "signal": "html",
+    "note": "exit links after the workshop photos, with a label"
+  },
+  {
+    "id": "RF-19",
+    "route": "/o-akademii",
+    "signal": "screenshot",
+    "width": 390,
+    "note": "exit links after the workshop photos, with a label"
+  },
+  {
+    "id": "RF-19",
+    "route": "/o-akademii",
+    "signal": "screenshot",
+    "width": 1440,
+    "note": "exit links after the workshop photos, with a label"
+  },
+  {
+    "id": "RF-19",
+    "route": "/o-akademii",
+    "signal": "screenshot",
+    "width": 1920,
+    "note": "exit links after the workshop photos, with a label"
+  },
+  {
+    "id": "RF-19",
+    "route": "/publikacje/cisza-ikony",
+    "signal": "html",
+    "note": "closing note for media articles"
+  },
+  {
+    "id": "RF-19",
+    "route": "/publikacje/cisza-ikony",
+    "signal": "screenshot",
+    "width": 390,
+    "note": "closing note for media articles"
+  },
+  {
+    "id": "RF-19",
+    "route": "/publikacje/cisza-ikony",
+    "signal": "styles",
+    "width": 390,
+    "note": "closing note for media articles"
+  },
+  {
+    "id": "RF-19",
+    "route": "/publikacje/cisza-ikony",
+    "signal": "screenshot",
+    "width": 1440,
+    "note": "closing note for media articles"
+  },
+  {
+    "id": "RF-19",
+    "route": "/publikacje/cisza-ikony",
+    "signal": "styles",
+    "width": 1440,
+    "note": "closing note for media articles"
+  },
+  {
+    "id": "RF-19",
+    "route": "/publikacje/cisza-ikony",
+    "signal": "screenshot",
+    "width": 1920,
+    "note": "closing note for media articles"
+  },
+  {
+    "id": "RF-19",
+    "route": "/publikacje/cisza-ikony",
+    "signal": "styles",
+    "width": 1920,
+    "note": "closing note for media articles"
+  },
+  {
+    "id": "RF-19",
+    "route": "/publikacje/ikona-dzis",
+    "signal": "html",
+    "note": "metrics heading role, closing row with label after related news"
+  },
+  {
+    "id": "RF-19",
+    "route": "/publikacje/ikona-dzis",
+    "signal": "screenshot",
+    "width": 390,
+    "note": "metrics heading role, closing row with label after related news"
+  },
+  {
+    "id": "RF-19",
+    "route": "/publikacje/ikona-dzis",
+    "signal": "styles",
+    "width": 390,
+    "note": "metrics heading role, closing row with label after related news"
+  },
+  {
+    "id": "RF-19",
+    "route": "/publikacje/ikona-dzis",
+    "signal": "screenshot",
+    "width": 1440,
+    "note": "metrics heading role, closing row with label after related news"
+  },
+  {
+    "id": "RF-19",
+    "route": "/publikacje/ikona-dzis",
+    "signal": "styles",
+    "width": 1440,
+    "note": "metrics heading role, closing row with label after related news"
+  },
+  {
+    "id": "RF-19",
+    "route": "/publikacje/ikona-dzis",
+    "signal": "screenshot",
+    "width": 1920,
+    "note": "metrics heading role, closing row with label after related news"
+  },
+  {
+    "id": "RF-19",
+    "route": "/publikacje/ikona-dzis",
+    "signal": "styles",
+    "width": 1920,
+    "note": "metrics heading role, closing row with label after related news"
+  },
+  {
+    "id": "RF-19",
+    "route": "/warsztaty",
+    "signal": "html",
+    "note": "quote grid wrapper moved to the hub"
+  },
+  {
+    "id": "RF-19",
+    "route": "/warsztaty",
+    "signal": "styles",
+    "width": 390,
+    "note": "quote grid wrapper moved to the hub"
+  },
+  {
+    "id": "RF-19",
+    "route": "/warsztaty",
+    "signal": "styles",
+    "width": 1440,
+    "note": "quote grid wrapper moved to the hub"
+  },
+  {
+    "id": "RF-19",
+    "route": "/warsztaty",
+    "signal": "styles",
+    "width": 1920,
+    "note": "quote grid wrapper moved to the hub"
+  },
+  {
+    "id": "RF-19",
+    "route": "/warsztaty/kurs-roczny-i-trzyletni",
+    "signal": "html",
+    "note": "one offer ending: enrollment then quotes; side photo landscape"
+  },
+  {
+    "id": "RF-19",
+    "route": "/warsztaty/kurs-roczny-i-trzyletni",
+    "signal": "screenshot",
+    "width": 390,
+    "note": "one offer ending: enrollment then quotes; side photo landscape"
+  },
+  {
+    "id": "RF-19",
+    "route": "/warsztaty/kurs-roczny-i-trzyletni",
+    "signal": "screenshot",
+    "width": 1440,
+    "note": "one offer ending: enrollment then quotes; side photo landscape"
+  },
+  {
+    "id": "RF-19",
+    "route": "/warsztaty/kurs-roczny-i-trzyletni",
+    "signal": "screenshot",
+    "width": 1920,
+    "note": "one offer ending: enrollment then quotes; side photo landscape"
+  },
+  {
+    "id": "RF-17",
+    "route": "/",
+    "signal": "html",
+    "note": "tap-target fields (standalone links, footer, breadcrumb, bio button, logo), map-frame wrapper, scroll-row / transition-ui-colors classes"
+  },
+  {
+    "id": "RF-17",
+    "route": "/",
+    "signal": "screenshot",
+    "note": "taller rows from 44 px touch fields (390); footer legal bar",
+    "width": 390
+  },
+  {
+    "id": "RF-17",
+    "route": "/aktualnosci",
+    "signal": "html",
+    "note": "tap-target fields (standalone links, footer, breadcrumb, bio button, logo), map-frame wrapper, scroll-row / transition-ui-colors classes"
+  },
+  {
+    "id": "RF-17",
+    "route": "/aktualnosci",
+    "signal": "screenshot",
+    "note": "taller rows from 44 px touch fields (390); footer legal bar",
+    "width": 390
+  },
+  {
+    "id": "RF-17",
+    "route": "/aktualnosci/ikona-korzenie-i-owoce-wiary-mistyka-dzis-wyklady-2026-2027",
+    "signal": "html",
+    "note": "tap-target fields (standalone links, footer, breadcrumb, bio button, logo), map-frame wrapper, scroll-row / transition-ui-colors classes"
+  },
+  {
+    "id": "RF-17",
+    "route": "/aktualnosci/ikona-korzenie-i-owoce-wiary-mistyka-dzis-wyklady-2026-2027",
+    "signal": "screenshot",
+    "note": "taller rows from 44 px touch fields (390); footer legal bar",
+    "width": 390
+  },
+  {
+    "id": "RF-17",
+    "route": "/aktualnosci/nabor-kursu-2026-2027",
+    "signal": "html",
+    "note": "tap-target fields (standalone links, footer, breadcrumb, bio button, logo), map-frame wrapper, scroll-row / transition-ui-colors classes"
+  },
+  {
+    "id": "RF-17",
+    "route": "/aktualnosci/nabor-kursu-2026-2027",
+    "signal": "screenshot",
+    "note": "taller rows from 44 px touch fields (390); footer legal bar",
+    "width": 390
+  },
+  {
+    "id": "RF-17",
+    "route": "/ikony",
+    "signal": "html",
+    "note": "tap-target fields (standalone links, footer, breadcrumb, bio button, logo), map-frame wrapper, scroll-row / transition-ui-colors classes"
+  },
+  {
+    "id": "RF-17",
+    "route": "/ikony",
+    "signal": "screenshot",
+    "note": "taller rows from 44 px touch fields (390); footer legal bar",
+    "width": 390
+  },
+  {
+    "id": "RF-17",
+    "route": "/ikony/na-zamowienie",
+    "signal": "html",
+    "note": "tap-target fields (standalone links, footer, breadcrumb, bio button, logo), map-frame wrapper, scroll-row / transition-ui-colors classes"
+  },
+  {
+    "id": "RF-17",
+    "route": "/ikony/na-zamowienie",
+    "signal": "screenshot",
+    "note": "taller rows from 44 px touch fields (390); footer legal bar",
+    "width": 390
+  },
+  {
+    "id": "RF-17",
+    "route": "/ikony/wystawy",
+    "signal": "html",
+    "note": "tap-target fields (standalone links, footer, breadcrumb, bio button, logo), map-frame wrapper, scroll-row / transition-ui-colors classes"
+  },
+  {
+    "id": "RF-17",
+    "route": "/ikony/wystawy",
+    "signal": "screenshot",
+    "note": "taller rows from 44 px touch fields (390); footer legal bar",
+    "width": 390
+  },
+  {
+    "id": "RF-17",
+    "route": "/kontakt",
+    "signal": "html",
+    "note": "tap-target fields (standalone links, footer, breadcrumb, bio button, logo), map-frame wrapper, scroll-row / transition-ui-colors classes"
+  },
+  {
+    "id": "RF-17",
+    "route": "/kontakt",
+    "signal": "screenshot",
+    "note": "taller rows from 44 px touch fields (390); footer legal bar",
+    "width": 390
+  },
+  {
+    "id": "RF-17",
+    "route": "/nie-ma-takiej-strony",
+    "signal": "html",
+    "note": "tap-target fields (standalone links, footer, breadcrumb, bio button, logo), map-frame wrapper, scroll-row / transition-ui-colors classes"
+  },
+  {
+    "id": "RF-17",
+    "route": "/nie-ma-takiej-strony",
+    "signal": "screenshot",
+    "note": "taller rows from 44 px touch fields (390); footer legal bar",
+    "width": 390
+  },
+  {
+    "id": "RF-17",
+    "route": "/o-akademii",
+    "signal": "html",
+    "note": "tap-target fields (standalone links, footer, breadcrumb, bio button, logo), map-frame wrapper, scroll-row / transition-ui-colors classes"
+  },
+  {
+    "id": "RF-17",
+    "route": "/o-akademii",
+    "signal": "screenshot",
+    "note": "taller rows from 44 px touch fields (390); footer legal bar",
+    "width": 390
+  },
+  {
+    "id": "RF-17",
+    "route": "/polityka-prywatnosci",
+    "signal": "html",
+    "note": "tap-target fields (standalone links, footer, breadcrumb, bio button, logo), map-frame wrapper, scroll-row / transition-ui-colors classes"
+  },
+  {
+    "id": "RF-17",
+    "route": "/polityka-prywatnosci",
+    "signal": "screenshot",
+    "note": "taller rows from 44 px touch fields (390); footer legal bar",
+    "width": 390
+  },
+  {
+    "id": "RF-17",
+    "route": "/polityka-prywatnosci",
+    "signal": "styles",
+    "note": "TOC: first entry active above the first section (V4-11); breadcrumb border moved to inner span below lg",
+    "width": 390
+  },
+  {
+    "id": "RF-17",
+    "route": "/pracownia",
+    "signal": "html",
+    "note": "tap-target fields (standalone links, footer, breadcrumb, bio button, logo), map-frame wrapper, scroll-row / transition-ui-colors classes"
+  },
+  {
+    "id": "RF-17",
+    "route": "/pracownia",
+    "signal": "screenshot",
+    "note": "taller rows from 44 px touch fields (390); footer legal bar",
+    "width": 390
+  },
+  {
+    "id": "RF-17",
+    "route": "/pracownia",
+    "signal": "styles",
+    "note": "TOC: first entry active above the first section (V4-11); breadcrumb border moved to inner span below lg",
+    "width": 390
+  },
+  {
+    "id": "RF-17",
+    "route": "/pracownia",
+    "signal": "styles",
+    "note": "TOC: first entry active above the first section (V4-11); breadcrumb border moved to inner span below lg",
+    "width": 1440
+  },
+  {
+    "id": "RF-17",
+    "route": "/pracownia",
+    "signal": "styles",
+    "note": "TOC: first entry active above the first section (V4-11); breadcrumb border moved to inner span below lg",
+    "width": 1920
+  },
+  {
+    "id": "RF-17",
+    "route": "/publikacje",
+    "signal": "html",
+    "note": "tap-target fields (standalone links, footer, breadcrumb, bio button, logo), map-frame wrapper, scroll-row / transition-ui-colors classes"
+  },
+  {
+    "id": "RF-17",
+    "route": "/publikacje",
+    "signal": "screenshot",
+    "note": "taller rows from 44 px touch fields (390); footer legal bar",
+    "width": 390
+  },
+  {
+    "id": "RF-17",
+    "route": "/publikacje/cisza-ikony",
+    "signal": "html",
+    "note": "tap-target fields (standalone links, footer, breadcrumb, bio button, logo), map-frame wrapper, scroll-row / transition-ui-colors classes"
+  },
+  {
+    "id": "RF-17",
+    "route": "/publikacje/cisza-ikony",
+    "signal": "screenshot",
+    "note": "taller rows from 44 px touch fields (390); footer legal bar",
+    "width": 390
+  },
+  {
+    "id": "RF-17",
+    "route": "/publikacje/cisza-ikony",
+    "signal": "styles",
+    "note": "TOC: first entry active above the first section (V4-11); breadcrumb border moved to inner span below lg",
+    "width": 390
+  },
+  {
+    "id": "RF-17",
+    "route": "/publikacje/ikona-dzis",
+    "signal": "html",
+    "note": "tap-target fields (standalone links, footer, breadcrumb, bio button, logo), map-frame wrapper, scroll-row / transition-ui-colors classes"
+  },
+  {
+    "id": "RF-17",
+    "route": "/publikacje/ikona-dzis",
+    "signal": "screenshot",
+    "note": "taller rows from 44 px touch fields (390); footer legal bar",
+    "width": 390
+  },
+  {
+    "id": "RF-17",
+    "route": "/publikacje/ikona-dzis",
+    "signal": "styles",
+    "note": "TOC: first entry active above the first section (V4-11); breadcrumb border moved to inner span below lg",
+    "width": 390
+  },
+  {
+    "id": "RF-17",
+    "route": "/warsztaty",
+    "signal": "html",
+    "note": "tap-target fields (standalone links, footer, breadcrumb, bio button, logo), map-frame wrapper, scroll-row / transition-ui-colors classes"
+  },
+  {
+    "id": "RF-17",
+    "route": "/warsztaty",
+    "signal": "screenshot",
+    "note": "taller rows from 44 px touch fields (390); footer legal bar",
+    "width": 390
+  },
+  {
+    "id": "RF-17",
+    "route": "/warsztaty/kurs-roczny-i-trzyletni",
+    "signal": "html",
+    "note": "tap-target fields (standalone links, footer, breadcrumb, bio button, logo), map-frame wrapper, scroll-row / transition-ui-colors classes"
+  },
+  {
+    "id": "RF-17",
+    "route": "/warsztaty/kurs-roczny-i-trzyletni",
+    "signal": "screenshot",
+    "note": "taller rows from 44 px touch fields (390); footer legal bar",
+    "width": 390
+  },
+  {
+    "id": "RF-17",
+    "route": "/warsztaty/letnia-szkola-swiatla",
+    "signal": "html",
+    "note": "tap-target fields (standalone links, footer, breadcrumb, bio button, logo), map-frame wrapper, scroll-row / transition-ui-colors classes"
+  },
+  {
+    "id": "RF-17",
+    "route": "/warsztaty/letnia-szkola-swiatla",
+    "signal": "screenshot",
+    "note": "taller rows from 44 px touch fields (390); footer legal bar",
+    "width": 390
+  },
+  {
+    "id": "RF-17",
+    "route": "/wyklady",
+    "signal": "html",
+    "note": "tap-target fields (standalone links, footer, breadcrumb, bio button, logo), map-frame wrapper, scroll-row / transition-ui-colors classes"
+  },
+  {
+    "id": "RF-17",
+    "route": "/wyklady",
+    "signal": "screenshot",
+    "note": "taller rows from 44 px touch fields (390); footer legal bar",
+    "width": 390
+  },
+  {
+    "id": "RF-17",
+    "route": "/wyklady/archiwum",
+    "signal": "html",
+    "note": "tap-target fields (standalone links, footer, breadcrumb, bio button, logo), map-frame wrapper, scroll-row / transition-ui-colors classes"
+  },
+  {
+    "id": "RF-17",
+    "route": "/wyklady/archiwum",
+    "signal": "screenshot",
+    "note": "taller rows from 44 px touch fields (390); footer legal bar",
+    "width": 390
+  },
+  {
+    "id": "RF-17",
+    "route": "/wyklady/wykladowcy",
+    "signal": "html",
+    "note": "tap-target fields (standalone links, footer, breadcrumb, bio button, logo), map-frame wrapper, scroll-row / transition-ui-colors classes"
+  },
+  {
+    "id": "RF-17",
+    "route": "/wyklady/wykladowcy",
+    "signal": "screenshot",
+    "note": "taller rows from 44 px touch fields (390); footer legal bar",
+    "width": 390
+  },
+  {
+    "id": "RF-18",
+    "route": "/kontakt",
+    "signal": "screenshot",
+    "note": "contact e-mails and phone as text links (accent colour, underline) instead of plain text (V3-22)",
+    "width": 1440
+  },
+  {
+    "id": "RF-18",
+    "route": "/kontakt",
+    "signal": "screenshot",
+    "note": "contact e-mails and phone as text links (accent colour, underline) instead of plain text (V3-22)",
+    "width": 1920
+  },
+  {
+    "id": "RF-20",
+    "route": "/kontakt",
+    "signal": "styles",
+    "note": "panel titles Organizator / Akademia w sieci: box-title role 22 px (V1-15)",
+    "width": 390
+  },
+  {
+    "id": "RF-20",
+    "route": "/kontakt",
+    "signal": "styles",
+    "note": "panel titles Organizator / Akademia w sieci: box-title role 24 px (V1-15)",
+    "width": 1440
+  },
+  {
+    "id": "RF-20",
+    "route": "/kontakt",
+    "signal": "styles",
+    "note": "panel titles Organizator / Akademia w sieci: box-title role 24 px (V1-15)",
+    "width": 1920
+  },
+  {
+    "id": "RF-20",
+    "route": "/wyklady/wykladowcy",
+    "signal": "screenshot",
+    "note": "non-breaking spaces after single-letter words and balanced headings change line breaks (V3-19, V3-20)",
+    "width": 1440
+  },
+  {
+    "id": "RF-20",
+    "route": "/wyklady/wykladowcy",
+    "signal": "screenshot",
+    "note": "non-breaking spaces after single-letter words and balanced headings change line breaks (V3-19, V3-20)",
+    "width": 1920
+  },
+  {
+    "id": "RF-21a",
+    "route": "/",
+    "signal": "html",
+    "note": "hero H1 explicit line break after „ikon”; Wybrane ikony — all 4 tiles visible below md (no hidden md:block)"
+  },
+  {
+    "id": "RF-21a",
+    "route": "/",
+    "signal": "screenshot",
+    "width": 390,
+    "note": "hero title two lines; featured icons 2×2 grid (was 2 tiles + RF-4 mobileCount)"
+  },
+  {
+    "id": "RF-21a",
+    "route": "/",
+    "signal": "styles",
+    "width": 390,
+    "note": "featured gallery: four visible tiles, no display:none figures (replaces RF-4 +2 hidden count)"
+  },
+  {
+    "id": "RF-21b",
+    "route": "/ikony/na-zamowienie",
+    "signal": "html",
+    "note": "leadIntro „Technika i warunki zamówienia” — h3 → h2 (V2-06, RV-F-02)"
+  },
+  {
+    "id": "RF-21b",
+    "route": "/ikony/na-zamowienie",
+    "signal": "styles",
+    "note": "second leadIntro heading uses heading-section (26px) not heading-sub (V2-06)"
+  },
+  {
+    "id": "RF-21b",
+    "route": "/ikony/na-zamowienie",
+    "signal": "screenshot",
+    "width": 390,
+    "note": "„Technika i warunki zamówienia” same typographic scale as „Dla kogo…” (RF-21b)"
+  },
+  {
+    "id": "RF-21b",
+    "route": "/ikony/na-zamowienie",
+    "signal": "screenshot",
+    "width": 1440,
+    "note": "leadIntro second block H2 (RF-21b)"
+  }
+]

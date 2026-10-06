@@ -1,16 +1,20 @@
-"use client";
-
 import { useId } from "react";
 
 import { Button } from "@/components/core/Button";
 import { TextLink } from "@/components/core/TextLink";
+import type { EnrollmentState } from "@/content/enrollment";
+import { getOfferDateValues } from "@/content/offers";
+import { getPhoneHref, getSiteSettings } from "@/content/settings";
 import type { OfferFacts } from "@/content/types";
 import { pl } from "@/i18n/pl";
+import { fillRequiredTemplate, fillTemplate } from "@/lib/fillTemplate";
 import { buildMailtoHref } from "@/lib/mailto";
 
 export interface FactsBoxProps {
   facts: OfferFacts;
   kind: keyof typeof pl.factsBox.ctaByKind;
+  /** Computed in the data layer (`getEnrollmentState`), never read from `facts.enrollmentOpen` here (D5). */
+  enrollment: EnrollmentState;
 }
 
 type FactsRowKey =
@@ -55,26 +59,17 @@ function getHeading(kind: FactsBoxProps["kind"], seasonLabel?: string): string {
   return template.replace("{seasonLabel}", seasonLabel);
 }
 
-function getDesktopContactLine(
-  kind: FactsBoxProps["kind"],
-  enrollmentOpen: boolean,
-  email: string,
-): string {
-  if (!enrollmentOpen && kind === "plener") {
-    return pl.factsBox.contactClosedPlener.replace("{email}", email);
-  }
-
-  return pl.factsBox.phoneOr;
-}
-
-export function FactsBox({ facts, kind }: FactsBoxProps) {
+export function FactsBox({ facts, kind, enrollment }: FactsBoxProps) {
   const headingId = useId();
   const { factsBox } = pl;
-  const enrollmentState = facts.enrollmentOpen ? "open" : "closed";
-  const cta = factsBox.ctaByKind[kind][enrollmentState];
+  const cta = factsBox.ctaByKind[kind][enrollment];
+  const { phone } = getSiteSettings();
+  const phoneHref = getPhoneHref();
   const mailtoHref = buildMailtoHref(facts.enrollmentEmail, facts.enrollmentSubject);
-  const desktopContact = getDesktopContactLine(kind, facts.enrollmentOpen, facts.enrollmentEmail);
-  const ctaNote = "note" in cta ? cta.note : undefined;
+  const ctaNote =
+    "note" in cta
+      ? fillRequiredTemplate(cta.note, getOfferDateValues(facts), `FactsBox ${kind} note`)
+      : undefined;
 
   const rows = rowKeysByKind[kind]
     .filter((key) => {
@@ -86,20 +81,6 @@ export function FactsBox({ facts, kind }: FactsBoxProps) {
       label: getRowLabel(kind, key),
       value: facts[key as keyof OfferFacts] as string,
     }));
-
-  const contactRow =
-    kind === "zamowienie"
-      ? {
-          label: pl.factsBox.rowsByKind.zamowienie.contact,
-          value: (
-            <>
-              {facts.enrollmentEmail}
-              <br />
-              {facts.enrollmentPhone}
-            </>
-          ),
-        }
-      : null;
 
   return (
     <aside
@@ -120,17 +101,11 @@ export function FactsBox({ facts, kind }: FactsBoxProps) {
             <dd className="mt-offer-facts-dd-mt pb-space-6 text-text-body">{row.value}</dd>
           </div>
         ))}
-        {contactRow ? (
-          <div>
-            <dt className="text-size-caption text-text-tertiary">{contactRow.label}</dt>
-            <dd className="mt-offer-facts-dd-mt mb-0 text-text-body">{contactRow.value}</dd>
-          </div>
-        ) : null}
         {kind === "wyklady" ? (
           <div>
             <dt className="text-size-caption text-text-tertiary">{factsBox.publicationsRowLabel}</dt>
             <dd className="mt-offer-facts-dd-mt pb-space-6 text-text-body">
-              <TextLink href="/publikacje">{factsBox.publicationsLink}</TextLink>
+              <TextLink standalone href="/publikacje">{factsBox.publicationsLink}</TextLink>
             </dd>
           </div>
         ) : null}
@@ -143,18 +118,18 @@ export function FactsBox({ facts, kind }: FactsBoxProps) {
 
         <Button
           href={mailtoHref}
-          variant={facts.enrollmentOpen ? "primary" : "secondary"}
+          variant={enrollment === "open" ? "primary" : "secondary"}
           block
           size="md"
         >
           {cta.mailtoLabel}
         </Button>
 
-        <Button href={factsBox.phoneTel} variant="secondary" block size="md" className="md:hidden">
-          {cta.telLabel}
+        <Button href={phoneHref} variant="secondary" block size="md" className="md:hidden">
+          {fillTemplate(cta.telLabel, { phone })}
         </Button>
 
-        <p className="hidden md:block text-size-ui text-text-tertiary text-center">{desktopContact}</p>
+        <p className="hidden md:block text-size-ui text-text-tertiary text-center">{fillTemplate(factsBox.phoneOr, { phone })}</p>
       </div>
     </aside>
   );

@@ -45,8 +45,8 @@
   {
     "slug": "dariusz-klejnowski-rozycki",
     "name": "Dariusz Klejnowski-Różycki",
-    "titles": "dr hab.",
-    "affiliation": "prof. UO"
+    "titles": "ks. prof. dr hab.",
+    "affiliation": "UO"
   },
   {
     "slug": "dorota-walczak",
@@ -66,7 +66,7 @@
     "slug": "ewa-kocoj",
     "name": "Ewa Kocój",
     "titles": "prof. dr hab.",
-    "affiliation": "UJ"
+    "affiliation": "Instytut Kultury UJ"
   },
   {
     "slug": "ewa-korpysz",
@@ -85,7 +85,8 @@
   {
     "slug": "irina-tatarova",
     "name": "Irina Tatarova",
-    "titles": "dr"
+    "titles": "dr",
+    "affiliation": "UW"
   },
   {
     "slug": "jozef-naumowicz",
@@ -106,10 +107,13 @@
     "affiliation": "UAM"
   },
   {
+    "slug": "krzysztof-sokolowski",
+    "name": "Krzysztof Sokołowski"
+  },
+  {
     "slug": "maciej-biskup",
     "name": "Maciej Biskup",
-    "titles": "o. dr",
-    "affiliation": "OP"
+    "titles": "o. dr"
   },
   {
     "slug": "magdalena-dylewska",
@@ -127,7 +131,7 @@
   },
   {
     "slug": "marek-szymula",
-    "name": "Marek Szymula",
+    "name": "Marek Szymuła",
     "titles": "ks. dr"
   },
   {

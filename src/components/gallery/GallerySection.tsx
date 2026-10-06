@@ -1,5 +1,6 @@
 import { IconGrid } from "@/components/gallery/IconGrid";
 import type { IconWork } from "@/content/types";
+import { PageHeading } from "@/components/core/PageHeading";
 
 export interface GallerySectionProps {
   id: string;
@@ -9,7 +10,7 @@ export interface GallerySectionProps {
   startIndex: number;
   /** Leading tiles that load eagerly — only the first section's first row. */
   eagerCount: number;
-  onSelect: (index: number, trigger: HTMLButtonElement) => void;
+  onSelect: (index: number) => void;
   /** Students' section: names generated from the works. */
   names?: string[];
   className?: string;
@@ -30,15 +31,9 @@ export function GallerySection({
 
   return (
     <section id={id} aria-labelledby={headingId} className={className}>
-      <h2
-        id={headingId}
-        className={[
-          "font-serif text-size-role-section-h2-m md:text-size-role-section-h2 leading-heading text-text-h2",
-          id === "ejk" ? "mb-space-6" : "mb-space-5",
-        ].join(" ")}
-      >
+      <PageHeading level="section" id={headingId} className="mb-heading-gap">
         {title}
-      </h2>
+      </PageHeading>
 
       {hasNames ? (
         <p className="text-size-body leading-body text-text-tertiary max-w-measure-prose mb-space-6">
@@ -46,12 +41,7 @@ export function GallerySection({
         </p>
       ) : null}
 
-      <IconGrid
-        items={items}
-        variant="gallery"
-        eagerCount={eagerCount}
-        onSelect={(index, trigger) => onSelect(startIndex + index, trigger)}
-      />
+      <IconGrid items={items} eagerCount={eagerCount} onSelect={(index) => onSelect(startIndex + index)} />
     </section>
   );
 }

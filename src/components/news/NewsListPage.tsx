@@ -6,6 +6,7 @@ import { NewsYearGroups } from "@/components/news/NewsYearGroups";
 import { YearNav } from "@/components/news/YearNav";
 import type { NewsListEntry, NewsYearGroup } from "@/content/news";
 import { pl } from "@/i18n/pl";
+import { PageHeading } from "@/components/core/PageHeading";
 
 export interface NewsListPageProps {
   visibleGroups: NewsYearGroup[];
@@ -13,7 +14,8 @@ export interface NewsListPageProps {
   archiveYearRange: string;
   years: string[];
   archiveYears: string[];
-  active: string;
+  /** Route path — see SectionPageShellProps["path"]. */
+  path: string;
   featured?: NewsListEntry;
 }
 
@@ -23,15 +25,15 @@ export function NewsListPage({
   archiveYearRange,
   years,
   archiveYears,
-  active,
+  path,
   featured,
 }: NewsListPageProps) {
   return (
-    <SectionPageShell active={active}>
+    <SectionPageShell path={path}>
       <NewsListScrollRestore years={years} archiveYears={archiveYears} />
-      <h1 className="font-serif text-size-h1-m md:text-size-h1 leading-tight text-text-h1 mb-space-5">
+      <PageHeading level="page" className="mb-space-5">
         {pl.news.title}
-      </h1>
+      </PageHeading>
       <p className="text-size-lead-m md:text-size-lead leading-body text-text-secondary max-w-measure-lead mb-space-6">
         {pl.news.lead}
       </p>

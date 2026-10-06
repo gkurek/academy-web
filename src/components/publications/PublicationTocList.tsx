@@ -1,6 +1,7 @@
 import { PublicationTocItem } from "@/components/publications/PublicationTocItem";
 import type { Publication, PublicationTocEntry } from "@/content/types";
 import { pl } from "@/i18n/pl";
+import { PageHeading } from "@/components/core/PageHeading";
 
 export interface PublicationTocListProps {
   chapters: Publication["chapters"];
@@ -39,19 +40,14 @@ export function PublicationTocList({ chapters, items }: PublicationTocListProps)
 
   return (
     <section className="publication-toc" aria-labelledby="publication-toc-heading">
-      <h2 id="publication-toc-heading" className="publication-section-heading">
+      <PageHeading level="section" id="publication-toc-heading" className="mb-heading-gap">
         {pl.publications.tocHeading}
-      </h2>
+      </PageHeading>
       <p className="publication-section-lead">{pl.publications.tocLead}</p>
 
       <ol className="publication-toc-chapters">
         {groups.map((group, index) => (
           <li key={group.pages ?? index} className="publication-toc-chapter">
-            {group.pages ? (
-              <p className="publication-toc-pages">
-                {pl.publications.tocPages.replace("{pages}", group.pages)}
-              </p>
-            ) : null}
             {group.intro.length > 0 ? (
               <ul className="publication-toc-list publication-toc-intro">
                 {group.intro.map((item) => (
@@ -59,7 +55,12 @@ export function PublicationTocList({ chapters, items }: PublicationTocListProps)
                 ))}
               </ul>
             ) : null}
-            {group.title ? <h3 className="publication-toc-chapter-title">{group.title}</h3> : null}
+            {group.pages ? (
+              <p className="publication-toc-pages">
+                {pl.publications.tocPages.replace("{pages}", group.pages)}
+              </p>
+            ) : null}
+            {group.title ? <h3 className="publication-toc-chapter-title heading-sub">{group.title}</h3> : null}
             {group.entries.length > 0 ? (
               <ul className="publication-toc-list">
                 {group.entries.map((item) => (

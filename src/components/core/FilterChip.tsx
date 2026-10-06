@@ -3,7 +3,7 @@ import type { MouseEventHandler, ReactNode } from "react";
 export interface FilterChipProps {
   children: ReactNode;
   active?: boolean;
-  href?: string;
+  href: string;
   onClick?: MouseEventHandler<HTMLAnchorElement>;
   className?: string;
 }
@@ -11,7 +11,7 @@ export interface FilterChipProps {
 export function FilterChip({
   children,
   active = false,
-  href = "#",
+  href,
   onClick,
   className,
 }: FilterChipProps) {
@@ -22,7 +22,7 @@ export function FilterChip({
       aria-current={active ? "true" : undefined}
       className={[
         "inline-block rounded-none px-space-5 py-space-3 text-size-ui no-underline",
-        "transition-colors duration-150 ease-out",
+        "transition-ui-colors",
         active
           ? "border border-accent bg-accent font-semibold text-text-on-gold"
           : "border border-border-button bg-transparent font-normal text-text-body hover:border-accent-text hover:text-accent-text",

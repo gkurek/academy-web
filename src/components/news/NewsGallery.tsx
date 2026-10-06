@@ -1,10 +1,10 @@
 "use client";
 
 import Image from "next/image";
-import { useCallback, useRef, useState, type RefObject } from "react";
+import { useCallback, useId, useRef, useState, type RefObject } from "react";
 
 import { GalleryTileHoverOverlay } from "@/components/gallery/galleryJustifiedShared";
-import { WorkshopLightbox } from "@/components/text/WorkshopLightbox";
+import { useLightbox } from "@/components/lightbox/LightboxProvider";
 import type { NewsLayout } from "@/content/types";
 import type { Image as ContentImage } from "@/content/types";
 import { pl } from "@/i18n/pl";
@@ -133,35 +133,13 @@ export function NewsGallery({
   showHeading = false,
   hideOnDesktopIndex,
 }: NewsGalleryProps) {
-  const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
+  const headingId = useId();
+  const { openPhoto } = useLightbox();
   const [showAll, setShowAll] = useState(false);
   const expandFocusRef = useRef<HTMLButtonElement>(null);
 
-  const handleOpen = useCallback((index: number) => {
-    setLightboxIndex(index);
-  }, []);
-
-  const handleClose = useCallback(() => {
-    setLightboxIndex(null);
-  }, []);
-
-  const handlePrev = useCallback(() => {
-    setLightboxIndex((current) => {
-      if (current === null) {
-        return null;
-      }
-      return (current - 1 + images.length) % images.length;
-    });
-  }, [images.length]);
-
-  const handleNext = useCallback(() => {
-    setLightboxIndex((current) => {
-      if (current === null) {
-        return null;
-      }
-      return (current + 1) % images.length;
-    });
-  }, [images.length]);
+  // The entry's cover and gallery open the same dialog over the same list (R2-17).
+  const handleOpen = useCallback((index: number) => openPhoto(images, index), [openPhoto, images]);
 
   const handleShowAll = useCallback(() => {
     setShowAll(true);
@@ -209,10 +187,10 @@ export function NewsGallery({
   return (
     <section
       className="news-gallery"
-      aria-labelledby={showHeading ? "news-gallery-heading" : undefined}
+      aria-labelledby={showHeading ? headingId : undefined}
     >
       {showHeading ? (
-        <h2 id="news-gallery-heading" className="news-gallery-heading">
+        <h2 id={headingId} className="news-gallery-heading">
           {pl.news.galleryHeading}
         </h2>
       ) : null}
@@ -254,13 +232,6 @@ export function NewsGallery({
         </button>
       ) : null}
       <p className="news-gallery-mobile-caption">{pl.news.galleryMobileCaption}</p>
-      <WorkshopLightbox
-        photos={images}
-        index={lightboxIndex}
-        onPrev={handlePrev}
-        onNext={handleNext}
-        onClose={handleClose}
-      />
     </section>
   );
 }

@@ -1,6 +1,4 @@
-"use client";
-
-import { useId, type ReactNode } from "react";
+import type { ReactNode } from "react";
 
 import { pl } from "@/i18n/pl";
 
@@ -10,19 +8,13 @@ export interface ExhibitionFactsPanelProps {
 }
 
 export function ExhibitionFactsPanel({ rows, footerLink }: ExhibitionFactsPanelProps) {
-  const headingId = useId();
-
   return (
-    <aside
-      aria-labelledby={headingId}
-      className="exhibition-facts bg-surface-card"
-    >
-      <p
-        id={headingId}
+    <div className="exhibition-facts bg-surface-card">
+      <h3
         className="exhibition-facts__heading font-serif text-size-role-box-title-m md:text-size-role-box-title leading-heading text-text-h2"
       >
         {pl.exhibition.facts.heading}
-      </p>
+      </h3>
       <dl className="text-size-body leading-facts">
         {rows.map((row) => (
           <div key={row.label}>
@@ -32,6 +24,6 @@ export function ExhibitionFactsPanel({ rows, footerLink }: ExhibitionFactsPanelP
         ))}
       </dl>
       {footerLink ? <div className="exhibition-facts-footer">{footerLink}</div> : null}
-    </aside>
+    </div>
   );
 }

@@ -1,6 +1,9 @@
+import { useId } from "react";
+
 import type { Testimonial } from "@/content/types";
 
 import { formatAttribution } from "./formatAttribution";
+import { PageHeading } from "@/components/core/PageHeading";
 
 export interface OfferQuoteGridProps {
   heading: string;
@@ -9,27 +12,22 @@ export interface OfferQuoteGridProps {
 }
 
 export function OfferQuoteGrid({ heading, quotes, columns = 3 }: OfferQuoteGridProps) {
+  const headingId = useId();
   const gridClass =
     columns === 2
       ? "grid grid-cols-1 md:grid-cols-2 gap-offer-quotes-gap"
-      : "grid grid-cols-1 md:grid-cols-3 gap-offer-quotes-gap";
+      : "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-offer-quotes-gap";
 
   return (
-    <section
-      aria-labelledby="offer-quotes-heading"
-      className="mt-section-gap-mobile md:mt-section-gap pb-section-gap-mobile md:pb-section-gap"
-    >
-      <h2
-        id="offer-quotes-heading"
-        className="font-serif text-size-role-section-h2-m md:text-size-role-section-h2 leading-heading text-text-h2 mb-space-2"
-      >
+    <section aria-labelledby={headingId} className="not-prose">
+      <PageHeading level="section" id={headingId} className="mb-heading-gap">
         {heading}
-      </h2>
+      </PageHeading>
       <div className={gridClass}>
         {quotes.map((item, index) => (
           <blockquote
             key={`${item.author}-${index}`}
-            className="bg-surface-card px-offer-quote-x py-offer-quote-y border-t-offer-quote-top border-accent"
+            className="offer-quote-tile bg-surface-card px-offer-quote-x py-offer-quote-y border-t-offer-quote-top border-accent"
           >
             <p className="font-serif italic text-size-quote leading-quote-offer text-text-body mb-space-4">
               {item.quote}

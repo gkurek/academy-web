@@ -4,12 +4,15 @@ import { useCallback, useEffect, useId, useLayoutEffect, useRef, useState } from
 import Link from "next/link";
 import { Button } from "@/components/core/Button";
 import { ExternalLink } from "@/components/core/ExternalLink";
+import { ChevronIcon } from "@/components/core/icons";
 import { pl } from "@/i18n/pl";
-import { mainNav } from "@/navigation";
+import { mainNav, navAriaCurrent, navItem, publicationsLink } from "@/navigation";
 
 export interface HeaderMobileMenuProps {
-  /** Label of the main nav item to highlight gold, e.g. "Wykłady". */
-  active?: string;
+  /** Route path — `aria-current="page"` on the link to it. */
+  path?: string;
+  /** Href of the main nav item to highlight gold (resolveNav). */
+  activeHref?: string;
   phone: string;
   blogUrl: string;
 }
@@ -42,24 +45,6 @@ function MenuIcon({ open }: { open: boolean }) {
   );
 }
 
-function ChevronIcon({ expanded }: { expanded: boolean }) {
-  return (
-    <svg
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.6"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      aria-hidden="true"
-    >
-      {expanded ? <path d="M5 15 L12 8 L19 15" /> : <path d="M5 9 L12 16 L19 9" />}
-    </svg>
-  );
-}
-
 function getFocusableElements(container: HTMLElement): HTMLElement[] {
   return Array.from(
     container.querySelectorAll<HTMLElement>(
@@ -68,16 +53,17 @@ function getFocusableElements(container: HTMLElement): HTMLElement[] {
   ).filter((element) => !element.hasAttribute("disabled"));
 }
 
-export function HeaderMobileMenu({ active, phone, blogUrl }: HeaderMobileMenuProps) {
+export function HeaderMobileMenu({ path, activeHref, phone, blogUrl }: HeaderMobileMenuProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [expandedSection, setExpandedSection] = useState<string | null>(null);
   const [headerBarHeight, setHeaderBarHeight] = useState(0);
   const drawerId = useId();
   const headerBarRef = useRef<HTMLDivElement>(null);
   const drawerRef = useRef<HTMLDivElement>(null);
+  const dialogRef = useRef<HTMLDivElement>(null);
   const menuButtonRef = useRef<HTMLButtonElement>(null);
 
-  const iconsNavItem = mainNav.find((item) => item.href === "/ikony");
+  const newsLink = navItem("/aktualnosci");
 
   const closeMenu = useCallback(() => {
     setIsOpen(false);
@@ -87,8 +73,9 @@ export function HeaderMobileMenu({ active, phone, blogUrl }: HeaderMobileMenuPro
 
   const openMenu = useCallback(() => {
     setIsOpen(true);
-    setExpandedSection(iconsNavItem?.label ?? null);
-  }, [iconsNavItem?.label]);
+    // Only the current section opens, so its link to the current page is visible.
+    setExpandedSection(mainNav.find((item) => item.children && item.href === activeHref)?.label ?? null);
+  }, [activeHref]);
 
   useLayoutEffect(() => {
     const headerBar = headerBarRef.current;
@@ -118,18 +105,29 @@ export function HeaderMobileMenu({ active, phone, blogUrl }: HeaderMobileMenuPro
     };
   }, [isOpen]);
 
+  // The page behind the open menu is inert, so the dialog is the only reachable content.
   useEffect(() => {
     if (!isOpen) {
       return undefined;
     }
 
-    const drawer = drawerRef.current;
-    if (!drawer) {
+    const background = Array.from(document.querySelectorAll("#main-content, footer:not(main footer)"));
+    background.forEach((element) => element.setAttribute("inert", ""));
+    return () => background.forEach((element) => element.removeAttribute("inert"));
+  }, [isOpen]);
+
+  useEffect(() => {
+    if (!isOpen) {
       return undefined;
     }
 
-    const focusable = getFocusableElements(drawer);
-    focusable[0]?.focus();
+    const dialog = dialogRef.current;
+    const drawer = drawerRef.current;
+    if (!dialog || !drawer) {
+      return undefined;
+    }
+
+    getFocusableElements(drawer)[0]?.focus();
 
     const onKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
@@ -142,7 +140,8 @@ export function HeaderMobileMenu({ active, phone, blogUrl }: HeaderMobileMenuPro
         return;
       }
 
-      const elements = getFocusableElements(drawer);
+      // The trap spans the header bar too, so the close button stays reachable.
+      const elements = getFocusableElements(dialog);
       if (elements.length === 0) {
         return;
       }
@@ -168,12 +167,17 @@ export function HeaderMobileMenu({ active, phone, blogUrl }: HeaderMobileMenuPro
   }, [closeMenu, isOpen]);
 
   return (
-    <>
+    <div
+      ref={dialogRef}
+      role={isOpen ? "dialog" : undefined}
+      aria-modal={isOpen ? true : undefined}
+      aria-label={isOpen ? pl.header.menuToggleLabel : undefined}
+    >
       <div
         ref={headerBarRef}
         className="relative z-50 flex items-center justify-between gap-space-4 bg-surface-page px-page-margin-mobile py-space-5"
       >
-        <Link href="/" className="font-serif leading-tight">
+        <Link href="/" className="flex min-h-tap-min-mobile-header flex-col justify-center font-serif leading-tight">
           <div className="text-size-logo-m text-text-h2">{pl.meta.orgShortName}</div>
           <div className="text-size-caption-m text-text-tertiary">{pl.meta.orgSubtitle}</div>
         </Link>
@@ -194,23 +198,24 @@ export function HeaderMobileMenu({ active, phone, blogUrl }: HeaderMobileMenuPro
         <div
           ref={drawerRef}
           id={drawerId}
-          role="dialog"
-          aria-modal="true"
-          aria-label={pl.header.menuToggleLabel}
           className="fixed inset-x-0 bottom-0 z-40 overflow-y-auto bg-surface-page motion-safe:transition-none"
           style={{ top: headerBarHeight }}
         >
           <nav className="grid">
             {mainNav.map((item) => {
+              const isActive = item.href === activeHref;
+              const ariaCurrent = navAriaCurrent(item.href, activeHref, path);
+
               if (!item.children) {
                 return (
                   <Link
                     key={item.label}
                     href={item.href}
                     onClick={closeMenu}
+                    aria-current={ariaCurrent}
                     className={
                       "border-b border-line-neutral px-page-margin-mobile py-space-5 text-size-h3-m " +
-                      (item.label === active ? "text-accent-text" : "text-text-list-title")
+                      (isActive ? "text-accent-text" : "text-text-list-title")
                     }
                   >
                     {item.label}
@@ -227,9 +232,10 @@ export function HeaderMobileMenu({ active, phone, blogUrl }: HeaderMobileMenuPro
                     <Link
                       href={item.href}
                       onClick={closeMenu}
+                      aria-current={ariaCurrent}
                       className={
                         "flex-1 px-page-margin-mobile py-space-5 text-size-h3-m " +
-                        (item.label === active ? "text-accent-text" : "text-text-list-title")
+                        (isActive ? "text-accent-text" : "text-text-list-title")
                       }
                     >
                       {item.label}
@@ -252,6 +258,7 @@ export function HeaderMobileMenu({ active, phone, blogUrl }: HeaderMobileMenuPro
                           key={child.label}
                           href={child.href}
                           onClick={closeMenu}
+                          aria-current={child.href === path ? "page" : undefined}
                           className="block py-space-4 pr-page-margin-mobile pl-menu-indent text-size-ui-m text-text-secondary"
                         >
                           {child.label}
@@ -271,22 +278,22 @@ export function HeaderMobileMenu({ active, phone, blogUrl }: HeaderMobileMenuPro
             <Button block size="lg" variant="secondary" href="/kontakt" onClick={closeMenu}>
               {pl.header.contactCta} · {phone}
             </Button>
-            <div className="mt-space-6 text-size-ui text-text-tertiary">
-              <Link href="/aktualnosci" onClick={closeMenu}>
-                {pl.header.newsLink}
+            <div className="mt-space-4 flex flex-wrap items-center gap-x-space-3 text-size-ui text-text-tertiary">
+              <Link href={newsLink.href} onClick={closeMenu} className="tap-target-nav">
+                {newsLink.label}
               </Link>
-              {" · "}
-              <Link href="/publikacje" onClick={closeMenu}>
-                {pl.header.publicationsLink}
+              <span aria-hidden="true">·</span>
+              <Link href={publicationsLink.href} onClick={closeMenu} className="tap-target-nav">
+                {publicationsLink.label}
               </Link>
-              {" · "}
-              <ExternalLink href={blogUrl} showIcon={false} onClick={closeMenu}>
+              <span aria-hidden="true">·</span>
+              <ExternalLink href={blogUrl} showIcon={false} onClick={closeMenu} className="tap-target-nav">
                 {pl.header.blogLink}
               </ExternalLink>
             </div>
           </div>
         </div>
       )}
-    </>
+    </div>
   );
 }

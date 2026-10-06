@@ -1,38 +1,47 @@
-import { Header } from "@/components/navigation/Header";
-import { Footer } from "@/components/navigation/Footer";
+import { Fragment } from "react";
+import { SectionPageShell } from "@/components/layout/SectionPageShell";
 import { Button } from "@/components/core/Button";
 import { Hero } from "@/components/content/Hero";
 import { Testimonial } from "@/components/content/Testimonial";
 import { UpcomingHighlights } from "@/components/home/UpcomingHighlights";
 import { Pillars } from "@/components/home/Pillars";
 import { FeaturedIcons } from "@/components/home/FeaturedIcons";
+import { getHomePage } from "@/content/home";
+import { getCurrentSeasonLabel } from "@/content/lectures";
 import { pl } from "@/i18n/pl";
+import { fillTemplate } from "@/lib/fillTemplate";
 
 export const revalidate = 86400;
 
+function heroTitleWithLineBreaks(title: string) {
+  return title.split("\n").map((line, index) => (
+    <Fragment key={index}>
+      {index > 0 ? <br /> : null}
+      {line}
+    </Fragment>
+  ));
+}
+
 export default function Home() {
-  const { hero, testimonial } = pl.home;
+  const { hero, pillars, testimonial } = getHomePage();
+  const { hero: heroLabels } = pl.home;
 
   return (
-    <>
-      <Header />
-      <main id="main-content" className="flex-1">
-        <Hero title={hero.title} lead={hero.lead} image={hero.image}>
-          <div className="flex flex-col sm:flex-row gap-space-4 mt-space-6">
-            <Button href="/warsztaty" size="lg">
-              {hero.ctaPrimary}
-            </Button>
-            <Button href="/wyklady" size="lg" variant="secondary">
-              {hero.ctaSecondary}
-            </Button>
-          </div>
-        </Hero>
-        <UpcomingHighlights />
-        <Pillars />
-        <Testimonial quote={testimonial.quote} author={testimonial.author} />
-        <FeaturedIcons />
-      </main>
-      <Footer />
-    </>
+    <SectionPageShell path="/" flush>
+      <Hero title={heroTitleWithLineBreaks(hero.title)} lead={hero.lead} image={hero.image}>
+        <div className="flex flex-col sm:flex-row gap-space-4 mt-space-6">
+          <Button href="/warsztaty" size="lg">
+            {heroLabels.ctaPrimary}
+          </Button>
+          <Button href="/wyklady" size="lg" variant="secondary">
+            {fillTemplate(heroLabels.ctaSecondary, { season: getCurrentSeasonLabel() })}
+          </Button>
+        </div>
+      </Hero>
+      <UpcomingHighlights />
+      <Pillars pillars={pillars} />
+      <Testimonial quote={testimonial.quote} author={testimonial.author} />
+      <FeaturedIcons />
+    </SectionPageShell>
   );
 }

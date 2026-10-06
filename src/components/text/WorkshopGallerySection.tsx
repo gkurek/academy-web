@@ -1,10 +1,10 @@
 "use client";
 
-import { useCallback, useState } from "react";
-
+import { Lightbox } from "@/components/lightbox/Lightbox";
+import { useLightboxIndex } from "@/components/lightbox/useLightboxIndex";
 import { PhotoGrid } from "@/components/text/PhotoGrid";
-import { WorkshopLightbox } from "@/components/text/WorkshopLightbox";
 import type { Image as ContentImage } from "@/content/types";
+import { PageHeading } from "@/components/core/PageHeading";
 
 export interface WorkshopGallerySectionProps {
   heading: string;
@@ -17,44 +17,18 @@ export function WorkshopGallerySection({
   mobileCaption,
   photos,
 }: WorkshopGallerySectionProps) {
-  const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
-
-  const handleOpen = useCallback((index: number) => {
-    setLightboxIndex(index);
-  }, []);
-
-  const handleClose = useCallback(() => {
-    setLightboxIndex(null);
-  }, []);
-
-  const handlePrev = useCallback(() => {
-    setLightboxIndex((current) => {
-      if (current === null) {
-        return null;
-      }
-      return (current - 1 + photos.length) % photos.length;
-    });
-  }, [photos.length]);
-
-  const handleNext = useCallback(() => {
-    setLightboxIndex((current) => {
-      if (current === null) {
-        return null;
-      }
-      return (current + 1) % photos.length;
-    });
-  }, [photos.length]);
+  const lightbox = useLightboxIndex(photos.length);
 
   return (
     <section id="ze-wspolnej-pracy" className="workshop-section scroll-mt-space-6">
-      <h2 className="workshop-section-heading">{heading}</h2>
-      <PhotoGrid photos={photos} mobileCaption={mobileCaption} onOpen={handleOpen} />
-      <WorkshopLightbox
+      <PageHeading level="section" className="mb-heading-gap">{heading}</PageHeading>
+      <PhotoGrid photos={photos} mobileCaption={mobileCaption} onOpen={lightbox.open} />
+      <Lightbox
         photos={photos}
-        index={lightboxIndex}
-        onPrev={handlePrev}
-        onNext={handleNext}
-        onClose={handleClose}
+        index={lightbox.index}
+        onPrev={lightbox.prev}
+        onNext={lightbox.next}
+        onClose={lightbox.close}
       />
     </section>
   );

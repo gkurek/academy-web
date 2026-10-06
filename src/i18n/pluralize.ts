@@ -2,7 +2,7 @@
  * Polish noun plural after a number: [1, 2–4 (except 12–14), other].
  * Example: pluralize(5, ["strona", "strony", "stron"]) → "stron".
  */
-export function pluralize(count: number, forms: [string, string, string]): string {
+export function pluralize(count: number, forms: readonly [string, string, string]): string {
   const absolute = Math.abs(count);
 
   if (absolute === 1) {

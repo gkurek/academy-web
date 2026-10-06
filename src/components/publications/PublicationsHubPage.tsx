@@ -1,49 +1,43 @@
 import Image from "next/image";
 
 import { Button } from "@/components/core/Button";
-import { TextLink } from "@/components/core/TextLink";
 import { SectionPageShell } from "@/components/layout/SectionPageShell";
+import { PublicationSeeAlso } from "@/components/publications/PublicationSeeAlso";
 import { ArticleList } from "@/components/publications/ArticleList";
 import { PublicationSpreadStrip } from "@/components/publications/PublicationSpreadStrip";
-import { getArticles } from "@/content/articles";
-import {
-  formatPublicationPrice,
-  getHubSpreadPreview,
-  getPublications,
-} from "@/content/publications";
-import { getSiteSettings } from "@/content/settings";
+import type { ArticleFrontmatter } from "@/content/articles";
+import { formatPublicationPrice, type PublicationFrontmatter } from "@/content/publications";
+import { getSecretariatEmail } from "@/content/settings";
 import { pl } from "@/i18n/pl";
 import { pluralize } from "@/i18n/pluralize";
 import { buildMailtoHref } from "@/lib/mailto";
-import { footerSitemapFlat } from "@/navigation";
+import { PageHeading } from "@/components/core/PageHeading";
 
-export function PublicationsHubPage() {
-  const publicationsLabel = footerSitemapFlat.find((item) => item.href === "/publikacje")!.label;
-  const [publication] = getPublications();
-  const articles = getArticles();
-  const settings = getSiteSettings();
-  const secretariatEmail = settings.emails.find((email) => email.label.includes("sekretariat"))
-    ?.address ?? settings.emails[1]?.address ?? settings.emails[0].address;
+export interface PublicationsHubPageProps {
+  /** Route path — see SectionPageShellProps["path"]. */
+  path: string;
+  publication: PublicationFrontmatter;
+  articles: ArticleFrontmatter[];
+}
+
+export function PublicationsHubPage({ path, publication, articles }: PublicationsHubPageProps) {
+  const secretariatEmail = getSecretariatEmail();
   const mailtoHref = buildMailtoHref(secretariatEmail, pl.publications.mailtoSubject);
-
-  if (!publication) {
-    return null;
-  }
 
   const priceLabel = formatPublicationPrice(publication.price);
   const availabilityLabel =
     publication.availability === "dostepny"
       ? pl.publications.facts.availabilityAvailableShort
       : pl.publications.facts.availabilitySoldOut;
-  const pageWord = pluralize(publication.pages, ["strona", "strony", "stron"]);
+  const pageWord = pluralize(publication.pages, pl.publications.pageForms);
   const imprint = pl.publications.imprint.replace("{year}", String(publication.year));
-  const hubSpreads = getHubSpreadPreview(publication.spreads, 4);
+  const hubSpreads = publication.spreads.slice(0, 4);
 
   return (
-    <SectionPageShell active={publicationsLabel}>
-      <div className="mx-auto w-full max-w-content-max publication-page">
+    <SectionPageShell path={path}>
+      <div className="publication-page">
         <header className="publication-page-header">
-          <h1 className="publication-page-title">{pl.publications.title}</h1>
+          <PageHeading level="page" className="mb-space-5">{pl.publications.title}</PageHeading>
           <p className="publication-page-lead">{pl.publications.lead}</p>
         </header>
 
@@ -65,7 +59,10 @@ export function PublicationsHubPage() {
 
             <div className="publication-hub-album-copy">
               <p className="publication-hub-eyebrow">{pl.publications.albumEyebrow}</p>
-              <h2 id="publication-hub-album-title" className="publication-hub-album-title">
+              <h2
+                id="publication-hub-album-title"
+                className="publication-hub-album-title text-size-role-card-title-m md:text-size-role-card-title"
+              >
                 {publication.title}
               </h2>
               <p className="publication-hub-imprint">{imprint}</p>
@@ -116,25 +113,24 @@ export function PublicationsHubPage() {
           </div>
         </section>
 
-        <section
-          id="artykuly"
-          className="publication-articles-section"
-          aria-labelledby="publication-articles-heading"
-        >
-          <h2 id="publication-articles-heading" className="publication-section-heading">
-            {pl.publications.articlesHeading}
-          </h2>
-          <p className="publication-section-lead">{pl.publications.articlesLead}</p>
-          <ArticleList articles={articles} />
-        </section>
+        {/* A section without data is not rendered at all — no heading, no gap. */}
+        {articles.length > 0 ? (
+          <section
+            id="artykuly"
+            className="publication-articles-section"
+            aria-labelledby="publication-articles-heading"
+          >
+            <PageHeading level="section" id="publication-articles-heading" className="mb-heading-gap">
+              {pl.publications.articlesHeading}
+            </PageHeading>
+            <p className="publication-section-lead">{pl.publications.articlesLead}</p>
+            <ArticleList articles={articles} />
+          </section>
+        ) : null}
 
-        <footer className="publication-see-also">
-          <div className="publication-see-also-row">
-            <span className="publication-see-also-label">{pl.publications.seeAlsoLabel}</span>
-            <TextLink href="/ikony/wystawy">{pl.publications.exhibitionLink}</TextLink>
-            <TextLink href="/wyklady">{pl.publications.lecturesLinkFooter}</TextLink>
-          </div>
-        </footer>
+        <PublicationSeeAlso
+          links={[{ href: "/ikony/wystawy", label: pl.publications.exhibitionLink }, { href: "/wyklady", label: pl.publications.lecturesLinkFooter }]}
+        />
       </div>
     </SectionPageShell>
   );

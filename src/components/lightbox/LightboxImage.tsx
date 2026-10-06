@@ -36,7 +36,8 @@ export function LightboxImage({ src, alt, width, height }: LightboxImageProps) {
       unoptimized={useOriginalFile}
       sizes={useOriginalFile ? undefined : getLightboxImageSizes(displayDimensions)}
       fetchPriority="high"
-      onLoadingComplete={(img) => {
+      onLoad={(event) => {
+        const img = event.currentTarget;
         if (useOriginalFile && img.naturalWidth > 0 && img.naturalHeight > 0) {
           setDisplayDimensions({
             width: img.naturalWidth,
@@ -49,7 +50,7 @@ export function LightboxImage({ src, alt, width, height }: LightboxImageProps) {
         ...getLightboxImageDisplayStyle(displayDimensions),
         visibility: isVisible ? "visible" : "hidden",
       }}
-      className="block h-auto max-w-full lg:shadow-lightbox"
+      className="block h-auto max-w-full"
     />
   );
 }

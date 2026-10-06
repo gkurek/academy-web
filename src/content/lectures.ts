@@ -1,3 +1,4 @@
+import { nbspDeep } from "@/lib/typography";
 import archiveMeta from "../../content/lectures/archive.json";
 import season20122013Data from "../../content/lectures/2012-2013.json";
 import season20132014Data from "../../content/lectures/2013-2014.json";
@@ -14,49 +15,36 @@ import season20232024Data from "../../content/lectures/2023-2024.json";
 import season20242025Data from "../../content/lectures/2024-2025.json";
 import season20252026Data from "../../content/lectures/2025-2026.json";
 import currentSeasonData from "../../content/lectures/2026-2027.json";
-import { getLecturerDirectoryEntry } from "@/content/lecturer-directory";
-import { formatLecturerDisplayName, getLecturer, getLecturerProfileHref } from "@/content/lecturers";
+import { formatLecturerDisplayName, getLecturerProfileHref, resolveLecturer } from "@/content/lecturers";
 import type { Lecture, LectureSeason } from "@/content/types";
+import { assertLecturerPairing } from "@/content/validate";
+import { formatDateRange } from "@/lib/formatDateRange";
 
+/** The current lecture season — the only place to change at a season rollover (with its JSON import below). */
 const CURRENT_SEASON_SLUG = "2026-2027";
 const LECTURE_TITLE_SEPARATOR = " · ";
 
 type LectureSeasonFile = LectureSeason & { sample?: boolean };
 
 const seasonModules: Record<string, LectureSeasonFile> = {
-  "2026-2027": currentSeasonData as LectureSeasonFile,
-  "2025-2026": season20252026Data as LectureSeasonFile,
-  "2024-2025": season20242025Data as LectureSeasonFile,
-  "2023-2024": season20232024Data as LectureSeasonFile,
-  "2022-2023": season20222023Data as LectureSeasonFile,
-  "2021-2022": season20212022Data as LectureSeasonFile,
-  "2020-2021": season20202021Data as LectureSeasonFile,
-  "2019-2020": season20192020Data as LectureSeasonFile,
-  "2018-2019": season20182019Data as LectureSeasonFile,
-  "2017-2018": season20172018Data as LectureSeasonFile,
-  "2016-2017": season20162017Data as LectureSeasonFile,
-  "2015-2016": season20152016Data as LectureSeasonFile,
-  "2014-2015": season20142015Data as LectureSeasonFile,
-  "2013-2014": season20132014Data as LectureSeasonFile,
-  "2012-2013": season20122013Data as LectureSeasonFile,
+  "2026-2027": nbspDeep(currentSeasonData as LectureSeasonFile),
+  "2025-2026": nbspDeep(season20252026Data as LectureSeasonFile),
+  "2024-2025": nbspDeep(season20242025Data as LectureSeasonFile),
+  "2023-2024": nbspDeep(season20232024Data as LectureSeasonFile),
+  "2022-2023": nbspDeep(season20222023Data as LectureSeasonFile),
+  "2021-2022": nbspDeep(season20212022Data as LectureSeasonFile),
+  "2020-2021": nbspDeep(season20202021Data as LectureSeasonFile),
+  "2019-2020": nbspDeep(season20192020Data as LectureSeasonFile),
+  "2018-2019": nbspDeep(season20182019Data as LectureSeasonFile),
+  "2017-2018": nbspDeep(season20172018Data as LectureSeasonFile),
+  "2016-2017": nbspDeep(season20162017Data as LectureSeasonFile),
+  "2015-2016": nbspDeep(season20152016Data as LectureSeasonFile),
+  "2014-2015": nbspDeep(season20142015Data as LectureSeasonFile),
+  "2013-2014": nbspDeep(season20132014Data as LectureSeasonFile),
+  "2012-2013": nbspDeep(season20122013Data as LectureSeasonFile),
 };
 
-const monthNamesGenitive = [
-  "stycznia",
-  "lutego",
-  "marca",
-  "kwietnia",
-  "maja",
-  "czerwca",
-  "lipca",
-  "sierpnia",
-  "września",
-  "października",
-  "listopada",
-  "grudnia",
-] as const;
-
-export type LectureTalk = {
+type LectureTalk = {
   title: string;
   lecturer?: string;
   lecturerHref?: string;
@@ -71,7 +59,6 @@ export type LectureListItem = {
 
 export type LoadedLectureSeason = Omit<LectureSeason, "lectures"> & {
   lectures: LectureListItem[];
-  placeholder?: boolean;
 };
 
 type ArchiveMeta = {
@@ -82,48 +69,15 @@ type ArchiveMeta = {
   lastSeason: string;
 };
 
+/** e.g. `2026-10-06` → `6 października` (genitive month from `Intl`). */
 export function formatLectureDate(isoDate: string): string {
-  const [, month, day] = isoDate.split("-");
-  const monthIndex = Number(month) - 1;
-  const dayNumber = Number(day);
-
-  if (monthIndex < 0 || monthIndex > 11 || Number.isNaN(dayNumber)) {
-    return isoDate;
-  }
-
-  return `${dayNumber} ${monthNamesGenitive[monthIndex]}`;
+  return formatDateRange(isoDate, undefined, { withYear: false });
 }
 
-function slugToDisplayName(slug: string): string {
-  return slug
-    .split("-")
-    .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
-    .join(" ");
-}
-
-function buildLecturerLabel(entry: {
-  name: string;
-  titles?: string;
-  affiliation?: string;
-}): string {
-  const label = formatLecturerDisplayName(entry);
-  return entry.affiliation ? `${label}, ${entry.affiliation}` : label;
-}
-
-export function formatLecturerLabel(slug: string): string {
-  const directoryEntry = getLecturerDirectoryEntry(slug);
-  const profileEntry = getLecturer(slug);
-
-  const name = directoryEntry?.name ?? profileEntry?.name;
-  if (!name) {
-    return slugToDisplayName(slug);
-  }
-
-  return buildLecturerLabel({
-    name,
-    titles: directoryEntry?.titles ?? profileEntry?.titles,
-    affiliation: directoryEntry?.affiliation ?? profileEntry?.affiliation,
-  });
+function formatLecturerLabel(slug: string): string {
+  const lecturer = resolveLecturer(slug);
+  const label = formatLecturerDisplayName(lecturer);
+  return lecturer.affiliation ? `${label}, ${lecturer.affiliation}` : label;
 }
 
 function splitLectureTitles(title: string): string[] {
@@ -149,15 +103,28 @@ function pairTitlesWithLecturers(
     return titles.map((title, index) => ({ title, slug: slugs[index] }));
   }
 
-  if (slugs.length === 1) {
-    return titles.map((title) => ({ title, slug: slugs[0] }));
-  }
-
-  return titles.map((title, index) => ({
-    title,
-    slug: slugs[Math.min(index, slugs.length - 1)],
-  }));
+  return titles.map((title) => ({ title, slug: slugs[0] }));
 }
+
+Object.values(seasonModules).forEach((season) => {
+  season.lectures.forEach((lecture) => {
+    // `""` = a talk without a lecturer (see `assertLecturerPairing`); every other slug must resolve.
+    lecture.lecturerSlugs
+      .filter((slug) => slug !== "")
+      .forEach((slug) => {
+        try {
+          resolveLecturer(slug);
+        } catch (error) {
+          throw new Error(`content/lectures/${season.slug}.json lecture ${lecture.date}: ${(error as Error).message}`);
+        }
+      });
+    assertLecturerPairing(
+      splitLectureTitles(lecture.title),
+      lecture.lecturerSlugs,
+      `content/lectures/${season.slug}.json lecture ${lecture.date}`,
+    );
+  });
+});
 
 function toLectureListItem(lecture: Lecture): LectureListItem {
   const titles = splitLectureTitles(lecture.title);
@@ -210,19 +177,25 @@ function buildArchiveSlugs(firstSeason: string, lastSeason: string): string[] {
   );
 }
 
-function buildPlaceholderSeason(slug: string): LoadedLectureSeason {
-  return {
-    slug,
-    label: slugToSeasonLabel(slug),
-    cycleTitle: "",
-    lectures: [],
-    placeholder: true,
-  };
+function getArchiveMeta(): ArchiveMeta {
+  return nbspDeep(archiveMeta as ArchiveMeta);
 }
 
-function getArchiveMeta(): ArchiveMeta {
-  return archiveMeta as ArchiveMeta;
+function validateSeasons(): void {
+  if (!seasonModules[CURRENT_SEASON_SLUG]) {
+    throw new Error(`lectures: no season file for CURRENT_SEASON_SLUG "${CURRENT_SEASON_SLUG}"`);
+  }
+
+  const expectedLastSeason = buildSeasonSlug(parseSeasonStartYear(CURRENT_SEASON_SLUG) - 1);
+  const { lastSeason } = getArchiveMeta();
+  if (lastSeason !== expectedLastSeason) {
+    throw new Error(
+      `content/lectures/archive.json: lastSeason "${lastSeason}" must be the season before CURRENT_SEASON_SLUG ("${expectedLastSeason}")`,
+    );
+  }
 }
+
+validateSeasons();
 
 /** Fills season placeholders in archive copy, so a season rollover needs no copy edit (LK5). */
 function fillArchivePlaceholders(text: string): string {
@@ -259,6 +232,11 @@ export function getLectureSeasonHref(slug: string): string {
   return isCurrentLectureSeason(slug) ? "/wyklady" : `/wyklady/archiwum#season-${slug}`;
 }
 
+/** e.g. `2026/2027` — fills `{season}` in UI copy. */
+export function getCurrentSeasonLabel(): string {
+  return slugToSeasonLabel(CURRENT_SEASON_SLUG);
+}
+
 export function getCurrentSeason(): LoadedLectureSeason {
   const season = seasonModules[CURRENT_SEASON_SLUG];
   return toLoadedSeason(season);
@@ -269,9 +247,10 @@ export function getArchiveSeasons(): LoadedLectureSeason[] {
 
   return buildArchiveSlugs(firstSeason, lastSeason).map((slug) => {
     const season = seasonModules[slug];
-    return season && season.slug !== CURRENT_SEASON_SLUG
-      ? toLoadedSeason(season)
-      : buildPlaceholderSeason(slug);
+    if (!season) {
+      throw new Error(`lectures: archive range of content/lectures/archive.json has no season file for "${slug}"`);
+    }
+    return toLoadedSeason(season);
   });
 }
 
@@ -310,22 +289,4 @@ export function getLectureSeasonShortTheme(seasonSlug: string): string {
   }
 
   return cycleTitle;
-}
-
-/** ISO date and location for future JSON-LD Event emission (etap 7). */
-export function getLectureEventData(season: LectureSeason): Array<{
-  date: string;
-  title: string;
-  location: string;
-}> {
-  const location =
-    "Kościół Środowisk Twórczych św. Andrzeja Apostoła i św. Brata Alberta Chmielowskiego, Plac Teatralny, Warszawa";
-
-  return season.lectures.flatMap((lecture) =>
-    splitLectureTitles(lecture.title).map((title) => ({
-      date: lecture.date,
-      title,
-      location,
-    })),
-  );
 }

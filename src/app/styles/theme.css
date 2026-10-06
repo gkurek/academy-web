@@ -1,0 +1,251 @@
+@theme static {
+  /* Line-height roles from design/README §2. */
+  --leading-tight: 1.12;
+  --leading-heading: 1.2;
+  --leading-body: 1.6;
+  --leading-loose: 1.75;
+  --leading-prose: 1.7;
+  --leading-quote: 1.35;
+  --leading-facts: 1.55;
+  --leading-quote-offer: 1.55;
+}
+
+/* Tailwind utility mappings for the :root tokens above. Add a mapping only
+   with the first class that uses it; knip-style audits drop unused ones. */
+@theme inline {
+  --color-surface-page: var(--surface-page);
+  --color-surface-card: var(--surface-card);
+  --color-surface-tile: var(--surface-tile);
+  --color-surface-lightbox: var(--surface-lightbox);
+  --color-text-body: var(--text-body);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-tertiary: var(--text-tertiary);
+  --color-text-h1: var(--text-h1);
+  --color-text-h2: var(--text-h2);
+  --color-text-list-title: var(--text-list-title);
+  --color-text-on-gold: var(--text-on-gold);
+  --color-accent: var(--accent);
+  --color-accent-text: var(--accent-text);
+  --color-accent-hover: var(--accent-hover);
+  --color-accent-veil: var(--accent-veil);
+  --color-state-disabled: var(--state-disabled);
+  --color-line-gold: var(--line-gold);
+  --color-line-neutral: var(--line-neutral);
+  --color-border-button: var(--border-button);
+  --color-border-secondary: var(--border-secondary);
+  --color-scrim-gallery-hover: var(--scrim-gallery-hover);
+
+  --text-size-h1: var(--size-h1);
+  --text-size-h1-home: var(--size-h1-home);
+  --text-size-h1-m: var(--size-h1-m);
+  --text-size-body: var(--size-body);
+  --text-size-body-lg: var(--size-body-lg);
+  --text-size-ui: var(--size-ui);
+  --text-size-ui-m: var(--size-ui);
+  --text-size-nav: var(--size-nav);
+  --text-size-h3-m: var(--size-h3-m);
+  --text-size-quote: var(--size-quote);
+  --text-size-caption-m: var(--size-caption-m);
+  --text-size-caption: var(--size-caption);
+  --text-size-lead: var(--size-lead);
+  --text-size-lead-m: var(--size-lead-m);
+  --text-size-quote-lg: var(--size-quote-lg);
+  --text-size-role-section-h2: var(--size-h2);
+  --text-size-role-section-h2-m: var(--size-h2-m);
+  --text-size-role-card-title: var(--role-card-title);
+  --text-size-role-card-title-m: var(--role-card-title-m);
+  --text-size-role-box-title: var(--role-box-title);
+  --text-size-role-box-title-m: var(--role-box-title-m);
+  --text-size-role-row-title: var(--role-row-title);
+  --text-size-role-row-title-m: var(--role-row-title-m);
+  --text-size-role-list-title: var(--role-list-title);
+  --text-size-role-list-title-m: var(--role-list-title-m);
+  /* Logo lockup — a fixed brand element, not part of the general type scale. */
+  --text-size-logo: 23px;
+  --text-size-logo-subtitle: 15px;
+  --text-size-logo-m: 18px;
+
+  --tracking-logo: .14em;
+  --tracking-logo-footer: .1em;
+  --tracking-caption-wide: .06em;
+
+  --spacing-space-1: var(--space-1);
+  --spacing-space-2: var(--space-2);
+  --spacing-space-3: var(--space-3);
+  --spacing-space-4: var(--space-4);
+  --spacing-space-5: var(--space-5);
+  --spacing-space-6: var(--space-6);
+  --spacing-space-7: var(--space-7);
+  --spacing-space-8: var(--space-8);
+  --spacing-space-9: var(--space-9);
+  --spacing-space-10: var(--space-10);
+  --spacing-space-11: var(--space-11);
+  --spacing-section-gap: var(--section-gap);
+  --spacing-section-gap-tight: var(--section-gap-tight);
+  --spacing-section-gap-loose: var(--section-gap-loose);
+  --spacing-heading-gap: var(--heading-gap);
+  --spacing-entry-lead-gap: var(--entry-lead-gap);
+  --spacing-page-margin: var(--page-margin);
+  --spacing-page-margin-mobile: var(--page-margin-mobile);
+  --spacing-tap-min: var(--tap-min);
+  --spacing-tap-min-mobile-header: var(--tap-min-mobile-header);
+  --spacing-btn-x-md: 30px;
+  --spacing-btn-y-md: 16px;
+  --spacing-btn-x-lg: 32px;
+  --spacing-btn-y-lg: 17px;
+  /* Mobile accordion sub-item indent (design/README "Menu mobilne — 390 px"). */
+  --spacing-menu-indent: 36px;
+  /* Gold underline offset under an active nav link. */
+  --spacing-link-underline-gap: 2px;
+  /* Footer — mockup 9e. */
+  --color-footer-credit-hover: var(--footer-credit-hover);
+  --text-size-footer-brand: var(--footer-brand-size);
+  --text-size-footer-heading: var(--footer-heading-size);
+  --text-size-footer-sublink: var(--footer-sublink-size);
+  --leading-footer-address: 1.65;
+  --leading-footer-sublink: 1.5;
+  /* Mockup 9e leaves these lines at the font's own `normal` metric (Tailwind's leading-normal is 1.5). */
+  --leading-footer-text: normal;
+  --spacing-footer-contact-py: var(--footer-contact-py);
+  --spacing-footer-contact-py-m: var(--footer-contact-py-m);
+  --spacing-footer-contact-stack-gap: var(--footer-contact-stack-gap);
+  --spacing-footer-subtitle-mt: var(--footer-subtitle-mt);
+  --spacing-footer-address-mt: var(--footer-address-mt);
+  --spacing-footer-address-mt-m: var(--footer-address-mt-m);
+  --spacing-footer-data-mt: var(--footer-data-mt);
+  --spacing-footer-data-mt-m: var(--footer-data-mt-m);
+  --spacing-footer-social-gap-m: var(--footer-social-gap-m);
+  --spacing-footer-social-px: var(--footer-social-px);
+  --spacing-footer-sitemap-py-m: var(--footer-sitemap-py-m);
+  --spacing-footer-group-gap-m: var(--footer-group-gap-m);
+  --spacing-footer-rule-mt: var(--footer-rule-mt);
+  --spacing-footer-legal-py-m: var(--footer-legal-py-m);
+  --grid-template-columns-footer: var(--footer-contact-col) repeat(4, minmax(0, 1fr));
+
+  /* Home hero */
+  --spacing-hero-pt: var(--hero-pt);
+  --spacing-hero-pb: var(--hero-pb);
+  --spacing-hero-pt-m: var(--hero-pt-m);
+  --spacing-hero-pb-m: var(--hero-pb-m);
+  --spacing-hero-image-h: var(--hero-image-h);
+  --spacing-hero-image-w-m: var(--hero-image-w-m);
+  --spacing-hero-image-w: var(--hero-image-w);
+  --grid-template-columns-hero: minmax(var(--hero-text-min), 1fr) minmax(0, 500px);
+
+  /* "Najbliższe" tiles */
+  --spacing-tile-py: var(--tile-py);
+  --spacing-tile-px: var(--tile-px);
+  --spacing-tile-py-m: var(--tile-py-m);
+  --spacing-tile-link-mt: var(--tile-link-mt);
+  --spacing-tile-link-mt-m: var(--tile-link-mt-m);
+
+  /* Three pillars */
+  --spacing-pillars-gap: var(--pillars-gap);
+  --spacing-pillar-image-h: var(--pillar-image-h);
+  --spacing-pillar-image-h-m: var(--pillar-image-h-m);
+
+  /* Text measure — K-28: lead 680 px, prose 640 px. */
+  --max-width-measure-lead: var(--measure-lead);
+  --max-width-measure-prose: var(--measure-prose);
+
+  /* Page column — mockup canvas is 1180px (design/README §3 "kolumna treści do 1180 px"). */
+  --spacing-content-max: var(--content-max);
+
+  /* Testimonial */
+  --spacing-measure-quote: var(--measure-quote);
+  --spacing-testimonial-py: var(--testimonial-py);
+  --spacing-testimonial-px: var(--testimonial-px);
+
+  /* "Wybrane ikony" */
+  --spacing-lightbox-mobile-nav-h: var(--lightbox-mobile-nav-h);
+  --spacing-lightbox-mobile-nav-gap: var(--lightbox-mobile-nav-gap);
+
+  /* Offer pages */
+  --spacing-offer-main-gap: var(--offer-main-gap);
+  --spacing-offer-facts-x: var(--offer-facts-x);
+  --spacing-offer-facts-y: var(--offer-facts-y);
+  --spacing-offer-facts-pb: var(--offer-facts-pb);
+  --spacing-offer-facts-dd-mt: var(--offer-facts-dd-mt);
+  --spacing-offer-card-image-h: var(--offer-card-image-h);
+  --spacing-offer-card-x: var(--offer-card-x);
+  --spacing-offer-card-y: var(--offer-card-y);
+  --spacing-offer-card-pb: var(--offer-card-pb);
+  --spacing-offer-quotes-gap: var(--offer-quotes-gap);
+  --spacing-offer-quote-x: var(--offer-quote-x);
+  --spacing-offer-quote-y: var(--offer-quote-y);
+  --border-width-accent-bar: var(--accent-bar);
+  --border-width-offer-facts-top: var(--offer-facts-top);
+  --border-width-offer-quote-top: var(--offer-quote-top);
+  --grid-template-columns-offer-main: 1fr var(--offer-sidebar-w);
+  --spacing-offer-semester-x: var(--offer-semester-x);
+  --spacing-offer-semester-y: var(--offer-semester-y);
+  --spacing-offer-semester-x-m: var(--offer-semester-x-m);
+  --spacing-offer-semester-y-m: var(--offer-semester-y-m);
+  --spacing-offer-semester-gap: var(--offer-semester-gap);
+  --spacing-offer-semester-gap-m: var(--offer-semester-gap-m);
+  --spacing-offer-semester-num-width: var(--offer-semester-num-width);
+  --spacing-offer-semester-num-width-m: var(--offer-semester-num-width-m);
+  --spacing-offer-enrollment-gap: var(--offer-enrollment-gap);
+  --spacing-offer-quote-feature-x: var(--offer-quote-feature-x);
+  --spacing-offer-quote-feature-y: var(--offer-quote-feature-y);
+  --spacing-offer-quote-image-mt: var(--offer-quote-image-mt);
+  --spacing-offer-quote-image-h: var(--offer-quote-image-h);
+  --spacing-offer-figure-h: var(--offer-figure-h);
+  --spacing-offer-figure-h-m: var(--offer-figure-h-m);
+  --text-size-offer-semester-num: var(--offer-semester-num);
+  --text-size-offer-semester-num-m: var(--offer-semester-num-m);
+  --text-size-offer-quote: var(--offer-quote-feature);
+  --text-size-offer-quote-m: var(--offer-quote-feature-m);
+  --spacing-offer-step-x: var(--offer-step-x);
+  --spacing-offer-step-y: var(--offer-step-y);
+  --spacing-offer-step-gap: var(--offer-step-gap);
+  --spacing-offer-step-gap-m: var(--offer-step-gap-m);
+  --grid-template-columns-step-row: minmax(0, auto) 1fr;
+  --spacing-offer-ready-y: var(--offer-ready-y);
+  --spacing-offer-ready-gap-x: var(--offer-ready-gap-x);
+  --spacing-offer-examples-link-mt: var(--offer-examples-link-mt);
+  --text-size-offer-step-num: var(--offer-step-num);
+  /* Lectures hub + LectureList */
+  --text-size-lectures-eyebrow: var(--lectures-eyebrow);
+  --spacing-lectures-eyebrow-mb: var(--lectures-eyebrow-mb);
+  --spacing-lectures-program-lead-mb: var(--lectures-program-lead-mb);
+  --spacing-lecture-row-gap: var(--lecture-row-gap);
+  --spacing-lecture-row-x: var(--lecture-row-x);
+  --spacing-lecture-row-y: var(--lecture-row-y);
+  --spacing-lecture-title-mb: var(--lecture-title-mb);
+  --spacing-lecture-talk-gap: var(--lecture-talk-gap);
+  --spacing-lecture-date-offset: var(--lecture-date-offset);
+  --grid-template-columns-lecture-row: var(--lecture-date-col) 1fr;
+  --grid-template-columns-season-head: 1fr auto;
+  --grid-template-columns-season-head-lg: auto minmax(0, 1fr) auto;
+
+  /* SeasonAccordion (#2a-wyklady archive preview). */
+  --text-size-season-accordion-collapsed-label: var(--season-accordion-collapsed-label);
+  --text-size-season-accordion-toggle: var(--season-accordion-toggle);
+  --spacing-season-accordion-expanded-x: var(--season-accordion-expanded-x);
+  --spacing-season-accordion-expanded-y-top: var(--season-accordion-expanded-y-top);
+  --spacing-season-accordion-collapsed-y: var(--season-accordion-collapsed-y);
+  --spacing-season-accordion-header-mb: var(--season-accordion-header-mb);
+
+  /* LecturerCard + LecturersPage */
+  --spacing-lecturer-photo-col: var(--lecturer-photo-col);
+  --spacing-lecturer-row-gap: var(--lecturer-row-gap);
+  --spacing-lecturer-row-x: var(--lecturer-row-x);
+  --spacing-lecturer-row-y: var(--lecturer-row-y);
+  --spacing-lecturer-name-mb: var(--lecturer-name-mb);
+  --spacing-lecturer-affiliation-mb: var(--lecturer-affiliation-mb);
+  --text-size-lecturer-affiliation: var(--lecturer-affiliation-size);
+  --aspect-lecturer-photo: var(--lecturer-photo-aspect);
+  --aspect-offer-side-photo: var(--offer-side-photo-aspect);
+  --grid-template-columns-lecturer-row: var(--lecturer-photo-col) 1fr;
+  --grid-template-columns-lecturer-row-m: var(--lecturer-photo-col-m) 1fr;
+
+  /* Text pages */
+  --spacing-text-page-main-gap: var(--text-page-main-gap);
+  --spacing-text-page-toc-sticky: var(--text-page-toc-sticky-top);
+  --grid-template-columns-text-page-section: var(--text-page-heading-col) minmax(0, 1fr);
+  --grid-template-columns-text-page-toc: var(--text-page-toc-col) minmax(0, 1fr);
+  --spacing-contact-map: var(--contact-map-h);
+  --spacing-contact-map-m: var(--contact-map-h-m);
+}
+

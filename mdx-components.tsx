@@ -1,74 +1,43 @@
 import type { MDXComponents } from "mdx/types";
-import Image from "next/image";
 import type { ComponentPropsWithoutRef } from "react";
 
 import { OfferFigure } from "@/components/content/OfferFigure";
-import { SemesterProgram } from "@/components/content/SemesterProgram";
-import { StepList } from "@/components/content/StepList";
+import { LectureSeasonLink } from "@/components/news/LectureSeasonLink";
 import { OfferSideCta } from "@/components/offers/OfferSideCta";
-type ImgProps = ComponentPropsWithoutRef<"img">;
+import { nbspChildren } from "@/lib/typography";
 
 /**
- * MDX h3 style. Also exposed as `Heading3` so content can set an anchor id
- * (`<Heading3 id="…">`) — JSX literals in MDX bypass the `h3` mapping.
+ * Bare `h3` with an anchor id (`<Heading3 id="…">`) — JSX literals in MDX bypass the
+ * `h3` mapping. Typography and spacing come from the `Prose` wrapper (`.prose-*`),
+ * never from this file; text tags (p, h2, h3, li) are mapped only to glue single-letter words.
+ * Markdown images are not used in content (figures go through `OfferFigure`).
  */
-function MdxHeading3({ id, children }: ComponentPropsWithoutRef<"h3">) {
-  return (
-    <h3
-      id={id}
-      className="font-serif text-size-h3-m md:text-size-h3 leading-heading text-text-list-title mt-space-6 mb-space-3 scroll-mt-space-6"
-    >
-      {children}
-    </h3>
-  );
+function Heading3({ id, children }: ComponentPropsWithoutRef<"h3">) {
+  return <h3 id={id}>{nbspChildren(children)}</h3>;
 }
 
-function MdxImage({ src, alt, width, height }: ImgProps) {
-  if (!src || typeof src !== "string") {
-    return null;
-  }
+function Heading2({ id, children }: ComponentPropsWithoutRef<"h2">) {
+  return <h2 id={id}>{nbspChildren(children)}</h2>;
+}
 
-  const w = typeof width === "number" ? width : 960;
-  const h = typeof height === "number" ? height : 540;
+function Paragraph({ children }: ComponentPropsWithoutRef<"p">) {
+  return <p>{nbspChildren(children)}</p>;
+}
 
-  return (
-    <Image
-      src={src}
-      alt={alt ?? ""}
-      width={w}
-      height={h}
-      sizes="(min-width: 768px) 66vw, 100vw"
-      className="w-full h-offer-figure-h-m md:h-offer-figure-h object-cover"
-    />
-  );
+function ListItem({ children }: ComponentPropsWithoutRef<"li">) {
+  return <li>{nbspChildren(children)}</li>;
 }
 
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
-    h2: ({ children }) => (
-      <h2 className="font-serif text-size-role-section-h2-m md:text-size-role-section-h2 leading-heading text-text-h2 mt-space-8 mb-space-4 first:mt-0">
-        {children}
-      </h2>
-    ),
-    h3: MdxHeading3,
-    p: ({ children }) => (
-      <p className="text-size-body md:text-size-body-lg leading-body md:leading-prose text-text-body max-w-measure-prose mb-space-4 last:mb-0">
-        {children}
-      </p>
-    ),
-    ul: ({ children }) => (
-      <ul className="mb-space-4 list-disc pl-space-6 text-size-body leading-body text-text-body">{children}</ul>
-    ),
-    ol: ({ children }) => (
-      <ol className="mb-space-4 list-decimal pl-space-6 text-size-body leading-body text-text-body">{children}</ol>
-    ),
-    li: ({ children }) => <li className="mb-space-2">{children}</li>,
-    img: MdxImage,
-    Heading3: MdxHeading3,
+    h2: Heading2,
+    h3: Heading3,
+    p: Paragraph,
+    li: ListItem,
+    Heading3,
+    LectureSeasonLink,
     OfferFigure,
     OfferSideCta,
-    SemesterProgram,
-    StepList,
     ...components,
   };
 }

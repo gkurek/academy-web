@@ -3,43 +3,21 @@ import type { ReactNode } from "react";
 import { SectionPageShell } from "@/components/layout/SectionPageShell";
 import { TextPageTocNav } from "@/components/text/TextPageTocNav";
 import type { TocItem } from "@/content/types";
-import type { SectionKey } from "@/navigation";
+import { PageHeading } from "@/components/core/PageHeading";
 
 export interface TextPageShellProps {
   title: string;
   lead?: string;
   toc?: TocItem[];
   children: ReactNode;
-  /** Main nav item to underline gold in the Header — read from navigation.ts. */
-  active?: string;
-  section?: SectionKey;
-  /** Label of the current SectionNav item — see SectionNavProps["active"]. */
-  sectionActive?: string;
+  /** Route path — see SectionPageShellProps["path"]. */
+  path: string;
   /** Optional id on the page header — for in-page TOC anchors (mockup 3a). */
   headerId?: string;
   /** When true, AboutPage (or similar) renders its own hero header. */
   hideHeader?: boolean;
-}
-
-export interface TextPageSectionProps {
-  id: string;
-  heading: string;
-  children: ReactNode;
-}
-
-/** Two-column section row: 280 px H2 column + prose (mockup 6a). */
-export function TextPageSection({ id, heading, children }: TextPageSectionProps) {
-  return (
-    <section
-      id={id}
-      className="mt-section-gap-mobile scroll-mt-space-6 md:mt-section-gap grid grid-cols-1 items-start gap-space-5 lg:grid-cols-text-page-section lg:gap-text-page-main-gap"
-    >
-      <h2 className="font-serif text-size-role-section-h2-m md:text-size-role-section-h2 leading-heading text-text-h2">
-        {heading}
-      </h2>
-      <div className="min-w-0 text-page-mdx">{children}</div>
-    </section>
-  );
+  /** See SectionPageShellProps["footerBand"]. */
+  footerBand?: ReactNode;
 }
 
 export function TextPageShell({
@@ -47,47 +25,44 @@ export function TextPageShell({
   lead,
   toc,
   children,
-  active,
-  section,
-  sectionActive,
+  path,
   headerId,
   hideHeader = false,
+  footerBand,
 }: TextPageShellProps) {
   const hasToc = Boolean(toc && toc.length > 0);
 
   return (
-    <SectionPageShell active={active} section={section} sectionActive={sectionActive}>
-      <div className="mx-auto w-full max-w-content-max">
-        {hasToc ? (
-          <div className="grid grid-cols-1 items-start lg:grid-cols-text-page-toc lg:gap-text-page-main-gap">
-            <div className="hidden self-start lg:sticky lg:top-text-page-toc-sticky lg:block">
-              <TextPageTocNav items={toc!} variant="sidebar" />
-            </div>
-            <div className="min-w-0">
-              {!hideHeader ? <TextPageHeader id={headerId} title={title} lead={lead} /> : null}
-              <div className="mb-space-5 lg:hidden">
-                <TextPageTocNav items={toc!} variant="collapse" />
-              </div>
-              {children}
-            </div>
+    <SectionPageShell path={path} footerBand={footerBand}>
+      {hasToc ? (
+        <div className="grid grid-cols-1 items-start lg:grid-cols-text-page-toc lg:gap-text-page-main-gap">
+          <div className="hidden self-start lg:sticky lg:top-text-page-toc-sticky lg:block">
+            <TextPageTocNav items={toc!} variant="sidebar" />
           </div>
-        ) : (
-          <>
+          <div className="min-w-0">
             {!hideHeader ? <TextPageHeader id={headerId} title={title} lead={lead} /> : null}
+            <div className="mb-space-5 lg:hidden">
+              <TextPageTocNav items={toc!} variant="collapse" />
+            </div>
             {children}
-          </>
-        )}
-      </div>
+          </div>
+        </div>
+      ) : (
+        <>
+          {!hideHeader ? <TextPageHeader id={headerId} title={title} lead={lead} /> : null}
+          {children}
+        </>
+      )}
     </SectionPageShell>
   );
 }
 
 function TextPageHeader({ id, title, lead }: { id?: string; title: string; lead?: string }) {
   return (
-    <header id={id} className="mb-space-6 scroll-mt-space-6">
-      <h1 className="mb-space-5 font-serif text-size-h1-m leading-tight text-text-h1 md:text-size-h1">
+    <header id={id} className="mb-section-gap-tight scroll-mt-space-6">
+      <PageHeading level="page" className="mb-space-5">
         {title}
-      </h1>
+      </PageHeading>
       {lead ? (
         <p className="max-w-measure-lead text-size-lead-m leading-body text-text-secondary md:text-size-lead">
           {lead}

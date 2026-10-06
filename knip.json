@@ -1,0 +1,13 @@
+{
+  "$schema": "https://unpkg.com/knip@6/schema.json",
+  "entry": [
+    "scripts/generate-news-index.ts",
+    "scripts/generate-publications-index.ts",
+    "scripts/optimize-album-media.ts",
+    "scripts/visual-measure.ts"
+  ],
+  "ignoreDependencies": ["axe-core"],
+  "ignoreIssues": {
+    "src/content/types.ts": ["types"]
+  }
+}

@@ -1,15 +1,16 @@
+import { nbspDeep } from "@/lib/typography";
+
 // UI strings — extend as later pieces need more (menu, accordion, CTAs).
-export const pl = {
+const plSource = {
   meta: {
     // Site name, verbatim from brief-claude-code.md §8.
     siteName: "AKADEMIA IKONY – Studium Ikonograficzne św. Andrzeja Apostoła",
     titleBrand: "Akademia Ikony",
+    // Joins document title parts: "Archiwum · Wykłady · Akademia Ikony".
+    titleSeparator: " · ",
     // Same name split into the two lines the logo lockup uses.
     orgShortName: "AKADEMIA IKONY",
     orgSubtitle: "Studium Ikonograficzne św. Andrzeja Apostoła",
-  },
-  common: {
-    contentInProgress: "Treść w przygotowaniu",
   },
   a11y: {
     skipToContent: "Przejdź do treści",
@@ -23,8 +24,6 @@ export const pl = {
     sectionCollapseLabel: "Zwiń sekcję",
     primaryCta: "Zapisy na warsztaty",
     contactCta: "Kontakt",
-    newsLink: "Aktualności",
-    publicationsLink: "Publikacje",
     blogLink: "Blog",
   },
   sectionNav: {
@@ -36,35 +35,26 @@ export const pl = {
   textPage: {
     tocLabel: "Na tej stronie",
     tocAriaLabel: "Na tej stronie",
+    seeAlsoLabel: "Zobacz też",
   },
   workshop: {
     contactMailtoLabel: "Napisz do Pracowni",
-    lightbox: {
-      close: "Zamknij",
-      closeAria: "Zamknij",
-      previous: "Poprzednie",
-      previousAria: "Poprzednie zdjęcie",
-      next: "Następne",
-      nextAria: "Następne zdjęcie",
-      position: "{index} z {total}",
-      openPhoto: "Powiększ zdjęcie: {alt}",
-    },
+  },
+  /** Shared by every lightbox (icons, photos, spreads); per-domain trigger labels stay in their sections. */
+  lightbox: {
+    close: "Zamknij",
+    previous: "Poprzednie",
+    previousAria: "Poprzednie zdjęcie",
+    next: "Następne",
+    nextAria: "Następne zdjęcie",
+    position: "{index} z {total}",
+    openPhoto: "Powiększ zdjęcie: {alt}",
   },
   home: {
     hero: {
-      title: "Uczymy pisania ikon od 2010 roku.",
-      lead: "Warsztaty, wykłady i galeria ikon w Kościele Środowisk Twórczych na Placu Teatralnym w Warszawie. Praca indywidualna z każdym uczestnikiem, raz w tygodniu, od października do czerwca.",
       ctaPrimary: "Warsztaty pisania ikon",
-      ctaSecondary: "Wykłady 2026/2027",
-      image: {
-        src: "/media/icons/chrystus.jpg",
-        alt: "Ikona Chrystusa Pantokratora",
-        width: 360,
-        height: 682,
-        caption: "Chrystus Pantokrator, Synaj, VI w.",
-      },
+      ctaSecondary: "Wykłady {season}",
     },
-    upcomingAriaLabel: "Najbliższe",
     upcomingHeading: "Najbliższe",
     upcoming: {
       newsLinkLabel: "Czytaj w Aktualnościach",
@@ -124,50 +114,6 @@ export const pl = {
         },
       },
     },
-    pillars: [
-      {
-        title: "Warsztaty",
-        body: "Kurs roczny przedwstępny i wstępny oraz trzyletni doskonalący. Materiały na miejscu, praca indywidualna. Osobno Letnia Szkoła Światła – tygodniowe plenery w trybie rekolekcyjnym.",
-        linkLabel: "Kurs i plener",
-        href: "/warsztaty",
-        image: {
-          src: "/media/home/pracownia.jpg",
-          alt: "Praca nad ikoną w pracowni",
-          width: 960,
-          height: 540,
-        },
-      },
-      {
-        title: "Wykłady",
-        body: "Wybrane wtorki miesiąca, 18:00–20:30, październik–czerwiec. Prowadzą teolodzy, historycy sztuki i duchowni. 400 zł za rok, z możliwością rocznego dostępu do nagrań.",
-        linkLabel: "Sezon i archiwum",
-        href: "/wyklady",
-        image: {
-          src: "/media/home/wyklad.jpg",
-          alt: "Wykład w Akademii Ikony",
-          width: 1440,
-          height: 810,
-        },
-      },
-      {
-        title: "Ikony",
-        body: "Prace Elżbiety Jackowskiej-Kurek i uczniów, ekspozycja codzienna i wystawa doroczna w kościele, ikony na zamówienie.",
-        linkLabel: "Galeria",
-        href: "/ikony",
-        secondaryLinkLabel: "Galeria i wystawa",
-        secondaryHref: "/ikony/wystawy",
-        image: {
-          src: "/media/home/wystawa.jpg",
-          alt: "Zwiedzający na wystawie ikon",
-          width: 1000,
-          height: 714,
-        },
-      },
-    ],
-    testimonial: {
-      quote: "„Kreska po kresce wspinamy się na Górę Tabor.”",
-      author: "Elżbieta Jackowska-Kurek, założycielka Akademii",
-    },
     icons: {
       heading: "Wybrane ikony",
       seeAllLabel: "Cała galeria",
@@ -195,59 +141,56 @@ export const pl = {
         where: "Technika",
         leadTime: "Orientacyjny czas realizacji",
         price: "Koszt",
-        contact: "Kontakt",
       },
     },
-    phoneOr: "lub 601 734 705",
-    contactClosedPlener: "{email} · 601 734 705",
-    phoneTel: "tel:+48601734705",
+    phoneOr: "lub {phone}",
     publicationsRowLabel: "Publikacje",
     publicationsLink: "Album i artykuły Akademii",
     ctaByKind: {
       kurs: {
         open: {
           mailtoLabel: "Napisz zgłoszenie",
-          telLabel: "Zadzwoń: 601 734 705",
+          telLabel: "Zadzwoń: {phone}",
         },
         closed: {
           mailtoLabel: "Zapytaj o miejsce mailem",
-          telLabel: "Zadzwoń: 601 734 705",
+          telLabel: "Zadzwoń: {phone}",
           note: "Nabór na ten sezon jest zamknięty. Zapytaj o listę rezerwową.",
         },
       },
       plener: {
         open: {
           mailtoLabel: "Wyślij zgłoszenie mailem",
-          telLabel: "Zadzwoń: 601 734 705",
+          telLabel: "Zadzwoń: {phone}",
           note: "Odpowiemy w kolejności zgłoszeń.",
         },
         closed: {
           mailtoLabel: "Powiadom mnie o naborze",
-          telLabel: "Zadzwoń: 601 734 705",
-          note: "Nabór na plenery 2027 ruszy w marcu — napisz, jeśli chcesz dostać wiadomość.",
+          telLabel: "Zadzwoń: {phone}",
+          note: "Nabór na plenery {year} ruszy w marcu — napisz, jeśli chcesz dostać wiadomość.",
         },
       },
       wyklady: {
         open: {
           mailtoLabel: "Zapisz się mailem",
-          telLabel: "Zadzwoń: 601 734 705",
+          telLabel: "Zadzwoń: {phone}",
           note: "Roczny dostęp do nagrań po zakończeniu sezonu.",
         },
         closed: {
           mailtoLabel: "Zapytaj o miejsce mailem",
-          telLabel: "Zadzwoń: 601 734 705",
+          telLabel: "Zadzwoń: {phone}",
           note: "Nabór na bieżący sezon jest zamknięty.",
         },
       },
       zamowienie: {
         open: {
           mailtoLabel: "Zapytaj o ikonę",
-          telLabel: "Zadzwoń: 601 734 705",
+          telLabel: "Zadzwoń: {phone}",
           note: "Opisz zamówienie – odpowiemy z propozycją terminu i wyceny.",
         },
         closed: {
           mailtoLabel: "Zapytaj o ikonę",
-          telLabel: "Zadzwoń: 601 734 705",
+          telLabel: "Zadzwoń: {phone}",
           note: "Skontaktuj się mailowo lub telefonicznie.",
         },
       },
@@ -263,6 +206,7 @@ export const pl = {
     semesterProgramHeading: "Program kursu trzyletniego",
     semesterProgramIntro:
       "Sześć semestrów, każdy zamknięty własnym zadaniem malarskim.",
+    semesterTileFallback: "Semestr {n}",
     semesterTileHeadings: [
       "Semestr pierwszy",
       "Semestr drugi",
@@ -287,8 +231,8 @@ export const pl = {
     enrollmentByKind: {
       kurs: {
         paragraphs: [
-          "Zgłoszenie wysyłamy mailem na adres akademiaikony@gmail.com do 24 września 2026. Potem zapraszamy na krótką rozmowę wstępną, około trzydziestu minut — ma na celu wzajemne poznanie się i dobór grupy. Chętnie zobaczymy wcześniejsze prace artystyczne, ale to nie jest warunek przyjęcia.",
-          "Pierwsze spotkanie sezonu odbywa się 6 października 2026 o 18:00. Dokumenty zgłoszeniowe są dostępne na miejscu.",
+          "Zgłoszenie wysyłamy mailem na adres {enrollmentEmail} do {enrollmentClose}. Potem zapraszamy na krótką rozmowę wstępną, około trzydziestu minut — ma na celu wzajemne poznanie się i dobór grupy. Chętnie zobaczymy wcześniejsze prace artystyczne, ale to nie jest warunek przyjęcia.",
+          "Pierwsze spotkanie sezonu odbywa się {firstMeeting} o 18:00. Dokumenty zgłoszeniowe są dostępne na miejscu.",
         ],
       },
     },
@@ -299,7 +243,6 @@ export const pl = {
     programLead: "{count} spotkań w sezonie {seasonLabel}.",
     archiveHeading: "Archiwum sezonów",
     archiveFullLink: "Pełne archiwum",
-    placeholderMessage: "W trakcie przygotowania",
     cycleTitlePlaceholder: "[do uzupełnienia]",
     accordionExpand: "rozwiń",
     accordionCollapse: "zwiń",
@@ -340,13 +283,6 @@ export const pl = {
       student: "{title}, pisana ręką {authorName}",
     },
     lightbox: {
-      close: "Zamknij",
-      closeAria: "Zamknij",
-      previous: "Poprzednia",
-      previousAria: "Poprzednia",
-      next: "Następna",
-      nextAria: "Następna",
-      position: "{index} z {total}",
       openIcon: "Powiększ ikonę: {title}",
       authorLabel: "Autor:",
       // Sizes copied from WP captions are unconfirmed (they contradict the photos) — never shown as numbers.
@@ -367,57 +303,10 @@ export const pl = {
   },
   workshopsHub: {
     title: "Warsztaty pisania ikon",
-    lead: "Praca malarza ikon to życie w intymnej relacji z Panem Bogiem i świadczenie o tej relacji przez obraz. Dbanie o nią i ciągłe dojrzewanie do niej to nieustanne wyzwanie ikonografa.",
-    leadSecondary:
-      "Proponujemy dwie ścieżki: kurs w roku akademickim — raz w tygodniu, od października do czerwca — i tygodniowy plener latem, w trybie rekolekcyjnym. W obu pracuje się indywidualnie. Prowadzi je Elżbieta Jackowska-Kurek, praktykująca malarka ikon, od ponad dwudziestu lat z własną pracownią w Warszawie. Jej ikony tablicowe i polichromie znajdują się w świątyniach i kolekcjach prywatnych w kraju i za granicą.",
     quotesHeading: "Głosy uczestników",
-    cards: {
-      "kurs-roczny-i-trzyletni": {
-        eyebrow: "Sezon 2026/2027 · zgłoszenia do 24 września 2026",
-        excerpt:
-          "Kurs roczny prowadzi przez wszystkie etapy powstawania ikony i pomaga rozeznać, czy pisanie ikon jest modlitwą dla mnie. Kurs trzyletni prowadzi dalej — od ikony lica po ikony dogmatyczne. Grupy wieczorne i dzienne, materiały na miejscu.",
-        bullets: [
-          "Raz w tygodniu, październik–czerwiec",
-          "Pierwsze spotkanie 6 października 2026, 18:00",
-          "Rozmowa wstępna przed zapisem, około 30 minut",
-        ],
-        ctaLabel: "Program i zapisy",
-        ctaVariant: "primary" as const,
-      },
-      "letnia-szkola-swiatla": {
-        eyebrow: "Nabór na 2027 od marca 2027 · kolejność zgłoszeń",
-        excerpt:
-          "Tygodniowe plenery ikonowe od lipca do września, w trybie rekolekcyjnym: praca przy ikonie, modlitwa, wykłady i wyjścia do miejsc związanych z kultem ikon. Dla osób, które mają już za sobą pierwsze ikony.",
-        bullets: [
-          "Tydzień, lipiec–wrzesień",
-          "Miejsce i termin 2027 [pole CMS]",
-          "Koszt [pole CMS]",
-        ],
-        ctaLabel: "O plenerze",
-        ctaVariant: "secondary" as const,
-      },
-    },
-    cardImages: {
-      "kurs-roczny-i-trzyletni": {
-        src: "/media/home/pracownia.jpg",
-        alt: "Praca nad ikoną",
-        width: 960,
-        height: 540,
-      },
-      "letnia-szkola-swiatla": {
-        src: "/media/home/wyklad.jpg",
-        alt: "Plener ikonowy",
-        width: 1440,
-        height: 810,
-      },
-    },
   },
   exhibition: {
     page: {
-      eyebrow: "Ikony · Kościół Środowisk Twórczych",
-      title: "Wystawy ikon",
-      lead:
-        "Ściana w lewej nawie kościoła nigdy nie jest pusta. Od czerwca do końca wakacji wisi na niej wystawa doroczna – ikony napisane w mijającym roku przez uczestników Akademii. Przez resztę roku akademickiego zastępuje ją ekspozycja codzienna z ikonami Elżbiety Jackowskiej-Kurek.",
       toc: [
         { id: "doroczna", label: "Wystawa doroczna" },
         { id: "ekspozycja", label: "Ekspozycja codzienna" },
@@ -440,8 +329,6 @@ export const pl = {
       permanentFromSeptemberSuffix: "od września",
     },
     frames: {
-      annualHeroEyebrow: "Wystawa doroczna · czerwiec – sierpień",
-      permanentEyebrow: "Ekspozycja codzienna · wrzesień – czerwiec",
       heroWide: "[zdjęcie: lewa nawa kościoła, szeroki kadr · 21:8]",
       permanentStandard: "[zdjęcie: ikony przy ołtarzu, lewa nawa · 2:1]",
       permanentStandard2: "[zdjęcie: detal ikony, lewa nawa · 4:3]",
@@ -457,62 +344,35 @@ export const pl = {
       sectionId: "ekspozycja",
       facts: {
         when: "Kiedy",
-        whenValue: "Od września do połowy czerwca",
         hours: "Godziny",
-        hoursValue: "W godzinach otwarcia kościoła",
         onDisplay: "Na ekspozycji",
-        onDisplayValue:
-          "{from}–{to} ikon Elżbiety Jackowskiej-Kurek, wymienianych co kilka tygodni",
         admission: "Wstęp",
-        admissionValue: "Wolny",
       },
     },
     annual: {
       sectionId: "doroczna",
-      title: "Wystawa doroczna",
-      intro1:
-        "Na wystawę doroczną trafia 40–50 ikon napisanych w mijającym roku akademickim przez uczestników Akademii i Elżbietę Jackowską-Kurek. Wśród autorów są zarówno osoby po pierwszym roku nauki, jak i uczestnicy kursu trzyletniego.",
-      titleSentencePast:
-        "Wystawy doroczne nawiązują tematycznie do cyklu wykładów z danego roku akademickiego; w {year} tematem przewodnim wykładów była „{theme}”.",
-      titleSentenceCurrent:
-        "Wystawy doroczne nawiązują tematycznie do cyklu wykładów z danego roku akademickiego; w tym roku akademickim tematem przewodnim wykładów jest „{theme}”.",
-      intro3:
-        "Wernisaż jest częścią ostatniego wykładu sezonu, który wygłasza Elżbieta Jackowska-Kurek; po wernisażu zapraszamy na agapę. Wystawa wisi przez całe wakacje, a we wrześniu ikony wracają do autorów. Można ją oglądać w godzinach otwarcia kościoła.",
-      scheduleSince: "Wystawa doroczna odbywa się co roku od {firstYear};",
-      scheduleNext: "kolejną otworzymy w {monthYear}, podczas ostatniego wykładu sezonu.",
-      scheduleNextMissing: "[do uzupełnienia: termin wernisażu]",
       photoArchiveLink: "Fotorelacje z poprzednich wystaw dorocznych",
       tilesCaption: "Wystawa {year} · {count} zdjęć – zobacz wszystkie",
       facts: {
         when: "Kiedy",
-        whenValue: "Od czerwca do końca sierpnia",
         vernissage: "Wernisaż",
-        vernissageValue: "Podczas ostatniego wykładu sezonu",
         onDisplay: "Na wystawie",
-        onDisplayValue: "40–50 ikon uczestników Akademii i Elżbiety Jackowskiej-Kurek",
         admission: "Wstęp",
-        admissionValue: "Wolny",
         lecturesProgramLink: "Program i terminy wykładów",
       },
     },
     tours: {
       sectionId: "oprowadzania",
       title: "Oprowadzania",
-      introBefore:
-        "Oprowadza Elżbieta Jackowska-Kurek: opowiada o warsztacie ikonografa i o teologii wybranych ikon. Terminy ogłaszamy w ",
       scheduleNewsLink: "Aktualnościach",
-      introAfter: " i na Facebooku, a z grupą można umówić się osobno.",
-      ctaIntro: "Napisz jeśli chcesz przyjść z grupą",
       mailtoLabel: "Zapytaj o oprowadzanie",
       mailtoSubject: "Oprowadzanie po wystawie – grupa",
     },
     traveling: {
       sectionId: "wyjazdowe",
       heading: "Wystawy wyjazdowe",
-      introBefore:
-        "Ikony Elżbiety Jackowskiej-Kurek pokazujemy też poza naszym kościołem – w kościołach, muzeach i domach kultury. Byliśmy m.in. w ",
-      introAfter:
-        ". Wystawę przygotowujemy razem z gospodarzem: dobieramy ikony do wnętrza i pomagamy je zawiesić. Każdy wyjazd ma swoją relację w Aktualnościach.",
+      placesLastJoiner: " i ",
+      placesJoiner: ", ",
       inviteCta: "Chcesz zaprosić wystawę do swojego miejsca?",
       mailtoLabel: "Napisz do nas",
       mailtoSubject: "Zaproszenie – wystawa wyjazdowa",
@@ -520,10 +380,6 @@ export const pl = {
     facts: {
       heading: "W skrócie",
       where: "Gdzie",
-      whereValue: "Kościół Środowisk Twórczych w Warszawie",
-    },
-    lightbox: {
-      openPhoto: "Powiększ zdjęcie: {alt}",
     },
   },
   publications: {
@@ -542,18 +398,15 @@ export const pl = {
     mailtoSubject: "Zamówienie – album „Ikona dziś. Akademia Ikony 2010–2025”",
     spreadsHeading: "Rozkładówki",
     spreadsIntroHub: "Pełna galeria rozkładówek jest na stronie albumu.",
-    showAllSpreads: "Pokaż wszystkie rozkładówki",
-    spreadKindLabel: "rozkładówka",
     facts: {
       year: "Rok",
       pages: "Objętość",
-      pagesValue: "{count} stron",
       pageCount: "Liczba stron",
       format: "Format",
       isbn: "ISBN",
       price: "Cena",
+      priceValue: "{price} zł",
       availability: "Dostępność",
-      availabilityAvailable: "Dostępny, wysyłka pocztą",
       availabilityAvailableShort: "Dostępny",
       availabilitySoldOut: "Wyczerpany",
       howToBuy: "Jak kupić",
@@ -561,12 +414,13 @@ export const pl = {
         "W Kościele Środowisk Twórczych lub mailowo, wysyłka pocztą.",
       publisher: "Wydawca",
       heading: "W skrócie",
-      shippingNote: "Koszt wysyłki i dane do przelewu sekretariat poda w odpowiedzi.",
     },
     articlesHeading: "Artykuły",
+    articleReadMore: "Czytaj",
     articlesLead:
       "Teksty wykładowców Akademii, wybrane pozycje z albumu oraz artykuły Elżbiety Jackowskiej-Kurek z mediów.",
     sampleTag: "[przykład]",
+    // Rendered by ArticleList around the italic album title: {title} stays a separate element.
     sourceFromAlbum: "Z albumu {title} · {year}",
     sourceFromMedia: "{outlet} · {year}",
     sourceAlbumMeta: "Z albumu",
@@ -577,7 +431,6 @@ export const pl = {
       "Rozdziały albumu z zakresem stron. Teksty opublikowane na stronie są oznaczone i prowadzą do pełnej wersji; nazwiska autorów linkują do ich not. Pozostałe strony zawierają zdjęcia ikon oraz życia Akademii.",
     tocPages: "str. {pages}",
     tocReadOnline: "Czytaj na stronie",
-    originHeading: "Jak powstał album",
     seeAlsoHeading: "Zobacz też",
     seeAlsoLabel: "Zobacz też",
     allPublications: "Wszystkie publikacje",
@@ -587,18 +440,12 @@ export const pl = {
     articleSourceHeading: "Źródło tekstu",
     articleSourceAlbumSentence:
       "Ten tekst pochodzi z albumu {title} wydanego przez Fundację IKONA DZIŚ.",
+    pageForms: ["strona", "strony", "stron"],
     articleSourceAlbumFacts: "{pages} {pageWord} · {format} · {price}",
     articleSourceViewAlbum: "Zobacz album",
     articleSourceOrder: "Zamów",
     articlePressReadPublisher: "Czytaj w serwisie wydawcy",
     lightbox: {
-      close: "Zamknij",
-      closeAria: "Zamknij",
-      previous: "Poprzednia",
-      previousAria: "Poprzednia rozkładówka",
-      next: "Następna",
-      nextAria: "Następna rozkładówka",
-      position: "{index} z {total}",
       openSpread: "Powiększ rozkładówkę: {alt}",
     },
   },
@@ -615,7 +462,6 @@ export const pl = {
     sitemapAriaLabel: "Działy serwisu",
   },
   contact: {
-    breadcrumbHome: "Strona główna",
     addressHeading: "Adres",
     mapTitle: "Mapa dojazdu",
     mapPlaceholder: "Mapa – osadzenie zewnętrzne",
@@ -632,6 +478,7 @@ export const pl = {
       "Wykłady, warsztaty, plenery, wystawy i spotkania w Akademii Ikony – oraz archiwum od 2012 roku, w jednym strumieniu wpisów.",
     yearNavAriaLabel: "Przejdź do roku",
     yearNavLabel: "Przejdź do roku",
+    yearNavMore: "…",
     featuredLabel: "Wyróżnione",
     showArchiveLabel: "Pokaż archiwum {range} ({count} {word})",
     archiveEntryForms: {
@@ -656,10 +503,7 @@ export const pl = {
       few: "zdjęcia",
       many: "zdjęć",
     },
-    backToExhibition: "Wystawa {year}",
     allNewsLink: "Wszystkie aktualności",
-    previousEntry: "Poprzedni",
-    nextEntry: "Następny",
     previousEntryNav: "← Poprzedni wpis",
     nextEntryNav: "Następny wpis →",
     previousEntryAria: "Poprzedni wpis: {title}",
@@ -670,25 +514,20 @@ export const pl = {
     showAllGallery: "Pokaż wszystkie ({count})",
     enlargePhotoAria: "Powiększ zdjęcie {n} z {total}",
     relatedHeading: "Powiązane",
+    // Default „Powiązane” for kinds whose label is not a nav label (the rest come from navigation.ts).
     relatedDefaults: {
-      warsztaty: "Kurs roczny i trzyletni",
-      wyklady: "Wykłady",
       wystawa: "Wystawy w Kościele Środowisk Twórczych",
-      wyjazd: "Letnia Szkoła Światła",
     },
     relatedLectureArchive: "Archiwum wykładów",
     eventCta: {
       warsztaty: "Jak się zapisać na kurs",
       wyklady: "Program wykładów",
       wystawa: "Wystawy w Kościele Środowisk Twórczych",
-      wyjazd: "Letnia Szkoła Światła",
     },
-    breadcrumbYearAria: "Aktualności z roku {year}",
-    ctaContact: "akademiaikony@gmail.com · 601 734 705",
   },
   footer: {
     sitemapAriaLabel: "Mapa strony",
-    copyright: "© 2026 Akademia Ikony",
+    copyright: "© {year} Akademia Ikony",
     // Verbatim from brief-claude-code.md §8.
     accessibilityNote: "Przestrzeń bez barier architektonicznych",
     organizerLabel: "Organizator",
@@ -702,3 +541,8 @@ export const pl = {
     designCreditUrl: "https://grzegorzkurek.pl/",
   },
 } as const;
+
+// Single-letter words glued with a non-breaking space; `meta` feeds `<title>` and stays plain.
+const { meta, ...plBody } = plSource;
+
+export const pl = { meta, ...nbspDeep(plBody) };

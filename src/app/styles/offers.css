@@ -1,0 +1,99 @@
+@layer components {
+  .prose-offer .offer-day-rhythm-grid {
+    display: grid;
+    gap: 0;
+    margin-top: var(--space-7);
+  }
+
+  .prose-offer .offer-day-rhythm-grid > * + * {
+    border-top: 1px solid var(--line-gold);
+  }
+
+  .prose-offer .offer-day-rhythm-row {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-4);
+    align-items: baseline;
+    background: var(--surface-tile);
+    padding: var(--offer-day-rhythm-y) var(--offer-day-rhythm-x);
+    font-size: var(--size-body-lg);
+    line-height: var(--leading-body);
+    color: var(--text-secondary);
+  }
+
+  /* Rows share one label column that grows with the longest label (subgrid), never narrower
+     than the design value (V3-02). The row padding sits inside the shared track. */
+  @media (min-width: 768px) {
+    .prose-offer .offer-day-rhythm-grid {
+      grid-template-columns: minmax(calc(var(--offer-day-rhythm-time-col) + var(--offer-day-rhythm-x)), max-content) 1fr;
+    }
+
+    .prose-offer .offer-day-rhythm-row {
+      grid-column: 1 / -1;
+      grid-template-columns: subgrid;
+      gap: var(--offer-day-rhythm-gap);
+    }
+  }
+
+  .prose-offer .offer-day-rhythm-time {
+    font-family: var(--font-serif);
+    font-size: var(--size-h2-sm);
+    color: var(--accent-text);
+  }
+
+  .offer-step-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .offer-step-grid > * + * {
+    border-top: 1px solid var(--line-gold);
+  }
+
+  /* OfferQuoteGrid / OfferQuote — fill the card, not --measure-prose (RF-21). */
+  .offer-quote-tile,
+  .offer-quote-feature {
+    max-width: none;
+    text-wrap: pretty;
+  }
+
+  .offer-quote-tile > p,
+  .offer-quote-tile > footer,
+  .offer-quote-feature > p,
+  .offer-quote-feature > footer {
+    max-width: none;
+  }
+
+  /* Enrollment + quote: same gap as header; column widths inverted vs offer-main (narrow | wide). */
+  .offer-enrollment-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    align-items: start;
+  }
+
+  @media (min-width: 1024px) {
+    .offer-enrollment-grid {
+      grid-template-columns: var(--offer-sidebar-w) minmax(0, 1fr);
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .offer-step-grid {
+      grid-template-columns: repeat(var(--step-count), minmax(0, 1fr));
+    }
+
+    .offer-step-grid > * + * {
+      border-top: none;
+      border-left: 1px solid var(--line-gold);
+    }
+
+    .offer-step-grid > *:first-child {
+      border-left: none;
+    }
+  }
+
+}

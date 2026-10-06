@@ -94,7 +94,7 @@ For each file in scope, check against priorities below. Skim related existing co
 
 1. **Prostota** — minimal solutions; flag over-engineering (extra context, unnecessary Client Components, indirection).
 2. **Reuse** — new code replaceable by existing components/patterns from prior etapy?
-3. **Standaryzacja** — design tokens from `globals.css` / `@theme`; no arbitrary Tailwind (`text-[…]`, `bg-[#…]`); banned: `#8d7d69`, 13px, shadows/radius outside `Lightbox`, IBM Plex Mono.
+3. **Standaryzacja** — design tokens from `globals.css` / `@theme`; no arbitrary Tailwind (`text-[…]`, `bg-[#…]`); banned: `#8d7d69`, 13px, `box-shadow`, border-radius (K-140), IBM Plex Mono.
 4. **Konwencje repo** — K-11, no `for`/`for-of`, UI strings in `pl.ts`, RSC default, `next/image` with dimensions, no unapproved `types.ts` changes, editorial content only in `content/`.
 5. **Stage-specific focus** — from step 3.
 6. **DoD from plan** — technical compliance with plan checklist (not merytoryka).

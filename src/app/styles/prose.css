@@ -1,0 +1,67 @@
+/* Prose wrappers (core/Prose.tsx): flow rhythm for MDX and plain-text blocks.
+   Type roles come from typography.css; this file only adds colour and spacing.
+   Variants: text (text pages, articles), offer (offer pages); news lives in
+   news-article.css (.prose-news — Garamond scale from the entry mockup).
+   One paragraph gap per variant: 20 px (--space-5) for text and offer. */
+@layer components {
+  .prose-text > p,
+  .prose-offer > p {
+    color: var(--text-body);
+  }
+
+  .prose-text > p + p,
+  .prose-offer > p + p {
+    margin-top: var(--space-5);
+  }
+
+  /* MDX lists only — component grids use ul.list-none and span the section column. */
+  .prose-text > ul:not(.list-none),
+  .prose-offer > ul:not(.list-none),
+  .prose-text > ol:not(.list-none),
+  .prose-offer > ol:not(.list-none) {
+    margin-bottom: var(--space-4);
+    max-width: var(--measure-prose);
+    padding-left: var(--space-6);
+    font-size: var(--size-body);
+    line-height: var(--leading-body);
+    color: var(--text-body);
+  }
+
+  .prose-text > ul:not(.list-none),
+  .prose-offer > ul:not(.list-none) {
+    list-style: disc;
+  }
+
+  .prose-text > ol:not(.list-none),
+  .prose-offer > ol:not(.list-none) {
+    list-style: decimal;
+  }
+
+  .prose-text > ul:not(.list-none) > li,
+  .prose-offer > ul:not(.list-none) > li,
+  .prose-text > ol:not(.list-none) > li,
+  .prose-offer > ol:not(.list-none) > li {
+    margin-bottom: var(--space-2);
+  }
+
+  .prose-text > h2,
+  .prose-offer > h2 {
+    margin: var(--section-gap) 0 var(--heading-gap);
+  }
+
+  .prose-text > h2:first-child,
+  .prose-offer > h2:first-child {
+    margin-top: 0;
+  }
+
+  .prose-text > h3,
+  .prose-offer > h3 {
+    margin: var(--space-6) 0 var(--space-3);
+    scroll-margin-top: var(--space-6);
+  }
+
+  .prose-text > blockquote,
+  .prose-offer > blockquote {
+    max-width: none;
+  }
+}

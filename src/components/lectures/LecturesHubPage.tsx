@@ -2,27 +2,28 @@ import { FactsBox } from "@/components/content/FactsBox";
 import { LectureList } from "@/components/content/LectureList";
 import { TextLink } from "@/components/core/TextLink";
 import { SectionPageShell } from "@/components/layout/SectionPageShell";
+import type { EnrollmentState } from "@/content/enrollment";
 import type { LoadedLectureSeason } from "@/content/lectures";
 import type { OfferFacts } from "@/content/types";
 import { pl } from "@/i18n/pl";
-import type { SectionKey } from "@/navigation";
+import { PageHeading } from "@/components/core/PageHeading";
+import { LectureCycleTitle } from "@/components/lectures/LectureCycleTitle";
 
 export interface LecturesHubPageProps {
   season: LoadedLectureSeason;
   archiveIntro: string;
   facts: OfferFacts;
-  section: SectionKey;
-  sectionActive: string;
-  active: string;
+  enrollment: EnrollmentState;
+  /** Route path — see SectionPageShellProps["path"]. */
+  path: string;
 }
 
 export function LecturesHubPage({
   season,
   archiveIntro,
   facts,
-  section,
-  sectionActive,
-  active,
+  enrollment,
+  path,
 }: LecturesHubPageProps) {
   const eyebrow = pl.lectures.eyebrow.replace("{seasonLabel}", season.label);
   const programLead = pl.lectures.programLead
@@ -30,18 +31,18 @@ export function LecturesHubPage({
     .replace("{seasonLabel}", season.label);
 
   return (
-    <SectionPageShell active={active} section={section} sectionActive={sectionActive}>
+    <SectionPageShell path={path}>
       <div
         id="zapisy"
-        className="scroll-mt-space-6 grid grid-cols-1 lg:grid-cols-offer-main gap-space-6 lg:gap-offer-main-gap items-start mb-space-7"
+        className="scroll-mt-space-6 grid grid-cols-1 lg:grid-cols-offer-main gap-space-6 lg:gap-offer-main-gap items-start mb-section-gap-tight"
       >
         <div className="min-w-0">
           <p className="font-serif text-size-lectures-eyebrow text-accent-text mb-lectures-eyebrow-mb">
             {eyebrow}
           </p>
-          <h1 className="font-serif text-size-h1-m md:text-size-h1 leading-tight text-text-h1 mb-space-5">
-            {season.cycleTitle}
-          </h1>
+          <PageHeading level="page" variant="lecture-cycle" className="mb-space-5">
+            <LectureCycleTitle cycleTitle={season.cycleTitle} />
+          </PageHeading>
 
           {season.intro ? (
             <p className="text-size-lead-m md:text-size-lead leading-body text-text-secondary max-w-measure-lead mb-space-5">
@@ -50,37 +51,34 @@ export function LecturesHubPage({
           ) : null}
 
           {season.introSecondary ? (
-            <p className="text-size-body-lg leading-prose text-text-secondary max-w-measure-prose">
+            <p className="body-copy text-text-secondary">
               {season.introSecondary}
             </p>
           ) : null}
         </div>
 
-        <FactsBox facts={facts} kind="wyklady" />
+        <FactsBox facts={facts} kind="wyklady" enrollment={enrollment} />
       </div>
 
-      <section aria-labelledby="lectures-program-heading">
-        <h2
-          id="lectures-program-heading"
-          className="font-serif text-size-role-section-h2-m md:text-size-role-section-h2 leading-heading text-text-h2 mb-lectures-program-heading-mb"
-        >
-          {pl.lectures.programHeading}
-        </h2>
-        <p className="text-size-body leading-body text-text-secondary mb-lectures-program-lead-mb max-w-measure-prose">
-          {programLead}
-        </p>
-        <LectureList items={season.lectures} />
-      </section>
+      {/* A section without data is not rendered at all — no heading, no gap. */}
+      {season.lectures.length > 0 ? (
+        <section aria-labelledby="lectures-program-heading">
+          <PageHeading level="section" id="lectures-program-heading" className="mb-heading-gap">
+            {pl.lectures.programHeading}
+          </PageHeading>
+          <p className="text-size-body leading-body text-text-secondary mb-lectures-program-lead-mb max-w-measure-prose">
+            {programLead}
+          </p>
+          <LectureList items={season.lectures} />
+        </section>
+      ) : null}
 
-      <section aria-labelledby="lectures-archive-heading" className="pt-lectures-archive-section-pt">
-        <div className="flex flex-wrap items-baseline justify-between gap-x-space-4 gap-y-space-2 mb-space-2">
-          <h2
-            id="lectures-archive-heading"
-            className="font-serif text-size-role-section-h2-m md:text-size-role-section-h2 leading-heading text-text-h2"
-          >
+      <section aria-labelledby="lectures-archive-heading" className="mt-section-gap">
+        <div className="flex flex-wrap items-baseline justify-between gap-x-space-4 gap-y-space-2 mb-heading-gap">
+          <PageHeading level="section" id="lectures-archive-heading">
             {pl.lectures.archiveHeading}
-          </h2>
-          <TextLink href="/wyklady/archiwum" className="text-size-body">
+          </PageHeading>
+          <TextLink standalone href="/wyklady/archiwum" className="text-size-body">
             {pl.lectures.archiveFullLink}
           </TextLink>
         </div>

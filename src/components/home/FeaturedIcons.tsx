@@ -3,6 +3,7 @@ import { TextLink } from "@/components/core/TextLink";
 import { FeaturedIconsGallery } from "@/components/home/FeaturedIconsGallery";
 import { getFeaturedIconWorks } from "@/content/icons";
 import { pl } from "@/i18n/pl";
+import { PageHeading } from "@/components/core/PageHeading";
 
 /**
  * "Wybrane ikony" — curated preview of the gallery. Desktop shows all 4 with
@@ -13,11 +14,11 @@ export function FeaturedIcons() {
   const icons = getFeaturedIconWorks();
 
   return (
-    <section className="px-page-margin-mobile md:px-page-margin py-space-7 md:py-space-8">
-      <div className="flex items-baseline justify-between mb-space-5 md:mb-space-6">
-        <h2 className="font-serif text-size-role-section-h2-m md:text-size-role-section-h2 leading-heading text-text-h2">
+    <section className="px-page-margin-mobile md:px-page-margin pt-section-gap pb-space-6">
+      <div className="flex items-baseline justify-between mb-heading-gap">
+        <PageHeading level="section">
           {pl.home.icons.heading}
-        </h2>
+        </PageHeading>
         <TextLink href="/ikony" className="hidden md:inline text-size-body">
           {pl.home.icons.seeAllLabel}
         </TextLink>

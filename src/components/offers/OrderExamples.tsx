@@ -2,6 +2,7 @@ import { TextLink } from "@/components/core/TextLink";
 import { FeaturedIconsGallery } from "@/components/home/FeaturedIconsGallery";
 import { getFeaturedIconWorks } from "@/content/icons";
 import { pl } from "@/i18n/pl";
+import { PageHeading } from "@/components/core/PageHeading";
 
 /** Same curated set and gallery UX as home „Wybrane ikony” (justified rows, lightbox). */
 export function OrderExamples() {
@@ -10,16 +11,13 @@ export function OrderExamples() {
   return (
     <section
       aria-labelledby="order-examples-heading"
-      className="mt-space-8 pb-offer-examples-pb"
+      className="mt-section-gap"
     >
-      <h2
-        id="order-examples-heading"
-        className="font-serif text-size-role-section-h2-m md:text-size-role-section-h2 leading-heading text-text-h2 mb-offer-examples-heading-mb"
-      >
+      <PageHeading level="section" id="order-examples-heading" className="mb-heading-gap">
         {pl.offers.orderExamplesHeading}
-      </h2>
+      </PageHeading>
       <FeaturedIconsGallery icons={icons} />
-      <TextLink href="/ikony" className="inline-block mt-offer-examples-link-mt text-size-body">
+      <TextLink standalone href="/ikony" className="mt-offer-examples-link-mt text-size-body">
         {pl.home.icons.seeAllLabel}
       </TextLink>
     </section>

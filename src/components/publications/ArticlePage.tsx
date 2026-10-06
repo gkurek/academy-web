@@ -4,14 +4,17 @@ import { Breadcrumb } from "@/components/navigation/Breadcrumb";
 import type { LoadedArticle } from "@/content/articles";
 import { getPublicationBySlug } from "@/content/publications";
 import { pl } from "@/i18n/pl";
-import { footerSitemapFlat } from "@/navigation";
+import { publicationsLink } from "@/navigation";
+import { PageHeading } from "@/components/core/PageHeading";
+import { Prose } from "@/components/core/Prose";
 
 export interface ArticlePageProps {
   article: LoadedArticle;
+  /** Route path — see SectionPageShellProps["path"]. */
+  path: string;
 }
 
-export function ArticlePage({ article }: ArticlePageProps) {
-  const publicationsLabel = footerSitemapFlat.find((item) => item.href === "/publikacje")!.label;
+export function ArticlePage({ article, path }: ArticlePageProps) {
   const publication =
     article.source.kind === "album"
       ? getPublicationBySlug(article.source.publicationSlug)
@@ -19,24 +22,24 @@ export function ArticlePage({ article }: ArticlePageProps) {
   const { Content } = article;
 
   return (
-    <SectionPageShell active={publicationsLabel}>
-      <article className="mx-auto w-full max-w-content-max publication-page publication-article">
+    <SectionPageShell path={path}>
+      <article className="publication-page publication-article">
         <Breadcrumb
           items={[
             { label: pl.publications.breadcrumbHome, href: "/" },
-            { label: publicationsLabel, href: "/publikacje" },
+            { label: publicationsLink.label, href: publicationsLink.href },
             { label: article.title },
           ]}
         />
 
         <header className="publication-article-header">
-          <h1 className="publication-article-title">{article.title}</h1>
+          <PageHeading level="page" className="mb-space-4">{article.title}</PageHeading>
           <ArticleSourceBlock article={article} publication={publication} variant="meta" />
         </header>
 
-        <div className="publication-article-body text-page-mdx">
+        <Prose variant="text" className="publication-article-body">
           <Content />
-        </div>
+        </Prose>
 
         <ArticleSourceBlock article={article} publication={publication} variant="footer" />
       </article>

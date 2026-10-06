@@ -1,8 +1,8 @@
 import Image from "next/image";
 
-import { TextLink } from "@/components/core/TextLink";
 import { SectionPageShell } from "@/components/layout/SectionPageShell";
 import { NewsCard } from "@/components/news/NewsCard";
+import { PublicationSeeAlso } from "@/components/publications/PublicationSeeAlso";
 import { PublicationMetricsBox } from "@/components/publications/PublicationMetricsBox";
 import { PublicationSpreadStrip } from "@/components/publications/PublicationSpreadStrip";
 import { PublicationTocList } from "@/components/publications/PublicationTocList";
@@ -10,30 +10,33 @@ import { Breadcrumb } from "@/components/navigation/Breadcrumb";
 import { getNewsBySlug } from "@/content/news";
 import type { LoadedPublication } from "@/content/publications";
 import { pl } from "@/i18n/pl";
-import { footerSitemapFlat } from "@/navigation";
+import { publicationsLink } from "@/navigation";
+import { PageHeading } from "@/components/core/PageHeading";
+import { Prose } from "@/components/core/Prose";
 
 export interface PublicationAlbumPageProps {
   publication: LoadedPublication;
+  /** Route path — see SectionPageShellProps["path"]. */
+  path: string;
 }
 
-export function PublicationAlbumPage({ publication }: PublicationAlbumPageProps) {
-  const publicationsLabel = footerSitemapFlat.find((item) => item.href === "/publikacje")!.label;
+export function PublicationAlbumPage({ publication, path }: PublicationAlbumPageProps) {
   const relatedNews = publication.relatedNewsSlug
     ? getNewsBySlug(publication.relatedNewsSlug)
     : undefined;
   return (
-    <SectionPageShell active={publicationsLabel}>
-      <div className="mx-auto w-full max-w-content-max publication-page">
+    <SectionPageShell path={path}>
+      <div className="publication-page">
         <Breadcrumb
           items={[
             { label: pl.publications.breadcrumbHome, href: "/" },
-            { label: publicationsLabel, href: "/publikacje" },
+            { label: publicationsLink.label, href: publicationsLink.href },
             { label: publication.title },
           ]}
         />
 
         <header className="publication-page-header">
-          <h1 className="publication-page-title">{publication.title}</h1>
+          <PageHeading level="page" className="mb-space-5">{publication.title}</PageHeading>
           <p className="publication-page-lead">{publication.lead}</p>
         </header>
 
@@ -62,38 +65,37 @@ export function PublicationAlbumPage({ publication }: PublicationAlbumPageProps)
         </section>
 
         <section className="publication-spreads-section" aria-labelledby="publication-spreads-heading">
-          <h2 id="publication-spreads-heading" className="publication-section-heading">
+          <PageHeading level="section" id="publication-spreads-heading" className="mb-heading-gap">
             {pl.publications.spreadsHeading}
-          </h2>
+          </PageHeading>
           <PublicationSpreadStrip spreads={publication.spreads} columns={3} />
         </section>
 
         <section className="publication-about-section" aria-labelledby="publication-about-heading">
-          <h2 id="publication-about-heading" className="publication-section-heading">
+          <PageHeading level="section" id="publication-about-heading" className="mb-heading-gap">
             {pl.publications.aboutHeading}
-          </h2>
-          <div className="publication-about-copy">
+          </PageHeading>
+          <Prose variant="text" className="publication-about-copy">
             {publication.aboutParagraphs.map((paragraph) => (
-              <p key={paragraph} className="publication-about-paragraph">{paragraph}</p>
+              <p key={paragraph}>{paragraph}</p>
             ))}
-          </div>
+          </Prose>
         </section>
 
         <PublicationTocList chapters={publication.chapters} items={publication.toc} />
 
-        <section className="publication-see-also publication-album-footer-links">
-          <TextLink href="/publikacje">{pl.publications.allPublications}</TextLink>
-          <TextLink href="/wyklady">{pl.publications.lecturesScheduleLink}</TextLink>
-        </section>
-
         {relatedNews ? (
           <section className="publication-related-section" aria-labelledby="publication-related-heading">
-            <h2 id="publication-related-heading" className="publication-section-heading">
+            <PageHeading level="section" id="publication-related-heading" className="mb-heading-gap">
               {pl.publications.seeAlsoHeading}
-            </h2>
+            </PageHeading>
             <NewsCard entry={relatedNews} />
           </section>
         ) : null}
+
+        <PublicationSeeAlso
+          links={[{ href: "/publikacje", label: pl.publications.allPublications }, { href: "/wyklady", label: pl.publications.lecturesScheduleLink }]}
+        />
       </div>
     </SectionPageShell>
   );

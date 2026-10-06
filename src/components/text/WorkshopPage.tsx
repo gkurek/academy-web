@@ -3,18 +3,16 @@ import { LearningForms } from "@/components/text/LearningForms";
 import { TextPageShell } from "@/components/text/TextPageShell";
 import { WorkshopGallerySection } from "@/components/text/WorkshopGallerySection";
 import type { LoadedWorkshopPage } from "@/content/pages";
-import { mainNav, sectionNav } from "@/navigation";
-
-const slug = "pracownia";
-
-const mainNavActive = mainNav.find((item) => item.href === "/o-akademii")!.label;
-const sectionActive = sectionNav["o-akademii"].find((link) => link.href === `/${slug}`)!.label;
+import { PageHeading } from "@/components/core/PageHeading";
+import { Prose } from "@/components/core/Prose";
 
 export interface WorkshopPageProps {
   page: LoadedWorkshopPage;
+  /** Route path — see SectionPageShellProps["path"]. */
+  path: string;
 }
 
-export function WorkshopPage({ page }: WorkshopPageProps) {
+export function WorkshopPage({ page, path }: WorkshopPageProps) {
   const { title, lead, toc, learningForms, interview, curriculum, curriculumParagraphs, gallery } =
     page;
 
@@ -23,24 +21,22 @@ export function WorkshopPage({ page }: WorkshopPageProps) {
       title={title}
       lead={lead}
       toc={toc}
-      active={mainNavActive}
-      section="o-akademii"
-      sectionActive={sectionActive}
+      path={path}
     >
       <section id="formy-nauki" className="workshop-section scroll-mt-space-6">
-        <h2 className="workshop-section-heading">{learningForms.heading}</h2>
+        <PageHeading level="section" className="mb-heading-gap">{learningForms.heading}</PageHeading>
         <LearningForms rows={learningForms.rows} contact={learningForms.contact} />
       </section>
 
       <Interview heading={interview.heading} interview={interview} />
 
       <section id="czego-sie-uczymy" className="workshop-section scroll-mt-space-6">
-        <h2 className="workshop-section-heading">{curriculum.heading}</h2>
-        <div className="text-page-mdx">
-          {curriculumParagraphs.map((paragraph) => (
-            <p key={paragraph.slice(0, 32)}>{paragraph}</p>
+        <PageHeading level="section" className="mb-heading-gap">{curriculum.heading}</PageHeading>
+        <Prose variant="text">
+          {curriculumParagraphs.map((paragraph, index) => (
+            <p key={index}>{paragraph}</p>
           ))}
-        </div>
+        </Prose>
       </section>
 
       <WorkshopGallerySection

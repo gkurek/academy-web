@@ -4,9 +4,13 @@ import type { LoadedPrivacyPolicyPage } from "@/content/pages";
 import type { PrivacyPolicySection, TocItem } from "@/content/types";
 import { pl } from "@/i18n/pl";
 import { formatDateRange } from "@/lib/formatDateRange";
+import { PageHeading } from "@/components/core/PageHeading";
+import { Prose } from "@/components/core/Prose";
 
 export interface PrivacyPolicyPageProps {
   page: LoadedPrivacyPolicyPage;
+  /** Route path — see SectionPageShellProps["path"]. */
+  path: string;
 }
 
 function sectionHeading(toc: TocItem[], id: string): string {
@@ -22,41 +26,41 @@ function PrivacyPolicySectionBlock({
 }) {
   return (
     <section id={section.id} className="privacy-policy-section scroll-mt-space-6">
-      <h2 className="privacy-policy-section-heading">{sectionHeading(toc, section.id)}</h2>
-      <div className="text-page-mdx">
-        {section.paragraphs.map((paragraph) => (
-          <p key={paragraph.slice(0, 48)}>{paragraph}</p>
+      <PageHeading level="section" className="mb-heading-gap">{sectionHeading(toc, section.id)}</PageHeading>
+      <Prose variant="text">
+        {section.paragraphs.map((paragraph, index) => (
+          <p key={index}>{paragraph}</p>
         ))}
         {section.list ? (
-          <ul className="mb-space-4 list-disc pl-space-6 text-size-body leading-body text-text-body">
-            {section.list.map((item) => (
-              <li key={item.slice(0, 48)} className="mb-space-2">{item}</li>
+          <ul>
+            {section.list.map((item, index) => (
+              <li key={index}>{item}</li>
             ))}
           </ul>
         ) : null}
-        {section.paragraphsAfterList?.map((paragraph) => (
-          <p key={paragraph.slice(0, 48)}>{paragraph}</p>
+        {section.paragraphsAfterList?.map((paragraph, index) => (
+          <p key={index}>{paragraph}</p>
         ))}
-      </div>
+      </Prose>
     </section>
   );
 }
 
-export function PrivacyPolicyPage({ page }: PrivacyPolicyPageProps) {
+export function PrivacyPolicyPage({ page, path }: PrivacyPolicyPageProps) {
   const { title, lead, toc, sections, lastUpdated, contactEmail } = page;
   const lastUpdatedLabel = formatDateRange(lastUpdated, undefined, { withYear: true });
 
   return (
-    <TextPageShell title={title} lead={lead} toc={toc}>
+    <TextPageShell title={title} lead={lead} toc={toc} path={path}>
       <div className="privacy-policy-content">
         {sections.map((section) => (
           <PrivacyPolicySectionBlock key={section.id} section={section} toc={toc ?? []} />
         ))}
 
         <section id="kontakt-w-sprawie-danych" className="privacy-policy-section scroll-mt-space-6">
-          <h2 className="privacy-policy-section-heading">
+          <PageHeading level="section" className="mb-heading-gap">
             {sectionHeading(toc ?? [], "kontakt-w-sprawie-danych")}
-          </h2>
+          </PageHeading>
           <p className="privacy-policy-contact text-size-body leading-body text-text-secondary md:text-size-body-lg md:leading-prose">
             <TextLink href={`mailto:${contactEmail}`}>{contactEmail}</TextLink>
           </p>

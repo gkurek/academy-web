@@ -1,9 +1,10 @@
 import Image from "next/image";
-import type { ReactNode } from "react";
+import { useId, type ReactNode } from "react";
 
 import { Button } from "@/components/core/Button";
 import { pl } from "@/i18n/pl";
 import { buildMailtoHref } from "@/lib/mailto";
+import { Prose } from "@/components/core/Prose";
 
 export interface OfferSideCtaProps {
   /** MDX body of the left column. */
@@ -30,12 +31,14 @@ export function OfferSideCta({
   email,
   subject,
 }: OfferSideCtaProps) {
-  const headingId = "offer-side-cta-heading";
+  const headingId = useId();
   const { sideCta } = pl.offers;
 
   return (
     <div className="grid grid-cols-1 lg:grid-cols-offer-main gap-space-7 lg:gap-offer-main-gap items-start">
-      <div className="min-w-0">{children}</div>
+      <Prose variant="offer" className="min-w-0">
+        {children}
+      </Prose>
 
       <div>
         <Image
@@ -44,7 +47,7 @@ export function OfferSideCta({
           width={imageWidth}
           height={imageHeight}
           sizes="(min-width: 1024px) 400px, 100vw"
-          className="w-full aspect-lecturer-photo object-cover"
+          className="w-full aspect-offer-side-photo object-cover"
         />
         <aside
           aria-labelledby={headingId}

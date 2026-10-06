@@ -2,52 +2,29 @@ import { GalleryFilters } from "@/components/gallery/GalleryFilters";
 import { GalleryIconGrid } from "@/components/gallery/GalleryIconGrid";
 import { GalleryOrderTeaser } from "@/components/gallery/GalleryOrderTeaser";
 import { SectionPageShell } from "@/components/layout/SectionPageShell";
-import type { GallerySectionData } from "@/components/gallery/GalleryIconGrid";
-import {
-  filterIconWorks,
-  getIconTags,
-  getIconWorks,
-  getStudentNames,
-  groupIconSections,
-  parseIconFilters,
-} from "@/content/icons";
+import type { IconWork } from "@/content/types";
 import { pl } from "@/i18n/pl";
+import { PageHeading } from "@/components/core/PageHeading";
 
 export interface GalleryPageProps {
-  active: string;
-  sectionActive: string;
-  searchParams: Record<string, string | string[] | undefined>;
+  /** Route path — see SectionPageShellProps["path"]. */
+  path: string;
+  works: IconWork[];
+  tags: string[];
 }
 
-export function GalleryPage({ active, sectionActive, searchParams }: GalleryPageProps) {
-  const filters = parseIconFilters(searchParams);
-  const allWorks = getIconWorks();
-  const filteredWorks = filterIconWorks(allWorks, filters);
-  const tags = getIconTags();
-  const sections: GallerySectionData[] = groupIconSections(filteredWorks).map(({ id, works }) => ({
-    id,
-    title: pl.gallery.sections[id].title,
-    works,
-    ...(id === "uczniowie" ? { names: getStudentNames(works) } : {}),
-  }));
-  const tematParam = searchParams.temat;
-  const tematRaw = typeof tematParam === "string" ? tematParam : undefined;
-  const hasInvalidTag = tematRaw !== undefined && filters.tag === undefined;
-  const hasLegacyAutor = searchParams.autor !== undefined;
-  const needsCanonicalTemat =
-    tematRaw !== undefined && filters.tag !== undefined && tematRaw !== filters.tag;
-  const needsUrlCleanup = hasInvalidTag || hasLegacyAutor || needsCanonicalTemat;
-
+/** Static route: the whole gallery is in the HTML; `?temat=` narrows it in the client (R3-04, D8). */
+export function GalleryPage({ path, works, tags }: GalleryPageProps) {
   return (
-    <SectionPageShell active={active} section="ikony" sectionActive={sectionActive}>
+    <SectionPageShell path={path}>
       <header className="pb-space-5 mb-space-6 border-b border-line-gold">
-        <h1 className="font-serif text-size-h1-m md:text-size-h1 leading-tight text-text-h1 mb-space-5">
+        <PageHeading level="page" className="mb-space-5">
           {pl.gallery.title}
-        </h1>
-        <GalleryFilters tags={tags} filters={filters} needsUrlCleanup={needsUrlCleanup} />
+        </PageHeading>
+        <GalleryFilters tags={tags} />
       </header>
 
-      <GalleryIconGrid sections={sections} listKey={filters.tag ?? ""} />
+      <GalleryIconGrid works={works} />
 
       <GalleryOrderTeaser />
     </SectionPageShell>

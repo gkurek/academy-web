@@ -1,10 +1,13 @@
+import { nbspDeep } from "@/lib/typography";
 import type { ComponentType } from "react";
 
-import type { Image, Publication } from "@/content/types";
+import type { Publication } from "@/content/types";
 import { assertLecturerSlugExists } from "@/content/authors";
 import { articleModules } from "@/content/articles-registry";
 import { publicationModules } from "@/content/publications-registry";
 import { validatePublicationSlugCollisions } from "@/content/publication-slugs";
+import { assertMdxExports, assertNewsSlug } from "@/content/validate";
+import { pl } from "@/i18n/pl";
 import * as ikonaDzisBody from "../../content/publications/ikona-dzis-body.mdx";
 
 export type PublicationFrontmatter = Publication & {
@@ -24,10 +27,14 @@ type PublicationBodyExports = {
 };
 
 const bodyBySlug: Record<string, PublicationBodyExports> = {
-  "ikona-dzis": ikonaDzisBody as unknown as PublicationBodyExports,
+  "ikona-dzis": assertMdxExports<PublicationBodyExports>(
+    ikonaDzisBody,
+    ["aboutParagraphs"],
+    "content/publications/ikona-dzis-body.mdx",
+  ),
 };
 
-const publicationEntries = Object.values(publicationModules).map((module) => module.frontmatter);
+const publicationEntries = Object.values(publicationModules).map((module) => nbspDeep(module.frontmatter));
 
 validatePublicationSlugCollisions(
   publicationEntries.map((entry) => entry.slug),
@@ -86,6 +93,12 @@ function validatePublicationChapters(publication: PublicationFrontmatter): void 
   });
 }
 
+publicationEntries.forEach((publication) => {
+  if (publication.relatedNewsSlug) {
+    assertNewsSlug(publication.relatedNewsSlug, `Publication "${publication.slug}" relatedNewsSlug`);
+  }
+});
+
 publicationEntries.forEach(validatePublicationToc);
 publicationEntries.forEach(validatePublicationChapters);
 
@@ -112,13 +125,23 @@ export function getPublications(): PublicationFrontmatter[] {
   return publicationEntries;
 }
 
+/** The album shown on `/publikacje` — required content, so its absence fails the build (R3-01). */
+export function requirePublication(): PublicationFrontmatter {
+  const [publication] = publicationEntries;
+  if (!publication) {
+    throw new Error("content/publications: no publication — /publikacje needs the album");
+  }
+  return publication;
+}
+
 export function getPublicationBySlug(slug: string): PublicationFrontmatter | undefined {
-  return publicationModules[slug]?.frontmatter;
+  return publicationEntries.find((entry) => entry.slug === slug);
 }
 
 export function loadPublicationBySlug(slug: string): LoadedPublication | undefined {
   const publicationModule = publicationModules[slug];
-  if (!publicationModule) {
+  const publication = getPublicationBySlug(slug);
+  if (!publicationModule || !publication) {
     return undefined;
   }
 
@@ -128,8 +151,8 @@ export function loadPublicationBySlug(slug: string): LoadedPublication | undefin
   }
 
   return {
-    ...publicationModule.frontmatter,
-    aboutParagraphs: body.aboutParagraphs,
+    ...publication,
+    aboutParagraphs: nbspDeep(body.aboutParagraphs),
     Content: publicationModule.Content,
   };
 }
@@ -139,9 +162,5 @@ export function formatPublicationPrice(price?: number): string | undefined {
     return undefined;
   }
 
-  return `${price} zł`;
-}
-
-export function getHubSpreadPreview(spreads: Image[], limit = 4): Image[] {
-  return spreads.slice(0, limit);
+  return pl.publications.facts.priceValue.replace("{price}", String(price));
 }

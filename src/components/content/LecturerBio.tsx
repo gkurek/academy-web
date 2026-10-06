@@ -43,9 +43,8 @@ export function LecturerBio({ bio, collapsible, name }: LecturerBioProps) {
           aria-controls={bioId}
           aria-label={toggleLabel}
           className={[
-            "pt-space-4 text-size-nav text-accent-text hover:text-accent-hover cursor-pointer",
+            "inline-flex min-h-tap-min-mobile-header items-end lg:inline lg:min-h-0 pt-space-4 text-size-nav text-accent-text hover:text-accent-hover cursor-pointer",
             "border-b border-accent-veil hover:border-accent-hover",
-            "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus-ring",
           ].join(" ")}
         >
           {expanded ? pl.lecturers.collapseBio : pl.lecturers.expandBio}

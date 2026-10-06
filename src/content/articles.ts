@@ -1,3 +1,4 @@
+import { nbspDeep } from "@/lib/typography";
 import type { ComponentType } from "react";
 
 import type { Article, ArticleSource, Author } from "@/content/types";
@@ -12,7 +13,7 @@ export type LoadedArticle = ArticleFrontmatter & {
   Content: ComponentType;
 };
 
-const articleEntries = Object.values(articleModules).map((module) => module.frontmatter);
+const articleEntries = Object.values(articleModules).map((module) => nbspDeep(module.frontmatter));
 
 articleEntries.forEach((article) => {
   article.authors.forEach((author) => {
@@ -26,10 +27,6 @@ function compareByYearDesc(a: ArticleFrontmatter, b: ArticleFrontmatter): number
 
 export function getArticles(): ArticleFrontmatter[] {
   return [...articleEntries].sort(compareByYearDesc);
-}
-
-export function getArticleBySlug(slug: string): ArticleFrontmatter | undefined {
-  return articleModules[slug]?.frontmatter;
 }
 
 export function loadArticleBySlug(slug: string): LoadedArticle | undefined {
@@ -49,7 +46,7 @@ export function loadArticleBySlug(slug: string): LoadedArticle | undefined {
   }
 
   return {
-    ...articleModule.frontmatter,
+    ...nbspDeep(articleModule.frontmatter),
     Content: articleModule.Content,
   };
 }
@@ -58,17 +55,32 @@ export function formatArticleAuthors(authors: Author[]): string {
   return authors.map((author) => getAuthorDisplayName(author)).join(", ");
 }
 
-export function formatArticleSourceLabel(source: ArticleSource): string {
+/**
+ * Source line of an article in lists. An album source keeps the album title apart so the
+ * view can set it in italics without parsing the finished string.
+ */
+export type ArticleSourceLabel =
+  | { kind: "text"; text: string }
+  | { kind: "album"; before: string; title: string; after: string };
+
+export function describeArticleSource(source: ArticleSource): ArticleSourceLabel {
   if (source.kind === "album") {
     const publication = getPublicationBySlug(source.publicationSlug);
     const title = publication?.shortTitle ?? publication?.title ?? pl.publications.albumFallback;
-    return pl.publications.sourceFromAlbum
-      .replace("{title}", title)
-      .replace("{year}", String(publication?.year ?? ""));
+    const [before, after = ""] = pl.publications.sourceFromAlbum.split("{title}");
+    return {
+      kind: "album",
+      before,
+      title,
+      after: after.replace("{year}", String(publication?.year ?? "")),
+    };
   }
 
   const year = source.date.slice(0, 4);
-  return pl.publications.sourceFromMedia
-    .replace("{outlet}", source.outlet)
-    .replace("{year}", year);
+  return {
+    kind: "text",
+    text: pl.publications.sourceFromMedia
+      .replace("{outlet}", source.outlet)
+      .replace("{year}", year),
+  };
 }

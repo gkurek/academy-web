@@ -1,33 +1,18 @@
+import { nbspDeep } from "@/lib/typography";
 import type { MDXProps } from "mdx/types";
 import type { ComponentType } from "react";
-import type { Image, NewsKind, NewsLayout, NewsRelatedLink } from "@/content/types";
-import newsManifest from "../../content/news/manifest.json";
+import type { News, NewsKind, NewsLayout, NewsRelatedLink } from "@/content/types";
+import { newsManifestEntries } from "@/content/news-manifest";
 import { newsModules } from "@/content/news-registry";
 import { NEWS_ARCHIVE_UNTIL_YEAR } from "@/config/news";
-import { formatDateRange } from "@/lib/formatDateRange";
+import { todayInWarsaw } from "@/lib/isoDate";
 import { getLectureSeasonHref, getSeason, isCurrentLectureSeason } from "@/content/lectures";
 import { pl } from "@/i18n/pl";
+import { navItem, sectionLink } from "@/navigation";
 
-export type NewsFrontmatter = {
-  slug: string;
-  title: string;
-  date: string;
-  dateEnd?: string;
-  kind: NewsKind;
-  layout: NewsLayout;
-  excerpt?: string;
+/** Manifest / MDX frontmatter entry: the `News` model minus the MDX body, plus build-time fields. */
+export type NewsFrontmatter = Omit<News, "body"> & {
   sample?: boolean;
-  cover?: Image;
-  images?: Image[];
-  facts?: { label: string; value: string }[];
-  related?: { label: string; href: string }[];
-  hideLead?: boolean;
-  columnImageIndex?: number;
-  /** Traveling exhibition venue — drives the #wyjazdowe list (K-87). */
-  venue?: string;
-  featured?: boolean;
-  /** Lecture season slug — drives the derived program link (LK1). */
-  lectureSeason?: string;
   /** Stripped MDX body — manifest only, for fallback excerpts (K-63). */
   bodyText?: string;
 };
@@ -39,7 +24,6 @@ export type NewsListEntry = NewsFrontmatter & {
 };
 
 export type LoadedNews = NewsListEntry & {
-  body: string;
   Content: ComponentType<MDXProps>;
 };
 
@@ -49,12 +33,6 @@ const EXCERPT_UPPERCASE_RATIO = 0.5;
 const PROGRAM_DATE_PATTERN = /^\d{1,2}\.\d{1,2}/;
 
 const photoPluralRules = new Intl.PluralRules("pl");
-
-const allNewsEntries = newsManifest as NewsFrontmatter[];
-
-function compareByDateDesc(a: NewsFrontmatter, b: NewsFrontmatter): number {
-  return b.date.localeCompare(a.date);
-}
 
 function validateFeaturedEntries(entries: NewsFrontmatter[]): void {
   const featuredEntries = entries.filter((entry) => entry.featured);
@@ -70,7 +48,7 @@ function validateFeaturedEntries(entries: NewsFrontmatter[]): void {
   }
 }
 
-validateFeaturedEntries(allNewsEntries);
+validateFeaturedEntries(newsManifestEntries);
 
 function validateNewsLayouts(entries: NewsFrontmatter[]): void {
   entries.forEach((entry) => {
@@ -85,7 +63,7 @@ function validateNewsLayouts(entries: NewsFrontmatter[]): void {
     }
     if (entry.layout === "galeria" && (!entry.images || entry.images.length === 0)) {
       console.warn(
-        `[news] "${entry.slug}": layout galeria without images — effective layout tekst until k3c`,
+        `[news] "${entry.slug}": layout galeria without images — effective layout tekst`,
       );
     }
     if (entry.lectureSeason !== undefined && !getSeason(entry.lectureSeason)) {
@@ -103,7 +81,7 @@ function validateNewsLayouts(entries: NewsFrontmatter[]): void {
   });
 }
 
-validateNewsLayouts(allNewsEntries);
+validateNewsLayouts(newsManifestEntries);
 
 /** Layout with build-time fallback when galeria has no images (D5). */
 export function getEffectiveNewsLayout(entry: NewsFrontmatter): NewsLayout {
@@ -259,30 +237,20 @@ export function formatGalleryCount(imageCount: number): string | undefined {
     .replace("{word}", getPhotoWord(imageCount));
 }
 
-/** Display date for list cards — with year (K-72). */
-export function formatNewsListDate(date: string, dateEnd?: string): string {
-  return formatDateRange(date, dateEnd, { withYear: true });
-}
+/** All news entries, newest first (D-07-06) — enriched once at module load. */
+const sortedNews: NewsListEntry[] = newsManifestEntries.map(enrichListEntry);
 
-/** Display date for article and featured entry — with year (K-64). */
-export function formatNewsDate(date: string, dateEnd?: string): string {
-  return formatDateRange(date, dateEnd, { withYear: true });
-}
-
-/** All news entries, newest first (D-07-06). */
 export function getNews(): NewsListEntry[] {
-  return [...allNewsEntries].sort(compareByDateDesc).map(enrichListEntry);
+  return sortedNews;
 }
 
 export function getNewsBySlug(slug: string): NewsListEntry | undefined {
-  const entry = allNewsEntries.find((item) => item.slug === slug);
-  return entry ? enrichListEntry(entry) : undefined;
+  return sortedNews.find((item) => item.slug === slug);
 }
 
 /** Featured list entry — at most one active; undefined when none (K-62, K-73). */
 export function getFeaturedNews(): NewsListEntry | undefined {
-  const entry = allNewsEntries.find((item) => item.featured);
-  return entry ? enrichListEntry(entry) : undefined;
+  return sortedNews.find((item) => item.featured);
 }
 
 /** Full article with MDX body component — undefined when slug is unknown. */
@@ -292,11 +260,10 @@ export function loadNewsBySlug(slug: string): LoadedNews | undefined {
     return undefined;
   }
 
-  const entry = enrichListEntry(newsModule.frontmatter);
+  const entry = enrichListEntry(nbspDeep(newsModule.frontmatter));
 
   return {
     ...entry,
-    body: "",
     Content: newsModule.Content,
   };
 }
@@ -379,9 +346,8 @@ function getNewsEventEndDate(entry: NewsFrontmatter): string {
   return entry.dateEnd ?? entry.date;
 }
 
-/** True when the build-day calendar date is after the event end (E7: `dateEnd` = koniec wydarzenia). */
-export function isNewsEventEnded(entry: NewsFrontmatter, now: Date = new Date()): boolean {
-  const today = now.toISOString().slice(0, 10);
+/** True when `today` (Warsaw) is after the event end (E7: `dateEnd` = koniec wydarzenia). */
+function isNewsEventEnded(entry: NewsFrontmatter, today: string = todayInWarsaw()): boolean {
   return today > getNewsEventEndDate(entry);
 }
 
@@ -390,14 +356,14 @@ export type NewsEventPhase = "zapowiedz" | "relacja" | "po-terminie";
 /** Phase for `layout: wydarzenie` only (README §5, E3). */
 export function getNewsEventPhase(
   entry: NewsFrontmatter,
-  now: Date = new Date(),
+  today: string = todayInWarsaw(),
 ): NewsEventPhase | null {
   if (getEffectiveNewsLayout(entry) !== "wydarzenie") {
     return null;
   }
 
   const imageCount = entry.images?.length ?? 0;
-  if (!isNewsEventEnded(entry, now)) {
+  if (!isNewsEventEnded(entry, today)) {
     return "zapowiedz";
   }
   if (imageCount > 0) {
@@ -407,17 +373,17 @@ export function getNewsEventPhase(
 }
 
 const DEFAULT_RELATED_BY_KIND: Partial<Record<NewsKind, NewsRelatedLink>> = {
-  warsztaty: { label: pl.news.relatedDefaults.warsztaty, href: "/warsztaty/kurs-roczny-i-trzyletni" },
-  wyklady: { label: pl.news.relatedDefaults.wyklady, href: "/wyklady" },
+  warsztaty: sectionLink("/warsztaty/kurs-roczny-i-trzyletni"),
+  wyklady: { label: navItem("/wyklady").label, href: "/wyklady" },
   wystawa: { label: pl.news.relatedDefaults.wystawa, href: "/ikony/wystawy" },
-  wyjazd: { label: pl.news.relatedDefaults.wyjazd, href: "/warsztaty/letnia-szkola-swiatla" },
+  wyjazd: sectionLink("/warsztaty/letnia-szkola-swiatla"),
 };
 
 /** Link to a lecture season's program — hub while current, archive anchor afterwards (LK1). */
 export function getLectureSeasonLink(seasonSlug: string): NewsRelatedLink {
   return {
     label: isCurrentLectureSeason(seasonSlug)
-      ? pl.news.relatedDefaults.wyklady
+      ? navItem("/wyklady").label
       : pl.news.relatedLectureArchive,
     href: getLectureSeasonHref(seasonSlug),
   };
@@ -449,12 +415,8 @@ export function getNewsEventCta(kind: NewsKind): NewsEventCtaLink | undefined {
     return undefined;
   }
 
+  // Kinds without their own CTA copy link with the page's nav label (wyjazd → Letnia Szkoła Światła).
   const ctaLabels = pl.news.eventCta as Partial<Record<NewsKind, string>>;
-  const ctaLabel = ctaLabels[kind];
-  if (!ctaLabel) {
-    return undefined;
-  }
-
-  return { label: ctaLabel, href: related.href };
+  return { label: ctaLabels[kind] ?? related.label, href: related.href };
 }
 

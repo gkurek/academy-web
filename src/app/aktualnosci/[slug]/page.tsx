@@ -1,9 +1,14 @@
+import { plainText } from "@/lib/typography";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
 import { NewsArticlePage } from "@/components/news/NewsArticlePage";
 import { getNews, loadNewsBySlug } from "@/content/news";
-import { pl } from "@/i18n/pl";
+
+// Event phase (zapowiedź / relacja) depends on the date — rebuild daily like `/` (K-85, B9).
+export const revalidate = 86400;
+// Every slug is known at build time; unknown ones are a static 404.
+export const dynamicParams = false;
 
 type NewsArticleRouteProps = {
   params: Promise<{ slug: string }>;
@@ -22,7 +27,7 @@ export async function generateMetadata({ params }: NewsArticleRouteProps): Promi
   }
 
   return {
-    title: entry.title,
+    title: plainText(entry.title),
   };
 }
 
@@ -34,5 +39,5 @@ export default async function NewsArticleRoute({ params }: NewsArticleRouteProps
     notFound();
   }
 
-  return <NewsArticlePage entry={entry} active={pl.header.newsLink} />;
+  return <NewsArticlePage entry={entry} path={`/aktualnosci/${slug}`} />;
 }

@@ -6,24 +6,26 @@ import { ActivityList } from "@/components/text/ActivityList";
 import { MissionDeclarations } from "@/components/text/MissionDeclarations";
 import { MilestoneRow } from "@/components/text/MilestoneRow";
 import { PersonProfile } from "@/components/text/PersonProfile";
-import { TextPageSection, TextPageShell } from "@/components/text/TextPageShell";
+import { TextPageSection } from "@/components/text/TextPageSection";
+import { TextPageShell } from "@/components/text/TextPageShell";
+import { pl } from "@/i18n/pl";
 import type { LoadedAboutPage } from "@/content/pages";
 import type { Image as ContentImage, TextPageLink } from "@/content/types";
-import { mainNav, sectionNav } from "@/navigation";
+import { PageHeading } from "@/components/core/PageHeading";
 
-const slug = "o-akademii";
-const mainNavActive = mainNav.find((item) => item.href === `/${slug}`)!.label;
-const sectionActive = sectionNav["o-akademii"].find((link) => link.href === `/${slug}`)!.label;
-
+import { Prose } from "@/components/core/Prose";
 export interface AboutPageProps {
   page: LoadedAboutPage;
+  /** Route path — see SectionPageShellProps["path"]. */
+  path: string;
 }
 
-function TextLinkRow({ links }: { links: TextPageLink[] }) {
+function TextLinkRow({ links, label }: { links: TextPageLink[]; label?: string }) {
   return (
     <div className="about-link-row">
+      {label ? <span className="about-link-row-label">{label}</span> : null}
       {links.map((link) => (
-        <TextLink key={link.href} href={link.href}>
+        <TextLink standalone key={link.href} href={link.href}>
           {link.label}
         </TextLink>
       ))}
@@ -36,15 +38,15 @@ function AboutHero({ title, lead, image }: { title: string; lead: string; image:
     <header className="about-hero mb-space-6">
       <div className="about-hero-grid">
         <div className="about-hero-copy">
-          <h1 className="about-hero-title">{title}</h1>
+          <PageHeading level="page" className="mb-space-5">{title}</PageHeading>
           <p className="about-hero-lead">{lead}</p>
         </div>
         <figure className="about-hero-figure">
           <Image
             src={image.src}
             alt={image.alt}
-            width={560}
-            height={420}
+            width={image.width}
+            height={image.height}
             className="about-hero-image"
             sizes="(max-width: 1023px) 100vw, 560px"
             priority
@@ -56,7 +58,7 @@ function AboutHero({ title, lead, image }: { title: string; lead: string; image:
   );
 }
 
-export function AboutPage({ page }: AboutPageProps) {
+export function AboutPage({ page, path }: AboutPageProps) {
   const {
     title,
     lead,
@@ -73,14 +75,48 @@ export function AboutPage({ page }: AboutPageProps) {
     workshopParagraph,
   } = page;
 
+  const workshopBand = (
+    <section
+      id="pracownia-i-miejsce"
+      className="about-workshop-band surface-card-bleed mt-section-gap-loose scroll-mt-space-6"
+    >
+      <div className="about-workshop-band-inner">
+        <PageHeading level="section" className="mb-space-6">
+          {workshop.heading}
+        </PageHeading>
+        <Prose variant="text">
+          <p>{workshopParagraph}</p>
+        </Prose>
+        <p className="about-workshop-accessibility">{workshop.accessibility}</p>
+        <div className="about-workshop-photos">
+          {workshop.photos.map((photo) => (
+            <figure key={photo.src} className="about-workshop-photo">
+              <Image
+                src={photo.src}
+                alt={photo.alt}
+                width={photo.width}
+                height={photo.height}
+                className="about-workshop-photo-image"
+                sizes="(max-width: 767px) 100vw, 50vw"
+              />
+              {photo.caption ? (
+                <figcaption className="about-workshop-photo-caption">{photo.caption}</figcaption>
+              ) : null}
+            </figure>
+          ))}
+        </div>
+        <TextLinkRow links={workshop.links} label={pl.textPage.seeAlsoLabel} />
+      </div>
+    </section>
+  );
+
   return (
     <TextPageShell
       title={title}
       lead={lead}
-      active={mainNavActive}
-      section="o-akademii"
-      sectionActive={sectionActive}
+      path={path}
       hideHeader
+      footerBand={workshopBand}
     >
       <AboutHero title={title} lead={lead ?? ""} image={hero} />
 
@@ -89,20 +125,20 @@ export function AboutPage({ page }: AboutPageProps) {
       </TextPageSection>
 
       <TextPageSection id="dla-kogo" heading={audience.heading}>
-        <div className="text-page-mdx">
-          {audienceParagraphs.map((paragraph) => (
-            <p key={paragraph.slice(0, 32)}>{paragraph}</p>
+        <Prose variant="text">
+          {audienceParagraphs.map((paragraph, index) => (
+            <p key={index}>{paragraph}</p>
           ))}
-        </div>
+        </Prose>
       </TextPageSection>
 
       <section
         id="prowadzaca"
-        className="about-person-section mt-section-gap-mobile scroll-mt-space-6 md:mt-section-gap"
+        className="about-person-section mt-section-gap-loose scroll-mt-space-6"
       >
-        <h2 className="about-person-heading font-serif text-size-role-section-h2-m md:text-size-role-section-h2 leading-heading text-text-h2">
+        <PageHeading level="section">
           {person.heading}
-        </h2>
+        </PageHeading>
         <PersonProfile profile={person.profile} />
       </section>
 
@@ -110,15 +146,15 @@ export function AboutPage({ page }: AboutPageProps) {
         <AboutQuote quote={approach.quote} author={person.profile.name} />
         <p className="about-approach-comment">{approach.comment}</p>
         <p className="mt-space-5">
-          <TextLink href={approach.readMore.href}>{approach.readMore.label}</TextLink>
+          <TextLink standalone href={approach.readMore.href}>{approach.readMore.label}</TextLink>
         </p>
       </TextPageSection>
 
       <TextPageSection id="historia" heading={history.heading}>
         <MilestoneRow items={history.milestones} />
-        <div className="text-page-mdx mt-space-5">
+        <Prose variant="text" className="mt-space-5">
           <p>{historyParagraph}</p>
-        </div>
+        </Prose>
         <div className="mt-space-5">
           <TextLinkRow links={history.links} />
         </div>
@@ -134,38 +170,6 @@ export function AboutPage({ page }: AboutPageProps) {
         </div>
       </TextPageSection>
 
-      <section
-        id="pracownia-i-miejsce"
-        className="about-workshop-band surface-card-bleed mt-section-gap-mobile scroll-mt-space-6 md:mt-section-gap"
-      >
-        <div className="about-workshop-band-inner">
-          <h2 className="about-workshop-heading font-serif text-size-role-section-h2-m md:text-size-role-section-h2 leading-heading text-text-h2">
-            {workshop.heading}
-          </h2>
-          <div className="text-page-mdx">
-            <p>{workshopParagraph}</p>
-          </div>
-          <p className="about-workshop-accessibility">{workshop.accessibility}</p>
-          <TextLinkRow links={workshop.links} />
-          <div className="about-workshop-photos">
-            {workshop.photos.map((photo) => (
-              <figure key={photo.src} className="about-workshop-photo">
-                <Image
-                  src={photo.src}
-                  alt={photo.alt}
-                  width={photo.width}
-                  height={photo.height}
-                  className="about-workshop-photo-image"
-                  sizes="(max-width: 767px) 100vw, 50vw"
-                />
-                {photo.caption ? (
-                  <figcaption className="about-workshop-photo-caption">{photo.caption}</figcaption>
-                ) : null}
-              </figure>
-            ))}
-          </div>
-        </div>
-      </section>
     </TextPageShell>
   );
 }

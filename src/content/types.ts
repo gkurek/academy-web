@@ -48,6 +48,10 @@ export type OfferFacts = {
   dateStart?: string;
   /** ISO date (YYYY-MM-DD) — LSŚ: plener end (N7). */
   dateEnd?: string;
+  /**
+   * Manual override only (D5): `true` forces „open” outside the date window; `false` changes nothing —
+   * the state is computed from the ISO dates above by `getEnrollmentState` (src/content/offers.ts).
+   */
   enrollmentOpen: boolean;
   leadTime?: string; // orders: approximate lead time
 };
@@ -81,6 +85,10 @@ export type LecturerDirectoryEntry = {
 export type Lecture = {
   date: string;
   title: string;
+  /**
+   * Pairs by index with the titles joined by " · " in `title`: none, exactly one (shared by
+   * every title) or one per title — anything else fails the build. `""` = that talk has no lecturer.
+   */
   lecturerSlugs: string[];
   note?: string;
 };
@@ -401,7 +409,8 @@ export type SiteSettings = {
   orgName: string;
   place: string;
   address: string;
-  emails: { label: string; address: string; contactName?: string }[];
+  /** `role` picks the address for a purpose (enrollment mailtos vs. secretariat) — never match on `label`. */
+  emails: { role: "enrollment" | "secretariat"; label: string; address: string; contactName?: string }[];
   phone: string;
   mapEmbedUrl: string;
   blogUrl: string;

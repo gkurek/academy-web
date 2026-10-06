@@ -3,7 +3,7 @@ import type { MouseEventHandler, ReactNode } from "react";
 export interface ButtonProps {
   children: ReactNode;
   /** Target href — usually a mailto: link with a subject from design/README §5. */
-  href?: string;
+  href: string;
   variant?: "primary" | "secondary";
   size?: "md" | "lg";
   /** Full width — variant used in FactsBox. */
@@ -29,7 +29,7 @@ const variantClasses: Record<NonNullable<ButtonProps["variant"]>, string> = {
 
 export function Button({
   children,
-  href = "#",
+  href,
   variant = "primary",
   size = "md",
   block = false,
@@ -37,8 +37,6 @@ export function Button({
   onClick,
   className,
 }: ButtonProps) {
-  const isSecondary = variant === "secondary";
-
   return (
     <a
       href={disabled ? undefined : href}
@@ -54,19 +52,7 @@ export function Button({
         .filter(Boolean)
         .join(" ")}
     >
-      {isSecondary ? (
-        <>
-          <span className="btn-secondary-borders" aria-hidden="true">
-            <span className="btn-secondary-borders__top" />
-            <span className="btn-secondary-borders__bottom" />
-            <span className="btn-secondary-borders__left" />
-            <span className="btn-secondary-borders__right" />
-          </span>
-          <span className="relative z-10">{children}</span>
-        </>
-      ) : (
-        children
-      )}
+      {children}
     </a>
   );
 }

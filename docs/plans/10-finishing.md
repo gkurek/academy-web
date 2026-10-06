@@ -19,7 +19,7 @@ Domknięcie serwisu na prawdziwych danych z etapu 9 przed wdrożeniem (etap 11).
 | --- | --- |
 | **K-122** | Gate w czacie przed zapisem treści redakcyjnej w `content/` — pozycja po pozycji, z akceptacją właściciela; refaktory UI — zwykły checkpoint po kawałku. |
 | **Treść z makiet** | Copy z Claude Design ≠ treść klienta — nowe twierdzenia → `[do uzupełnienia]` albo gate EJK (lista: `docs/plan-claude-code.md` §5, m.in. T22). |
-| **Kolejność** | k8 → k9 → k10; k10 obejmuje synchronizację dokumentów z kodem, więc idzie ostatni. |
+| **Kolejność** | k8 → k9 → k10; k10 obejmuje synchronizację dokumentów z kodem, więc idzie ostatni. Blok R (review) równolegle do k8 — RV-1, `10-review.md`. |
 
 ## Fala 1 — podsumowanie (zamknięta 2026-10-04)
 
@@ -47,9 +47,13 @@ Szczegóły, decyzje kawałków i checkpointy — w `docs/archive/plans/`. Decyz
 
 **Zakres:** `docs/plan-claude-code.md` §3 etap 10, pkt 2 — metadata + OG, `sitemap.ts`, `robots.ts`, JSON-LD (`Organization`, `Person`, `Event` — K-17, `Course`, `Book`/`Article` — K-76), analityka bez ciasteczek (K-07, K-15), aktualizacja polityki prywatności (K-119). Plus pozycje z backlogu niżej oznaczone k9.
 
-### Kawałek 10 — Audyty, ewaluacja kodu, dokumentacja
+### Blok R — Review serwisu (równolegle do k8)
 
-**Zakres:** Lighthouse dla 5 tras (`docs/lighthouse/`); przegląd wszystkich tras briefu §3 (390 px + desktop, K-30: 1440 i ≥ 1600); ewaluacja kodu pod kątem over-engineeringu i konwencji repo; synchronizacja dokumentów; przygotowanie testu 301 na stagingu (wykonanie — etap 11). Plus pozycje z backlogu niżej oznaczone k10.
+**Zakres:** review techniczne (R0–R5), wizualne (V1–V4) i — po EJK — zgodności z planem i treści (C1–C2); poprawki osobnym planem `10-review-fixes.md`. Plan, decyzje RV-1…RV-7 i postęp: **`docs/plans/10-review.md`**. Przejmuje z k10 ewaluację kodu i przegląd tras (RV-1).
+
+### Kawałek 10 — Audyty, dokumentacja
+
+**Zakres (okrojony przez RV-1):** ewaluacja kodu dodanego w k9 (delta po bloku R); Lighthouse dla 5 tras (`docs/lighthouse/`); synchronizacja dokumentów; przygotowanie testu 301 na stagingu (wykonanie — etap 11). Plus pozycje z backlogu niżej oznaczone k10 — B4 i B5 wchodzą jako wyłączenia do R0 i rozstrzygnięcie w `10-review-fixes.md`.
 
 ## Backlog fali 2 — poza treścią
 
@@ -60,8 +64,8 @@ Pozycje techniczne i decyzje przeniesione z kawałków fali 1. Treść EJK — `
 | B1 | k9 | CTA „Zapisy” w nagłówku desktop — decyzja z danymi analityki (K-35) | `10-k7-layout.md` LY6 |
 | B2 | k9 | JSON-LD `Book`: `hasPart` może korzystać z `Publication.chapters` (K-137) | `10-k5-album.md` § Ryzyka |
 | B3 | k9 | Rozważyć `ExhibitionEvent` dla `/ikony/wystawy` | §3 etap 10 |
-| B4 | k10 | `mdx-components.tsx` używa wartości arbitralnych Tailwind (`[&:has(>em:only-child)]…`) — wbrew konwencji repo | `10-k3-news.md` § Diagnoza |
-| B5 | k10 | `scripts/migrate-wp/` — martwy kod po zamkniętej migracji (`report.ts` wskazuje na przeniesiony `scripts/migrate-report.md`); zdecydować: usunąć czy zostawić jako zapis | porządki 2026-10-04 |
+| B4 ✅ | k10 | `mdx-components.tsx` używa wartości arbitralnych Tailwind (`[&:has(>em:only-child)]…`) — wbrew konwencji repo. **Zamknięte:** w `mdx-components.tsx` jest 0 wartości arbitralnych (R4, status B4); `10/RF-6` | `10-k3-news.md` § Diagnoza |
+| B5 ✅ | k10 | `scripts/migrate-wp/` — martwy kod po zamkniętej migracji (`report.ts` wskazuje na przeniesiony `scripts/migrate-report.md`); zdecydować: usunąć czy zostawić jako zapis. **Zamknięte:** usunięte w `10/RF-6` razem z 13 skryptami jednorazowymi i `archive/wp-fetch-static/`; historia w git | porządki 2026-10-04 |
 | B6 | k10 | `imageLarge` w `IconWork` (K-39) — tylko jeśli Lighthouse lub przegląd pokaże, że cap skali nie wystarcza | `10-k2-lightbox.md` |
 | B7 | po prezentacji | Sticky `FactsBox` na stronach ofertowych (K-37) | `10-k7-layout.md` LY6 |
 | B8 | po prezentacji | Filtr Aktualności po wystawach dla linku „Fotorelacje z poprzednich wystaw dorocznych” (dziś `/aktualnosci` bez filtra) | `10-k3-news.md` § Ryzyka |
@@ -96,5 +100,6 @@ Z `docs/plan-claude-code.md` §3, etap 10:
 | --- | --- | --- |
 | 1–7 — fala 1 | ✅ | 2026-10-03 … 2026-10-04; tabela „Fala 1 — podsumowanie” wyżej |
 | 8 — treść EJK | ⬜ | backlog T1–T30 (`docs/plan-claude-code.md` §5) |
+| R — review serwisu | ✅ część techniczna i wizualna 2026-10-06 | R0–R5, RF-0…RF-20, V1–V4 zamknięte; zostaje C1–C2 po k8; postęp w `10-review.md`, `10-review-fixes.md` |
 | 9 — SEO / analityka | ⬜ | |
-| 10 — audyty / docs | ⬜ | |
+| 10 — audyty / docs | ⬜ | okrojony przez RV-1 |

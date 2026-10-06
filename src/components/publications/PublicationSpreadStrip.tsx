@@ -1,9 +1,10 @@
 "use client";
 
 import Image from "next/image";
-import { useCallback, useState } from "react";
 
-import { ContentLightbox } from "@/components/lightbox/ContentLightbox";
+import { GalleryTileHoverOverlay } from "@/components/gallery/galleryJustifiedShared";
+import { Lightbox } from "@/components/lightbox/Lightbox";
+import { useLightboxIndex } from "@/components/lightbox/useLightboxIndex";
 import type { Image as ContentImage } from "@/content/types";
 import { pl } from "@/i18n/pl";
 
@@ -20,34 +21,8 @@ export function PublicationSpreadStrip({
   columns = 4,
 }: PublicationSpreadStripProps) {
   const visibleSpreads = limit ? spreads.slice(0, limit) : spreads;
-  const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
+  const lightbox = useLightboxIndex(visibleSpreads.length);
   const labels = pl.publications.lightbox;
-
-  const handleOpen = useCallback((index: number) => {
-    setLightboxIndex(index);
-  }, []);
-
-  const handleClose = useCallback(() => {
-    setLightboxIndex(null);
-  }, []);
-
-  const handlePrev = useCallback(() => {
-    setLightboxIndex((current) => {
-      if (current === null) {
-        return null;
-      }
-      return (current - 1 + visibleSpreads.length) % visibleSpreads.length;
-    });
-  }, [visibleSpreads.length]);
-
-  const handleNext = useCallback(() => {
-    setLightboxIndex((current) => {
-      if (current === null) {
-        return null;
-      }
-      return (current + 1) % visibleSpreads.length;
-    });
-  }, [visibleSpreads.length]);
 
   if (visibleSpreads.length === 0) {
     return null;
@@ -74,8 +49,8 @@ export function PublicationSpreadStrip({
             <li key={spread.src} className="publication-spread-item">
               <button
                 type="button"
-                className="publication-spread-tile"
-                onClick={() => handleOpen(index)}
+                className="publication-spread-tile group"
+                onClick={() => lightbox.open(index)}
                 aria-label={labels.openSpread.replace("{alt}", spread.alt)}
               >
                 <span
@@ -97,6 +72,7 @@ export function PublicationSpreadStrip({
                     }
                     className="publication-spread-image"
                   />
+                  <GalleryTileHoverOverlay />
                 </span>
               </button>
               {spread.caption ? (
@@ -107,14 +83,12 @@ export function PublicationSpreadStrip({
         })}
       </ul>
 
-      <ContentLightbox
+      <Lightbox
         photos={visibleSpreads}
-        index={lightboxIndex}
-        labels={labels}
-        dialogClassName="publication-spread-lightbox"
-        onPrev={handlePrev}
-        onNext={handleNext}
-        onClose={handleClose}
+        index={lightbox.index}
+        onPrev={lightbox.prev}
+        onNext={lightbox.next}
+        onClose={lightbox.close}
       />
     </div>
   );

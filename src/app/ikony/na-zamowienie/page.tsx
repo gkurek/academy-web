@@ -1,37 +1,26 @@
-import { notFound } from "next/navigation";
+import type { Metadata } from "next";
 
 import { OfferPage } from "@/components/content/OfferPage";
-import { OfferLeadIntro } from "@/components/offers/OfferLeadIntro";
 import { OrderExamples } from "@/components/offers/OrderExamples";
 import { ReadyIconsNote } from "@/components/offers/ReadyIconsNote";
-import { getOffer } from "@/content/offers";
-import { mainNav, sectionNav } from "@/navigation";
+import { requireOffer } from "@/content/offers";
+import { navTitle } from "@/navigation";
 
-const slug = "zamowienie";
-const mainNavActive = mainNav.find((item) => item.href === "/ikony")!.label;
-const sectionItem = sectionNav.ikony.find((link) => link.href === "/ikony/na-zamowienie")!;
+const path = "/ikony/na-zamowienie";
+
+export const metadata: Metadata = {
+  title: navTitle(path),
+};
 
 export default function CustomIconsPage() {
-  const offer = getOffer(slug);
-  if (!offer) {
-    notFound();
-  }
+  const offer = requireOffer("zamowienie");
 
   return (
     <OfferPage
       offer={offer}
-      section="ikony"
-      sectionActive={sectionItem.label}
-      active={mainNavActive}
-      leadExtraSlot={
-        offer.leadIntro ? <OfferLeadIntro sections={offer.leadIntro} /> : undefined
-      }
-      afterBodySlot={
-        <>
-          <OrderExamples />
-          <ReadyIconsNote email={offer.facts.enrollmentEmail} />
-        </>
-      }
+      path={path}
+      afterBodySlot={<OrderExamples />}
+      footerBand={<ReadyIconsNote email={offer.facts.enrollmentEmail} />}
     />
   );
 }

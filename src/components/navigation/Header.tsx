@@ -1,20 +1,22 @@
 import Link from "next/link";
 import { getSiteSettings } from "@/content/settings";
 import { pl } from "@/i18n/pl";
-import { mainNav } from "@/navigation";
+import { mainNav, navAriaCurrent, resolveNav } from "@/navigation";
 import { HeaderMobileMenu } from "@/components/navigation/HeaderMobileMenu";
+import { NavUnderlineLink } from "@/components/navigation/NavUnderlineLink";
 
 export interface HeaderProps {
-  /** Label of the main nav item to underline gold, e.g. "Wykłady". */
-  active?: string;
+  /** Route path — the main nav item of its section is underlined gold (resolveNav). */
+  path?: string;
 }
 
-export function Header({ active }: HeaderProps) {
+export function Header({ path }: HeaderProps) {
   const settings = getSiteSettings();
+  const activeHref = resolveNav(path).active?.href;
 
   return (
     <header className="rule-gold-b">
-      <div className="hidden md:flex items-center justify-between gap-space-6 px-page-margin py-space-5">
+      <div className="hidden lg:flex items-center justify-between gap-space-6 px-page-margin py-space-5">
         <Link href="/" className="font-serif leading-tight">
           <div className="text-size-logo tracking-logo text-text-h2">
             {pl.meta.orgShortName}
@@ -24,29 +26,20 @@ export function Header({ active }: HeaderProps) {
           </div>
         </Link>
         <nav aria-label={pl.header.mainNavAriaLabel} className="flex gap-space-6 text-size-nav font-sans">
-          {mainNav.map((item) => {
-            const isActive = item.label === active;
-            return (
-              <Link
-                key={item.label}
-                href={item.href}
-                aria-current={isActive ? "page" : undefined}
-                className={
-                  (isActive
-                    ? "nav-link-underline nav-link-underline-active text-accent-text"
-                    : "nav-link-underline text-text-body hover:text-text-list-title") +
-                  " tap-target-nav"
-                }
-              >
-                <span className="link-underline-target">{item.label}</span>
-              </Link>
-            );
-          })}
+          {mainNav.map((item) => (
+            <NavUnderlineLink
+              key={item.label}
+              href={item.href}
+              label={item.label}
+              isActive={item.href === activeHref}
+              ariaCurrent={navAriaCurrent(item.href, activeHref, path)}
+            />
+          ))}
         </nav>
       </div>
 
-      <div className="md:hidden">
-        <HeaderMobileMenu active={active} phone={settings.phone} blogUrl={settings.blogUrl} />
+      <div className="lg:hidden">
+        <HeaderMobileMenu path={path} activeHref={activeHref} phone={settings.phone} blogUrl={settings.blogUrl} />
       </div>
     </header>
   );
