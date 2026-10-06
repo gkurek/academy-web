@@ -253,4 +253,12 @@
   .btn-secondary[aria-disabled="true"] {
     border-color: var(--line-neutral);
   }
+
+  /* Component sections inside Prose (SemesterProgram, OfferQuoteGrid) — no prose measure. */
+  .prose-text .not-prose,
+  .prose-offer .not-prose,
+  .prose-text .not-prose :where(p, ul, ol, blockquote),
+  .prose-offer .not-prose :where(p, ul, ol, blockquote) {
+    max-width: none;
+  }
 }

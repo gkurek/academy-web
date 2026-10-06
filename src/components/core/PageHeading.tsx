@@ -5,8 +5,8 @@ type PageHeadingLevel = "page" | "section" | "sub";
 export interface PageHeadingProps {
   /** Typographic role: page title (h1), section title (h2) or subtitle inside a section (h3). */
   level: PageHeadingLevel;
-  /** Page level only: "home" is the hero title, "entry" the news article title. */
-  variant?: "home" | "entry";
+  /** Page level only: "home" is the hero title, "entry" the news article title, "lecture-cycle" the lectures hub h1 (two-part cycle title). */
+  variant?: "home" | "entry" | "lecture-cycle";
   id?: string;
   /** Margins and layout only — the role (font, size, leading, colour) is fixed. */
   className?: string;

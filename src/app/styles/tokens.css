@@ -54,7 +54,7 @@
   --border-button: rgba(236, 226, 211, .4);
   --border-secondary: rgba(162, 145, 124, .45);
 
-  /* Scrims (shadow values live in the static @theme block below) */
+  /* Scrims */
   --scrim-lightbox: rgba(0, 0, 0, .7);
   --scrim-gallery-hover: rgba(0, 0, 0, .45);
 
@@ -439,11 +439,10 @@
   --footer-legal-py-m: 22px;
 }
 
-/* Shadow and line-height tokens live only here, as literals in a static
-   (non-inline) theme: Tailwind emits each one once into :root, so the
-   utilities (shadow-*, leading-*) and var(--shadow-*) / var(--leading-*) in
-   components read the same declaration. An inline theme can't hold them —
-   a var() mapping would self-reference. Verified on --leading-tight. */
+/* Line-height tokens live only in the static @theme block, as literals: Tailwind
+   emits each one once into :root, so utilities (leading-*) and var(--leading-*)
+   in components read the same declaration. An inline theme can't hold them — a
+   var() mapping would self-reference. Verified on --leading-tight. */
 
 @media (min-width: 768px) {
   :root {

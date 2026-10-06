@@ -13,7 +13,7 @@ export interface OfferQuoteProps {
 
 export function OfferQuote({ quote, author, role, image }: OfferQuoteProps) {
   return (
-    <blockquote className="bg-surface-card px-offer-quote-feature-x py-offer-quote-feature-y h-full">
+    <blockquote className="offer-quote-feature bg-surface-card px-offer-quote-feature-x py-offer-quote-feature-y border-t-offer-quote-top border-accent h-full">
       <p className="font-serif italic text-size-offer-quote-m md:text-size-offer-quote leading-quote-offer text-text-body mb-space-4">
         {quote}
       </p>

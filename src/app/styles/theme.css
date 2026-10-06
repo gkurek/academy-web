@@ -8,15 +8,6 @@
   --leading-quote: 1.35;
   --leading-facts: 1.55;
   --leading-quote-offer: 1.55;
-
-  /* Shadows: lightbox panel and hero image only. design/README "Zasady"
-     allows both exceptions to "no shadows"; design/README §3 and CLAUDE.md
-     list only the lightbox (D1 — the hero exception is confirmed by the
-     owner and recorded in CLAUDE.md, K-140). The mobile hero shadow is lighter per the
-     resolved mockup DOM (20px/50px/.5 vs 30px/70px/.55 on desktop). */
-  --shadow-lightbox: 0 30px 80px rgba(0, 0, 0, .7);
-  --shadow-hero-image: 0 30px 70px rgba(0, 0, 0, .55);
-  --shadow-hero-image-m: 0 20px 50px rgba(0, 0, 0, .5);
 }
 
 /* Tailwind utility mappings for the :root tokens above. Add a mapping only

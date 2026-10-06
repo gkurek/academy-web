@@ -2,7 +2,9 @@
 
 import { useEffect, useRef, type MouseEvent } from "react";
 
+import { ChevronSideIcon } from "@/components/core/icons";
 import { useRevealFocus } from "@/components/core/useRevealFocus";
+import { useScrollEdges } from "@/components/core/useScrollEdges";
 import { focusNewsYearCardTitleAfterLayout } from "@/components/news/focusNewsYearCardTitle";
 import { NavUnderlineLink } from "@/components/navigation/NavUnderlineLink";
 import { useYearActiveId } from "@/components/news/useYearActiveId";
@@ -18,6 +20,7 @@ export interface YearNavProps {
 export function YearNav({ years, archiveYears }: YearNavProps) {
   const navRef = useRef<HTMLElement>(null);
   const linksRef = useRevealFocus<HTMLDivElement>();
+  const { canScrollPrev, canScrollNext } = useScrollEdges(linksRef);
   const activeYear = useYearActiveId(years);
   const archiveYearSet = new Set(archiveYears);
 
@@ -91,6 +94,42 @@ export function YearNav({ years, archiveYears }: YearNavProps) {
     focusNewsYearCardTitleAfterLayout(year);
   };
 
+  const scrollLinks = (direction: -1 | 1) => {
+    const row = linksRef.current;
+    if (!row) {
+      return;
+    }
+
+    row.scrollBy({ left: direction * row.clientWidth * 0.75, behavior: scrollBehavior() });
+  };
+
+  const hasOverflow = canScrollPrev || canScrollNext;
+
+  // Arrows are mouse-only: keyboard focus already scrolls the row (useRevealFocus).
+  const renderArrow = (direction: "prev" | "next") => (
+    <button
+      type="button"
+      tabIndex={-1}
+      aria-hidden="true"
+      hidden={!hasOverflow}
+      disabled={direction === "prev" ? !canScrollPrev : !canScrollNext}
+      onClick={() => scrollLinks(direction === "prev" ? -1 : 1)}
+      className="year-nav-arrow"
+    >
+      <ChevronSideIcon direction={direction} size={16} />
+    </button>
+  );
+
+  const renderMore = (visible: boolean) => (
+    <span
+      aria-hidden="true"
+      hidden={!hasOverflow}
+      className={visible ? "year-nav-more" : "year-nav-more invisible"}
+    >
+      {pl.news.yearNavMore}
+    </span>
+  );
+
   return (
     <nav
       ref={navRef}
@@ -99,22 +138,28 @@ export function YearNav({ years, archiveYears }: YearNavProps) {
       className="year-nav"
     >
       <p className="year-nav-label">{pl.news.yearNavLabel}</p>
-      <div ref={linksRef} className="year-nav-links">
-        {years.map((year) => {
-          const isActive = year === activeYear;
-          return (
-            <NavUnderlineLink
-              key={year}
-              href={`#${year}`}
-              label={year}
-              variant="section"
-              isActive={isActive}
-              ariaCurrent={isActive ? "true" : undefined}
-              onClick={(event) => handleYearClick(event, year)}
-              className="year-nav-link"
-            />
-          );
-        })}
+      <div className="year-nav-scroller">
+        {renderArrow("prev")}
+        {renderMore(canScrollPrev)}
+        <div ref={linksRef} className="year-nav-links">
+          {years.map((year) => {
+            const isActive = year === activeYear;
+            return (
+              <NavUnderlineLink
+                key={year}
+                href={`#${year}`}
+                label={year}
+                variant="section"
+                isActive={isActive}
+                ariaCurrent={isActive ? "true" : undefined}
+                onClick={(event) => handleYearClick(event, year)}
+                className="year-nav-link"
+              />
+            );
+          })}
+        </div>
+        {renderMore(canScrollNext)}
+        {renderArrow("next")}
       </div>
     </nav>
   );

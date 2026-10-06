@@ -235,12 +235,6 @@ const plSource = {
           "Pierwsze spotkanie sezonu odbywa się {firstMeeting} o 18:00. Dokumenty zgłoszeniowe są dostępne na miejscu.",
         ],
       },
-      // Draft built only from the plener facts (mail, individual talk, order of applications) — EJK to confirm.
-      plener: {
-        paragraphs: [
-          "Zgłoszenie wysyłamy mailem na adres {enrollmentEmail}. O udziale rozmawiamy indywidualnie, a zgłoszenia przyjmujemy w kolejności ich nadejścia.",
-        ],
-      },
     },
   },
   lectures: {
@@ -422,6 +416,7 @@ const plSource = {
       heading: "W skrócie",
     },
     articlesHeading: "Artykuły",
+    articleReadMore: "Czytaj",
     articlesLead:
       "Teksty wykładowców Akademii, wybrane pozycje z albumu oraz artykuły Elżbiety Jackowskiej-Kurek z mediów.",
     sampleTag: "[przykład]",
@@ -483,6 +478,7 @@ const plSource = {
       "Wykłady, warsztaty, plenery, wystawy i spotkania w Akademii Ikony – oraz archiwum od 2012 roku, w jednym strumieniu wpisów.",
     yearNavAriaLabel: "Przejdź do roku",
     yearNavLabel: "Przejdź do roku",
+    yearNavMore: "…",
     featuredLabel: "Wyróżnione",
     showArchiveLabel: "Pokaż archiwum {range} ({count} {word})",
     archiveEntryForms: {

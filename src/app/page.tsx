@@ -1,3 +1,4 @@
+import { Fragment } from "react";
 import { SectionPageShell } from "@/components/layout/SectionPageShell";
 import { Button } from "@/components/core/Button";
 import { Hero } from "@/components/content/Hero";
@@ -12,13 +13,22 @@ import { fillTemplate } from "@/lib/fillTemplate";
 
 export const revalidate = 86400;
 
+function heroTitleWithLineBreaks(title: string) {
+  return title.split("\n").map((line, index) => (
+    <Fragment key={index}>
+      {index > 0 ? <br /> : null}
+      {line}
+    </Fragment>
+  ));
+}
+
 export default function Home() {
   const { hero, pillars, testimonial } = getHomePage();
   const { hero: heroLabels } = pl.home;
 
   return (
     <SectionPageShell path="/" flush>
-      <Hero title={hero.title} lead={hero.lead} image={hero.image}>
+      <Hero title={heroTitleWithLineBreaks(hero.title)} lead={hero.lead} image={hero.image}>
         <div className="flex flex-col sm:flex-row gap-space-4 mt-space-6">
           <Button href="/warsztaty" size="lg">
             {heroLabels.ctaPrimary}

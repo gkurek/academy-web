@@ -7,6 +7,7 @@ import type { LoadedLectureSeason } from "@/content/lectures";
 import type { OfferFacts } from "@/content/types";
 import { pl } from "@/i18n/pl";
 import { PageHeading } from "@/components/core/PageHeading";
+import { LectureCycleTitle } from "@/components/lectures/LectureCycleTitle";
 
 export interface LecturesHubPageProps {
   season: LoadedLectureSeason;
@@ -39,8 +40,8 @@ export function LecturesHubPage({
           <p className="font-serif text-size-lectures-eyebrow text-accent-text mb-lectures-eyebrow-mb">
             {eyebrow}
           </p>
-          <PageHeading level="page" className="mb-space-5">
-            {season.cycleTitle}
+          <PageHeading level="page" variant="lecture-cycle" className="mb-space-5">
+            <LectureCycleTitle cycleTitle={season.cycleTitle} />
           </PageHeading>
 
           {season.intro ? (

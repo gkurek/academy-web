@@ -56,9 +56,9 @@ export function ContactPage({ path, title, Content }: ContactPageProps) {
         </div>
 
         <div className="contact-page-address">
-          <PageHeading level="section" className="mb-space-3">
+          <h2 className="mb-space-3 font-serif text-size-role-box-title-m md:text-size-role-box-title leading-heading text-text-h2">
             {pl.contact.addressHeading}
-          </PageHeading>
+          </h2>
           <address className="mb-space-4 block not-italic text-size-lead-m leading-body text-text-secondary md:text-size-lead">
             {settings.place}
             <br />

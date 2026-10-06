@@ -19,7 +19,7 @@ export function OfferQuoteGrid({ heading, quotes, columns = 3 }: OfferQuoteGridP
       : "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-offer-quotes-gap";
 
   return (
-    <section aria-labelledby={headingId}>
+    <section aria-labelledby={headingId} className="not-prose">
       <PageHeading level="section" id={headingId} className="mb-heading-gap">
         {heading}
       </PageHeading>
@@ -27,7 +27,7 @@ export function OfferQuoteGrid({ heading, quotes, columns = 3 }: OfferQuoteGridP
         {quotes.map((item, index) => (
           <blockquote
             key={`${item.author}-${index}`}
-            className="bg-surface-card px-offer-quote-x py-offer-quote-y border-t-offer-quote-top border-accent"
+            className="offer-quote-tile bg-surface-card px-offer-quote-x py-offer-quote-y border-t-offer-quote-top border-accent"
           >
             <p className="font-serif italic text-size-quote leading-quote-offer text-text-body mb-space-4">
               {item.quote}

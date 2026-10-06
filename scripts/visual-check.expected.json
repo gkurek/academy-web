@@ -151,13 +151,6 @@
   },
   {
     "id": "RF-4",
-    "route": "/",
-    "signal": "styles",
-    "width": 390,
-    "note": "tiles hidden below md are in the DOM (display: none) — element count +2"
-  },
-  {
-    "id": "RF-4",
     "route": "/ikony",
     "signal": "html",
     "note": "justified gallery rendered on the server (JustifiedGrid rows, figure tiles with --tile-ratio); lightbox dialog without the per-page class; whole gallery in the HTML, filter applied in the client (R3-04)"
@@ -2125,54 +2118,6 @@
     "note": "one offer ending: enrollment then quotes; side photo landscape"
   },
   {
-    "id": "RF-19",
-    "route": "/warsztaty/letnia-szkola-swiatla",
-    "signal": "html",
-    "note": "enrollment section added; quotes after it; FactsBox contact footer"
-  },
-  {
-    "id": "RF-19",
-    "route": "/warsztaty/letnia-szkola-swiatla",
-    "signal": "screenshot",
-    "width": 390,
-    "note": "enrollment section added; quotes after it; FactsBox contact footer"
-  },
-  {
-    "id": "RF-19",
-    "route": "/warsztaty/letnia-szkola-swiatla",
-    "signal": "styles",
-    "width": 390,
-    "note": "enrollment section added; quotes after it; FactsBox contact footer"
-  },
-  {
-    "id": "RF-19",
-    "route": "/warsztaty/letnia-szkola-swiatla",
-    "signal": "screenshot",
-    "width": 1440,
-    "note": "enrollment section added; quotes after it; FactsBox contact footer"
-  },
-  {
-    "id": "RF-19",
-    "route": "/warsztaty/letnia-szkola-swiatla",
-    "signal": "styles",
-    "width": 1440,
-    "note": "enrollment section added; quotes after it; FactsBox contact footer"
-  },
-  {
-    "id": "RF-19",
-    "route": "/warsztaty/letnia-szkola-swiatla",
-    "signal": "screenshot",
-    "width": 1920,
-    "note": "enrollment section added; quotes after it; FactsBox contact footer"
-  },
-  {
-    "id": "RF-19",
-    "route": "/warsztaty/letnia-szkola-swiatla",
-    "signal": "styles",
-    "width": 1920,
-    "note": "enrollment section added; quotes after it; FactsBox contact footer"
-  },
-  {
     "id": "RF-17",
     "route": "/",
     "signal": "html",
@@ -2535,5 +2480,51 @@
     "signal": "screenshot",
     "note": "non-breaking spaces after single-letter words and balanced headings change line breaks (V3-19, V3-20)",
     "width": 1920
+  },
+  {
+    "id": "RF-21a",
+    "route": "/",
+    "signal": "html",
+    "note": "hero H1 explicit line break after „ikon”; Wybrane ikony — all 4 tiles visible below md (no hidden md:block)"
+  },
+  {
+    "id": "RF-21a",
+    "route": "/",
+    "signal": "screenshot",
+    "width": 390,
+    "note": "hero title two lines; featured icons 2×2 grid (was 2 tiles + RF-4 mobileCount)"
+  },
+  {
+    "id": "RF-21a",
+    "route": "/",
+    "signal": "styles",
+    "width": 390,
+    "note": "featured gallery: four visible tiles, no display:none figures (replaces RF-4 +2 hidden count)"
+  },
+  {
+    "id": "RF-21b",
+    "route": "/ikony/na-zamowienie",
+    "signal": "html",
+    "note": "leadIntro „Technika i warunki zamówienia” — h3 → h2 (V2-06, RV-F-02)"
+  },
+  {
+    "id": "RF-21b",
+    "route": "/ikony/na-zamowienie",
+    "signal": "styles",
+    "note": "second leadIntro heading uses heading-section (26px) not heading-sub (V2-06)"
+  },
+  {
+    "id": "RF-21b",
+    "route": "/ikony/na-zamowienie",
+    "signal": "screenshot",
+    "width": 390,
+    "note": "„Technika i warunki zamówienia” same typographic scale as „Dla kogo…” (RF-21b)"
+  },
+  {
+    "id": "RF-21b",
+    "route": "/ikony/na-zamowienie",
+    "signal": "screenshot",
+    "width": 1440,
+    "note": "leadIntro second block H2 (RF-21b)"
   }
 ]

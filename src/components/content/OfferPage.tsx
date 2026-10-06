@@ -55,18 +55,23 @@ function getEnrollmentCopy(kind: LoadedOffer["kind"]): EnrollmentCopy | undefine
     : undefined;
 }
 
-function EnrollmentSection({ facts, copy }: { facts: OfferFacts; copy: EnrollmentCopy }) {
+function EnrollmentSection({
+  facts,
+  copy,
+  quoteSlot,
+}: {
+  facts: OfferFacts;
+  copy: EnrollmentCopy;
+  quoteSlot?: ReactNode;
+}) {
   const headingId = useId();
   const values = { ...getOfferDateValues(facts), enrollmentEmail: getEnrollmentEmail() };
   const paragraphs = copy.paragraphs.map((paragraph) =>
     fillRequiredTemplate(paragraph, values, "offers.enrollmentByKind"),
   );
 
-  return (
-    <section
-      aria-labelledby={headingId}
-      className="rule-gold-t mt-section-gap pt-space-7"
-    >
+  const copyBlock = (
+    <>
       <PageHeading level="section" id={headingId} className="mb-heading-gap">
         {pl.offers.enrollmentSectionTitle}
       </PageHeading>
@@ -78,6 +83,26 @@ function EnrollmentSection({ facts, copy }: { facts: OfferFacts; copy: Enrollmen
       <p className="text-size-caption leading-body text-text-tertiary max-w-measure-prose pt-space-5 border-t border-line-neutral">
         {pl.offers.legalNote}
       </p>
+    </>
+  );
+
+  return (
+    <section
+      aria-labelledby={headingId}
+      className={
+        quoteSlot
+          ? "mt-section-gap-tight md:mt-section-gap md:pt-space-7"
+          : "mt-section-gap pt-space-7"
+      }
+    >
+      {quoteSlot ? (
+        <div className="offer-enrollment-grid gap-space-6 lg:gap-offer-main-gap">
+          {quoteSlot}
+          <div className="min-w-0">{copyBlock}</div>
+        </div>
+      ) : (
+        copyBlock
+      )}
     </section>
   );
 }
@@ -89,6 +114,9 @@ export function OfferPage({ offer, path, quoteSlot, afterBodySlot, footerBand }:
   const offerQuote =
     quoteSlot ??
     (quote ? <OfferQuote quote={quote.quote} author={quote.author} role={quote.role} image={quote.image} /> : undefined);
+  /** Single featured quote beside enrollment (kurs); grids and offers without enrollment stay full width below. */
+  const enrollmentQuoteSlot = enrollmentCopy && offerQuote && !quoteSlot ? offerQuote : undefined;
+  const trailingQuoteSlot = offerQuote && !enrollmentQuoteSlot ? offerQuote : undefined;
 
   return (
     <SectionPageShell path={path} footerBand={footerBand}>
@@ -140,10 +168,12 @@ export function OfferPage({ offer, path, quoteSlot, afterBodySlot, footerBand }:
 
       {afterBodySlot}
 
-      {/* One ending for every offer: enrollment → quotes → footer band (V2-01). */}
-      {enrollmentCopy && <EnrollmentSection facts={facts} copy={enrollmentCopy} />}
+      {/* Offer ending (V2-01): kurs — enrollment + quote in sidebar; plener — quote grid; zamówienie — footer band. */}
+      {enrollmentCopy && (
+        <EnrollmentSection facts={facts} copy={enrollmentCopy} quoteSlot={enrollmentQuoteSlot} />
+      )}
 
-      {offerQuote && <div className="mt-section-gap">{offerQuote}</div>}
+      {trailingQuoteSlot && <div className="mt-section-gap">{trailingQuoteSlot}</div>}
     </SectionPageShell>
   );
 }

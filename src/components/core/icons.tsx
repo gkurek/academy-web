@@ -28,6 +28,30 @@ export function ChevronIcon({
   );
 }
 
+/** Chevron pointing left (prev) / right (next) — sideways scroll controls. */
+export function ChevronSideIcon({
+  direction,
+  size = 24,
+  className,
+}: IconProps & { direction: "prev" | "next" }) {
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.6"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+      className={className}
+    >
+      {direction === "prev" ? <path d="M15 5 L8 12 L15 19" /> : <path d="M9 5 L16 12 L9 19" />}
+    </svg>
+  );
+}
+
 /** Magnifier shown over enlargeable photos. */
 export function ZoomIcon({ size = 28, className }: IconProps) {
   return (

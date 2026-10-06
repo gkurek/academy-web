@@ -17,7 +17,7 @@ export function OnlineAside() {
         <h2 className="mb-space-3 font-serif text-size-role-box-title-m md:text-size-role-box-title leading-heading text-text-h2">
           {contact.organizerHeading}
         </h2>
-        <p className="text-size-body leading-body text-text-secondary md:text-size-body-lg md:leading-prose">
+        <p className="text-size-body leading-body text-text-tertiary md:text-size-body-lg md:leading-prose">
           {contact.organizerLead}
           <ExternalLink href={settings.ecosystem.foundationUrl} className={contactOnlineLinkClass}>
             <span className={mapLinkUnderline}>{contact.organizerLinkLabel}</span>
@@ -29,7 +29,7 @@ export function OnlineAside() {
         <h2 className="mb-space-3 font-serif text-size-role-box-title-m md:text-size-role-box-title leading-heading text-text-h2">
           {contact.onlineHeading}
         </h2>
-        <div className="grid gap-space-2 text-size-ui leading-body">
+        <div className="grid gap-space-2 text-size-body leading-body md:text-size-body-lg md:leading-prose">
           <ExternalLink href={settings.ecosystem.social.facebook} className={contactOnlineLinkClass}>
             <span className={mapLinkUnderline}>{footer.facebookLabel}</span>
           </ExternalLink>

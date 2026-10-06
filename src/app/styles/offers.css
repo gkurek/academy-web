@@ -54,6 +54,33 @@
     border-top: 1px solid var(--line-gold);
   }
 
+  /* OfferQuoteGrid / OfferQuote — fill the card, not --measure-prose (RF-21). */
+  .offer-quote-tile,
+  .offer-quote-feature {
+    max-width: none;
+    text-wrap: pretty;
+  }
+
+  .offer-quote-tile > p,
+  .offer-quote-tile > footer,
+  .offer-quote-feature > p,
+  .offer-quote-feature > footer {
+    max-width: none;
+  }
+
+  /* Enrollment + quote: same gap as header; column widths inverted vs offer-main (narrow | wide). */
+  .offer-enrollment-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    align-items: start;
+  }
+
+  @media (min-width: 1024px) {
+    .offer-enrollment-grid {
+      grid-template-columns: var(--offer-sidebar-w) minmax(0, 1fr);
+    }
+  }
+
   @media (min-width: 1024px) {
     .offer-step-grid {
       grid-template-columns: repeat(var(--step-count), minmax(0, 1fr));

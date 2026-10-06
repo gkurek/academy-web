@@ -43,7 +43,7 @@ export function Hero({ title, lead, image, children }: HeroProps) {
             height={image.height}
             priority
             sizes="(min-width: 1024px) min(486px, 38vw), (min-width: 768px) 486px, 72vw"
-            className="block w-full h-auto md:w-hero-image-w md:max-w-full md:h-auto md:max-h-hero-image-h object-contain shadow-hero-image-m md:shadow-hero-image"
+            className="block w-full h-auto md:w-hero-image-w md:max-w-full md:h-auto md:max-h-hero-image-h object-contain"
           />
           {image.caption && (
             <figcaption className="font-serif italic text-size-body text-text-tertiary text-center mt-space-3 md:mt-space-4">

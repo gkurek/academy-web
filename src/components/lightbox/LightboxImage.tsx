@@ -50,7 +50,7 @@ export function LightboxImage({ src, alt, width, height }: LightboxImageProps) {
         ...getLightboxImageDisplayStyle(displayDimensions),
         visibility: isVisible ? "visible" : "hidden",
       }}
-      className="block h-auto max-w-full lg:shadow-lightbox"
+      className="block h-auto max-w-full"
     />
   );
 }

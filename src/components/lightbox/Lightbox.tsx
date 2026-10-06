@@ -7,6 +7,7 @@ import {
   type LightboxLayoutVariant,
 } from "@/components/lightbox/LightboxDialogShell";
 import { LightboxImage } from "@/components/lightbox/LightboxImage";
+import { LightboxPreload } from "@/components/lightbox/LightboxPreload";
 import { useLightboxDialog } from "@/components/lightbox/useLightboxDialog";
 import type { Image as ContentImage } from "@/content/types";
 import { pl } from "@/i18n/pl";
@@ -94,8 +95,11 @@ export function Lightbox({
       onPointerUp={handlePointerUp}
       onPointerCancel={handlePointerCancel}
       image={
-        photo ? (
-          <LightboxImage src={photo.src} alt={photo.alt} width={photo.width} height={photo.height} />
+        photo && index !== null ? (
+          <>
+            <LightboxImage src={photo.src} alt={photo.alt} width={photo.width} height={photo.height} />
+            <LightboxPreload photos={photos} index={index} />
+          </>
         ) : null
       }
       meta={metaNode}

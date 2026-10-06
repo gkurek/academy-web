@@ -19,6 +19,11 @@
     text-wrap: balance;
   }
 
+  /* Two-part season title: keep natural breaks (balance would split the theme phrase too early). */
+  .heading-page--lecture-cycle {
+    text-wrap: wrap;
+  }
+
   /* Section title (h2). */
   .heading-section,
   .prose-text > h2,
@@ -54,6 +59,14 @@
     max-width: var(--measure-prose);
     font-size: var(--size-body);
     line-height: var(--leading-body);
+  }
+
+  /* Testimonial tiles and MDX pull quotes — not prose measure (RF-21). */
+  .offer-quote-tile p,
+  .offer-quote-feature p,
+  .prose-text blockquote p,
+  .prose-offer blockquote p {
+    max-width: none;
   }
 
   @media (min-width: 768px) {

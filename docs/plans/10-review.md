@@ -1,6 +1,6 @@
 # Plan 10/R — Review serwisu (techniczne, wizualne, treść)
 
-Status: **blok techniczny i wizualny zamknięty** 2026-10-06 (R0–R5, RF-0…RF-20, V1–V4, RF-13a; zatwierdzone przez właściciela, w tym Safari iOS i copy „Jak się zapisać”) · zostaje **C1–C2 po EJK** oraz deploy na staging + merge do `main` (właściciel) · zatwierdzony 2026-10-04  
+Status: **blok R zamknięty lokalnie** 2026-10-06 (R0–R5, RF-0…RF-21, V1–V4, RF-13a; zatwierdzone przez właściciela, w tym Safari iOS i przegląd RV-F) · zostaje **deploy na staging + merge do `main`** (właściciel) oraz **C1–C2 po EJK** · zatwierdzony 2026-10-04  
 Gałąź: `feat/10-review` od `main` — dokumenty review i paczki poprawek; k8 zostaje na `feat/10-finishing` (merge do `main` niezależnie)  
 Staging: https://academy-web-lovat.vercel.app/  
 Makiety: tokeny `design/README`, odczyt wartości `docs/design-mockup-guide.md` (tylko jako punkt odniesienia w V1–V4).
@@ -94,7 +94,7 @@ Gotowe: `docs/review/04-cross-cutting.md`.
 ### R5 — Synteza techniczna (**Fable 5.1**)
 
 Zakres: scalenie R1–R4 + wyniki narzędzi z R0; deduplikacja; priorytety (bugi → ryzyka → upraszczanie → drobiazgi); propozycje uproszczeń architektonicznych; podział na paczki poprawek.
-Gotowe: `docs/review/05-tech-synthesis.md` + projekt `docs/plans/10-review-fixes.md` do zatwierdzenia.
+Gotowe: `docs/review/05-tech-synthesis.md` + `docs/plans/10-review-fixes.md` zatwierdzony 2026-10-04 (rozszerzany w trakcie do RF-21).
 
 ### — Poprawki techniczne (wg `10-review-fixes.md`, osobne checkpointy) —
 
@@ -132,6 +132,11 @@ Gotowe: `docs/review/06-visual-4-global.md` + uzupełnienie `10-review-fixes.md`
 
 ### — Poprawki wizualne —
 
+### RF-21 — Ręczny przegląd zmian wizualnych · **po RF-20, przed deployem i merge**
+
+Zakres: ponowne obejrzenie zmian z RF-13…RF-20 (21 tras, desktop + mobile, stany interakcji). Zgłoszenia właściciela `RV-F-01…04` → poprawki RF-21a…d; domknięcia bez RV-F w RF-21e. Szczegóły, lista kontrolna i tabela zgłoszeń: `10-review-fixes.md` §RF-21.
+Gotowe: commit `10/RF-21` na `feat/10-review` (2026-10-06); `build` + `lint` OK. `check:visual` względem baseline `bb7b0cb` — przed deployem (właściciel).
+
 ### C1 — Zgodność z planem (Opus 5.5) · warunek: T1–T30 zamknięte lub świadomie odłożone
 
 Zakres: trasy i funkcje vs brief §3–§4 i decyzje K-xx w §4.
@@ -147,18 +152,19 @@ Brak — review nie dotyka `content/`.
 
 ## Kryteria ukończenia
 
-- [ ] R0–R5 zakończone, `05-tech-synthesis.md` i `10-review-fixes.md` zatwierdzone;
-- [ ] poprawki techniczne gotowe lokalnie (każda paczka porównana z baseline'em z RF-0, bez deployu per paczka — D11 w `10-review-fixes.md`), potem jeden deploy na staging;
-- [ ] V1–V4 zakończone, paczki wizualne w `10-review-fixes.md`;
-- [ ] RF-13a: decyzja o skali odstępów i belce zapisana (po V3, z bramą powrotną po V4);
-- [ ] poprawki wizualne wdrożone;
+- [x] R0–R5 zakończone, `05-tech-synthesis.md` i `10-review-fixes.md` zatwierdzone (2026-10-04; plan poprawek domknięty lokalnie z RF-21, 2026-10-06);
+- [x] poprawki techniczne RF-0…RF-12 gotowe lokalnie (D11 — jeden deploy na staging po RF-21);
+- [x] V1–V4 zakończone, paczki wizualne RF-13…RF-20 w `10-review-fixes.md`;
+- [x] RF-13a: decyzja o skali odstępów i belce zapisana (2026-10-05);
+- [x] RF-21: ręczny przegląd wizualny i poprawki RV-F zamknięte lokalnie (2026-10-06);
+- [ ] deploy na staging, nowy baseline `check:visual`, merge `feat/10-review` → `main` (właściciel);
 - [ ] C1–C2 zakończone (po EJK);
-- [ ] build + lint bez regresji po każdej paczce poprawek.
+- [x] build + lint bez regresji po każdej paczce poprawek (ostatnia: `10/RF-21`).
 
 ## Ryzyka i pytania otwarte
 
 - **Bias tej samej rodziny modeli** — ograniczany wg RV-6; pełnej niezależności nie daje. Opcjonalnie: przegląd R1–R2 narzędziem innego dostawcy albo przez człowieka.
-- **Staging vs lokalny kod** — V1–V4 zakładają, że staging jest na bieżącym commicie; sprawdzić w R0.
+- **Staging vs lokalny kod** — URL stagingu nadal wskazuje starszy deploy (`bb7b0cb` / wcześniejsze); gałąź `feat/10-review` ma RF-0…RF-21 lokalnie — przed C1 odświeżyć staging i baseline po merge.
 - **Przecięcie z k8** — jeśli treść EJK zmieni układ strony (np. nowe zdjęcia T19), V3 dla tej trasy powtarzamy po k8.
 
 ## Postęp
@@ -172,11 +178,12 @@ Brak — review nie dotyka `content/`.
 | R4 — przekrojowe | Opus 5.5 | ✅ 2026-10-04 | `docs/review/04-cross-cutting.md`: 21 zgłoszeń (0 bug, 3 ryzyko, 9 niespójność, 6 upraszczanie, 3 drobiazg); mapa 10+ mechanizmów odstępu sekcji (26–96 px) jako wejście V1; na stagingu: `--section-gap` 96 px na ≥ 1024 (poza `design/README` 56–64), sekcje publikacji 34 px na desktopie (token 64 nieużyty), złote belki paneli 2 px (oferty) vs 3 px (wystawy, publikacje), akapity MDX 20 vs 14 px (warstwy `components` vs `utilities`), menu mobilne z podwójnymi Aktualnościami / Kontaktem, `[pole CMS]` na `/warsztaty`; 43 nieużywane tokeny, 15 martwych klas, 19 nieużywanych kluczy `pl.ts`; B4 rozwiązane; korekta R3-02 (kolizje slugów są walidowane) |
 | R5 — synteza | Fable 5.1 | ✅ 2026-10-04 | `docs/review/05-tech-synthesis.md`: 82 zgłoszenia → **34 pozycje S** (6 bug, 12 ryzyko, 12 niespójność/upraszczanie, 2 decyzja, 2 drobiazg), 5 uproszczeń A1–A5 (daty i sezon, `resolveNav(path)`, galeria SSR, role typograficzne, skala odstępów), 9 decyzji właściciela D1–D9 z domyślnymi odpowiedziami, 6 pozycji do backlogu T (T-R1…T-R6); korekta R3-02 potwierdzona (`publications.ts:32`), B4 zamknięte (0 wartości arbitralnych), `design/` w `.gitignore` → R4-09 do potwierdzenia przez właściciela; projekt `docs/plans/10-review-fixes.md`: **14 paczek RF-1…RF-14**, RF-12 po k8, RF-13–RF-14 po V1 (RV-7) — **zatwierdzony 2026-10-04, decyzje D1–D9 potwierdzone w wersji domyślnej** |
 | Poprawki techniczne | — | ✅ RF-0…RF-12 2026-10-05 (lokalnie) | blok zamknięty; `10-review-fixes.md` — Postęp |
-| V1 — pomiar | Opus 5.5 | ✅ 2026-10-05 (czeka na decyzję właściciela o wartościach §6) | `docs/review/06-visual-1-measure.md`: 21 tras × 390 / 1440 / 1600 na nowym stagingu (`1428105`), skrypt `scripts/visual-measure.ts`; nowy baseline (stary → `.visual/baseline-bb7b0cb`), staging vs baseline 0 FAIL, smoke 11/11; **21 zgłoszeń V1-01…V1-21** (odstępy sekcji desktop w trzech skupiskach 94–98 / 48–56 / 28–38 przy makiecie 56–64, mobile 30–34 zgodne poza ofertami 50–56; dół strony 0–122 przy wzorcu 26; belki 2 vs 3 px — `design/README` mówi 3 px, korekta R4-08; podpisy 14,5 px na 390 poniżej minimum 15; H3 26 px poza skalą; interlinie 1,25–1,45; akapity 20 / 14 / 40; miara wystaw rośnie z oknem); 0 kolorów i rozmiarów spoza tokenów; axe 0 naruszeń (42), CLS 0 na `/`, `/ikony`, `/ikony/na-zamowienie`; propozycja wartości RF-13 (56 / 34, próg 768, ciasny 34 / 26, `--accent-bar` 3 px) i RF-14 — **nie wpisana** do `10-review-fixes.md` |
-| V2 — szablony | Opus 5.5 | ✅ 2026-10-05 | `docs/review/06-visual-2-templates.md`: 5 grup porównane w tabelach (dane V1 + nowy pomiar 768 / 1024 → `.visual/measure/pages/*-{768,1024}.json`, `summary-768-1024.json`; odstęp H2 → treść; `scrollWidth` 768–1100); **17 zgłoszeń V2-01…V2-17** (1 bug, 1 ryzyko, 9 niespójność, 6 drobiazg): **bug** — `/publikacje` poziomy scroll przy 768–ok. 860 (siatka albumu 440 + 170 px od `md`); próg kolumny bocznej 768 (wystawy, album) vs 1024 (reszta); trzy zakończenia ofert; akapit wstępu ofert 17,5 / 1,7 na 390; „tytuł w liście” 18,5 / 22 / 25; artykuł z mediów bez zamknięcia (PU-B2); H2 → treść 10–26 w szablonie tekstowym. Rozstrzygnięte z V1 §7: V1-15 (panele kontaktu = `box-title`, rola karty do skali), V1-18 (spójne, tylko V1-14), V1-21 (rola „opis”), V1-11 (pas do stopki jako reguła); korekta V1-13 (`MilestoneRow` 2 px z makiety 6a). Sekcje „Wejście dla RF-13a” i „Wejście dla V3”. **Po checkpoincie:** V2-16 naprawione od razu (`globals.css`: siatka albumu na hubie od 1024; zweryfikowane lokalnie 390–1600, build/lint OK); V2-01 — wyjaśnione, gdzie jest sekcja zapisu, decyzja o LSŚ otwarta |
+| V1 — pomiar | Opus 5.5 | ✅ 2026-10-05 | `docs/review/06-visual-1-measure.md`: 21 tras × 390 / 1440 / 1600 na stagingu (`1428105`), skrypt `scripts/visual-measure.ts`; baseline `.visual/baseline-bb7b0cb`; **21 zgłoszeń V1-01…V1-21**; wartości docelowe odstępów i typografii wdrożone przez RF-13a / RF-13 / RF-14 (decyzja 2026-10-05) |
+| V2 — szablony | Opus 5.5 | ✅ 2026-10-05 | `docs/review/06-visual-2-templates.md`: 5 grup porównane w tabelach (dane V1 + nowy pomiar 768 / 1024 → `.visual/measure/pages/*-{768,1024}.json`, `summary-768-1024.json`; odstęp H2 → treść; `scrollWidth` 768–1100); **17 zgłoszeń V2-01…V2-17** (1 bug, 1 ryzyko, 9 niespójność, 6 drobiazg): **bug** — `/publikacje` poziomy scroll przy 768–ok. 860 (siatka albumu 440 + 170 px od `md`); próg kolumny bocznej 768 (wystawy, album) vs 1024 (reszta); trzy zakończenia ofert; akapit wstępu ofert 17,5 / 1,7 na 390; „tytuł w liście” 18,5 / 22 / 25; artykuł z mediów bez zamknięcia (PU-B2); H2 → treść 10–26 w szablonie tekstowym. Rozstrzygnięte z V1 §7: V1-15 (panele kontaktu = `box-title`, rola karty do skali), V1-18 (spójne, tylko V1-14), V1-21 (rola „opis”), V1-11 (pas do stopki jako reguła); korekta V1-13 (`MilestoneRow` 2 px z makiety 6a). Sekcje „Wejście dla RF-13a” i „Wejście dla V3”. **Po checkpoincie:** V2-16 naprawione od razu (siatka albumu od 1024); **V2-01** — kurs: sekcja „Jak się zapisać” (`enrollmentByKind.kurs`); LSŚ **bez** tej sekcji (RF-19, korekta 2026-10-06); zamówienie: oba nagłówki `leadIntro` jako H2 (RF-21b / RV-F-02) |
 | V3 — strony | Opus 5.5 | ✅ 2026-10-05 | `docs/review/06-visual-3-pages.md`: 21 tras × 390 / 768 / 1024 / 1440 / 1600 (sonda `.visual/v3/probe.mjs`: miara w znakach, sieroty, puste pasy, kolumny, CTA; zrzuty 1600 nowe — baseline ma 1920); kryteria K1–K9 przed oglądaniem; **24 zgłoszenia V3-01…V3-24** (2 bug, 2 ryzyko, 13 niespójność, 7 drobiazg): **bugi** — cytaty `/warsztaty` przy 768 po 13–14 znaków (3 kolumny od `md`), kolizja etykiety „przedpołudnie” w „Rytmie dnia” LSŚ (kolumna 140 px); 768–1279 ściśnięte `/` (H1 w 4 wierszach, przyciski w 3) i `/o-akademii` (hero 281 px); dwa kolory prozy na ofertach; pas „Gotowe ikony” wcięty o 56 px; dwa złote CTA na wystawach; data > tytuł w programie wykładów; `/ikony` 26,9 i wykładowcy 22,9 ekranu na 390; jednoliterowe spójniki — ` ` tylko w treści O Akademii / Pracowni; V2-16 sprawdzone symulacją (staging jeszcze bez poprawki). Sekcje „Wejście dla RF-13a” i „Wejście dla V4” |
 | RF-13a — decyzja o odstępach | Fable 5.1 | ✅ 2026-10-05 | `docs/review/06-visual-5-spacing-decision.md`. Archiwum: 96 px = K-29 (04b, okno 1920 przy `content-max` 1180 — argument osłabiony przez K-30), makieta 6a / 6b powtarza K-29, mobile 60 z 6b nigdy nie wdrożone (kod 32); belka: K-27 (2 px) vs późniejsza K-99 (3 px). Przełącznik wstrzykiwany (bez zmian w `src/`), dwie rundy zrzutów (`.visual/rf13a/`). **Decyzja właściciela:** `--section-gap` 56 / 34, jeden próg 768; `--section-gap-loose` 80 / 34 tylko `/o-akademii` · `/pracownia`; `--section-gap-tight` 34 / 26; `--heading-gap` 20 / 14; dół strony 26 z powłoki, pas z tłem do stopki; `--accent-bar` 3 px. Wartości wpisane w RF-13 (`10-review-fixes.md`); reguła do `CLAUDE.md` zaproponowana (§6.1), nie wpisana; przełącznik usunięty |
 | V4 — globalne i stany | Opus 5.5 | ✅ 2026-10-05 | `docs/review/06-visual-4-global.md`: kryteria G1–G11 przed oglądaniem; skrypty `.visual/v4/` (Tab 21 tras × 390 / 1440, hover 259 elementów przy 1440, lightbox 7 tras × 2, akordeony, TOC, pasek lat, filtry, 404, `reduced-motion`, axe w stanach otwartych); **13 zgłoszeń V4-01…V4-13** (1 bug, 5 niespójność, 7 drobiazg): **bug** — fokus z klawiatury nie odsłania częściowo ukrytej pozycji w przewijanym rzędzie na 390 (filtry `/ikony`, pasek lat); header 768–950 (125 px, sygnatura w 4 wierszach); menu mobilne zawsze z rozwiniętymi „Ikonami”; lightbox mobile z tłem 85 % (strona prześwituje, tekst pod paskiem); animacje hover poza „tylko kolor” (podkreślenie `scaleX`, obrys przycisku w dwóch etapach, opóźnienie przy `reduce`); cele dotyku 19–41 px. Działa: 0 przesunięć przy hoverze, fokus 2 px / 2 px na 21 trasach (poza `iframe` mapy), lightbox / menu / akordeony / 404 z klawiatury, axe 0 w stanach otwartych. **Brama RF-13a:** założenia trzymają; dopisana lewa kreska `SeasonAccordion` (2 px) do zakresu RF-13. Paczki **RF-15…RF-20** + dopisania do RF-13 / RF-14 w `10-review-fixes.md` — **zatwierdzone 2026-10-05** (V4-07: tylko zmiana koloru) |
 | Poprawki wizualne | — | ✅ RF-13…RF-20 2026-10-06 (lokalnie, zatwierdzone) | RF-13/14: skala odstępów i role typograficzne; RF-15: jeden próg 1024; RF-16: mobile 390; RF-17: fokus i cele dotyku; RF-18: hover, menu, lightbox; RF-19: zakończenia stron i CTA; RF-20: miara, łamanie, twarde spacje. Weryfikacja końcowa 2026-10-06: axe 0 naruszeń (42 przebiegi), CLS 0, knip czysty, jscpd 0 TSX / 15 CSS, `check:visual` 0 FAIL, smoke 11/11 |
+| RF-21 — ręczny przegląd i poprawki | Opus 5.5 (+ właściciel) | ✅ 2026-10-06 (commit `10/RF-21`) | **RV-F-01** — kurs: `.offer-enrollment-grid`, cytat wąsko + zapis szeroko od 1024; **RV-F-02** — zamówienie: H2 w `OfferLeadIntro`; **RV-F-03** — `/aktualnosci` ≥768: `YearNav` + `useScrollEdges`, strzałki; **RV-F-04** — `/kontakt`: jedna skala typografii (`contact.css`, `ContactPage`, `OnlineAside`). **RF-21e:** hero `/` (`home.json`, `page.tsx`), `LectureCycleTitle`, `LightboxPreload`, `ArticleList`, `wyklady.mdx`, `2026-2027.json`; wpisy `RF-21a`/`RF-21b` w `visual-check.expected.json`. Szczegóły: `10-review-fixes.md` §RF-21a…e. Następny krok: deploy, `check:visual` → nowy baseline, merge do `main`. |
 | C1 — zgodność z planem | Opus 5.5 | ⬜ (po EJK) | |
 | C2 — treść | Opus 5.5 | ⬜ (po EJK) | |
