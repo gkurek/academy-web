@@ -15,7 +15,12 @@ export type MainNavItem = NavLink & {
   children?: NavLink[];
 };
 
-export type SectionKey = "o-akademii" | "warsztaty" | "wyklady" | "ikony";
+export type SectionKey = "o-akademii" | "warsztaty" | "wyklady" | "ikony" | "kontakt";
+
+export const privacyPolicyLink: NavLink = {
+  label: "Polityka prywatności",
+  href: "/polityka-prywatnosci",
+};
 
 // Each list's first item is the section hub itself and stands in for the
 // breadcrumb (see design/README §4 — Breadcrumb).
@@ -39,6 +44,7 @@ export const sectionNav: Record<SectionKey, NavLink[]> = {
     { label: "Wystawy", href: "/ikony/wystawy" },
     { label: "Ikony na zamówienie", href: "/ikony/na-zamowienie" },
   ],
+  kontakt: [{ label: "Kontakt", href: "/kontakt" }, privacyPolicyLink],
 };
 
 const sectionKeys = Object.keys(sectionNav) as SectionKey[];
@@ -56,11 +62,6 @@ export const mainNav: MainNavItem[] = [
 
 /** Section outside the main menu — footer sitemap and the mobile menu's bottom row. */
 export const publicationsLink: NavLink = { label: "Publikacje", href: "/publikacje" };
-
-export const footerLegalLink: NavLink = {
-  label: "Polityka prywatności",
-  href: "/polityka-prywatnosci",
-};
 
 /** Main menu item by href — a typo fails the build instead of rendering a blank label. */
 export function navItem(href: string): MainNavItem {
@@ -80,8 +81,8 @@ export function sectionLink(href: string): NavLink {
   return link;
 }
 
-// Footer sitemap (mockup 9e) — four equal columns of sections with subpages.
-// Hub headings link to section routes; children include routes omitted from mainNav.
+// Footer sitemap (mockup Stopka v2 — 3a / 3b): four section groups + flat links (Aktualności,
+// Publikacje) + Kontakt group (Polityka prywatności as child). Hub headings link to section routes; children include routes omitted from mainNav.
 export const footerSitemapGroups: MainNavItem[] = [
   { ...navItem("/o-akademii"), children: sectionNav["o-akademii"].slice(1) },
   navItem("/warsztaty"),
@@ -89,8 +90,13 @@ export const footerSitemapGroups: MainNavItem[] = [
   { ...navItem("/ikony"), children: sectionNav.ikony },
 ];
 
-// Sections without subpages — the row under the hairline, same grid as the groups.
-export const footerSitemapFlat: NavLink[] = [navItem("/aktualnosci"), publicationsLink, navItem("/kontakt")];
+// Sections without subpages — third column on desktop (lg), full-width row on mobile.
+export const footerSitemapFlat: NavLink[] = [navItem("/aktualnosci"), publicationsLink];
+
+export const footerSitemapContactGroup: MainNavItem = {
+  ...navItem("/kontakt"),
+  children: sectionNav.kontakt.slice(1),
+};
 
 export type NavState = {
   /** Main nav item underlined gold in the Header. */
@@ -158,7 +164,7 @@ export function navTitle(path: string): string {
       : `${sectionActive.label}${pl.meta.titleSeparator}${active.label}`;
   }
 
-  const link = [...mainNav, publicationsLink, footerLegalLink].find((item) => item.href === path);
+  const link = [...mainNav, publicationsLink, privacyPolicyLink].find((item) => item.href === path);
   if (!link) {
     throw new Error(`navigation.ts: no nav link for "${path}" — title it from its data instead`);
   }

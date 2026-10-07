@@ -125,7 +125,7 @@
     --bleed-bg: var(--surface-footer);
   }
 
-  /* Footer contact band (mockup 9e) — lighter than the rest of the footer. */
+  /* Footer upper band (Stopka v2 — 3a / 3b); legal bar uses .surface-footer-bleed on <footer>. */
   .surface-footer-contact-bleed {
     --bleed-bg: var(--footer-contact-bg);
   }

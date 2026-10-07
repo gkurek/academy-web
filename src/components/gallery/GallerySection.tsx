@@ -1,6 +1,7 @@
 import { IconGrid } from "@/components/gallery/IconGrid";
 import type { IconWork } from "@/content/types";
 import { PageHeading } from "@/components/core/PageHeading";
+import { pl } from "@/i18n/pl";
 
 export interface GallerySectionProps {
   id: string;
@@ -37,6 +38,7 @@ export function GallerySection({
 
       {hasNames ? (
         <p className="text-size-body leading-body text-text-tertiary max-w-measure-prose mb-space-6">
+          <span className="text-text-secondary">{pl.gallery.sections.uczniowie.authorsLabel}</span>{" "}
           {names?.join(", ")}
         </p>
       ) : null}

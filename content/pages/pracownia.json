@@ -141,7 +141,8 @@
         "src": "/media/workshop/gallery-lewkas.jpg",
         "alt": "Nakładanie lewkasu pędzlem na deskę, obok emaliowane naczynia",
         "width": 320,
-        "height": 214
+        "height": 214,
+        "caption": "Gruntowanie desek"
       },
       {
         "src": "/media/workshop/gallery-egg-tempera.jpg",
@@ -168,7 +169,8 @@
         "src": "/media/workshop/gallery-painting-christ.jpg",
         "alt": "Uczestniczka maluje ikonę Chrystusa, obok rozrobiony niebieski pigment",
         "width": 539,
-        "height": 960
+        "height": 960,
+        "caption": "Łączenie pigmentu z temperą"
       },
       {
         "src": "/media/workshop/gallery-face-gold.jpg",
@@ -188,7 +190,8 @@
         "src": "/media/workshop/gallery-mandylion.jpg",
         "alt": "Malowanie Mandylionu na złotym tle, pigmenty w\u00a0muszlach",
         "width": 800,
-        "height": 600
+        "height": 600,
+        "caption": "Pigmenty w muszlach"
       },
       {
         "src": "/media/workshop/gallery-christ-face.jpg",
@@ -201,7 +204,8 @@
         "src": "/media/workshop/gallery-madonna.jpg",
         "alt": "Uczestnik maluje ikonę Matki Bożej, obok wydruk pierwowzoru",
         "width": 960,
-        "height": 720
+        "height": 720,
+        "caption": "Ostatnie poprawki"
       },
       {
         "src": "/media/workshop/gallery-finished-trio.jpg",

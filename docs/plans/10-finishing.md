@@ -34,6 +34,7 @@ Szczegóły, decyzje kawałków i checkpointy — w `docs/archive/plans/`. Decyz
 | 5 — album | Spis wg rozdziałów, skany, optymalizacja mediów | K-137, K-138 | `10-k5-album.md` |
 | 6 — wykłady | Przegląd tras, a11y akordeonu, `News.lectureSeason` | K-139 | `10-k6-lectures.md` |
 | 7 — reszta layoutu | I1, O1–O3, S1, stopka C1 (K-36) | — | `10-k7-layout.md` |
+| — poprawka po review | Stopka **Stopka v2** (3a/3b), **K-149** — poza k7, po zamknięciu bloku R | K-149 | `design/Akademia Ikony - Stopka v2.dc.html` |
 
 ## Kawałki — fala 2
 
@@ -49,11 +50,11 @@ Szczegóły, decyzje kawałków i checkpointy — w `docs/archive/plans/`. Decyz
 
 ### Blok R — Review serwisu (równolegle do k8)
 
-**Zakres:** review techniczne (R0–R5), wizualne (V1–V4) i — po EJK — zgodności z planem i treści (C1–C2); poprawki osobnym planem `10-review-fixes.md`. Plan, decyzje RV-1…RV-7 i postęp: **`docs/plans/10-review.md`**. Przejmuje z k10 ewaluację kodu i przegląd tras (RV-1).
+**Zakres:** review techniczne (R0–R5), wizualne (V1–V4) i — po EJK — zgodności z planem i treści (C1–C2); poprawki osobnym planem `docs/archive/plans/10-review-fixes.md`. Plan, decyzje RV-1…RV-7 i postęp: **`docs/plans/10-review.md`**. Przejmuje z k10 ewaluację kodu i przegląd tras (RV-1).
 
 ### Kawałek 10 — Audyty, dokumentacja
 
-**Zakres (okrojony przez RV-1):** ewaluacja kodu dodanego w k9 (delta po bloku R); Lighthouse dla 5 tras (`docs/lighthouse/`); synchronizacja dokumentów; przygotowanie testu 301 na stagingu (wykonanie — etap 11). Plus pozycje z backlogu niżej oznaczone k10 — B4 i B5 wchodzą jako wyłączenia do R0 i rozstrzygnięcie w `10-review-fixes.md`.
+**Zakres (okrojony przez RV-1):** ewaluacja kodu dodanego w k9 (delta po bloku R); Lighthouse dla 5 tras (`docs/lighthouse/`); synchronizacja dokumentów; przygotowanie testu 301 na stagingu (wykonanie — etap 11). Plus pozycje z backlogu niżej oznaczone k10 — B4 i B5 wchodzą jako wyłączenia do R0 i rozstrzygnięcie w `docs/archive/plans/10-review-fixes.md`.
 
 ## Backlog fali 2 — poza treścią
 
@@ -70,7 +71,7 @@ Pozycje techniczne i decyzje przeniesione z kawałków fali 1. Treść EJK — `
 | B7 | po prezentacji | Sticky `FactsBox` na stronach ofertowych (K-37) | `10-k7-layout.md` LY6 |
 | B8 | po prezentacji | Filtr Aktualności po wystawach dla linku „Fotorelacje z poprzednich wystaw dorocznych” (dziś `/aktualnosci` bez filtra) | `10-k3-news.md` § Ryzyka |
 | B9 | etap 11 | Dobowy rebuild albo ISR na hostingu — warunek poprawnych kafli „Najbliższe” i stanu wystawy (K-136 N9, K-85) | `10-k4-home.md` N9 |
-| B10 | właściciel / Claude Design | `design/README` nie opisuje makiety wystaw 13a/14a; tokeny stopki w `design/README` nieaktualne po C1 | `10-k1-exhibitions.md`, `10-k7-layout.md` |
+| B10 | właściciel / Claude Design | `design/README` nie opisuje makiety wystaw 13a/14a; **`design/README` — opis stopki nadal niezsynchronizowany** (w kodzie: **K-149** / Stopka v2; góra `#1a140f`, legal `#120e0b`) | `10-k1-exhibitions.md`, `10-k7-layout.md` |
 
 ## Dane sample w tym etapie
 
@@ -99,7 +100,8 @@ Z `docs/plan-claude-code.md` §3, etap 10:
 | Kawałek | Status | Uwagi |
 | --- | --- | --- |
 | 1–7 — fala 1 | ✅ | 2026-10-03 … 2026-10-04; tabela „Fala 1 — podsumowanie” wyżej |
+| Stopka v2 (K-149) | ✅ | 2026-10-07; mapa stopki + `sectionNav.kontakt` (/kontakt · /polityka-prywatnosci); poza k7, po przeglądzie makiety Claude Design |
 | 8 — treść EJK | ⬜ | backlog T1–T30 (`docs/plan-claude-code.md` §5) |
-| R — review serwisu | ✅ część techniczna i wizualna 2026-10-06 | R0–R5, RF-0…RF-20, V1–V4 zamknięte; zostaje C1–C2 po k8; postęp w `10-review.md`, `10-review-fixes.md` |
+| R — review serwisu | ✅ część techniczna i wizualna 2026-10-06 | R0–R5, RF-0…RF-20, V1–V4 zamknięte; zostaje C1–C2 po k8; postęp w `10-review.md`, `docs/archive/plans/10-review-fixes.md` |
 | 9 — SEO / analityka | ⬜ | |
 | 10 — audyty / docs | ⬜ | okrojony przez RV-1 |

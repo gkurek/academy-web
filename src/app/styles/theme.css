@@ -97,7 +97,7 @@
   --spacing-menu-indent: 36px;
   /* Gold underline offset under an active nav link. */
   --spacing-link-underline-gap: 2px;
-  /* Footer — mockup 9e. */
+  /* Footer — mockup Stopka v2 (3a / 3b); see K-149. */
   --color-footer-credit-hover: var(--footer-credit-hover);
   --text-size-footer-brand: var(--footer-brand-size);
   --text-size-footer-heading: var(--footer-heading-size);

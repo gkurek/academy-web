@@ -3,7 +3,7 @@
 Data: 2026-10-04 · gałąź `feat/10-review` (HEAD `0aba37f`) · model: Fable 5.1 · świeża sesja (RV-5)  
 Wejście: `00-scope.md` (wyłączenia §1, narzędzia §3), `01-data.md` (21), `02-components.md` (29), `03-routes.md` (11), `04-cross-cutting.md` (21) — **82 zgłoszenia**, plus sekcje „Punkty przekazane” i „Do weryfikacji” każdej fazy.  
 Metoda: scalenie i deduplikacja po wspólnej przyczynie w kodzie; wyrywkowa weryfikacja w kodzie twierdzeń, od których zależy scalenie (lista w §2); bez `docs/archive/` (RV-6).  
-Wynik: **34 scalone pozycje** (S-01…S-34), 5 uproszczeń architektonicznych (A1–A5), 9 decyzji właściciela (D1–D9), 6 pozycji do backlogu treści T. Projekt paczek poprawek: `docs/plans/10-review-fixes.md`.
+Wynik: **34 scalone pozycje** (S-01…S-34), 5 uproszczeń architektonicznych (A1–A5), 9 decyzji właściciela (D1–D9), 6 pozycji do backlogu treści T. Projekt paczek poprawek: `docs/archive/plans/10-review-fixes.md`.
 
 Review **niczego nie poprawia** — ten plik ustala priorytety i podział na paczki.
 
@@ -190,7 +190,7 @@ Powiązane istniejące pozycje T: T19 (zdjęcia wystaw — warunek weryfikacji S
 
 ### 6.2 Do kodu (RF)
 
-Wszystkie pozycje S-01…S-34 poza S-31 (D1 — `CLAUDE.md`) i częściami przekazanymi do V1 / V4 / C1 (§5). Podział na paczki, kolejność i kryteria: `docs/plans/10-review-fixes.md`.
+Wszystkie pozycje S-01…S-34 poza S-31 (D1 — `CLAUDE.md`) i częściami przekazanymi do V1 / V4 / C1 (§5). Podział na paczki, kolejność i kryteria: `docs/archive/plans/10-review-fixes.md`.
 
 ### 6.3 Zamknięte bez paczki
 

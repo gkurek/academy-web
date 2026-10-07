@@ -13,13 +13,13 @@ Zgłoszenie, które pokrywa się z pozycją poniżej, pomijamy. Jeśli review zn
 
 | Grupa | Pozycje | Co wyłączone |
 | --- | --- | --- |
-| Brakujące / robocze `alt`, `caption` | T12, T14, T24, T29 | puste lub placeholderowe `alt`/`caption`, rozjazd `spread-08` (T24) |
-| `[do uzupełnienia]` i copy do redakcji | T5, T16, T22, T25, T28 | placeholdery w `pl.ts` i `content/`, copy z makiety K-127 na `/ikony/wystawy` (T22), numer sezonu w intro wykładów (T16) |
+| Brakujące / robocze `alt`, `caption` | T14, T24, T29 | puste lub placeholderowe `alt`/`caption`, rozjazd `spread-08` (T24) |
+| `[do uzupełnienia]` i copy do redakcji | T5, T22, T25, T28 | placeholdery w `pl.ts` i `content/`, copy z makiety K-127 na `/ikony/wystawy` (T22) |
 | Placeholdery zdjęć | T6, T19, T21 | kadry `/ikony/wystawy` i zdjęcia dorocznych (T19), zajawka i hero „Na zamówienie” (T6), relacje doroczne (T21) |
 | Dane galerii | T1–T4 | brak/niezweryfikowane wymiary, artefakty tytułów WP, brak `authorName`, domyślna technika |
-| Dane wykładów | T17, T18 | zdublowany `cycleTitle`, nierozpoznani wykładowcy 2012–2014 |
+| Dane wykładów | T18 | nierozpoznani wykładowcy 2012–2014 |
 | Powiązania wpis ↔ strona | T10, T20, T23 | miejsca LSŚ i wystawy wyjazdowe bez relacji (tekst bez linku), audyt rok ↔ wpis |
-| Fakty i treść do potwierdzenia | T7, T8, T9, T11, T13, T15, T26, T27 | czas realizacji, cytat kursu, adres zgłoszeń, korekty merytoryczne, program A3, formuły cykliczne, lista tekstów, bio |
+| Fakty i treść do potwierdzenia | T7, T8, T9, T13, T15, T26 | czas realizacji, cytat kursu, adres zgłoszeń, program A3, formuły cykliczne, lista tekstów |
 | Inwentarz lightbox inline | T30 | pojedyncze zdjęcia w MDX niepodpięte pod lightbox |
 
 ### 1.2 Backlog fali 2 B1–B10 (`docs/plans/10-finishing.md`)

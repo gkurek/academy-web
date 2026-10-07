@@ -110,7 +110,7 @@ Metoda: pomiar (Playwright: wyliczone style, `getBoundingClientRect`, symulacja 
 
 ## 6. Wejście dla poprawek wizualnych
 
-Projekt paczek **RF-15…RF-20** dopisany w `docs/plans/10-review-fixes.md` (do zatwierdzenia). Przydział zgłoszeń V1–V4 niepokrytych przez RF-13 / RF-14:
+Projekt paczek **RF-15…RF-20** dopisany w `docs/archive/plans/10-review-fixes.md` (do zatwierdzenia). Przydział zgłoszeń V1–V4 niepokrytych przez RF-13 / RF-14:
 
 | Paczka | Zgłoszenia |
 | --- | --- |
