@@ -188,40 +188,40 @@ Decyzje spoza kodu (D-01…D-06 z briefu v2) pozostają w dokumentach ekosystemu
 Wszystko, co czeka na treść, decyzję albo materiał od EJK lub właściciela. Każda pozycja zamyka się w czacie przez gate K-122, zanim trafi do `content/`.
 Pozycje zamknięte (etapy 1–9, kawałki 1–7 etapu 10): `docs/archive/plan-claude-code-historia.md` §5H. Kto dodaje treść `sample` albo `[do uzupełnienia]`, dopisuje ją tutaj.
 Źródła szczegółów: `docs/archive/migrate-report.md` (§ P4 „Backlog — refactor wystaw dorocznych” R1–R9, § EJK), plany kawałków `docs/archive/plans/10-k*.md`.
-Kolejność wierszy = kolejność przeglądu stronami (O nas → Pracownia → Warsztaty → Oferty → Wykłady → Archiwum → Wykładowcy → Ikony → Wystawy → Na zamówienie → Aktualności → Kontakt, potem pozostałe). Numery T bez zmian — są cytowane w innych dokumentach. Warsztaty, Wykładowcy i Kontakt nie mają dziś otwartych pozycji.
+Kolejność wierszy: pozycje otwarte (⬜) wg kolejności przeglądu stronami (O nas → Pracownia → Warsztaty → Oferty → Wykłady → Archiwum → Wykładowcy → Ikony → Wystawy → Na zamówienie → Aktualności → Kontakt, potem pozostałe), na końcu tabeli — zamknięte (✅). Numery T bez zmian — są cytowane w innych dokumentach. Warsztaty, Wykładowcy i Kontakt nie mają dziś otwartych pozycji.
 
 | #   | Obszar      | Pozycja | Gdzie | ✔   |
 | --- | ----------- | ------- | ----- | --- |
-| T27 | O nas       | Staż pracowni EJK w bio | `content/pages/o-akademii.json` | ⬜ |
-| T28 | Pracownia   | Rozmowa — redakcja (5 nowych pytań, zmiany stylu) do akceptacji EJK; portret EJK | `content/pages/pracownia.json`, `public/media/workshop/ejk-portret.jpg` | ⬜ |
 | T8  | Oferty      | Kurs — cytat „Piotr, uczestnik”: brak źródła w WP; potwierdzić albo wymienić | frontmatter oferty kursu w `content/offers/` | ⬜ |
-| T9  | Oferty      | Adres zgłoszeń na kurs: na stronie `akademiaikony@gmail.com`; WP miał też `sekretariat.ikony22@gmail.com` — potwierdzić | oferty, brief §8 | ⬜ |
 | T10 | LSŚ         | „Gdzie byliśmy”: Supraśl, Przemyśl, Wilno, Tbilisi bez relacji — wpisy Aktualności + `newsSlug` albo zostają bez linku (K-57, K-126) | `content/offers/letnia-szkola-swiatla.mdx` | ⬜ |
-| T16 | Wykłady     | Numer sezonu w intro 2026/2027 (`[do uzupełnienia: 15. czy 16.?]`): dane mają 14 archiwalnych + bieżący, brief §3 mówi o szesnastym; po odpowiedzi — copy + brief §3 | `content/lectures/2026-2027.json`, brief §3 | ⬜ |
-| T17 | Archiwum    | `cycleTitle` 2017/2018 = 2018/2019 („Ikona – korzenie i owoce wiary. O świętości”) — weryfikacja razem z T20 (R3) | `content/lectures/*.json` | ⬜ |
 | T18 | Archiwum    | Nierozpoznani wykładowcy w sezonach 2012–2014 | `content/lectures/*.json` | ⬜ |
 | T1  | Galeria     | Wymiary (`size`): 5 prac bez wymiaru (`trojca-swieta-2017`, `chrystus-milosierny`, `chrystus-eucharystyczny-na-krzyzu`, `jezus-chrystus`, `matka-boza-pompejanska`), 47 do weryfikacji; UI `pl.gallery.lightbox.sizeUnverified` | `content/icons.json` | ⬜ |
-| T2  | Galeria     | Tytuły — artefakty WP (CAPS, podwójne spacje, „Advokata” vs „Advocata”, interpunkcja) | `content/icons.json` | ⬜ |
-| T3  | Galeria     | 10 prac uczniów bez `authorName` + zgoda Akademii na publikację nazwisk uczniów (lista + lightbox) | `content/icons.json` | ⬜ |
-| T4  | Galeria     | Technika: domyślna „tempera jajowa na desce lipowej” dla wszystkich prac albo pole per praca | `pl.gallery.lightbox.techniqueDefault`, `content/icons.json` | ⬜ |
-| T5  | Galeria     | Wstęp do sekcji uczniów `[do uzupełnienia]`, etykieta „Autorzy prac:” | `src/i18n/pl.ts` (`gallery.sections`) | ⬜ |
 | T19 | Wystawy     | Zdjęcia: kadry strony (`heroImage`, `permanentImage`, `permanentImage2`, `closingImage`) i zdjęcia dorocznych (`AnnualExhibition.photos`) — dziś placeholdery (R9) | `content/exhibition/page.mdx`, `annual.json` | ⬜ |
 | T20 | Wystawy     | Audyt rok ↔ wpis: R3 (2022/2023 — tytuł vs wykłady), R4 (2015/2016 bez `newsSlug`; 2014/2015 `wystawa-ikona-dzis` vs „Obraz i kult”) | `content/exhibition/annual.json`, `content/news/*` | ⬜ |
 | T21 | Wystawy     | Relacje doroczne: R5 (placeholdery D20/D21), R6 (lata 2012–2024 bez wpisu — szablon „Wystawa doroczna [rok]” + zdjęcia EJK) | `content/news/*` | ⬜ |
-| T22 | Wystawy     | Copy przyjęte z makiety K-127 (lead, doroczna, oprowadzania, wyjazdowe — m.in. „dobieramy ikony do wnętrza…”, „każdy wyjazd ma swoją relację”) — redakcja EJK | `src/i18n/pl.ts` (`exhibition.*`) | ⬜ |
 | T23 | Wystawy     | Wyjazdowe: Supraśl i Tbilisi bez relacji; zakres sekcji „wyjazdowe / gościnne” i lista miast (K-87) | `content/exhibition/page.mdx` (`travelingPlaces`) | ⬜ |
 | T6  | Zamówienie  | Zdjęcie do zajawki „Ikony na zamówienie” (K-46, S2) i podmiana kadru hero `/ikony/na-zamowienie` — z sesji zdjęciowej | `GalleryOrderTeaser.tsx`, `content/offers/zamowienie.mdx` | ⬜ |
-| T7  | Zamówienie  | Czas realizacji — dziś „ustalamy indywidualnie”; EJK może doprecyzować | `content/offers/zamowienie.mdx` (`facts.leadTime`) | ⬜ |
-| T11 | Aktualności | Oprowadzania 2017: zdanie o „jedynym kanonicznym przedstawieniu” Trójcy Świętej — korekta EJK | `content/news/oprowadzania-po-wystawie-2017.mdx` | ⬜ |
-| T12 | Aktualności | Poświęcenia ikon: `alt`, akapit kościelny (porównanie do chrztu i sakramentów) | `content/news/poswiecenia-ikon.mdx` | ⬜ |
 | T13 | Aktualności | Program + skan plakatu — wpis A3 | `content/news/spotkania-sladami-najpiekniejszych-ikon-swiata.mdx` | ⬜ |
 | T14 | Aktualności | Plakaty (~20): `alt` i rozłożenie na `images[]` wpisów docelowych (K-78, K-129); ewentualne usunięcie wpisu zbiorczego | `content/news/plakaty-z-wydarzen.mdx` | ⬜ |
 | T15 | Aktualności | Formuły wpisów cyklicznych — przekazać EJK do akceptacji (K-128) | `docs/wpisy-cykliczne-aktualnosci-ejk.md` | ⬜ |
-| T24 | Album       | `alt` / `caption` okładki i rozkładówek (placeholdery w MDX); `spread-08`: `alt` „166–167” vs `caption` „146–147” | `content/publications/ikona-dzis.mdx` | ⬜ |
 | T25 | Album       | 2–3 fragmenty albumu, opcjonalnie „Jak powstał album”, ewentualne doprecyzowanie tytułu i tematu `mailto:` | body MDX publikacji, `pl.ts` | ⬜ |
 | T26 | Publikacje  | Ewentualna rozbudowa listy tekstów EJK z mediów | `content/articles/*.mdx` | ⬜ |
 | T29 | Cały serwis | Przegląd `alt` / `caption` wszystkich zdjęć z EJK, pozycja po pozycji | `content/**` | ⬜ |
 | T30 | Cały serwis | Inwentarz pojedynczych zdjęć inline w MDX do podpięcia pod lightbox (tryb single gotowy z k2, D7) | `content/**/*.mdx` | ⬜ |
+| T11 | Aktualności | Oprowadzania 2017 — redakcja akapitu o Trójcy Świętej | `oprowadzania-po-wystawie-2017.mdx`, `manifest.json` | ✅ |
+| T12 | Aktualności | Poświęcenia ikon — `alt` wpisu; placeholder akapitu kościelnego usunięty | `poswiecenia-ikon.mdx`, `manifest.json` | ✅ |
+| T16 | Wykłady     | Numer sezonu: **15.** (piętnasty) w intro 2026/2027 i wpisie „Nowy rok”; brief §8 zsynchronizowany | `2026-2027.json`, `nowy-rok-w-akademii-2026-2027.mdx`, brief §3/§8 | ✅ |
+| T17 | Archiwum    | Sezon 2017/2018 — temat „Nieustanne Bogu dziękczynienie” (wykłady, aktualność, `annual.json`) | `2017-2018.json`, `wyklady-20172018.mdx`, `annual.json` | ✅ |
+| T27 | O nas       | Staż pracowni EJK w bio — 20 lat (`od dwudziestu lat`) | `o-akademii.json`, `lecturers.json`, `workshops-hub.json` | ✅ |
+| T28 | Pracownia   | Rozmowa — redakcja (5 nowych pytań, zmiany stylu) do akceptacji EJK; portret EJK | `content/pages/pracownia.json`, `public/media/workshop/ejk-portret.jpg` | ✅ |
+| T9  | Oferty      | Adresy zgłoszeń: warsztaty/ikony/zamówienie → `akademiaikony@gmail.com`; wykłady → `sekretariat.ikony22@gmail.com` (jak `settings.json` / kontakt) | `content/offers/*`, `OfferPage` | ✅ |
+| T2  | Galeria     | Tytuły — artefakty WP (CAPS, podwójne spacje, Advocata, Mandylion, Krzewu Gorejącego, interpunkcja); `alt` zsynchronizowane z `title` | `content/icons.json` | ✅ |
+| T3  | Galeria     | Zgoda na publikację nazwisk; lista + lightbox; 10 prac bez `authorName` → `authorFallback` | `content/icons.json`, `GallerySection.tsx`, `pl.ts` | ✅ |
+| T4  | Galeria     | Domyślna technika „tempera jajowa na desce lipowej” dla wszystkich prac (bez pola per praca) | `pl.gallery.lightbox.techniqueDefault` | ✅ |
+| T5  | Galeria     | Bez wstępu do sekcji uczniów; etykieta „Autorzy ikon:” nad listą nazwisk | `pl.ts`, `GallerySection.tsx` | ✅ |
+| T22 | Wystawy     | Copy z makiety K-127 — bez dalszej redakcji EJK | `pl.ts` (`exhibition.*`) | ✅ |
+| T7  | Zamówienie  | Czas realizacji — „ustalamy indywidualnie” (bez doprecyzowania) | `zamowienie.mdx` (`facts.leadTime`) | ✅ |
+| T24 | Album       | `spread-08`: caption „146–147” poprawny; `alt` zgodny z caption | `ikona-dzis.mdx` | ✅ |
 
 ---
 
@@ -232,6 +232,8 @@ Poniżej jeden wpis na zamknięty kawałek; nowe wpisy dopisujemy na górze.
 
 | Data       | Wpis |
 | ---------- | ---- |
+| 2026-10-07 | **k8 (gate):** T28, T9, T2, T3, T4, T5, T22, T7, T24 → ✅ w §5; pracownia (rozmowa, galeria), galeria (tytuły + uczniowie), maile zapisów per oferta, technika domyślna, wystawy/album/zamówienie bez zmian treści. |
+| 2026-10-07 | **k8 (gate):** T11, T12, T16, T17, T27 → ✅ w §5; copy wykładów (piętnasty sezon), sezon 2017/2018, oprowadzania, poświęcenia, bio EJK; brief §8 — liczba sezonów 15 / archiwum 14. |
 | 2026-10-07 | **Stopka v2 + kontakt / polityka (K-149):** mapa stopki — grupa Kontakt z podlinkiem Polityka prywatności (desktop: kolumna 3 wiersz 2 przy Ikony; mobile: 2 kolumny z Aktualnościami · Publikacjami); `sectionNav.kontakt` na `/kontakt` i `/polityka-prywatnosci`; usunięty link do polityki z treści kontaktu. Pliki: `Footer.tsx`, `navigation.ts`, `ContactPage.tsx`, brief §3, `10-finishing.md`. Makieta: `design/Akademia Ikony - Stopka v2.dc.html`. |
 | 2026-10-06 | **RF-21 zamknięty lokalnie:** jeden commit — RV-F-01…04 (kurs, zamówienie, pasek lat, kontakt) + domknięcia (hero `/`, `LectureCycleTitle`, `LightboxPreload`, `ArticleList`, treść wykłady). Szczegóły: `10-review-fixes.md` §RF-21. Następny: deploy staging, baseline, merge `main`. |
 | 2026-10-06 | **Kurs — cytat uczestnika obok zapisu (RF-21a, RV-F-01):** na `/warsztaty/kurs-roczny-i-trzyletni` sekcja „Jak się zapisać” i `OfferQuote` (frontmatter, m.in. Grzegorz) w jednym wierszu od 1024 — `.offer-enrollment-grid` (`400px \| 1fr`, cytat lewo / zapis prawo); mobile: cytat, potem zapis; bez `rule-gold-t` nad sekcją; złota kreska u góry karty cytatu. Pliki: `OfferPage.tsx`, `OfferQuote.tsx`, `offers.css`. Szczegóły: `10-review-fixes.md` §RF-21a. |

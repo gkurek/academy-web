@@ -2,7 +2,7 @@
 
 Data: 2026-10-05 · gałąź `feat/10-review`, HEAD `1428105` (RF-5; blok RF-0…RF-12 zamknięty) · model: Opus 5.5 · świeża sesja (RV-6)  
 Staging (pomiar): https://academy-68rb8ldp7-greg-d8fb.vercel.app/ — zawiera RF-12 i RF-5; stary staging `academy-web-lovat` (`bb7b0cb`) tylko jako źródło starego baseline'u.  
-Wejście: `docs/review/04-cross-cutting.md` (R4-04…R4-08, R4-10, tabele 1–3 jako hipotezy), `design/README` §1–§3, `design/README-wpis-aktualnosci*.md`, `docs/plans/10-review-fixes.md` (RF-13, RF-14).  
+Wejście: `docs/review/04-cross-cutting.md` (R4-04…R4-08, R4-10, tabele 1–3 jako hipotezy), `design/README` §1–§3, `design/README-wpis-aktualnosci*.md`, `docs/archive/plans/10-review-fixes.md` (RF-13, RF-14).  
 Review **niczego nie poprawia**. Wartości docelowe w §6 to **propozycja do decyzji właściciela** — nie są wpisane do `10-review-fixes.md`.
 
 Wagi: `bug` · `ryzyko` · `niespójność` · `upraszczanie` · `drobiazg`. Koszt: S / M / L.

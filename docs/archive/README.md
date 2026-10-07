@@ -42,7 +42,7 @@ decyzja o martwym kodzie — etap 10, k10, B5). Otwarte pozycje dla EJK przepisa
 
 ## Plany zamkniętych etapów i kawałków — `archive/plans/`
 
-Poprzednia ścieżka: `docs/plans/`. W `docs/plans/` zostają wyłącznie plany otwarte (dziś: 10, 11).
+Poprzednia ścieżka: `docs/plans/`. W `docs/plans/` zostają wyłącznie plany otwarte (dziś: `10-finishing`, `10-review`, `11-wdrozenie`).
 
 | Plik | Etap | Zamknięty |
 | --- | --- | --- |
@@ -71,6 +71,7 @@ Poprzednia ścieżka: `docs/plans/`. W `docs/plans/` zostają wyłącznie plany 
 | `10-k5-album.md` | 10/k5 — album (AL1–AL8) | 2026-10-04 |
 | `10-k6-lectures.md` | 10/k6 — wykłady (LK1–LK6) | 2026-10-04 |
 | `10-k7-layout.md` | 10/k7 — reszta layoutu (LY1–LY6) | 2026-10-04 |
+| `10-review-fixes.md` | 10/R — paczki poprawek RF-0…RF-21 (po review R0–R5, V1–V4) | 2026-10-06 |
 
 ## Dokumenty sesji zamkniętych
 

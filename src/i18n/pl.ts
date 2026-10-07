@@ -277,6 +277,7 @@ const plSource = {
       },
       uczniowie: {
         title: "Ikony uczniów",
+        authorsLabel: "Autorzy ikon:",
       },
     },
     caption: {

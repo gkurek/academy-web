@@ -9,7 +9,6 @@ import { OfferLeadExtra } from "@/components/offers/OfferLeadExtra";
 import { OfferLeadIntro } from "@/components/offers/OfferLeadIntro";
 import { OfferQuote } from "@/components/offers/OfferQuote";
 import { getEnrollmentState, getOfferDateValues, type LoadedOffer } from "@/content/offers";
-import { getEnrollmentEmail } from "@/content/settings";
 import type { OfferFacts } from "@/content/types";
 import { pl } from "@/i18n/pl";
 import { fillRequiredTemplate } from "@/lib/fillTemplate";
@@ -65,7 +64,7 @@ function EnrollmentSection({
   quoteSlot?: ReactNode;
 }) {
   const headingId = useId();
-  const values = { ...getOfferDateValues(facts), enrollmentEmail: getEnrollmentEmail() };
+  const values = { ...getOfferDateValues(facts), enrollmentEmail: facts.enrollmentEmail };
   const paragraphs = copy.paragraphs.map((paragraph) =>
     fillRequiredTemplate(paragraph, values, "offers.enrollmentByKind"),
   );

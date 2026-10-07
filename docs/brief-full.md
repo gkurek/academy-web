@@ -11,12 +11,12 @@ Stan analizy: wrzesień 2026, na podstawie obecnej strony [https://www.akademiai
 
 ## 1. Kim jest klient i po co ta strona
 
-**Akademia Ikony – Studium Ikonograficzne św. Andrzeja Apostoła** działa od 2010 r. w Warszawie, od 2012 r. w Kościele Środowisk Twórczych pw. św. Andrzeja Apostoła i św. Brata Alberta Chmielowskiego na Placu Teatralnym. Jest projektem wiodącym fundacji IKONA DZIŚ (ikonadzis.org). Założycielką i prowadzącą warsztaty jest **Elżbieta Jackowska-Kurek**, malarka ikon z ponad dwudziestoletnią praktyką; sekretarzem jest **Maurycy Lubak**.
+**Akademia Ikony – Studium Ikonograficzne św. Andrzeja Apostoła** działa od 2010 r. w Warszawie, od 2012 r. w Kościele Środowisk Twórczych pw. św. Andrzeja Apostoła i św. Brata Alberta Chmielowskiego na Placu Teatralnym. Jest projektem wiodącym fundacji IKONA DZIŚ (ikonadzis.org). Założycielką i prowadzącą warsztaty jest **Elżbieta Jackowska-Kurek**, malarka ikon z dwudziestoletnią praktyką; sekretarzem jest **Maurycy Lubak**.
 
 Trzy filary działalności:
 
 1. **Warsztaty pisania ikon** – kurs roczny (przedwstępny/wstępny) i trzyletni (doskonalący), raz w tygodniu, październik–czerwiec, praca indywidualna z każdym uczestnikiem. Plus **Letnia Szkoła Światła** – tygodniowe plenery ikonowe w sierpniu/wrześniu, w trybie rekolekcyjnym.
-2. **Wykłady** – cykl „Ikona – korzenie i owoce wiary”, wybrane wtorki miesiąca 18:00–20:30, październik–czerwiec, 400 zł/rok, możliwy roczny dostęp do nagrań. Prowadzą teolodzy, historycy sztuki, duchowni (UKSW, UO, dominikanie, prawosławni). 16 sezonów łącznie (od 2012/2013); bieżący 2026/2027 to szesnasty; archiwum — 15 sezonów archiwalnych.
+2. **Wykłady** – cykl „Ikona – korzenie i owoce wiary”, wybrane wtorki miesiąca 18:00–20:30, październik–czerwiec, 400 zł/rok, możliwy roczny dostęp do nagrań. Prowadzą teolodzy, historycy sztuki, duchowni (UKSW, UO, dominikanie, prawosławni). 15 sezonów łącznie (od 2012/2013); bieżący 2026/2027 to piętnasty; archiwum — 14 sezonów archiwalnych.
 3. **Ikony** – galeria prac Elżbiety Jackowskiej-Kurek i uczniów; w kościele trzy formy wystawy (ekspozycja codzienna, wystawa doroczna uczestników, wystawy wyjazdowe — opis na `/ikony/wystawy`, K-82…K-90); ikony na zamówienie. Archiwalne poświęcenia i wyjazdy studyjne — patrz Aktualności (K-50).
    **Cele nowej strony (w kolejności ważności):**
 4. Wizerunek i prestiż – strona ma odpowiadać randze instytucji z 15-letnim dorobkiem i zapleczem akademickim.
@@ -121,7 +121,7 @@ Media: wszystkie oryginały w `/wp-content/uploads/YYYY/MM/`. Podpisy ikon są w
 /warsztaty/kurs-roczny-i-trzyletni
 /warsztaty/letnia-szkola-swiatla
 /wyklady                   hub: bieżący sezon + jak się zapisać
-/wyklady/archiwum          15 sezonów archiwalnych, rozwijane (bieżący 2026/2027 — szesnasty)
+/wyklady/archiwum          14 sezonów archiwalnych, rozwijane (bieżący 2026/2027 — piętnasty)
 /wyklady/wykladowcy
 /ikony                     galeria: sekcje EJK → uczniowie, filtr tematu, lightbox
 /ikony/na-zamowienie       strona ofertowa (treść wymienna po starcie strony autorskiej)

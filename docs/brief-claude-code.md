@@ -41,7 +41,7 @@ Strona jest częścią szerszego ekosystemu (Akademia + Fundacja + planowana str
 /warsztaty/kurs-roczny-i-trzyletni
 /warsztaty/letnia-szkola-swiatla
 /wyklady                   hub: bieżący sezon + jak się zapisać
-/wyklady/archiwum          15 sezonów archiwalnych, rozwijane (bieżący 2026/2027 — szesnasty)
+/wyklady/archiwum          14 sezonów archiwalnych, rozwijane (bieżący 2026/2027 — piętnasty)
 /wyklady/wykladowcy
 /ikony                     galeria: sekcje Elżbieta / uczniowie + filtr tematu
 /ikony/[slug]              pojedyncza ikona (opcjonalnie w v1)
@@ -409,7 +409,7 @@ Telefon jako `tel:+48601734705`.
 - tytuł wykładu inauguracyjnego („Otwarcie sezonu”) — nie pochodzi z briefu
 - wymiary ikon oznaczone `[z podpisu WP]` — niezweryfikowane, sprawdzić przy migracji
 
-**Potwierdzone:** liczba sezonów wykładów — 16 łącznie (od 2012/2013); bieżący sezon 2026/2027 to szesnasty; archiwum obejmuje 15 sezonów archiwalnych (2012/2013–2025/2026).
+**Potwierdzone:** liczba sezonów wykładów — 15 łącznie (od 2012/2013); bieżący sezon 2026/2027 to piętnasty; archiwum obejmuje 14 sezonów archiwalnych (2012/2013–2025/2026).
 
 **Decyzje strukturalne z handoffu:**
 - `/wyklady` = hub + bieżący sezon + zwinięte archiwum; `/wyklady/archiwum` = osobna trasa z pełną listą.
