@@ -62,13 +62,14 @@ Strona jest częścią szerszego ekosystemu (Akademia + Fundacja + planowana str
 **Wzorzec nawigacji drugiego poziomu (obowiązkowy, zaimplementowany w makietach jako `SectionNav`):**
 1. Strona sekcji (`/warsztaty`, `/wyklady`, `/ikony`) jest hubem z dużymi klikalnymi blokami podstron, nie tylko opisem.
 2. `SectionNav` — pozioma listwa linków drugiego poziomu pod nagłówkiem, na każdej podstronie sekcji. Na mobile: zwykła zawijana lista, nie select, nie skryta.
-3. Stopka z pełną mapą strony (nawigacja ratunkowa + SEO).
+3. Stopka z pełną mapą strony (nawigacja ratunkowa + SEO). Układ i tokeny: **K-149** (`design/Akademia Ikony - Stopka v2.dc.html`, 3a/3b). **Polityka prywatności** w mapie stopki wyłącznie jako podlink sekcji **Kontakt** (jak Pracownia pod O Akademii); na `/kontakt` i `/polityka-prywatnosci` ten sam układ co inne sekcje — `SectionNav` nad H1 (Kontakt · Polityka prywatności), bez osobnego linku w treści kontaktu. Organizator (§8) — na stronie kontaktowej / w treści, nie w pasku prawnym stopki.
 
 Zawartość `SectionNav` per sekcja:
 - O Akademii: O Akademii · Pracownia *(para stron tekstowych; `/o-akademii` = pierwsza pozycja — K-48, makieta 6a–6d)*
 - Warsztaty: Przegląd · Kurs roczny i trzyletni · Letnia Szkoła Światła *(pierwsza pozycja = hub, nie nazwa sekcji — K-23)*
 - Wykłady: Bieżący sezon · Archiwum · Wykładowcy
 - Ikony: Galeria · Wystawy · Ikony na zamówienie (K-90; wcześniej „Wystawa”, K-51)
+- Kontakt: Kontakt · Polityka prywatności *(para podstron bez pozycji w menu głównym — K-149)*
 - Aktualności: bez `SectionNav` — jedna chronologiczna lista wpisów z nawigacją po latach (K-70), bez filtrów kategorii w v1 (K-52)
 
 Menu główne (desktop): **płaska lista 6 linków** — bez dropdownu; drugi poziom wyłącznie przez `SectionNav` na stronach sekcji (zgodnie z makietą). W menu mobilnym: akordeon per sekcja, nagłówek sekcji zawsze też linkiem do huba.
@@ -364,7 +365,7 @@ Szacunek ręcznej korekty po migracji: ~10 stron statycznych, 16 sezonów wykła
 - Galeria: dwie sztywne sekcje (ikony Elżbiety Jackowskiej-Kurek → ikony uczniów), filtr **tematu** przez query string (`?temat=<slug-tagu>`), bez filtra autora; lightbox. W siatce — sam tytuł; w lightboxie — pełny autor, wymiary i technika (`IconWork`). Lista nazwisk uczniów w sekcji uczniów, generowana z danych.
 - Aktualności: jeden strumień wpisów z etykietą typu (`kind`), jedna chronologiczna lista z nawigacją po latach (K-70), wpis pojedynczy; bez filtrów kategorii w v1 (K-50, K-52).
 - Publikacje (K-76): `/publikacje` — sekcja albumu + lista artykułów; podstrona albumu z blokiem metryczki/zakupu (`dostepny` / `wyczerpany`, wzorowany na `FactsBox`), zakup przez `mailto:` na sekretariat i na wykładach w KŚT; artykuły ze blokiem źródła (album / media / tylko zajawka + link); linki spis treści ↔ artykuł (`toc[].articleSlug`). Terminologia UI: **album**, nie „książka” ani „katalog”.
-- Kontakt: adres, **osadzona** mapa (nie surowy link; `MapBlock` + `SiteSettings.mapEmbedUrl`), dwa maile z opisem, telefon, info o wejściu od strony zakrystii (treść redakcyjna w MDX), blok „Akademia w sieci” w `MapBlock`.
+- Kontakt: `SectionNav` Kontakt · Polityka prywatności; adres, **osadzona** mapa (nie surowy link; `MapBlock` + `SiteSettings.mapEmbedUrl`), dwa maile z opisem, telefon, info o wejściu od strony zakrystii (treść redakcyjna w MDX), blok „Akademia w sieci” w `OnlineAside` / `MapBlock`.
 - Mobile-first, WCAG AA (kontrast, fokus, alt), `prefers-reduced-motion`.
 - SEO: metadata + Open Graph per strona, sitemap, 301 ze starych URL.
 - JSON-LD: `Organization` (z `parentOrganization` → Fundacja), `Person` (EJK, z `sameAs`), `Event` (wykłady bieżącego sezonu), `Course` (kurs, plener).
