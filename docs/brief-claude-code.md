@@ -358,9 +358,9 @@ Szacunek ręcznej korekty po migracji: ~10 stron statycznych, 16 sezonów wykła
 **Musi być:**
 - Strona główna: hero, sekcja „Najbliższe” (z CMS/danych), trzy filary, wybrane ikony, cytat, blok „Prowadząca” (mały, nie dominujący), miejsce, kontakt.
 - Strony ofertowe (kurs, plener, wykłady, ikony na zamówienie) z blokiem `FactsBox`/„W skrócie” zasilanym z `OfferFacts` — nie z tekstu w body.
-- Dwa stany `FactsBox`: nabór otwarty (CTA złote) i zamknięty (`enrollmentOpen: false` → przycisk drugorzędny + inny komunikat, np. „nabór rusza w marcu” lub „zapytaj o miejsce”).
+- Dwa stany `FactsBox`: stan z `getEnrollmentState(offer)` (K-144) — nabór **otwarty** (CTA złote, `mailto:` z `facts.enrollmentSubject`) i **zamknięty** (przycisk drugorzędny + nota z `pl.factsBox.ctaByKind`). Kurs i plener zamknięte: **„Powiadom mnie o naborze”** i osobne tematy `mailto:` z §7 (z `pl.ts`, nie z `facts.enrollmentSubject` — `getEnrollmentMailtoHref`). Wykłady zamknięte: „Zapytaj o miejsce mailem”. Przy zamkniętym naborze **brak** przycisku telefonu w `FactsBox`, gdy w danym stanie CTA nie ma `telLabel` (kurs, plener, wykłady); przy otwartym — `mailto:` + `tel:` jak dotąd. Zamówienie: telefon w obu stanach.
 - `/ikony/na-zamowienie` na szablonie strony ofertowej, sekcja „Jak przebiega zamówienie” jako sekwencja 3 kroków (Rozmowa · Zaliczka · Realizacja — makieta `#2a-zamowienie`), „Przykłady realizacji” (3–4 ikony), link do niej z Galerii.
-- Zapisy: przyciski `mailto:` z tematami z §7 poniżej + `tel:`. Przygotować miejsce pod formularz w v2 (nie budować go teraz).
+- Zapisy: `mailto:` (tematy §7, logika K-144) + `tel:` tam, gdzie CTA ma `telLabel`. Sekcja „Jak się zapisać” na kursie: adres `{enrollmentEmail}` jako link `mailto:` z tym samym href co `FactsBox`. Przygotować miejsce pod formularz w v2 (nie budować go teraz).
 - Program bieżącego sezonu wykładów jako lista (data, tytuł, prowadzący); archiwum jako rozwijane sezony (`SeasonAccordion`).
 - Galeria: dwie sztywne sekcje (ikony Elżbiety Jackowskiej-Kurek → ikony uczniów), filtr **tematu** przez query string (`?temat=<slug-tagu>`), bez filtra autora; lightbox. W siatce — sam tytuł; w lightboxie — pełny autor, wymiary i technika (`IconWork`). Lista nazwisk uczniów w sekcji uczniów, generowana z danych.
 - Aktualności: jeden strumień wpisów z etykietą typu (`kind`), jedna chronologiczna lista z nawigacją po latach (K-70), wpis pojedynczy; bez filtrów kategorii w v1 (K-50, K-52).
@@ -382,6 +382,7 @@ Szacunek ręcznej korekty po migracji: ~10 stron statycznych, 16 sezonów wykła
 **Tematy `mailto:` (dokładne stringi, nie parafrazować):**
 - `Zgłoszenie – kurs roczny 2026/2027`
 - `Zgłoszenie – Letnia Szkoła Światła 2027`
+- `Powiadomienie o naborze – kurs roczny` / `Powiadomienie o naborze – Letnia Szkoła Światła` (2026-10-08; przycisk „Powiadom mnie o naborze” przy zamkniętym naborze, temat z `pl.ts`, nie z `facts.enrollmentSubject`)
 - `Zgłoszenie – wykłady 2026/2027`
 - `Zapytanie – ikona na zamówienie`
 - `Zapytanie – kursy doskonalące i konsultacje` (LY2, 2026-10-04; `akademiaikony@gmail.com`, sekcja „Dalsza droga” kursu)
@@ -390,7 +391,7 @@ Szacunek ręcznej korekty po migracji: ~10 stron statycznych, 16 sezonów wykła
 Telefon jako `tel:+48601734705`.
 
 **Nazwy komponentów (użyć tych nazw w kodzie, żeby zgadzały się z design/README):**
-`Header`, `Footer`, `SectionNav`, `Breadcrumb`, `Hero`, `FactsBox`, `OfferCard`, `LectureList`, `SeasonAccordion`, `IconGrid`, `Lightbox`, `NewsCard`, `Testimonial`, `MapBlock`, `StepList` (proces zamówienia), `TocSidebar` (strona tekstowa). `EventCard` usunięty (K-50, 2026-09-21) — dział „Wydarzenia” zlikwidowany, wpisy renderują się przez `NewsCard`.
+`Header`, `Footer`, `SectionNav`, `Breadcrumb`, `Hero`, `FactsBox`, `OfferCard`, `LectureList`, `SeasonAccordion`, `IconGrid`, `Lightbox`, `NewsCard`, `Testimonial`, `MapBlock`, `StepList` (proces zamówienia), `TocSidebar` (strona tekstowa). W MDX ofert: `OfferFigure`, `OfferSideCta` (k7), `OfferSidePhoto` (k8 — sekcja tekst + zdjęcie w prawej kolumnie). `EventCard` usunięty (K-50, 2026-09-21) — dział „Wydarzenia” zlikwidowany, wpisy renderują się przez `NewsCard`.
 
 **Tokeny — kolory:** kolor `#8d7d69` był w makietach niedostatecznie kontrastowy (4,3:1 na tłach kart) i został **zamieniony na `#a2917c`** w całym systemie. `#8d7d69` może zostać wyłącznie w placeholderach makietowych (IBM Plex Mono) — **nie kopiować go do produkcji.**
 

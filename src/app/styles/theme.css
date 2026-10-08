@@ -177,6 +177,7 @@
   --border-width-offer-facts-top: var(--offer-facts-top);
   --border-width-offer-quote-top: var(--offer-quote-top);
   --grid-template-columns-offer-main: 1fr var(--offer-sidebar-w);
+  --grid-template-columns-offer-side-photo: var(--offer-side-photo-cols);
   --spacing-offer-semester-x: var(--offer-semester-x);
   --spacing-offer-semester-y: var(--offer-semester-y);
   --spacing-offer-semester-x-m: var(--offer-semester-x-m);

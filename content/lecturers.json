@@ -227,6 +227,20 @@
     }
   },
   {
+    "slug": "barbara-strzalkowska",
+    "name": "Barbara Strzałkowska",
+    "titles": "prof. dr hab.",
+    "affiliation": "UKSW",
+    "affiliationFull": "Uniwersytet Kardynała Stefana Wyszyńskiego",
+    "bio": "Biblistka, doktor habilitowany nauk teologicznych, profesor uczelni Wydziału Teologicznego UKSW. Kierownik Katedry Egzegezy Starego Testamentu, wicedyrektor Instytutu Nauk Teologicznych. Specjalizuje się w badaniach nad księgami mądrościowymi Starego Testamentu oraz Septuagintą – greckim przekładem Biblii hebrajskiej – i popularyzacją Biblii w Polsce i za granicą. Jako pierwsza kobieta w Warszawie objęła funkcję prodziekana ds. kształcenia Wydziału Teologicznego UKSW. Wykłada m.in. jako visiting professor w Pontificia Università Urbaniana w Rzymie i w Jordan University College w Marogoro w Tanzanii. Członek komitetu redakcyjnego czasopisma „La Revue Biblique”. Konsultant Konferencji Episkopatu Polski ds. pielgrzymowania i turystyki oraz zespołu Laudato Si przy Radzie ds. społecznych KEP. Przewodniczka po Ziemi Świętej i krajach biblijnych. Na UKSW stworzyła w 2022 r. kierunek studiów Chrześcijańska turystyka religijna.",
+    "photo": {
+      "src": "/media/lecturers/barbara-strzalkowska.jpg",
+      "alt": "Zdjęcie — Barbara Strzałkowska",
+      "width": 417,
+      "height": 502
+    }
+  },
+  {
     "slug": "maciej-biskup",
     "name": "Maciej Biskup",
     "titles": "o. dr",
@@ -247,14 +261,6 @@
     "affiliation": "PDDM",
     "affiliationFull": "Zakon Pobożnych Uczennic Boskiego Mistrza (Piae Discipulae Divini Magistri, PDDM)",
     "bio": "Siostra Zgromadzenia Sióstr Uczennic Boskiego Mistrza, dziennikarka. W latach 2015–2022 posługiwała w Radiu Jasna Góra; wśród prowadzonych przez nią audycji znalazły się m.in. „Piękno zbawia świat”, „Misyjny budzik”, „Nawigator”, „Kotwica”, „Radość konsekracji” i „Eucharystia daje życie”. Współpracuje z Radiem Jasna Góra; jest autorką i redaktorką cyklu „Refidim” o modlitwie wstawienniczej za kapłanów."
-  },
-  {
-    "slug": "barbara-strzalkowska",
-    "name": "Barbara Strzałkowska",
-    "titles": "prof. dr hab.",
-    "affiliation": "UKSW",
-    "affiliationFull": "Uniwersytet Kardynała Stefana Wyszyńskiego",
-    "bio": "Biblistka, doktor habilitowany nauk teologicznych, profesor uczelni Wydziału Teologicznego UKSW. Kierownik Katedry Egzegezy Starego Testamentu, wicedyrektor Instytutu Nauk Teologicznych. Specjalizuje się w badaniach nad księgami mądrościowymi Starego Testamentu oraz Septuagintą – greckim przekładem Biblii hebrajskiej – i popularyzacją Biblii w Polsce i za granicą. Jako pierwsza kobieta w Warszawie objęła funkcję prodziekana ds. kształcenia Wydziału Teologicznego UKSW. Wykłada m.in. jako visiting professor w Pontificia Università Urbaniana w Rzymie i w Jordan University College w Marogoro w Tanzanii. Członek komitetu redakcyjnego czasopisma „La Revue Biblique”. Konsultant Konferencji Episkopatu Polski ds. pielgrzymowania i turystyki oraz zespołu Laudato Si przy Radzie ds. społecznych KEP. Przewodniczka po Ziemi Świętej i krajach biblijnych. Na UKSW stworzyła w 2022 r. kierunek studiów Chrześcijańska turystyka religijna."
   },
   {
     "slug": "irina-tatarova",

@@ -59,6 +59,9 @@ export function ExhibitionFrame({
           <p className="exhibition-media-placeholder-text">{placeholderLabel}</p>
         </div>
       )}
+      {image?.caption ? (
+        <figcaption className="exhibition-frame-caption">{image.caption}</figcaption>
+      ) : null}
     </figure>
   );
 }

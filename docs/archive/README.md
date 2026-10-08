@@ -38,7 +38,7 @@ Dawniej `scripts/migrate-report.md`; przeniesiony 2026-10-04. Log operacyjny eta
 zamrożenia, media M0–M6, DoD #3–#8, backlog wystaw dorocznych R1–R9. **Migracja jest zamknięta na stałe**
 — skryptów `scripts/migrate-wp/` nie uruchamiamy ponownie (`report.ts` nadal wskazuje starą ścieżkę;
 decyzja o martwym kodzie — etap 10, k10, B5). Otwarte pozycje dla EJK przepisane do
-`docs/plan-claude-code.md` §5 (T1–T30).
+`docs/plan-claude-code.md` §5 (T1–T29) i §5A (T30 v2).
 
 ## Plany zamkniętych etapów i kawałków — `archive/plans/`
 

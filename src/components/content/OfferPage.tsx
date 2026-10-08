@@ -1,4 +1,4 @@
-import { useId, type ReactNode } from "react";
+import { Fragment, useId, type ReactNode } from "react";
 
 import { FactsBox } from "@/components/content/FactsBox";
 import { MdxLink } from "@/components/content/MdxLink";
@@ -12,8 +12,10 @@ import { getEnrollmentState, getOfferDateValues, type LoadedOffer } from "@/cont
 import type { OfferFacts } from "@/content/types";
 import { pl } from "@/i18n/pl";
 import { fillRequiredTemplate } from "@/lib/fillTemplate";
+import { getEnrollmentMailtoHref } from "@/lib/mailto";
 import { PageHeading } from "@/components/core/PageHeading";
 import { Prose } from "@/components/core/Prose";
+import { TextLink } from "@/components/core/TextLink";
 
 // Links are styled only in offer MDX (LY5); news, contact and articles keep their own `a` styles.
 const offerMdxLinks = { a: MdxLink };
@@ -57,16 +59,21 @@ function getEnrollmentCopy(kind: LoadedOffer["kind"]): EnrollmentCopy | undefine
 function EnrollmentSection({
   facts,
   copy,
+  mailtoHref,
   quoteSlot,
 }: {
   facts: OfferFacts;
   copy: EnrollmentCopy;
+  mailtoHref: string;
   quoteSlot?: ReactNode;
 }) {
   const headingId = useId();
-  const values = { ...getOfferDateValues(facts), enrollmentEmail: facts.enrollmentEmail };
+  const values = getOfferDateValues(facts);
+  // Split on {enrollmentEmail} first so the address can be rendered as a link between the parts.
   const paragraphs = copy.paragraphs.map((paragraph) =>
-    fillRequiredTemplate(paragraph, values, "offers.enrollmentByKind"),
+    paragraph
+      .split("{enrollmentEmail}")
+      .map((part) => fillRequiredTemplate(part, values, "offers.enrollmentByKind")),
   );
 
   const copyBlock = (
@@ -74,9 +81,14 @@ function EnrollmentSection({
       <PageHeading level="section" id={headingId} className="mb-heading-gap">
         {pl.offers.enrollmentSectionTitle}
       </PageHeading>
-      {paragraphs.map((paragraph) => (
-        <p key={paragraph} className="body-copy text-text-body mb-space-5">
-          {paragraph}
+      {paragraphs.map((parts) => (
+        <p key={parts.join("")} className="body-copy text-text-body mb-space-5">
+          {parts.map((part, index) => (
+            <Fragment key={index}>
+              {index > 0 && <TextLink href={mailtoHref}>{facts.enrollmentEmail}</TextLink>}
+              {part}
+            </Fragment>
+          ))}
         </p>
       ))}
       <p className="text-size-caption leading-body text-text-tertiary max-w-measure-prose pt-space-5 border-t border-line-neutral">
@@ -90,8 +102,8 @@ function EnrollmentSection({
       aria-labelledby={headingId}
       className={
         quoteSlot
-          ? "mt-section-gap-tight md:mt-section-gap md:pt-space-7"
-          : "mt-section-gap pt-space-7"
+          ? "mt-section-gap-tight md:mt-section-gap"
+          : "mt-section-gap"
       }
     >
       {quoteSlot ? (
@@ -109,6 +121,7 @@ function EnrollmentSection({
 export function OfferPage({ offer, path, quoteSlot, afterBodySlot, footerBand }: OfferPageProps) {
   const { Content, title, lead, leadSecondary, facts, kind, semesters, steps, leadIntro, leadExtra, quote } = offer;
   const eyebrow = getOfferEyebrow(kind, facts.seasonLabel);
+  const enrollment = getEnrollmentState(offer);
   const enrollmentCopy = getEnrollmentCopy(kind);
   const offerQuote =
     quoteSlot ??
@@ -152,7 +165,7 @@ export function OfferPage({ offer, path, quoteSlot, afterBodySlot, footerBand }:
           )}
         </div>
 
-        <FactsBox facts={facts} kind={kind} enrollment={getEnrollmentState(offer)} />
+        <FactsBox facts={facts} kind={kind} enrollment={enrollment} />
       </div>
 
       <Prose variant="offer">
@@ -169,7 +182,12 @@ export function OfferPage({ offer, path, quoteSlot, afterBodySlot, footerBand }:
 
       {/* Offer ending (V2-01): kurs — enrollment + quote in sidebar; plener — quote grid; zamówienie — footer band. */}
       {enrollmentCopy && (
-        <EnrollmentSection facts={facts} copy={enrollmentCopy} quoteSlot={enrollmentQuoteSlot} />
+        <EnrollmentSection
+          facts={facts}
+          copy={enrollmentCopy}
+          mailtoHref={getEnrollmentMailtoHref(facts, kind, enrollment)}
+          quoteSlot={enrollmentQuoteSlot}
+        />
       )}
 
       {trailingQuoteSlot && <div className="mt-section-gap">{trailingQuoteSlot}</div>}

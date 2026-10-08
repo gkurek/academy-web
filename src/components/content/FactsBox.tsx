@@ -8,7 +8,7 @@ import { getPhoneHref, getSiteSettings } from "@/content/settings";
 import type { OfferFacts } from "@/content/types";
 import { pl } from "@/i18n/pl";
 import { fillRequiredTemplate, fillTemplate } from "@/lib/fillTemplate";
-import { buildMailtoHref } from "@/lib/mailto";
+import { getEnrollmentMailtoHref } from "@/lib/mailto";
 
 export interface FactsBoxProps {
   facts: OfferFacts;
@@ -65,7 +65,7 @@ export function FactsBox({ facts, kind, enrollment }: FactsBoxProps) {
   const cta = factsBox.ctaByKind[kind][enrollment];
   const { phone } = getSiteSettings();
   const phoneHref = getPhoneHref();
-  const mailtoHref = buildMailtoHref(facts.enrollmentEmail, facts.enrollmentSubject);
+  const mailtoHref = getEnrollmentMailtoHref(facts, kind, enrollment);
   const ctaNote =
     "note" in cta
       ? fillRequiredTemplate(cta.note, getOfferDateValues(facts), `FactsBox ${kind} note`)
@@ -125,11 +125,16 @@ export function FactsBox({ facts, kind, enrollment }: FactsBoxProps) {
           {cta.mailtoLabel}
         </Button>
 
-        <Button href={phoneHref} variant="secondary" block size="md" className="md:hidden">
-          {fillTemplate(cta.telLabel, { phone })}
-        </Button>
+        {/* Closed enrollment states omit telLabel: no phone while there is nothing to sign up for. */}
+        {"telLabel" in cta && (
+          <>
+            <Button href={phoneHref} variant="secondary" block size="md" className="md:hidden">
+              {fillTemplate(cta.telLabel, { phone })}
+            </Button>
 
-        <p className="hidden md:block text-size-ui text-text-tertiary text-center">{fillTemplate(factsBox.phoneOr, { phone })}</p>
+            <p className="hidden md:block text-size-ui text-text-tertiary text-center">{fillTemplate(factsBox.phoneOr, { phone })}</p>
+          </>
+        )}
       </div>
     </aside>
   );

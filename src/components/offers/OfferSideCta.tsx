@@ -13,6 +13,8 @@ export interface OfferSideCtaProps {
   imageAlt: string;
   imageWidth: number;
   imageHeight: number;
+  /** CSS `object-position` of the cropped photo (focal point of this image); defaults to center. */
+  imagePosition?: string;
   email: string;
   /** Exact `mailto:` subject from brief §7. */
   subject: string;
@@ -28,6 +30,7 @@ export function OfferSideCta({
   imageAlt,
   imageWidth,
   imageHeight,
+  imagePosition,
   email,
   subject,
 }: OfferSideCtaProps) {
@@ -48,6 +51,7 @@ export function OfferSideCta({
           height={imageHeight}
           sizes="(min-width: 1024px) 400px, 100vw"
           className="w-full aspect-offer-side-photo object-cover"
+          style={imagePosition ? { objectPosition: imagePosition } : undefined}
         />
         <aside
           aria-labelledby={headingId}

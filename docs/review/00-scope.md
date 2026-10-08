@@ -1,7 +1,7 @@
 # Review 10/R — R0: zakres, wyłączenia, punkt odniesienia, dane twarde
 
-Data: 2026-10-04 · gałąź `feat/10-review` (HEAD `681ac1f`, różnica do `main` = wyłącznie `docs/`) · model: Opus 5.5  
-Plan: `docs/plans/10-review.md`. Ten plik **niczego nie ocenia** — zbiera wyłączenia i surowe wyniki narzędzi jako wejście dla R1–R5 i V1–V4.
+Data: 2026-10-04 (§1.1 uzupełnione 2026-10-08 względem `docs/plan-claude-code.md` §5) · gałąź `feat/10-review` (HEAD `681ac1f`, różnica do `main` = wyłącznie `docs/`) · model: Opus 5.5  
+Plan: `docs/plans/10-review.md`. Ten plik **niczego nie ocenia** — zbiera wyłączenia i surowe wyniki narzędzi jako wejście dla R1–R5 i V1–V4. Pozycje §5 oznaczone ✅ **nie** są tu wyłączeniami — tylko otwarte ⬜.
 
 ---
 
@@ -9,18 +9,22 @@ Plan: `docs/plans/10-review.md`. Ten plik **niczego nie ocenia** — zbiera wył
 
 Zgłoszenie, które pokrywa się z pozycją poniżej, pomijamy. Jeśli review znajdzie **nowy aspekt** tej samej pozycji (np. bug w kodzie, który ją obsługuje, a nie brak treści) — zgłaszamy z odsyłaczem do numeru.
 
-### 1.1 Backlog treści T1–T30 (`docs/plan-claude-code.md` §5, gate EJK, k8)
+### 1.1 Backlog treści T1–T29 (`docs/plan-claude-code.md` §5, gate EJK, k8)
 
 | Grupa | Pozycje | Co wyłączone |
 | --- | --- | --- |
-| Brakujące / robocze `alt`, `caption` | T14, T24, T29 | puste lub placeholderowe `alt`/`caption`, rozjazd `spread-08` (T24) |
-| `[do uzupełnienia]` i copy do redakcji | T5, T22, T25, T28 | placeholdery w `pl.ts` i `content/`, copy z makiety K-127 na `/ikony/wystawy` (T22) |
+| Brakujące / robocze `alt`, `caption` | T14, T29 | puste lub placeholderowe `alt`/`caption` (T24 ✅ 2026-10-07) |
+| `[do uzupełnienia]` i copy do redakcji | T25 | fragmenty albumu, opcjonalne sekcje (T5, T22, T28 ✅ w k8) |
 | Placeholdery zdjęć | T6, T19, T21 | kadry `/ikony/wystawy` i zdjęcia dorocznych (T19), zajawka i hero „Na zamówienie” (T6), relacje doroczne (T21) |
-| Dane galerii | T1–T4 | brak/niezweryfikowane wymiary, artefakty tytułów WP, brak `authorName`, domyślna technika |
-| Dane wykładów | T18 | nierozpoznani wykładowcy 2012–2014 |
-| Powiązania wpis ↔ strona | T10, T20, T23 | miejsca LSŚ i wystawy wyjazdowe bez relacji (tekst bez linku), audyt rok ↔ wpis |
-| Fakty i treść do potwierdzenia | T7, T8, T9, T13, T15, T26 | czas realizacji, cytat kursu, adres zgłoszeń, program A3, formuły cykliczne, lista tekstów |
-| Inwentarz lightbox inline | T30 | pojedyncze zdjęcia w MDX niepodpięte pod lightbox |
+| Dane galerii | T1 | brak/niezweryfikowane wymiary (T2–T4 ✅ 2026-10-07) |
+| Powiązania wpis ↔ strona | T10, T23 | miejsca LSŚ i wystawy wyjazdowe bez relacji (tekst bez linku); T20 ✅ (K-150) |
+| Fakty i treść do potwierdzenia | T13, T15, T26 | program A3, formuły cykliczne, lista tekstów (T7–T9 ✅ w k8) |
+
+### 1.1a Po v1 — T30 (`docs/plan-claude-code.md` §5A)
+
+| Grupa | Pozycje | Co wyłączone |
+| --- | --- | --- |
+| Inwentarz lightbox inline | T30 | pojedyncze zdjęcia w MDX niepodpięte pod lightbox — świadomie v2, nie gate k8 |
 
 ### 1.2 Backlog fali 2 B1–B10 (`docs/plans/10-finishing.md`)
 

@@ -11,7 +11,7 @@ Kompleksowy przegląd tego, co jest zaimplementowane i widoczne na stagingu, w t
 
 1. **Techniczne (R0–R5)** — dobre praktyki, czysty kod, reużywalność, overengineering, możliwości uproszczenia, błędy i bugi.
 2. **Wizualne (V1–V4)** — spójność layoutu, spacingu, typografii i tokenów strona po stronie i między stronami; odstępstwa od wzorców; to, co psuje czytelność.
-3. **Zgodność z planem i treść (C1–C2)** — dopiero po zamknięciu backlogu treści EJK (T1–T30).
+3. **Zgodność z planem i treść (C1–C2)** — dopiero po zamknięciu backlogu treści EJK (T1–T29; T30 → v2, §5A).
 
 **Zasada nadrzędna:** review **zbiera zgłoszenia, niczego nie poprawia**. Poprawki idą osobnym planem (`docs/archive/plans/10-review-fixes.md`, powstaje w R5 i po V4).
 
@@ -61,7 +61,7 @@ Zgłoszenia trafiające na listę „znane i wyłączone” z R0 — nie zgłasz
 ### R0 — Zakres i dane twarde (Opus 5.5)
 
 Zakres:
-- **Znane i wyłączone:** T1–T30 (`docs/plan-claude-code.md` §5) — m.in. brakujące `alt`/`caption`, `[do uzupełnienia]`, placeholdery zdjęć wystaw (T19), copy z makiet do redakcji EJK (T22); B1–B10 (`10-finishing.md`); celowe decyzje K-xx z §4 (np. zaokrąglenia tylko w `Lightbox`, układ wystaw K-127).
+- **Znane i wyłączone:** T1–T29 (`docs/plan-claude-code.md` §5) — m.in. brakujące `alt`/`caption`, `[do uzupełnienia]`, placeholdery zdjęć wystaw (T19), copy z makiet do redakcji EJK (T22); **T30** (lightbox inline MDX) — §5A v2, poza k8; B1–B10 (`10-finishing.md`); celowe decyzje K-xx z §4 (np. zaokrąglenia tylko w `Lightbox`, układ wystaw K-127).
 - **Punkt odniesienia:** commit/deploy stagingu; lista tras z briefu §3 pogrupowana w szablony (ofertowe, listy, szczegóły, galerie, statyczne); szerokości 390 / 1440 / ≥ 1600 (K-30).
 - **Narzędzia:** `npx tsc --noEmit`, `npm run lint`, `npm run build`, `npx knip`, `npx jscpd src`, axe na stagingu (przez przeglądarkę) — surowe wyniki streszczone w `00-scope.md`, bez oceny.
 
@@ -137,7 +137,7 @@ Gotowe: `docs/review/06-visual-4-global.md` + uzupełnienie `docs/archive/plans/
 Zakres: ponowne obejrzenie zmian z RF-13…RF-20 (21 tras, desktop + mobile, stany interakcji). Zgłoszenia właściciela `RV-F-01…04` → poprawki RF-21a…d; domknięcia bez RV-F w RF-21e. Szczegóły, lista kontrolna i tabela zgłoszeń: `docs/archive/plans/10-review-fixes.md` §RF-21.
 Gotowe: commit `10/RF-21` na `feat/10-review` (2026-10-06); `build` + `lint` OK. `check:visual` względem baseline `bb7b0cb` — przed deployem (właściciel).
 
-### C1 — Zgodność z planem (Opus 5.5) · warunek: T1–T30 zamknięte lub świadomie odłożone
+### C1 — Zgodność z planem (Opus 5.5) · warunek: T1–T29 zamknięte lub świadomie odłożone (T30 — v2, §5A)
 
 Zakres: trasy i funkcje vs brief §3–§4 i decyzje K-xx w §4.
 
