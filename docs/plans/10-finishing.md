@@ -40,9 +40,9 @@ Szczegóły, decyzje kawałków i checkpointy — w `docs/archive/plans/`. Decyz
 
 ### Kawałek 8 — Treść i gate EJK
 
-**Zakres:** backlog treści **T1–T30** w `docs/plan-claude-code.md` §5 — galeria, zamówienie, oferty, LSŚ, aktualności, wykłady, wystawy, album, O nas / pracownia, przegląd `alt`/`caption` całego serwisu, inwentarz zdjęć inline do lightboxa. Każda pozycja przez gate K-122.
+**Zakres:** backlog treści **T1–T29** w `docs/plan-claude-code.md` §5 — galeria, zamówienie, oferty, LSŚ, aktualności, wykłady, wystawy, album, O nas / pracownia, przegląd `alt`/`caption` całego serwisu. Każda pozycja przez gate K-122. **T30** (lightbox dla zdjęć inline w MDX) — §5A, v2, poza k8.
 
-**Kryterium „gotowe”:** każda pozycja T1–T30 zamknięta albo świadomie odłożona (z adnotacją w §5); brak `[do uzupełnienia]` widocznego na produkcji poza uzgodnionymi wyjątkami; build + lint OK.
+**Kryterium „gotowe”:** każda pozycja T1–T29 zamknięta albo świadomie odłożona (z adnotacją w §5); T30 nie blokuje zamknięcia k8; brak `[do uzupełnienia]` widocznego na produkcji poza uzgodnionymi wyjątkami; build + lint OK.
 
 ### Kawałek 9 — SEO, analityka, JSON-LD
 
@@ -101,7 +101,7 @@ Z `docs/plan-claude-code.md` §3, etap 10:
 | --- | --- | --- |
 | 1–7 — fala 1 | ✅ | 2026-10-03 … 2026-10-04; tabela „Fala 1 — podsumowanie” wyżej |
 | Stopka v2 (K-149) | ✅ | 2026-10-07; mapa stopki + `sectionNav.kontakt` (/kontakt · /polityka-prywatnosci); poza k7, po przeglądzie makiety Claude Design |
-| 8 — treść EJK | ⬜ | backlog T1–T30 (`docs/plan-claude-code.md` §5) |
+| 8 — treść EJK | 🟠 w toku | backlog T1–T29 — **17/29 ✅** w §5 (2026-10-08); commity `10/k8` na `feat/10-finishing`; T30 → §5A v2 |
 | R — review serwisu | ✅ część techniczna i wizualna 2026-10-06 | R0–R5, RF-0…RF-20, V1–V4 zamknięte; zostaje C1–C2 po k8; postęp w `10-review.md`, `docs/archive/plans/10-review-fixes.md` |
 | 9 — SEO / analityka | ⬜ | |
 | 10 — audyty / docs | ⬜ | okrojony przez RV-1 |

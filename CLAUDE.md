@@ -23,7 +23,7 @@ Przy konflikcie: `CLAUDE.md` > plan etapu > `brief-claude-code.md` > `brief-full
 ## Konwencje kodu
 
 - Bez pętli `for` / `for-of`; używaj `map` / `filter` / `reduce` / `forEach`.
-- Jeden plik = jeden komponent, nazwane eksporty, props typowane. Nazwy komponentów dokładnie jak w `design/README` (`Header`, `Footer`, `SectionNav`, `Breadcrumb`, `Hero`, `FactsBox`, `OfferCard`, `LectureList`, `SeasonAccordion`, `IconGrid`, `Lightbox`, `NewsCard`, `Testimonial`, `MapBlock`, `StepList`, `TocSidebar`). Dział „Wydarzenia” i `EventCard` zlikwidowane (K-50, 2026-09-21) — wydarzenia to teraz wpisy `NewsCard` z etykietą `kind`.
+- Jeden plik = jeden komponent, nazwane eksporty, props typowane. Nazwy komponentów dokładnie jak w `design/README` (`Header`, `Footer`, `SectionNav`, `Breadcrumb`, `Hero`, `FactsBox`, `OfferCard`, `LectureList`, `SeasonAccordion`, `IconGrid`, `Lightbox`, `NewsCard`, `Testimonial`, `MapBlock`, `StepList`, `TocSidebar`) oraz rozszerzenia MDX ofert z brief §7: `OfferFigure`, `OfferSideCta`, `OfferSidePhoto`. Dział „Wydarzenia” i `EventCard` zlikwidowane (K-50, 2026-09-21) — wydarzenia to teraz wpisy `NewsCard` z etykietą `kind`.
 - Stringi UI w `src/i18n/pl.ts` – nie hardkodować w JSX.
 - Obrazy tylko przez `next/image` z podanymi wymiarami. Fonty przez `next/font`, subsety `latin` + `latin-ext`.
 - Dostępność: każdy interaktywny element ma widoczny fokus (obrys 2px `#e8c765`, odstęp 2px); `alt` obowiązkowy; respektuj `prefers-reduced-motion`.

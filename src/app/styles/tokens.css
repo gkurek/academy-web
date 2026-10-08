@@ -177,6 +177,7 @@
 
   /* Offer pages — FactsBox sidebar, hub OfferCard, quote grid (#2a-warsztaty / #1a-oferta). */
   --offer-sidebar-w: 400px;
+  --offer-side-photo-cols: minmax(0, 3fr) minmax(0, 2fr);
   --offer-main-gap: 52px;
   --offer-facts-x: 32px;
   --offer-facts-y: 30px;

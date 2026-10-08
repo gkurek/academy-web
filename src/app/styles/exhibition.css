@@ -273,6 +273,15 @@
     object-position: center;
   }
 
+  .exhibition-frame-caption {
+    margin-top: var(--space-4);
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: var(--size-body);
+    line-height: var(--leading-body);
+    color: var(--text-tertiary);
+  }
+
   .exhibition-annual-tiles {
     margin-top: var(--space-6);
   }

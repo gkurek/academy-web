@@ -4,6 +4,7 @@ import type { ComponentPropsWithoutRef } from "react";
 import { OfferFigure } from "@/components/content/OfferFigure";
 import { LectureSeasonLink } from "@/components/news/LectureSeasonLink";
 import { OfferSideCta } from "@/components/offers/OfferSideCta";
+import { OfferSidePhoto } from "@/components/offers/OfferSidePhoto";
 import { nbspChildren } from "@/lib/typography";
 
 /**
@@ -38,6 +39,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     LectureSeasonLink,
     OfferFigure,
     OfferSideCta,
+    OfferSidePhoto,
     ...components,
   };
 }

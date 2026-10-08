@@ -153,9 +153,9 @@ const plSource = {
           telLabel: "Zadzwoń: {phone}",
         },
         closed: {
-          mailtoLabel: "Zapytaj o miejsce mailem",
-          telLabel: "Zadzwoń: {phone}",
-          note: "Nabór na ten sezon jest zamknięty. Zapytaj o listę rezerwową.",
+          mailtoLabel: "Powiadom mnie o naborze",
+          mailtoSubject: "Powiadomienie o naborze – kurs roczny",
+          note: "Nabór na ten sezon jest zamknięty. Napisz, a damy znać, gdy ruszy kolejny.",
         },
       },
       plener: {
@@ -166,7 +166,7 @@ const plSource = {
         },
         closed: {
           mailtoLabel: "Powiadom mnie o naborze",
-          telLabel: "Zadzwoń: {phone}",
+          mailtoSubject: "Powiadomienie o naborze – Letnia Szkoła Światła",
           note: "Nabór na plenery {year} ruszy w marcu — napisz, jeśli chcesz dostać wiadomość.",
         },
       },
@@ -178,7 +178,6 @@ const plSource = {
         },
         closed: {
           mailtoLabel: "Zapytaj o miejsce mailem",
-          telLabel: "Zadzwoń: {phone}",
           note: "Nabór na bieżący sezon jest zamknięty.",
         },
       },
@@ -231,8 +230,7 @@ const plSource = {
     enrollmentByKind: {
       kurs: {
         paragraphs: [
-          "Zgłoszenie wysyłamy mailem na adres {enrollmentEmail} do {enrollmentClose}. Potem zapraszamy na krótką rozmowę wstępną, około trzydziestu minut — ma na celu wzajemne poznanie się i dobór grupy. Chętnie zobaczymy wcześniejsze prace artystyczne, ale to nie jest warunek przyjęcia.",
-          "Pierwsze spotkanie sezonu odbywa się {firstMeeting} o 18:00. Dokumenty zgłoszeniowe są dostępne na miejscu.",
+          "Zgłoszenie na kurs roczny lub trzyletni wysyłamy mailem na adres {enrollmentEmail}. Potem zapraszamy na krótką rozmowę wstępną, około trzydziestu minut — ma na celu wzajemne poznanie się i dobór grupy. Chętnie zobaczymy wcześniejsze prace artystyczne, ale to nie jest warunek przyjęcia. Aktualny termin naboru podajemy na górze strony.",
         ],
       },
     },
