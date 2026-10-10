@@ -5,6 +5,7 @@ import Link from "next/link";
 import { Button } from "@/components/core/Button";
 import { ExternalLink } from "@/components/core/ExternalLink";
 import { ChevronIcon } from "@/components/core/icons";
+import { PaletteToggle } from "@/components/navigation/PaletteToggle";
 import { pl } from "@/i18n/pl";
 import { mainNav, navAriaCurrent, navItem, publicationsLink } from "@/navigation";
 
@@ -181,17 +182,20 @@ export function HeaderMobileMenu({ path, activeHref, phone, blogUrl }: HeaderMob
           <div className="text-size-logo-m text-text-h2">{pl.meta.orgShortName}</div>
           <div className="text-size-caption-m text-text-tertiary">{pl.meta.orgSubtitle}</div>
         </Link>
-        <button
-          ref={menuButtonRef}
-          type="button"
-          onClick={() => (isOpen ? closeMenu() : openMenu())}
-          aria-expanded={isOpen}
-          aria-controls={drawerId}
-          aria-label={pl.header.menuToggleLabel}
-          className="flex h-tap-min-mobile-header w-tap-min-mobile-header flex-none items-center justify-center border border-border-button text-text-body"
-        >
-          <MenuIcon open={isOpen} />
-        </button>
+        <div className="flex flex-none items-center gap-space-2">
+          <PaletteToggle />
+          <button
+            ref={menuButtonRef}
+            type="button"
+            onClick={() => (isOpen ? closeMenu() : openMenu())}
+            aria-expanded={isOpen}
+            aria-controls={drawerId}
+            aria-label={pl.header.menuToggleLabel}
+            className="flex h-tap-min-mobile-header w-tap-min-mobile-header flex-none items-center justify-center border border-border-button text-text-body"
+          >
+            <MenuIcon open={isOpen} />
+          </button>
+        </div>
       </div>
 
       {isOpen && (

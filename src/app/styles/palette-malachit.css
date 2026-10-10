@@ -1,0 +1,32 @@
+/* Alternative palette "Malachit" (option C) — same token names, green-tinted values.
+   Applied by PaletteToggle via data-palette on <html>. Values come from the palette
+   mockup; the four marked "derived" have no mockup value and are matched by hand. */
+html[data-palette="malachit"] {
+  --umbra-950: #0a130f;
+  --umbra-900: #0f1a15;
+  --umbra-850: #14211b;
+  --umbra-800: #192a22;
+
+  --bone-100: #f1efe0;
+  --bone-200: #ece9d8;
+  --bone-300: #e6e3d2;
+  --bone-400: #dcdccb;
+  --bone-500: #adb9a8;
+  --bone-600: #84948a;
+  --bone-700: #5f6e65; /* derived */
+
+  --gold-500: #c7a53a;
+  --gold-400: #e4c76e;
+  --gold-300: #efd999;
+
+  --surface-lightbox: #080f0c; /* derived */
+  --accent-veil: rgba(228, 199, 110, .5);
+
+  --line-gold: rgba(199, 165, 58, .3);
+  --line-neutral: rgba(220, 220, 203, .14);
+  --border-button: rgba(220, 220, 203, .4);
+  --border-secondary: rgba(132, 148, 138, .45); /* derived */
+
+  --text-prose: #e0decd; /* derived */
+  --footer-contact-bg: #121e18; /* derived */
+}

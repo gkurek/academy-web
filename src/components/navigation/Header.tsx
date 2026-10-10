@@ -3,6 +3,7 @@ import { getSiteSettings } from "@/content/settings";
 import { pl } from "@/i18n/pl";
 import { mainNav, navAriaCurrent, resolveNav } from "@/navigation";
 import { HeaderMobileMenu } from "@/components/navigation/HeaderMobileMenu";
+import { PaletteToggle } from "@/components/navigation/PaletteToggle";
 import { NavUnderlineLink } from "@/components/navigation/NavUnderlineLink";
 
 export interface HeaderProps {
@@ -25,17 +26,20 @@ export function Header({ path }: HeaderProps) {
             {pl.meta.orgSubtitle}
           </div>
         </Link>
-        <nav aria-label={pl.header.mainNavAriaLabel} className="flex gap-space-6 text-size-nav font-sans">
-          {mainNav.map((item) => (
-            <NavUnderlineLink
-              key={item.label}
-              href={item.href}
-              label={item.label}
-              isActive={item.href === activeHref}
-              ariaCurrent={navAriaCurrent(item.href, activeHref, path)}
-            />
-          ))}
-        </nav>
+        <div className="flex items-center gap-space-6">
+          <nav aria-label={pl.header.mainNavAriaLabel} className="flex gap-space-6 text-size-nav font-sans">
+            {mainNav.map((item) => (
+              <NavUnderlineLink
+                key={item.label}
+                href={item.href}
+                label={item.label}
+                isActive={item.href === activeHref}
+                ariaCurrent={navAriaCurrent(item.href, activeHref, path)}
+              />
+            ))}
+          </nav>
+          <PaletteToggle />
+        </div>
       </div>
 
       <div className="lg:hidden">
