@@ -3,6 +3,7 @@
 /* Styles are split by domain under src/app/styles/. Import order is the cascade order
    (tokens → theme → base → utilities → typography/prose roles → page domains): do not reorder. */
 @import "./styles/tokens.css";
+@import "./styles/palette-malachit.css";
 @import "./styles/theme.css";
 @import "./styles/base.css";
 @import "./styles/utilities.css";

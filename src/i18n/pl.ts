@@ -25,6 +25,7 @@ const plSource = {
     primaryCta: "Zapisy na warsztaty",
     contactCta: "Kontakt",
     blogLink: "Blog",
+    paletteToggleLabel: "Przełącz paletę kolorów",
   },
   sectionNav: {
     ariaLabel: "Nawigacja sekcji",
