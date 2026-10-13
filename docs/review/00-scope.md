@@ -18,7 +18,7 @@ Zgłoszenie, które pokrywa się z pozycją poniżej, pomijamy. Jeśli review zn
 | Placeholdery zdjęć | T6, T19, T21 | kadry `/ikony/wystawy` i zdjęcia dorocznych (T19), zajawka i hero „Na zamówienie” (T6), relacje doroczne (T21) |
 | Dane galerii | T1 | brak/niezweryfikowane wymiary (T2–T4 ✅ 2026-10-07) |
 | Powiązania wpis ↔ strona | T10, T23 | miejsca LSŚ i wystawy wyjazdowe bez relacji (tekst bez linku); T20 ✅ (K-150) |
-| Fakty i treść do potwierdzenia | T13, T15, T26 | program A3, formuły cykliczne, lista tekstów (T7–T9 ✅ w k8) |
+| Fakty i treść do potwierdzenia | T13, T15, T26 | program A3, formuły cykliczne, lista tekstów (T7–T9, T26 ✅ w k8) |
 
 ### 1.1a Po v1 — T30 (`docs/plan-claude-code.md` §5A)
 

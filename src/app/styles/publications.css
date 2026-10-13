@@ -241,8 +241,12 @@
     font-style: italic;
   }
 
-  .publication-article-list-title {
-    margin: 0 0 var(--space-2);
+  /* Title and authors share one line; authors wrap below on narrow screens. */
+  .publication-article-heading-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: var(--space-1) var(--space-4);
   }
 
   .publication-article-list-title-link {
@@ -257,16 +261,10 @@
   }
 
 
-  .publication-article-excerpt,
   .publication-article-authors {
     margin: 0;
     font-size: var(--size-body);
     line-height: var(--leading-body);
-    color: var(--text-secondary);
-  }
-
-  .publication-article-authors {
-    margin-top: var(--space-2);
     color: var(--text-tertiary);
   }
 
@@ -450,13 +448,54 @@
     color: var(--text-secondary);
   }
 
+  /* Author line in gold; source line inherits the block's secondary colour. */
+  .publication-article-meta-line {
+    color: var(--accent-text);
+  }
+
   .publication-article-meta-source {
     margin: var(--space-2) 0 0;
-    color: var(--accent-text);
+  }
+
+  /* In-text photos and quotations (ArticleFigure, MDX `>`) in article bodies. */
+  .article-figure {
+    margin: var(--space-7) 0;
+  }
+
+  .article-figure-image {
+    width: 100%;
+    height: auto;
+  }
+
+  .article-figure-caption {
+    margin-top: var(--space-3);
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: var(--size-body);
+    color: var(--text-tertiary);
+  }
+
+  .publication-article-body > blockquote {
+    margin: var(--space-6) 0;
+    border-left: 1px solid var(--line-gold);
+    padding-left: var(--space-5);
+    font-style: italic;
+    text-wrap: pretty;
+  }
+
+  .publication-article-body > blockquote p {
+    font-size: var(--size-body);
+    line-height: var(--leading-body);
+    color: var(--text-secondary);
+  }
+
+  .publication-article-body > blockquote p + p {
+    margin-top: var(--space-4);
   }
 
   .publication-album-backref,
   .publication-press-note {
+    margin-top: var(--section-gap);
     border-top: var(--accent-bar) solid var(--accent);
     background: var(--surface-card);
     padding: var(--space-6) var(--space-7);

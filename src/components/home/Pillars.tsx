@@ -32,19 +32,9 @@ export function Pillars({ pillars }: PillarsProps) {
               </h2>
             </Link>
             <p className="text-size-body leading-body text-text-secondary mb-space-4">{pillar.body}</p>
-            <div className="flex flex-wrap gap-x-space-5 gap-y-space-3">
-              <Link href={pillar.href} className={`text-size-ui-m md:text-size-body ${pillarLinkClass}`}>
-                <span className={pillarLinkUnderline}>{pillar.linkLabel}</span>
-              </Link>
-              {pillar.secondaryLinkLabel && pillar.secondaryHref ? (
-                <Link
-                  href={pillar.secondaryHref}
-                  className={`text-size-ui-m md:text-size-body ${pillarLinkClass}`}
-                >
-                  <span className={pillarLinkUnderline}>{pillar.secondaryLinkLabel}</span>
-                </Link>
-              ) : null}
-            </div>
+            <Link href={pillar.href} className={`text-size-ui-m md:text-size-body ${pillarLinkClass}`}>
+              <span className={pillarLinkUnderline}>{pillar.linkLabel}</span>
+            </Link>
           </article>
         ))}
       </div>

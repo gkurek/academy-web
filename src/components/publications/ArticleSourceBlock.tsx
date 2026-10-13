@@ -20,6 +20,22 @@ export interface ArticleSourceBlockProps {
   variant: "meta" | "footer";
 }
 
+const monthYearFormatter = new Intl.DateTimeFormat("pl-PL", {
+  month: "long",
+  year: "numeric",
+  timeZone: "UTC",
+});
+
+/** Press date: full `YYYY-MM-DD`, or `YYYY-MM` for monthlies whose issue has no day ("wrzesień 2011"). */
+function formatPressDate(date: string): string {
+  if (/^\d{4}-\d{2}$/.test(date)) {
+    const [year, month] = date.split("-").map(Number);
+    return monthYearFormatter.format(new Date(Date.UTC(year, month - 1, 1)));
+  }
+
+  return formatDateRange(date, undefined, { withYear: true });
+}
+
 export function ArticleSourceBlock({ article, publication, variant }: ArticleSourceBlockProps) {
   if (variant === "meta") {
     return <ArticleSourceMeta article={article} publication={publication} />;
@@ -48,7 +64,8 @@ function ArticleSourceMeta({
   return (
     <div className="publication-article-meta-block">
       <p className="publication-article-meta-line">
-        {authors} · {article.year}
+        {/* Press articles carry the date in the first-print line below — no year here. */}
+        {article.source.kind === "media" ? authors : `${authors} · ${article.year}`}
       </p>
       {article.source.kind === "album" && publication ? (
         <p className="publication-article-meta-source">
@@ -59,10 +76,10 @@ function ArticleSourceMeta({
       {article.source.kind === "media" ? (
         <p className="publication-article-meta-source">
           {pl.publications.sourcePressFirstPrint
-            .replace("{title}", article.title)
+            .replace("{outlet}", article.source.outlet)
             .replace(
               "{date}",
-              formatDateRange(article.source.date, undefined, { withYear: true }),
+              formatPressDate(article.source.date),
             )}
         </p>
       ) : null}
@@ -119,8 +136,8 @@ function PressFooter({ article }: { article: LoadedArticle }) {
     <aside className="publication-press-note">
       <p className="publication-press-note-text">
         {pl.publications.sourcePressFirstPrint
-          .replace("{title}", article.title)
-          .replace("{date}", formatDateRange(source.date, undefined, { withYear: true }))}
+          .replace("{outlet}", source.outlet)
+          .replace("{date}", formatPressDate(source.date))}
       </p>
       <div className="publication-press-note-links">
         {source.url ? (

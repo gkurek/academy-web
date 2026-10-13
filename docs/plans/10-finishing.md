@@ -101,7 +101,7 @@ Z `docs/plan-claude-code.md` §3, etap 10:
 | --- | --- | --- |
 | 1–7 — fala 1 | ✅ | 2026-10-03 … 2026-10-04; tabela „Fala 1 — podsumowanie” wyżej |
 | Stopka v2 (K-149) | ✅ | 2026-10-07; mapa stopki + `sectionNav.kontakt` (/kontakt · /polityka-prywatnosci); poza k7, po przeglądzie makiety Claude Design |
-| 8 — treść EJK | 🟠 w toku | backlog T1–T29 — **17/29 ✅** w §5 (2026-10-08); commity `10/k8` na `feat/10-finishing`; T30 → §5A v2 |
+| 8 — treść EJK | 🟠 w toku | backlog T1–T29 — **19/29 ✅** w §5 (T26 publikacje 2026-10-13); commity `10/k8` na `feat/10-finishing`; T30 → §5A v2 |
 | R — review serwisu | ✅ część techniczna i wizualna 2026-10-06 | R0–R5, RF-0…RF-20, V1–V4 zamknięte; zostaje C1–C2 po k8; postęp w `10-review.md`, `docs/archive/plans/10-review-fixes.md` |
 | 9 — SEO / analityka | ⬜ | |
 | 10 — audyty / docs | ⬜ | okrojony przez RV-1 |

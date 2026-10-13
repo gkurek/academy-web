@@ -30,7 +30,9 @@ export function IconLightboxMeta({ item, positionLabel }: IconLightboxMetaProps)
           href="/ikony/na-zamowienie"
           className="inline-flex min-h-tap-min items-center text-size-body"
         >
-          {pl.gallery.lightbox.orderLink}
+          {item.available
+            ? pl.gallery.lightbox.orderLinkAvailability
+            : pl.gallery.lightbox.orderLink}
         </TextLink>
       ) : null}
     </div>

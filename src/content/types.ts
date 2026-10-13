@@ -112,6 +112,10 @@ export type IconWork = {
   authorName?: string; // students only, nominative case when known — never a gendered placeholder
   technique?: string; // "tempera jajowa na desce, złocenie"
   size?: { w: number; h: number };
+  /** When true, `size` was confirmed by EJK and may be shown in the lightbox. */
+  sizeVerified?: boolean;
+  /** EJK works only: lightbox CTA asks about availability of this icon instead of a similar commission. */
+  available?: boolean;
   image: Image;
   tags?: string[];
 };

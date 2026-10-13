@@ -1079,6 +1079,107 @@
     "bodyText": "Zapraszamy do zapoznania się z wybranymi plakatami z naszych wydarzeń."
   },
   {
+    "slug": "plener-przemysl-2018",
+    "title": "Letnia Szkoła Światła w Przemyślu",
+    "date": "2018-08-07",
+    "kind": "wyjazd",
+    "layout": "galeria",
+    "excerpt": "Sierpień 2018 — Letnia Szkoła Światła w Przemyślu.",
+    "images": [
+      {
+        "src": "/media/news/plener-przemysl-2018/1.jpg",
+        "alt": "Uczestnicy słuchają przewodnika przed ikoną Sądu Ostatecznego w muzealnej sali o granatowych ścianach",
+        "width": 2048,
+        "height": 1536
+      },
+      {
+        "src": "/media/news/plener-przemysl-2018/2.jpg",
+        "alt": "Przewodnik wskazuje szczegół ikony Sądu Ostatecznego wśród ikon zawieszonych na granatowej ścianie",
+        "width": 1488,
+        "height": 2000
+      },
+      {
+        "src": "/media/news/plener-przemysl-2018/3.jpg",
+        "alt": "Przewodnik pokazuje fragment dawnego malowidła z rzędami świętych",
+        "width": 2000,
+        "height": 1500
+      },
+      {
+        "src": "/media/news/plener-przemysl-2018/4.jpg",
+        "alt": "Przewodnik omawia ikonę Chrystusa w Majestacie obok planszy wystawy",
+        "width": 1488,
+        "height": 2000
+      },
+      {
+        "src": "/media/news/plener-przemysl-2018/5.jpg",
+        "alt": "Przewodnik przy ścianie zapełnionej dawnymi ikonami i fragmentami ikonostasów",
+        "width": 1488,
+        "height": 2000
+      }
+    ],
+    "bodyText": "Latem 2018 roku Letnia Szkoła Światła odwiedziła Przemyśl. [do uzupełnienia: relacja z wyjazdu — termin, program, odwiedzone miejsca (EJK)] Aktualne informacje o tygodniowych plenerach: [Letnia Szkoła Światła](/warsztaty/letnia-szkola-swiatla)."
+  },
+  {
+    "slug": "plener-suprasl-2023",
+    "title": "Letnia Szkoła Światła w Supraślu",
+    "date": "2023-07-30",
+    "kind": "wyjazd",
+    "layout": "galeria",
+    "dateEnd": "2023-08-06",
+    "excerpt": "Tydzień pleneru ikonowego w Supraślu — praca przy desce, modlitwa i spotkanie z ikoną w miejscu, które od wieków nią żyje.",
+    "images": [
+      {
+        "src": "/media/news/plener-suprasl-2023/1.jpg",
+        "alt": "Krzyż ikonowy i ikona Matki Bożej na wystawie w lustrzanym wnętrzu muzeum",
+        "width": 1200,
+        "height": 1600
+      },
+      {
+        "src": "/media/news/plener-suprasl-2023/2.jpg",
+        "alt": "Ikona Chrystusa w chwale wśród aniołów i mniejsza ikona z apostołami na wystawie",
+        "width": 1200,
+        "height": 1600
+      },
+      {
+        "src": "/media/news/plener-suprasl-2023/3.jpg",
+        "alt": "Uczestnicy pleneru słuchają przewodnika we wnętrzu cerkwi pokrytym polichromią",
+        "width": 1200,
+        "height": 1600
+      },
+      {
+        "src": "/media/news/plener-suprasl-2023/4.jpg",
+        "alt": "Ikonostas i polichromie ze świętymi męczennikami we wnętrzu cerkwi",
+        "width": 1200,
+        "height": 1600
+      },
+      {
+        "src": "/media/news/plener-suprasl-2023/5.jpg",
+        "alt": "Fresk Przemienienia Pańskiego na sklepieniu cerkwi",
+        "width": 1200,
+        "height": 1600
+      },
+      {
+        "src": "/media/news/plener-suprasl-2023/6.jpg",
+        "alt": "Duży krzyż ikonowy i ikona Matki Bożej z Dzieciątkiem na ciemnym tle",
+        "width": 1200,
+        "height": 1600
+      },
+      {
+        "src": "/media/news/plener-suprasl-2023/7.jpg",
+        "alt": "Uczestnicy pleneru przy pracy nad ikonami w jasnej sali z oknami",
+        "width": 1600,
+        "height": 1200
+      },
+      {
+        "src": "/media/news/plener-suprasl-2023/8.jpg",
+        "alt": "Uczestniczki pleneru z ikonami napisanymi w czasie tygodnia",
+        "width": 1600,
+        "height": 1200
+      }
+    ],
+    "bodyText": "Latem 2023 roku Letnia Szkoła Światła zatrzymała się w Supraślu. Supraśl to miejsce, które ikoną żyje od wieków. Odwiedziliśmy Muzeum Ikon i monasterską cerkiew, gdzie wśród polichromii mogliśmy z bliska przyglądać się dawnym i współczesnym mistrzom. To spotkanie było dla nas lekcją pokory i zachwytu, którą potem nieśliśmy z powrotem do pracowni. Na zakończenie tygodnia każdy z uczestników wracał do domu z ikoną napisaną własną ręką — i z wdzięcznością za wspólnie przeżyty czas. Dziękujemy wszystkim, którzy byli z nami w Supraślu. Aktualne informacje o tygodniowych plenerach: [Letnia Szkoła Światła](/warsztaty/letnia-szkola-swiatla)."
+  },
+  {
     "slug": "plener-swietej-lipki-2019",
     "title": "Warsztaty i wystawa w Świętej Lipce",
     "date": "2019-08-03",
@@ -1898,7 +1999,7 @@
     "title": "Wyjazd studyjny śladami ikon prof. Jerzego Nowosielskiego",
     "date": "2017-07-16",
     "kind": "wyjazd",
-    "layout": "program",
+    "layout": "galeria",
     "excerpt": "16 lipca 2017 — wyjazd studyjny uczestników Akademii Ikony: cerkiew św. Jana Klimaka na Woli i kościół Opatrzności Bożej w Wesołej, wśród ikon prof. Jerzego Nowosielskiego.",
     "images": [
       {
@@ -1910,20 +2011,26 @@
       {
         "src": "/media/news/wyjazd-studyjny-sladami-ikon-prof-jerzego-nowosielskiego/2.jpg",
         "alt": "[do uzupełnienia: podpis zdjęcia]",
-        "width": 512,
-        "height": 288
+        "width": 2048,
+        "height": 1152
       },
       {
         "src": "/media/news/wyjazd-studyjny-sladami-ikon-prof-jerzego-nowosielskiego/3.jpg",
         "alt": "[do uzupełnienia: podpis zdjęcia]",
-        "width": 288,
-        "height": 277
+        "width": 1152,
+        "height": 2048
       },
       {
         "src": "/media/news/wyjazd-studyjny-sladami-ikon-prof-jerzego-nowosielskiego/4.jpg",
         "alt": "[do uzupełnienia: podpis zdjęcia]",
         "width": 512,
         "height": 288
+      },
+      {
+        "src": "/media/news/wyjazd-studyjny-sladami-ikon-prof-jerzego-nowosielskiego/5.jpg",
+        "alt": "[do uzupełnienia: podpis zdjęcia]",
+        "width": 1152,
+        "height": 2048
       }
     ],
     "bodyText": "Dnia 16 lipca 2017 grupa uczestników Akademii Ikony udała się na liturgię do cerkwi św. Jana Klimaka na Woli, po której odbyło się spotkanie z o. Pawłem. Rozmawialiśmy o historii i ekumenicznym wymiarze tego miejsca. Tego samego dnia udaliśmy się do kościoła Opatrzności Bożej w Wesołej na Mszę św., po której spotykaliśmy się z proboszczem o. Mariuszem. Ojciec opowiadał nam o katolickiej wspólnocie o powołaniu ekumenicznym — Chemin Neuf. Każde z tych spotkań nasycone było refleksją i modlitwą przed ikonami prof. Jerzego Nowosielskiego."

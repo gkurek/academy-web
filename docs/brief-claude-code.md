@@ -148,6 +148,7 @@ type IconWork = {
   authorName?: string;          // EJK: pełne imię i nazwisko; uczeń: mianownik, gdy znany (K-42)
   technique?: string;           // „tempera jajowa na desce, złocenie”
   size?: { w: number; h: number };
+  sizeVerified?: boolean;       // EJK-confirmed; lightbox shows `size` only when true (K-47)
   image: Image; tags?: string[];
 };
 
@@ -255,7 +256,7 @@ type Article = {
 };
 ```
 
-Lista autorów na podstronie albumu jest wyliczana z `toc` (unikalne nazwiska, podział wg `lecturerSlug`), nie przechowywana osobno. Źródła: `content/publications/*.mdx` (frontmatter = `Publication`, body = opis, fragmenty, „Jak powstał album”), `content/articles/*.mdx` (frontmatter = `Article`, body = tekst lub zajawka). Walidacje przy buildzie (K-76): `toc[].articleSlug` → istniejący artykuł; `source.publicationSlug` → istniejący album; artykuł `kind: 'album'` bez pozycji w `toc` — ostrzeżenie; kolizja slugów album/artykuł — błąd buildu.
+Lista autorów na podstronie albumu jest wyliczana z `toc` (unikalne nazwiska, podział wg `lecturerSlug`), nie przechowywana osobno. Źródła: `content/publications/*.mdx` (frontmatter = `Publication`, body = opis, fragmenty, „Jak powstał album”), `content/articles/*.mdx` (frontmatter = `Article`, body = tekst lub zajawka). `source.date` przy `kind: 'media'`: `YYYY-MM-DD` albo `YYYY-MM` (miesięcznik bez dnia — UI „wrzesień 2011”); wiersz źródła artykułu: „Pierwodruk: {outlet}, {data}”, rok w metryczce tylko dla tekstów z albumu. Lista artykułów na `/publikacje`: źródło · tytuł + autor, bez `excerpt`. Walidacje przy buildzie (K-76): `toc[].articleSlug` → istniejący artykuł; `source.publicationSlug` → istniejący album; artykuł `kind: 'album'` bez pozycji w `toc` — ostrzeżenie; kolizja slugów album/artykuł — błąd buildu.
 
 Kafel „Najbliższe” na stronie głównej (K-58) zależy od stanu wystawy:
 - stan `biezaca`: „Wystawa ikon · edycja {rok}”, tekst „Czynna w godzinach otwarcia kościoła”;
@@ -391,7 +392,7 @@ Szacunek ręcznej korekty po migracji: ~10 stron statycznych, 16 sezonów wykła
 Telefon jako `tel:+48601734705`.
 
 **Nazwy komponentów (użyć tych nazw w kodzie, żeby zgadzały się z design/README):**
-`Header`, `Footer`, `SectionNav`, `Breadcrumb`, `Hero`, `FactsBox`, `OfferCard`, `LectureList`, `SeasonAccordion`, `IconGrid`, `Lightbox`, `NewsCard`, `Testimonial`, `MapBlock`, `StepList` (proces zamówienia), `TocSidebar` (strona tekstowa). W MDX ofert: `OfferFigure`, `OfferSideCta` (k7), `OfferSidePhoto` (k8 — sekcja tekst + zdjęcie w prawej kolumnie). `EventCard` usunięty (K-50, 2026-09-21) — dział „Wydarzenia” zlikwidowany, wpisy renderują się przez `NewsCard`.
+`Header`, `Footer`, `SectionNav`, `Breadcrumb`, `Hero`, `FactsBox`, `OfferCard`, `LectureList`, `SeasonAccordion`, `IconGrid`, `Lightbox`, `NewsCard`, `Testimonial`, `MapBlock`, `StepList` (proces zamówienia), `TocSidebar` (strona tekstowa). W MDX ofert: `OfferFigure`, `OfferSideCta` (k7), `OfferSidePhoto` (k8 — sekcja tekst + zdjęcie w prawej kolumnie). W MDX artykułów: `ArticleFigure` (k8, T26 — zdjęcie w kolumnie tekstu, bez kadrowania, opcjonalny podpis). `EventCard` usunięty (K-50, 2026-09-21) — dział „Wydarzenia” zlikwidowany, wpisy renderują się przez `NewsCard`.
 
 **Tokeny — kolory:** kolor `#8d7d69` był w makietach niedostatecznie kontrastowy (4,3:1 na tłach kart) i został **zamieniony na `#a2917c`** w całym systemie. `#8d7d69` może zostać wyłącznie w placeholderach makietowych (IBM Plex Mono) — **nie kopiować go do produkcji.**
 
