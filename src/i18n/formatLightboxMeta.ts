@@ -6,6 +6,12 @@ function formatTagLabels(tags: string[] | undefined): string {
   return (tags ?? []).map((tag) => labels[tag] ?? tag).join(", ");
 }
 
+function formatIconSize(size: { w: number; h: number }): string {
+  return pl.gallery.lightbox.sizeConfirmed
+    .replace("{w}", String(size.w))
+    .replace("{h}", String(size.h));
+}
+
 export type LightboxMetaEntry = { kind: "field"; label: string; value: string };
 
 /** Metadata lines for the lightbox panel — title is rendered separately as H2. */
@@ -18,11 +24,13 @@ export function formatLightboxMeta(item: IconWork): LightboxMetaEntry[] {
     },
   ];
 
-  // WP caption sizes are unconfirmed — show the placeholder for every work, never the numbers.
   entries.push({
     kind: "field",
     label: pl.gallery.lightbox.sizeLabel,
-    value: pl.gallery.lightbox.sizeUnverified,
+    value:
+      item.sizeVerified && item.size
+        ? formatIconSize(item.size)
+        : pl.gallery.lightbox.sizeUnverified,
   });
 
   entries.push({

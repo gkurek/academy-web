@@ -1,7 +1,7 @@
 import Link from "next/link";
 
 import { ExternalLink } from "@/components/core/ExternalLink";
-import { getEnrollmentEmail, getPhoneHref, getSiteSettings } from "@/content/settings";
+import { getEnrollmentEmail, getSiteSettings } from "@/content/settings";
 import { pl } from "@/i18n/pl";
 import { fillTemplate } from "@/lib/fillTemplate";
 import { currentYearInWarsaw } from "@/lib/isoDate";
@@ -30,10 +30,8 @@ const sitemapGroupGridClass = [
 
 function FooterContact() {
   const settings = getSiteSettings();
-  // Church name only — the full dedication (brief §8) is on /kontakt.
-  const church = settings.place.split(" pw. ")[0];
+  // Short church lines — full dedication (brief §8) is on /kontakt.
   const primaryEmail = getEnrollmentEmail();
-  const telHref = getPhoneHref();
 
   return (
     <div className="flex flex-col gap-space-5">
@@ -47,18 +45,14 @@ function FooterContact() {
       </div>
 
       <address className="block not-italic text-size-nav leading-footer-address text-text-secondary">
-        <span className="block">{church}</span>
+        <span className="block">{pl.footer.churchName}</span>
+        <span className="block">{pl.footer.churchPatronsShort}</span>
         <span className="block">{settings.address}</span>
       </address>
 
-      <div className="flex flex-col gap-space-1">
-        <a href={`mailto:${primaryEmail}`} className={contactDataClass}>
-          <span className={footerLinkUnderline}>{primaryEmail}</span>
-        </a>
-        <a href={telHref} className={contactDataClass}>
-          <span className={footerLinkUnderline}>{settings.phone}</span>
-        </a>
-      </div>
+      <a href={`mailto:${primaryEmail}`} className={contactDataClass}>
+        <span className={footerLinkUnderline}>{primaryEmail}</span>
+      </a>
 
       <div className="flex gap-space-2">
         <ExternalLink href={settings.ecosystem.social.facebook} className={socialLinkClass}>

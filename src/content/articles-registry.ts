@@ -5,8 +5,9 @@ import type { ArticleFrontmatter } from "./articles";
 
 import ArticleContent0, { frontmatter as ArticleFrontmatter0 } from "../../content/articles/cisza-ikony.mdx";
 import ArticleContent1, { frontmatter as ArticleFrontmatter1 } from "../../content/articles/ikona-przejmujaca-delikatnosc.mdx";
-import ArticleContent2, { frontmatter as ArticleFrontmatter2 } from "../../content/articles/piekno-ikony-perspektywa-i-swiatlo.mdx";
-import ArticleContent3, { frontmatter as ArticleFrontmatter3 } from "../../content/articles/pietnasta-rocznica.mdx";
+import ArticleContent2, { frontmatter as ArticleFrontmatter2 } from "../../content/articles/ikonograf-dzis.mdx";
+import ArticleContent3, { frontmatter as ArticleFrontmatter3 } from "../../content/articles/piekno-ikony-perspektywa-i-swiatlo.mdx";
+import ArticleContent4, { frontmatter as ArticleFrontmatter4 } from "../../content/articles/pietnasta-rocznica.mdx";
 
 type ArticleModule = {
   Content: ComponentType;
@@ -16,6 +17,7 @@ type ArticleModule = {
 export const articleModules: Record<string, ArticleModule> = {
   "cisza-ikony": { Content: ArticleContent0, frontmatter: ArticleFrontmatter0 as ArticleFrontmatter },
   "ikona-przejmujaca-delikatnosc": { Content: ArticleContent1, frontmatter: ArticleFrontmatter1 as ArticleFrontmatter },
-  "piekno-ikony-perspektywa-i-swiatlo": { Content: ArticleContent2, frontmatter: ArticleFrontmatter2 as ArticleFrontmatter },
-  "pietnasta-rocznica": { Content: ArticleContent3, frontmatter: ArticleFrontmatter3 as ArticleFrontmatter },
+  "ikonograf-dzis": { Content: ArticleContent2, frontmatter: ArticleFrontmatter2 as ArticleFrontmatter },
+  "piekno-ikony-perspektywa-i-swiatlo": { Content: ArticleContent3, frontmatter: ArticleFrontmatter3 as ArticleFrontmatter },
+  "pietnasta-rocznica": { Content: ArticleContent4, frontmatter: ArticleFrontmatter4 as ArticleFrontmatter },
 };

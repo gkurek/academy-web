@@ -137,7 +137,7 @@ const plSource = {
     },
     rowsByKind: {
       zamowienie: {
-        when: "Co można zamówić",
+        when: "Co można wybrać",
         where: "Technika",
         leadTime: "Orientacyjny czas realizacji",
         price: "Koszt",
@@ -215,7 +215,7 @@ const plSource = {
       "Semestr szósty",
     ],
     plenerQuotesHeading: "Głosy z pleneru",
-    plenerWhereWeWereInline: "Miejsca się zmieniają — byliśmy m.in. w:",
+    plenerWhereWeWereInline: "Miejsca się zmieniają — gościły nas m.in.:",
     orderStepsHeading: "Jak przebiega zamówienie",
     orderStepsIntro: "Trzy kroki od pierwszego maila do gotowej ikony.",
     orderExamplesHeading: "Przykłady realizacji",
@@ -284,13 +284,14 @@ const plSource = {
     lightbox: {
       openIcon: "Powiększ ikonę: {title}",
       authorLabel: "Autor:",
-      // Sizes copied from WP captions are unconfirmed (they contradict the photos) — never shown as numbers.
       sizeLabel: "Wymiary:",
+      sizeConfirmed: "{w} × {h} cm",
       sizeUnverified: "do weryfikacji",
       techniqueLabel: "Technika:",
       techniqueDefault: "tempera jajowa na desce lipowej",
-      tagsLabel: "Tagi:",
+      tagsLabel: "Kategorie:",
       orderLink: "Zapytaj o podobną ikonę",
+      orderLinkAvailability: "Zapytaj o dostępność ikony",
       authorFallback: "Praca z warsztatów Akademii",
     },
     orderTeaser: {
@@ -423,7 +424,7 @@ const plSource = {
     sourceFromAlbum: "Z albumu {title} · {year}",
     sourceFromMedia: "{outlet} · {year}",
     sourceAlbumMeta: "Z albumu",
-    sourcePressFirstPrint: "Pierwodruk: «{title}», {date}",
+    sourcePressFirstPrint: "Pierwodruk: {outlet}, {date}",
     aboutHeading: "O albumie",
     tocHeading: "Spis treści",
     tocLead:
@@ -527,6 +528,8 @@ const plSource = {
   footer: {
     sitemapAriaLabel: "Mapa strony",
     copyright: "© {year} Akademia Ikony",
+    churchName: "Kościół Środowisk Twórczych",
+    churchPatronsShort: "św. Andrzeja i św. Alberta",
     // Verbatim from brief-claude-code.md §8.
     accessibilityNote: "Przestrzeń bez barier architektonicznych",
     organizerLabel: "Organizator",

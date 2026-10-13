@@ -12,7 +12,13 @@
     "tags": [
       "swieta"
     ],
-    "authorName": "Elżbieta Jackowska-Kurek"
+    "size": {
+      "w": 30,
+      "h": 22
+    },
+    "sizeVerified": true,
+    "authorName": "Elżbieta Jackowska-Kurek",
+    "available": true
   },
   {
     "slug": "archaniol-michal",
@@ -28,9 +34,10 @@
       "aniolowie"
     ],
     "size": {
-      "w": 25,
-      "h": 30
+      "w": 30,
+      "h": 25
     },
+    "sizeVerified": true,
     "authorName": "Elżbieta Jackowska-Kurek"
   },
   {
@@ -47,9 +54,10 @@
       "chrystus"
     ],
     "size": {
-      "w": 20,
-      "h": 30
+      "w": 30,
+      "h": 25
     },
+    "sizeVerified": true,
     "authorName": "Elżbieta Jackowska-Kurek"
   },
   {
@@ -66,9 +74,10 @@
       "swieci"
     ],
     "size": {
-      "w": 30,
-      "h": 40
+      "w": 40,
+      "h": 30
     },
+    "sizeVerified": true,
     "authorName": "Elżbieta Jackowska-Kurek"
   },
   {
@@ -85,10 +94,12 @@
       "matka-bozy"
     ],
     "size": {
-      "w": 30,
-      "h": 40
+      "w": 40,
+      "h": 30
     },
-    "authorName": "Elżbieta Jackowska-Kurek"
+    "sizeVerified": true,
+    "authorName": "Elżbieta Jackowska-Kurek",
+    "available": true
   },
   {
     "slug": "matka-boza-sniezna",
@@ -104,10 +115,12 @@
       "matka-bozy"
     ],
     "size": {
-      "w": 30,
-      "h": 40
+      "w": 40,
+      "h": 30
     },
-    "authorName": "Elżbieta Jackowska-Kurek"
+    "sizeVerified": true,
+    "authorName": "Elżbieta Jackowska-Kurek",
+    "available": true
   },
   {
     "slug": "swiety-andrzej-apostol",
@@ -124,9 +137,11 @@
     ],
     "size": {
       "w": 30,
-      "h": 40
+      "h": 25
     },
-    "authorName": "Elżbieta Jackowska-Kurek"
+    "sizeVerified": true,
+    "authorName": "Elżbieta Jackowska-Kurek",
+    "available": true
   },
   {
     "slug": "trojca-swieta",
@@ -142,9 +157,10 @@
       "swieta"
     ],
     "size": {
-      "w": 40,
-      "h": 60
+      "w": 60,
+      "h": 40
     },
+    "sizeVerified": true,
     "authorName": "Elżbieta Jackowska-Kurek"
   },
   {
@@ -161,29 +177,33 @@
       "chrystus"
     ],
     "size": {
-      "w": 25,
-      "h": 30
+      "w": 26,
+      "h": 21
     },
-    "authorName": "Elżbieta Jackowska-Kurek"
+    "sizeVerified": true,
+    "authorName": "Elżbieta Jackowska-Kurek",
+    "available": true
   },
   {
     "slug": "ukrzyzowanie",
-    "title": "Ukrzyżowanie",
+    "title": "Ikona Krzyża",
     "author": "ejk",
     "image": {
       "src": "/media/icons/ukrzyzowanie.jpg",
-      "alt": "Ikona: Ukrzyżowanie",
+      "alt": "Ikona: Ikona Krzyża",
       "width": 972,
       "height": 1296
     },
     "tags": [
-      "swieta"
+      "chrystus"
     ],
     "size": {
       "w": 52,
       "h": 36
     },
-    "authorName": "Elżbieta Jackowska-Kurek"
+    "sizeVerified": true,
+    "authorName": "Elżbieta Jackowska-Kurek",
+    "available": true
   },
   {
     "slug": "archaniol-gabriel",
@@ -199,10 +219,12 @@
       "aniolowie"
     ],
     "size": {
-      "w": 25,
-      "h": 30
+      "w": 30,
+      "h": 25
     },
-    "authorName": "Elżbieta Jackowska-Kurek"
+    "sizeVerified": true,
+    "authorName": "Elżbieta Jackowska-Kurek",
+    "available": true
   },
   {
     "slug": "madonna-advocata",
@@ -218,10 +240,12 @@
       "matka-bozy"
     ],
     "size": {
-      "w": 25,
-      "h": 30
+      "w": 30,
+      "h": 25
     },
-    "authorName": "Elżbieta Jackowska-Kurek"
+    "sizeVerified": true,
+    "authorName": "Elżbieta Jackowska-Kurek",
+    "available": true
   },
   {
     "slug": "madylion",
@@ -237,10 +261,12 @@
       "chrystus"
     ],
     "size": {
-      "w": 21,
-      "h": 26
+      "w": 25,
+      "h": 33
     },
-    "authorName": "Elżbieta Jackowska-Kurek"
+    "sizeVerified": true,
+    "authorName": "Elżbieta Jackowska-Kurek",
+    "available": true
   },
   {
     "slug": "ukrzyzowanie-2",
@@ -256,10 +282,12 @@
       "swieta"
     ],
     "size": {
-      "w": 35,
-      "h": 50
+      "w": 40,
+      "h": 30
     },
-    "authorName": "Elżbieta Jackowska-Kurek"
+    "sizeVerified": true,
+    "authorName": "Elżbieta Jackowska-Kurek",
+    "available": true
   },
   {
     "slug": "chrystus-milosierny",
@@ -274,6 +302,11 @@
     "tags": [
       "chrystus"
     ],
+    "size": {
+      "w": 40,
+      "h": 30
+    },
+    "sizeVerified": true,
     "authorName": "Elżbieta Jackowska-Kurek"
   },
   {
@@ -293,6 +326,7 @@
       "w": 30,
       "h": 25
     },
+    "sizeVerified": true,
     "authorName": "Elżbieta Jackowska-Kurek"
   },
   {
@@ -308,6 +342,11 @@
     "tags": [
       "chrystus"
     ],
+    "size": {
+      "w": 60,
+      "h": 40
+    },
+    "sizeVerified": true,
     "authorName": "Elżbieta Jackowska-Kurek"
   },
   {
@@ -325,9 +364,11 @@
     ],
     "size": {
       "w": 30,
-      "h": 33
+      "h": 30
     },
-    "authorName": "Elżbieta Jackowska-Kurek"
+    "sizeVerified": true,
+    "authorName": "Elżbieta Jackowska-Kurek",
+    "available": true
   },
   {
     "slug": "swiety-mikolaj",
@@ -343,10 +384,12 @@
       "swieci"
     ],
     "size": {
-      "w": 26,
-      "h": 32
+      "w": 31,
+      "h": 26
     },
-    "authorName": "Elżbieta Jackowska-Kurek"
+    "sizeVerified": true,
+    "authorName": "Elżbieta Jackowska-Kurek",
+    "available": true
   },
   {
     "slug": "chrystus-pantokrator",
@@ -362,10 +405,12 @@
       "chrystus"
     ],
     "size": {
-      "w": 25,
-      "h": 30
+      "w": 30,
+      "h": 25
     },
-    "authorName": "Elżbieta Jackowska-Kurek"
+    "sizeVerified": true,
+    "authorName": "Elżbieta Jackowska-Kurek",
+    "available": true
   },
   {
     "slug": "swiety-symeon",
@@ -381,10 +426,12 @@
       "swieci"
     ],
     "size": {
-      "w": 25,
-      "h": 30
+      "w": 27,
+      "h": 21
     },
-    "authorName": "Elżbieta Jackowska-Kurek"
+    "sizeVerified": true,
+    "authorName": "Elżbieta Jackowska-Kurek",
+    "available": true
   },
   {
     "slug": "matka-boza-niepokalana",
@@ -400,9 +447,10 @@
       "matka-bozy"
     ],
     "size": {
-      "w": 60,
-      "h": 80
+      "w": 80,
+      "h": 57
     },
+    "sizeVerified": true,
     "authorName": "Elżbieta Jackowska-Kurek"
   },
   {
@@ -419,28 +467,11 @@
       "swieta"
     ],
     "size": {
-      "w": 40,
-      "h": 50
+      "w": 50,
+      "h": 40
     },
+    "sizeVerified": true,
     "authorName": "Elżbieta Jackowska-Kurek"
-  },
-  {
-    "slug": "matka-boza-stolica-madrosci",
-    "title": "Matka Boża Stolica Mądrości",
-    "author": "student",
-    "image": {
-      "src": "/media/icons/matka-boza-stolica-madrosci.jpg",
-      "alt": "Ikona: Matka Boża Stolica Mądrości",
-      "width": 972,
-      "height": 1296
-    },
-    "tags": [
-      "matka-bozy"
-    ],
-    "size": {
-      "w": 25,
-      "h": 30
-    }
   },
   {
     "slug": "zstapienie-ducha-swietego",
@@ -456,9 +487,10 @@
       "swieta"
     ],
     "size": {
-      "w": 30,
-      "h": 40
+      "w": 40,
+      "h": 30
     },
+    "sizeVerified": true,
     "authorName": "Justyna Suchenek"
   },
   {
@@ -475,10 +507,11 @@
       "aniolowie"
     ],
     "size": {
-      "w": 25,
-      "h": 30
+      "w": 30,
+      "h": 25
     },
-    "authorName": "Mai Kinle"
+    "sizeVerified": true,
+    "authorName": "Maja Kinle"
   },
   {
     "slug": "chrystus-pantokrator-2",
@@ -494,9 +527,10 @@
       "chrystus"
     ],
     "size": {
-      "w": 25,
-      "h": 30
+      "w": 30,
+      "h": 25
     },
+    "sizeVerified": true,
     "authorName": "Justyna Suchenek"
   },
   {
@@ -513,25 +547,11 @@
       "chrystus"
     ],
     "size": {
-      "w": 25,
-      "h": 30
+      "w": 26,
+      "h": 21
     },
+    "sizeVerified": true,
     "authorName": "Artur Wesołowski"
-  },
-  {
-    "slug": "jezus-chrystus",
-    "title": "Jezus Chrystus",
-    "author": "student",
-    "image": {
-      "src": "/media/icons/jezus-chrystus.jpg",
-      "alt": "Ikona: Jezus Chrystus",
-      "width": 680,
-      "height": 1209
-    },
-    "tags": [
-      "chrystus"
-    ],
-    "authorName": "Agnieszka Kunda"
   },
   {
     "slug": "archaniol-michal-2",
@@ -547,9 +567,10 @@
       "aniolowie"
     ],
     "size": {
-      "w": 25,
-      "h": 30
+      "w": 30,
+      "h": 25
     },
+    "sizeVerified": true,
     "authorName": "Izabela Jeleniewska"
   },
   {
@@ -566,9 +587,10 @@
       "swieta"
     ],
     "size": {
-      "w": 25,
-      "h": 30
+      "w": 30,
+      "h": 25
     },
+    "sizeVerified": true,
     "authorName": "Justyna Suchenek"
   },
   {
@@ -585,9 +607,10 @@
       "swieci"
     ],
     "size": {
-      "w": 30,
-      "h": 40
+      "w": 40,
+      "h": 30
     },
+    "sizeVerified": true,
     "authorName": "Maurycy Lubak"
   },
   {
@@ -604,9 +627,10 @@
       "matka-bozy"
     ],
     "size": {
-      "w": 30,
-      "h": 40
+      "w": 40,
+      "h": 30
     },
+    "sizeVerified": true,
     "authorName": "Aleksandra Skiera"
   },
   {
@@ -623,10 +647,11 @@
       "chrystus"
     ],
     "size": {
-      "w": 25,
-      "h": 30
+      "w": 30,
+      "h": 25
     },
-    "authorName": "Aleksandra Boniecka"
+    "sizeVerified": true,
+    "authorName": "Katarzyna Stachowska"
   },
   {
     "slug": "swiety-jerzy",
@@ -642,9 +667,10 @@
       "swieci"
     ],
     "size": {
-      "w": 40,
-      "h": 60
+      "w": 60,
+      "h": 40
     },
+    "sizeVerified": true,
     "authorName": "Piotr Janasik"
   },
   {
@@ -661,9 +687,10 @@
       "matka-bozy"
     ],
     "size": {
-      "w": 21,
-      "h": 26
+      "w": 30,
+      "h": 25
     },
+    "sizeVerified": true,
     "authorName": "Bożena Wierzbicka"
   },
   {
@@ -680,9 +707,10 @@
       "chrystus"
     ],
     "size": {
-      "w": 30,
-      "h": 40
+      "w": 40,
+      "h": 30
     },
+    "sizeVerified": true,
     "authorName": "Magdalena Limbach"
   },
   {
@@ -699,9 +727,10 @@
       "chrystus"
     ],
     "size": {
-      "w": 25,
-      "h": 24
+      "w": 30,
+      "h": 25
     },
+    "sizeVerified": true,
     "authorName": "Anna Żymełka"
   },
   {
@@ -718,9 +747,10 @@
       "swieci"
     ],
     "size": {
-      "w": 25,
-      "h": 30
+      "w": 30,
+      "h": 25
     },
+    "sizeVerified": true,
     "authorName": "Elżbieta Mirecka"
   },
   {
@@ -737,9 +767,10 @@
       "matka-bozy"
     ],
     "size": {
-      "w": 25,
-      "h": 30
+      "w": 30,
+      "h": 25
     },
+    "sizeVerified": true,
     "authorName": "Elżbieta Mirecka"
   },
   {
@@ -756,9 +787,10 @@
       "swieta"
     ],
     "size": {
-      "w": 25,
-      "h": 30
+      "w": 30,
+      "h": 25
     },
+    "sizeVerified": true,
     "authorName": "Bożena Wierzbicka"
   },
   {
@@ -774,7 +806,12 @@
     "tags": [
       "matka-bozy"
     ],
-    "authorName": "Maria Magdalena Stacewicz"
+    "size": {
+      "w": 30,
+      "h": 25
+    },
+    "sizeVerified": true,
+    "authorName": "Magdalena Stacewicz"
   },
   {
     "slug": "trojca-swieta-3",
@@ -790,9 +827,10 @@
       "swieta"
     ],
     "size": {
-      "w": 25,
+      "w": 40,
       "h": 30
     },
+    "sizeVerified": true,
     "authorName": "Aleksandra Boniecka"
   },
   {
@@ -809,9 +847,11 @@
       "matka-bozy"
     ],
     "size": {
-      "w": 22,
-      "h": 16
-    }
+      "w": 30,
+      "h": 25
+    },
+    "sizeVerified": true,
+    "authorName": "Urszula Kupiecka"
   },
   {
     "slug": "archaniol-gabriel-3",
@@ -827,9 +867,11 @@
       "aniolowie"
     ],
     "size": {
-      "w": 25,
-      "h": 40
-    }
+      "w": 40,
+      "h": 20
+    },
+    "sizeVerified": true,
+    "authorName": "Anna Borula-Gawlik"
   },
   {
     "slug": "boze-narodzenie-2",
@@ -846,8 +888,10 @@
     ],
     "size": {
       "w": 25,
-      "h": 26
-    }
+      "h": 21
+    },
+    "sizeVerified": true,
+    "authorName": "Marzena Matyaszczyk"
   },
   {
     "slug": "mandylion-3",
@@ -865,7 +909,9 @@
     "size": {
       "w": 30,
       "h": 25
-    }
+    },
+    "sizeVerified": true,
+    "authorName": "Urszula Kupiecka"
   },
   {
     "slug": "matka-boza-pneumatofora",
@@ -883,7 +929,9 @@
     "size": {
       "w": 30,
       "h": 25
-    }
+    },
+    "sizeVerified": true,
+    "authorName": "Siostra Vianneya Lupa"
   },
   {
     "slug": "boze-narodzenie-3",
@@ -899,9 +947,11 @@
       "swieta"
     ],
     "size": {
-      "w": 30,
+      "w": 60,
       "h": 40
-    }
+    },
+    "sizeVerified": true,
+    "authorName": "Magdalena Stacewicz"
   },
   {
     "slug": "przemienienie-panskie",
@@ -917,9 +967,11 @@
       "swieta"
     ],
     "size": {
-      "w": 40,
-      "h": 60
-    }
+      "w": 60,
+      "h": 40
+    },
+    "sizeVerified": true,
+    "authorName": "Magdalena Stacewicz"
   },
   {
     "slug": "matka-boza-advokata",
@@ -936,25 +988,9 @@
     ],
     "size": {
       "w": 25,
-      "h": 15
-    }
-  },
-  {
-    "slug": "archaniol-gabriel-4",
-    "title": "Archanioł Gabriel",
-    "author": "student",
-    "image": {
-      "src": "/media/icons/archaniol-gabriel-4.jpg",
-      "alt": "Ikona: Archanioł Gabriel",
-      "width": 829,
-      "height": 1105
+      "h": 21
     },
-    "tags": [
-      "aniolowie"
-    ],
-    "size": {
-      "w": 25,
-      "h": 30
-    }
+    "sizeVerified": true,
+    "authorName": "Honorata Krzewicka"
   }
 ]

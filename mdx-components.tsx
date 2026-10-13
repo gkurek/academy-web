@@ -2,6 +2,7 @@ import type { MDXComponents } from "mdx/types";
 import type { ComponentPropsWithoutRef } from "react";
 
 import { OfferFigure } from "@/components/content/OfferFigure";
+import { ArticleFigure } from "@/components/publications/ArticleFigure";
 import { LectureSeasonLink } from "@/components/news/LectureSeasonLink";
 import { OfferSideCta } from "@/components/offers/OfferSideCta";
 import { OfferSidePhoto } from "@/components/offers/OfferSidePhoto";
@@ -11,7 +12,7 @@ import { nbspChildren } from "@/lib/typography";
  * Bare `h3` with an anchor id (`<Heading3 id="…">`) — JSX literals in MDX bypass the
  * `h3` mapping. Typography and spacing come from the `Prose` wrapper (`.prose-*`),
  * never from this file; text tags (p, h2, h3, li) are mapped only to glue single-letter words.
- * Markdown images are not used in content (figures go through `OfferFigure`).
+ * Markdown images are not used in content (figures go through `OfferFigure` / `ArticleFigure`).
  */
 function Heading3({ id, children }: ComponentPropsWithoutRef<"h3">) {
   return <h3 id={id}>{nbspChildren(children)}</h3>;
@@ -35,6 +36,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     h3: Heading3,
     p: Paragraph,
     li: ListItem,
+    ArticleFigure,
     Heading3,
     LectureSeasonLink,
     OfferFigure,

@@ -21,21 +21,22 @@ export function ArticleList({ articles }: ArticleListProps) {
             <p className="publication-article-source">
               <ArticleSourceText label={describeArticleSource(article.source)} />
             </p>
-            <h3 className="list-title publication-article-list-title">
-              <Link href={`/publikacje/${article.slug}`} className="publication-article-list-title-link">
-                {article.title}
-              </Link>
-            </h3>
-            <p className="publication-article-excerpt">{article.excerpt}</p>
-            <p className="publication-article-authors">
-              {formatArticleAuthors(article.authors)}
-              {article.sample ? (
-                <>
-                  {" · "}
-                  <span className="publication-sample-tag">{pl.publications.sampleTag}</span>
-                </>
-              ) : null}
-            </p>
+            <div className="publication-article-heading-row">
+              <h3 className="list-title publication-article-list-title">
+                <Link href={`/publikacje/${article.slug}`} className="publication-article-list-title-link">
+                  {article.title}
+                </Link>
+              </h3>
+              <p className="publication-article-authors">
+                {formatArticleAuthors(article.authors)}
+                {article.sample ? (
+                  <>
+                    {" · "}
+                    <span className="publication-sample-tag">{pl.publications.sampleTag}</span>
+                  </>
+                ) : null}
+              </p>
+            </div>
           </div>
           <span className="publication-article-read-more" aria-hidden="true">
             {pl.publications.articleReadMore}
@@ -54,7 +55,7 @@ function ArticleSourceText({ label }: { label: ArticleSourceLabel }) {
   return (
     <>
       {label.before}
-      <span className="publication-album-short-title">«{label.title}»</span>
+      <span className="publication-album-short-title">„{label.title}”</span>
       {label.after}
     </>
   );
