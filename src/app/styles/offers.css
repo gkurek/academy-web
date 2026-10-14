@@ -1,4 +1,17 @@
 @layer components {
+  /* OfferPage header: the FactsBox spans both rows; the flexible second row absorbs its extra
+     height so the leadExtra block stays one section gap below the lead. */
+  @media (min-width: 1024px) {
+    .offer-main-grid {
+      grid-template-rows: auto 1fr;
+    }
+  }
+
+  /* Intro line above the day rhythm: spans the full grid width, like the rows below it. */
+  .prose-offer > p.offer-day-rhythm-intro {
+    max-width: none;
+  }
+
   .prose-offer .offer-day-rhythm-grid {
     display: grid;
     gap: 0;
@@ -41,19 +54,6 @@
     color: var(--accent-text);
   }
 
-  .offer-step-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 0;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-  }
-
-  .offer-step-grid > * + * {
-    border-top: 1px solid var(--line-gold);
-  }
-
   /* OfferQuoteGrid / OfferQuote — fill the card, not --measure-prose (RF-21). */
   .offer-quote-tile,
   .offer-quote-feature {
@@ -81,18 +81,20 @@
     }
   }
 
-  @media (min-width: 1024px) {
-    .offer-step-grid {
-      grid-template-columns: repeat(var(--step-count), minmax(0, 1fr));
-    }
+  /* Hub OfferCard: match photo height when using exhibition placeholder frame. */
+  .offer-card-exhibition-frame .exhibition-frame-placeholder {
+    aspect-ratio: unset;
+    height: var(--offer-card-image-h);
+  }
 
-    .offer-step-grid > * + * {
-      border-top: none;
-      border-left: 1px solid var(--line-gold);
-    }
+  .offer-figure-exhibition-frame .exhibition-frame-placeholder {
+    aspect-ratio: unset;
+    height: var(--offer-figure-h-m);
+  }
 
-    .offer-step-grid > *:first-child {
-      border-left: none;
+  @media (min-width: 768px) {
+    .offer-figure-exhibition-frame .exhibition-frame-placeholder {
+      height: var(--offer-figure-h);
     }
   }
 

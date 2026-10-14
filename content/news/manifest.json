@@ -681,11 +681,11 @@
   },
   {
     "slug": "nabor-kursu-2026-2027",
-    "title": "Nabór na kurs roczny i trzyletni 2026/2027",
+    "title": "Zapisy na kurs roczny i trzyletni 2026/2027",
     "date": "2026-09-01",
     "kind": "warsztaty",
     "layout": "wydarzenie",
-    "excerpt": "Rusza nabór na kurs roczny i trzyletni w sezonie 2026/2027. Zgłoszenia przyjmujemy mailem do 24 września 2026.",
+    "excerpt": "Ruszają zapisy na kurs roczny i trzyletni w sezonie 2026/2027. Zgłoszenia przyjmujemy mailem do 24 września 2026.",
     "cover": {
       "src": "/media/news/nabor-kursu-2026-2027/cover.jpg",
       "alt": "Uczestnicy warsztatów pisania ikon w pracowni Akademii Ikony",
@@ -864,7 +864,7 @@
         "href": "/wyklady"
       }
     ],
-    "bodyText": "Wraz z październikiem rozpoczynamy piętnasty sezon wykładów i kolejny rok warsztatów pisania ikon w Akademii. Zapraszamy do udziału w kursie rocznym lub trzyletnim oraz do cyklu wykładów towarzyszących zajęciom. **Kurs roczny i trzyletni** — zajęcia raz w tygodniu, od października do czerwca, w grupach wieczornych i dziennych. Materiały są na miejscu. Formalny termin zgłoszeń upłynął 24 września 2026; o wolne miejsca można zapytać mailowo na [akademiaikony@gmail.com](mailto:akademiaikony@gmail.com?subject=Zgłoszenie%20%E2%80%93%20kurs%20roczny%202026%2F2027) lub telefonicznie (601 734 705). Szczegóły [Kurs roczny i trzyletni](/warsztaty/kurs-roczny-i-trzyletni). **Wykłady 2026/2027** — w tym roku kontynuujemy cykl „Ikona – korzenie i owoce wiary” pod hasłem „Mistyka dziś”. Spotkania w wybrane wtorki, 18:00–20:30; opłata 400 zł za rok. Zapisy do końca września 2026 prowadzi sekretariat: [sekretariat.ikony22@gmail.com](mailto:sekretariat.ikony22@gmail.com?subject=Zgłoszenie%20%E2%80%93%20wykłady%202026%2F2027). Pełny program i terminy: [Wykłady](/wyklady). Pierwsze zajęcia kursu i inauguracyjny wykład sezonu odbędą się **6 października 2026 o godz. 18:00** w Kościele Środowisk Twórczych."
+    "bodyText": "Wraz z październikiem rozpoczynamy piętnasty sezon wykładów i kolejny rok warsztatów pisania ikon w Akademii. Zapraszamy do udziału w kursie rocznym lub trzyletnim oraz do cyklu wykładów towarzyszących zajęciom. **Kurs roczny i trzyletni** — zajęcia raz w tygodniu, od października do czerwca, w grupach wieczornych i dziennych. Materiały są na miejscu. Formalny termin zgłoszeń upłynął 24 września 2026; o wolne miejsca można zapytać mailowo na [akademiaikony@gmail.com](mailto:akademiaikony@gmail.com?subject=Zgłoszenie%20%E2%80%93%20kurs%20roczny%202026%2F2027). Szczegóły [Kurs roczny i trzyletni](/warsztaty/kurs-roczny-i-trzyletni). **Wykłady 2026/2027** — w tym roku kontynuujemy cykl „Ikona – korzenie i owoce wiary” pod hasłem „Mistyka dziś”. Spotkania w wybrane wtorki, 18:00–20:30; opłata 400 zł za rok. Zapisy do końca września 2026 prowadzi sekretariat: [sekretariat.ikony22@gmail.com](mailto:sekretariat.ikony22@gmail.com?subject=Zgłoszenie%20%E2%80%93%20wykłady%202026%2F2027). Pełny program i terminy: [Wykłady](/wyklady). Pierwsze zajęcia kursu i inauguracyjny wykład sezonu odbędą się **6 października 2026 o godz. 18:00** w Kościele Środowisk Twórczych."
   },
   {
     "slug": "oprowadzania-po-wystawie-2017",
@@ -1088,36 +1088,41 @@
     "images": [
       {
         "src": "/media/news/plener-przemysl-2018/1.jpg",
-        "alt": "Uczestnicy słuchają przewodnika przed ikoną Sądu Ostatecznego w muzealnej sali o granatowych ścianach",
+        "caption": "Ks. dr Marek Wojnarowski w Muzeum Narodowym Ziemi Przemyskiej",
+        "alt": "Ks. dr Marek Wojnarowski oprowadza uczestników po sali ikon w Muzeum Narodowym Ziemi Przemyskiej, przed ikoną Sądu Ostatecznego",
         "width": 2048,
         "height": 1536
       },
       {
         "src": "/media/news/plener-przemysl-2018/2.jpg",
-        "alt": "Przewodnik wskazuje szczegół ikony Sądu Ostatecznego wśród ikon zawieszonych na granatowej ścianie",
+        "caption": "Ks. dr Marek Wojnarowski w Muzeum Narodowym Ziemi Przemyskiej",
+        "alt": "Ks. dr Marek Wojnarowski wskazuje szczegół ikony Sądu Ostatecznego w Muzeum Narodowym Ziemi Przemyskiej",
         "width": 1488,
         "height": 2000
       },
       {
         "src": "/media/news/plener-przemysl-2018/3.jpg",
-        "alt": "Przewodnik pokazuje fragment dawnego malowidła z rzędami świętych",
+        "caption": "Dr Jarosław Giemza w Muzeum – Zamku w Łańcucie",
+        "alt": "Dr Jarosław Giemza pokazuje fragment dawnego malowidła z rzędami świętych w Muzeum – Zamku w Łańcucie",
         "width": 2000,
         "height": 1500
       },
       {
         "src": "/media/news/plener-przemysl-2018/4.jpg",
-        "alt": "Przewodnik omawia ikonę Chrystusa w Majestacie obok planszy wystawy",
+        "caption": "Dr Jarosław Giemza w Muzeum – Zamku w Łańcucie",
+        "alt": "Dr Jarosław Giemza omawia ikonę Chrystusa w Majestacie w Muzeum – Zamku w Łańcucie",
         "width": 1488,
         "height": 2000
       },
       {
         "src": "/media/news/plener-przemysl-2018/5.jpg",
-        "alt": "Przewodnik przy ścianie zapełnionej dawnymi ikonami i fragmentami ikonostasów",
+        "caption": "Dr Jarosław Giemza w Muzeum – Zamku w Łańcucie",
+        "alt": "Dr Jarosław Giemza przy ścianie dawnych ikon i fragmentów ikonostasów w Muzeum – Zamku w Łańcucie",
         "width": 1488,
         "height": 2000
       }
     ],
-    "bodyText": "Latem 2018 roku Letnia Szkoła Światła odwiedziła Przemyśl. [do uzupełnienia: relacja z wyjazdu — termin, program, odwiedzone miejsca (EJK)] Aktualne informacje o tygodniowych plenerach: [Letnia Szkoła Światła](/warsztaty/letnia-szkola-swiatla)."
+    "bodyText": "Latem 2018 roku Letnia Szkoła Światła odwiedziła Przemyśl. Po kolekcji ikon [Muzeum Narodowego Ziemi Przemyskiej](https://mnzp.pl/) uczestników oprowadził ks. dr Marek Wojnarowski, dyrektor Muzeum Archidiecezjalnego w Przemyślu. W ramach pleneru odbyła się też wycieczka do Łańcuta. W [Muzeum – Zamku w Łańcucie](https://www.zamek-lancut.pl/) zbiory ikon przybliżył dr Jarosław Giemza, kierownik Działu Sztuki Cerkiewnej. Aktualne informacje o tygodniowych plenerach: [Letnia Szkoła Światła](/warsztaty/letnia-szkola-swiatla)."
   },
   {
     "slug": "plener-suprasl-2023",
@@ -1549,7 +1554,7 @@
   },
   {
     "slug": "spotkania-sladami-najpiekniejszych-ikon-swiata",
-    "title": "Śladami najpiękniejszych ikon świata — wykłady 2014/2015",
+    "title": "Śladami najpiękniejszych ikon świata — wykłady 2012–2015",
     "date": "2014-09-02",
     "kind": "spotkanie",
     "layout": "program",
@@ -1563,7 +1568,7 @@
         "caption": "Spotkanie w ramach cyklu w Sanktuarium Matki Bożej Łaskawej (źródło: wpis na akademiaikony.pl)"
       }
     ],
-    "bodyText": "Ikona nie tylko przedstawia, ale i uobecnia przedstawiane Osoby. Pomaga wyciszyć się i skupić na określonym wizerunku, zachęca do więzi z Chrystusem, Matką Najświętszą, świętymi. Odczytywanie ikony, podobnie jak odczytywanie tekstu biblijnego, dokonuje się na kilku poziomach. Celem spotkań jest ukazanie i odczytanie piękna i znaczenia duchowego ikon. Z jednej strony chcemy ukazać piękno, które zachwyca wierzącego człowieka, a z drugiej — odkryć duchową głębię wpisaną w ikonę. Spotkania odbywały się w pierwszą lub drugą środę miesiąca o godz. 18.00 w podziemiach Sanktuarium Matki Bożej Łaskawej przy ul. Świętojańskiej 10, w Centrum Duchowości Świeckich. *Na zdjęciu: spotkanie w ramach cyklu w Sanktuarium Matki Bożej Łaskawej (pełne zdjęcie w galerii pod tekstem).* ## Program spotkań ### Śladami najpiękniejszych ikon świata - 23 października 2013 — Ikonografia bizantyjska we Włoszech, ks. Roman Batorski - 6 listopada 2013 — Ikonografia bizantyjska we Włoszech (cd.), ks. Roman Batorski - 4 grudnia 2013 — Złoty pierścień Rosji, o. dr Aleksander Jacyniak SJ - 15 stycznia 2014 — Złoty pierścień Rosji (cd.), o. dr Aleksander Jacyniak SJ - 2 lutego 2014 — Śladami ikon na Ukrainie, o. dr Aleksander Jacyniak SJ - 12 marca 2014 — Śladami ikon na Ukrainie (cd.), o. dr Aleksander Jacyniak SJ - 14 maja 2014 — Chrześcijańskie kościoły w Syrii, dr Jerzy Kazimierczak - 11 czerwca 2014 — Sztuka Konstantynopola, ks. Roman Batorski - 26 września 2014 — Ikonografia bizantyjska w Grecji, ks. Roman Batorski - 17 października 2014 — Zapiski z pielgrzymki do Armenii, dr Jerzy Kazimierczak - 14 listopada 2014 — Ikonografia bizantyjska na Bałkanach, ks. Roman Batorski - 23 stycznia 2015 — Ikonografia bizantyjska na Cyprze, ks. Roman Batorski - 27 lutego 2015 — Święta Góra Athos, o. dr Aleksander Jacyniak SJ i dr Jerzy Kazimierczak - 20 marca 2015 — Ikonografia bizantyjska na Krecie, ks. Roman Batorski - 17 kwietnia 2015 — Ikony Matki Bożej Śnieżnej, dr Jerzy Kazimierczak - 15 maja 2015 — Ikonografia św. Jakuba, dr Jerzy Kazimierczak ### Świat ikony - 3 października 2012 — Ikona Przemienienia Pańskiego, o. dr Aleksander Jacyniak SJ - 7 listopada 2012 — Ikona zstąpienia Jezusa do otchłani, o. dr Aleksander Jacyniak SJ - 23 stycznia 2013 — Ikona Narodzenia Jezusa Chrystusa, o. dr Aleksander Jacyniak SJ - 6 lutego 2013 — Ikona Matki Bożej Włodzimierskiej, o. dr Aleksander Jacyniak SJ - 22 maja 2013 — Ikona Matki Bożej Orantki, o. dr Aleksander Jacyniak SJ [do uzupełnienia: brakujące pozycje programu według plakatu cyklu — EJK] Spotkania są współorganizowane z o. dr Aleksandrem Jacyniakiem SJ, Centrum Duchowości Świeckich. Napisali o nas: [Tajemnica zamknięta w obrazie](http://niedziela.pl/artykul/116406/nd/Tajemnica-zamknieta-w-obrazie)."
+    "bodyText": "Ikona nie tylko przedstawia, ale i uobecnia przedstawiane Osoby. Pomaga wyciszyć się i skupić na określonym wizerunku, zachęca do więzi z Chrystusem, Matką Najświętszą, świętymi. Odczytywanie ikony, podobnie jak odczytywanie tekstu biblijnego, dokonuje się na kilku poziomach. Celem spotkań jest ukazanie i odczytanie piękna i znaczenia duchowego ikon. Z jednej strony chcemy ukazać piękno, które zachwyca wierzącego człowieka, a z drugiej — odkryć duchową głębię wpisaną w ikonę. Spotkania odbywały się w pierwszą lub drugą środę miesiąca o godz. 18.00 w podziemiach Sanktuarium Matki Bożej Łaskawej przy ul. Świętojańskiej 10, w Centrum Duchowości Świeckich. ## Program spotkań ### Śladami najpiękniejszych ikon świata - 23 października 2013 — Ikonografia bizantyjska we Włoszech, ks. Roman Batorski - 6 listopada 2013 — Ikonografia bizantyjska we Włoszech (cd.), ks. Roman Batorski - 4 grudnia 2013 — Złoty pierścień Rosji, o. dr Aleksander Jacyniak SJ - 15 stycznia 2014 — Złoty pierścień Rosji (cd.), o. dr Aleksander Jacyniak SJ - 2 lutego 2014 — Śladami ikon na Ukrainie, o. dr Aleksander Jacyniak SJ - 12 marca 2014 — Śladami ikon na Ukrainie (cd.), o. dr Aleksander Jacyniak SJ - 14 maja 2014 — Chrześcijańskie kościoły w Syrii, dr Jerzy Kazimierczak - 11 czerwca 2014 — Sztuka Konstantynopola, ks. Roman Batorski - 26 września 2014 — Ikonografia bizantyjska w Grecji, ks. Roman Batorski - 17 października 2014 — Zapiski z pielgrzymki do Armenii, dr Jerzy Kazimierczak - 14 listopada 2014 — Ikonografia bizantyjska na Bałkanach, ks. Roman Batorski - 23 stycznia 2015 — Ikonografia bizantyjska na Cyprze, ks. Roman Batorski - 27 lutego 2015 — Święta Góra Athos, o. dr Aleksander Jacyniak SJ i dr Jerzy Kazimierczak - 20 marca 2015 — Ikonografia bizantyjska na Krecie, ks. Roman Batorski - 17 kwietnia 2015 — Ikony Matki Bożej Śnieżnej, dr Jerzy Kazimierczak - 15 maja 2015 — Ikonografia św. Jakuba, dr Jerzy Kazimierczak ### Świat ikony - 3 października 2012 — Ikona Przemienienia Pańskiego, o. dr Aleksander Jacyniak SJ - 7 listopada 2012 — Ikona zstąpienia Jezusa do otchłani, o. dr Aleksander Jacyniak SJ - 23 stycznia 2013 — Ikona Narodzenia Jezusa Chrystusa, o. dr Aleksander Jacyniak SJ - 6 lutego 2013 — Ikona Matki Bożej Włodzimierskiej, o. dr Aleksander Jacyniak SJ - 22 maja 2013 — Ikona Matki Bożej Orantki, o. dr Aleksander Jacyniak SJ Spotkania są współorganizowane z o. dr Aleksandrem Jacyniakiem SJ, Centrum Duchowości Świeckich. Napisali o nas: [Tajemnica zamknięta w obrazie](http://niedziela.pl/artykul/116406/nd/Tajemnica-zamknieta-w-obrazie)."
   },
   {
     "slug": "spotkania-z-grzegorzem-zinkiewiczem",
@@ -1734,6 +1739,138 @@
       }
     ],
     "bodyText": "Wychodząc naprzeciw prośbom rodziców, którzy chcieli, by ich dzieci lepiej poznały ikonę, Akademia Ikony prowadziła cykl **Tajemnice ikony** — warsztaty dla dzieci w wieku szkolnym w Kościele Środowisk Twórczych pw. św. Andrzeja Apostoła i św. Brata Alberta w Warszawie (Plac Teatralny 20). Spotkania odbywały się w soboty; przewidziano cykl spotkań po kilka godzin. Prowadzenie: Elżbieta Jackowska-Kurek; opieka duchowa: ks. Grzegorz Michalczyk. Poniżej zdjęcia z warsztatów z dziećmi w Warszawie i w Tbilisi prowadzonych przez Elżbietę Jackowską-Kurek. Aktualne informacje o ofercie warsztatów: [Warsztaty](/warsztaty). W sprawie zapisów i pytań — [Kontakt](/kontakt)."
+  },
+  {
+    "slug": "u-stop-matki-bozej-swietolipskiej",
+    "title": "U stóp Matki Bożej Świętolipskiej",
+    "date": "2026-10-15",
+    "kind": "aktualnosc",
+    "layout": "galeria",
+    "excerpt": "Dziesięć letnich plenerów Akademii Ikony w Świętej Lipce — wspomnienie Waldemara, uczestnika Letniej Szkoły Światła.",
+    "cover": {
+      "src": "/media/news/plener-swietej-lipki-2019/1.jpg",
+      "alt": "Ikony z pleneru ustawione przed ołtarzem bazyliki w Świętej Lipce",
+      "width": 611,
+      "height": 815
+    },
+    "columnImageIndex": 0,
+    "images": [
+      {
+        "src": "/media/news/plener-swietej-lipki-2019/1.jpg",
+        "alt": "Ikony z pleneru ustawione przed ołtarzem bazyliki w Świętej Lipce",
+        "width": 611,
+        "height": 815
+      },
+      {
+        "src": "/media/news/sesja-ikonowa-w-swietej-lipce/4.jpg",
+        "alt": "Uczestniczki pleneru przy pracy nad ikonami w pracowni",
+        "width": 1600,
+        "height": 1200
+      },
+      {
+        "src": "/media/news/sesja-ikonowa-modlitwa-psalmami-i-wystawa-ikon-w-swietej-lipce-2016/7.jpg",
+        "alt": "Wspólna praca przy stole nad złoconymi ikonami",
+        "width": 1600,
+        "height": 1200
+      },
+      {
+        "src": "/media/news/sesja-ikonowa-w-swietej-lipce/14.jpg",
+        "alt": "Uczestniczka pleneru maluje ikonę na złotym tle",
+        "width": 1600,
+        "height": 1200
+      },
+      {
+        "src": "/media/news/u-stop-matki-bozej-swietolipskiej/workshop-table.jpg",
+        "alt": "Ikona Chrystusa na stole w pracowni, w głębi kolejne stanowiska pracy",
+        "width": 1200,
+        "height": 1600
+      },
+      {
+        "src": "/media/workshops/letnia-szkola-swiatla-ikony.jpg",
+        "alt": "Słońce z okna pada na ikonę leżącą na stole w pracowni",
+        "width": 1056,
+        "height": 594
+      },
+      {
+        "src": "/media/news/u-stop-matki-bozej-swietolipskiej/participant-with-icon.jpg",
+        "alt": "Uczestniczka pleneru z ukończoną ikoną Matki Bożej",
+        "width": 1200,
+        "height": 1600
+      },
+      {
+        "src": "/media/news/u-stop-matki-bozej-swietolipskiej/exhibition-easels.jpg",
+        "alt": "Wystawa ikon z pleneru na sztalugach",
+        "width": 1600,
+        "height": 1200
+      },
+      {
+        "src": "/media/news/u-stop-matki-bozej-swietolipskiej/icons-outside-sanctuary.jpg",
+        "alt": "Uczestnicy pleneru z ikonami na haftowanych ręcznikach przed sanktuarium",
+        "width": 1570,
+        "height": 1600
+      },
+      {
+        "src": "/media/news/miedzynarodowe-warsztaty-oraz-wystawa-ikon-z-pracowni-akademii-ikony-w-swietej-lipce-19-27-sierpnia-2017/3.jpg",
+        "alt": "Wystawa ikon z pracowni Akademii Ikony w Świętej Lipce",
+        "width": 1024,
+        "height": 576
+      },
+      {
+        "src": "/media/news/sesja-ikonowa-modlitwa-psalmami-i-wystawa-ikon-w-swietej-lipce-2016/10.jpg",
+        "alt": "Ikony z pleneru wystawione w sali pracowni",
+        "width": 1600,
+        "height": 900
+      },
+      {
+        "src": "/media/news/miedzynarodowe-warsztaty-oraz-wystawa-ikon-z-pracowni-akademii-ikony-w-swietej-lipce-19-27-sierpnia-2017/8.jpg",
+        "alt": "Ikony ustawione przed ołtarzem podczas Mszy Świętej w bazylice",
+        "width": 1024,
+        "height": 576
+      },
+      {
+        "src": "/media/news/sesja-ikonowa-w-swietej-lipce/2.jpg",
+        "alt": "Malowidła ścienne Jerzego Nowosielskiego w cerkwi w Kętrzynie",
+        "width": 1600,
+        "height": 1200
+      },
+      {
+        "src": "/media/news/sesja-ikonowa-w-swietej-lipce/11.jpg",
+        "alt": "Grupa pleneru we wnętrzu cerkwi przed ikonostasem",
+        "width": 1600,
+        "height": 1200
+      },
+      {
+        "src": "/media/news/u-stop-matki-bozej-swietolipskiej/cloister-frescoes.jpg",
+        "alt": "Grupa pleneru ogląda malowidła na sklepieniu krużganków",
+        "width": 1200,
+        "height": 1600
+      },
+      {
+        "src": "/media/news/sesja-ikonowa-modlitwa-psalmami-i-wystawa-ikon-w-swietej-lipce-2016/1.jpg",
+        "alt": "O. Aleksander Jacyniak SJ pokazuje uczestnikom pleneru malowidła na sklepieniu krużganków",
+        "width": 1600,
+        "height": 900
+      },
+      {
+        "src": "/media/news/sesja-ikonowa-modlitwa-psalmami-i-wystawa-ikon-w-swietej-lipce-2016/9.jpg",
+        "alt": "Uczestnicy pleneru na wycieczce wśród pól",
+        "width": 960,
+        "height": 720
+      },
+      {
+        "src": "/media/news/sesja-ikonowa-w-swietej-lipce/19.jpg",
+        "alt": "Grupa pleneru na wycieczce w miasteczku w okolicy Świętej Lipki",
+        "width": 1600,
+        "height": 1200
+      }
+    ],
+    "related": [
+      {
+        "label": "Letnia Szkoła Światła",
+        "href": "/warsztaty/letnia-szkola-swiatla"
+      }
+    ],
+    "bodyText": "Jednym z celów Fundacji IKONA DZIŚ i Akademii Ikony jest budowanie naturalnej płaszczyzny dialogu ekumenicznego. Dlatego od dawna bliska była nam Święta Lipka: [sanktuarium](https://www.swlipka.pl/), w którym Matka Boża Świętolipska czczona jest jako Matka Jedności Chrześcijan. Wykłady i warsztaty pisania ikon Letniej Szkoły Światła odbywały się tu dziesięć razy — żadne inne miejsce nie gościło nas latem tak często. ## Pracownia w sanktuarium Warsztaty prowadziła Elżbieta Jackowska-Kurek — malarka ikon, nauczycielka ikonografów, spiritus movens Akademii Ikony i Letniej Szkoły Światła. Oprowadzała też po wystawach swoich ikon i ikon powstałych w pracowni. Naszą pracownię często odwiedzali greckokatoliccy księża i siostry z Polski, Białorusi i Ukrainy. ## Ojciec Aleksander Jacyniak SJ Spotkania z innymi Kościołami umożliwił nam ówczesny kustosz sanktuarium, o. Aleksander Jacyniak SJ, który utrzymywał dobre relacje z ich przedstawicielami w okolicy. Opiekował się kolejnymi grupami i głosił nauki rekolekcyjne: o modlitwie psalmami, o św. Józefie, o samotności, o tym, jak modlić się w trudnym czasie. Szczególnie cenne były jego prelekcje o ikonach — wiedza i sposób mówienia przyciągały na nie także osoby spoza warsztatów. Na zakończenie każdego pleneru poświęcał ikony w rycie bizantyjskim. ## Wyjścia w okolicę „Po tym wszyscy poznają, żeście uczniami moimi, jeśli będziecie się wzajemnie miłowali” (J 13,35). Pamiętając o tych słowach, wielokrotnie odwiedzaliśmy w Kętrzynie cerkiew prawosławną, cerkiew greckokatolicką i zbór ewangelicki. Cerkiew prawosławna jest dla nas szczególnie ważna, bo znajdują się w niej wczesne prace Jerzego Nowosielskiego. Jeździliśmy też do miejsc o walorach historycznych — choćby na zamek w Reszlu czy do kościoła w Bezławkach. *Waldemar, absolwent Akademii Ikony w Warszawie, uczestnik Letniej Szkoły Światła w Świętej Lipce, Przemyślu i Supraślu* ## Relacje z plenerów w Świętej Lipce - [Sesja ikonowa w Świętej Lipce, 2015](/aktualnosci/sesja-ikonowa-w-swietej-lipce) - [„Modlitwa psalmami” — warsztaty i wystawa ikon, 2016](/aktualnosci/sesja-ikonowa-modlitwa-psalmami-i-wystawa-ikon-w-swietej-lipce-2016) - [Międzynarodowe warsztaty i wystawa ikon, 2017](/aktualnosci/miedzynarodowe-warsztaty-oraz-wystawa-ikon-z-pracowni-akademii-ikony-w-swietej-lipce-19-27-sierpnia-2017) - [Plener w Świętej Lipce, 2019](/aktualnosci/plener-swietej-lipki-2019)"
   },
   {
     "slug": "wakacyjne-warsztaty-ikonograficzne-w-warszawie",
@@ -2185,6 +2322,67 @@
     "bodyText": "Od 15 grudnia 2019 do 5 stycznia 2020 ikony Akademii Ikony prezentowaliśmy w Galerii Wieży [kościoła Wniebowstąpienia Pańskiego](https://pl.wikipedia.org/wiki/Ko%C5%9Bci%C3%B3%C5%82_Wniebowst%C4%85pienia_Pa%C5%84skiego_w_Warszawie_(Ursyn%C3%B3w)) przy ul. KEN 102 w Warszawie (Ursynów). Wystawa odbyła się na zaproszenie proboszcza Dariusza Gasa — bardzo dziękujemy za gościnę."
   },
   {
+    "slug": "wystawa-ikon-w-kaplicy-sw-grzegorza-peradze",
+    "title": "Wystawa ikon w kaplicy św. Grzegorza Peradze",
+    "date": "2015-06-11",
+    "kind": "wystawa",
+    "layout": "galeria",
+    "venue": "Warszawa",
+    "excerpt": "11 czerwca 2015 — ikony z pracowni Akademii Ikony w kaplicy św. Grzegorza Peradze na warszawskiej Ochocie; wykład Witalego Michalczuka.",
+    "cover": {
+      "src": "/media/news/wystawa-ikon-w-kaplicy-sw-grzegorza-peradze/icons-on-display.jpg",
+      "alt": "Ikony z pracowni Akademii Ikony na stole wystawowym",
+      "width": 1600,
+      "height": 1200
+    },
+    "columnImageIndex": 0,
+    "images": [
+      {
+        "src": "/media/news/wystawa-ikon-w-kaplicy-sw-grzegorza-peradze/icons-on-display.jpg",
+        "alt": "Ikony z pracowni Akademii Ikony na stole wystawowym",
+        "width": 1600,
+        "height": 1200
+      },
+      {
+        "src": "/media/news/wystawa-ikon-w-kaplicy-sw-grzegorza-peradze/guests-viewing-icons.jpg",
+        "alt": "Goście oglądają ikony wystawione na czerwonych tkaninach",
+        "width": 1600,
+        "height": 1200
+      },
+      {
+        "src": "/media/news/wystawa-ikon-w-kaplicy-sw-grzegorza-peradze/lecture-michalczuk.jpg",
+        "alt": "Witali Michalczuk podczas wykładu",
+        "width": 750,
+        "height": 536
+      },
+      {
+        "src": "/media/news/wystawa-ikon-w-kaplicy-sw-grzegorza-peradze/group-before-cross.jpg",
+        "alt": "Uczestnicy spotkania z ks. Henrykiem Paprockim przed krzyżem w kaplicy",
+        "width": 1582,
+        "height": 1392
+      },
+      {
+        "src": "/media/news/wystawa-ikon-w-kaplicy-sw-grzegorza-peradze/lecture-in-chapel.jpg",
+        "alt": "Wykład we wnętrzu kaplicy, w głębi ikonostas",
+        "width": 1600,
+        "height": 899
+      },
+      {
+        "src": "/media/news/wystawa-ikon-w-kaplicy-sw-grzegorza-peradze/service-in-chapel.jpg",
+        "alt": "Nabożeństwo w kaplicy",
+        "width": 1600,
+        "height": 1200
+      },
+      {
+        "src": "/media/news/wystawa-ikon-w-kaplicy-sw-grzegorza-peradze/arch-paintings.jpg",
+        "alt": "Arkada z malowidłami we wnętrzu muzeum",
+        "width": 1185,
+        "height": 1600
+      }
+    ],
+    "bodyText": "11 czerwca 2015 roku ikony powstałe w pracowni Akademii Ikony pokazywaliśmy w kaplicy prawosławnej pw. św. Grzegorza Peradze przy ul. Lelechowskiej 5 na warszawskiej Ochocie. ## Miejsce Patron kaplicy, św. Grzegorz Peradze (1899–1942), był gruzińskim duchownym prawosławnym, archimandrytą i profesorem patrologii na Uniwersytecie Warszawskim. Zginął w Auschwitz; w 1995 roku Gruziński Kościół Prawosławny ogłosił go świętym. Kaplica należy do Polskiego Autokefalicznego Kościoła Prawosławnego, a jej gospodarzem jest ks. mitrat dr Henryk Paprocki — duszpasterz tutejszej wspólnoty od jej początków, a zarazem częsty wykładowca w [cyklach Akademii Ikony](/wyklady). Kaplica jest częścią otwartego w 2011 roku Muzeum Ikon, filii Muzeum Warszawskiej Metropolii Prawosławnej. Obok ikonostasu i ikon różnych autorów można tu zobaczyć reprodukcje fresków Jerzego Nowosielskiego i projekty witraży Adama Stalony-Dobrzańskiego, a w zbiorach muzeum — ikony z Rosji, Grecji i Bałkanów z XVII–XX wieku. ## Wystawa i wykład Przy okazji wystawy wykład wygłosił [Witali Michalczuk](/wyklady/wykladowcy)."
+  },
+  {
     "slug": "wystawa-ikon-w-kosciele-bl-wladyslawa-z-gielniowa-patrona-warszwy",
     "title": "Wystawa „Ikona – Okno ku wieczności” w kościele bł. Władysława z Gielniowa w Warszawie",
     "date": "2014-06-22",
@@ -2421,12 +2619,6 @@
         "height": 1200
       },
       {
-        "src": "/media/news/wystawa-ikona-dzis/DSC03001.jpg",
-        "alt": "[do uzupełnienia: podpis zdjęcia]",
-        "width": 1200,
-        "height": 675
-      },
-      {
         "src": "/media/news/wystawa-ikona-dzis/DSC01984.jpg",
         "alt": "[do uzupełnienia: podpis zdjęcia]",
         "width": 1600,
@@ -2465,8 +2657,8 @@
       {
         "src": "/media/news/wystawa-ikona-dzis/MB348mm_n.jpg",
         "alt": "[do uzupełnienia: podpis zdjęcia]",
-        "width": 309,
-        "height": 232
+        "width": 1024,
+        "height": 768
       }
     ],
     "bodyText": "Dnia 19 czerwca 2015, podczas Mszy św. o godz. 17.00, ks. Grzegorz Michalczyk, duszpasterz Środowisk Twórczych i rektor kościoła pw. św. Andrzeja Apostoła i św. Brata Alberta, pobłogosławił ikonografom, którzy napisali ikony wystawione w kościele — i tym samym otworzył wystawę „Ikona dziś”. Elżbieta Jackowska-Kurek podziękowała wszystkim, którzy przyczynili się do powstania wystawy, i ogłosiła powołanie do życia fundacji IKONA DZIŚ. Z inicjatywy grupy związanej z Fundacją Pomocy Matematykom i Informatykom Niesprawnym Ruchowo, na czele z Ewą Jarochomską, poproszono Elżbietę Jackowską-Kurek o wykład „Ikona dziś”; przychyliła się do prośby, a na zakończenie wernisażu odbyło się spotkanie. Wystawa „Ikona dziś” była czynna w Kościele Środowisk Twórczych w Warszawie od 19 czerwca do 19 lipca 2015. Dziękujemy wszystkim, którzy przyczynili się do powstania ikon, tym, którzy je napisali, i tym, którzy odwiedzili nas podczas wernisażu. Dziękujemy za życzenia z okazji trzylecia Akademii Ikony, Studium św. Andrzeja Apostoła. Dziękujemy Michałowi Boguckiemu za udostępnienie miejsca w pomieszczeniach przy Muzeum Ikon oraz ks. Grzegorzowi Michalczykowi za zaproszenie do Duszpasterstwa Środowisk Twórczych w Warszawie. Dziękujemy wykładowcom i prowadzącym warsztaty, a także tym, którzy nam pomagają, wspierają i sympatyzują z nami. Dyplomy Ambasadora Fundacji IKONA DZIŚ przyjęli: prof. Paweł Stanisław Sysa, Maria Helena Osuchowska-Marcewetti i Ekaterina Loladze. Order Łyżeczki został przyznany ks. Grzegorzowi Michalczykowi, Piotrowi Janasikowi, Jackowi Poręckiemu, Klaudii Świerżawskiej, Magdalenie Limbach, Maurycemu Lubak oraz 20 innym osobom. Nazwiska wszystkich, którzy wspierają nasze dzieła, wymienione są w Księdze Pamiątkowej udostępnianej na każdej wystawie. Gratuluję i dziękuję. Elżbieta Jackowska-Kurek Poniżej zdjęcia z wernisażu (fot. Aleksandra Kurek)."

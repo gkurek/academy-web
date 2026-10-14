@@ -1,7 +1,7 @@
 {
   "hero": {
     "title": "Uczymy pisania ikon\nod 2010 roku.",
-    "lead": "Warsztaty, wykłady i galeria ikon w Kościele Środowisk Twórczych na Placu Teatralnym w Warszawie. Praca indywidualna z każdym uczestnikiem, raz w tygodniu, od października do czerwca.",
+    "lead": "Zapraszamy na warsztaty i wykłady ikonograficzne w Kościele Środowisk Twórczych na Placu Teatralnym w Warszawie. Cotygodniowe zajęcia od października do czerwca, dla początkujących i zaawansowanych. Materiały czekają na miejscu.",
     "image": {
       "src": "/media/icons/chrystus.jpg",
       "alt": "Ikona Chrystusa Pantokratora",
@@ -13,7 +13,7 @@
   "pillars": [
     {
       "title": "Warsztaty",
-      "body": "Kurs roczny przedwstępny i wstępny oraz trzyletni doskonalący. Materiały na miejscu, praca indywidualna. Osobno Letnia Szkoła Światła – tygodniowe plenery w trybie rekolekcyjnym.",
+      "body": "Kurs roczny i trzyletni, kursy doskonalące, praca indywidualna, materiały na miejscu. W wakacje Letnia Szkoła Światła – tygodniowe plenery w trybie rekolekcyjnym.",
       "linkLabel": "Kurs i plener",
       "image": {
         "src": "/media/home/pracownia.jpg",
@@ -24,7 +24,7 @@
     },
     {
       "title": "Wykłady",
-      "body": "Wybrane wtorki miesiąca, 18:00–20:30, październik–czerwiec. Prowadzą teolodzy, historycy sztuki i duchowni. 400 zł za rok, z możliwością rocznego dostępu do nagrań.",
+      "body": "Wybrane wtorki, 18:00–20:30, od października do czerwca; wśród wykładowców teolodzy, historycy sztuki i duchowni. 400 zł za rok, z rocznym dostępem do nagrań.",
       "linkLabel": "Sezon i archiwum",
       "image": {
         "src": "/media/home/wyklad.jpg",
@@ -35,7 +35,7 @@
     },
     {
       "title": "Ikony",
-      "body": "Prace Elżbiety Jackowskiej-Kurek i uczniów, ekspozycja codzienna i wystawa doroczna w kościele, ikony na zamówienie.",
+      "body": "Ikony Elżbiety Jackowskiej-Kurek i jej uczniów, do obejrzenia przez cały rok w kościele. Ekspozycja codzienna, wystawa doroczna i wystawy wyjazdowe.",
       "linkLabel": "Galeria i wystawy ikon",
       "image": {
         "src": "/media/home/wystawa.jpg",

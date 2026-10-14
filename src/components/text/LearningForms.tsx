@@ -9,8 +9,6 @@ export interface LearningFormsProps {
   contact: {
     email: string;
     subject: string;
-    phone: string;
-    phoneDisplay: string;
   };
 }
 
@@ -35,13 +33,15 @@ export function LearningForms({ rows, contact }: LearningFormsProps) {
         ))}
       </ul>
 
+      {/* Applies to every form of teaching above — fine print, deliberately low-key. */}
+      <p className="text-size-caption leading-body text-text-tertiary max-w-measure-prose mt-space-4">
+        {pl.workshop.legalNote}
+      </p>
+
       <div className="learning-forms-contact">
         <Button href={mailtoHref} variant="secondary" size="lg" className="learning-forms-mailto">
           {pl.workshop.contactMailtoLabel}
         </Button>
-        <TextLink href={`tel:${contact.phone}`} className="learning-forms-phone tap-target-nav inline-flex items-center">
-          {contact.phoneDisplay}
-        </TextLink>
       </div>
     </div>
   );

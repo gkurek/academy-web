@@ -1,7 +1,5 @@
-import { TextLink } from "@/components/core/TextLink";
 import type { IconWork } from "@/content/types";
 import { formatLightboxMeta } from "@/i18n/formatLightboxMeta";
-import { pl } from "@/i18n/pl";
 
 export interface IconLightboxMetaProps {
   item: IconWork;
@@ -17,7 +15,7 @@ export function IconLightboxMeta({ item, positionLabel }: IconLightboxMetaProps)
       <h2 className="mb-space-7 font-serif text-size-role-card-title leading-heading text-text-h1 lg:mb-space-8 lg:text-size-role-section-h2">
         {item.title}
       </h2>
-      <div className="mb-space-4 leading-loose lg:mb-space-5">
+      <div className="leading-loose">
         {entries.map((entry, entryIndex) => (
           <div key={`field-${entryIndex}`} className="block">
             <span className="text-size-caption text-text-tertiary">{entry.label}</span>
@@ -25,16 +23,6 @@ export function IconLightboxMeta({ item, positionLabel }: IconLightboxMetaProps)
           </div>
         ))}
       </div>
-      {item.author === "ejk" ? (
-        <TextLink
-          href="/ikony/na-zamowienie"
-          className="inline-flex min-h-tap-min items-center text-size-body"
-        >
-          {item.available
-            ? pl.gallery.lightbox.orderLinkAvailability
-            : pl.gallery.lightbox.orderLink}
-        </TextLink>
-      ) : null}
     </div>
   );
 }

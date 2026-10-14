@@ -1,12 +1,12 @@
 import { OfferCard } from "@/components/content/OfferCard";
 import { SectionPageShell } from "@/components/layout/SectionPageShell";
 import { OfferQuoteGrid } from "@/components/offers/OfferQuoteGrid";
-import { getOfferDateValues, type LoadedOffer } from "@/content/offers";
-import { getWorkshopsHub } from "@/content/workshops-hub";
+import { getUpcomingOfferFacts, type LoadedOffer } from "@/content/offers";
+import { getWorkshopCardEyebrow, getWorkshopsHub } from "@/content/workshops-hub";
 import type { Testimonial } from "@/content/types";
 import { pl } from "@/i18n/pl";
-import { fillRequiredTemplate } from "@/lib/fillTemplate";
 import { PageHeading } from "@/components/core/PageHeading";
+import { todayInWarsaw } from "@/lib/isoDate";
 
 const hub = getWorkshopsHub();
 
@@ -24,15 +24,12 @@ function WorkshopOfferCard({ offer }: { offer: LoadedOffer }) {
     throw new Error(`content/pages/workshops-hub.json: missing card for offer "${offer.slug}"`);
   }
 
-  const dateValues = getOfferDateValues(offer.facts);
-  const context = `workshops-hub.json cards.${offer.slug}`;
-
   return (
     <OfferCard
-      eyebrow={fillRequiredTemplate(card.eyebrow, dateValues, context)}
+      eyebrow={getWorkshopCardEyebrow(offer.kind, getUpcomingOfferFacts(), todayInWarsaw())}
       title={offer.title}
       excerpt={card.excerpt}
-      bullets={card.bullets.map((bullet) => fillRequiredTemplate(bullet, dateValues, context))}
+      bullets={card.bullets}
       href={`/warsztaty/${offer.slug}`}
       ctaLabel={card.ctaLabel}
       ctaVariant={card.ctaVariant}
@@ -48,11 +45,8 @@ export function WorkshopsHubPage({ path, offers, quotes }: WorkshopsHubPageProps
         <PageHeading level="page" className="mb-space-5">
           {pl.workshopsHub.title}
         </PageHeading>
-        <p className="text-size-lead-m md:text-size-lead leading-body text-text-secondary max-w-measure-lead mb-space-5">
+        <p className="text-size-lead-m md:text-size-lead leading-body text-text-secondary max-w-measure-lead">
           {hub.lead}
-        </p>
-        <p className="body-copy text-text-secondary">
-          {hub.leadSecondary}
         </p>
       </section>
 
@@ -65,7 +59,12 @@ export function WorkshopsHubPage({ path, offers, quotes }: WorkshopsHubPageProps
       </section>
 
       <div className="mt-section-gap">
-        <OfferQuoteGrid heading={pl.workshopsHub.quotesHeading} quotes={quotes} />
+        {/* Two quotes would leave an empty third column on lg. */}
+        <OfferQuoteGrid
+          heading={pl.workshopsHub.quotesHeading}
+          quotes={quotes}
+          columns={quotes.length === 2 ? 2 : 3}
+        />
       </div>
     </SectionPageShell>
   );

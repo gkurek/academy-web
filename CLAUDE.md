@@ -58,7 +58,7 @@ Przy konflikcie: `CLAUDE.md` > plan etapu > `brief-claude-code.md` > `brief-full
 - Nazw pól w `src/content/types.ts` nie zmieniaj – model jest współdzielony z przyszłym projektem.
 - Dane przykładowe z makiet oznaczasz `sample` (nazwa pliku lub pole `"sample": true`) i dopisujesz do `docs/plan-claude-code.md` §5.
 - Fakty z `docs/brief-claude-code.md` §8 (maile, telefon, daty, nazwa, adres, tematy `mailto:`) wpisuj dosłownie. Wartości niepotwierdzonych nie zgaduj – zostaw puste pole i zgłoś.
-- Nie generuj treści za klienta: cytatów, opisów, tytułów wykładów, bio. Placeholder `[do uzupełnienia: …]` zamiast wymyślonego tekstu.
+- Możesz proponować własną treść (copy, opisy, nowe sformułowania). Przy każdej takiej propozycji wyraźnie zaznacz, co jest Twoim dopowiedzeniem, i zapytaj, czy jest OK — przed zapisem do `content/` (K-122).
 - Nie ruszaj `content/` poza zakresem bieżącego kawałka.
 
 ## Rytm pracy (szczegóły: docs/plan-claude-code.md §1)

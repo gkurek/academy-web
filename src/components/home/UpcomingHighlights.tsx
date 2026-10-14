@@ -17,18 +17,19 @@ export function UpcomingHighlights() {
       </h2>
       <div className="hairline-grid-3">
         {tiles.map((item) => (
+          // Column flex + mt-auto pins the link to the bottom so links align across the row.
           <div
             key={item.slot}
-            className="bg-surface-tile py-tile-py-m px-page-margin-mobile md:py-tile-py md:px-tile-px"
+            className="flex flex-col bg-surface-tile py-tile-py-m px-page-margin-mobile md:py-tile-py md:px-tile-px"
           >
             <div className="font-serif text-size-body text-accent-text mb-space-2">{item.text}</div>
-            <div className="font-serif text-size-role-row-title-m md:text-size-role-row-title leading-heading text-text-list-title">
+            <div className="font-serif text-size-role-row-title-m md:text-size-role-row-title leading-heading text-text-list-title mb-tile-link-mt-m md:mb-tile-link-mt">
               {item.title}
             </div>
             <TextLink
               standalone
               href={item.href}
-              className="mt-tile-link-mt-m md:mt-tile-link-mt text-size-ui-m md:text-size-ui"
+              className="mt-auto self-start text-size-ui-m md:text-size-ui"
             >
               {item.linkLabel}
             </TextLink>

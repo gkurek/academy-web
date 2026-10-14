@@ -1,14 +1,12 @@
 {
-  "lead": "Praca malarza ikon to życie w intymnej relacji z Panem Bogiem i świadczenie o tej relacji przez obraz. Dbanie o nią i ciągłe dojrzewanie do niej to nieustanne wyzwanie ikonografa.",
-  "leadSecondary": "Proponujemy dwie ścieżki: kurs w roku akademickim — raz w tygodniu, od października do czerwca — i tygodniowy plener latem, w trybie rekolekcyjnym. W obu pracuje się indywidualnie. Prowadzi je Elżbieta Jackowska-Kurek, praktykująca malarka ikon, od dwudziestu lat z własną pracownią w Warszawie. Jej ikony tablicowe i polichromie znajdują się w świątyniach i kolekcjach prywatnych w kraju i za granicą.",
+  "lead": "Pisania ikon uczymy w Kościele Środowisk Twórczych na Placu Teatralnym w Warszawie. Do wyboru dwie ścieżki: kurs w roku akademickim albo tygodniowy plener latem — obie z indywidualnym prowadzeniem.",
   "cards": {
     "kurs-roczny-i-trzyletni": {
-      "eyebrow": "Sezon {season} · zgłoszenia do {enrollmentClose}",
-      "excerpt": "Kurs roczny prowadzi przez wszystkie etapy powstawania ikony i pomaga rozeznać, czy pisanie ikon jest modlitwą dla mnie. Kurs trzyletni prowadzi dalej — od ikony lica po ikony dogmatyczne. Grupy wieczorne i dzienne, materiały na miejscu.",
+      "excerpt": "Na początek kurs roczny, zakończony własną ikoną. Kto chce iść dalej, kontynuuje w kursie trzyletnim — coraz trudniejsze przedstawienia, aż po ikony dogmatyczne — a potem na kursach doskonalących.",
       "bullets": [
         "Raz w tygodniu, październik–czerwiec",
-        "Pierwsze spotkanie {firstMeeting}, 18:00",
-        "Rozmowa wstępna przed zapisem, około 30 minut"
+        "Grupy dzienne i wieczorowe, materiały na miejscu",
+        "Zapisy mailem, potem krótka rozmowa"
       ],
       "ctaLabel": "Program i zapisy",
       "ctaVariant": "primary",
@@ -20,21 +18,14 @@
       }
     },
     "letnia-szkola-swiatla": {
-      "eyebrow": "Nabór na {year} od marca {year} · kolejność zgłoszeń",
-      "excerpt": "Tygodniowe plenery ikonowe od lipca do września, w trybie rekolekcyjnym: praca przy ikonie, modlitwa, wykłady i wyjścia do miejsc związanych z kultem ikon. Dla osób, które mają już za sobą pierwsze ikony.",
+      "excerpt": "Dla osób, które mają już za sobą pierwsze ikony. Tydzień przy ikonie w trybie rekolekcyjnym: modlitwa, wykłady i wyjścia do miejsc związanych z kultem ikon.",
       "bullets": [
-        "Tydzień, lipiec–wrzesień",
-        "Miejsce i termin {year}: szczegóły wkrótce",
-        "Koszt: szczegóły wkrótce"
+        "Tydzień, między lipcem a wrześniem",
+        "W różnych miejscach, nocleg i wyżywienie w cenie",
+        "Zapisy mailem, udział ustalamy w rozmowie"
       ],
-      "ctaLabel": "O plenerze",
-      "ctaVariant": "secondary",
-      "image": {
-        "src": "/media/workshops/letnia-szkola-swiatla-ikony.jpg",
-        "alt": "Smuga światła z okna pada na ikony leżące na stole",
-        "width": 1056,
-        "height": 594
-      }
+      "ctaLabel": "Program i zapisy",
+      "ctaVariant": "secondary"
     }
   }
 }

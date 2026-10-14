@@ -39,6 +39,9 @@ const plSource = {
   },
   workshop: {
     contactMailtoLabel: "Napisz do Pracowni",
+    // Verbatim from brief-claude-code.md §8; fine print under „Formy nauki”.
+    legalNote:
+      "Nauczanie w Akademii Ikony nie niesie za sobą żadnych skutków formalnych.",
   },
   /** Shared by every lightbox (icons, photos, spreads); per-domain trigger labels stay in their sections. */
   lightbox: {
@@ -66,7 +69,7 @@ const plSource = {
           linkLabel: "Jak się zapisać",
         },
         enrollment: {
-          title: "Nabór na kurs {season}",
+          title: "Zapisy na kurs {season}",
           textWithDeadline: "Zgłoszenia do {date}",
           text: "Zgłoszenia mailem",
           linkLabel: "Jak się zapisać",
@@ -79,7 +82,7 @@ const plSource = {
         },
         running: {
           title: "Kurs {season} trwa",
-          text: "Nabór na kolejny rok od czerwca",
+          text: "Zapisy na kolejny rok od czerwca",
           linkLabel: "O kursie",
         },
       },
@@ -130,20 +133,13 @@ const plSource = {
       price: "Koszt",
       enrollment: "Zgłoszenia",
       enrollmentDeadline: "Termin zgłoszeń",
-      enrollmentStart: "Nabór",
-      enrollmentRule: "Zasada naboru",
+      enrollmentStart: "Zapisy",
+      enrollmentRule: "Zasady zapisów",
       firstMeeting: "Pierwsze spotkanie",
-      leadTime: "Czas realizacji",
-    },
-    rowsByKind: {
-      zamowienie: {
-        when: "Co można wybrać",
-        where: "Technika",
-        leadTime: "Orientacyjny czas realizacji",
-        price: "Koszt",
-      },
     },
     phoneOr: "lub {phone}",
+    recordingsRowLabel: "Nagrania",
+    recordingsValue: "Roczny dostęp po zakończeniu sezonu",
     publicationsRowLabel: "Publikacje",
     publicationsLink: "Album i artykuły Akademii",
     ctaByKind: {
@@ -153,9 +149,9 @@ const plSource = {
           telLabel: "Zadzwoń: {phone}",
         },
         closed: {
-          mailtoLabel: "Powiadom mnie o naborze",
-          mailtoSubject: "Powiadomienie o naborze – kurs roczny",
-          note: "Nabór na ten sezon jest zamknięty. Napisz, a damy znać, gdy ruszy kolejny.",
+          mailtoLabel: "Powiadom mnie o zapisach",
+          mailtoSubject: "Powiadomienie o zapisach – kurs roczny",
+          note: "Zapisy zamknięte — zapraszamy w przyszłym roku",
         },
       },
       plener: {
@@ -165,32 +161,20 @@ const plSource = {
           note: "Odpowiemy w kolejności zgłoszeń.",
         },
         closed: {
-          mailtoLabel: "Powiadom mnie o naborze",
-          mailtoSubject: "Powiadomienie o naborze – Letnia Szkoła Światła",
-          note: "Nabór na plenery {year} ruszy w marcu — napisz, jeśli chcesz dostać wiadomość.",
+          mailtoLabel: "Powiadom mnie o zapisach",
+          mailtoSubject: "Powiadomienie o zapisach – Letnia Szkoła Światła",
+          note: "Zapisy na plenery {year} ruszą w marcu.",
         },
       },
       wyklady: {
         open: {
           mailtoLabel: "Zapisz się mailem",
           telLabel: "Zadzwoń: {phone}",
-          note: "Roczny dostęp do nagrań po zakończeniu sezonu.",
         },
         closed: {
-          mailtoLabel: "Zapytaj o miejsce mailem",
-          note: "Nabór na bieżący sezon jest zamknięty.",
-        },
-      },
-      zamowienie: {
-        open: {
-          mailtoLabel: "Zapytaj o ikonę",
-          telLabel: "Zadzwoń: {phone}",
-          note: "Opisz zamówienie – odpowiemy z propozycją terminu i wyceny.",
-        },
-        closed: {
-          mailtoLabel: "Zapytaj o ikonę",
-          telLabel: "Zadzwoń: {phone}",
-          note: "Skontaktuj się mailowo lub telefonicznie.",
+          mailtoLabel: "Powiadom mnie o zapisach",
+          mailtoSubject: "Powiadomienie o zapisach – wykłady",
+          note: "Zapisy zamknięte — zapraszamy w kolejnym sezonie",
         },
       },
     },
@@ -199,10 +183,7 @@ const plSource = {
     eyebrowKurs: "Warsztaty · sezon {seasonLabel}",
     eyebrowPlener: "Plener {seasonLabel}",
     enrollmentSectionTitle: "Jak się zapisać",
-    // Verbatim from brief-claude-code.md §8.
-    legalNote:
-      "Nauczanie w Akademii Ikony nie niesie za sobą żadnych skutków formalnych.",
-    semesterProgramHeading: "Program kursu trzyletniego",
+    semesterProgramHeading: "Program semestrów",
     semesterProgramIntro:
       "Sześć semestrów, każdy zamknięty własnym zadaniem malarskim.",
     semesterTileFallback: "Semestr {n}",
@@ -215,22 +196,30 @@ const plSource = {
       "Semestr szósty",
     ],
     plenerQuotesHeading: "Głosy z pleneru",
-    plenerWhereWeWereInline: "Miejsca się zmieniają — gościły nas m.in.:",
-    orderStepsHeading: "Jak przebiega zamówienie",
-    orderStepsIntro: "Trzy kroki od pierwszego maila do gotowej ikony.",
-    orderExamplesHeading: "Przykłady realizacji",
+    plenerWhereWeWereInline: "Gościły nas m.in.:",
+    figurePlaceholders: {
+      kursPracownia: "[zdjęcie: pracownia, praca nad ikoną]",
+      lssPlener: "[zdjęcie: plener, praca przy ikonach]",
+    },
+    // Closing line of an offer page: the FactsBox enrollment mailto as an inline link ({link}).
+    closingCta: {
+      plener: {
+        open: { text: "Zapisy na plenery {year} są otwarte — {link}.", link: "wyślij zgłoszenie mailem" },
+        closed: { text: "Zapisy na plenery {year} ruszą w marcu — {link}.", link: "powiadom mnie o zapisach" },
+      },
+    },
     // Course "Dalsza droga" right column (LY1).
     sideCta: {
       title: "Kursy doskonalące i konsultacje indywidualne",
       mailtoLabel: "Zapytaj",
+      photoPlaceholders: {
+        kursDalszaDroga: "[zdjęcie: praca przy ikonie]",
+      },
     },
-    readyIconsTitle: "Gotowe ikony – zapytaj mailem",
-    readyIconsBody:
-      "Część prac z galerii jest dostępna od ręki. Napisz, którą masz na myśli:",
     enrollmentByKind: {
       kurs: {
         paragraphs: [
-          "Zgłoszenie na kurs roczny lub trzyletni wysyłamy mailem na adres {enrollmentEmail}. Potem zapraszamy na krótką rozmowę wstępną, około trzydziestu minut — ma na celu wzajemne poznanie się i dobór grupy. Chętnie zobaczymy wcześniejsze prace artystyczne, ale to nie jest warunek przyjęcia. Aktualny termin naboru podajemy na górze strony.",
+          "Zgłoszenie na kurs roczny lub trzyletni wysyłamy mailem na adres {enrollmentEmail}. Potem zapraszamy na krótką rozmowę wstępną, około trzydziestu minut — ma na celu wzajemne poznanie się i dobór grupy. Chętnie zobaczymy wcześniejsze prace artystyczne, ale to nie jest warunek przyjęcia. Aktualny termin zapisów podajemy w ramce „W skrócie”.",
         ],
       },
     },
@@ -290,20 +279,28 @@ const plSource = {
       techniqueLabel: "Technika:",
       techniqueDefault: "tempera jajowa na desce lipowej",
       tagsLabel: "Kategorie:",
-      orderLink: "Zapytaj o podobną ikonę",
-      orderLinkAvailability: "Zapytaj o dostępność ikony",
       authorFallback: "Praca z warsztatów Akademii",
-    },
-    orderTeaser: {
-      title: "Ikony na zamówienie",
-      lead:
-        "Piszemy ikony dla parafii i osób prywatnych – na konkretne wezwanie, w ustalonym rozmiarze, w technice temperowej ze złoceniem.",
-      linkLabel: "Jak zamówić ikonę",
     },
   },
   workshopsHub: {
     title: "Warsztaty pisania ikon",
     quotesHeading: "Głosy uczestników",
+    imagePlaceholder: "[zdjęcie: letnia szkoła światła]",
+    // Offer card eyebrows — picked by enrollment state (`getWorkshopCardEyebrow`).
+    eyebrow: {
+      kurs: {
+        openWithDeadline: "Sezon {season} · zapisy do {date}",
+        open: "Sezon {season} · zapisy otwarte",
+        starts: "Sezon {season} · zapisy zamknięte",
+        running: "Kurs {season} trwa · zapisy na kolejny rok od czerwca",
+      },
+      plener: {
+        openWithDeadline: "Plener {year} · zapisy do {date}",
+        open: "Plener {year} · zapisy otwarte",
+        before: "Zapisy na rok {year} otwieramy w marcu",
+        closed: "Plener {year} · zapisy zamknięte",
+      },
+    },
   },
   exhibition: {
     page: {
@@ -529,7 +526,7 @@ const plSource = {
     sitemapAriaLabel: "Mapa strony",
     copyright: "© {year} Akademia Ikony",
     churchName: "Kościół Środowisk Twórczych",
-    churchPatronsShort: "św. Andrzeja i św. Alberta",
+    churchPatronsShort: "pw. św. Andrzeja Apostoła i św. Brata Alberta",
     // Verbatim from brief-claude-code.md §8.
     accessibilityNote: "Przestrzeń bez barier architektonicznych",
     organizerLabel: "Organizator",

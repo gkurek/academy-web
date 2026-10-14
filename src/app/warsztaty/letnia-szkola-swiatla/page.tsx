@@ -21,6 +21,7 @@ export default function SummerSchoolOfLightPage() {
     <OfferPage
       offer={requireOffer("letnia-szkola-swiatla")}
       path={path}
+      closingCta
       quoteSlot={
         <OfferQuoteGrid heading={pl.offers.plenerQuotesHeading} quotes={getPlenerTestimonials()} columns={2} />
       }

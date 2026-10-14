@@ -17,7 +17,8 @@ export function Pillars({ pillars }: PillarsProps) {
     <section className="px-page-margin-mobile md:px-page-margin pt-section-gap pb-section-gap">
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-space-7 md:gap-pillars-gap">
         {pillars.map((pillar) => (
-          <article key={pillar.title} className="group">
+          // Column flex + mt-auto pins the link to the bottom so links align across the row.
+          <article key={pillar.title} className="group flex flex-col">
             <Link href={pillar.href} className="block">
               <Image
                 src={pillar.image.src}
@@ -32,7 +33,7 @@ export function Pillars({ pillars }: PillarsProps) {
               </h2>
             </Link>
             <p className="text-size-body leading-body text-text-secondary mb-space-4">{pillar.body}</p>
-            <Link href={pillar.href} className={`text-size-ui-m md:text-size-body ${pillarLinkClass}`}>
+            <Link href={pillar.href} className={`mt-auto self-start text-size-ui-m md:text-size-body ${pillarLinkClass}`}>
               <span className={pillarLinkUnderline}>{pillar.linkLabel}</span>
             </Link>
           </article>

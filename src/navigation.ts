@@ -42,7 +42,6 @@ export const sectionNav: Record<SectionKey, NavLink[]> = {
   ikony: [
     { label: "Galeria", href: "/ikony" },
     { label: "Wystawy", href: "/ikony/wystawy" },
-    { label: "Ikony na zamówienie", href: "/ikony/na-zamowienie" },
   ],
   kontakt: [{ label: "Kontakt", href: "/kontakt" }, privacyPolicyLink],
 };

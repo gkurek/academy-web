@@ -45,7 +45,6 @@ Strona jest częścią szerszego ekosystemu (Akademia + Fundacja + planowana str
 /wyklady/wykladowcy
 /ikony                     galeria: sekcje Elżbieta / uczniowie + filtr tematu
 /ikony/[slug]              pojedyncza ikona (opcjonalnie w v1)
-/ikony/na-zamowienie       strona ofertowa (treść wymienna w przyszłości — nie istotne teraz)
 /ikony/wystawy             trzy formy wystaw w KŚT; kotwice `#doroczna`, `#ekspozycja`, `#oprowadzania`, `#wyjazdowe` (K-127, k1)
 /aktualnosci               lista z typem wpisu (`kind`), w tym archiwum wystaw, oprowadzań i wyjazdów studyjnych (w tym dawne plenery LSŚ → `kind: 'wyjazd'`; K-50, K-52, K-125)
 /aktualnosci/[slug]
@@ -68,7 +67,7 @@ Zawartość `SectionNav` per sekcja:
 - O Akademii: O Akademii · Pracownia *(para stron tekstowych; `/o-akademii` = pierwsza pozycja — K-48, makieta 6a–6d)*
 - Warsztaty: Przegląd · Kurs roczny i trzyletni · Letnia Szkoła Światła *(pierwsza pozycja = hub, nie nazwa sekcji — K-23)*
 - Wykłady: Bieżący sezon · Archiwum · Wykładowcy
-- Ikony: Galeria · Wystawy · Ikony na zamówienie (K-90; wcześniej „Wystawa”, K-51)
+- Ikony: Galeria · Wystawy (K-90; wcześniej „Wystawa”, K-51; „Ikony na zamówienie” usunięte — K-151, 2026-10-14)
 - Kontakt: Kontakt · Polityka prywatności *(para podstron bez pozycji w menu głównym — K-149)*
 - Aktualności: bez `SectionNav` — jedna chronologiczna lista wpisów z nawigacją po latach (K-70), bez filtrów kategorii w v1 (K-52)
 
@@ -113,7 +112,7 @@ type OfferFacts = {             // blok „W skrócie”
 };
 
 type Offer = Page & {
-  kind: 'kurs' | 'plener' | 'wyklady' | 'zamowienie';
+  kind: 'kurs' | 'plener' | 'wyklady' | 'zamowienie'; // 'zamowienie' nieużywane od K-151 (model współdzielony)
   facts: OfferFacts;
   testimonials?: Testimonial[];
   /** Tylko Letnia Szkoła Światła (K-126): lista miejsc plenerów; opcjonalny link do wpisu Aktualności. */
@@ -334,7 +333,7 @@ Szacunek ręcznej korekty po migracji: ~10 stron statycznych, 16 sezonów wykła
 | `/wyklady/zapisy-na-wyklady/` | scalone w `/wyklady#zapisy` |
 | `/ikona/`, `/ikona/galeria/` | `/ikony` |
 | `/ikona/wystawy/`, `/wernisaze/` | `/ikony/wystawy` (K-90) |
-| `/ikona/ikony-na-zamowienie/` | `/ikony/na-zamowienie` |
+| `/ikona/ikony-na-zamowienie/` | `/ikony` (K-151; także `/ikony/na-zamowienie` → `/ikony`) |
 | `/oprowadzania-kuratorskie/` | `/ikony/wystawy#oprowadzania` (K-90) |
 | `/ikony/wystawa` (adres z etapu 7–8) | `/ikony/wystawy` (301 w etapie 9) |
 | `/wydarzenia/` | `/aktualnosci` |
@@ -358,9 +357,9 @@ Szacunek ręcznej korekty po migracji: ~10 stron statycznych, 16 sezonów wykła
 
 **Musi być:**
 - Strona główna: hero, sekcja „Najbliższe” (z CMS/danych), trzy filary, wybrane ikony, cytat, blok „Prowadząca” (mały, nie dominujący), miejsce, kontakt.
-- Strony ofertowe (kurs, plener, wykłady, ikony na zamówienie) z blokiem `FactsBox`/„W skrócie” zasilanym z `OfferFacts` — nie z tekstu w body.
+- Strony ofertowe (kurs, plener, wykłady) z blokiem `FactsBox`/„W skrócie” zasilanym z `OfferFacts` — nie z tekstu w body.
 - Dwa stany `FactsBox`: stan z `getEnrollmentState(offer)` (K-144) — nabór **otwarty** (CTA złote, `mailto:` z `facts.enrollmentSubject`) i **zamknięty** (przycisk drugorzędny + nota z `pl.factsBox.ctaByKind`). Kurs i plener zamknięte: **„Powiadom mnie o naborze”** i osobne tematy `mailto:` z §7 (z `pl.ts`, nie z `facts.enrollmentSubject` — `getEnrollmentMailtoHref`). Wykłady zamknięte: „Zapytaj o miejsce mailem”. Przy zamkniętym naborze **brak** przycisku telefonu w `FactsBox`, gdy w danym stanie CTA nie ma `telLabel` (kurs, plener, wykłady); przy otwartym — `mailto:` + `tel:` jak dotąd. Zamówienie: telefon w obu stanach.
-- `/ikony/na-zamowienie` na szablonie strony ofertowej, sekcja „Jak przebiega zamówienie” jako sekwencja 3 kroków (Rozmowa · Zaliczka · Realizacja — makieta `#2a-zamowienie`), „Przykłady realizacji” (3–4 ikony), link do niej z Galerii.
+- **Akademia Ikony nie sprzedaje ikon (K-151, decyzja EJK 2026-10-14).** Bez strony zamówień, bez CTA sprzedażowych w galerii i lightboxie; sprzedaż ikon — wyłącznie EJK osobiście (docelowo strona autorska). Album nadal w sprzedaży.
 - Zapisy: `mailto:` (tematy §7, logika K-144) + `tel:` tam, gdzie CTA ma `telLabel`. Sekcja „Jak się zapisać” na kursie: adres `{enrollmentEmail}` jako link `mailto:` z tym samym href co `FactsBox`. Przygotować miejsce pod formularz w v2 (nie budować go teraz).
 - Program bieżącego sezonu wykładów jako lista (data, tytuł, prowadzący); archiwum jako rozwijane sezony (`SeasonAccordion`).
 - Galeria: dwie sztywne sekcje (ikony Elżbiety Jackowskiej-Kurek → ikony uczniów), filtr **tematu** przez query string (`?temat=<slug-tagu>`), bez filtra autora; lightbox. W siatce — sam tytuł; w lightboxie — pełny autor, wymiary i technika (`IconWork`). Lista nazwisk uczniów w sekcji uczniów, generowana z danych.
@@ -385,14 +384,13 @@ Szacunek ręcznej korekty po migracji: ~10 stron statycznych, 16 sezonów wykła
 - `Zgłoszenie – Letnia Szkoła Światła 2027`
 - `Powiadomienie o naborze – kurs roczny` / `Powiadomienie o naborze – Letnia Szkoła Światła` (2026-10-08; przycisk „Powiadom mnie o naborze” przy zamkniętym naborze, temat z `pl.ts`, nie z `facts.enrollmentSubject`)
 - `Zgłoszenie – wykłady 2026/2027`
-- `Zapytanie – ikona na zamówienie`
 - `Zapytanie – kursy doskonalące i konsultacje` (LY2, 2026-10-04; `akademiaikony@gmail.com`, sekcja „Dalsza droga” kursu)
 - `Zamówienie – album „Ikona dziś. Akademia Ikony 2010–2025”` (K-76; zapis do potwierdzenia razem z tytułem albumu)
 
 Telefon jako `tel:+48601734705`.
 
 **Nazwy komponentów (użyć tych nazw w kodzie, żeby zgadzały się z design/README):**
-`Header`, `Footer`, `SectionNav`, `Breadcrumb`, `Hero`, `FactsBox`, `OfferCard`, `LectureList`, `SeasonAccordion`, `IconGrid`, `Lightbox`, `NewsCard`, `Testimonial`, `MapBlock`, `StepList` (proces zamówienia), `TocSidebar` (strona tekstowa). W MDX ofert: `OfferFigure`, `OfferSideCta` (k7), `OfferSidePhoto` (k8 — sekcja tekst + zdjęcie w prawej kolumnie). W MDX artykułów: `ArticleFigure` (k8, T26 — zdjęcie w kolumnie tekstu, bez kadrowania, opcjonalny podpis). `EventCard` usunięty (K-50, 2026-09-21) — dział „Wydarzenia” zlikwidowany, wpisy renderują się przez `NewsCard`.
+`Header`, `Footer`, `SectionNav`, `Breadcrumb`, `Hero`, `FactsBox`, `OfferCard`, `LectureList`, `SeasonAccordion`, `IconGrid`, `Lightbox`, `NewsCard`, `Testimonial`, `MapBlock`, `TocSidebar` (strona tekstowa). W MDX ofert: `OfferFigure`, `OfferSideCta` (k7), `OfferSidePhoto` (k8 — sekcja tekst + zdjęcie w prawej kolumnie). W MDX artykułów: `ArticleFigure` (k8, T26 — zdjęcie w kolumnie tekstu, bez kadrowania, opcjonalny podpis). `EventCard` usunięty (K-50, 2026-09-21) — dział „Wydarzenia” zlikwidowany, wpisy renderują się przez `NewsCard`.
 
 **Tokeny — kolory:** kolor `#8d7d69` był w makietach niedostatecznie kontrastowy (4,3:1 na tłach kart) i został **zamieniony na `#a2917c`** w całym systemie. `#8d7d69` może zostać wyłącznie w placeholderach makietowych (IBM Plex Mono) — **nie kopiować go do produkcji.**
 
@@ -407,11 +405,10 @@ Telefon jako `tel:+48601734705`.
 **Treści makietowe — NIE przenosić do kodu jako prawdziwa treść (to placeholdery z makiet, nadpisać danymi z §8 lub z rzeczywistej treści klienta):**
 - cytaty uczestników bez wskazanego źródła
 - wpisy aktualności oznaczone `[przykład]`
-- sekcja „Rytm dnia” na stronie Letniej Szkoły Światła — układ dnia jest propozycją, nie faktem
 - tytuł wykładu inauguracyjnego („Otwarcie sezonu”) — nie pochodzi z briefu
 - wymiary ikon oznaczone `[z podpisu WP]` — niezweryfikowane, sprawdzić przy migracji
 
-**Potwierdzone:** liczba sezonów wykładów — 15 łącznie (od 2012/2013); bieżący sezon 2026/2027 to piętnasty; archiwum obejmuje 14 sezonów archiwalnych (2012/2013–2025/2026).
+**Potwierdzone:** liczba sezonów wykładów — 15 łącznie (od 2012/2013); bieżący sezon 2026/2027 to piętnasty; archiwum obejmuje 14 sezonów archiwalnych (2012/2013–2025/2026). „Rytm dnia” LSŚ — potwierdzony przez EJK jako ramowy (2026-10-17): bywa zmieniany przez wyjście do cerkwi lub wykład; poświęcenie ikon pod koniec tygodnia nie zawsze.
 
 **Decyzje strukturalne z handoffu:**
 - `/wyklady` = hub + bieżący sezon + zwinięte archiwum; `/wyklady/archiwum` = osobna trasa z pełną listą.
@@ -431,8 +428,7 @@ Telefon jako `tel:+48601734705`.
 - Blog: studiumikony.blogspot.com. Facebook: facebook.com/akademiaikony. YouTube: @akademiaikony3822.
 - Warsztaty 2026/2027: zgłoszenia do 24.09.2026 mailem; rozmowa wstępna ~30 min; pierwsze spotkanie 6.10.2026, 18:00; raz w tygodniu, październik–czerwiec, grupy wieczorne i dzienne; materiały na miejscu.
 - Wykłady 2026/2027: „Ikona – korzenie i owoce wiary. Mistyka dziś”; wybrane wtorki 18:00–20:30; 400 zł/rok; zapisy do końca września 2026; terminy: 06.10, 10.11, 08.12, 19.01, 16.02, 09.03, 13.04, 11.05, 08.06, 11.06, 12.06 (wernisaż, AGAPA).
-- Letnia Szkoła Światła: plenery tygodniowe sierpień/wrzesień; nabór na 2027 rusza w marcu 2027, kolejność zgłoszeń.
-- Ikony na zamówienie: kontakt jak wyżej; szczegóły procesu i czas realizacji — do potwierdzenia z EJK (nie zgadywać, zostawić placeholder w CMS-owalnym polu).
+- Letnia Szkoła Światła: plenery tygodniowe lipiec–wrzesień (potwierdzone przez właściciela 2026-10-17); nocleg i wyżywienie w cenie, materiały na miejscu; nabór na 2027 rusza w marcu 2027, kolejność zgłoszeń.
 - Album jubileuszowy (K-76): tytuł **„IKONA DZIŚ. AKADEMIA IKONY 2010–2025”** (zapis do potwierdzenia; na starej stronie WP był z przecinkiem). Wydawca: Fundacja IKONA DZIŚ (self-publishing), rok **2025**. **132** strony, format **23 × 23 cm**, cena **140 zł**. Dostępny; wysyłka pocztą; sprzedaż na wykładach w KŚT. ISBN: **do podania**. Zamówienie: `mailto:` na sekretariat (`sekretariat.ikony22@gmail.com`) z tematem jak w §7; koszt wysyłki i dane do przelewu — w odpowiedzi mailowej, nie na stronie.
 - Uwaga prawna (pełne zdanie, wielka litera na początku): „Nauczanie w Akademii Ikony nie niesie za sobą żadnych skutków formalnych.”
 

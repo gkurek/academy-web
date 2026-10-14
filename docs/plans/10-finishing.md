@@ -17,8 +17,7 @@ Domknięcie serwisu na prawdziwych danych z etapu 9 przed wdrożeniem (etap 11).
 
 | ID | Decyzja |
 | --- | --- |
-| **K-122** | Gate w czacie przed zapisem treści redakcyjnej w `content/` — pozycja po pozycji, z akceptacją właściciela; refaktory UI — zwykły checkpoint po kawałku. |
-| **Treść z makiet** | Copy z Claude Design ≠ treść klienta — nowe twierdzenia → `[do uzupełnienia]` albo gate EJK (lista: `docs/plan-claude-code.md` §5, m.in. T22). |
+| **K-122** | Gate w czacie przed zapisem treści redakcyjnej w `content/` — pozycja po pozycji, z akceptacją właściciela; refaktory UI — zwykły checkpoint po kawałku. **Od 2026-10-16:** Claude może generować treść (copy, opisy, nowe sformułowania) — przy propozycji wyraźnie oznacza, co jest jego dopowiedzeniem, i pyta, czy jest OK. Zakaz generowania treści za klienta zniesiony. |
 | **Kolejność** | k8 → k9 → k10; k10 obejmuje synchronizację dokumentów z kodem, więc idzie ostatni. Blok R (review) równolegle do k8 — RV-1, `10-review.md`. |
 
 ## Fala 1 — podsumowanie (zamknięta 2026-10-04)
@@ -41,6 +40,8 @@ Szczegóły, decyzje kawałków i checkpointy — w `docs/archive/plans/`. Decyz
 ### Kawałek 8 — Treść i gate EJK
 
 **Zakres:** backlog treści **T1–T29** w `docs/plan-claude-code.md` §5 — galeria, zamówienie, oferty, LSŚ, aktualności, wykłady, wystawy, album, O nas / pracownia, przegląd `alt`/`caption` całego serwisu. Każda pozycja przez gate K-122. **T30** (lightbox dla zdjęć inline w MDX) — §5A, v2, poza k8.
+
+**Kawałek 8a — usunięcie sprzedaży ikon (K-151, 2026-10-14):** korekta zakresu k8 po decyzji EJK. Usunąć trasę `/ikony/na-zamowienie`, ofertę `zamowienie` i jej komponenty (`OrderExamples`, `GalleryOrderTeaser`), link zamówienia z lightboxa, pozycję w `sectionNav.ikony`, linki/wzmianki w `o-akademii.json`, `home.json`, `pracownia.json`; stringi `pl.ts`; 301 → `/ikony`; wpisy trasy w `scripts/visual-*`; brief. Model (`OfferKind`, `IconWork.available`) bez zmian. Jeden checkpoint.
 
 **Kryterium „gotowe”:** każda pozycja T1–T29 zamknięta albo świadomie odłożona (z adnotacją w §5); T30 nie blokuje zamknięcia k8; brak `[do uzupełnienia]` widocznego na produkcji poza uzgodnionymi wyjątkami; build + lint OK.
 
@@ -101,7 +102,7 @@ Z `docs/plan-claude-code.md` §3, etap 10:
 | --- | --- | --- |
 | 1–7 — fala 1 | ✅ | 2026-10-03 … 2026-10-04; tabela „Fala 1 — podsumowanie” wyżej |
 | Stopka v2 (K-149) | ✅ | 2026-10-07; mapa stopki + `sectionNav.kontakt` (/kontakt · /polityka-prywatnosci); poza k7, po przeglądzie makiety Claude Design |
-| 8 — treść EJK | 🟠 w toku | backlog T1–T29 — **19/29 ✅** w §5 (T26 publikacje 2026-10-13); commity `10/k8` na `feat/10-finishing`; T30 → §5A v2 |
+| 8 — treść EJK | 🟠 w toku | backlog T1–T29 — **21/29 ✅** w §5 (T23, T31 2026-10-14; T6 anulowane — K-151); **8a** (K-151) ✅ 2026-10-14 — czeka na OK; kurs 2026-10-17: usunięta sekcja „Jak się zapisać” (rozmowa wstępna → wiersz „Zgłoszenia” w FactsBox), placeholder zdjęcia 4:3 nad CTA w „Dalsza droga”; LSŚ 2026-10-17: przepisane copy (lead, „Jak wygląda tydzień”, „Dlaczego warto…”, ramowy „Rytm dnia”), 4 cytaty z pleneru, placeholder zdjęcia głównego, `OfferClosingCta` na końcu strony; wykłady 2026-10-17: intro sezonu — „Cykl wykładów”, „zwykle dwa wykłady” (copy akceptowane przez EJK zostaje; nagrania dostępne, pojedynczych wejść brak); FactsBox wykładów — stały wiersz „Nagrania”, przy zamkniętych zapisach CTA „Powiadom mnie o zapisach” jak w kursie; commity `10/k8` na `feat/10-finishing`; T30 → §5A v2 |
 | R — review serwisu | ✅ część techniczna i wizualna 2026-10-06 | R0–R5, RF-0…RF-20, V1–V4 zamknięte; zostaje C1–C2 po k8; postęp w `10-review.md`, `docs/archive/plans/10-review-fixes.md` |
 | 9 — SEO / analityka | ⬜ | |
 | 10 — audyty / docs | ⬜ | okrojony przez RV-1 |

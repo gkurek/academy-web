@@ -39,7 +39,7 @@ export function Header({ path }: HeaderProps) {
       </div>
 
       <div className="lg:hidden">
-        <HeaderMobileMenu path={path} activeHref={activeHref} phone={settings.phone} blogUrl={settings.blogUrl} />
+        <HeaderMobileMenu path={path} activeHref={activeHref} blogUrl={settings.blogUrl} />
       </div>
     </header>
   );

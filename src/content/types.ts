@@ -30,8 +30,8 @@ export type OfferFacts = {
   audience?: string;
   price?: string; // "400 zł / rok"
   enrollmentDeadline?: string; // display text for FactsBox row (e.g. „Do 24 września 2026”); not ISO
-  enrollmentStart?: string; // plener: row label „Nabór”
-  enrollmentRule?: string; // plener: row label „Zasada naboru”
+  enrollmentStart?: string; // plener: row label „Zapisy”
+  enrollmentRule?: string; // plener: row label „Zasady zapisów”
   enrollmentEmail: string;
   enrollmentPhone?: string;
   enrollmentSubject: string; // unified mailto subject

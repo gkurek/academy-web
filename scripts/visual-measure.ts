@@ -91,7 +91,7 @@ const ROOT = path.resolve(__dirname, "..");
 const OUT_DIR = path.join(ROOT, ".visual", "measure");
 const CONCURRENCY = 4;
 const AXE_TAGS = ["wcag2a", "wcag2aa", "wcag21a", "wcag21aa", "wcag22aa", "best-practice"];
-const CLS_ROUTES = ["/", "/ikony", "/ikony/na-zamowienie"];
+const CLS_ROUTES = ["/", "/ikony"];
 
 function readArg(name: string): string | undefined {
   const index = process.argv.indexOf(`--${name}`);

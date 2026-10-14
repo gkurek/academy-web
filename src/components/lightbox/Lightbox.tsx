@@ -72,7 +72,14 @@ export function Lightbox({
         meta({ photo, index, positionLabel })
       ) : (
         <div className="lightbox-content-meta px-page-margin-mobile pt-space-5 pb-space-5 lg:px-0 lg:pb-space-6">
-          {showNavigation ? <p className="text-size-ui text-accent-text">{positionLabel}</p> : null}
+          {showNavigation || photo.caption ? (
+            <p className="flex flex-wrap justify-center items-baseline gap-x-space-3 gap-y-space-1">
+              {showNavigation ? <span className="text-size-ui text-accent-text">{positionLabel}</span> : null}
+              {photo.caption ? (
+                <span className="font-serif italic text-size-body text-text-tertiary">{photo.caption}</span>
+              ) : null}
+            </p>
+          ) : null}
         </div>
       )
     ) : null;

@@ -96,8 +96,7 @@
       }
     ],
     "links": [
-      { "href": "/aktualnosci", "label": "Aktualności" },
-      { "href": "/ikony/na-zamowienie", "label": "Ikony na zamówienie" }
+      { "href": "/aktualnosci", "label": "Aktualności" }
     ]
   },
   "workshop": {

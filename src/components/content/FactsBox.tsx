@@ -25,22 +25,16 @@ type FactsRowKey =
   | "enrollmentStart"
   | "enrollmentRule"
   | "firstMeeting"
-  | "price"
-  | "leadTime";
+  | "price";
 
 const rowKeysByKind: Record<FactsBoxProps["kind"], FactsRowKey[]> = {
   kurs: ["when", "where", "audience", "enrollmentDeadline", "firstMeeting", "price"],
   plener: ["when", "where", "audience", "enrollmentStart", "enrollmentRule", "price"],
   wyklady: ["when", "where", "audience", "enrollmentDeadline", "price"],
-  zamowienie: ["when", "where", "audience", "leadTime", "price"],
 };
 
 function getRowLabel(kind: FactsBoxProps["kind"], key: FactsRowKey): string {
-  const { rows, rowsByKind } = pl.factsBox;
-  const kindRows = kind in rowsByKind ? rowsByKind[kind as keyof typeof rowsByKind] : undefined;
-  if (kindRows && key in kindRows) {
-    return kindRows[key as keyof typeof kindRows];
-  }
+  const { rows } = pl.factsBox;
 
   if (key === "enrollmentDeadline" && kind === "kurs") {
     return rows.enrollment;
@@ -57,6 +51,26 @@ function getHeading(kind: FactsBoxProps["kind"], seasonLabel?: string): string {
   const template = kind === "plener" ? pl.factsBox.headingPlener : pl.factsBox.headingSeason;
 
   return template.replace("{seasonLabel}", seasonLabel);
+}
+
+const workshopChurchLabel = "Kościół Środowisk Twórczych";
+
+/** Workshop and lectures offers: church name, patrons, and address on separate lines in „Gdzie”. */
+function formatWhereValue(value: string, kind: FactsBoxProps["kind"]): string {
+  if (kind !== "kurs" && kind !== "plener" && kind !== "wyklady") {
+    return value;
+  }
+  if (!value.includes(workshopChurchLabel) || value.includes("pw.")) {
+    return value;
+  }
+
+  const locationLine = value.slice(workshopChurchLabel.length).trim();
+  const lines = [workshopChurchLabel, pl.footer.churchPatronsShort];
+  if (locationLine.length > 0) {
+    lines.push(locationLine);
+  }
+
+  return lines.join("\n");
 }
 
 export function FactsBox({ facts, kind, enrollment }: FactsBoxProps) {
@@ -76,11 +90,16 @@ export function FactsBox({ facts, kind, enrollment }: FactsBoxProps) {
       const value = facts[key as keyof OfferFacts];
       return typeof value === "string" && value.trim().length > 0;
     })
-    .map((key) => ({
-      key,
-      label: getRowLabel(kind, key),
-      value: facts[key as keyof OfferFacts] as string,
-    }));
+    .map((key) => {
+      const raw = facts[key as keyof OfferFacts] as string;
+      const value = key === "where" ? formatWhereValue(raw, kind) : raw;
+
+      return {
+        key,
+        label: getRowLabel(kind, key),
+        value,
+      };
+    });
 
   return (
     <aside
@@ -98,16 +117,26 @@ export function FactsBox({ facts, kind, enrollment }: FactsBoxProps) {
         {rows.map((row) => (
           <div key={row.key}>
             <dt className="text-size-caption text-text-tertiary">{row.label}</dt>
-            <dd className="mt-offer-facts-dd-mt pb-space-6 text-text-body">{row.value}</dd>
+            <dd
+              className={`mt-offer-facts-dd-mt pb-space-6 text-text-body${row.key === "where" ? " whitespace-pre-line" : ""}`}
+            >
+              {row.value}
+            </dd>
           </div>
         ))}
         {kind === "wyklady" ? (
-          <div>
-            <dt className="text-size-caption text-text-tertiary">{factsBox.publicationsRowLabel}</dt>
-            <dd className="mt-offer-facts-dd-mt pb-space-6 text-text-body">
-              <TextLink standalone href="/publikacje">{factsBox.publicationsLink}</TextLink>
-            </dd>
-          </div>
+          <>
+            <div>
+              <dt className="text-size-caption text-text-tertiary">{factsBox.recordingsRowLabel}</dt>
+              <dd className="mt-offer-facts-dd-mt pb-space-6 text-text-body">{factsBox.recordingsValue}</dd>
+            </div>
+            <div>
+              <dt className="text-size-caption text-text-tertiary">{factsBox.publicationsRowLabel}</dt>
+              <dd className="mt-offer-facts-dd-mt pb-space-6 text-text-body">
+                <TextLink standalone href="/publikacje">{factsBox.publicationsLink}</TextLink>
+              </dd>
+            </div>
+          </>
         ) : null}
       </dl>
 
