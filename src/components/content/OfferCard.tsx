@@ -1,6 +1,8 @@
 import Image from "next/image";
 import { Button } from "@/components/core/Button";
+import { ExhibitionFrame } from "@/components/exhibition/ExhibitionFrame";
 import type { Image as ContentImage } from "@/content/types";
+import { pl } from "@/i18n/pl";
 
 export interface OfferCardProps {
   eyebrow: string;
@@ -10,7 +12,7 @@ export interface OfferCardProps {
   href: string;
   ctaLabel: string;
   ctaVariant: "primary" | "secondary";
-  image: ContentImage;
+  image?: ContentImage;
 }
 
 export function OfferCard({
@@ -25,14 +27,22 @@ export function OfferCard({
 }: OfferCardProps) {
   return (
     <article className="bg-surface-tile flex flex-col">
-      <Image
-        src={image.src}
-        alt={image.alt}
-        width={image.width}
-        height={image.height}
-        sizes="(min-width: 768px) 50vw, 100vw"
-        className="w-full h-offer-card-image-h object-cover"
-      />
+      {image?.src ? (
+        <Image
+          src={image.src}
+          alt={image.alt}
+          width={image.width}
+          height={image.height}
+          sizes="(min-width: 768px) 50vw, 100vw"
+          className="w-full h-offer-card-image-h object-cover"
+        />
+      ) : (
+        <ExhibitionFrame
+          aspect="tile"
+          placeholderLabel={pl.workshopsHub.imagePlaceholder}
+          className="offer-card-exhibition-frame"
+        />
+      )}
       <div className="flex flex-1 flex-col px-offer-card-x pt-offer-card-y pb-offer-card-pb">
         <p className="font-serif text-size-body text-accent-text mb-space-3">{eyebrow}</p>
         <h2 className="font-serif text-size-role-card-title-m md:text-size-role-card-title leading-heading text-text-h2 mb-space-4">
@@ -44,7 +54,8 @@ export function OfferCard({
             <li key={item}>{item}</li>
           ))}
         </ul>
-        <Button href={href} variant={ctaVariant} size="lg">
+        {/* mt-auto pins the CTA to the card bottom so buttons align across the row. */}
+        <Button href={href} variant={ctaVariant} size="lg" className="mt-auto">
           {ctaLabel}
         </Button>
       </div>

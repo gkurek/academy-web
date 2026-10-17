@@ -102,8 +102,13 @@
     },
     {
       "source": "/ikona/ikony-na-zamowienie",
-      "destination": "/ikony/na-zamowienie",
-      "note": "brief §5 (P1 2026-09-27)"
+      "destination": "/ikony",
+      "note": "brief §5 (P1 2026-09-27); K-151 — order page removed"
+    },
+    {
+      "source": "/ikony/na-zamowienie",
+      "destination": "/ikony",
+      "note": "K-151 (2026-10-14): Akademia does not sell icons"
     },
     {
       "source": "/ikona/wystawy",

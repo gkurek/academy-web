@@ -38,42 +38,44 @@ import NewsContent31, { frontmatter as frontmatter31 } from "../../content/news/
 import NewsContent32, { frontmatter as frontmatter32 } from "../../content/news/spotkanie-z-michalem-ploskim.mdx";
 import NewsContent33, { frontmatter as frontmatter33 } from "../../content/news/swiat-ikony-wyklady-rok-20122013.mdx";
 import NewsContent34, { frontmatter as frontmatter34 } from "../../content/news/tejemnice-ikony.mdx";
-import NewsContent35, { frontmatter as frontmatter35 } from "../../content/news/wakacyjne-warsztaty-ikonograficzne-w-warszawie.mdx";
-import NewsContent36, { frontmatter as frontmatter36 } from "../../content/news/wakacyjne-wyjazdy-studyjne-grodek.mdx";
-import NewsContent37, { frontmatter as frontmatter37 } from "../../content/news/wakacyjne-wyjazdy-studyjne-mielnik-nad-bugiem.mdx";
-import NewsContent38, { frontmatter as frontmatter38 } from "../../content/news/warsztaty-pisania-ikon-w-kosciele-srodowisk-tworczych-w-warszawie.mdx";
-import NewsContent39, { frontmatter as frontmatter39 } from "../../content/news/warsztaty-pisania-ikon.mdx";
-import NewsContent40, { frontmatter as frontmatter40 } from "../../content/news/warsztaty-w-kosciele-srodowisk-tworczych-pp-sw-andrzeja-apostola-i-sw-brata-alberta-w-warszawie-plac-teatralny-20.mdx";
-import NewsContent41, { frontmatter as frontmatter41 } from "../../content/news/warsztaty-w-lipcu.mdx";
-import NewsContent42, { frontmatter as frontmatter42 } from "../../content/news/wyjazd-studyjny-sladami-ikon-prof-jerzego-nowosielskiego.mdx";
-import NewsContent43, { frontmatter as frontmatter43 } from "../../content/news/wyklady-20132014.mdx";
-import NewsContent44, { frontmatter as frontmatter44 } from "../../content/news/wyklady-20142015.mdx";
-import NewsContent45, { frontmatter as frontmatter45 } from "../../content/news/wyklady-20152016-2.mdx";
-import NewsContent46, { frontmatter as frontmatter46 } from "../../content/news/wyklady-20162017.mdx";
-import NewsContent47, { frontmatter as frontmatter47 } from "../../content/news/wyklady-20172018.mdx";
-import NewsContent48, { frontmatter as frontmatter48 } from "../../content/news/wyklady-20182019.mdx";
-import NewsContent49, { frontmatter as frontmatter49 } from "../../content/news/wyklady-2019-2020.mdx";
-import NewsContent50, { frontmatter as frontmatter50 } from "../../content/news/wyklady-2020-2021.mdx";
-import NewsContent51, { frontmatter as frontmatter51 } from "../../content/news/wyklady-2021-2022.mdx";
-import NewsContent52, { frontmatter as frontmatter52 } from "../../content/news/wyklady-2022-2023.mdx";
-import NewsContent53, { frontmatter as frontmatter53 } from "../../content/news/wystawa-galeria-wiezy-ken-2019.mdx";
-import NewsContent54, { frontmatter as frontmatter54 } from "../../content/news/wystawa-ikon-w-kosciele-bl-wladyslawa-z-gielniowa-patrona-warszwy.mdx";
-import NewsContent55, { frontmatter as frontmatter55 } from "../../content/news/wystawa-ikon-w-kosciele-srodowisk-tworczych-warszawa-plac-teatralny-20.mdx";
-import NewsContent56, { frontmatter as frontmatter56 } from "../../content/news/wystawa-ikon-w-swidnicy-czynna-w-dniach-4-07-25-08-2014-zapraszamy.mdx";
-import NewsContent57, { frontmatter as frontmatter57 } from "../../content/news/wystawa-ikon-w-wilnie.mdx";
-import NewsContent58, { frontmatter as frontmatter58 } from "../../content/news/wystawa-ikona-bozego-narodzenia-kst-2019.mdx";
-import NewsContent59, { frontmatter as frontmatter59 } from "../../content/news/wystawa-ikona-drabina-do-nieba-2019.mdx";
-import NewsContent60, { frontmatter as frontmatter60 } from "../../content/news/wystawa-ikona-dzis.mdx";
-import NewsContent61, { frontmatter as frontmatter61 } from "../../content/news/wystawa-ikona-korzenie-i-owoce-wiary-2018.mdx";
-import NewsContent62, { frontmatter as frontmatter62 } from "../../content/news/wystawa-ikona-korzenie-i-owoce-wiary-oprowadzania-kuratorskie.mdx";
-import NewsContent63, { frontmatter as frontmatter63 } from "../../content/news/wystawa-ikona-nadzieja-i-oczekiwanie-2019.mdx";
-import NewsContent64, { frontmatter as frontmatter64 } from "../../content/news/wystawa-ikona-okno-ku-wiecznosci-2019.mdx";
-import NewsContent65, { frontmatter as frontmatter65 } from "../../content/news/wystawa-ikona-piekno-zanurzone-w-tajemnicy.mdx";
-import NewsContent66, { frontmatter as frontmatter66 } from "../../content/news/wystawa-ikona-sztuka-i-modlitwa.mdx";
-import NewsContent67, { frontmatter as frontmatter67 } from "../../content/news/wystawa-madrosc-boza-2026.mdx";
-import NewsContent68, { frontmatter as frontmatter68 } from "../../content/news/wystawa-piekno-boga-piekno-czlowieka-2025.mdx";
-import NewsContent69, { frontmatter as frontmatter69 } from "../../content/news/wystawa-praga-del-arte-2019.mdx";
-import NewsContent70, { frontmatter as frontmatter70 } from "../../content/news/wystawa-w-kosciele-pw-sw-andrzeja-apostola.mdx";
+import NewsContent35, { frontmatter as frontmatter35 } from "../../content/news/u-stop-matki-bozej-swietolipskiej.mdx";
+import NewsContent36, { frontmatter as frontmatter36 } from "../../content/news/wakacyjne-warsztaty-ikonograficzne-w-warszawie.mdx";
+import NewsContent37, { frontmatter as frontmatter37 } from "../../content/news/wakacyjne-wyjazdy-studyjne-grodek.mdx";
+import NewsContent38, { frontmatter as frontmatter38 } from "../../content/news/wakacyjne-wyjazdy-studyjne-mielnik-nad-bugiem.mdx";
+import NewsContent39, { frontmatter as frontmatter39 } from "../../content/news/warsztaty-pisania-ikon-w-kosciele-srodowisk-tworczych-w-warszawie.mdx";
+import NewsContent40, { frontmatter as frontmatter40 } from "../../content/news/warsztaty-pisania-ikon.mdx";
+import NewsContent41, { frontmatter as frontmatter41 } from "../../content/news/warsztaty-w-kosciele-srodowisk-tworczych-pp-sw-andrzeja-apostola-i-sw-brata-alberta-w-warszawie-plac-teatralny-20.mdx";
+import NewsContent42, { frontmatter as frontmatter42 } from "../../content/news/warsztaty-w-lipcu.mdx";
+import NewsContent43, { frontmatter as frontmatter43 } from "../../content/news/wyjazd-studyjny-sladami-ikon-prof-jerzego-nowosielskiego.mdx";
+import NewsContent44, { frontmatter as frontmatter44 } from "../../content/news/wyklady-20132014.mdx";
+import NewsContent45, { frontmatter as frontmatter45 } from "../../content/news/wyklady-20142015.mdx";
+import NewsContent46, { frontmatter as frontmatter46 } from "../../content/news/wyklady-20152016-2.mdx";
+import NewsContent47, { frontmatter as frontmatter47 } from "../../content/news/wyklady-20162017.mdx";
+import NewsContent48, { frontmatter as frontmatter48 } from "../../content/news/wyklady-20172018.mdx";
+import NewsContent49, { frontmatter as frontmatter49 } from "../../content/news/wyklady-20182019.mdx";
+import NewsContent50, { frontmatter as frontmatter50 } from "../../content/news/wyklady-2019-2020.mdx";
+import NewsContent51, { frontmatter as frontmatter51 } from "../../content/news/wyklady-2020-2021.mdx";
+import NewsContent52, { frontmatter as frontmatter52 } from "../../content/news/wyklady-2021-2022.mdx";
+import NewsContent53, { frontmatter as frontmatter53 } from "../../content/news/wyklady-2022-2023.mdx";
+import NewsContent54, { frontmatter as frontmatter54 } from "../../content/news/wystawa-galeria-wiezy-ken-2019.mdx";
+import NewsContent55, { frontmatter as frontmatter55 } from "../../content/news/wystawa-ikon-w-kaplicy-sw-grzegorza-peradze.mdx";
+import NewsContent56, { frontmatter as frontmatter56 } from "../../content/news/wystawa-ikon-w-kosciele-bl-wladyslawa-z-gielniowa-patrona-warszwy.mdx";
+import NewsContent57, { frontmatter as frontmatter57 } from "../../content/news/wystawa-ikon-w-kosciele-srodowisk-tworczych-warszawa-plac-teatralny-20.mdx";
+import NewsContent58, { frontmatter as frontmatter58 } from "../../content/news/wystawa-ikon-w-swidnicy-czynna-w-dniach-4-07-25-08-2014-zapraszamy.mdx";
+import NewsContent59, { frontmatter as frontmatter59 } from "../../content/news/wystawa-ikon-w-wilnie.mdx";
+import NewsContent60, { frontmatter as frontmatter60 } from "../../content/news/wystawa-ikona-bozego-narodzenia-kst-2019.mdx";
+import NewsContent61, { frontmatter as frontmatter61 } from "../../content/news/wystawa-ikona-drabina-do-nieba-2019.mdx";
+import NewsContent62, { frontmatter as frontmatter62 } from "../../content/news/wystawa-ikona-dzis.mdx";
+import NewsContent63, { frontmatter as frontmatter63 } from "../../content/news/wystawa-ikona-korzenie-i-owoce-wiary-2018.mdx";
+import NewsContent64, { frontmatter as frontmatter64 } from "../../content/news/wystawa-ikona-korzenie-i-owoce-wiary-oprowadzania-kuratorskie.mdx";
+import NewsContent65, { frontmatter as frontmatter65 } from "../../content/news/wystawa-ikona-nadzieja-i-oczekiwanie-2019.mdx";
+import NewsContent66, { frontmatter as frontmatter66 } from "../../content/news/wystawa-ikona-okno-ku-wiecznosci-2019.mdx";
+import NewsContent67, { frontmatter as frontmatter67 } from "../../content/news/wystawa-ikona-piekno-zanurzone-w-tajemnicy.mdx";
+import NewsContent68, { frontmatter as frontmatter68 } from "../../content/news/wystawa-ikona-sztuka-i-modlitwa.mdx";
+import NewsContent69, { frontmatter as frontmatter69 } from "../../content/news/wystawa-madrosc-boza-2026.mdx";
+import NewsContent70, { frontmatter as frontmatter70 } from "../../content/news/wystawa-piekno-boga-piekno-czlowieka-2025.mdx";
+import NewsContent71, { frontmatter as frontmatter71 } from "../../content/news/wystawa-praga-del-arte-2019.mdx";
+import NewsContent72, { frontmatter as frontmatter72 } from "../../content/news/wystawa-w-kosciele-pw-sw-andrzeja-apostola.mdx";
 
 type NewsModule = {
   Content: ComponentType;
@@ -116,40 +118,42 @@ export const newsModules: Record<string, NewsModule> = {
   "spotkanie-z-michalem-ploskim": { Content: NewsContent32, frontmatter: frontmatter32 as NewsFrontmatter },
   "swiat-ikony-wyklady-rok-20122013": { Content: NewsContent33, frontmatter: frontmatter33 as NewsFrontmatter },
   "tejemnice-ikony": { Content: NewsContent34, frontmatter: frontmatter34 as NewsFrontmatter },
-  "wakacyjne-warsztaty-ikonograficzne-w-warszawie": { Content: NewsContent35, frontmatter: frontmatter35 as NewsFrontmatter },
-  "wakacyjne-wyjazdy-studyjne-grodek": { Content: NewsContent36, frontmatter: frontmatter36 as NewsFrontmatter },
-  "wakacyjne-wyjazdy-studyjne-mielnik-nad-bugiem": { Content: NewsContent37, frontmatter: frontmatter37 as NewsFrontmatter },
-  "warsztaty-pisania-ikon-w-kosciele-srodowisk-tworczych-w-warszawie": { Content: NewsContent38, frontmatter: frontmatter38 as NewsFrontmatter },
-  "warsztaty-pisania-ikon": { Content: NewsContent39, frontmatter: frontmatter39 as NewsFrontmatter },
-  "warsztaty-w-kosciele-srodowisk-tworczych-pp-sw-andrzeja-apostola-i-sw-brata-alberta-w-warszawie-plac-teatralny-20": { Content: NewsContent40, frontmatter: frontmatter40 as NewsFrontmatter },
-  "warsztaty-w-lipcu": { Content: NewsContent41, frontmatter: frontmatter41 as NewsFrontmatter },
-  "wyjazd-studyjny-sladami-ikon-prof-jerzego-nowosielskiego": { Content: NewsContent42, frontmatter: frontmatter42 as NewsFrontmatter },
-  "wyklady-20132014": { Content: NewsContent43, frontmatter: frontmatter43 as NewsFrontmatter },
-  "wyklady-20142015": { Content: NewsContent44, frontmatter: frontmatter44 as NewsFrontmatter },
-  "wyklady-20152016-2": { Content: NewsContent45, frontmatter: frontmatter45 as NewsFrontmatter },
-  "wyklady-20162017": { Content: NewsContent46, frontmatter: frontmatter46 as NewsFrontmatter },
-  "wyklady-20172018": { Content: NewsContent47, frontmatter: frontmatter47 as NewsFrontmatter },
-  "wyklady-20182019": { Content: NewsContent48, frontmatter: frontmatter48 as NewsFrontmatter },
-  "wyklady-2019-2020": { Content: NewsContent49, frontmatter: frontmatter49 as NewsFrontmatter },
-  "wyklady-2020-2021": { Content: NewsContent50, frontmatter: frontmatter50 as NewsFrontmatter },
-  "wyklady-2021-2022": { Content: NewsContent51, frontmatter: frontmatter51 as NewsFrontmatter },
-  "wyklady-2022-2023": { Content: NewsContent52, frontmatter: frontmatter52 as NewsFrontmatter },
-  "wystawa-galeria-wiezy-ken-2019": { Content: NewsContent53, frontmatter: frontmatter53 as NewsFrontmatter },
-  "wystawa-ikon-w-kosciele-bl-wladyslawa-z-gielniowa-patrona-warszwy": { Content: NewsContent54, frontmatter: frontmatter54 as NewsFrontmatter },
-  "wystawa-ikon-w-kosciele-srodowisk-tworczych-warszawa-plac-teatralny-20": { Content: NewsContent55, frontmatter: frontmatter55 as NewsFrontmatter },
-  "wystawa-ikon-w-swidnicy-czynna-w-dniach-4-07-25-08-2014-zapraszamy": { Content: NewsContent56, frontmatter: frontmatter56 as NewsFrontmatter },
-  "wystawa-ikon-w-wilnie": { Content: NewsContent57, frontmatter: frontmatter57 as NewsFrontmatter },
-  "wystawa-ikona-bozego-narodzenia-kst-2019": { Content: NewsContent58, frontmatter: frontmatter58 as NewsFrontmatter },
-  "wystawa-ikona-drabina-do-nieba-2019": { Content: NewsContent59, frontmatter: frontmatter59 as NewsFrontmatter },
-  "wystawa-ikona-dzis": { Content: NewsContent60, frontmatter: frontmatter60 as NewsFrontmatter },
-  "wystawa-ikona-korzenie-i-owoce-wiary-2018": { Content: NewsContent61, frontmatter: frontmatter61 as NewsFrontmatter },
-  "wystawa-ikona-korzenie-i-owoce-wiary-oprowadzania-kuratorskie": { Content: NewsContent62, frontmatter: frontmatter62 as NewsFrontmatter },
-  "wystawa-ikona-nadzieja-i-oczekiwanie-2019": { Content: NewsContent63, frontmatter: frontmatter63 as NewsFrontmatter },
-  "wystawa-ikona-okno-ku-wiecznosci-2019": { Content: NewsContent64, frontmatter: frontmatter64 as NewsFrontmatter },
-  "wystawa-ikona-piekno-zanurzone-w-tajemnicy": { Content: NewsContent65, frontmatter: frontmatter65 as NewsFrontmatter },
-  "wystawa-ikona-sztuka-i-modlitwa": { Content: NewsContent66, frontmatter: frontmatter66 as NewsFrontmatter },
-  "wystawa-madrosc-boza-2026": { Content: NewsContent67, frontmatter: frontmatter67 as NewsFrontmatter },
-  "wystawa-piekno-boga-piekno-czlowieka-2025": { Content: NewsContent68, frontmatter: frontmatter68 as NewsFrontmatter },
-  "wystawa-praga-del-arte-2019": { Content: NewsContent69, frontmatter: frontmatter69 as NewsFrontmatter },
-  "wystawa-w-kosciele-pw-sw-andrzeja-apostola": { Content: NewsContent70, frontmatter: frontmatter70 as NewsFrontmatter },
+  "u-stop-matki-bozej-swietolipskiej": { Content: NewsContent35, frontmatter: frontmatter35 as NewsFrontmatter },
+  "wakacyjne-warsztaty-ikonograficzne-w-warszawie": { Content: NewsContent36, frontmatter: frontmatter36 as NewsFrontmatter },
+  "wakacyjne-wyjazdy-studyjne-grodek": { Content: NewsContent37, frontmatter: frontmatter37 as NewsFrontmatter },
+  "wakacyjne-wyjazdy-studyjne-mielnik-nad-bugiem": { Content: NewsContent38, frontmatter: frontmatter38 as NewsFrontmatter },
+  "warsztaty-pisania-ikon-w-kosciele-srodowisk-tworczych-w-warszawie": { Content: NewsContent39, frontmatter: frontmatter39 as NewsFrontmatter },
+  "warsztaty-pisania-ikon": { Content: NewsContent40, frontmatter: frontmatter40 as NewsFrontmatter },
+  "warsztaty-w-kosciele-srodowisk-tworczych-pp-sw-andrzeja-apostola-i-sw-brata-alberta-w-warszawie-plac-teatralny-20": { Content: NewsContent41, frontmatter: frontmatter41 as NewsFrontmatter },
+  "warsztaty-w-lipcu": { Content: NewsContent42, frontmatter: frontmatter42 as NewsFrontmatter },
+  "wyjazd-studyjny-sladami-ikon-prof-jerzego-nowosielskiego": { Content: NewsContent43, frontmatter: frontmatter43 as NewsFrontmatter },
+  "wyklady-20132014": { Content: NewsContent44, frontmatter: frontmatter44 as NewsFrontmatter },
+  "wyklady-20142015": { Content: NewsContent45, frontmatter: frontmatter45 as NewsFrontmatter },
+  "wyklady-20152016-2": { Content: NewsContent46, frontmatter: frontmatter46 as NewsFrontmatter },
+  "wyklady-20162017": { Content: NewsContent47, frontmatter: frontmatter47 as NewsFrontmatter },
+  "wyklady-20172018": { Content: NewsContent48, frontmatter: frontmatter48 as NewsFrontmatter },
+  "wyklady-20182019": { Content: NewsContent49, frontmatter: frontmatter49 as NewsFrontmatter },
+  "wyklady-2019-2020": { Content: NewsContent50, frontmatter: frontmatter50 as NewsFrontmatter },
+  "wyklady-2020-2021": { Content: NewsContent51, frontmatter: frontmatter51 as NewsFrontmatter },
+  "wyklady-2021-2022": { Content: NewsContent52, frontmatter: frontmatter52 as NewsFrontmatter },
+  "wyklady-2022-2023": { Content: NewsContent53, frontmatter: frontmatter53 as NewsFrontmatter },
+  "wystawa-galeria-wiezy-ken-2019": { Content: NewsContent54, frontmatter: frontmatter54 as NewsFrontmatter },
+  "wystawa-ikon-w-kaplicy-sw-grzegorza-peradze": { Content: NewsContent55, frontmatter: frontmatter55 as NewsFrontmatter },
+  "wystawa-ikon-w-kosciele-bl-wladyslawa-z-gielniowa-patrona-warszwy": { Content: NewsContent56, frontmatter: frontmatter56 as NewsFrontmatter },
+  "wystawa-ikon-w-kosciele-srodowisk-tworczych-warszawa-plac-teatralny-20": { Content: NewsContent57, frontmatter: frontmatter57 as NewsFrontmatter },
+  "wystawa-ikon-w-swidnicy-czynna-w-dniach-4-07-25-08-2014-zapraszamy": { Content: NewsContent58, frontmatter: frontmatter58 as NewsFrontmatter },
+  "wystawa-ikon-w-wilnie": { Content: NewsContent59, frontmatter: frontmatter59 as NewsFrontmatter },
+  "wystawa-ikona-bozego-narodzenia-kst-2019": { Content: NewsContent60, frontmatter: frontmatter60 as NewsFrontmatter },
+  "wystawa-ikona-drabina-do-nieba-2019": { Content: NewsContent61, frontmatter: frontmatter61 as NewsFrontmatter },
+  "wystawa-ikona-dzis": { Content: NewsContent62, frontmatter: frontmatter62 as NewsFrontmatter },
+  "wystawa-ikona-korzenie-i-owoce-wiary-2018": { Content: NewsContent63, frontmatter: frontmatter63 as NewsFrontmatter },
+  "wystawa-ikona-korzenie-i-owoce-wiary-oprowadzania-kuratorskie": { Content: NewsContent64, frontmatter: frontmatter64 as NewsFrontmatter },
+  "wystawa-ikona-nadzieja-i-oczekiwanie-2019": { Content: NewsContent65, frontmatter: frontmatter65 as NewsFrontmatter },
+  "wystawa-ikona-okno-ku-wiecznosci-2019": { Content: NewsContent66, frontmatter: frontmatter66 as NewsFrontmatter },
+  "wystawa-ikona-piekno-zanurzone-w-tajemnicy": { Content: NewsContent67, frontmatter: frontmatter67 as NewsFrontmatter },
+  "wystawa-ikona-sztuka-i-modlitwa": { Content: NewsContent68, frontmatter: frontmatter68 as NewsFrontmatter },
+  "wystawa-madrosc-boza-2026": { Content: NewsContent69, frontmatter: frontmatter69 as NewsFrontmatter },
+  "wystawa-piekno-boga-piekno-czlowieka-2025": { Content: NewsContent70, frontmatter: frontmatter70 as NewsFrontmatter },
+  "wystawa-praga-del-arte-2019": { Content: NewsContent71, frontmatter: frontmatter71 as NewsFrontmatter },
+  "wystawa-w-kosciele-pw-sw-andrzeja-apostola": { Content: NewsContent72, frontmatter: frontmatter72 as NewsFrontmatter },
 };

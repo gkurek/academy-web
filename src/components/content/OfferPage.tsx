@@ -3,12 +3,16 @@ import { Fragment, useId, type ReactNode } from "react";
 import { FactsBox } from "@/components/content/FactsBox";
 import { MdxLink } from "@/components/content/MdxLink";
 import { SemesterProgram } from "@/components/content/SemesterProgram";
-import { StepList } from "@/components/content/StepList";
 import { SectionPageShell } from "@/components/layout/SectionPageShell";
+import { OfferClosingCta } from "@/components/offers/OfferClosingCta";
 import { OfferLeadExtra } from "@/components/offers/OfferLeadExtra";
-import { OfferLeadIntro } from "@/components/offers/OfferLeadIntro";
 import { OfferQuote } from "@/components/offers/OfferQuote";
-import { getEnrollmentState, getOfferDateValues, type LoadedOffer } from "@/content/offers";
+import {
+  getEnrollmentState,
+  getOfferDateValues,
+  isCourseSeasonRunning,
+  type LoadedOffer,
+} from "@/content/offers";
 import type { OfferFacts } from "@/content/types";
 import { pl } from "@/i18n/pl";
 import { fillRequiredTemplate } from "@/lib/fillTemplate";
@@ -42,9 +46,8 @@ export interface OfferPageProps {
   path: string;
   /** Replaces the quote from the offer's data (`quote` → OfferQuote), e.g. plener testimonials. */
   quoteSlot?: ReactNode;
-  afterBodySlot?: ReactNode;
-  /** See SectionPageShellProps["footerBand"]. */
-  footerBand?: ReactNode;
+  /** Repeats the enrollment CTA at the end of the page (OfferClosingCta); plener only for now. */
+  closingCta?: boolean;
 }
 
 type EnrollmentCopy = (typeof pl.offers.enrollmentByKind)[keyof typeof pl.offers.enrollmentByKind];
@@ -78,11 +81,11 @@ function EnrollmentSection({
 
   const copyBlock = (
     <>
-      <PageHeading level="section" id={headingId} className="mb-heading-gap">
+      <PageHeading level="section" id={headingId} className="mb-space-4">
         {pl.offers.enrollmentSectionTitle}
       </PageHeading>
       {paragraphs.map((parts) => (
-        <p key={parts.join("")} className="body-copy text-text-body mb-space-5">
+        <p key={parts.join("")} className="body-copy text-text-secondary mb-space-4 last:mb-0">
           {parts.map((part, index) => (
             <Fragment key={index}>
               {index > 0 && <TextLink href={mailtoHref}>{facts.enrollmentEmail}</TextLink>}
@@ -91,9 +94,6 @@ function EnrollmentSection({
           ))}
         </p>
       ))}
-      <p className="text-size-caption leading-body text-text-tertiary max-w-measure-prose pt-space-5 border-t border-line-neutral">
-        {pl.offers.legalNote}
-      </p>
     </>
   );
 
@@ -118,10 +118,12 @@ function EnrollmentSection({
   );
 }
 
-export function OfferPage({ offer, path, quoteSlot, afterBodySlot, footerBand }: OfferPageProps) {
-  const { Content, title, lead, leadSecondary, facts, kind, semesters, steps, leadIntro, leadExtra, quote } = offer;
+export function OfferPage({ offer, path, quoteSlot, closingCta = false }: OfferPageProps) {
+  const { Content, title, lead, leadSecondary, facts, kind, semesters, leadExtra, quote } = offer;
   const eyebrow = getOfferEyebrow(kind, facts.seasonLabel);
   const enrollment = getEnrollmentState(offer);
+  // Once the course season runs, the first meeting is history — drop that FactsBox row.
+  const factsBoxFacts = isCourseSeasonRunning(offer) ? { ...facts, firstMeeting: undefined } : facts;
   const enrollmentCopy = getEnrollmentCopy(kind);
   const offerQuote =
     quoteSlot ??
@@ -131,9 +133,10 @@ export function OfferPage({ offer, path, quoteSlot, afterBodySlot, footerBand }:
   const trailingQuoteSlot = offerQuote && !enrollmentQuoteSlot ? offerQuote : undefined;
 
   return (
-    <SectionPageShell path={path} footerBand={footerBand}>
-      {/* Single FactsBox instance: stacks below the lead column on mobile, sidebar on lg. */}
-      <div className="grid grid-cols-1 lg:grid-cols-offer-main gap-space-6 lg:gap-offer-main-gap items-start mb-section-gap-tight">
+    <SectionPageShell path={path}>
+      {/* Single FactsBox instance: right under the lead on mobile (key facts before the long copy),
+          sidebar spanning the lead and leadExtra rows on lg. */}
+      <div className="offer-main-grid grid grid-cols-1 lg:grid-cols-offer-main lg:gap-x-offer-main-gap items-start mb-section-gap-tight">
         <div className="min-w-0">
           {eyebrow ? (
             <p className="font-serif text-size-body text-accent-text mb-lectures-eyebrow-mb">
@@ -155,17 +158,18 @@ export function OfferPage({ offer, path, quoteSlot, afterBodySlot, footerBand }:
               {leadSecondary}
             </p>
           )}
-
-          {/* Extra copy below leadSecondary — fills the column beside a tall FactsBox. */}
-          {(leadIntro || leadExtra) && (
-            <div className="mt-space-6">
-              {leadIntro && <OfferLeadIntro sections={leadIntro} />}
-              {leadExtra && <OfferLeadExtra leadExtra={leadExtra} />}
-            </div>
-          )}
         </div>
 
-        <FactsBox facts={facts} kind={kind} enrollment={enrollment} />
+        <div className="mt-space-6 lg:mt-0 lg:col-start-2 lg:row-start-1 lg:row-span-2">
+          <FactsBox facts={factsBoxFacts} kind={kind} enrollment={enrollment} />
+        </div>
+
+        {/* Extra copy below the lead — a section of its own, so it takes the section gap. */}
+        {leadExtra && (
+          <div className="min-w-0 mt-section-gap">
+            <OfferLeadExtra leadExtra={leadExtra} />
+          </div>
+        )}
       </div>
 
       <Prose variant="offer">
@@ -173,24 +177,27 @@ export function OfferPage({ offer, path, quoteSlot, afterBodySlot, footerBand }:
           components={{
             ...offerMdxLinks,
             SemesterProgram: () => <SemesterProgram semesters={semesters} />,
-            StepList: () => <StepList steps={steps} />,
+            // Placed by the MDX where an offer wants it (kurs dropped it — enrollment lives in FactsBox).
+            OfferEnrollment: () =>
+              enrollmentCopy ? (
+                <EnrollmentSection
+                  facts={facts}
+                  copy={enrollmentCopy}
+                  mailtoHref={getEnrollmentMailtoHref(facts, kind, enrollment)}
+                  quoteSlot={enrollmentQuoteSlot}
+                />
+              ) : null,
           }}
         />
       </Prose>
 
-      {afterBodySlot}
-
-      {/* Offer ending (V2-01): kurs — enrollment + quote in sidebar; plener — quote grid; zamówienie — footer band. */}
-      {enrollmentCopy && (
-        <EnrollmentSection
-          facts={facts}
-          copy={enrollmentCopy}
-          mailtoHref={getEnrollmentMailtoHref(facts, kind, enrollment)}
-          quoteSlot={enrollmentQuoteSlot}
-        />
-      )}
+      {/* Offer ending (V2-01): plener — quote grid; enrollment only where the MDX places <OfferEnrollment />. */}
 
       {trailingQuoteSlot && <div className="mt-section-gap">{trailingQuoteSlot}</div>}
+
+      {closingCta && kind === "plener" && (
+        <OfferClosingCta facts={facts} kind={kind} enrollment={enrollment} />
+      )}
     </SectionPageShell>
   );
 }

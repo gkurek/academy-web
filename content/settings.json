@@ -1,7 +1,7 @@
 {
   "orgName": "AKADEMIA IKONY – Studium Ikonograficzne św. Andrzeja Apostoła",
   "place": "Kościół Środowisk Twórczych pw. św. Andrzeja Apostoła i św. Brata Alberta Chmielowskiego",
-  "address": "ul. Senatorska 18, 00-950 Warszawa",
+  "address": "ul. Senatorska 18 w Warszawie",
   "emails": [
     { "role": "enrollment", "label": "Warsztaty i ikony", "address": "akademiaikony@gmail.com", "contactName": "Elżbieta Jackowska-Kurek" },
     { "role": "secretariat", "label": "Wykłady i sekretariat", "address": "sekretariat.ikony22@gmail.com", "contactName": "Maurycy Lubak" }
@@ -19,7 +19,7 @@
   "upcomingOverrides": [
     {
       "slot": "warsztaty",
-      "title": "Nabór na kurs roczny i trzyletni 2026/2027",
+      "title": "Zapisy na kurs roczny i trzyletni 2026/2027",
       "text": "Zgłoszenia do 24 września 2026",
       "href": "/warsztaty/kurs-roczny-i-trzyletni",
       "linkLabel": "Jak się zapisać",

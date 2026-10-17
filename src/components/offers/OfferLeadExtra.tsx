@@ -37,17 +37,18 @@ export function OfferLeadExtra({ leadExtra }: OfferLeadExtraProps) {
         {leadExtra.heading}
       </PageHeading>
       {leadExtra.items.map((item) => (
-        <div key={item.title} className="mb-space-5 last:mb-0">
-          <PageHeading level="sub" className="mb-space-2">
-            {item.title}
-          </PageHeading>
-          <p className="body-copy text-text-body">
-            {item.text}
-            {item.whereWeWere && item.whereWeWere.length > 0 ? (
-              <OfferLeadExtraWhereWeWere entries={item.whereWeWere} />
-            ) : null}
-          </p>
-        </div>
+        <p key={item.title} className="body-copy text-text-secondary mb-space-4 last:mb-0">
+          <strong className="font-semibold text-text-list-title">{item.title}.</strong>{" "}
+          {item.text.split("{link}").map((part, index) => (
+            <Fragment key={index}>
+              {index > 0 && item.link ? <TextLink href={item.link.href}>{item.link.label}</TextLink> : null}
+              {part}
+            </Fragment>
+          ))}
+          {item.whereWeWere && item.whereWeWere.length > 0 ? (
+            <OfferLeadExtraWhereWeWere entries={item.whereWeWere} />
+          ) : null}
+        </p>
       ))}
     </section>
   );

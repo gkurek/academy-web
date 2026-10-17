@@ -45,11 +45,6 @@
     min-height: 48px;
   }
 
-  .learning-forms-phone {
-    font-size: var(--size-ui);
-    line-height: var(--leading-body);
-  }
-
   @media (min-width: 768px) {
     .learning-forms-item {
       padding: var(--learning-forms-row-y) 0;

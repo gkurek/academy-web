@@ -626,6 +626,17 @@
         "main rail";
     }
 
+    /* `main` spans the right-column rows; a flexible rail row absorbs its extra height,
+       so the cover/CTA rows stay content-sized and the rail sits right below them. */
+    .news-article--has-top:not(.news-article--has-cta),
+    .news-article--has-cta:not(.news-article--has-top) {
+      grid-template-rows: auto auto 1fr;
+    }
+
+    .news-article--has-top.news-article--has-cta {
+      grid-template-rows: auto auto auto 1fr;
+    }
+
     .news-article--has-cta:not(.news-article--has-top) {
       grid-template-areas:
         "head head"
@@ -779,17 +790,12 @@
       margin-top: var(--entry-head-rule-gap);
     }
 
-    .news-article--has-top .news-article-rail,
-    .news-article--has-cta .news-article-rail {
+    .news-article--has-cta:not(.news-article--has-top) .news-article-rail {
       margin-top: 0;
     }
 
-    .news-article--has-top.news-article--has-cta .news-article-rail {
+    .news-article--has-top .news-article-rail {
       margin-top: var(--entry-top-rail-gap);
-    }
-
-    .news-article-top + .news-article-main {
-      margin-top: 0;
     }
 
     .news-article-gend {

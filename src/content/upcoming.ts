@@ -10,10 +10,11 @@ import { newsManifestEntries } from "@/content/news-manifest";
 import type { NewsFrontmatter } from "@/content/news";
 import { getSiteSettings } from "@/content/settings";
 import {
-  ENROLLMENT_FALLBACK_CLOSE_MONTH_DAY,
   isWithin,
   resolveCourseEnrollment,
+  resolveCoursePhase,
   resolvePlenerRegistration,
+  seasonLabel,
   type WorkshopOfferFacts,
 } from "@/content/enrollment";
 import type { NewsKind, UpcomingSlot } from "@/content/types";
@@ -65,10 +66,6 @@ function formatFullDate(isoDate: string): string {
   return formatDateRange(isoDate, undefined, { withYear: true });
 }
 
-function seasonLabel(startYear: number): string {
-  return `${startYear}/${startYear + 1}`;
-}
-
 /** Newest news entry of the slot's kinds dated no more than FRESH_NEWS_DAYS ago (future dates count). */
 function findFreshNews(slot: UpcomingSlot, today: string): NewsFrontmatter | undefined {
   const oldestFresh = addDays(today, -FRESH_NEWS_DAYS);
@@ -95,12 +92,12 @@ function withFreshNewsLink(slot: UpcomingSlot, today: string, tile: SlotDefault)
 
 function resolveWarsztaty(today: string, offers: UpcomingOfferFacts): SlotDefault {
   const strings = pl.home.upcoming.warsztaty;
-  const { startYear, facts, window: enrollmentWindow } = resolveCourseEnrollment(today, offers.kurs);
-  const season = seasonLabel(startYear);
+  const { window: enrollmentWindow } = resolveCourseEnrollment(today, offers.kurs);
+  const course = resolveCoursePhase(today, offers.kurs);
 
   const plener = resolvePlenerRegistration(today, offers);
   const plenerActive = isWithin(today, plener.window);
-  const enrollmentActive = isWithin(today, enrollmentWindow);
+  const enrollmentActive = course.phase === "open";
 
   // Overlap (VI–VII): the deadline that ends first wins.
   if (plenerActive && (!enrollmentActive || plener.window.end <= enrollmentWindow.end)) {
@@ -115,34 +112,20 @@ function resolveWarsztaty(today: string, offers: UpcomingOfferFacts): SlotDefaul
     };
   }
 
-  if (enrollmentActive) {
+  if (course.phase === "open") {
     return {
-      state: facts.enrollmentClose ? "enrollment-deadline" : "enrollment",
-      title: fill(strings.enrollment.title, { season }),
-      text: facts.enrollmentClose
-        ? fill(strings.enrollment.textWithDeadline, { date: formatFullDate(facts.enrollmentClose) })
+      state: course.enrollmentClose ? "enrollment-deadline" : "enrollment",
+      title: fill(strings.enrollment.title, { season: course.season }),
+      text: course.enrollmentClose
+        ? fill(strings.enrollment.textWithDeadline, { date: formatFullDate(course.enrollmentClose) })
         : strings.enrollment.text,
       href: KURS_ROUTE,
       linkLabel: strings.enrollment.linkLabel,
     };
   }
 
-  if (today < enrollmentWindow.start) {
-    return {
-      state: "running",
-      title: fill(strings.running.title, { season: seasonLabel(startYear - 1) }),
-      text: strings.running.text,
-      href: KURS_ROUTE,
-      linkLabel: strings.running.linkLabel,
-    };
-  }
-
-  const firstMeeting = facts.firstMeetingDate;
-  const beforeStart = firstMeeting
-    ? today < firstMeeting
-    : today <= `${startYear}-${ENROLLMENT_FALLBACK_CLOSE_MONTH_DAY}`;
-
-  if (beforeStart) {
+  if (course.phase === "starts") {
+    const firstMeeting = course.firstMeetingDate;
     return {
       state: firstMeeting ? "starts-date" : "starts",
       title: firstMeeting
@@ -150,7 +133,7 @@ function resolveWarsztaty(today: string, offers: UpcomingOfferFacts): SlotDefaul
             date: formatDateRange(firstMeeting, undefined, { withYear: false }),
           })
         : strings.starts.title,
-      text: fill(strings.starts.text, { season }),
+      text: fill(strings.starts.text, { season: course.season }),
       href: KURS_ROUTE,
       linkLabel: strings.starts.linkLabel,
     };
@@ -158,7 +141,7 @@ function resolveWarsztaty(today: string, offers: UpcomingOfferFacts): SlotDefaul
 
   return {
     state: "running",
-    title: fill(strings.running.title, { season }),
+    title: fill(strings.running.title, { season: course.season }),
     text: strings.running.text,
     href: KURS_ROUTE,
     linkLabel: strings.running.linkLabel,

@@ -1,30 +1,35 @@
 export const frontmatter = {
   slug: "kurs-roczny-i-trzyletni",
   title: "Kurs roczny i trzyletni",
-  lead: "Warsztaty pisania ikon w rytmie roku akademickiego — raz w tygodniu, od października do czerwca. Uczymy techniki i języka ikony, ale też pomagamy rozeznać, czy pisanie ikon jest modlitwą dla mnie.",
+  lead: "Praca malarza ikon to życie w intymnej relacji z Panem Bogiem i świadczenie o tej relacji przez obraz. Na kursie w Warszawie uczymy techniki i języka ikony — i pomagamy rozeznać, czy pisanie ikon jest modlitwą dla mnie.",
   leadSecondary:
-    "Każdy pracuje we własnym tempie, przy indywidualnym prowadzeniu. Przygotowanie plastyczne nie jest wymagane, choć jest mile widziane — przyjmujemy także osoby z wykształceniem artystycznym. Wszystkie potrzebne materiały są na miejscu.",
+    "Każdy pracuje we własnym tempie, przy indywidualnym prowadzeniu. Przygotowanie plastyczne nie jest wymagane, choć pomaga. Wszystkie materiały są na miejscu.",
   leadExtra: {
-    heading: "Rok albo trzy lata",
+    heading: "Jak wygląda nauka",
     items: [
       {
-        title: "Kurs roczny — przedwstępny i wstępny",
-        text: "Dla tych, którzy dotąd nie pisali ikon. Prowadzi przez wszystkie etapy jej powstawania: gruntowanie deski, szkic, złocenie, kaligrafię i zabezpieczenie ikony, a do tego wykłady. Każdy wybiera ikonę, przez którą Bóg mówi do niego najmocniej na tym etapie — i kończy rok z ikoną gotową.",
+        title: "Kurs roczny (wstępny)",
+        text: "Dla tych, którzy dotąd nie pisali ikon. Prowadzi przez wszystkie etapy jej powstawania: gruntowanie deski, szkic, złocenie, kaligrafię i zabezpieczenie ikony. Każdy wybiera ikonę, przez którą Bóg mówi do niego najmocniej na tym etapie — i kończy rok z ikoną gotową.",
       },
       {
         title: "Kurs trzyletni",
-        text: "Dla zdecydowanych oprzeć naukę na mocnym fundamencie tradycji i gotowych poświęcić jej co najmniej trzy lata. Prowadzi od ikony lica, przez półpostać i całą postać, po ikony wielopostaciowe i dogmatyczne. Rok wstępny może płynnie przejść w nauczanie doskonalące.",
+        text: "Kontynuacja drogi ikony dla tych, którzy zdecydują się poświęcić jej co najmniej trzy kolejne lata. To czas pogłębiania wiedzy o ikonie i doskonalenia warsztatu — wśród tematów m.in. ikona lica, półpostać i cała postać, a także ikony wielopostaciowe i dogmatyczne.",
+      },
+      {
+        title: "Prowadzenie",
+        text: "Kurs prowadzi {link}, ikonografka i założycielka Akademii, autorka programu, na którym opiera się nauka.",
+        link: { label: "Elżbieta Jackowska-Kurek", href: "/o-akademii#prowadzaca" },
       },
     ],
   },
   kind: "kurs",
   facts: {
     seasonLabel: "2026/2027",
-    when: "Raz w tygodniu, październik–czerwiec. Grupy wieczorne i dzienne.",
-    where: "Plac Teatralny, Warszawa — Kościół Środowisk Twórczych",
-    audience: "Dorośli, bez wymogu doświadczenia w malarstwie",
+    when: "Raz w tygodniu, październik–czerwiec. Grupy dzienne i wieczorowe.",
+    where: "Kościół Środowisk Twórczych ul. Senatorska 18 w Warszawie",
+    audience: "Dorośli, doświadczenie w sztukach plastycznych nie jest wymagane",
     price: "Zależny od grupy, informacja mailem",
-    enrollmentDeadline: "Do 24 września 2026, mailem",
+    enrollmentDeadline: "Do 24 września 2026, mailem, po którym zapraszamy na krótką rozmowę",
     enrollmentClose: "2026-09-24",
     firstMeeting: "6 października 2026, 18:00",
     firstMeetingDate: "2026-10-06",
@@ -35,15 +40,13 @@ export const frontmatter = {
   },
   semesters: [
     {
-      title: "Rysunek ikonowy i malarstwo ikonowe – podstawy języka ikony",
+      title: "Rysunek i malarstwo ikonowe – podstawy języka ikony",
       topics: [
         "poznawanie istoty rzeczy co do materii i ducha",
         "zdobywanie umiejętności wnikliwej obserwacji świata przemienionego w Chrystusie i przełożenia tego na kształt i kolor metodą wyświetlania",
         "kreska dynamiczna prosta i w splocie – ćwiczenia",
         "proporcje ciała człowieka, twarze",
         "technika tempery jajowej, studium detalu na wybranych przykładach",
-        "gruntowanie podobrazi (kurs dodatkowy)",
-        "kładzenie złota na mikstion (kurs dodatkowy)",
         "wybieranie pierwowzoru, studium dawnych ikon",
         "rola ikonografa we współczesnym świecie",
       ],
@@ -55,6 +58,8 @@ export const frontmatter = {
         "szkicowanie wybranych przedstawień ikonowych",
         "etapy powstawania ikony, pierwsza ikona",
         "kształcenie języka plastycznego ikony",
+        "symbolika koloru i światła w ikonie",
+        "kaligrafia – napisy na ikonie",
         "metody zabezpieczania ikon (kurs dodatkowy)",
         "podsumowanie-korekta indywidualna długoterminowa",
       ],
@@ -67,7 +72,6 @@ export const frontmatter = {
         "szkicowanie różnymi metodami",
         "malowanie części cielesnych różnymi metodami, studium detalu na zagruntowanych deseczkach",
         "wyświetlanie szat metodą promieniową i płaszczyznową",
-        "kładzenie złota na pulment na mat i na poler (kurs dodatkowy)",
         "szkice rysunkowe i kolorystyczne wybranej ikony",
         "całościowa praca nad ikoną – elementy kompozycji",
       ],
@@ -94,40 +98,24 @@ export const frontmatter = {
   ],
 };
 
-<OfferFigure
-  src="/media/offers/kurs-roczny-i-trzyletni/pracownia-podporka.jpg"
-  alt="Pracownia Akademii Ikony"
-  width={2048}
-  height={1536}
-  caption="Pracownia, praca nad ikoną w podpórce"
-/>
+<OfferFigure placeholder="kursPracownia" />
 
 <SemesterProgram />
 
-## Dalsza droga
-
 <OfferSideCta
-  imageSrc="/media/workshop/gallery-painting-christ.jpg"
-  imageAlt="Uczestniczka maluje ikonę Chrystusa, obok rozrobiony niebieski pigment"
-  imageWidth={539}
-  imageHeight={960}
-  imagePosition="50% 15%"
+  placeholder="kursDalszaDroga"
   email="akademiaikony@gmail.com"
   subject="Zapytanie – kursy doskonalące i konsultacje"
 >
 
+## Dalsza droga
+
 Nauczanie doskonalące może trwać tak długo, jak ktoś go potrzebuje — w rytmie roku albo na warsztatach wakacyjnych. Przekazujemy całą wiedzę potrzebną do samodzielnego pisania ikon na wzór dawnych mistrzów: nie kształcimy odtwórców, lecz twórców dawnego kunsztu.
 
-### Kursy doskonalące i mistrzowskie
+**Kursy doskonalące i mistrzowskie.** Dla tych, którzy chcą rozwijać umiejętności zdobyte wcześniej. Rodzaj przedstawienia i temat ćwiczeń proponowane są w zależności od etapu drogi ikony, na jakim jest uczestnik — na przykład suchy pędzel i pław, sankir czy różne sposoby wyświetlania.
 
-Dla tych, którzy chcą rozwijać umiejętności zdobyte wcześniej. Rodzaj przedstawienia i temat ćwiczeń proponowane są w zależności od etapu drogi ikony, na jakim jest uczestnik — na przykład suchy pędzel i pław, sankir czy różne sposoby wyświetlania.
+<span id="konsultacje" className="scroll-mt-space-6" />**Konsultacje i zajęcia indywidualne.** W ciągu roku, w uzgodnionym terminie — także przy ikonie zaczętej samodzielnie.
 
-<Heading3 id="konsultacje">Konsultacje i zajęcia indywidualne</Heading3>
-
-W ciągu roku, w uzgodnionym terminie — także przy ikonie zaczętej samodzielnie.
-
-### Kursy tematyczne i warsztaty rodzinne
-
-Gruntowanie, szkicowanie, złocenie, kaligrafia i zabezpieczanie ikon oraz rodzinne warsztaty otwarte. Terminy ogłaszamy na bieżąco uczestnikom Akademii.
+**Kursy tematyczne i warsztaty rodzinne.** Gruntowanie, szkicowanie, złocenie, kaligrafia i zabezpieczanie ikon oraz rodzinne warsztaty otwarte. Terminy ogłaszamy na bieżąco uczestnikom Akademii.
 
 </OfferSideCta>

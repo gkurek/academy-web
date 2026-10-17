@@ -4,6 +4,7 @@ import type { ComponentType } from "react";
 import type { ExhibitionTravelingPlace, Image, Offer, OfferFacts, Testimonial } from "@/content/types";
 import {
   parseYear,
+  resolveCoursePhase,
   resolveEnrollmentState,
   type EnrollmentState,
   type WorkshopOfferFacts,
@@ -14,7 +15,6 @@ import { assertIsoDate, todayInWarsaw } from "@/lib/isoDate";
 import KursContent, { frontmatter as kursFrontmatter } from "../../content/offers/kurs-roczny-i-trzyletni.mdx";
 import PlenerContent, { frontmatter as plenerFrontmatter } from "../../content/offers/letnia-szkola-swiatla.mdx";
 import WykladyContent, { frontmatter as wykladyFrontmatter } from "../../content/offers/wyklady.mdx";
-import ZamowienieContent, { frontmatter as zamowienieFrontmatter } from "../../content/offers/zamowienie.mdx";
 
 /** Same shape as the exhibition's traveling places — one list-of-places type (S-15). */
 export type OfferLeadExtraPlace = ExhibitionTravelingPlace;
@@ -22,13 +22,14 @@ export type OfferLeadExtraPlace = ExhibitionTravelingPlace;
 /** Short block under the lead, left of the FactsBox on desktop. */
 export type OfferLeadExtra = {
   heading: string;
-  items: { title: string; text: string; whereWeWere?: OfferLeadExtraPlace[] }[];
-};
-
-/** Prose sections under the lead (left column), e.g. zamówienie intro from WP. */
-export type OfferLeadIntroSection = {
-  heading: string;
-  paragraphs: string[];
+  items: {
+    /** Rendered as a bold run-in at the start of the paragraph, not as a heading. */
+    title: string;
+    /** May contain one `{link}` placeholder, replaced by `link`. */
+    text: string;
+    link?: { label: string; href: string };
+    whereWeWere?: OfferLeadExtraPlace[];
+  }[];
 };
 
 export type SemesterItem = {
@@ -38,10 +39,8 @@ export type SemesterItem = {
   topics?: string[];
 };
 
-export type StepItem = {
-  title: string;
-  body?: string;
-};
+/** Offer kinds with a route; `"zamowienie"` stays in the shared model but has no page (K-151). */
+export type ActiveOfferKind = Exclude<Offer["kind"], "zamowienie">;
 
 type OfferFrontmatter = {
   slug: string;
@@ -49,23 +48,20 @@ type OfferFrontmatter = {
   lead?: string;
   leadSecondary?: string;
   leadExtra?: OfferLeadExtra;
-  leadIntro?: OfferLeadIntroSection[];
-  kind: Offer["kind"];
+  kind: ActiveOfferKind;
   sample?: boolean;
   facts: OfferFacts;
   hero?: Image;
   semesters?: SemesterItem[];
-  steps?: StepItem[];
   quote?: Testimonial & { image?: Image };
 };
 
 /** The MDX body is the `Content` component, and the quote comes from frontmatter — not `body` / `testimonials`. */
-export type LoadedOffer = Omit<Offer, "body" | "testimonials"> & {
+export type LoadedOffer = Omit<Offer, "body" | "testimonials" | "kind"> & {
+  kind: ActiveOfferKind;
   leadSecondary?: string;
   leadExtra?: OfferLeadExtra;
-  leadIntro?: OfferLeadIntroSection[];
   semesters: SemesterItem[];
-  steps: StepItem[];
   quote?: Testimonial & { image?: Image };
   Content: ComponentType<MDXProps>;
 };
@@ -76,7 +72,7 @@ type OfferModule = {
 };
 
 /** Offers behind fixed routes — a missing module is a build error, never a 404 (S-08). */
-export type OfferSlug = "kurs-roczny-i-trzyletni" | "letnia-szkola-swiatla" | "wyklady" | "zamowienie";
+export type OfferSlug = "kurs-roczny-i-trzyletni" | "letnia-szkola-swiatla" | "wyklady";
 
 const offerModules: Record<OfferSlug, OfferModule> = {
   "kurs-roczny-i-trzyletni": {
@@ -91,10 +87,6 @@ const offerModules: Record<OfferSlug, OfferModule> = {
     Content: WykladyContent,
     frontmatter: nbspDeep(wykladyFrontmatter as OfferFrontmatter),
   },
-  zamowienie: {
-    Content: ZamowienieContent,
-    frontmatter: nbspDeep(zamowienieFrontmatter as OfferFrontmatter),
-  },
 };
 
 const workshopSlugs = ["kurs-roczny-i-trzyletni", "letnia-szkola-swiatla"] as const satisfies readonly OfferSlug[];
@@ -107,12 +99,10 @@ function toOffer(offerModule: OfferModule): LoadedOffer {
     lead: frontmatter.lead,
     leadSecondary: frontmatter.leadSecondary,
     leadExtra: frontmatter.leadExtra,
-    leadIntro: frontmatter.leadIntro,
     kind: frontmatter.kind,
     facts: frontmatter.facts,
     hero: frontmatter.hero,
     semesters: frontmatter.semesters ?? [],
-    steps: frontmatter.steps ?? [],
     quote: frontmatter.quote,
     Content,
   };
@@ -161,6 +151,12 @@ function validateOfferModule(key: OfferSlug, offerModule: OfferModule): void {
   validateOfferFactsIsoDates(offerModule);
 
   leadExtra?.items.forEach((item, itemIndex) => {
+    if (Boolean(item.link) !== item.text.includes("{link}")) {
+      throw new Error(
+        `content/offers/${slug}.mdx leadExtra.items[${itemIndex}]: "{link}" in text and link must come together`,
+      );
+    }
+
     item.whereWeWere?.forEach((entry, placeIndex) => {
       if (entry.newsSlug) {
         assertNewsSlug(
@@ -190,6 +186,14 @@ export function getEnrollmentState(
   today: string = todayInWarsaw(),
 ): EnrollmentState {
   return resolveEnrollmentState(offer.kind, offer.facts, getUpcomingOfferFacts(), today);
+}
+
+/** Course season under way (N6): date-bound facts such as the first meeting are already past. */
+export function isCourseSeasonRunning(
+  offer: Pick<Offer, "kind" | "facts">,
+  today: string = todayInWarsaw(),
+): boolean {
+  return offer.kind === "kurs" && resolveCoursePhase(today, offer.facts).phase === "running";
 }
 
 /** Values for `{season}`, `{year}`, `{enrollmentClose}`, `{firstMeeting}` in offer copy (`pl.ts`). */

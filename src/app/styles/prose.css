@@ -2,16 +2,30 @@
    Type roles come from typography.css; this file only adds colour and spacing.
    Variants: text (text pages, articles), offer (offer pages); news lives in
    news-article.css (.prose-news — Garamond scale from the entry mockup).
-   One paragraph gap per variant: 20 px (--space-5) for text and offer. */
+   One paragraph gap per variant: 20 px (--space-5) for text, 14 px (--space-4) for offer —
+   the same rhythm as OfferLeadExtra above the offer figure (k8). */
 @layer components {
-  .prose-text > p,
-  .prose-offer > p {
+  .prose-text > p {
     color: var(--text-body);
   }
 
-  .prose-text > p + p,
-  .prose-offer > p + p {
+  /* Offer pages read in one colour with their lead and hub copy (k8). */
+  .prose-offer > p {
+    color: var(--text-secondary);
+  }
+
+  /* Bold run-ins match the lead extras above the offer figure (OfferLeadExtra). */
+  .prose-offer strong {
+    font-weight: 600;
+    color: var(--text-list-title);
+  }
+
+  .prose-text > p + p {
     margin-top: var(--space-5);
+  }
+
+  .prose-offer > p + p {
+    margin-top: var(--space-4);
   }
 
   /* MDX lists only — component grids use ul.list-none and span the section column. */
@@ -25,6 +39,11 @@
     font-size: var(--size-body);
     line-height: var(--leading-body);
     color: var(--text-body);
+  }
+
+  .prose-offer > ul:not(.list-none),
+  .prose-offer > ol:not(.list-none) {
+    color: var(--text-secondary);
   }
 
   .prose-text > ul:not(.list-none),
@@ -47,6 +66,10 @@
   .prose-text > h2,
   .prose-offer > h2 {
     margin: var(--section-gap) 0 var(--heading-gap);
+  }
+
+  .prose-offer > h2 {
+    margin-bottom: var(--space-4);
   }
 
   .prose-text > h2:first-child,

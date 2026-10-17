@@ -18,10 +18,11 @@ export function SemesterProgram({ semesters }: SemesterProgramProps) {
 
   return (
     <section aria-labelledby={headingId} className="not-prose">
-      <PageHeading level="section" id={headingId} className="mt-section-gap mb-heading-gap first:mt-0">
+      {/* Same heading gap as the MDX h2s of offer prose (.prose-offer > h2). */}
+      <PageHeading level="section" id={headingId} className="mt-section-gap mb-space-4 first:mt-0">
         {pl.offers.semesterProgramHeading}
       </PageHeading>
-      <p className="text-size-body leading-body text-text-secondary mb-space-6">
+      <p className="body-copy text-text-secondary mb-space-6">
         {pl.offers.semesterProgramIntro}
       </p>
       <div className="hairline-grid-2">
@@ -37,10 +38,13 @@ export function SemesterProgram({ semesters }: SemesterProgramProps) {
               {ROMAN_NUMERALS[index] ?? String(index + 1)}
             </div>
             <div className="min-w-0">
-              <PageHeading level="sub" className="mb-space-2">
-                {pl.offers.semesterTileHeadings[index] ?? pl.offers.semesterTileFallback.replace("{n}", String(index + 1))}
+              {/* The numeral is decorative; the ordinal stays in the heading for screen readers only. */}
+              <PageHeading level="sub" className="mb-space-3">
+                <span className="sr-only">
+                  {`${pl.offers.semesterTileHeadings[index] ?? pl.offers.semesterTileFallback.replace("{n}", String(index + 1))}: `}
+                </span>
+                {semester.title}
               </PageHeading>
-              <p className="text-size-body leading-body text-text-secondary mb-space-2">{semester.title}</p>
               {semester.topics && semester.topics.length > 0 ? (
                 <ul className="text-size-body leading-body text-text-tertiary list-disc ps-space-4 md:ps-space-5 space-y-space-1">
                   {semester.topics.map((topic) => (

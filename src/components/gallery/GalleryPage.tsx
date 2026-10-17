@@ -1,6 +1,5 @@
 import { GalleryFilters } from "@/components/gallery/GalleryFilters";
 import { GalleryIconGrid } from "@/components/gallery/GalleryIconGrid";
-import { GalleryOrderTeaser } from "@/components/gallery/GalleryOrderTeaser";
 import { SectionPageShell } from "@/components/layout/SectionPageShell";
 import type { IconWork } from "@/content/types";
 import { pl } from "@/i18n/pl";
@@ -25,8 +24,6 @@ export function GalleryPage({ path, works, tags }: GalleryPageProps) {
       </header>
 
       <GalleryIconGrid works={works} />
-
-      <GalleryOrderTeaser />
     </SectionPageShell>
   );
 }

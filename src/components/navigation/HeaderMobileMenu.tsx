@@ -13,7 +13,6 @@ export interface HeaderMobileMenuProps {
   path?: string;
   /** Href of the main nav item to highlight gold (resolveNav). */
   activeHref?: string;
-  phone: string;
   blogUrl: string;
 }
 
@@ -53,7 +52,7 @@ function getFocusableElements(container: HTMLElement): HTMLElement[] {
   ).filter((element) => !element.hasAttribute("disabled"));
 }
 
-export function HeaderMobileMenu({ path, activeHref, phone, blogUrl }: HeaderMobileMenuProps) {
+export function HeaderMobileMenu({ path, activeHref, blogUrl }: HeaderMobileMenuProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [expandedSection, setExpandedSection] = useState<string | null>(null);
   const [headerBarHeight, setHeaderBarHeight] = useState(0);
@@ -276,7 +275,7 @@ export function HeaderMobileMenu({ path, activeHref, phone, blogUrl }: HeaderMob
               {pl.header.primaryCta}
             </Button>
             <Button block size="lg" variant="secondary" href="/kontakt" onClick={closeMenu}>
-              {pl.header.contactCta} · {phone}
+              {pl.header.contactCta}
             </Button>
             <div className="mt-space-4 flex flex-wrap items-center gap-x-space-3 text-size-ui text-text-tertiary">
               <Link href={newsLink.href} onClick={closeMenu} className="tap-target-nav">

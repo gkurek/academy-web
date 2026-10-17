@@ -78,6 +78,39 @@ export function resolveCourseEnrollment(today: string, kursFacts: OfferFacts): C
   };
 }
 
+export function seasonLabel(startYear: number): string {
+  return `${startYear}/${startYear + 1}`;
+}
+
+/**
+ * Where the course year stands on `today` (N6): enrollment window open, window closed before
+ * the first meeting, or the season running (enrollment for the next season not open yet).
+ */
+export type CoursePhase =
+  | { phase: "open"; season: string; enrollmentClose?: string }
+  | { phase: "starts"; season: string; firstMeetingDate?: string }
+  | { phase: "running"; season: string };
+
+export function resolveCoursePhase(today: string, kursFacts: OfferFacts): CoursePhase {
+  const { startYear, facts, window } = resolveCourseEnrollment(today, kursFacts);
+  const season = seasonLabel(startYear);
+
+  if (isWithin(today, window)) {
+    return { phase: "open", season, enrollmentClose: facts.enrollmentClose };
+  }
+
+  if (today < window.start) {
+    return { phase: "running", season: seasonLabel(startYear - 1) };
+  }
+
+  const firstMeetingDate = facts.firstMeetingDate;
+  const beforeStart = firstMeetingDate
+    ? today < firstMeetingDate
+    : today <= `${startYear}-${ENROLLMENT_FALLBACK_CLOSE_MONTH_DAY}`;
+
+  return beforeStart ? { phase: "starts", season, firstMeetingDate } : { phase: "running", season };
+}
+
 export type PlenerRegistration = {
   window: DateWindow;
   year: number;

@@ -117,19 +117,6 @@
     "note": "FactsBox server component: useId format _R_ -> _S_1_"
   },
   {
-    "id": "RF-2",
-    "route": "/ikony/na-zamowienie",
-    "signal": "html",
-    "note": "FactsBox contact row as mailto:/tel: links (R2-05); useId format"
-  },
-  {
-    "id": "RF-2",
-    "route": "/ikony/na-zamowienie",
-    "signal": "screenshot",
-    "width": 390,
-    "note": "FactsBox contact row as mailto:/tel: links (R2-05) — accent link colour"
-  },
-  {
     "id": "RF-4",
     "route": "/",
     "signal": "html",
@@ -178,33 +165,6 @@
   },
   {
     "id": "RF-4",
-    "route": "/ikony/na-zamowienie",
-    "signal": "html",
-    "note": "justified gallery rendered on the server (JustifiedGrid rows, figure tiles with --tile-ratio); lightbox dialog without the per-page class"
-  },
-  {
-    "id": "RF-4",
-    "route": "/ikony/na-zamowienie",
-    "signal": "screenshot",
-    "width": 390,
-    "note": "rows identical to the JS-measured layout; sub-pixel tile widths from CSS flex vs JS floats shift later rows by up to 3 px and change photo resampling"
-  },
-  {
-    "id": "RF-4",
-    "route": "/ikony/na-zamowienie",
-    "signal": "screenshot",
-    "width": 1440,
-    "note": "rows identical to the JS-measured layout; sub-pixel tile widths from CSS flex vs JS floats shift later rows by up to 3 px and change photo resampling"
-  },
-  {
-    "id": "RF-4",
-    "route": "/ikony/na-zamowienie",
-    "signal": "styles",
-    "width": 390,
-    "note": "tiles hidden below md are in the DOM (display: none) — element count +2"
-  },
-  {
-    "id": "RF-4",
     "route": "/ikony/wystawy",
     "signal": "html",
     "note": "lightbox dialog: workshop-lightbox-dialog class dropped (one Lightbox)"
@@ -242,13 +202,6 @@
   {
     "id": "RF-4",
     "route": "/",
-    "signal": "screenshot",
-    "width": 1920,
-    "note": "sub-pixel tile widths at 1920 px (CSS flex rows vs JS floats); owner-checked 2026-10-05"
-  },
-  {
-    "id": "RF-4",
-    "route": "/ikony/na-zamowienie",
     "signal": "screenshot",
     "width": 1920,
     "note": "sub-pixel tile widths at 1920 px (CSS flex rows vs JS floats); owner-checked 2026-10-05"
@@ -316,12 +269,6 @@
   },
   {
     "id": "RF-8",
-    "route": "/ikony/na-zamowienie",
-    "signal": "html",
-    "note": "<title> from navTitle(path) (D4); aria-current page -> true on the parent section link in the Header; ReadyIconsNote in the shell footerBand slot: main py -> pt, note without -mb-space-6"
-  },
-  {
-    "id": "RF-8",
     "route": "/aktualnosci/nabor-kursu-2026-2027",
     "signal": "html",
     "note": "aria-current page -> true on the parent section link in the Header"
@@ -381,27 +328,6 @@
     "note": "rendered through SectionPageShell; inner mx-auto w-full max-w-content-max removed (layout already limits the width, R3-09); sitemap links via NavUnderlineLink (same classes, new order)"
   },
   {
-    "id": "RF-8",
-    "route": "/ikony/na-zamowienie",
-    "signal": "styles",
-    "width": 390,
-    "note": "footerBand slot: main padding-bottom 26px -> 0 and ReadyIconsNote margin-bottom -26px -> 0 (offsets cancelled each other); screenshots identical"
-  },
-  {
-    "id": "RF-8",
-    "route": "/ikony/na-zamowienie",
-    "signal": "styles",
-    "width": 1440,
-    "note": "footerBand slot: main padding-bottom 26px -> 0 and ReadyIconsNote margin-bottom -26px -> 0 (offsets cancelled each other); screenshots identical"
-  },
-  {
-    "id": "RF-8",
-    "route": "/ikony/na-zamowienie",
-    "signal": "styles",
-    "width": 1920,
-    "note": "footerBand slot: main padding-bottom 26px -> 0 and ReadyIconsNote margin-bottom -26px -> 0 (offsets cancelled each other); screenshots identical"
-  },
-  {
     "id": "RF-9",
     "route": "/wyklady/archiwum",
     "signal": "html",
@@ -459,12 +385,6 @@
     "note": "OfferFigure: arbitrary width + margin classes -> bleed-x-mobile (same box)"
   },
   {
-    "id": "RF-10",
-    "route": "/ikony/na-zamowienie",
-    "signal": "html",
-    "note": "OfferFigure -> bleed-x-mobile; StepList grid-cols-[minmax(0,auto)_1fr] -> grid-cols-step-row (same template)"
-  },
-  {
     "id": "RF-11",
     "route": "/aktualnosci/nabor-kursu-2026-2027",
     "signal": "html",
@@ -481,12 +401,6 @@
     "route": "/ikony",
     "signal": "html",
     "note": "GalleryOrderTeaser: heading id from useId instead of a fixed string (R2-25)"
-  },
-  {
-    "id": "RF-11",
-    "route": "/ikony/na-zamowienie",
-    "signal": "html",
-    "note": "StepList: heading id from useId instead of a fixed string (R2-25)"
   },
   {
     "id": "RF-11",
@@ -1111,54 +1025,6 @@
   },
   {
     "id": "RF-14",
-    "route": "/ikony/na-zamowienie",
-    "signal": "html",
-    "note": "class renames: PageHeading / Prose wrappers and role classes (heading-*, prose-*, list-title, body-copy) replace per-element utility strings and per-page classes; section prose colour secondary → body (V3-07); intro paragraph 17.5 → 16.5 on 390 (V2-04); paragraph gap 14 → 20 (V1-19); caption 14.5 → 15 on 390 (V1-14)"
-  },
-  {
-    "id": "RF-14",
-    "route": "/ikony/na-zamowienie",
-    "signal": "screenshot",
-    "width": 390,
-    "note": "section prose colour secondary → body (V3-07); intro paragraph 17.5 → 16.5 on 390 (V2-04); paragraph gap 14 → 20 (V1-19); caption 14.5 → 15 on 390 (V1-14)"
-  },
-  {
-    "id": "RF-14",
-    "route": "/ikony/na-zamowienie",
-    "signal": "styles",
-    "width": 390,
-    "note": "section prose colour secondary → body (V3-07); intro paragraph 17.5 → 16.5 on 390 (V2-04); paragraph gap 14 → 20 (V1-19); caption 14.5 → 15 on 390 (V1-14)"
-  },
-  {
-    "id": "RF-14",
-    "route": "/ikony/na-zamowienie",
-    "signal": "screenshot",
-    "width": 1440,
-    "note": "section prose colour secondary → body (V3-07); intro paragraph 17.5 → 16.5 on 390 (V2-04); paragraph gap 14 → 20 (V1-19); caption 14.5 → 15 on 390 (V1-14)"
-  },
-  {
-    "id": "RF-14",
-    "route": "/ikony/na-zamowienie",
-    "signal": "styles",
-    "width": 1440,
-    "note": "section prose colour secondary → body (V3-07); intro paragraph 17.5 → 16.5 on 390 (V2-04); paragraph gap 14 → 20 (V1-19); caption 14.5 → 15 on 390 (V1-14)"
-  },
-  {
-    "id": "RF-14",
-    "route": "/ikony/na-zamowienie",
-    "signal": "screenshot",
-    "width": 1920,
-    "note": "section prose colour secondary → body (V3-07); intro paragraph 17.5 → 16.5 on 390 (V2-04); paragraph gap 14 → 20 (V1-19); caption 14.5 → 15 on 390 (V1-14)"
-  },
-  {
-    "id": "RF-14",
-    "route": "/ikony/na-zamowienie",
-    "signal": "styles",
-    "width": 1920,
-    "note": "section prose colour secondary → body (V3-07); intro paragraph 17.5 → 16.5 on 390 (V2-04); paragraph gap 14 → 20 (V1-19); caption 14.5 → 15 on 390 (V1-14)"
-  },
-  {
-    "id": "RF-14",
     "route": "/ikony/wystawy",
     "signal": "html",
     "note": "class renames: PageHeading / Prose wrappers and role classes (heading-*, prose-*, list-title, body-copy) replace per-element utility strings and per-page classes; caption 14.5 → 15 px on 390 (V1-14)"
@@ -1685,12 +1551,6 @@
   },
   {
     "id": "RF-15",
-    "route": "/ikony/na-zamowienie",
-    "signal": "html",
-    "note": "Header: desktop nav from lg, hamburger below (V4-01)"
-  },
-  {
-    "id": "RF-15",
     "route": "/ikony/wystawy",
     "signal": "html",
     "note": "Header: desktop nav from lg, hamburger below (V4-01)"
@@ -1821,19 +1681,6 @@
   },
   {
     "id": "RF-16",
-    "route": "/ikony/na-zamowienie",
-    "signal": "screenshot",
-    "width": 390,
-    "note": "Gallery: two equal columns below md (V3-16)"
-  },
-  {
-    "id": "RF-16",
-    "route": "/ikony/na-zamowienie",
-    "signal": "html",
-    "note": "JustifiedGrid sizes: 50vw below md (V3-16)"
-  },
-  {
-    "id": "RF-16",
     "route": "/pracownia",
     "signal": "screenshot",
     "width": 390,
@@ -1867,54 +1714,6 @@
   },
   {
     "id": "RF-19",
-    "route": "/ikony/na-zamowienie",
-    "signal": "html",
-    "note": "FactsBox single contact footer, ready-icons band on the column line"
-  },
-  {
-    "id": "RF-19",
-    "route": "/ikony/na-zamowienie",
-    "signal": "screenshot",
-    "width": 390,
-    "note": "FactsBox single contact footer, ready-icons band on the column line"
-  },
-  {
-    "id": "RF-19",
-    "route": "/ikony/na-zamowienie",
-    "signal": "styles",
-    "width": 390,
-    "note": "FactsBox single contact footer, ready-icons band on the column line"
-  },
-  {
-    "id": "RF-19",
-    "route": "/ikony/na-zamowienie",
-    "signal": "screenshot",
-    "width": 1440,
-    "note": "FactsBox single contact footer, ready-icons band on the column line"
-  },
-  {
-    "id": "RF-19",
-    "route": "/ikony/na-zamowienie",
-    "signal": "styles",
-    "width": 1440,
-    "note": "FactsBox single contact footer, ready-icons band on the column line"
-  },
-  {
-    "id": "RF-19",
-    "route": "/ikony/na-zamowienie",
-    "signal": "screenshot",
-    "width": 1920,
-    "note": "FactsBox single contact footer, ready-icons band on the column line"
-  },
-  {
-    "id": "RF-19",
-    "route": "/ikony/na-zamowienie",
-    "signal": "styles",
-    "width": 1920,
-    "note": "FactsBox single contact footer, ready-icons band on the column line"
-  },
-  {
-    "id": "RF-19",
     "route": "/ikony/wystawy",
     "signal": "html",
     "note": "tours CTA secondary and under the text"
@@ -2178,19 +1977,6 @@
   {
     "id": "RF-17",
     "route": "/ikony",
-    "signal": "screenshot",
-    "note": "taller rows from 44 px touch fields (390); footer legal bar",
-    "width": 390
-  },
-  {
-    "id": "RF-17",
-    "route": "/ikony/na-zamowienie",
-    "signal": "html",
-    "note": "tap-target fields (standalone links, footer, breadcrumb, bio button, logo), map-frame wrapper, scroll-row / transition-ui-colors classes"
-  },
-  {
-    "id": "RF-17",
-    "route": "/ikony/na-zamowienie",
     "signal": "screenshot",
     "note": "taller rows from 44 px touch fields (390); footer legal bar",
     "width": 390
@@ -2500,31 +2286,5 @@
     "signal": "styles",
     "width": 390,
     "note": "featured gallery: four visible tiles, no display:none figures (replaces RF-4 +2 hidden count)"
-  },
-  {
-    "id": "RF-21b",
-    "route": "/ikony/na-zamowienie",
-    "signal": "html",
-    "note": "leadIntro „Technika i warunki zamówienia” — h3 → h2 (V2-06, RV-F-02)"
-  },
-  {
-    "id": "RF-21b",
-    "route": "/ikony/na-zamowienie",
-    "signal": "styles",
-    "note": "second leadIntro heading uses heading-section (26px) not heading-sub (V2-06)"
-  },
-  {
-    "id": "RF-21b",
-    "route": "/ikony/na-zamowienie",
-    "signal": "screenshot",
-    "width": 390,
-    "note": "„Technika i warunki zamówienia” same typographic scale as „Dla kogo…” (RF-21b)"
-  },
-  {
-    "id": "RF-21b",
-    "route": "/ikony/na-zamowienie",
-    "signal": "screenshot",
-    "width": 1440,
-    "note": "leadIntro second block H2 (RF-21b)"
   }
 ]

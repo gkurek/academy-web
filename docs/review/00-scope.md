@@ -13,12 +13,12 @@ Zgłoszenie, które pokrywa się z pozycją poniżej, pomijamy. Jeśli review zn
 
 | Grupa | Pozycje | Co wyłączone |
 | --- | --- | --- |
-| Brakujące / robocze `alt`, `caption` | T14, T29 | puste lub placeholderowe `alt`/`caption` (T24 ✅ 2026-10-07) |
+| Brakujące / robocze `alt`, `caption` | T29 | puste lub placeholderowe `alt`/`caption`, w tym plakaty we wpisie zbiorczym (T24 ✅ 2026-10-07; T14 ✅ 2026-10-14, K-152) |
 | `[do uzupełnienia]` i copy do redakcji | T25 | fragmenty albumu, opcjonalne sekcje (T5, T22, T28 ✅ w k8) |
-| Placeholdery zdjęć | T6, T19, T21 | kadry `/ikony/wystawy` i zdjęcia dorocznych (T19), zajawka i hero „Na zamówienie” (T6), relacje doroczne (T21) |
+| Placeholdery zdjęć | T19, T21 | kadry `/ikony/wystawy` i zdjęcia dorocznych (T19), relacje doroczne (T21); T6 anulowane (K-151) |
 | Dane galerii | T1 | brak/niezweryfikowane wymiary (T2–T4 ✅ 2026-10-07) |
 | Powiązania wpis ↔ strona | T10, T23 | miejsca LSŚ i wystawy wyjazdowe bez relacji (tekst bez linku); T20 ✅ (K-150) |
-| Fakty i treść do potwierdzenia | T13, T15, T26 | program A3, formuły cykliczne, lista tekstów (T7–T9, T26 ✅ w k8) |
+| Fakty i treść do potwierdzenia | T15 | formuły cykliczne (T7–T9, T26 ✅ w k8; T13 ✅ 2026-10-14) |
 
 ### 1.1a Po v1 — T30 (`docs/plan-claude-code.md` §5A)
 
