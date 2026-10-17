@@ -347,75 +347,136 @@
     max-width: 34em;
   }
 
-  .publication-toc-read-desktop {
-    display: none;
+  /* Album TOC (variant B): featured cards for texts on the site, then a compact book-style list. */
+  .publication-toc-featured {
+    margin-bottom: var(--space-7);
   }
 
-  .publication-toc-chapters {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-  }
-
-  .publication-toc-chapter + .publication-toc-chapter {
-    margin-top: var(--space-7);
-  }
-
-  .publication-toc-pages {
-    margin: 0 0 var(--space-3);
-    font-size: var(--size-caption-m);
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    color: var(--text-tertiary);
-  }
-
-  .publication-toc-chapter-title {
-    margin: 0 0 var(--space-4);
-  }
-
-  .publication-toc-list {
+  .publication-toc-featured-list {
     display: grid;
-    gap: 0;
+    gap: var(--space-3);
     margin: 0;
     padding: 0;
     list-style: none;
   }
 
-  .publication-toc-list > * + * {
-    border-top: 1px solid var(--line-gold);
-  }
-
-  .publication-toc-intro {
-    margin-bottom: var(--space-5);
-  }
-
-  .publication-toc-item {
+  .publication-toc-card {
+    position: relative;
     padding: var(--space-4) var(--space-5);
-    background: var(--surface-tile);
-  }
-
-  .publication-toc-item-linked {
     border-left: var(--accent-bar) solid var(--accent);
     background: var(--surface-card);
   }
 
-  .publication-toc-read-label {
-    margin: 0 0 var(--space-2);
+  .publication-toc-card-title {
+    margin: 0;
+  }
+
+  .publication-toc-card-link {
+    color: var(--text-list-title);
+    text-decoration: none;
+    transition: color 150ms ease-out;
+  }
+
+  /* Whole card is the article link; the author link sits above it. */
+  .publication-toc-card-link::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+  }
+
+  .publication-toc-card:hover .publication-toc-card-link {
+    color: var(--accent-hover);
+  }
+
+  .publication-toc-card-author {
+    position: relative;
+    margin: var(--space-2) 0 0;
+    font-size: var(--size-ui);
+    color: var(--text-secondary);
+  }
+
+  .publication-toc-card-read {
+    display: block;
+    margin-top: var(--space-3);
     font-size: var(--size-caption-m);
     letter-spacing: 0.06em;
     text-transform: uppercase;
     color: var(--accent-text);
   }
 
+  .publication-toc-summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-height: var(--tap-min);
+    border-top: 1px solid var(--line-gold);
+    border-bottom: 1px solid var(--line-gold);
+    font-size: var(--size-body);
+    color: var(--text-secondary);
+    cursor: pointer;
+    list-style: none;
+  }
+
+  .publication-toc-summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .publication-toc-chapters {
+    margin: var(--space-5) 0 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .publication-toc-chapter + .publication-toc-chapter {
+    margin-top: var(--space-6);
+  }
+
+  .publication-toc-chapter-head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+    column-gap: var(--space-4);
+    padding-bottom: var(--space-2);
+    border-bottom: 1px solid var(--line-neutral);
+  }
+
+  .publication-toc-chapter-title {
+    margin: 0;
+  }
+
+  .publication-toc-pages {
+    margin: 0;
+    font-size: var(--size-caption-m);
+    color: var(--text-tertiary);
+    white-space: nowrap;
+  }
+
+  .publication-toc-list {
+    display: grid;
+    gap: var(--space-3);
+    margin: var(--space-3) 0 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .publication-toc-intro {
+    margin: 0 0 var(--space-6);
+  }
+
   .publication-toc-title,
   .publication-toc-title-link {
     margin: 0;
-    font-size: var(--size-list-title);
-    line-height: 1.4;
-    color: var(--text-list-title);
+    font-size: var(--size-body);
+    line-height: var(--leading-facts);
+  }
+
+  .publication-toc-title {
+    color: var(--text-body);
   }
 
   .publication-toc-title-link {
+    color: var(--accent-text);
     text-decoration: none;
     transition: color 150ms ease-out;
   }
@@ -425,8 +486,8 @@
   }
 
   .publication-toc-author {
-    margin: var(--space-2) 0 0;
-    font-size: var(--size-ui);
+    margin: var(--space-1) 0 0;
+    font-size: var(--size-caption-m);
     color: var(--text-secondary);
   }
 
@@ -596,23 +657,16 @@
       font-size: var(--size-caption);
     }
 
-    .publication-toc-read-label {
-      display: none;
-    }
-
-    .publication-toc-row {
+    .publication-toc-card {
       display: grid;
       grid-template-columns: minmax(0, 1fr) var(--publication-toc-read-col);
       gap: var(--space-6);
       align-items: baseline;
     }
 
-    .publication-toc-read-desktop {
-      display: block;
+    .publication-toc-card-read {
+      margin-top: 0;
       font-size: var(--size-caption);
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      color: var(--accent-text);
       text-align: right;
     }
 

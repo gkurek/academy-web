@@ -92,7 +92,7 @@ export function OfferSideCta({
           >
             {sideCta.title}
           </h3>
-          <Button href={buildMailtoHref(email, subject)} variant="secondary" block size="lg">
+          <Button href={buildMailtoHref(email, subject)} variant="primary" block size="lg">
             {sideCta.mailtoLabel}
           </Button>
         </aside>

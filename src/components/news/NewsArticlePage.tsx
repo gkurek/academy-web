@@ -12,7 +12,6 @@ import { NewsGallery } from "@/components/news/NewsGallery";
 import { NewsRelated } from "@/components/news/NewsRelated";
 import { NewsDateMeta } from "@/components/news/NewsDateMeta";
 import {
-  getEffectiveNewsLayout,
   getExcerpt,
   getNewsEventPhase,
   shouldShowLead,
@@ -32,7 +31,6 @@ export interface NewsArticlePageProps {
 function newsArticleGridClass(flags: {
   hasTop: boolean;
   hasCta: boolean;
-  hasMgal: boolean;
   hasGal: boolean;
 }): string {
   const parts = ["news-article"];
@@ -41,9 +39,6 @@ function newsArticleGridClass(flags: {
   }
   if (flags.hasCta) {
     parts.push("news-article--has-cta");
-  }
-  if (flags.hasMgal) {
-    parts.push("news-article--has-mgal");
   }
   if (flags.hasGal) {
     parts.push("news-article--has-gal");
@@ -55,7 +50,7 @@ export function NewsArticlePage({ entry, path }: NewsArticlePageProps) {
   const { Content } = entry;
   const kindLabel = getNewsKindLabel(entry.kind);
   const neighbors = getNewsNeighbors(entry.slug);
-  const layout = getEffectiveNewsLayout(entry);
+  const { layout } = entry;
   const eventPhase = getNewsEventPhase(entry);
   const images = entry.images ?? [];
   const hasImages = images.length > 0;
@@ -68,25 +63,21 @@ export function NewsArticlePage({ entry, path }: NewsArticlePageProps) {
     layout === "wydarzenie"
       ? eventPhase === "relacja" || eventPhase === "po-terminie"
       : relatedLinks.length > 0;
-  const isWideImageLayout = layout === "galeria" || layout === "wydarzenie";
   const columnImageIndex = entry.columnImageIndex;
   const columnImage =
     columnImageIndex !== undefined ? images[columnImageIndex] : undefined;
   const showColumnImage =
     columnImage !== undefined && columnImageIndex !== undefined;
-  const hasGalleryTekst = layout === "tekst" && hasImages;
-  const hasGalleryWide = isWideImageLayout && hasImages;
+  const hasGallery = layout !== "program" && hasImages;
   /** Desktop `gal` row: omit when the only image sits in the column (mobile still uses `gal`). */
   const hasGalGridArea =
-    hasGalleryWide && (images.length > 1 || !showColumnImage);
-  const galleryHeading = layout === "tekst";
+    hasGallery && (images.length > 1 || !showColumnImage);
   const hideOnDesktopIndex = showColumnImage ? columnImageIndex : undefined;
   const railStickyOff = relatedLinks.length > 3;
 
   const articleClass = newsArticleGridClass({
     hasTop: Boolean(showFacts || showColumnImage),
     hasCta: showEventCta,
-    hasMgal: hasGalleryTekst,
     hasGal: hasGalGridArea,
   });
 
@@ -135,18 +126,7 @@ export function NewsArticlePage({ entry, path }: NewsArticlePageProps) {
             </div>
           ) : null}
 
-          {hasGalleryTekst ? (
-            <div className="news-article-mgal">
-              <NewsGallery
-                images={images}
-                layout={layout}
-                showHeading={galleryHeading}
-                hideOnDesktopIndex={hideOnDesktopIndex}
-              />
-            </div>
-          ) : null}
-
-          {hasGalleryWide ? (
+          {hasGallery ? (
             <div
               className={[
                 "news-article-gal",
@@ -157,8 +137,6 @@ export function NewsArticlePage({ entry, path }: NewsArticlePageProps) {
             >
               <NewsGallery
                 images={images}
-                layout={layout}
-                showHeading={false}
                 hideOnDesktopIndex={hideOnDesktopIndex}
               />
             </div>

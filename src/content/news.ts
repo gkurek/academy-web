@@ -17,7 +17,7 @@ export type NewsFrontmatter = Omit<News, "body"> & {
   bodyText?: string;
 };
 
-const NEWS_LAYOUTS: NewsLayout[] = ["wydarzenie", "galeria", "tekst", "program"];
+const NEWS_LAYOUTS: NewsLayout[] = ["wydarzenie", "galeria", "program"];
 
 export type NewsListEntry = NewsFrontmatter & {
   displayExcerpt?: string;
@@ -61,11 +61,6 @@ function validateNewsLayouts(entries: NewsFrontmatter[]): void {
     if (entry.facts && entry.facts.length > 0 && entry.layout !== "wydarzenie") {
       throw new Error(`News entry "${entry.slug}" has facts but layout is not wydarzenie`);
     }
-    if (entry.layout === "galeria" && (!entry.images || entry.images.length === 0)) {
-      console.warn(
-        `[news] "${entry.slug}": layout galeria without images — effective layout tekst`,
-      );
-    }
     if (entry.lectureSeason !== undefined && !getSeason(entry.lectureSeason)) {
       throw new Error(`News entry "${entry.slug}": unknown lectureSeason "${entry.lectureSeason}"`);
     }
@@ -82,14 +77,6 @@ function validateNewsLayouts(entries: NewsFrontmatter[]): void {
 }
 
 validateNewsLayouts(newsManifestEntries);
-
-/** Layout with build-time fallback when galeria has no images (D5). */
-export function getEffectiveNewsLayout(entry: NewsFrontmatter): NewsLayout {
-  if (entry.layout === "galeria" && (!entry.images || entry.images.length === 0)) {
-    return "tekst";
-  }
-  return entry.layout;
-}
 
 function stripMarkdown(text: string): string {
   return text
@@ -358,7 +345,7 @@ export function getNewsEventPhase(
   entry: NewsFrontmatter,
   today: string = todayInWarsaw(),
 ): NewsEventPhase | null {
-  if (getEffectiveNewsLayout(entry) !== "wydarzenie") {
+  if (entry.layout !== "wydarzenie") {
     return null;
   }
 

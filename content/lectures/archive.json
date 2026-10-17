@@ -2,5 +2,43 @@
   "intro": "Archiwum wykładów Akademii Ikony obejmuje sezony od {firstSeasonLabel} do {lastSeasonLabel}. Bieżący sezon ({currentSeasonLabel}) prezentujemy na stronie głównej sekcji Wykłady.",
   "hubIntro": "Programy wcześniejszych sezonów — od {firstSeasonLabel} do {lastSeasonLabel} — znajdziesz w archiwum.",
   "firstSeason": "2012-2013",
-  "lastSeason": "2025-2026"
+  "lastSeason": "2025-2026",
+  "photos": [
+    {
+      "src": "/media/lectures-archive/1.webp",
+      "alt": "Wykładowca przy stole z laptopem; na ścianie rzutowana ikona Ukrzyżowania",
+      "width": 1094,
+      "height": 817
+    },
+    {
+      "src": "/media/lectures-archive/2.webp",
+      "alt": "Wykładowca z mikrofonem przy stole z laptopem, obok ustawione ikony",
+      "width": 605,
+      "height": 817
+    },
+    {
+      "src": "/media/lectures-archive/3.png",
+      "alt": "Wykładowca na tle rzutowanego wizerunku Matki Bożej Znak",
+      "width": 597,
+      "height": 816
+    },
+    {
+      "src": "/media/lectures-archive/4.webp",
+      "alt": "Wykład „Sacrum w muzycznych obrazach Mistrzów” — wykładowca przy stole, za nim ekran i ikony",
+      "width": 1091,
+      "height": 818
+    },
+    {
+      "src": "/media/lectures-archive/5.png",
+      "alt": "Wykładowczyni z mikrofonem na tle ekranu z projekcją obrazu",
+      "width": 728,
+      "height": 412
+    },
+    {
+      "src": "/media/news/wystawa-przyjazn-z-bogiem-2024/1.jpg",
+      "alt": "Słuchacze wykładu w sali z wystawą ikon; wykładowca przy stole pod ekranem",
+      "width": 1600,
+      "height": 1200
+    }
+  ]
 }

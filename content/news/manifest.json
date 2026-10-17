@@ -5,7 +5,7 @@
     "date": "2015-07-17",
     "kind": "wystawa",
     "layout": "galeria",
-    "excerpt": "17 lipca 2015 — finisaż wystawy „Ikona dziś” w KŚT w dniu wspomnienia św. Andrieja Rubłowa.",
+    "excerpt": "17 lipca 2015 — finisaż wystawy „Ikona dziś” w Kościele Środowisk Twórczych w dniu wspomnienia św. Andrieja Rubłowa.",
     "images": [
       {
         "src": "/media/news/dnia-17-lipca-wspomnienie-sw-andrieja-rublowa/1.jpg",
@@ -40,7 +40,7 @@
     "date": "2017-03-31",
     "kind": "aktualnosc",
     "layout": "galeria",
-    "excerpt": "31 marca 2017 w KŚT — ekumeniczna Droga Krzyżowa poprowadzona przez ikonografów Akademii Ikony i Studium św. Andrzeja Apostoła.",
+    "excerpt": "31 marca 2017 w Kościele Środowisk Twórczych — ekumeniczna Droga Krzyżowa ikonografów Akademii Ikony i Studium św. Andrzeja.",
     "images": [
       {
         "src": "/media/news/ekumeniczna-droga-krzyzowa-w-warszawie/1.png",
@@ -68,8 +68,8 @@
     "title": "Jeden dzień z życia Akademii Ikony",
     "date": "2015-07-04",
     "kind": "aktualnosc",
-    "layout": "tekst",
-    "excerpt": "4 lipca 2015 w KŚT — w trakcie wystawy „Ikona dziś”: warsztaty, oprowadzania, prelekcja dla Stowarzyszenia Inicjatyw Kobiecych.",
+    "layout": "galeria",
+    "excerpt": "4 lipca 2015 w Kościele Środowisk Twórczych — podczas wystawy „Ikona dziś”: warsztaty, oprowadzania i prelekcja.",
     "images": [
       {
         "src": "/media/news/ikona-dzis-3/1.jpg",
@@ -142,8 +142,7 @@
     "date": "2019-10-05",
     "kind": "wystawa",
     "layout": "galeria",
-    "dateEnd": "2019-10-26",
-    "excerpt": "Zapraszamy na wystawę ikon do Kościoła Środowisk Twórczych na Placu Teatralnym w Warszawie. Wystawę będzie można oglądać w dniach 5–26 października.",
+    "excerpt": "Zapraszamy na wystawę ikon do Kościoła Środowisk Twórczych na Placu Teatralnym w Warszawie, 5–26 października.",
     "images": [
       {
         "src": "/media/news/ikona-okno-duszy-2019/1.jpg",
@@ -161,7 +160,6 @@
     "date": "2013-12-02",
     "kind": "wystawa",
     "layout": "galeria",
-    "dateEnd": "2014-01-10",
     "excerpt": "2 grudnia 2013 – 10 stycznia 2014 — wystawa ikon w Gminnej Bibliotece Publicznej w Izabelinie; spotkanie autorskie 14 grudnia.",
     "venue": "Izabelin",
     "images": [
@@ -192,8 +190,7 @@
     "date": "2014-05-31",
     "kind": "wystawa",
     "layout": "galeria",
-    "dateEnd": "2014-06-08",
-    "excerpt": "31 maja – 8 czerwca 2014 — wystawa autorska Elżbiety Jackowskiej-Kurek w KŚT; fotorelacja z wernisażu.",
+    "excerpt": "31 maja – 8 czerwca 2014 — wystawa autorska Elżbiety Jackowskiej-Kurek w Kościele Środowisk Twórczych; fotorelacja z wernisażu.",
     "venue": "Warszawa",
     "images": [
       {
@@ -247,7 +244,6 @@
     "date": "2019-08-24",
     "kind": "wystawa",
     "layout": "galeria",
-    "dateEnd": "2019-08-26",
     "excerpt": "24–26 sierpnia 2019 — wystawa ikon w kościele parafii bł. Władysława z Gielniowa przy ul. Przy Bażantarni 3; kurator Elżbieta Jackowska-Kurek.",
     "venue": "Warszawa",
     "images": [
@@ -535,7 +531,7 @@
     "title": "Ikonografia patronów pielgrzymów",
     "date": "2015-11-10",
     "kind": "spotkanie",
-    "layout": "tekst",
+    "layout": "galeria",
     "excerpt": "10 listopada 2015 — prelekcja dr Jerzego Kazimierczaka w cyklu „Śladami najpiękniejszych ikon świata”.",
     "images": [
       {
@@ -553,11 +549,11 @@
     "date": "2017-07-10",
     "kind": "aktualnosc",
     "layout": "galeria",
-    "excerpt": "Oprowadzenie po ikonach wykonywanych techniką emalii komórkowej na wystawie „Ikona – korzenie i owoce wiary” w KŚT (9 lipca 2017).",
+    "excerpt": "Oprowadzenie po ikonach w technice emalii komórkowej na wystawie „Ikona – korzenie i owoce wiary”, 9 lipca 2017.",
     "images": [
       {
         "src": "/media/news/ikony-emaliowane/1.jpg",
-        "alt": "Ikony wykonane techniką emalii komórkowej na wystawie w KŚT, 2017",
+        "alt": "Ikony wykonane techniką emalii komórkowej na wystawie w Kościele Środowisk Twórczych, 2017",
         "width": 768,
         "height": 1024
       },
@@ -623,8 +619,7 @@
     "date": "2017-08-19",
     "kind": "warsztaty",
     "layout": "galeria",
-    "dateEnd": "2017-08-27",
-    "excerpt": "Międzynarodowe warsztaty pisania ikon i wystawa „Ikona drabiną do nieba” w Sanktuarium Matki Bożej Jedności Chrześcijan w Świętej Lipce, 19–27 sierpnia 2017.",
+    "excerpt": "Międzynarodowe warsztaty pisania ikon i wystawa „Ikona drabiną do nieba” w Świętej Lipce, 19–27 sierpnia 2017.",
     "venue": "Święta Lipka",
     "images": [
       {
@@ -812,7 +807,7 @@
     "date": "2019-09-21",
     "kind": "wystawa",
     "layout": "galeria",
-    "excerpt": "Z okazji Nocy Świątyń 21 września w kościele Środowisk Twórczych odbyło się oprowadzanie po wystawie ikon i wykład Elżbiety Jackowskiej-Kurek o współczesnej ikonografii.",
+    "excerpt": "Noc Świątyń 21 września w Kościele Środowisk Twórczych: oprowadzanie po wystawie i wykład Elżbiety Jackowskiej-Kurek.",
     "images": [
       {
         "src": "/media/news/noc-swiatyn-2019/1.jpg",
@@ -838,7 +833,7 @@
     "kind": "aktualnosc",
     "layout": "wydarzenie",
     "venue": "Warszawa",
-    "excerpt": "Rok akademicki 2026/2027: kurs pisania ikon oraz wykłady „Ikona – korzenie i owoce wiary. Mistyka dziś” w Kościele Środowisk Twórczych na Placu Teatralnym.",
+    "excerpt": "Rok akademicki 2026/2027: kurs pisania ikon i wykłady „Mistyka dziś” w Kościele Środowisk Twórczych.",
     "featured": true,
     "cover": {
       "src": "/media/home/pracownia.jpg",
@@ -871,12 +866,12 @@
     "title": "Oprowadzania po wystawie: Serce Jezusa, Trójca Święta",
     "date": "2017-06-25",
     "kind": "oprowadzanie",
-    "layout": "tekst",
+    "layout": "galeria",
     "excerpt": "Tematyczne oprowadzania kuratorskie po wystawie „Ikona – korzenie i owoce wiary” w 2017 roku.",
     "images": [
       {
         "src": "/media/news/oprowadzania-po-wystawie-2017/ikona-trojcy-swietej-0.jpg",
-        "alt": "Oprowadzanie kuratorskie po wystawie „Ikona – korzenie i owoce wiary”, temat Trójca Święta, KŚT, 2017",
+        "alt": "Oprowadzanie kuratorskie po wystawie „Ikona – korzenie i owoce wiary”, temat Trójca Święta, Kościół Środowisk Twórczych, 2017",
         "width": 540,
         "height": 960
       },
@@ -888,43 +883,43 @@
       },
       {
         "src": "/media/news/oprowadzania-po-wystawie-2017/ikona-trojcy-swietej-0.jpg",
-        "alt": "Oprowadzanie kuratorskie po wystawie „Ikona – korzenie i owoce wiary”, temat Trójca Święta, KŚT, 2017",
+        "alt": "Oprowadzanie kuratorskie po wystawie „Ikona – korzenie i owoce wiary”, temat Trójca Święta, Kościół Środowisk Twórczych, 2017",
         "width": 540,
         "height": 960
       },
       {
         "src": "/media/news/oprowadzania-po-wystawie-2017/ikona-trojcy-swietej-1.jpg",
-        "alt": "Oprowadzanie kuratorskie po wystawie „Ikona – korzenie i owoce wiary”, temat Trójca Święta, KŚT, 2017",
+        "alt": "Oprowadzanie kuratorskie po wystawie „Ikona – korzenie i owoce wiary”, temat Trójca Święta, Kościół Środowisk Twórczych, 2017",
         "width": 722,
         "height": 1000
       },
       {
         "src": "/media/news/oprowadzania-po-wystawie-2017/ikona-trojcy-swietej-2.jpg",
-        "alt": "Oprowadzanie kuratorskie po wystawie „Ikona – korzenie i owoce wiary”, temat Trójca Święta, KŚT, 2017",
+        "alt": "Oprowadzanie kuratorskie po wystawie „Ikona – korzenie i owoce wiary”, temat Trójca Święta, Kościół Środowisk Twórczych, 2017",
         "width": 563,
         "height": 1000
       },
       {
         "src": "/media/news/oprowadzania-po-wystawie-2017/ikona-trojcy-swietej-3.jpg",
-        "alt": "Oprowadzanie kuratorskie po wystawie „Ikona – korzenie i owoce wiary”, temat Trójca Święta, KŚT, 2017",
+        "alt": "Oprowadzanie kuratorskie po wystawie „Ikona – korzenie i owoce wiary”, temat Trójca Święta, Kościół Środowisk Twórczych, 2017",
         "width": 563,
         "height": 1000
       },
       {
         "src": "/media/news/oprowadzania-po-wystawie-2017/ikona-trojcy-swietej-4.jpg",
-        "alt": "Oprowadzanie kuratorskie po wystawie „Ikona – korzenie i owoce wiary”, temat Trójca Święta, KŚT, 2017",
+        "alt": "Oprowadzanie kuratorskie po wystawie „Ikona – korzenie i owoce wiary”, temat Trójca Święta, Kościół Środowisk Twórczych, 2017",
         "width": 1256,
         "height": 1798
       },
       {
         "src": "/media/news/oprowadzania-po-wystawie-2017/ikona-trojcy-swietej-5.jpg",
-        "alt": "Oprowadzanie kuratorskie po wystawie „Ikona – korzenie i owoce wiary”, temat Trójca Święta, KŚT, 2017",
+        "alt": "Oprowadzanie kuratorskie po wystawie „Ikona – korzenie i owoce wiary”, temat Trójca Święta, Kościół Środowisk Twórczych, 2017",
         "width": 750,
         "height": 1000
       },
       {
         "src": "/media/news/oprowadzania-po-wystawie-2017/ikona-trojcy-swietej-6.jpg",
-        "alt": "Trójca Święta pisana ręką Bożeny Wierzbickiej (25×30 cm), wystawa w KŚT, 2017",
+        "alt": "Trójca Święta pisana ręką Bożeny Wierzbickiej (25×30 cm), wystawa w Kościele Środowisk Twórczych, 2017",
         "width": 600,
         "height": 800
       }
@@ -1130,7 +1125,6 @@
     "date": "2023-07-30",
     "kind": "wyjazd",
     "layout": "galeria",
-    "dateEnd": "2023-08-06",
     "excerpt": "Tydzień pleneru ikonowego w Supraślu — praca przy desce, modlitwa i spotkanie z ikoną w miejscu, które od wieków nią żyje.",
     "images": [
       {
@@ -1190,8 +1184,7 @@
     "date": "2019-08-03",
     "kind": "wyjazd",
     "layout": "galeria",
-    "dateEnd": "2019-08-10",
-    "excerpt": "3–10 sierpnia w Świętej Lipce warsztaty pisania ikon z towarzyszącą wystawą. 4 sierpnia procesja eucharystyczna z ikonami z wystawy podczas mszy św. o godz. 11.00.",
+    "excerpt": "3–10 sierpnia w Świętej Lipce warsztaty pisania ikon z wystawą; 4 sierpnia procesja eucharystyczna z ikonami.",
     "images": [
       {
         "src": "/media/news/plener-swietej-lipki-2019/1.jpg",
@@ -1215,8 +1208,8 @@
     "title": "Poświęcenie ikon na zakończenie pleneru w Świętej Lipce",
     "date": "2017-08-27",
     "kind": "aktualnosc",
-    "layout": "tekst",
-    "excerpt": "Obrzęd poświęcenia ikon napisanych podczas międzynarodowych warsztatów w Sanktuarium w Świętej Lipce, sierpień 2017 — uwagi o podpisaniu ikony i zdjęcia z uroczystości.",
+    "layout": "galeria",
+    "excerpt": "Obrzęd poświęcenia ikon napisanych na międzynarodowych warsztatach w Świętej Lipce, sierpień 2017 — zdjęcia z uroczystości.",
     "images": [
       {
         "src": "/media/news/poswiecenia-ikon/1.jpg",
@@ -1353,7 +1346,6 @@
     "date": "2016-08-17",
     "kind": "wyjazd",
     "layout": "galeria",
-    "dateEnd": "2016-08-28",
     "excerpt": "Wykłady „Świat ikony” i warsztaty „Modlitwa psalmami” w Sanktuarium Matki Bożej Jedności Chrześcijan w Świętej Lipce, 17–28 sierpnia 2016.",
     "venue": "Święta Lipka",
     "images": [
@@ -1432,7 +1424,6 @@
     "date": "2015-09-17",
     "kind": "wyjazd",
     "layout": "galeria",
-    "dateEnd": "2015-09-27",
     "excerpt": "17–27 września 2015 — sesja ikonowa w sanktuarium w Świętej Lipce; wycieczki po okolicy i praca w Białym Domku.",
     "images": [
       {
@@ -1558,7 +1549,7 @@
     "date": "2014-09-02",
     "kind": "spotkanie",
     "layout": "program",
-    "excerpt": "Zapraszamy na cykl wykładów gościnnych w Sanktuarium Matki Bożej Łaskawej w Warszawie — spotkania o pięknie i duchowym znaczeniu ikony, we współpracy z Centrum Duchowości Świeckich.",
+    "excerpt": "Zapraszamy na cykl wykładów gościnnych w Sanktuarium Matki Bożej Łaskawej w Warszawie o pięknie i znaczeniu ikony.",
     "images": [
       {
         "src": "/media/news/spotkania-sladami-najpiekniejszych-ikon-swiata/1.jpg",
@@ -1576,7 +1567,7 @@
     "date": "2016-03-21",
     "kind": "spotkanie",
     "layout": "galeria",
-    "excerpt": "Spotkania z ikonografem Grzegorzem Zinkiewiczem — w KŚT w Warszawie i w innych miejscach pracy.",
+    "excerpt": "Spotkania z ikonografem Grzegorzem Zinkiewiczem — w Kościele Środowisk Twórczych w Warszawie i w innych miejscach pracy.",
     "images": [
       {
         "src": "/media/news/spotkania-z-grzegorzem-zinkiewiczem/2.jpg",
@@ -1660,7 +1651,7 @@
     "date": "2016-04-26",
     "kind": "spotkanie",
     "layout": "galeria",
-    "excerpt": "26 kwietnia 2016 w KŚT w Warszawie — wykład Michała Płoskiego „Na drabinie — zapiski z duchowości malarza ikon”.",
+    "excerpt": "26 kwietnia 2016 w Kościele Środowisk Twórczych w Warszawie — wykład Michała Płoskiego „Na drabinie — zapiski z duchowości malarza ikon”.",
     "images": [
       {
         "src": "/media/news/spotkanie-z-michalem-ploskim/1.jpg",
@@ -1877,7 +1868,7 @@
     "title": "Wakacyjne warsztaty ikonograficzne w Warszawie",
     "date": "2014-07-13",
     "kind": "warsztaty",
-    "layout": "tekst",
+    "layout": "galeria",
     "excerpt": "Warsztaty wakacyjne w Warszawie dla początkujących i doskonalących — tydzień pracy z ikoną pod kierunkiem Elżbiety Jackowskiej-Kurek.",
     "venue": "Warszawa",
     "images": [
@@ -1990,7 +1981,7 @@
     "title": "Wakacyjne wyjazdy studyjne – Mielnik nad Bugiem",
     "date": "2017-08-06",
     "kind": "wyjazd",
-    "layout": "tekst",
+    "layout": "galeria",
     "excerpt": "Wakacyjny wyjazd studyjny do Mielnika nad Bugiem — cerkiew Narodzenia Bogarodzicy i freski Aleksandra Sokołowa.",
     "images": [
       {
@@ -2067,8 +2058,8 @@
     "title": "Warsztaty pisania ikon w Kościele Środowisk Twórczych w Warszawie",
     "date": "2017-09-02",
     "kind": "warsztaty",
-    "layout": "tekst",
-    "excerpt": "Warsztaty pisania ikon raz w tygodniu w cyklu akademickim — w Kościele Środowisk Twórczych na Placu Teatralnym w Warszawie, w grupach porannych i wieczornych.",
+    "layout": "galeria",
+    "excerpt": "Warsztaty pisania ikon raz w tygodniu w Kościele Środowisk Twórczych w Warszawie, w grupach porannych i wieczornych.",
     "venue": "Warszawa",
     "images": [
       {
@@ -2085,8 +2076,8 @@
     "title": "Zapraszamy na warsztaty pisania ikon 2012/2013",
     "date": "2012-10-27",
     "kind": "warsztaty",
-    "layout": "tekst",
-    "excerpt": "Zapraszamy na warsztaty pisania ikon w sezonie 2012/2013 — dla osób powołanych do pisania ikon, z pracą indywidualną w Kościele Środowisk Twórczych w Warszawie.",
+    "layout": "galeria",
+    "excerpt": "Zapraszamy na warsztaty pisania ikon w sezonie 2012/2013 w Kościele Środowisk Twórczych w Warszawie.",
     "venue": "Warszawa",
     "bodyText": "Warsztaty pisania ikon są dla tych, którzy — oprócz chęci pogłębiania wiedzy i doświadczania ikony poprzez modlitwę — czują się powołani do pisania ikon. Preferujemy pracę indywidualną. Każdy pracuje w swoim rytmie i na swoim etapie. Nasze prace tworzą Galerię Ikony Współczesnej; wystawy odbywają się kilka razy do roku w różnych miejscach w Warszawie, w Polsce i za granicą (Litwa, Gruzja). Zajęcia mamy raz w tygodniu, w czwartki lub piątki w Kościele Środowisk Twórczych pw. św. Andrzeja Apostoła i św. Brata Alberta w Warszawie, plus intensywna praca w domu. Przez cały rok istnieje możliwość umawiania się na konsultacje indywidualne. Aktualne informacje o zapisach na kurs roczny i trzyletni:"
   },
@@ -2095,8 +2086,8 @@
     "title": "Warsztaty w Kościele Środowisk Twórczych pp. św. Andrzeja Apostoła i św. Brata Alberta w Warszawie",
     "date": "2016-08-29",
     "kind": "warsztaty",
-    "layout": "tekst",
-    "excerpt": "Celem działalności Akademii Ikony jest nie tylko kształcenie, ale i pomoc w doświadczaniu ikony — warsztaty i wykłady w Kościele Środowisk Twórczych w Warszawie.",
+    "layout": "galeria",
+    "excerpt": "Akademia Ikony to nie tylko kształcenie, ale i pomoc w doświadczaniu ikony — warsztaty i wykłady w Kościele Środowisk Twórczych.",
     "venue": "Warszawa",
     "bodyText": "Celem działalności Akademii Ikony jest nie tylko kształcenie, ale i pomoc w doświadczaniu ikony. Praca malarza ikon to życie w intymnej relacji z Panem Bogiem i świadczenie o tej relacji przez obraz. Dbanie o tę relację, ciągłe dojrzewanie do niej to nieustanne wyzwanie dla ikonografa. Tryb nauki w Akademii Ikony jest nieustający — na warsztaty pisania ikon i towarzyszące im wykłady można uczęszczać dowolnie długo: - Dwa pierwsze lata nieprzerwanej nauki wstępnej na warsztatach i wykładach Akademii Ikony to kurs podstawowy pisania ikon; każdy uczestnik kursu pracuje w swoim rytmie i na swoim etapie pracy swobodnie, bez narzucania terminów. - Po minimum dwóch latach kursu wstępnego uczestnik może napisać ikonę wielopostaciową — jeśli będzie przyjęta, status uczestnika kursu wstępnego zmienia się w status uczestnika nauk doskonalących, który może trwać dowolnie długo. W wykładach może uczestniczyć każdy. Na warsztaty można się zgłosić po rozmowie wstępnej — prosimy przynieść swoje dotychczasowe prace artystyczne, np. szkice lub malarskie z natury; na rozmowie ustalamy szczegóły. Zgłoszenia można też złożyć w zakrystii Kościoła Środowisk Twórczych. Aktualne informacje o zapisach na kurs roczny i trzyletni:"
   },
@@ -2105,8 +2096,7 @@
     "title": "Warsztaty w lipcu 2015",
     "date": "2015-07-06",
     "kind": "warsztaty",
-    "layout": "tekst",
-    "dateEnd": "2015-07-13",
+    "layout": "galeria",
     "excerpt": "Warsztaty wakacyjne 6–13 lipca 2015 w Kościele Środowisk Twórczych na Placu Teatralnym w Warszawie — praca indywidualna nad ikoną.",
     "venue": "Warszawa",
     "images": [
@@ -2132,12 +2122,113 @@
     "bodyText": "Na warsztaty wakacyjne zapraszamy w terminie 6–13 lipca 2015 do Kościoła Środowisk Twórczych w Warszawie, Plac Teatralny 20. Pracujemy w godz. 10–16.00 w kościele — praca indywidualna. W programie wszystkie etapy pisania ikony, pokaz gruntowania podobrazi i olifowania. Pierwowzory do wyboru: ikona Pantokratora, Matki Bożej z Dzieciątkiem. Po wcześniejszym uzgodnieniu istnieje możliwość pracy nad ikoną inną niż proponowane. Dnia 15 lipca 2015 zapraszamy na warsztaty z Marią Osuchowską, ikonografem z Litwy. W programie wykład, pokaz i część praktyczna — szkicowanie wybranej ikony. Miejsce: Kościół Środowisk Twórczych, Warszawa, Plac Teatralny 20."
   },
   {
+    "slug": "wernisaz-albumu-ikona-dzis",
+    "title": "Wernisaż albumu „Ikona dziś. Akademia Ikony 2010–2025”",
+    "date": "2025-12-09",
+    "kind": "spotkanie",
+    "layout": "galeria",
+    "excerpt": "9 grudnia 2025 w Kościele Środowisk Twórczych — premiera albumu na piętnastolecie Akademii, wystawa ikon i wykłady.",
+    "venue": "Warszawa",
+    "cover": {
+      "src": "/media/news/wernisaz-albumu-ikona-dzis/1.jpg",
+      "alt": "Dwa egzemplarze albumu „Ikona dziś. Akademia Ikony 2010–2025”",
+      "width": 1600,
+      "height": 1200
+    },
+    "columnImageIndex": 0,
+    "images": [
+      {
+        "src": "/media/news/wernisaz-albumu-ikona-dzis/1.jpg",
+        "alt": "Dwa egzemplarze albumu „Ikona dziś. Akademia Ikony 2010–2025”",
+        "width": 1600,
+        "height": 1200,
+        "caption": "fot. Elżbieta Jackowska-Kurek"
+      },
+      {
+        "src": "/media/news/wernisaz-albumu-ikona-dzis/2.jpg",
+        "alt": "Otwarty album: ikona Przemienienia Pańskiego i ikona Serafina na rozkładówce",
+        "width": 1600,
+        "height": 1200,
+        "caption": "fot. Elżbieta Jackowska-Kurek"
+      },
+      {
+        "src": "/media/news/wernisaz-albumu-ikona-dzis/3.jpg",
+        "alt": "Podpisywanie albumu przy stole podczas wernisażu",
+        "width": 733,
+        "height": 903,
+        "caption": "fot. Beata Cybulska"
+      },
+      {
+        "src": "/media/news/wernisaz-albumu-ikona-dzis/4.jpg",
+        "alt": "Sala w Kościele Środowisk Twórczych pełna gości; na ekranie prezentacja, obok wystawa ikon",
+        "width": 1600,
+        "height": 1200,
+        "caption": "fot. Paweł Rybkowski"
+      },
+      {
+        "src": "/media/news/wernisaz-albumu-ikona-dzis/5.jpg",
+        "alt": "Goście wernisażu słuchają prelekcji; z przodu sali ikony na stojakach",
+        "width": 1459,
+        "height": 1094,
+        "caption": "fot. Paweł Rybkowski"
+      },
+      {
+        "src": "/media/news/wernisaz-albumu-ikona-dzis/6.jpg",
+        "alt": "Rozmowy gości przy albumie po prelekcji",
+        "width": 1600,
+        "height": 1200,
+        "caption": "fot. Beata Cybulska"
+      },
+      {
+        "src": "/media/news/wernisaz-albumu-ikona-dzis/7.jpg",
+        "alt": "Kapłan przegląda album w rozmowie z uczestniczkami wernisażu",
+        "width": 1600,
+        "height": 1200,
+        "caption": "fot. Beata Cybulska"
+      },
+      {
+        "src": "/media/news/wernisaz-albumu-ikona-dzis/8.jpg",
+        "alt": "Rozmowa nad albumem przy wystawie ikon Chrystusa Pantokratora i św. Mikołaja",
+        "width": 534,
+        "height": 444,
+        "caption": "fot. Beata Cybulska"
+      },
+      {
+        "src": "/media/news/wernisaz-albumu-ikona-dzis/9.jpg",
+        "alt": "Goście wernisażu z albumem przy wystawie ikon: Chrystusa Pantokratora, Matki Bożej Niepokalanej, św. Andrzeja, św. Mikołaja i archaniołów",
+        "width": 1600,
+        "height": 1200
+      },
+      {
+        "src": "/media/news/wernisaz-albumu-ikona-dzis/10.jpg",
+        "alt": "Absolwenci i uczestnicy warsztatów pisania ikon przed wystawą ikon",
+        "width": 1600,
+        "height": 1472,
+        "caption": "fot. Paweł Rybkowski"
+      },
+      {
+        "src": "/media/news/wernisaz-albumu-ikona-dzis/11.jpg",
+        "alt": "Strona tytułowa albumu z patronatami honorowymi, organizatorami, partnerem i patronami medialnymi",
+        "width": 1600,
+        "height": 1200,
+        "caption": "fot. Elżbieta Jackowska-Kurek"
+      }
+    ],
+    "related": [
+      {
+        "label": "Album „Ikona dziś. Akademia Ikony 2010–2025”",
+        "href": "/publikacje/ikona-dzis"
+      }
+    ],
+    "bodyText": "9 grudnia 2025 roku w Kościele Środowisk Twórczych przy placu Teatralnym w Warszawie odbył się wernisaż albumu [„Ikona dziś. Akademia Ikony 2010–2025”](/publikacje/ikona-dzis). Album wydany przez Fundację IKONA DZIŚ podsumowuje piętnaście lat Akademii Ikony i dziesięć lat fundacji. Powstał we współpracy z wykładowcami Akademii i uczestnikami warsztatów pisania ikon. ## Premiera albumu Wernisaż otworzyła Elżbieta Jackowska-Kurek, pomysłodawczyni projektu, współzałożycielka i prezes fundacji. W prelekcji mówiła o rozwoju ikonografii i o miejscu ikony w życiu współczesnego człowieka. Potem absolwenci i uczestnicy warsztatów opowiadali o swojej drodze z ikoną. > „Polecamy tę publikację wszystkim, którzy pragną zbliżyć się do ikony: poszukującym jej piękna, zainteresowanym teologią i historią sztuki, wspierającym rozwój kultury sakralnej w Polsce. Mamy nadzieję, że stanie się ona przewodnikiem i inspiracją, świadectwem żywej tradycji, która nieustannie otwiera się na współczesność” — mówiła Elżbieta Jackowska-Kurek. ## Co jest w albumie Album to katalog ikon napisanych w Akademii, teksty wykładowców o teologicznym i duchowym wymiarze ikony oraz wypowiedzi twórców, którzy w pisaniu ikon odnaleźli drogę wiary i powołania artystycznego. Uzupełnia je dokumentacja fotograficzna z warsztatów, plenerów i wystaw. Spis treści, rozkładówki i informacje o zakupie są na [stronie albumu](/publikacje/ikona-dzis). ## Wystawa ikon i kiermasz Wernisażowi towarzyszyła wystawa ikon: Chrystusa Pantokratora, Matki Bożej Niepokalanej, św. Andrzeja i św. Mikołaja oraz archaniołów Gabriela i Michała. O ich symbolice i znaczeniu duchowym opowiedziała kuratorka, Elżbieta Jackowska-Kurek. Uczestnicy warsztatów przygotowali kiermasz świąteczny: małe ikony podróżne na deskach i kamieniach, gwiazdki i bombki. Dochód przeznaczono na fundusz socjalny Fundacji IKONA DZIŚ. ## Wykłady o Mądrości Bożej Wieczór zamknęły dwa wykłady z cyklu [„Mądrość Boża” 2025/2026](/wyklady/archiwum#season-2025-2026): ks. prof. dr hab. Józef Naumowicz — „Chrystus – Mądrość Boża w ikonografii wschodniej” i ks. dr Andrzej Persidok — „Mądrość Boża, głupstwo dla świata. Śmieszność i łaska w literaturze i sztuce”. Relację z wernisażu opublikował też [tygodnik „Idziemy”](https://idziemy.pl/kultura/wernisaz-ksiazki-ikona-dzis-galeria-/91070)."
+  },
+  {
     "slug": "wyjazd-studyjny-sladami-ikon-prof-jerzego-nowosielskiego",
     "title": "Wyjazd studyjny śladami ikon prof. Jerzego Nowosielskiego",
     "date": "2017-07-16",
     "kind": "wyjazd",
     "layout": "galeria",
-    "excerpt": "16 lipca 2017 — wyjazd studyjny uczestników Akademii Ikony: cerkiew św. Jana Klimaka na Woli i kościół Opatrzności Bożej w Wesołej, wśród ikon prof. Jerzego Nowosielskiego.",
+    "excerpt": "16 lipca 2017 — wyjazd studyjny śladami ikon prof. Jerzego Nowosielskiego: cerkiew na Woli i kościół w Wesołej.",
     "images": [
       {
         "src": "/media/news/wyjazd-studyjny-sladami-ikon-prof-jerzego-nowosielskiego/1.jpg",
@@ -2296,7 +2387,6 @@
     "date": "2019-12-15",
     "kind": "wystawa",
     "layout": "galeria",
-    "dateEnd": "2020-01-05",
     "excerpt": "15 grudnia 2019 – 5 stycznia 2020 — wystawa ikon w Galerii Wieży przy ul. KEN 102 (Ursynów); na zaproszenie proboszcza Dariusza Gasa.",
     "venue": "Warszawa",
     "images": [
@@ -2430,8 +2520,7 @@
     "date": "2016-06-17",
     "kind": "wystawa",
     "layout": "galeria",
-    "dateEnd": "2016-07-24",
-    "excerpt": "17 czerwca – 24 lipca 2016 — wystawa doroczna w KŚT; otwarcie i finisaż z oprowadzeniami.",
+    "excerpt": "17 czerwca – 24 lipca 2016 — wystawa doroczna w Kościele Środowisk Twórczych; otwarcie i finisaż z oprowadzeniami.",
     "venue": "Warszawa",
     "images": [
       {
@@ -2479,7 +2568,6 @@
     "date": "2014-07-04",
     "kind": "wystawa",
     "layout": "galeria",
-    "dateEnd": "2014-08-25",
     "excerpt": "4 lipca – 25 sierpnia 2014 — połączona wystawa warsztatów M. Boguckiego i ikon z Akademii Ikony w Bibliotece Miejskiej w Świdnicy.",
     "venue": "Świdnica",
     "images": [
@@ -2497,7 +2585,7 @@
     "title": "Wystawa ikon w Wilnie",
     "date": "2013-09-22",
     "kind": "wystawa",
-    "layout": "tekst",
+    "layout": "galeria",
     "excerpt": "4 października 2013 — otwarcie wystawy „Ikona i jej konteksty” w Domu Kultury Polskiej w Wilnie.",
     "venue": "Wilno",
     "images": [
@@ -2548,12 +2636,11 @@
   },
   {
     "slug": "wystawa-ikona-bozego-narodzenia-kst-2019",
-    "title": "Wystawa ikony Bożego Narodzenia w KŚT, 2019/2020",
+    "title": "Wystawa ikony Bożego Narodzenia w Kościele Środowisk Twórczych, 2019/2020",
     "date": "2019-12-21",
     "kind": "wystawa",
     "layout": "galeria",
-    "dateEnd": "2020-01-06",
-    "excerpt": "21 grudnia 2019 – 6 stycznia 2020 — adwentowo-bożonarodzeniowa ekspozycja ikony Bożego Narodzenia w Kościele Środowisk Twórczych na Placu Teatralnym.",
+    "excerpt": "21 grudnia 2019 – 6 stycznia 2020 — ekspozycja ikony Bożego Narodzenia w Kościele Środowisk Twórczych.",
     "venue": "Warszawa",
     "images": [
       {
@@ -2571,8 +2658,7 @@
     "date": "2019-11-01",
     "kind": "wystawa",
     "layout": "galeria",
-    "dateEnd": "2019-11-30",
-    "excerpt": "1–30 listopada 2019 — comiesięczna wystawa w Kościele Środowisk Twórczych; akcent na świętych obcowanie; wykłady 19 listopada (ks. Marek Wojnarowski, ks. Roman Batorski).",
+    "excerpt": "1–30 listopada 2019 — wystawa w Kościele Środowisk Twórczych; akcent na świętych obcowanie; wykłady 19 listopada.",
     "venue": "Warszawa",
     "images": [
       {
@@ -2589,9 +2675,8 @@
     "title": "Wystawa „Ikona dziś”",
     "date": "2015-06-19",
     "kind": "wystawa",
-    "layout": "tekst",
-    "dateEnd": "2015-07-19",
-    "excerpt": "19 czerwca – 19 lipca 2015 — doroczna wystawa w KŚT; wernisaż podczas Mszy św. z błogosławieństwem ikon.",
+    "layout": "galeria",
+    "excerpt": "19 czerwca – 19 lipca 2015 — doroczna wystawa w Kościele Środowisk Twórczych; wernisaż podczas Mszy św. z błogosławieństwem ikon.",
     "venue": "Warszawa",
     "images": [
       {
@@ -2669,8 +2754,7 @@
     "date": "2018-06-15",
     "kind": "wystawa",
     "layout": "wydarzenie",
-    "dateEnd": "2018-07-22",
-    "excerpt": "15 czerwca – 22 lipca 2018 — doroczna wystawa w KŚT; ponad tysiąc zwiedzających, oprowadzania kuratorskie.",
+    "excerpt": "15 czerwca – 22 lipca 2018 — doroczna wystawa w Kościele Środowisk Twórczych; ponad tysiąc zwiedzających, oprowadzania kuratorskie.",
     "venue": "Warszawa",
     "images": [
       {
@@ -2833,7 +2917,7 @@
     "date": "2017-06-21",
     "kind": "oprowadzanie",
     "layout": "galeria",
-    "excerpt": "Harmonogram oprowadzań kuratorskich po wystawie „Ikona – korzenie i owoce wiary” w KŚT (czerwiec–lipiec 2017); prowadzenie: Elżbieta Jackowska-Kurek.",
+    "excerpt": "Harmonogram oprowadzań kuratorskich po wystawie „Ikona – korzenie i owoce wiary”, czerwiec–lipiec 2017.",
     "images": [
       {
         "src": "/media/news/wystawa-ikona-korzenie-i-owoce-wiary-oprowadzania-kuratorskie/2.jpg",
@@ -2862,8 +2946,7 @@
     "date": "2019-12-01",
     "kind": "wystawa",
     "layout": "galeria",
-    "dateEnd": "2019-12-15",
-    "excerpt": "1–15 grudnia 2019 — adwentowa wystawa w Kościele Środowisk Twórczych; warsztaty otwarte i kiermasz charytatywny; wykłady 10 grudnia (ks. Józef Naumowicz, ks. Łukasz Leonkiewicz).",
+    "excerpt": "1–15 grudnia 2019 — adwentowa wystawa w Kościele Środowisk Twórczych; warsztaty otwarte, kiermasz i wykłady 10 grudnia.",
     "venue": "Warszawa",
     "images": [
       {
@@ -2881,8 +2964,7 @@
     "date": "2019-09-01",
     "kind": "wystawa",
     "layout": "galeria",
-    "dateEnd": "2019-09-20",
-    "excerpt": "1–20 września 2019 — wystawa ikon w Kościele Środowisk Twórczych na Placu Teatralnym; gościnnie ikona Pantokratora Ireny Obuchowej; początek comiesięcznego cyklu wystaw.",
+    "excerpt": "1–20 września 2019 — wystawa ikon w Kościele Środowisk Twórczych; gościnnie ikona Pantokratora Ireny Obuchowej.",
     "venue": "Warszawa",
     "images": [
       {
@@ -2892,7 +2974,7 @@
         "height": 932
       }
     ],
-    "bodyText": "Od 1 do 20 września 2019 ikony Elżbiety Jackowskiej-Kurek i jej uczniów prezentowaliśmy w Kościele Środowisk Twórczych pw. św. Andrzeja Apostoła i św. Alberta Chmielowskiego w Warszawie (Plac Teatralny 20) pod tytułem „Ikona – okno ku wieczności”. Wśród prac gościnnie pokazaliśmy ikonę Pantokratora Ireny Obuchowej. Ekspozycja zapoczątkowała comiesięczny cykl wystaw w kościele, w którym modlimy się, pracujemy i uczymy się ikonografii. W sezonie wykładów 2019/2020, towarzyszących warsztatom od października do czerwca, temat przewodni brzmiał „Ikona – korzenie i owoce wiary”; w tym roku rozważaliśmy „O Duchu Świętym” ([program wykładów](/aktualnosci/wyklady-2019-2020)). Wcześniejsza edycja tego tytułu w KŚT: [wiosna 2014](/aktualnosci/ikona-okno-ku-wiecznosci)."
+    "bodyText": "Od 1 do 20 września 2019 ikony Elżbiety Jackowskiej-Kurek i jej uczniów prezentowaliśmy w Kościele Środowisk Twórczych pw. św. Andrzeja Apostoła i św. Alberta Chmielowskiego w Warszawie (Plac Teatralny 20) pod tytułem „Ikona – okno ku wieczności”. Wśród prac gościnnie pokazaliśmy ikonę Pantokratora Ireny Obuchowej. Ekspozycja zapoczątkowała comiesięczny cykl wystaw w kościele, w którym modlimy się, pracujemy i uczymy się ikonografii. W sezonie wykładów 2019/2020, towarzyszących warsztatom od października do czerwca, temat przewodni brzmiał „Ikona – korzenie i owoce wiary”; w tym roku rozważaliśmy „O Duchu Świętym” ([program wykładów](/aktualnosci/wyklady-2019-2020)). Wcześniejsza edycja tego tytułu w Kościele Środowisk Twórczych: [wiosna 2014](/aktualnosci/ikona-okno-ku-wiecznosci)."
   },
   {
     "slug": "wystawa-ikona-piekno-zanurzone-w-tajemnicy",
@@ -2900,7 +2982,6 @@
     "date": "2015-12-13",
     "kind": "wystawa",
     "layout": "galeria",
-    "dateEnd": "2016-01-16",
     "excerpt": "13 grudnia 2015 – 16 stycznia 2016 — wystawa w plebanii św. Elżbiety w Powsinie; ikony EJK i goście z Polski i Litwy.",
     "venue": "Powsin",
     "images": [
@@ -3043,23 +3124,47 @@
   },
   {
     "slug": "wystawa-madrosc-boza-2026",
-    "title": "Wystawa „Mądrość Boża” 2026",
+    "title": "Wernisaż wystawy „Mądrość Boża” 2026",
     "date": "2026-06-13",
     "kind": "wystawa",
     "layout": "wydarzenie",
-    "dateEnd": "2026-08-31",
-    "excerpt": "[do uzupełnienia: relacja z wernisażu wystawy dorocznej 2026]",
+    "excerpt": "Tegoroczne ikony Akademii — fotorelacja z wernisażu.",
     "venue": "Warszawa",
-    "bodyText": "[do uzupełnienia: relacja z wernisażu wystawy dorocznej „Mądrość Boża”.]"
+    "images": [
+      {
+        "src": "/media/news/wystawa-madrosc-boza-2026/1.jpg",
+        "alt": "Prowadząca wernisaż z mikrofonem przed wystawą ikon",
+        "width": 1359,
+        "height": 1600
+      },
+      {
+        "src": "/media/news/wystawa-madrosc-boza-2026/2.jpg",
+        "alt": "Prowadząca wernisaż przemawia do gości; w tle ikony na stojakach",
+        "width": 1600,
+        "height": 1088
+      },
+      {
+        "src": "/media/news/wystawa-madrosc-boza-2026/3.jpg",
+        "alt": "Goście wernisażu w sali wystawowej pod żyrandolem",
+        "width": 1106,
+        "height": 1600
+      },
+      {
+        "src": "/media/news/wystawa-madrosc-boza-2026/4.jpg",
+        "alt": "Autorzy ikon z rodzinami i gośćmi przed wystawą",
+        "width": 1600,
+        "height": 1234
+      }
+    ],
+    "bodyText": "Wystawa „Mądrość Boża” zgromadziła w Kościele Środowisk Twórczych ikony z tegorocznych prac Akademii. W fotorelacji z wernisażu: wystąpienie prowadzącej, goście i autorzy ikon."
   },
   {
     "slug": "wystawa-piekno-boga-piekno-czlowieka-2025",
-    "title": "Wystawa „Piękno Boga, piękno człowieka” 2025",
+    "title": "Wernisaż wystawy „Piękno Boga, piękno człowieka” 2025",
     "date": "2025-06-13",
     "kind": "wystawa",
     "layout": "wydarzenie",
-    "dateEnd": "2025-08-31",
-    "excerpt": "[do uzupełnienia: relacja z wernisażu wystawy dorocznej 2025]",
+    "excerpt": "Spotkanie z autorami ikon i wykład — fotorelacja z wernisażu.",
     "venue": "Warszawa",
     "images": [
       {
@@ -3080,9 +3185,45 @@
         "alt": "[do uzupełnienia: podpis zdjęcia]",
         "width": 1536,
         "height": 2048
+      },
+      {
+        "src": "/media/news/wystawa-piekno-boga-piekno-czlowieka-2025/4.jpg",
+        "alt": "Ikony na sztalugach, w głębi krzyż i drewniana szafka z ikoną",
+        "width": 1600,
+        "height": 1200
+      },
+      {
+        "src": "/media/news/wystawa-piekno-boga-piekno-czlowieka-2025/5.jpg",
+        "alt": "Wystawa ikon w sali Kościoła Środowisk Twórczych",
+        "width": 1600,
+        "height": 1200
+      },
+      {
+        "src": "/media/news/wystawa-piekno-boga-piekno-czlowieka-2025/6.jpg",
+        "alt": "Wystawa ikon w sali Kościoła Środowisk Twórczych, widok z drugiej strony",
+        "width": 1600,
+        "height": 1200
+      },
+      {
+        "src": "/media/news/wystawa-piekno-boga-piekno-czlowieka-2025/7.jpg",
+        "alt": "Autorzy ikon i goście wernisażu przed wystawą",
+        "width": 1600,
+        "height": 1200
+      },
+      {
+        "src": "/media/news/wystawa-piekno-boga-piekno-czlowieka-2025/8.jpg",
+        "alt": "Goście wernisażu w sali wystawowej",
+        "width": 1600,
+        "height": 1200
+      },
+      {
+        "src": "/media/news/wystawa-piekno-boga-piekno-czlowieka-2025/9.jpg",
+        "alt": "Prelegent przy stole przed wystawą ikon i słuchacze",
+        "width": 1600,
+        "height": 1200
       }
     ],
-    "bodyText": "[do uzupełnienia: relacja z wernisażu wystawy dorocznej „Piękno Boga, piękno człowieka”.]"
+    "bodyText": "Doroczna wystawa „Piękno Boga, piękno człowieka” otwarta została w Kościele Środowisk Twórczych spotkaniem z autorami ikon i wykładem. Zobacz, jak wyglądał wernisaż."
   },
   {
     "slug": "wystawa-praga-del-arte-2019",
@@ -3090,8 +3231,7 @@
     "date": "2019-08-01",
     "kind": "wystawa",
     "layout": "galeria",
-    "dateEnd": "2019-08-31",
-    "excerpt": "1–31 sierpnia 2019 — wystawa ikon Elżbiety Jackowskiej-Kurek w autorskiej galerii Jacka Szmidta przy ul. Brzeskiej 20; wernisaż z opowieścią o ikonach.",
+    "excerpt": "1–31 sierpnia 2019 — wystawa ikon Elżbiety Jackowskiej-Kurek w galerii Jacka Szmidta przy ul. Brzeskiej 20.",
     "venue": "Warszawa",
     "images": [
       {
@@ -3102,6 +3242,60 @@
       }
     ],
     "bodyText": "Od 1 do 31 sierpnia 2019 w autorskiej galerii artysty Jacka Szmidta „Praga del ARTE” przy ul. Brzeskiej 20 w Warszawie pokazywaliśmy ikony Elżbiety Jackowskiej-Kurek. Wystawa odbyła się na zaproszenie gospodarza galerii. Na wernisażu Elżbieta Jackowska-Kurek opowiadała o ikonach. Na zdjęciu obok ikon widać także obrazy Jacka Szmidta oraz prace rzeźbiarskie Mariana Korczyka."
+  },
+  {
+    "slug": "wystawa-przyjazn-z-bogiem-2024",
+    "title": "Wernisaż wystawy „Przyjaźń z Bogiem” 2024",
+    "date": "2024-06-14",
+    "kind": "wystawa",
+    "layout": "wydarzenie",
+    "excerpt": "Autorzy ikon i goście na wernisażu wystawy.",
+    "venue": "Warszawa",
+    "images": [
+      {
+        "src": "/media/news/wystawa-przyjazn-z-bogiem-2024/1.jpg",
+        "alt": "Goście wernisażu słuchają prelekcji przed wystawą ikon",
+        "width": 1600,
+        "height": 1200
+      },
+      {
+        "src": "/media/news/wystawa-przyjazn-z-bogiem-2024/2.jpg",
+        "alt": "Autorki ikon przed wystawą po wernisażu",
+        "width": 1600,
+        "height": 1200
+      },
+      {
+        "src": "/media/news/wystawa-przyjazn-z-bogiem-2024/3.jpg",
+        "alt": "Ikony na sztalugach, wśród nich ikona Matki Bożej i Przemienienia",
+        "width": 1600,
+        "height": 1200
+      },
+      {
+        "src": "/media/news/wystawa-przyjazn-z-bogiem-2024/4.jpg",
+        "alt": "Goście wernisażu rozmawiają w sali wystawowej",
+        "width": 1600,
+        "height": 900
+      },
+      {
+        "src": "/media/news/wystawa-przyjazn-z-bogiem-2024/5.jpg",
+        "alt": "Ikony na sztalugach w sali wystawowej",
+        "width": 1600,
+        "height": 1200
+      },
+      {
+        "src": "/media/news/wystawa-przyjazn-z-bogiem-2024/6.jpg",
+        "alt": "Ikony na sztalugach: Matka Boża, Chrystus, krzyż",
+        "width": 1600,
+        "height": 1200
+      },
+      {
+        "src": "/media/news/wystawa-przyjazn-z-bogiem-2024/7.jpg",
+        "alt": "Sala wernisażu z publicznością i ikonami w tle",
+        "width": 1600,
+        "height": 900
+      }
+    ],
+    "bodyText": "Podczas wernisażu wystawy „Przyjaźń z Bogiem” w Kościele Środowisk Twórczych autorki i autorzy zaprezentowali swoje ikony, a goście wysłuchali prelekcji. Poniżej zdjęcia z tego wieczoru."
   },
   {
     "slug": "wystawa-w-kosciele-pw-sw-andrzeja-apostola",
@@ -3162,5 +3356,65 @@
       }
     ],
     "bodyText": "W sobotę 30 listopada 2013, w święto św. Andrzeja Apostoła — patrona Studium Ikonograficznego św. Andrzeja Apostoła — zaproszono nas z wystawą ikon do kościoła pw. św. Andrzeja Apostoła w Warszawie przy ul. Chłodnej 9. Po Mszy św. o godz. 18.00 odbyło się otwarcie wystawy, koncert Chóru Międzyuczelnianego, a od parafian — piernikowe serce dla każdego. Poniżej zdjęcia z wystawy."
+  },
+  {
+    "slug": "wystawa-widziec-niewidzialnego-2023",
+    "title": "Wernisaż wystawy „Widzieć niewidzialnego” 2023",
+    "date": "2023-06-17",
+    "kind": "wystawa",
+    "layout": "wydarzenie",
+    "excerpt": "Ikony z dorocznej wystawy — zdjęcia z wernisażu.",
+    "venue": "Warszawa",
+    "images": [
+      {
+        "src": "/media/news/wystawa-widziec-niewidzialnego-2023/1.jpg",
+        "alt": "Prowadząca wernisaż z mikrofonem przed ikonami na sztalugach",
+        "width": 1200,
+        "height": 1600
+      },
+      {
+        "src": "/media/news/wystawa-widziec-niewidzialnego-2023/2.jpg",
+        "alt": "Prowadząca wernisaż przemawia przed wystawą ikon",
+        "width": 1200,
+        "height": 1600
+      },
+      {
+        "src": "/media/news/wystawa-widziec-niewidzialnego-2023/3.jpg",
+        "alt": "Ikony na sztalugach w sali wystawowej",
+        "width": 1600,
+        "height": 1200
+      },
+      {
+        "src": "/media/news/wystawa-widziec-niewidzialnego-2023/4.jpg",
+        "alt": "Ikony na sztalugach; na ścianie rzeźbiona figura anioła",
+        "width": 1200,
+        "height": 1600
+      },
+      {
+        "src": "/media/news/wystawa-widziec-niewidzialnego-2023/5.jpg",
+        "alt": "Ikony na sztalugach w sali wystawowej",
+        "width": 600,
+        "height": 450
+      },
+      {
+        "src": "/media/news/wystawa-widziec-niewidzialnego-2023/6.jpg",
+        "alt": "Prelegentka z mikrofonem przy ikonie Ukrzyżowania",
+        "width": 1600,
+        "height": 901
+      },
+      {
+        "src": "/media/news/wystawa-widziec-niewidzialnego-2023/7.jpg",
+        "alt": "Kapłan przemawia podczas wernisażu; obok prowadząca",
+        "width": 1600,
+        "height": 901
+      },
+      {
+        "src": "/media/news/wystawa-widziec-niewidzialnego-2023/8.jpg",
+        "alt": "Ikony na sztalugach w sali wystawowej",
+        "width": 1200,
+        "height": 1600
+      }
+    ],
+    "bodyText": "Ikony pisane w ciągu roku w Akademii Ikony stanęły na sztalugach w Kościele Środowisk Twórczych w Warszawie. Zapraszamy do obejrzenia fotorelacji z wernisażu wystawy „Widzieć niewidzialnego”."
   }
 ]

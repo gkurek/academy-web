@@ -16,7 +16,6 @@ type WorkshopHubCard = {
   excerpt: string;
   bullets: string[];
   ctaLabel: string;
-  ctaVariant: "primary" | "secondary";
   image?: Image;
 };
 

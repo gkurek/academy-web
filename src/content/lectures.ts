@@ -16,7 +16,7 @@ import season20242025Data from "../../content/lectures/2024-2025.json";
 import season20252026Data from "../../content/lectures/2025-2026.json";
 import currentSeasonData from "../../content/lectures/2026-2027.json";
 import { formatLecturerDisplayName, getLecturerProfileHref, resolveLecturer } from "@/content/lecturers";
-import type { Lecture, LectureSeason } from "@/content/types";
+import type { Image, Lecture, LectureSeason } from "@/content/types";
 import { assertLecturerPairing } from "@/content/validate";
 import { formatDateRange } from "@/lib/formatDateRange";
 
@@ -67,6 +67,8 @@ type ArchiveMeta = {
   hubIntro: string;
   firstSeason: string;
   lastSeason: string;
+  /** Photos for the lightbox gallery linked from the archive page. */
+  photos: Image[];
 };
 
 /** e.g. `2026-10-06` → `6 października` (genitive month from `Intl`). */
@@ -208,6 +210,10 @@ function fillArchivePlaceholders(text: string): string {
 
 export function getArchiveIntro(): string {
   return fillArchivePlaceholders(getArchiveMeta().intro);
+}
+
+export function getArchiveGalleryPhotos(): Image[] {
+  return getArchiveMeta().photos;
 }
 
 export function getHubArchiveIntro(): string {

@@ -1,11 +1,10 @@
 "use client";
 
 import Image from "next/image";
-import { useCallback, useId, useRef, useState, type RefObject } from "react";
+import { useCallback, useRef, useState, type RefObject } from "react";
 
 import { GalleryTileHoverOverlay } from "@/components/gallery/galleryJustifiedShared";
 import { useLightbox } from "@/components/lightbox/LightboxProvider";
-import type { NewsLayout } from "@/content/types";
 import type { Image as ContentImage } from "@/content/types";
 import { pl } from "@/i18n/pl";
 
@@ -13,8 +12,6 @@ const GALLERY_VISIBLE_CAP = 12;
 
 export interface NewsGalleryProps {
   images: ContentImage[];
-  layout: NewsLayout;
-  showHeading?: boolean;
   /** Index hidden in gallery from ≥ 1024px (same image may show in column via `columnImageIndex`). */
   hideOnDesktopIndex?: number;
 }
@@ -129,11 +126,8 @@ function visibleCountForBreakpoint(
 
 export function NewsGallery({
   images,
-  layout,
-  showHeading = false,
   hideOnDesktopIndex,
 }: NewsGalleryProps) {
-  const headingId = useId();
   const { openPhoto } = useLightbox();
   const [showAll, setShowAll] = useState(false);
   const expandFocusRef = useRef<HTMLButtonElement>(null);
@@ -152,8 +146,6 @@ export function NewsGallery({
     return null;
   }
 
-  const columnModifier =
-    layout === "tekst" ? "news-gallery--cols-3" : "news-gallery--cols-4";
   const total = images.length;
 
   const mobileVisible = visibleCountForBreakpoint(total, showAll, hideOnDesktopIndex, false);
@@ -178,22 +170,13 @@ export function NewsGallery({
     "news-gallery-list",
     `news-gallery-list--mobile-${mobileLayout}`,
     `news-gallery-list--lg-${lgLayout}`,
-    mobileLayout === "grid" ? columnModifier : "",
-    lgLayout === "grid" ? `${columnModifier} news-gallery-list--lg-grid-cols` : "",
+    lgLayout === "grid" ? "news-gallery-list--lg-grid-cols" : "",
   ]
     .filter(Boolean)
     .join(" ");
 
   return (
-    <section
-      className="news-gallery"
-      aria-labelledby={showHeading ? headingId : undefined}
-    >
-      {showHeading ? (
-        <h2 id={headingId} className="news-gallery-heading">
-          {pl.news.galleryHeading}
-        </h2>
-      ) : null}
+    <section className="news-gallery">
       <ul className={listClassName}>
         {images.map((photo, index) => {
           if (index > lastIndex) {
