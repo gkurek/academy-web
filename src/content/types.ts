@@ -130,7 +130,7 @@ export type NewsKind =
   | "wyjazd"
   | "spotkanie";
 
-export type NewsLayout = "wydarzenie" | "galeria" | "tekst" | "program";
+export type NewsLayout = "wydarzenie" | "galeria" | "program";
 
 export type NewsFact = {
   label: string;
@@ -319,7 +319,7 @@ export type AboutPageData = TextPageData & {
   };
 };
 
-// K-82…K-84, K-127: daily permanent display + annual exhibitions in KŚT.
+// K-82…K-84, K-127: daily permanent display + annual exhibitions in Kościół Środowisk Twórczych.
 export type ExhibitionTravelingPlace = {
   place: string;
   newsSlug?: string;
@@ -416,7 +416,6 @@ export type SiteSettings = {
   /** `role` picks the address for a purpose (enrollment mailtos vs. secretariat) — never match on `label`. */
   emails: { role: "enrollment" | "secretariat"; label: string; address: string; contactName?: string }[];
   phone: string;
-  mapEmbedUrl: string;
   blogUrl: string;
   ecosystem: {
     foundationUrl: string;

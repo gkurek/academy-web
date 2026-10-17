@@ -48,8 +48,9 @@ type LecturersPageMeta = {
   intro: string;
 };
 
+/** Profiles with a photo first; stable sort keeps the content/lecturers.json order within each group. */
 export function getLecturers(): Lecturer[] {
-  return lecturers;
+  return [...lecturers].sort((a, b) => Number(!a.photo) - Number(!b.photo));
 }
 
 /** Profile (bio page) of a lecturer, when they have one. */

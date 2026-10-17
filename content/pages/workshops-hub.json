@@ -9,7 +9,6 @@
         "Zapisy mailem, potem krótka rozmowa"
       ],
       "ctaLabel": "Program i zapisy",
-      "ctaVariant": "primary",
       "image": {
         "src": "/media/home/pracownia.jpg",
         "alt": "Praca nad ikoną",
@@ -24,8 +23,7 @@
         "W różnych miejscach, nocleg i wyżywienie w cenie",
         "Zapisy mailem, udział ustalamy w rozmowie"
       ],
-      "ctaLabel": "Program i zapisy",
-      "ctaVariant": "secondary"
+      "ctaLabel": "Program i zapisy"
     }
   }
 }

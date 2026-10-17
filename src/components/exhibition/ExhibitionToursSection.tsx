@@ -31,7 +31,7 @@ export function ExhibitionToursSection({ mailtoHref }: ExhibitionToursSectionPro
         </div>
         <Button
           href={mailtoHref}
-          variant="secondary"
+          variant="primary"
           block
           size="lg"
           className="exhibition-tours-pass__cta md:inline-block"

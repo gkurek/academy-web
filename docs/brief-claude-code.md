@@ -168,7 +168,7 @@ type News = {
   date: string;
   dateEnd?: string;
   kind: NewsKind;
-  layout: 'wydarzenie' | 'galeria' | 'tekst' | 'program';  // układ szablonu wpisu (K-129)
+  layout: 'wydarzenie' | 'galeria' | 'program';  // układ szablonu wpisu (K-129; 'tekst' scalony z 'galeria' — K-153)
   excerpt?: string;
   body: string;
   cover?: Image;
@@ -268,7 +268,7 @@ type Testimonial = { quote: string; author: string; role?: string };
 type SiteSettings = {
   orgName: string; place: string; address: string;
   emails: { label: string; address: string; contactName?: string }[];
-  phone: string; mapEmbedUrl: string; blogUrl: string;
+  phone: string; blogUrl: string;
   ecosystem: {
     foundationUrl: string;
     personalSiteUrl?: string;   // uzupełnić po starcie strony autorskiej EJK — puste teraz
@@ -365,7 +365,7 @@ Szacunek ręcznej korekty po migracji: ~10 stron statycznych, 16 sezonów wykła
 - Galeria: dwie sztywne sekcje (ikony Elżbiety Jackowskiej-Kurek → ikony uczniów), filtr **tematu** przez query string (`?temat=<slug-tagu>`), bez filtra autora; lightbox. W siatce — sam tytuł; w lightboxie — pełny autor, wymiary i technika (`IconWork`). Lista nazwisk uczniów w sekcji uczniów, generowana z danych.
 - Aktualności: jeden strumień wpisów z etykietą typu (`kind`), jedna chronologiczna lista z nawigacją po latach (K-70), wpis pojedynczy; bez filtrów kategorii w v1 (K-50, K-52).
 - Publikacje (K-76): `/publikacje` — sekcja albumu + lista artykułów; podstrona albumu z blokiem metryczki/zakupu (`dostepny` / `wyczerpany`, wzorowany na `FactsBox`), zakup przez `mailto:` na sekretariat i na wykładach w KŚT; artykuły ze blokiem źródła (album / media / tylko zajawka + link); linki spis treści ↔ artykuł (`toc[].articleSlug`). Terminologia UI: **album**, nie „książka” ani „katalog”.
-- Kontakt: `SectionNav` Kontakt · Polityka prywatności; adres, **osadzona** mapa (nie surowy link; `MapBlock` + `SiteSettings.mapEmbedUrl`), dwa maile z opisem, telefon, info o wejściu od strony zakrystii (treść redakcyjna w MDX), blok „Akademia w sieci” w `OnlineAside` / `MapBlock`.
+- Kontakt: `SectionNav` Kontakt · Polityka prywatności; adres, zdjęcie fasady kościoła z podpisem licencyjnym (`ContactPhoto`; mapa Google usunięta 2026-10-17), dwa maile z opisem, telefon, info o wejściu od strony zakrystii (treść redakcyjna w MDX), blok „Akademia w sieci” w `OnlineAside`.
 - Mobile-first, WCAG AA (kontrast, fokus, alt), `prefers-reduced-motion`.
 - SEO: metadata + Open Graph per strona, sitemap, 301 ze starych URL.
 - JSON-LD: `Organization` (z `parentOrganization` → Fundacja), `Person` (EJK, z `sameAs`), `Event` (wykłady bieżącego sezonu), `Course` (kurs, plener).
@@ -421,7 +421,7 @@ Telefon jako `tel:+48601734705`.
 
 - Nazwa: AKADEMIA IKONY – Studium Ikonograficzne św. Andrzeja Apostoła. Założona 2010, w KŚT od 2012.
 - Miejsce: Kościół Środowisk Twórczych pw. św. Andrzeja Apostoła i św. Brata Alberta Chmielowskiego, Plac Teatralny, Warszawa. Rektor: ks. Grzegorz Michalczyk. Przestrzeń bez barier architektonicznych.
-- Mapa Google (embed, `SiteSettings.mapEmbedUrl`): `https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2442.9544621239593!2d21.00606051625467!3d52.24421077976289!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x471eccf307a4ec4f%3A0x8f7c429c0465b439!2zS2_Fm2Npw7PFgiBwdy4gxZt3LiBCcmF0YSBBbGJlcnRhIGkgxZt3LiBBbmRyemVqYSBBcG9zdG_FgmE!5e0!3m2!1spl!2spl!4v1506790619997` (kościół pw. św. Brata Alberta i św. Andrzeja Apostoła — ze strony kontaktowej WP).
+- Zdjęcie na /kontakt: Adrian Grycuk, Wikimedia Commons, CC BY-SA 3.0 PL — `public/media/contact/kosciol-srodowisk-tworczych.jpg`, podpis w `pl.contact.photo` (mapa Google usunięta 2026-10-17).
 - Organizator: fundacja IKONA DZIŚ, www.ikonadzis.org.
 - Kontakt ogólny/warsztaty/ikony: `akademiaikony@gmail.com`, tel. `601 734 705` (Elżbieta Jackowska-Kurek).
 - Wykłady/sekretariat: `sekretariat.ikony22@gmail.com` (Maurycy Lubak).

@@ -1,7 +1,6 @@
 import { useId } from "react";
 
 import { Button } from "@/components/core/Button";
-import { TextLink } from "@/components/core/TextLink";
 import type { EnrollmentState } from "@/content/enrollment";
 import { getOfferDateValues } from "@/content/offers";
 import { getPhoneHref, getSiteSettings } from "@/content/settings";
@@ -124,20 +123,6 @@ export function FactsBox({ facts, kind, enrollment }: FactsBoxProps) {
             </dd>
           </div>
         ))}
-        {kind === "wyklady" ? (
-          <>
-            <div>
-              <dt className="text-size-caption text-text-tertiary">{factsBox.recordingsRowLabel}</dt>
-              <dd className="mt-offer-facts-dd-mt pb-space-6 text-text-body">{factsBox.recordingsValue}</dd>
-            </div>
-            <div>
-              <dt className="text-size-caption text-text-tertiary">{factsBox.publicationsRowLabel}</dt>
-              <dd className="mt-offer-facts-dd-mt pb-space-6 text-text-body">
-                <TextLink standalone href="/publikacje">{factsBox.publicationsLink}</TextLink>
-              </dd>
-            </div>
-          </>
-        ) : null}
       </dl>
 
       <div className="space-y-space-3">

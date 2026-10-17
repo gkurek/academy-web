@@ -1,7 +1,7 @@
 import { OfferCard } from "@/components/content/OfferCard";
 import { SectionPageShell } from "@/components/layout/SectionPageShell";
 import { OfferQuoteGrid } from "@/components/offers/OfferQuoteGrid";
-import { getUpcomingOfferFacts, type LoadedOffer } from "@/content/offers";
+import { getEnrollmentState, getUpcomingOfferFacts, type LoadedOffer } from "@/content/offers";
 import { getWorkshopCardEyebrow, getWorkshopsHub } from "@/content/workshops-hub";
 import type { Testimonial } from "@/content/types";
 import { pl } from "@/i18n/pl";
@@ -32,7 +32,8 @@ function WorkshopOfferCard({ offer }: { offer: LoadedOffer }) {
       bullets={card.bullets}
       href={`/warsztaty/${offer.slug}`}
       ctaLabel={card.ctaLabel}
-      ctaVariant={card.ctaVariant}
+      // Same enrollment state as the offer FactsBox: gold only while enrollment is open.
+      ctaVariant={getEnrollmentState(offer) === "open" ? "primary" : "secondary"}
       image={card.image}
     />
   );

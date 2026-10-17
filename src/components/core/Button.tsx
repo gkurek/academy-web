@@ -1,3 +1,4 @@
+import Link from "next/link";
 import type { MouseEventHandler, ReactNode } from "react";
 
 export interface ButtonProps {
@@ -37,20 +38,31 @@ export function Button({
   onClick,
   className,
 }: ButtonProps) {
+  const classes = [
+    "rounded-none border text-center cursor-pointer box-border",
+    block ? "block" : "inline-block",
+    sizeClasses[size],
+    variantClasses[variant],
+    className,
+  ]
+    .filter(Boolean)
+    .join(" ");
+
+  // Internal routes go through next/link (client navigation + prefetch); mailto:/tel: stay plain anchors.
+  if (!disabled && href.startsWith("/")) {
+    return (
+      <Link href={href} onClick={onClick} className={classes}>
+        {children}
+      </Link>
+    );
+  }
+
   return (
     <a
       href={disabled ? undefined : href}
       onClick={disabled ? undefined : onClick}
       aria-disabled={disabled || undefined}
-      className={[
-        "rounded-none border text-center cursor-pointer box-border",
-        block ? "block" : "inline-block",
-        sizeClasses[size],
-        variantClasses[variant],
-        className,
-      ]
-        .filter(Boolean)
-        .join(" ")}
+      className={classes}
     >
       {children}
     </a>

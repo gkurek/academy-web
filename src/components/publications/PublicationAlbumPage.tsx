@@ -64,13 +64,7 @@ export function PublicationAlbumPage({ publication, path }: PublicationAlbumPage
           </div>
         </section>
 
-        <section className="publication-spreads-section" aria-labelledby="publication-spreads-heading">
-          <PageHeading level="section" id="publication-spreads-heading" className="mb-heading-gap">
-            {pl.publications.spreadsHeading}
-          </PageHeading>
-          <PublicationSpreadStrip spreads={publication.spreads} columns={3} />
-        </section>
-
+        {/* About before spreads: on mobile the spreads run ~2200px and buried the description. */}
         <section className="publication-about-section" aria-labelledby="publication-about-heading">
           <PageHeading level="section" id="publication-about-heading" className="mb-heading-gap">
             {pl.publications.aboutHeading}
@@ -82,12 +76,19 @@ export function PublicationAlbumPage({ publication, path }: PublicationAlbumPage
           </Prose>
         </section>
 
-        <PublicationTocList chapters={publication.chapters} items={publication.toc} />
+        <section className="publication-spreads-section" aria-labelledby="publication-spreads-heading">
+          <PageHeading level="section" id="publication-spreads-heading" className="mb-heading-gap">
+            {pl.publications.spreadsHeading}
+          </PageHeading>
+          <PublicationSpreadStrip spreads={publication.spreads} columns={3} />
+        </section>
+
+        <PublicationTocList chapters={publication.chapters} items={publication.toc} layout="featured" />
 
         {relatedNews ? (
           <section className="publication-related-section" aria-labelledby="publication-related-heading">
             <PageHeading level="section" id="publication-related-heading" className="mb-heading-gap">
-              {pl.publications.seeAlsoHeading}
+              {pl.publications.relatedNewsHeading}
             </PageHeading>
             <NewsCard entry={relatedNews} />
           </section>

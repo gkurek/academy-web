@@ -2,7 +2,7 @@ import type { MDXComponents } from "mdx/types";
 import type { ComponentType } from "react";
 
 import { TextLink } from "@/components/core/TextLink";
-import { MapBlock } from "@/components/contact/MapBlock";
+import { ContactPhoto } from "@/components/contact/ContactPhoto";
 import { MdxLink } from "@/components/content/MdxLink";
 import { OnlineAside } from "@/components/contact/OnlineAside";
 import { SectionPageShell } from "@/components/layout/SectionPageShell";
@@ -52,7 +52,7 @@ export function ContactPage({ path, title, Content }: ContactPageProps) {
         </div>
 
         <div id="dojazd" className="contact-page-map scroll-mt-space-6">
-          <MapBlock embedSrc={settings.mapEmbedUrl} />
+          <ContactPhoto />
         </div>
 
         <div className="contact-page-address">

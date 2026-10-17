@@ -250,21 +250,22 @@
   --news-card-y-m: 22px;
   --news-article-nav-gap: 24px;
 
-  /* News article prose — design/README-wpis-aktualnosci §2 (E1). */
-  --text-prose: #e6dac7;
+  /* News article prose — design/README-wpis-aktualnosci §2 (E1).
+     Colours toned down to the offer-page text colours (k8): #e6dac7 / bone-300
+     glared on the dark page; Garamond stays. */
   --prose-font: var(--font-serif);
   --prose-weight: 400;
   --prose-size: 20px;
   --prose-size-m: 19px;
   --prose-leading: 1.6;
-  --prose-color: var(--text-prose);
+  --prose-color: var(--text-secondary);
   --prose-gap: 40px;
   --prose-gap-m: 38px;
   --prose-measure: 600px;
   --prose-lead-size: 24px;
   --prose-lead-size-m: 21px;
   --prose-lead-leading: 1.42;
-  --prose-lead-color: var(--bone-300);
+  --prose-lead-color: var(--text-body);
   --prose-h2-size: 28px;
   --prose-h2-size-m: 24px;
   --prose-h2-before: 16px;
@@ -380,7 +381,7 @@
   --interview-signature-mt: var(--space-6);
   --interview-signature-mt-m: var(--space-5);
 
-  /* /kontakt — MapBlock embed (mockup 2a-kontakt, MapBlock.jsx). */
+  /* /kontakt — formerly MapBlock embed height; the church photo now keeps its own aspect (mockup 2a-kontakt). */
   --contact-map-h: 420px;
   --contact-map-h-m: 320px;
   --contact-email-label-mb: 8px;

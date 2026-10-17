@@ -39,7 +39,7 @@ export function LearningForms({ rows, contact }: LearningFormsProps) {
       </p>
 
       <div className="learning-forms-contact">
-        <Button href={mailtoHref} variant="secondary" size="lg" className="learning-forms-mailto">
+        <Button href={mailtoHref} variant="primary" size="lg" className="learning-forms-mailto">
           {pl.workshop.contactMailtoLabel}
         </Button>
       </div>

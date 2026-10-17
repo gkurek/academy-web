@@ -18,6 +18,7 @@ Przy konflikcie: `CLAUDE.md` > plan etapu > `brief-claude-code.md` > `brief-full
 - Stylowanie: Tailwind. Tokeny z `design/README` jako zmienne w `globals.css` (`@theme` / CSS variables), używane przez klasy Tailwind. Bez wartości arbitralnych (`text-[13px]`, `bg-[#…]`) – jeśli brakuje tokenu, zgłoś.
 - Menedżer pakietów: npm. Node: wersja 22.20.0
 - Komendy: `npm run dev`, `npm run build`, `npm run lint`. Skrypty w `scripts/` uruchamiane przez `tsx`.
+- Podmiana obrazu pod tą samą ścieżką (np. `public/media/...`): dev server serwuje starą wersję z cache `next/image`. Wyczyść `.next/dev/cache/images` (nie `.next/cache/images` — to nie ten katalog), potem sprawdź `curl -H "Accept: image/webp,*/*" "http://localhost:3000/_next/image?url=<ścieżka>&w=640&q=75"` — ma być `X-Nextjs-Cache: MISS` i nowe wymiary; na końcu twarde odświeżenie (Ctrl+Shift+R). Nie mów „odświeżone”, dopóki tego nie zweryfikujesz.
 - Nie instaluj nowych zależności bez pytania – zaproponuj w meldunku z uzasadnieniem.
 
 ## Konwencje kodu

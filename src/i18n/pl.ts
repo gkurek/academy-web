@@ -138,10 +138,6 @@ const plSource = {
       firstMeeting: "Pierwsze spotkanie",
     },
     phoneOr: "lub {phone}",
-    recordingsRowLabel: "Nagrania",
-    recordingsValue: "Roczny dostęp po zakończeniu sezonu",
-    publicationsRowLabel: "Publikacje",
-    publicationsLink: "Album i artykuły Akademii",
     ctaByKind: {
       kurs: {
         open: {
@@ -174,7 +170,7 @@ const plSource = {
         closed: {
           mailtoLabel: "Powiadom mnie o zapisach",
           mailtoSubject: "Powiadomienie o zapisach – wykłady",
-          note: "Zapisy zamknięte — zapraszamy w kolejnym sezonie",
+          note: "Zapisy zamknięte — ten sezon już trwa!",
         },
       },
     },
@@ -230,6 +226,7 @@ const plSource = {
     programLead: "{count} spotkań w sezonie {seasonLabel}.",
     archiveHeading: "Archiwum sezonów",
     archiveFullLink: "Pełne archiwum",
+    archiveGalleryLink: "Zobacz galerię zdjęć z wykładów",
     cycleTitlePlaceholder: "[do uzupełnienia]",
     accordionExpand: "rozwiń",
     accordionCollapse: "zwiń",
@@ -424,11 +421,11 @@ const plSource = {
     sourcePressFirstPrint: "Pierwodruk: {outlet}, {date}",
     aboutHeading: "O albumie",
     tocHeading: "Spis treści",
-    tocLead:
-      "Rozdziały albumu z zakresem stron. Teksty opublikowane na stronie są oznaczone i prowadzą do pełnej wersji; nazwiska autorów linkują do ich not. Pozostałe strony zawierają zdjęcia ikon oraz życia Akademii.",
+    tocFeaturedHeading: "Do przeczytania w serwisie",
+    tocFullToggle: "Pełny spis treści",
     tocPages: "str. {pages}",
     tocReadOnline: "Czytaj na stronie",
-    seeAlsoHeading: "Zobacz też",
+    relatedNewsHeading: "Z wernisażu albumu",
     seeAlsoLabel: "Zobacz też",
     allPublications: "Wszystkie publikacje",
     exhibitionLink: "Wystawy",
@@ -460,8 +457,15 @@ const plSource = {
   },
   contact: {
     addressHeading: "Adres",
-    mapTitle: "Mapa dojazdu",
-    mapPlaceholder: "Mapa – osadzenie zewnętrzne",
+    photo: {
+      alt: "Fasada Kościoła Środowisk Twórczych przy placu Teatralnym – portyk z czterema kolumnami między białymi skrzydłami budynku",
+      creditLead: "Fot. Adrian Grycuk, ",
+      sourceLabel: "Wikimedia Commons",
+      sourceUrl:
+        "https://commons.wikimedia.org/wiki/File:Ko%C5%9Bci%C3%B3%C5%82_%C5%9Bw._Brata_Alberta_i_%C5%9Bw._Andrzeja_Aposto%C5%82a_w_Warszawie_2019.jpg",
+      licenseLabel: "CC BY-SA 3.0 PL",
+      licenseUrl: "https://creativecommons.org/licenses/by-sa/3.0/pl/deed.pl",
+    },
     organizerHeading: "Organizator",
     organizerLead: "Akademia Ikony jest projektem wiodącym fundacji ",
     organizerLinkLabel: "IKONA DZIŚ",
@@ -506,7 +510,6 @@ const plSource = {
     previousEntryAria: "Poprzedni wpis: {title}",
     nextEntryAria: "Następny wpis: {title}",
     articleNavAriaLabel: "Nawigacja między wpisami",
-    galleryHeading: "Zdjęcia",
     galleryMobileCaption: "Kliknij zdjęcie, aby powiększyć.",
     showAllGallery: "Pokaż wszystkie ({count})",
     enlargePhotoAria: "Powiększ zdjęcie {n} z {total}",

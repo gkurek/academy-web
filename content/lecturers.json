@@ -21,8 +21,8 @@
     "photo": {
       "src": "/media/lecturers/grzegorz-michalczyk.jpg",
       "alt": "Zdjęcie — Grzegorz Michalczyk",
-      "width": 266,
-      "height": 240
+      "width": 658,
+      "height": 822
     }
   },
   {
@@ -35,8 +35,8 @@
     "photo": {
       "src": "/media/lecturers/jozef-naumowicz.jpg",
       "alt": "Zdjęcie — Józef Naumowicz",
-      "width": 300,
-      "height": 212
+      "width": 652,
+      "height": 815
     }
   },
   {
@@ -208,8 +208,8 @@
     "photo": {
       "src": "/media/lecturers/dariusz-klejnowski-rozycki.jpg",
       "alt": "Zdjęcie — Dariusz Klejnowski-Różycki",
-      "width": 400,
-      "height": 500
+      "width": 800,
+      "height": 1000
     }
   },
   {
@@ -248,8 +248,8 @@
     "photo": {
       "src": "/media/lecturers/marek-szymula.jpg",
       "alt": "Zdjęcie — Marek Szymuła",
-      "width": 480,
-      "height": 600
+      "width": 356,
+      "height": 445
     },
     "bio": "Święcenia kapłańskie przyjął 28 maja 1988 r. w bazylice archikatedralnej św. Jana Chrzciciela w Warszawie z rąk kard. Józefa Glempa. Był wikariuszem w parafiach w Gliniance, Michałowicach-Opaczy i parafii św. Karola Boromeusza na Powązkach. W 1998 r. doktoryzował się na Akademii Teologii Katolickiej w Warszawie w zakresie teologii duchowości, przedstawiając pracę nt. „Duchowość zakonna według pism bł. Honorata Koźmińskiego”. Od 1995 r. był ojcem duchownym alumnów Wyższego Metropolitalnego Seminarium Duchownego św. Jana Chrzciciela w Warszawie i wykładowcą teologii duchowości na Papieskim Wydziale Teologicznym w Warszawie, od 1998 r. także na UKSW (wcześniej ATK). Przez siedem lat był wicerektorem Wyższego Metropolitalnego Seminarium Duchownego w Warszawie oraz moderatorem Domu Formacji Propedeutycznej Archidiecezji Warszawskiej i Diecezji Warszawsko-Praskiej w Urlach. W latach 2017–2022 proboszczem parafii Niepokalanego Poczęcia NMP na Wrzecionie. W latach 2022–2024 wikariuszem biskupim ds. formacji duchowej księży w archidiecezji warszawskiej. Od lutego 2025 r. proboszcz parafii św. Ojca Pio na Ursynowie."
   },
@@ -258,7 +258,13 @@
     "name": "Emanuel Bączkowski",
     "titles": "dr szt. muz.",
     "affiliationFull": "Uniwersytet Muzyczny Fryderyka Chopina w Warszawie",
-    "bio": "Organista, koncertujący solista i kameralista, animator życia muzycznego oraz popularyzator polskiej muzyki organowej. Absolwent Uniwersytetu Muzycznego Fryderyka Chopina w Warszawie, gdzie z wyróżnieniem ukończył studia na Wydziale Instrumentalnym w klasie organów prof. Andrzeja Chorosińskiego oraz studia w zakresie muzyki kościelnej. Kształcił się także w Conservatorio di Musica Santa Cecilia w Rzymie, studiując grę na organach i kompozycję organową pod kierunkiem Alessandra Licaty. Doktor sztuk muzycznych w dyscyplinie instrumentalistyka, w specjalności gra na organach. Koncertował jako solista i kameralista w Izraelu, Niemczech, Włoszech, Francji i Portugalii, regularnie promując polską literaturę organową w Europie; wielokrotnie występował na europejskich i międzynarodowych festiwalach organowych. Od 2006 roku organista w Kościele Środowisk Twórczych w Warszawie, gdzie prowadzi również ożywioną działalność artystyczną; organista w Kaplicy Pałacu Prezydenta RP. Współpracuje z instytucjami kultury, m.in. Teatrem Wielkim – Operą Narodową, Filharmonią Narodową i Zamkiem Królewskim w Warszawie. Prowadził autorskie wykłady w Wyższym Seminarium Duchownym w Radomiu. Odznaczony m.in. Brązowym Medalem „Zasłużony Kulturze Gloria Artis” (2024)."
+    "bio": "Organista, koncertujący solista i kameralista, animator życia muzycznego oraz popularyzator polskiej muzyki organowej. Absolwent Uniwersytetu Muzycznego Fryderyka Chopina w Warszawie, gdzie z wyróżnieniem ukończył studia na Wydziale Instrumentalnym w klasie organów prof. Andrzeja Chorosińskiego oraz studia w zakresie muzyki kościelnej. Kształcił się także w Conservatorio di Musica Santa Cecilia w Rzymie, studiując grę na organach i kompozycję organową pod kierunkiem Alessandra Licaty. Doktor sztuk muzycznych w dyscyplinie instrumentalistyka, w specjalności gra na organach. Koncertował jako solista i kameralista w Izraelu, Niemczech, Włoszech, Francji i Portugalii, regularnie promując polską literaturę organową w Europie; wielokrotnie występował na europejskich i międzynarodowych festiwalach organowych. Od 2006 roku organista w Kościele Środowisk Twórczych w Warszawie, gdzie prowadzi również ożywioną działalność artystyczną; organista w Kaplicy Pałacu Prezydenta RP. Współpracuje z instytucjami kultury, m.in. Teatrem Wielkim – Operą Narodową, Filharmonią Narodową i Zamkiem Królewskim w Warszawie. Prowadził autorskie wykłady w Wyższym Seminarium Duchownym w Radomiu. Odznaczony m.in. Brązowym Medalem „Zasłużony Kulturze Gloria Artis” (2024).",
+    "photo": {
+      "src": "/media/lecturers/emanuel-baczkowski.jpg",
+      "alt": "Zdjęcie — Emanuel Bączkowski",
+      "width": 710,
+      "height": 815
+    }
   },
   {
     "slug": "maciej-biskup",
@@ -289,13 +295,25 @@
     "titles": "dr",
     "affiliation": "UAM",
     "affiliationFull": "Uniwersytet im. Adama Mickiewicza w Poznaniu",
-    "bio": "Doktor nauk teologicznych w zakresie teologii dogmatycznej o specjalizacji teologia ikony (KUL) i doktor nauk humanistycznych w zakresie historii o specjalizacji historia sztuki (UKSW), magister filologii polskiej o specjalizacji dziennikarstwo i kreowanie wizerunku (UAM). Wykładowczyni na Wydziale Teologicznym Uniwersytetu im. Adama Mickiewicza w Poznaniu, w Akademii Humanistycznej im. Aleksandra Gieysztora w Pułtusku (filia warszawskiej Akademii Vistula) i w Prymasowskim Instytucie Kultury Chrześcijańskiej w Bydgoszczy, a także bibliotekarka w strzyżewskiej filii Gminnej Biblioteki Publicznej w Sieroszewicach. Członkini Polskiego Instytutu Studiów nad Sztuką Świata i Poznańskiego Towarzystwa Przyjaciół Nauk."
+    "bio": "Doktor nauk teologicznych w zakresie teologii dogmatycznej o specjalizacji teologia ikony (KUL) i doktor nauk humanistycznych w zakresie historii o specjalizacji historia sztuki (UKSW), magister filologii polskiej o specjalizacji dziennikarstwo i kreowanie wizerunku (UAM). Wykładowczyni na Wydziale Teologicznym Uniwersytetu im. Adama Mickiewicza w Poznaniu, w Akademii Humanistycznej im. Aleksandra Gieysztora w Pułtusku (filia warszawskiej Akademii Vistula) i w Prymasowskim Instytucie Kultury Chrześcijańskiej w Bydgoszczy, a także bibliotekarka w strzyżewskiej filii Gminnej Biblioteki Publicznej w Sieroszewicach. Członkini Polskiego Instytutu Studiów nad Sztuką Świata i Poznańskiego Towarzystwa Przyjaciół Nauk.",
+    "photo": {
+      "src": "/media/lecturers/justyna-sprutta.jpg",
+      "alt": "Zdjęcie — Justyna Sprutta",
+      "width": 584,
+      "height": 730
+    }
   },
   {
     "slug": "marcin-bornus-szczycinski",
     "name": "Marcin Bornus-Szczyciński",
     "affiliationFull": "Kolegium Filozoficzno-Teologiczne oo. Dominikanów",
-    "bio": "Śpiewak, badacz muzyki dawnej i liturgicznej, założyciel zespołu Bornus Consort. Absolwent Wydziału Nauk Ekonomicznych Uniwersytetu Warszawskiego; od lat wykłada liturgiczny śpiew tradycyjny w Kolegium Filozoficzno-Teologicznym oo. Dominikanów w Krakowie i Warszawie. Inicjator Festiwalu Muzyki Dawnej w Starym Sączu oraz projektu „Siedem Tradycji” w ramach Kraków 2000; do XIV edycji dyrektor artystyczny festiwalu Pieśń Naszych Korzeni w Jarosławiu, obecnie jego doradca. Kantor w pokamedulskim kościele na warszawskich Bielanach. Szczególne miejsce w jego działalności zajmuje monodia, zwłaszcza liturgiczna, oraz rozpoznawanie, utrwalanie i upowszechnianie tradycji lokalnych. W 2019 roku otrzymał medal „Per Artem ad Deum” („Przez sztukę do Boga”), wręczony podczas targów Sacroexpo w Kielcach."
+    "bio": "Śpiewak, badacz muzyki dawnej i liturgicznej, założyciel zespołu Bornus Consort. Absolwent Wydziału Nauk Ekonomicznych Uniwersytetu Warszawskiego; od lat wykłada liturgiczny śpiew tradycyjny w Kolegium Filozoficzno-Teologicznym oo. Dominikanów w Krakowie i Warszawie. Inicjator Festiwalu Muzyki Dawnej w Starym Sączu oraz projektu „Siedem Tradycji” w ramach Kraków 2000; do XIV edycji dyrektor artystyczny festiwalu Pieśń Naszych Korzeni w Jarosławiu, obecnie jego doradca. Kantor w pokamedulskim kościele na warszawskich Bielanach. Szczególne miejsce w jego działalności zajmuje monodia, zwłaszcza liturgiczna, oraz rozpoznawanie, utrwalanie i upowszechnianie tradycji lokalnych. W 2019 roku otrzymał medal „Per Artem ad Deum” („Przez sztukę do Boga”), wręczony podczas targów Sacroexpo w Kielcach.",
+    "photo": {
+      "src": "/media/lecturers/marcin-bornus-szczycinski.jpg",
+      "alt": "Zdjęcie — Marcin Bornus-Szczyciński",
+      "width": 300,
+      "height": 375
+    }
   },
   {
     "slug": "magdalena-dylewska",
@@ -303,7 +321,13 @@
     "titles": "dr",
     "affiliation": "KUL",
     "affiliationFull": "Katolicki Uniwersytet Lubelski Jana Pawła II",
-    "bio": "Doktor filozofii, malarka ikon. Studia z zakresu filozofii ukończyła na Katolickim Uniwersytecie Lubelskim, zaś z zakresu malowania ikon – w ośrodku prawosławnym w Saint-Jean-en-Royans we Francji. Uznana jako ikonopisarka w Kościele prawosławnym. Od 1986 r. prowadzi w Lublinie prywatną Pracownię Malowania Ikon im. św. Jana z Damaszku. Od 1998 współpracownik Międzyzakładowej Komisji Badań nad Antykiem Chrześcijańskim KUL. Odbyła liczne podróże i staże doskonalące warsztat pracy: Rosja, Ukraina, Grecja, Bliski Wschód. Najważniejsze wystawy indywidualne: Lublin, Warszawa, Gorzów Wlkp., Wiedeń (Austria), La Cote St.Andre, Rueil Malmaison, Gyf-sur-Yvette (Francja), Passau, Monachium, Bad Reichenhall (Niemcy). Autorka ikon do ołtarzy w kościele Świętego Brata Alberta w Puławach, w kościele Trójcy Świętej w Lublinie, w kościele Chrystusa Zbawiciela w Gdańsku-Osowie, kościoła św. Wojciecha w Wisznicy k/Chełma, a także ikon dla klasztoru Sióstr Syjońskich (Ecce-Homo) i klasztoru benedyktyńskiego na Górze Syjon w Jerozolimie oraz kościoła św. Pawła w Londynie. Tłumaczka starochrześcijańskich tekstów dotyczących ikon i sporów ikonoklastycznych, w szczególności Jana Damasceńskiego i Epifaniusza z Salaminy."
+    "bio": "Doktor filozofii, malarka ikon. Studia z zakresu filozofii ukończyła na Katolickim Uniwersytecie Lubelskim, zaś z zakresu malowania ikon – w ośrodku prawosławnym w Saint-Jean-en-Royans we Francji. Uznana jako ikonopisarka w Kościele prawosławnym. Od 1986 r. prowadzi w Lublinie prywatną Pracownię Malowania Ikon im. św. Jana z Damaszku. Od 1998 współpracownik Międzyzakładowej Komisji Badań nad Antykiem Chrześcijańskim KUL. Odbyła liczne podróże i staże doskonalące warsztat pracy: Rosja, Ukraina, Grecja, Bliski Wschód. Najważniejsze wystawy indywidualne: Lublin, Warszawa, Gorzów Wlkp., Wiedeń (Austria), La Cote St.Andre, Rueil Malmaison, Gyf-sur-Yvette (Francja), Passau, Monachium, Bad Reichenhall (Niemcy). Autorka ikon do ołtarzy w kościele Świętego Brata Alberta w Puławach, w kościele Trójcy Świętej w Lublinie, w kościele Chrystusa Zbawiciela w Gdańsku-Osowie, kościoła św. Wojciecha w Wisznicy k/Chełma, a także ikon dla klasztoru Sióstr Syjońskich (Ecce-Homo) i klasztoru benedyktyńskiego na Górze Syjon w Jerozolimie oraz kościoła św. Pawła w Londynie. Tłumaczka starochrześcijańskich tekstów dotyczących ikon i sporów ikonoklastycznych, w szczególności Jana Damasceńskiego i Epifaniusza z Salaminy.",
+    "photo": {
+      "src": "/media/lecturers/magdalena-dylewska.jpg",
+      "alt": "Zdjęcie — Magdalena Dylewska",
+      "width": 618,
+      "height": 772
+    }
   },
   {
     "slug": "marek-wojnarowski",
