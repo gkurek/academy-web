@@ -4,7 +4,7 @@ import {
   resolveAnnualDateEnd,
   resolveAnnualVernissage,
 } from "@/content/exhibition";
-import { resolveLecturer } from "@/content/lecturers";
+import { formatLecturerDisplayName, resolveLecturer } from "@/content/lecturers";
 import { formatLectureDate, getAllSeasonLectures } from "@/content/lectures";
 import { newsManifestEntries } from "@/content/news-manifest";
 import type { NewsFrontmatter } from "@/content/news";
@@ -52,6 +52,8 @@ export type UpcomingTile = {
   state: string;
   source: UpcomingSource;
   title: string;
+  /** Home tile: one lecturer name per line (Wykłady slot). */
+  titleLines?: string[];
   text: string;
   href: string;
   linkLabel: string;
@@ -150,19 +152,10 @@ function resolveWarsztaty(today: string, offers: UpcomingOfferFacts): SlotDefaul
 
 // --- Wykłady (N5) ---
 
-function buildLectureTitle(date: string, lecturerSlugs: string[]): string {
-  const strings = pl.home.upcoming.wyklady.next;
-  const dateLabel = formatLectureDate(date);
-  const names = lecturerSlugs
+function buildLectureNames(lecturerSlugs: string[]): string[] {
+  return lecturerSlugs
     .filter((slug) => slug.trim().length > 0)
-    .map((slug) => resolveLecturer(slug).name);
-
-  if (names.length === 0) {
-    return fill(strings.titleNoLecturers, { date: dateLabel });
-  }
-
-  // All lecturers of the evening — a single name would suggest a single talk (owner decision, 4.3).
-  return fill(strings.title, { date: dateLabel, lecturers: names.join(", ") });
+    .map((slug) => formatLecturerDisplayName(resolveLecturer(slug)));
 }
 
 function resolveWyklady(today: string): SlotDefault {
@@ -172,10 +165,16 @@ function resolveWyklady(today: string): SlotDefault {
   const next = lectures.find(({ lecture }) => lecture.date >= today);
 
   if (next) {
+    const dateLabel = formatLectureDate(next.lecture.date);
+    const names = buildLectureNames(next.lecture.lecturerSlugs);
+    const { titleNoLecturers } = strings.next;
+
     return {
       state: "next",
-      title: buildLectureTitle(next.lecture.date, next.lecture.lecturerSlugs),
-      text: strings.next.text,
+      title: names.length > 0 ? names.join(", ") : titleNoLecturers,
+      // All lecturers of the evening — a single name would suggest a single talk (owner decision, 4.3).
+      titleLines: names.length > 0 ? names : undefined,
+      text: fill(strings.next.text, { date: dateLabel }),
       href: LECTURES_ROUTE,
       linkLabel: strings.next.linkLabel,
     };

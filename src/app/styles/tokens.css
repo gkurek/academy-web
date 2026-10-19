@@ -384,10 +384,6 @@
   /* /kontakt — formerly MapBlock embed height; the church photo now keeps its own aspect (mockup 2a-kontakt). */
   --contact-map-h: 420px;
   --contact-map-h-m: 320px;
-  --contact-email-label-mb: 8px;
-  --contact-email-line-mb: 6px;
-  --contact-email-phone-mb: 8px;
-  --contact-aside-offset: var(--space-6);
 
   /* /ikony/wystawy — mockup 9a–9e (WY-*). */
   --exhibition-aspect-wide: 21 / 8;

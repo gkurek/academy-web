@@ -23,8 +23,14 @@ export function UpcomingHighlights() {
             className="flex flex-col bg-surface-tile py-tile-py-m px-page-margin-mobile md:py-tile-py md:px-tile-px"
           >
             <div className="font-serif text-size-body text-accent-text mb-space-2">{item.text}</div>
-            <div className="font-serif text-size-role-row-title-m md:text-size-role-row-title leading-heading text-text-list-title mb-tile-link-mt-m md:mb-tile-link-mt">
-              {item.title}
+            <div
+              className="font-serif text-size-role-row-title-m md:text-size-role-row-title leading-heading text-text-list-title mb-tile-link-mt-m md:mb-tile-link-mt"
+            >
+              {(item.titleLines ?? [item.title]).map((line) => (
+                <span key={line} className="block">
+                  {line}
+                </span>
+              ))}
             </div>
             <TextLink
               standalone

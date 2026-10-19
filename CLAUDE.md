@@ -98,3 +98,4 @@ Przy konflikcie: `CLAUDE.md` > plan etapu > `brief-claude-code.md` > `brief-full
 - Nie usuwaj i nie przenoś plików poza zakresem kawałka; nie „porządkuj przy okazji”.
 - Nie dodawaj banera cookies, `localStorage`, zewnętrznych skryptów ani analityki bez planu, w którym to jest zapisane.
 - Nie rozpisuj sie zanadto w odpowiedziach, bądź krótki i treściwy.
+- Nigdy nie dopisuj „Generated with Claude Code”, `Co-Authored-By: Claude` ani żadnej innej atrybucji AI w commitach i opisach PR.

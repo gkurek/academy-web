@@ -257,9 +257,7 @@ type Article = {
 
 Lista autorów na podstronie albumu jest wyliczana z `toc` (unikalne nazwiska, podział wg `lecturerSlug`), nie przechowywana osobno. Źródła: `content/publications/*.mdx` (frontmatter = `Publication`, body = opis, fragmenty, „Jak powstał album”), `content/articles/*.mdx` (frontmatter = `Article`, body = tekst lub zajawka). `source.date` przy `kind: 'media'`: `YYYY-MM-DD` albo `YYYY-MM` (miesięcznik bez dnia — UI „wrzesień 2011”); wiersz źródła artykułu: „Pierwodruk: {outlet}, {data}”, rok w metryczce tylko dla tekstów z albumu. Lista artykułów na `/publikacje`: źródło · tytuł + autor, bez `excerpt`. Walidacje przy buildzie (K-76): `toc[].articleSlug` → istniejący artykuł; `source.publicationSlug` → istniejący album; artykuł `kind: 'album'` bez pozycji w `toc` — ostrzeżenie; kolizja slugów album/artykuł — błąd buildu.
 
-Kafel „Najbliższe” na stronie głównej (K-58) zależy od stanu wystawy:
-- stan `biezaca`: „Wystawa ikon · edycja {rok}”, tekst „Czynna w godzinach otwarcia kościoła”;
-- stan `zapowiedz`: „Wernisaż {data}” z nową edycją, tekst o oprowadzaniach.
+Kafle „Najbliższe” na stronie głównej (K-136, zastępuje K-58): zawsze 3 sloty (Warsztaty · Wykłady · Ikony), stan z dat w treści + opcjonalne `upcomingOverrides[]`. **Wykłady (najbliższy wieczór):** eyebrow `Najbliższy wykład · {data}`, tytuł — wszystkie wykładowcy z `lecturerSlugs` (nazwisko + tytuły jak w programie), po jednym w linii. **Ikony:** automat z `annual.json` (zapowiedź wernisażu → wystawa doroczna → ekspozycja codzienna; eyebrow z `·` np. „Ekspozycja codzienna · oprowadzania…”). Szczegóły N1–N10: `docs/archive/plans/10-k4-home.md`.
 
 ```ts
 
