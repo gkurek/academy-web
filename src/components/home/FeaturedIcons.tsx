@@ -14,7 +14,7 @@ export function FeaturedIcons() {
   const icons = getFeaturedIconWorks();
 
   return (
-    <section className="px-page-margin-mobile md:px-page-margin pt-section-gap pb-space-6">
+    <section className="px-page-margin-mobile md:px-page-margin pt-section-gap pb-section-gap-loose">
       <div className="flex items-baseline justify-between mb-heading-gap">
         <PageHeading level="section">
           {pl.home.icons.heading}

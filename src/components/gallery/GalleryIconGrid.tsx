@@ -56,11 +56,7 @@ export function GalleryIconGrid({ works }: GalleryIconGridProps) {
           eagerCount={index === 0 ? EAGER_TILE_COUNT : 0}
           onSelect={lightbox.open}
           names={section.names}
-          className={
-            index > 0
-              ? "mt-section-gap border-t border-line-gold pt-space-5 md:pt-space-6"
-              : undefined
-          }
+          className={index > 0 ? "mt-section-gap" : undefined}
         />
       ))}
       <IconLightbox

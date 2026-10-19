@@ -294,6 +294,11 @@
     color: var(--text-body);
   }
 
+  /* History copy reads in the page-lead tone (.about-hero-lead). */
+  .prose-text.about-history-body > p {
+    color: var(--text-secondary);
+  }
+
   @media (min-width: 768px) {
     .prose-text .about-section-lead {
       font-size: var(--size-lead);
