@@ -15,7 +15,7 @@
   {
     "slug": "grzegorz-michalczyk",
     "name": "Grzegorz Michalczyk",
-    "titles": "ks. prałat",
+    "titles": "ks.",
     "affiliationFull": "Duszpasterstwo Środowisk Twórczych · Kościół św. Andrzeja Apostoła i św. Brata Alberta Chmielowskiego, Warszawa",
     "bio": "Pełni funkcję Krajowego Duszpasterza Środowisk Twórczych, jest rektorem Kościoła Środowisk Twórczych św. Andrzeja Apostoła i św. Brata Alberta Chmielowskiego w Warszawie. Jest wiceprzewodniczącym Polskiej Rady Chrześcijan i Żydów, członkiem Komitetu Episkopatu ds. Dialogu z Judaizmem oraz konsultantem i współautorem programów radiowych i telewizyjnych.",
     "photo": {
@@ -229,8 +229,8 @@
   {
     "slug": "barbara-strzalkowska",
     "name": "Barbara Strzałkowska",
-    "titles": "prof. dr hab.",
-    "affiliation": "UKSW",
+    "titles": "dr hab.",
+    "affiliation": "prof. UKSW",
     "affiliationFull": "Uniwersytet Kardynała Stefana Wyszyńskiego",
     "bio": "Biblistka, doktor habilitowany nauk teologicznych, profesor uczelni Wydziału Teologicznego UKSW. Kierownik Katedry Egzegezy Starego Testamentu, wicedyrektor Instytutu Nauk Teologicznych. Specjalizuje się w badaniach nad księgami mądrościowymi Starego Testamentu oraz Septuagintą – greckim przekładem Biblii hebrajskiej – i popularyzacją Biblii w Polsce i za granicą. Jako pierwsza kobieta w Warszawie objęła funkcję prodziekana ds. kształcenia Wydziału Teologicznego UKSW. Wykłada m.in. jako visiting professor w Pontificia Università Urbaniana w Rzymie i w Jordan University College w Marogoro w Tanzanii. Członek komitetu redakcyjnego czasopisma „La Revue Biblique”. Konsultant Konferencji Episkopatu Polski ds. pielgrzymowania i turystyki oraz zespołu Laudato Si przy Radzie ds. społecznych KEP. Przewodniczka po Ziemi Świętej i krajach biblijnych. Na UKSW stworzyła w 2022 r. kierunek studiów Chrześcijańska turystyka religijna.",
     "photo": {
@@ -279,7 +279,13 @@
     "titles": "s.",
     "affiliation": "PDDM",
     "affiliationFull": "Zgromadzenie Sióstr Uczennic Boskiego Mistrza (Piae Discipulae Divini Magistri, PDDM)",
-    "bio": "Komentatorka i tłumaczka liturgii papieskich we współpracy z Redakcją Programów Katolickich TVP."
+    "bio": "Od 1998 roku należy do zgromadzenia Sióstr Uczennic Boskiego Mistrza, założonego przez bł. Jakuba Alberionego. Studiowała teologię i dziennikarstwo. W latach 2015–2022 pracowała w Radiu Jasna Góra. Obecnie współpracuje z Redakcją Programów Katolickich TVP. W ramach posługi w swojej wspólnocie zajmuje się organizacją centrum rekolekcyjno-szkoleniowego w domu prowincjalnym Zgromadzenia przy ul. Żytniej 11 w Warszawie. Prowadzi dni skupienia, rekolekcje i warsztaty na tematy związane z duchowością, modlitwą, liturgią.",
+    "photo": {
+      "src": "/media/lecturers/aleksandra-szyborska.jpg",
+      "alt": "Zdjęcie — Aleksandra Szyborska",
+      "width": 1011,
+      "height": 1253
+    }
   },
   {
     "slug": "irina-tatarova",

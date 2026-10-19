@@ -1,46 +1,43 @@
+import { ContactRow } from "@/components/contact/ContactRow";
 import { ExternalLink } from "@/components/core/ExternalLink";
+import { TextLink } from "@/components/core/TextLink";
 import { getSiteSettings } from "@/content/settings";
 import { pl } from "@/i18n/pl";
 
-const contactOnlineLinkClass =
-  "inline-block w-fit text-accent-text no-underline hover:text-accent-hover";
+const quietTextClass = "text-size-nav leading-body text-text-secondary";
 
-const mapLinkUnderline = "link-underline-target link-underline-target--border";
-
+/** Closing rows of the /kontakt details list (mockup 1g): organizer and online presence, quieter than the contact data. */
 export function OnlineAside() {
   const settings = getSiteSettings();
   const { contact, footer } = pl;
 
   return (
-    <div className="hairline-stack">
-      <div className="bg-surface-tile px-space-5 py-space-5 md:px-space-6 md:py-space-6">
-        <h2 className="mb-space-3 font-serif text-size-role-box-title-m md:text-size-role-box-title leading-heading text-text-h2">
-          {contact.organizerHeading}
-        </h2>
-        <p className="text-size-body leading-body text-text-tertiary md:text-size-body-lg md:leading-prose">
+    <>
+      <ContactRow label={contact.organizerHeading}>
+        <p className={quietTextClass}>
           {contact.organizerLead}
-          <ExternalLink href={settings.ecosystem.foundationUrl} className={contactOnlineLinkClass}>
-            <span className={mapLinkUnderline}>{contact.organizerLinkLabel}</span>
+          <ExternalLink
+            href={settings.ecosystem.foundationUrl}
+            className="whitespace-nowrap text-accent-text no-underline hover:text-accent-hover"
+          >
+            <span className="link-underline-target link-underline-target--border">{contact.organizerLinkLabel}</span>
           </ExternalLink>
           {contact.organizerTail}
         </p>
-      </div>
-      <div className="bg-surface-tile px-space-5 py-space-5 md:px-space-6 md:py-space-6">
-        <h2 className="mb-space-3 font-serif text-size-role-box-title-m md:text-size-role-box-title leading-heading text-text-h2">
-          {contact.onlineHeading}
-        </h2>
-        <div className="grid gap-space-2 text-size-body leading-body md:text-size-body-lg md:leading-prose">
-          <ExternalLink href={settings.ecosystem.social.facebook} className={contactOnlineLinkClass}>
-            <span className={mapLinkUnderline}>{footer.facebookLabel}</span>
-          </ExternalLink>
-          <ExternalLink href={settings.ecosystem.social.youtube} className={contactOnlineLinkClass}>
-            <span className={mapLinkUnderline}>{footer.youtubeLabel}</span>
-          </ExternalLink>
-          <ExternalLink href={settings.blogUrl} className={contactOnlineLinkClass}>
-            <span className={mapLinkUnderline}>{contact.blogLinkLabel}</span>
-          </ExternalLink>
+      </ContactRow>
+      <ContactRow label={contact.onlineHeading}>
+        <div className={`flex flex-col lg:flex-row lg:flex-wrap lg:gap-x-space-7 lg:gap-y-space-3 ${quietTextClass}`}>
+          <TextLink href={settings.ecosystem.social.facebook} external standalone className="w-fit">
+            {footer.facebookLabel}
+          </TextLink>
+          <TextLink href={settings.ecosystem.social.youtube} external standalone className="w-fit">
+            {footer.youtubeLabel}
+          </TextLink>
+          <TextLink href={settings.blogUrl} external standalone className="w-fit">
+            {contact.blogLinkLabel}
+          </TextLink>
         </div>
-      </div>
-    </div>
+      </ContactRow>
+    </>
   );
 }

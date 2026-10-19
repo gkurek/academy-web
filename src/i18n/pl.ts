@@ -88,9 +88,8 @@ const plSource = {
       },
       wyklady: {
         next: {
-          title: "{date} · {lecturers}",
-          titleNoLecturers: "{date}",
-          text: "Najbliższy wykład",
+          text: "Najbliższy wykład · {date}",
+          titleNoLecturers: "Wykład",
           linkLabel: "Program sezonu",
         },
         break: {
@@ -457,6 +456,9 @@ const plSource = {
   },
   contact: {
     addressHeading: "Adres",
+    phoneLabel: "Telefon",
+    entranceHeading: "Wejście od strony zakrystii",
+    mapLinkLabel: "Otwórz w Mapach Google",
     photo: {
       alt: "Fasada Kościoła Środowisk Twórczych przy placu Teatralnym – portyk z czterema kolumnami między białymi skrzydłami budynku",
       creditLead: "Fot. Adrian Grycuk, ",
@@ -527,7 +529,7 @@ const plSource = {
   },
   footer: {
     sitemapAriaLabel: "Mapa strony",
-    copyright: "© {year} Akademia Ikony",
+    copyright: "© {year} Fundacja IKONA DZIŚ",
     churchName: "Kościół Środowisk Twórczych",
     churchPatronsShort: "pw. św. Andrzeja Apostoła i św. Brata Alberta",
     // Verbatim from brief-claude-code.md §8.

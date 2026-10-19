@@ -532,7 +532,7 @@
     "date": "2015-11-10",
     "kind": "spotkanie",
     "layout": "galeria",
-    "excerpt": "10 listopada 2015 — prelekcja dr Jerzego Kazimierczaka w cyklu „Śladami najpiękniejszych ikon świata”.",
+    "excerpt": "10 listopada 2015 — prelekcja dr. Jerzego Kazimierczaka w cyklu „Śladami najpiękniejszych ikon świata”.",
     "images": [
       {
         "src": "/media/news/ikonografia-patronow-pielgrzymow/1.jpg",
@@ -602,7 +602,7 @@
     "date": "2014-04-08",
     "kind": "spotkanie",
     "layout": "galeria",
-    "excerpt": "8 kwietnia 2014 — spotkanie z dr Jerzym Kazimierczakiem w kaplicy św. Grzegorza Peradze w Warszawie.",
+    "excerpt": "8 kwietnia 2014 — spotkanie z dr. Jerzym Kazimierczakiem w kaplicy św. Grzegorza Peradze w Warszawie.",
     "images": [
       {
         "src": "/media/news/jestesmy-pielgrzymami/1.jpg",
@@ -1146,6 +1146,12 @@
         "height": 1600
       },
       {
+        "src": "/media/news/plener-suprasl-2023/9.jpg",
+        "alt": "Przewodnik opowiada uczestnikom pleneru o cerkwi, we wnętrzu z polichromiami i marmurową posadzką",
+        "width": 1200,
+        "height": 1600
+      },
+      {
         "src": "/media/news/plener-suprasl-2023/4.jpg",
         "alt": "Ikonostas i polichromie ze świętymi męczennikami we wnętrzu cerkwi",
         "width": 1200,
@@ -1174,9 +1180,51 @@
         "alt": "Uczestniczki pleneru z ikonami napisanymi w czasie tygodnia",
         "width": 1600,
         "height": 1200
+      },
+      {
+        "src": "/media/news/plener-suprasl-2023/10.jpg",
+        "alt": "Duży krzyż ikonowy na drewnianym stojaku przed oknem z widokiem na łąki",
+        "width": 1200,
+        "height": 1600
+      },
+      {
+        "src": "/media/news/plener-suprasl-2023/11.jpg",
+        "alt": "Uczestniczka pleneru z napisaną ikoną Matki Bożej, obok ikona Zmartwychwstania",
+        "width": 1200,
+        "height": 1600
+      },
+      {
+        "src": "/media/news/plener-suprasl-2023/12.jpg",
+        "alt": "Uczestniczka pleneru z napisaną ikoną Matki Bożej w jasnej sali",
+        "width": 1200,
+        "height": 1600
+      },
+      {
+        "src": "/media/news/plener-suprasl-2023/13.jpg",
+        "alt": "Uczestnik pleneru z napisaną ikoną Matki Bożej z Dzieciątkiem",
+        "width": 1200,
+        "height": 1600
+      },
+      {
+        "src": "/media/news/plener-suprasl-2023/14.jpg",
+        "alt": "Uczestniczka pleneru z napisaną ikoną w jasnej sali z oknem",
+        "width": 1200,
+        "height": 1600
+      },
+      {
+        "src": "/media/news/plener-suprasl-2023/15.jpg",
+        "alt": "Uczestniczka pleneru z dwiema napisanymi ikonami",
+        "width": 1200,
+        "height": 1600
+      },
+      {
+        "src": "/media/news/plener-suprasl-2023/16.jpg",
+        "alt": "Uczestniczka pleneru z napisaną ikoną Matki Bożej przy oknie",
+        "width": 1200,
+        "height": 1600
       }
     ],
-    "bodyText": "Latem 2023 roku Letnia Szkoła Światła zatrzymała się w Supraślu. Supraśl to miejsce, które ikoną żyje od wieków. Odwiedziliśmy Muzeum Ikon i monasterską cerkiew, gdzie wśród polichromii mogliśmy z bliska przyglądać się dawnym i współczesnym mistrzom. To spotkanie było dla nas lekcją pokory i zachwytu, którą potem nieśliśmy z powrotem do pracowni. Na zakończenie tygodnia każdy z uczestników wracał do domu z ikoną napisaną własną ręką — i z wdzięcznością za wspólnie przeżyty czas. Dziękujemy wszystkim, którzy byli z nami w Supraślu. Aktualne informacje o tygodniowych plenerach: [Letnia Szkoła Światła](/warsztaty/letnia-szkola-swiatla)."
+    "bodyText": "Latem 2023 roku Letnia Szkoła Światła zatrzymała się w Supraślu. Supraśl to miejsce, które ikoną żyje od wieków. Odwiedziliśmy Muzeum Ikon i monasterską cerkiew, gdzie wśród polichromii mogliśmy z bliska przyglądać się dawnym i współczesnym mistrzom. To spotkanie było dla nas lekcją pokory i zachwytu, którą potem nieśliśmy z powrotem do pracowni. Tydzień zakończyliśmy wystawą ikon napisanych przez uczestników. Potem każdy z nich wracał do domu z ikoną napisaną własną ręką — i z wdzięcznością za wspólnie przeżyty czas. Dziękujemy wszystkim, którzy byli z nami w Supraślu. Aktualne informacje o tygodniowych plenerach: [Letnia Szkoła Światła](/warsztaty/letnia-szkola-swiatla)."
   },
   {
     "slug": "plener-swietej-lipki-2019",
@@ -1559,7 +1607,7 @@
         "caption": "Spotkanie w ramach cyklu w Sanktuarium Matki Bożej Łaskawej (źródło: wpis na akademiaikony.pl)"
       }
     ],
-    "bodyText": "Ikona nie tylko przedstawia, ale i uobecnia przedstawiane Osoby. Pomaga wyciszyć się i skupić na określonym wizerunku, zachęca do więzi z Chrystusem, Matką Najświętszą, świętymi. Odczytywanie ikony, podobnie jak odczytywanie tekstu biblijnego, dokonuje się na kilku poziomach. Celem spotkań jest ukazanie i odczytanie piękna i znaczenia duchowego ikon. Z jednej strony chcemy ukazać piękno, które zachwyca wierzącego człowieka, a z drugiej — odkryć duchową głębię wpisaną w ikonę. Spotkania odbywały się w pierwszą lub drugą środę miesiąca o godz. 18.00 w podziemiach Sanktuarium Matki Bożej Łaskawej przy ul. Świętojańskiej 10, w Centrum Duchowości Świeckich. ## Program spotkań ### Śladami najpiękniejszych ikon świata - 23 października 2013 — Ikonografia bizantyjska we Włoszech, ks. Roman Batorski - 6 listopada 2013 — Ikonografia bizantyjska we Włoszech (cd.), ks. Roman Batorski - 4 grudnia 2013 — Złoty pierścień Rosji, o. dr Aleksander Jacyniak SJ - 15 stycznia 2014 — Złoty pierścień Rosji (cd.), o. dr Aleksander Jacyniak SJ - 2 lutego 2014 — Śladami ikon na Ukrainie, o. dr Aleksander Jacyniak SJ - 12 marca 2014 — Śladami ikon na Ukrainie (cd.), o. dr Aleksander Jacyniak SJ - 14 maja 2014 — Chrześcijańskie kościoły w Syrii, dr Jerzy Kazimierczak - 11 czerwca 2014 — Sztuka Konstantynopola, ks. Roman Batorski - 26 września 2014 — Ikonografia bizantyjska w Grecji, ks. Roman Batorski - 17 października 2014 — Zapiski z pielgrzymki do Armenii, dr Jerzy Kazimierczak - 14 listopada 2014 — Ikonografia bizantyjska na Bałkanach, ks. Roman Batorski - 23 stycznia 2015 — Ikonografia bizantyjska na Cyprze, ks. Roman Batorski - 27 lutego 2015 — Święta Góra Athos, o. dr Aleksander Jacyniak SJ i dr Jerzy Kazimierczak - 20 marca 2015 — Ikonografia bizantyjska na Krecie, ks. Roman Batorski - 17 kwietnia 2015 — Ikony Matki Bożej Śnieżnej, dr Jerzy Kazimierczak - 15 maja 2015 — Ikonografia św. Jakuba, dr Jerzy Kazimierczak ### Świat ikony - 3 października 2012 — Ikona Przemienienia Pańskiego, o. dr Aleksander Jacyniak SJ - 7 listopada 2012 — Ikona zstąpienia Jezusa do otchłani, o. dr Aleksander Jacyniak SJ - 23 stycznia 2013 — Ikona Narodzenia Jezusa Chrystusa, o. dr Aleksander Jacyniak SJ - 6 lutego 2013 — Ikona Matki Bożej Włodzimierskiej, o. dr Aleksander Jacyniak SJ - 22 maja 2013 — Ikona Matki Bożej Orantki, o. dr Aleksander Jacyniak SJ Spotkania są współorganizowane z o. dr Aleksandrem Jacyniakiem SJ, Centrum Duchowości Świeckich. Napisali o nas: [Tajemnica zamknięta w obrazie](http://niedziela.pl/artykul/116406/nd/Tajemnica-zamknieta-w-obrazie)."
+    "bodyText": "Ikona nie tylko przedstawia, ale i uobecnia przedstawiane Osoby. Pomaga wyciszyć się i skupić na określonym wizerunku, zachęca do więzi z Chrystusem, Matką Najświętszą, świętymi. Odczytywanie ikony, podobnie jak odczytywanie tekstu biblijnego, dokonuje się na kilku poziomach. Celem spotkań jest ukazanie i odczytanie piękna i znaczenia duchowego ikon. Z jednej strony chcemy ukazać piękno, które zachwyca wierzącego człowieka, a z drugiej — odkryć duchową głębię wpisaną w ikonę. Spotkania odbywały się w pierwszą lub drugą środę miesiąca o godz. 18.00 w podziemiach Sanktuarium Matki Bożej Łaskawej przy ul. Świętojańskiej 10, w Centrum Duchowości Świeckich. ## Program spotkań ### Śladami najpiękniejszych ikon świata - 23 października 2013 — Ikonografia bizantyjska we Włoszech, ks. Roman Batorski - 6 listopada 2013 — Ikonografia bizantyjska we Włoszech (cd.), ks. Roman Batorski - 4 grudnia 2013 — Złoty pierścień Rosji, o. dr Aleksander Jacyniak SJ - 15 stycznia 2014 — Złoty pierścień Rosji (cd.), o. dr Aleksander Jacyniak SJ - 2 lutego 2014 — Śladami ikon na Ukrainie, o. dr Aleksander Jacyniak SJ - 12 marca 2014 — Śladami ikon na Ukrainie (cd.), o. dr Aleksander Jacyniak SJ - 14 maja 2014 — Chrześcijańskie kościoły w Syrii, dr Jerzy Kazimierczak - 11 czerwca 2014 — Sztuka Konstantynopola, ks. Roman Batorski - 26 września 2014 — Ikonografia bizantyjska w Grecji, ks. Roman Batorski - 17 października 2014 — Zapiski z pielgrzymki do Armenii, dr Jerzy Kazimierczak - 14 listopada 2014 — Ikonografia bizantyjska na Bałkanach, ks. Roman Batorski - 23 stycznia 2015 — Ikonografia bizantyjska na Cyprze, ks. Roman Batorski - 27 lutego 2015 — Święta Góra Athos, o. dr Aleksander Jacyniak SJ i dr Jerzy Kazimierczak - 20 marca 2015 — Ikonografia bizantyjska na Krecie, ks. Roman Batorski - 17 kwietnia 2015 — Ikony Matki Bożej Śnieżnej, dr Jerzy Kazimierczak - 15 maja 2015 — Ikonografia św. Jakuba, dr Jerzy Kazimierczak ### Świat ikony - 3 października 2012 — Ikona Przemienienia Pańskiego, o. dr Aleksander Jacyniak SJ - 7 listopada 2012 — Ikona zstąpienia Jezusa do otchłani, o. dr Aleksander Jacyniak SJ - 23 stycznia 2013 — Ikona Narodzenia Jezusa Chrystusa, o. dr Aleksander Jacyniak SJ - 6 lutego 2013 — Ikona Matki Bożej Włodzimierskiej, o. dr Aleksander Jacyniak SJ - 22 maja 2013 — Ikona Matki Bożej Orantki, o. dr Aleksander Jacyniak SJ Spotkania są współorganizowane z o. dr. Aleksandrem Jacyniakiem SJ, Centrum Duchowości Świeckich. Napisali o nas: [Tajemnica zamknięta w obrazie](http://niedziela.pl/artykul/116406/nd/Tajemnica-zamknieta-w-obrazie)."
   },
   {
     "slug": "spotkania-z-grzegorzem-zinkiewiczem",

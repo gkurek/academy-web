@@ -1,15 +1,16 @@
 import type { MDXComponents } from "mdx/types";
 import type { ComponentType } from "react";
 
-import { TextLink } from "@/components/core/TextLink";
 import { ContactPhoto } from "@/components/contact/ContactPhoto";
-import { MdxLink } from "@/components/content/MdxLink";
+import { ContactRow } from "@/components/contact/ContactRow";
+import { EntranceNote } from "@/components/contact/EntranceNote";
 import { OnlineAside } from "@/components/contact/OnlineAside";
+import { PageHeading } from "@/components/core/PageHeading";
+import { TextLink } from "@/components/core/TextLink";
 import { SectionPageShell } from "@/components/layout/SectionPageShell";
 import { getPhoneHref, getSiteSettings } from "@/content/settings";
 import { pl } from "@/i18n/pl";
-import { PageHeading } from "@/components/core/PageHeading";
-import { Prose } from "@/components/core/Prose";
+import { nbspChildren } from "@/lib/typography";
 
 export interface ContactPageProps {
   /** Route path — see SectionPageShellProps["path"]. */
@@ -19,63 +20,64 @@ export interface ContactPageProps {
   Content: ComponentType<{ components?: MDXComponents }>;
 }
 
+const contactLinkClass = "text-size-role-row-title-m leading-heading md:text-size-role-row-title";
+
+// The church name runs long (settings text carries no-break spaces after single letters): break before „pw.” and „i św.” so the address reads as three short lines plus the street.
+const PLACE_BREAK_RE = /\s(?=pw\.|i\sśw\.)/;
+
 export function ContactPage({ path, title, Content }: ContactPageProps) {
   const settings = getSiteSettings();
   const telHref = getPhoneHref();
+  const placeLines = settings.place.split(PLACE_BREAK_RE);
+  const addressLines = [...placeLines, settings.address];
+  const mapUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
+    `${placeLines[0]}, ${settings.address}`,
+  )}`;
 
   return (
     <SectionPageShell path={path}>
       <div className="contact-page-grid">
-        <div className="contact-page-top-left">
-          <PageHeading level="page" className="mb-space-5 md:mb-space-6">
-            {title}
-          </PageHeading>
+        <PageHeading level="page" className="contact-page-heading mb-space-5 md:mb-space-6">
+          {title}
+        </PageHeading>
 
-          <address className="contact-page-emails not-italic">
-            {settings.emails.map((email, index) => (
-              <div key={email.address} className="contact-email-card">
-                <div className="contact-email-label">{email.label}</div>
-                <TextLink href={`mailto:${email.address}`} className="contact-email-line">
-                  {email.address}
-                </TextLink>
-                {index === 0 ? (
-                  <TextLink href={telHref} className="contact-email-line">
-                    {settings.phone}
-                  </TextLink>
-                ) : null}
-                {email.contactName ? (
-                  <div className="contact-email-name">{email.contactName}</div>
-                ) : null}
-              </div>
-            ))}
-          </address>
-        </div>
-
-        <div id="dojazd" className="contact-page-map scroll-mt-space-6">
-          <ContactPhoto />
-        </div>
-
-        <div className="contact-page-address">
-          <h2 className="mb-space-3 font-serif text-size-role-box-title-m md:text-size-role-box-title leading-heading text-text-h2">
-            {pl.contact.addressHeading}
-          </h2>
-          <address className="mb-space-4 block not-italic text-size-lead-m leading-body text-text-secondary md:text-size-lead">
-            {settings.place}
-            <br />
-            {settings.address}
-          </address>
-
-          <Prose variant="text">
-            <Content components={{ a: MdxLink }} />
-          </Prose>
-
-          <p className="mt-space-4 text-size-body leading-body text-text-secondary md:text-size-body-lg md:leading-prose">
-            {pl.footer.accessibilityNote}
-          </p>
+        <div className="contact-rows">
+          {settings.emails.map((email) => (
+            <ContactRow key={email.address} label={email.label}>
+              <TextLink
+                href={`mailto:${email.address}`}
+                standalone
+                className={`${contactLinkClass} w-fit`}
+              >
+                {email.address}
+              </TextLink>
+              {email.contactName ? <div className="contact-row-note">{email.contactName}</div> : null}
+            </ContactRow>
+          ))}
+          <ContactRow label={pl.contact.phoneLabel}>
+            <TextLink href={telHref} standalone className={`${contactLinkClass} w-fit`}>
+              {settings.phone}
+            </TextLink>
+          </ContactRow>
+          <ContactRow label={pl.contact.addressHeading}>
+            <address className="text-size-lead-m not-italic leading-body text-text-body md:text-size-body-lg">
+              {addressLines.map((line) => (
+                <span key={line} className="block">
+                  {nbspChildren(line)}
+                </span>
+              ))}
+            </address>
+          </ContactRow>
+          <OnlineAside />
         </div>
 
         <div className="contact-page-aside">
-          <OnlineAside />
+          <div className="order-2 lg:order-1">
+            <ContactPhoto />
+          </div>
+          <div className="order-1 lg:order-2">
+            <EntranceNote Content={Content} mapUrl={mapUrl} />
+          </div>
         </div>
       </div>
     </SectionPageShell>
