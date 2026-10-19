@@ -65,9 +65,6 @@
     display: grid;
     grid-template-columns: 1fr;
     gap: var(--space-5);
-    padding: var(--space-6) 0;
-    border-top: 1px solid var(--line-gold);
-    border-bottom: 1px solid var(--line-gold);
   }
 
   .exhibition-tours-pass__intro {
@@ -454,7 +451,6 @@
       grid-template-columns: minmax(0, 1fr) auto;
       gap: var(--exhibition-section-col-gap);
       align-items: center;
-      padding: var(--space-6) 0;
     }
 
     .exhibition-tours-pass__cta {

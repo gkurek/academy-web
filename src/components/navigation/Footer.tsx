@@ -20,6 +20,7 @@ const subLinkClass = `flex min-h-tap-min-mobile-header items-center py-space-1 t
 const footerLinkUnderline = "link-underline-target link-underline-target--border";
 const contactDataClass = `flex w-fit min-h-tap-min-mobile-header items-center whitespace-nowrap py-space-1 text-size-nav leading-footer-text text-accent-text no-underline hover:text-accent-hover lg:min-h-0 lg:py-0 ${colorTransition}`;
 const socialLinkClass = `inline-flex min-h-tap-min-mobile-header flex-1 items-center justify-center border border-border-secondary px-space-3 text-size-caption-m leading-footer-text text-text-secondary hover:border-accent-text hover:text-accent-text lg:flex-none lg:px-space-4 ${colorTransition}`;
+const footerMutedInlineLinkClass = `cursor-pointer text-inherit no-underline hover:text-accent-text ${colorTransition}`;
 
 const sitemapGroupGridClass = [
   "",
@@ -91,6 +92,8 @@ function FooterSitemapGroup({ group, className }: { group: MainNavItem; classNam
 }
 
 export function Footer() {
+  const settings = getSiteSettings();
+
   return (
     <footer className="surface-footer-bleed font-sans">
       <div className="rule-gold-t surface-footer-contact-bleed px-page-margin-mobile py-footer-contact-py md:px-page-margin md:py-space-9">
@@ -145,7 +148,16 @@ export function Footer() {
       </div>
 
       <div className="rule-neutral-t flex flex-col items-center gap-space-2 px-page-margin-mobile py-footer-legal-py-m text-center text-size-caption-m leading-footer-text text-text-tertiary md:flex-row md:justify-between md:px-page-margin md:py-space-5 md:text-left md:text-size-caption lg:items-center">
-        <span>{fillTemplate(pl.footer.copyright, { year: currentYearInWarsaw() })}</span>
+        <span>
+          {fillTemplate(pl.footer.copyrightPrefix, { year: currentYearInWarsaw() })}
+          <ExternalLink
+            href={settings.ecosystem.foundationUrl}
+            showIcon={false}
+            className={footerMutedInlineLinkClass}
+          >
+            {pl.footer.foundationLinkLabel}
+          </ExternalLink>
+        </span>
         <span>
           {pl.footer.designCreditLabel}:{" "}
           <ExternalLink

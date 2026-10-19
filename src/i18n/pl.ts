@@ -529,7 +529,8 @@ const plSource = {
   },
   footer: {
     sitemapAriaLabel: "Mapa strony",
-    copyright: "© {year} Fundacja IKONA DZIŚ",
+    copyrightPrefix: "© {year} Fundacja ",
+    foundationLinkLabel: "IKONA DZIŚ",
     churchName: "Kościół Środowisk Twórczych",
     churchPatronsShort: "pw. św. Andrzeja Apostoła i św. Brata Alberta",
     // Verbatim from brief-claude-code.md §8.

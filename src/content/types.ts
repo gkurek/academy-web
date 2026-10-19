@@ -309,7 +309,6 @@ export type AboutPageData = TextPageData & {
     heading: string;
     lead: string;
     items: ActivityItem[];
-    links: TextPageLink[];
   };
   workshop: {
     heading: string;

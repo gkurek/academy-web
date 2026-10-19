@@ -48,6 +48,8 @@ const tileImageSizes =
 
 const captionClass =
   "font-serif text-size-body text-text-tertiary text-center mt-space-2 md:mt-space-3 pb-space-5 md:pb-space-7";
+// From lg each DOM row is a visual row; the last one drops the row gap so the grid ends at its captions.
+const lastRowCaptionClass = `${captionClass} lg:pb-0`;
 
 export function JustifiedGrid({
   tiles,
@@ -72,7 +74,8 @@ export function JustifiedGrid({
     <div className="justified-grid">
       {fillLastRow ? null : <span aria-hidden="true" className="justified-grid-filler" />}
       {rows.map((row, rowIndex) => {
-        const isSmartLastRow = !fillLastRow && rowIndex === rows.length - 1;
+        const isLastRow = rowIndex === rows.length - 1;
+        const isSmartLastRow = !fillLastRow && isLastRow;
 
         return (
           <div
@@ -113,7 +116,7 @@ export function JustifiedGrid({
                       <GalleryTileHoverOverlay />
                     </div>
                   </button>
-                  {tile.caption ? <figcaption className={captionClass}>{tile.caption}</figcaption> : null}
+                  {tile.caption ? <figcaption className={isLastRow ? lastRowCaptionClass : captionClass}>{tile.caption}</figcaption> : null}
                 </figure>
               );
             })}

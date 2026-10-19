@@ -3,8 +3,17 @@ export const audienceParagraphs = [
   "Ci, którzy mają już doświadczenie w\u00a0pisaniu ikon, mogą tu wzbogacić swój warsztat. Nauczanie doskonalące może trwać dowolnie długo, a\u00a0praca we wspólnocie niesie ze sobą niezwykłe możliwości rozwoju. Wykłady kierujemy szczególnie do osób piszących ikony.",
 ];
 
-export const historyParagraph =
-  "Akademia powstała z\u00a0inicjatywy Elżbiety Jackowskiej-Kurek jako grupa twórców zaangażowanych w\u00a0pogłębianie duchowości i\u00a0wiedzy o\u00a0ikonie. Podstawą naszej pracy pozostają warsztaty pisania ikon oraz wykłady o\u00a0duchowości, teologii, sztuce i\u00a0historii Kościoła. Wokół nich wyrosły wystawy, wyjazdy studyjne i\u00a0plenery Letniej Szkoły Światła.";
+export const historyParagraphs = [
+  // Plain strings, or { text, lecturer } / { text, link } for inline links resolved by src/content/pages.ts.
+  [
+    "Akademia powstała w\u00a02010 roku z\u00a0inicjatywy Elżbiety Jackowskiej-Kurek jako grupa twórców zaangażowanych w\u00a0pogłębianie duchowości i\u00a0wiedzy o\u00a0ikonie. W\u00a0pierwszych latach spotykaliśmy się w\u00a0różnych miejscach Warszawy, między innymi w\u00a0kaplicy św. Grzegorza Peradze i\u00a0w\u00a0Muzeum Ikon przy ul. Lelechowskiej. Od 2012 roku cykliczne wykłady i\u00a0warsztaty prowadzimy na stałe w\u00a0Kościele Środowisk Twórczych, którego gospodarzem jest ",
+    { text: "ks. rektor Grzegorz Michalczyk", lecturer: "grzegorz-michalczyk" },
+    " – to dzięki jego gościnności Akademia ma tu swój dom. W\u00a02015 roku osoby związane z\u00a0Akademią założyły ",
+    { text: "Fundację IKONA DZIŚ", link: "foundation" },
+    ", której Akademia jest projektem wiodącym.",
+  ],
+  "Podstawą naszej pracy pozostają warsztaty pisania ikon oraz wykłady o\u00a0duchowości, teologii, sztuce i\u00a0historii Kościoła. Wokół nich wyrosły wystawy, wyjazdy studyjne i\u00a0plenery Letniej Szkoły Światła. Nazwa Akademii nie jest przypadkowa: sięgamy do wczesnych tradycji uniwersyteckich – do szkoły, która jest zarazem wspólnotą mistrzów i\u00a0uczniów. Bo ikony nigdy nie pisze się samemu.",
+];
 
 export const workshopParagraph =
   "Pracujemy w\u00a0Kościele Środowisk Twórczych pw. św. Andrzeja Apostoła i\u00a0św. Brata Alberta Chmielowskiego przy Placu Teatralnym w\u00a0Warszawie. To kościół duszpasterstwa środowisk twórczych, więc sztuka sakralna jest tu u\u00a0siebie. Przy wspólnych stołach każdy pisze własną ikonę, we własnym tempie, a\u00a0prowadząca podchodzi do każdego osobno. Grupy spotykają się wieczorem i\u00a0w\u00a0ciągu dnia.";

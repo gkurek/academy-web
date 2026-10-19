@@ -20,7 +20,7 @@ export function SectionPageShell({ children, path, flush = false, footerBand }: 
   const { section, sectionActive } = resolveNav(path);
   const paddingClass = footerBand
     ? "px-page-margin-mobile pt-space-6 md:px-page-margin"
-    : "px-page-margin-mobile py-space-6 md:px-page-margin";
+    : "px-page-margin-mobile pt-space-6 pb-section-gap-loose md:px-page-margin";
 
   return (
     <>

@@ -6,18 +6,47 @@ import pracowniaMeta from "../../content/pages/pracownia.json";
 import * as aboutParagraphs from "../../content/pages/o-akademii.mdx";
 import ContactContent from "../../content/pages/kontakt.mdx";
 import * as workshopParagraphs from "../../content/pages/pracownia.mdx";
+import { getLecturerProfileHref } from "@/content/lecturers";
+import { getSiteSettings } from "@/content/settings";
 import { assertMdxExports } from "@/content/validate";
+
+/** Inline link in an MDX-exported paragraph: a lecturer profile or a site-settings link. */
+type InlineLinkSource = { text: string; lecturer: string } | { text: string; link: "foundation" };
+type ParagraphSource = string | (string | InlineLinkSource)[];
+
+/** Resolved paragraph segment — plain text or a link ready to render. */
+export type ParagraphSegment = string | { text: string; href: string; external: boolean };
 
 type AboutParagraphExports = {
   audienceParagraphs: string[];
-  historyParagraph: string;
+  historyParagraphs: ParagraphSource[];
   workshopParagraph: string;
 };
 
-const { audienceParagraphs, historyParagraph, workshopParagraph } = nbspDeep(
+function resolveSegment(segment: string | InlineLinkSource): ParagraphSegment {
+  if (typeof segment === "string") {
+    return segment;
+  }
+
+  if ("lecturer" in segment) {
+    const href = getLecturerProfileHref(segment.lecturer);
+    if (!href) {
+      throw new Error(`content/pages/o-akademii.mdx: lecturer "${segment.lecturer}" has no profile`);
+    }
+    return { text: segment.text, href, external: false };
+  }
+
+  return { text: segment.text, href: getSiteSettings().ecosystem.foundationUrl, external: true };
+}
+
+function resolveParagraph(paragraph: ParagraphSource): ParagraphSegment[] {
+  return typeof paragraph === "string" ? [paragraph] : paragraph.map(resolveSegment);
+}
+
+const { audienceParagraphs, historyParagraphs: historySources, workshopParagraph } = nbspDeep(
   assertMdxExports<AboutParagraphExports>(
     aboutParagraphs,
-    ["audienceParagraphs", "historyParagraph", "workshopParagraph"],
+    ["audienceParagraphs", "historyParagraphs", "workshopParagraph"],
     "content/pages/o-akademii.mdx",
   ),
 );
@@ -39,7 +68,7 @@ type WithoutBody<T> = Omit<T, "body">;
 
 export type LoadedAboutPage = WithoutBody<AboutPageData> & {
   audienceParagraphs: string[];
-  historyParagraph: string;
+  historyParagraphs: ParagraphSegment[][];
   workshopParagraph: string;
 };
 
@@ -61,7 +90,7 @@ export function getAboutPage(): LoadedAboutPage {
   return {
     ...aboutPageMeta,
     audienceParagraphs,
-    historyParagraph,
+    historyParagraphs: historySources.map(resolveParagraph),
     workshopParagraph,
   };
 }

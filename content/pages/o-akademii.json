@@ -64,7 +64,7 @@
     "heading": "Nasza historia",
     "milestones": [
       { "value": "2010", "label": "Akademia powstaje w\u00a0Warszawie" },
-      { "value": "2012", "label": "Zajęcia w\u00a0Kościele Środowisk Twórczych" },
+      { "value": "2012", "label": "Na stałe w\u00a0Kościele Środowisk Twórczych" },
       { "value": "15", "label": "sezonów cyklu wykładów o\u00a0ikonie" }
     ],
     "links": [
@@ -94,9 +94,6 @@
         "name": "Ikony do modlitwy",
         "note": "Udostępniamy ikony do modlitwy i\u00a0zapraszamy do wspólnej modlitwy przed ikonami w\u00a0Kościele Środowisk Twórczych."
       }
-    ],
-    "links": [
-      { "href": "/aktualnosci", "label": "Aktualności" }
     ]
   },
   "workshop": {

@@ -69,7 +69,7 @@ export function AboutPage({ page, path }: AboutPageProps) {
     person,
     approach,
     history,
-    historyParagraph,
+    historyParagraphs,
     activities,
     workshop,
     workshopParagraph,
@@ -152,8 +152,20 @@ export function AboutPage({ page, path }: AboutPageProps) {
 
       <TextPageSection id="historia" heading={history.heading}>
         <MilestoneRow items={history.milestones} />
-        <Prose variant="text" className="mt-space-5">
-          <p>{historyParagraph}</p>
+        <Prose variant="text" className="about-history-body mt-space-5">
+          {historyParagraphs.map((segments, index) => (
+            <p key={index}>
+              {segments.map((segment, segmentIndex) =>
+                typeof segment === "string" ? (
+                  segment
+                ) : (
+                  <TextLink key={segmentIndex} href={segment.href} external={segment.external}>
+                    {segment.text}
+                  </TextLink>
+                ),
+              )}
+            </p>
+          ))}
         </Prose>
         <div className="mt-space-5">
           <TextLinkRow links={history.links} />
@@ -164,9 +176,6 @@ export function AboutPage({ page, path }: AboutPageProps) {
         <p className="about-section-lead">{activities.lead}</p>
         <div className="mt-space-5">
           <ActivityList items={activities.items} />
-        </div>
-        <div className="mt-space-5">
-          <TextLinkRow links={activities.links} />
         </div>
       </TextPageSection>
 
