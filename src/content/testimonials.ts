@@ -2,17 +2,14 @@ import { nbspDeep } from "@/lib/typography";
 import testimonialsData from "../../content/testimonials.json";
 import type { Testimonial } from "@/content/types";
 
-/** Quotes shown on the workshops hub. */
-const WORKSHOP_TESTIMONIALS_LIMIT = 3;
-
 type TestimonialsFile = {
   sample?: boolean;
   items: Testimonial[];
 };
 
-export function getWorkshopTestimonials(): Testimonial[] {
-  const data = nbspDeep(testimonialsData as TestimonialsFile);
-  return data.items.filter((item) => item.scope !== "plener").slice(0, WORKSHOP_TESTIMONIALS_LIMIT);
+/** All quotes — the workshops hub picks one by author (`workshops-hub.json`). */
+export function getTestimonials(): Testimonial[] {
+  return nbspDeep(testimonialsData as TestimonialsFile).items;
 }
 
 export function getPlenerTestimonials(): Testimonial[] {

@@ -21,6 +21,7 @@ export function SectionNav({ items, path, activeHref }: SectionNavProps) {
           key={item.label}
           href={item.href}
           label={item.label}
+          shortLabel={item.shortLabel}
           variant="section"
           isActive={item.href === activeHref}
           ariaCurrent={navAriaCurrent(item.href, activeHref, path)}

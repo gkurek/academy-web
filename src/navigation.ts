@@ -7,7 +7,12 @@
 
 import { pl } from "@/i18n/pl";
 
-export type NavLink = { label: string; href: string };
+export type NavLink = {
+  label: string;
+  href: string;
+  /** SectionNav below md, where the full labels would wrap to a second line. */
+  shortLabel?: string;
+};
 
 export type MainNavItem = NavLink & {
   // Sub-links shown in the mobile menu accordion for this section.
@@ -31,8 +36,8 @@ export const sectionNav: Record<SectionKey, NavLink[]> = {
   ],
   warsztaty: [
     { label: "Przegląd", href: "/warsztaty" },
-    { label: "Kurs roczny i trzyletni", href: "/warsztaty/kurs-roczny-i-trzyletni" },
-    { label: "Letnia Szkoła Światła", href: "/warsztaty/letnia-szkola-swiatla" },
+    { label: "Kurs roczny i trzyletni", shortLabel: "Kurs roczny", href: "/warsztaty/kurs-roczny-i-trzyletni" },
+    { label: "Letnia Szkoła Światła", shortLabel: "Szkoła Światła", href: "/warsztaty/letnia-szkola-swiatla" },
   ],
   wyklady: [
     { label: "Bieżący sezon", href: "/wyklady" },

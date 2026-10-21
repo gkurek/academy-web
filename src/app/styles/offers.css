@@ -81,10 +81,67 @@
     }
   }
 
-  /* Hub OfferCard: match photo height when using exhibition placeholder frame. */
-  .offer-card-exhibition-frame .exhibition-frame-placeholder {
-    aspect-ratio: unset;
-    height: var(--offer-card-image-h);
+  /* /warsztaty hub photo: ExhibitionFrame crop, without the exhibition's gold frame. */
+  .workshops-hub-photo.exhibition-frame--wide .exhibition-frame-media {
+    border: 0;
+    aspect-ratio: var(--workshops-hub-photo-aspect-m);
+  }
+
+  @media (min-width: 768px) {
+    .workshops-hub-photo.exhibition-frame--wide .exhibition-frame-media {
+      aspect-ratio: var(--exhibition-aspect-wide);
+    }
+  }
+
+  /* /warsztaty hub FAQ: question above its answer; the two-column flow is set in WorkshopsFaq. */
+  .workshops-faq-item {
+    display: grid;
+    gap: var(--space-2);
+    break-inside: avoid;
+    /* Padding, not margin: a margin would not carry into the top of the second column consistently. */
+    padding-bottom: var(--space-7);
+  }
+
+  .workshops-faq-item:last-child {
+    padding-bottom: 0;
+  }
+
+  .workshops-faq-question {
+    font-family: var(--font-serif);
+    font-size: var(--role-box-title-m);
+    line-height: var(--leading-heading);
+    color: var(--text-h2);
+  }
+
+  @media (min-width: 768px) {
+    .workshops-faq-question {
+      font-size: var(--role-box-title);
+    }
+  }
+
+  /* /warsztaty hub: separate OfferCards, same gap as the quote grid below. */
+  .offer-card-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--offer-quotes-gap);
+  }
+
+  .offer-card {
+    display: grid;
+  }
+
+  /* Cards in a row share row tracks (subgrid), so eyebrow, title, excerpt, bullets and CTA
+     start at the same height in both cards. Five rows = the five children of OfferCard. */
+  @media (min-width: 768px) {
+    .offer-card-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .offer-card {
+      grid-row: span 5;
+      grid-template-rows: subgrid;
+      row-gap: 0;
+    }
   }
 
   .offer-figure-exhibition-frame .exhibition-frame-placeholder {

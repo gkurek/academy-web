@@ -14,6 +14,8 @@ export interface ExhibitionFrameProps {
   aspect: ExhibitionFrameAspect;
   placeholderLabel: string;
   className?: string;
+  /** Above-the-fold image (LCP) — eager load, high fetch priority. */
+  priority?: boolean;
 }
 
 const aspectClass: Record<ExhibitionFrameAspect, string> = {
@@ -29,6 +31,7 @@ export function ExhibitionFrame({
   aspect,
   placeholderLabel,
   className,
+  priority = false,
 }: ExhibitionFrameProps) {
   const rootClass = ["exhibition-frame", aspectClass[aspect], className].filter(Boolean).join(" ");
 
@@ -40,6 +43,7 @@ export function ExhibitionFrame({
             src={image.src}
             alt={image.alt}
             fill
+            priority={priority}
             sizes={
               aspect === "wide"
                 ? "(min-width: 768px) 100vw, 100vw"

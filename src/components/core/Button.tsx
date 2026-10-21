@@ -9,6 +9,8 @@ export interface ButtonProps {
   size?: "md" | "lg";
   /** Full width — variant used in FactsBox. */
   block?: boolean;
+  /** Narrower side padding below md — for full-width mobile buttons with long labels. */
+  compactMobile?: boolean;
   disabled?: boolean;
   onClick?: MouseEventHandler<HTMLAnchorElement>;
   className?: string;
@@ -17,6 +19,12 @@ export interface ButtonProps {
 const sizeClasses: Record<NonNullable<ButtonProps["size"]>, string> = {
   md: "px-btn-x-md py-btn-y-md text-size-body",
   lg: "px-btn-x-lg py-btn-y-lg text-size-body-lg",
+};
+
+// Same sizes with narrow side padding below md (literal classes so Tailwind picks them up).
+const compactSizeClasses: Record<NonNullable<ButtonProps["size"]>, string> = {
+  md: "px-space-3 md:px-btn-x-md py-btn-y-md text-size-body",
+  lg: "px-space-3 md:px-btn-x-lg py-btn-y-lg text-size-body-lg",
 };
 
 const variantClasses: Record<NonNullable<ButtonProps["variant"]>, string> = {
@@ -34,6 +42,7 @@ export function Button({
   variant = "primary",
   size = "md",
   block = false,
+  compactMobile = false,
   disabled = false,
   onClick,
   className,
@@ -41,7 +50,7 @@ export function Button({
   const classes = [
     "rounded-none border text-center cursor-pointer box-border",
     block ? "block" : "inline-block",
-    sizeClasses[size],
+    compactMobile ? compactSizeClasses[size] : sizeClasses[size],
     variantClasses[variant],
     className,
   ]
