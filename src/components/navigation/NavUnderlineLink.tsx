@@ -4,6 +4,8 @@ import type { MouseEvent } from "react";
 export interface NavUnderlineLinkProps {
   href: string;
   label: string;
+  /** Shown below md instead of `label` (SectionNav). */
+  shortLabel?: string;
   /** Gold underline and accent colour. */
   isActive?: boolean;
   /** `page` for the current page, `true` for its section or a scroll-spy target. */
@@ -30,6 +32,7 @@ const variantClass = {
 export function NavUnderlineLink({
   href,
   label,
+  shortLabel,
   isActive = false,
   ariaCurrent,
   variant = "main",
@@ -45,7 +48,14 @@ export function NavUnderlineLink({
       onClick={onClick}
       className={[stateClass, "tap-target-nav", className].filter(Boolean).join(" ")}
     >
-      <span className="link-underline-target">{label}</span>
+      {shortLabel ? (
+        <>
+          <span className="link-underline-target md:hidden">{shortLabel}</span>
+          <span className="link-underline-target hidden md:inline">{label}</span>
+        </>
+      ) : (
+        <span className="link-underline-target">{label}</span>
+      )}
     </Link>
   );
 }

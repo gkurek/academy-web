@@ -281,7 +281,15 @@ const plSource = {
   workshopsHub: {
     title: "Warsztaty pisania ikon",
     quotesHeading: "Głosy uczestników",
-    imagePlaceholder: "[zdjęcie: letnia szkoła światła]",
+    studentIconsHeading: "Ikony naszych uczniów",
+    studentIconsLink: "Wszystkie ikony uczniów",
+    faqHeading: "Zanim zaczniesz",
+    // Closing block under the quotes (makieta 2c) — plain mailto, no subject (none in brief §7).
+    closing: {
+      heading: "Masz pytania?",
+      text: "Napisz do nas, chętnie odpowiemy.",
+      ctaLabel: "Napisz do Akademii",
+    },
     // Offer card eyebrows — picked by enrollment state (`getWorkshopCardEyebrow`).
     eyebrow: {
       kurs: {

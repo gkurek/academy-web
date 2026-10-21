@@ -185,7 +185,6 @@
   --offer-facts-top: var(--accent-bar);
   --offer-facts-dd-mt: 2px;
   --offer-facts-dd-mb: 16px;
-  --offer-card-image-h: 240px;
   --offer-card-x: 34px;
   --offer-card-y: 32px;
   --offer-card-pb: 36px;
@@ -392,6 +391,8 @@
   --exhibition-aspect-tile: 4 / 3;
   /* 60/40 pair: same row height as 4:3 tile at 40% width → 2:1 at 60%. */
   --exhibition-aspect-tile-pair-lead: 2 / 1;
+  /* /warsztaty hub photo below md — lower crop so the first offer card starts sooner. */
+  --workshops-hub-photo-aspect-m: var(--exhibition-aspect-tile-pair-lead);
   /* 13a/14a — kolumna „W skrócie” / CTA; treść = reszta (652px przy szer. treści 1068px). */
   --exhibition-facts-w: 360px;
   --exhibition-section-col-gap: 56px;

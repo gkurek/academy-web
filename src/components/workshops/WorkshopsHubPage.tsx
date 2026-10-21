@@ -1,9 +1,18 @@
 import { OfferCard } from "@/components/content/OfferCard";
+import { Button } from "@/components/core/Button";
+import { ExhibitionFrame } from "@/components/exhibition/ExhibitionFrame";
 import { SectionPageShell } from "@/components/layout/SectionPageShell";
 import { OfferQuoteGrid } from "@/components/offers/OfferQuoteGrid";
+import { WorkshopsFaq } from "@/components/workshops/WorkshopsFaq";
+import { WorkshopsStudentIcons } from "@/components/workshops/WorkshopsStudentIcons";
 import { getEnrollmentState, getUpcomingOfferFacts, type LoadedOffer } from "@/content/offers";
-import { getWorkshopCardEyebrow, getWorkshopsHub } from "@/content/workshops-hub";
-import type { Testimonial } from "@/content/types";
+import { getEnrollmentEmail } from "@/content/settings";
+import {
+  getWorkshopCardEyebrow,
+  getWorkshopsHub,
+  getWorkshopsHubQuotes,
+  getWorkshopsHubStudentIcons,
+} from "@/content/workshops-hub";
 import { pl } from "@/i18n/pl";
 import { PageHeading } from "@/components/core/PageHeading";
 import { todayInWarsaw } from "@/lib/isoDate";
@@ -14,7 +23,6 @@ export interface WorkshopsHubPageProps {
   /** Route path — see SectionPageShellProps["path"]. */
   path: string;
   offers: LoadedOffer[];
-  quotes: Testimonial[];
 }
 
 function WorkshopOfferCard({ offer }: { offer: LoadedOffer }) {
@@ -34,12 +42,13 @@ function WorkshopOfferCard({ offer }: { offer: LoadedOffer }) {
       ctaLabel={card.ctaLabel}
       // Same enrollment state as the offer FactsBox: gold only while enrollment is open.
       ctaVariant={getEnrollmentState(offer) === "open" ? "primary" : "secondary"}
-      image={card.image}
     />
   );
 }
 
-export function WorkshopsHubPage({ path, offers, quotes }: WorkshopsHubPageProps) {
+export function WorkshopsHubPage({ path, offers }: WorkshopsHubPageProps) {
+  const { closing } = pl.workshopsHub;
+
   return (
     <SectionPageShell path={path}>
       <section className="pb-section-gap-tight">
@@ -51,8 +60,11 @@ export function WorkshopsHubPage({ path, offers, quotes }: WorkshopsHubPageProps
         </p>
       </section>
 
-      <section>
-        <div className="hairline-grid-2">
+      {/* Placeholder label unused: the hub image is required (validateHub). */}
+      <ExhibitionFrame aspect="wide" image={hub.image} placeholderLabel="" className="workshops-hub-photo" priority />
+
+      <section className="mt-section-gap">
+        <div className="offer-card-grid">
           {offers.map((offer) => (
             <WorkshopOfferCard key={offer.slug} offer={offer} />
           ))}
@@ -60,13 +72,31 @@ export function WorkshopsHubPage({ path, offers, quotes }: WorkshopsHubPageProps
       </section>
 
       <div className="mt-section-gap">
-        {/* Two quotes would leave an empty third column on lg. */}
-        <OfferQuoteGrid
-          heading={pl.workshopsHub.quotesHeading}
-          quotes={quotes}
-          columns={quotes.length === 2 ? 2 : 3}
-        />
+        <WorkshopsStudentIcons icons={getWorkshopsHubStudentIcons()} intro={hub.studentIcons.intro} />
       </div>
+
+      <div className="mt-section-gap">
+        <WorkshopsFaq items={hub.faq} />
+      </div>
+
+      <div className="mt-section-gap">
+        <OfferQuoteGrid heading={pl.workshopsHub.quotesHeading} quotes={getWorkshopsHubQuotes()} columns={3} />
+      </div>
+
+      <section
+        aria-labelledby="workshops-closing-heading"
+        className="mt-section-gap flex flex-col gap-space-5 md:flex-row md:items-center md:justify-between"
+      >
+        <div>
+          <PageHeading level="section" id="workshops-closing-heading" className="mb-space-2">
+            {closing.heading}
+          </PageHeading>
+          <p className="body-copy text-text-secondary">{closing.text}</p>
+        </div>
+        <Button href={`mailto:${getEnrollmentEmail()}`} variant="primary" size="lg" className="w-full md:w-auto">
+          {closing.ctaLabel}
+        </Button>
+      </section>
     </SectionPageShell>
   );
 }

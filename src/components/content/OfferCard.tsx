@@ -1,8 +1,4 @@
-import Image from "next/image";
 import { Button } from "@/components/core/Button";
-import { ExhibitionFrame } from "@/components/exhibition/ExhibitionFrame";
-import type { Image as ContentImage } from "@/content/types";
-import { pl } from "@/i18n/pl";
 
 export interface OfferCardProps {
   eyebrow: string;
@@ -12,50 +8,30 @@ export interface OfferCardProps {
   href: string;
   ctaLabel: string;
   ctaVariant: "primary" | "secondary";
-  image?: ContentImage;
 }
 
-export function OfferCard({
-  eyebrow,
-  title,
-  excerpt,
-  bullets,
-  href,
-  ctaLabel,
-  ctaVariant,
-  image,
-}: OfferCardProps) {
+/** Hub offer card — same tile language as OfferQuoteGrid (card surface, gold top bar). */
+export function OfferCard({ eyebrow, title, excerpt, bullets, href, ctaLabel, ctaVariant }: OfferCardProps) {
   return (
-    <article className="bg-surface-tile flex flex-col">
-      {image?.src ? (
-        <Image
-          src={image.src}
-          alt={image.alt}
-          width={image.width}
-          height={image.height}
-          sizes="(min-width: 768px) 50vw, 100vw"
-          className="w-full h-offer-card-image-h object-cover"
-        />
-      ) : (
-        <ExhibitionFrame
-          aspect="tile"
-          placeholderLabel={pl.workshopsHub.imagePlaceholder}
-          className="offer-card-exhibition-frame"
-        />
-      )}
-      <div className="flex flex-1 flex-col px-offer-card-x pt-offer-card-y pb-offer-card-pb">
-        <p className="font-serif text-size-body text-accent-text mb-space-3">{eyebrow}</p>
-        <h2 className="font-serif text-size-role-card-title-m md:text-size-role-card-title leading-heading text-text-h2 mb-space-4">
-          {title}
-        </h2>
-        <p className="text-size-body leading-body text-text-secondary mb-space-4">{excerpt}</p>
-        <ul className="mb-space-5 list-none text-size-body leading-body text-text-secondary">
-          {bullets.map((item) => (
-            <li key={item}>{item}</li>
-          ))}
-        </ul>
-        {/* mt-auto pins the CTA to the card bottom so buttons align across the row. */}
-        <Button href={href} variant={ctaVariant} size="lg" className="mt-auto">
+    <article className="offer-card bg-surface-card border-t-offer-quote-top border-accent px-offer-card-x pt-offer-card-y pb-offer-card-pb">
+      <p className="font-serif text-size-body text-accent-text mb-space-3">{eyebrow}</p>
+      <h2 className="font-serif text-size-role-card-title-m md:text-size-role-card-title leading-heading text-text-h2 mb-space-4">
+        {title}
+      </h2>
+      <p className="text-size-body leading-body text-text-secondary mb-space-4">{excerpt}</p>
+      <ul className="mb-space-5 list-none text-size-body leading-body text-text-secondary">
+        {bullets.map((item) => (
+          <li key={item} className="flex gap-space-3">
+            <span aria-hidden="true" className="text-accent">
+              ·
+            </span>
+            <span>{item}</span>
+          </li>
+        ))}
+      </ul>
+      {/* Last subgrid row (offers.css) — bottom-aligned so buttons line up across the row. */}
+      <div className="self-end">
+        <Button href={href} variant={ctaVariant} size="lg" compactMobile className="w-full md:w-auto">
           {ctaLabel}
         </Button>
       </div>
