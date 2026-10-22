@@ -12,7 +12,8 @@ export interface HeaderProps {
 
 export function Header({ path }: HeaderProps) {
   const settings = getSiteSettings();
-  const activeHref = resolveNav(path).active?.href;
+  const nav = resolveNav(path);
+  const activeHref = nav.active?.href;
 
   return (
     <header className="rule-gold-b">
@@ -39,7 +40,12 @@ export function Header({ path }: HeaderProps) {
       </div>
 
       <div className="lg:hidden">
-        <HeaderMobileMenu path={path} activeHref={activeHref} blogUrl={settings.blogUrl} />
+        <HeaderMobileMenu
+          path={path}
+          activeHref={activeHref}
+          sectionActiveHref={nav.sectionActive?.href}
+          blogUrl={settings.blogUrl}
+        />
       </div>
     </header>
   );

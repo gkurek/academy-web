@@ -116,6 +116,9 @@
 
   --tap-min: 48px;
   --tap-min-mobile-header: 44px;
+  /* Floating menu button (mobile, k8b): square in the bottom-right corner. */
+  --menu-fab-size: var(--space-9);
+  --menu-fab-offset: var(--page-margin-mobile);
 
   --content-max: 1180px;
   --measure-lead: 680px;

@@ -219,6 +219,75 @@
     }
   }
 
+  /* Floating menu button (k8b) — shown by HeaderMobileMenu once the header bar scrolls away.
+     Above the sticky YearNav (z 20), below the open menu drawer (z 50). */
+  .menu-fab {
+    position: fixed;
+    right: var(--menu-fab-offset);
+    bottom: calc(var(--menu-fab-offset) + env(safe-area-inset-bottom));
+    z-index: 30;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: var(--menu-fab-size);
+    height: var(--menu-fab-size);
+    border: 1px solid var(--surface-page);
+    background-color: var(--accent);
+    color: var(--text-on-gold);
+    cursor: pointer;
+    visibility: hidden;
+    opacity: 0;
+  }
+
+  .menu-fab[data-visible="true"] {
+    visibility: visible;
+    opacity: 1;
+  }
+
+  .menu-fab:hover {
+    background-color: var(--accent-text);
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .menu-fab {
+      transition:
+        opacity 150ms ease-out,
+        visibility 150ms ease-out,
+        background-color 150ms ease-out;
+    }
+  }
+
+  /* Mobile menu drawer — stays mounted so it can fade and slide out as well as in. */
+  .menu-drawer {
+    visibility: hidden;
+    opacity: 0;
+    transform: translateY(calc(-1 * var(--space-3)));
+  }
+
+  .menu-drawer[data-open="true"] {
+    visibility: visible;
+    opacity: 1;
+    transform: none;
+  }
+
+  /* Visibility flips at once on open (the drawer must be focusable right away)
+     and only at the end on close, so the fade-out stays visible. */
+  @media (prefers-reduced-motion: no-preference) {
+    .menu-drawer {
+      transition:
+        opacity 200ms ease-out,
+        transform 200ms ease-out,
+        visibility 0s linear 200ms;
+    }
+
+    .menu-drawer[data-open="true"] {
+      transition:
+        opacity 200ms ease-out,
+        transform 200ms ease-out,
+        visibility 0s;
+    }
+  }
+
   /* Colour transition without outline-color, so the focus ring never fades in from the text colour. */
   .transition-ui-colors {
     transition:

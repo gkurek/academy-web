@@ -1,18 +1,20 @@
 "use client";
 
-import { useCallback, useEffect, useId, useLayoutEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useId, useRef, useState } from "react";
 import Link from "next/link";
 import { Button } from "@/components/core/Button";
 import { ExternalLink } from "@/components/core/ExternalLink";
 import { ChevronIcon } from "@/components/core/icons";
 import { pl } from "@/i18n/pl";
-import { mainNav, navAriaCurrent, navItem, publicationsLink } from "@/navigation";
+import { mainNav, navAriaCurrent, publicationsLink } from "@/navigation";
 
 export interface HeaderMobileMenuProps {
   /** Route path — `aria-current="page"` on the link to it. */
   path?: string;
   /** Href of the main nav item to highlight gold (resolveNav). */
   activeHref?: string;
+  /** Href of the current SectionNav item — highlighted gold in the open accordion. */
+  sectionActiveHref?: string;
   blogUrl: string;
 }
 
@@ -52,42 +54,45 @@ function getFocusableElements(container: HTMLElement): HTMLElement[] {
   ).filter((element) => !element.hasAttribute("disabled"));
 }
 
-export function HeaderMobileMenu({ path, activeHref, blogUrl }: HeaderMobileMenuProps) {
+const barClass =
+  "flex items-center justify-between gap-space-4 bg-surface-page px-page-margin-mobile py-space-5";
+const logoClass = "flex min-h-tap-min-mobile-header flex-col justify-center font-serif leading-tight";
+const barButtonClass =
+  "flex h-tap-min-mobile-header w-tap-min-mobile-header flex-none items-center justify-center border border-border-button text-text-body";
+
+export function HeaderMobileMenu({ path, activeHref, sectionActiveHref, blogUrl }: HeaderMobileMenuProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [expandedSection, setExpandedSection] = useState<string | null>(null);
-  const [headerBarHeight, setHeaderBarHeight] = useState(0);
+  // The floating button shows once the header bar has scrolled out of view.
+  const [isBarVisible, setIsBarVisible] = useState(true);
   const drawerId = useId();
   const headerBarRef = useRef<HTMLDivElement>(null);
   const drawerRef = useRef<HTMLDivElement>(null);
-  const dialogRef = useRef<HTMLDivElement>(null);
-  const menuButtonRef = useRef<HTMLButtonElement>(null);
-
-  const newsLink = navItem("/aktualnosci");
+  const openerRef = useRef<HTMLButtonElement | null>(null);
 
   const closeMenu = useCallback(() => {
+    // The accordion state stays as is while the drawer fades out; openMenu resets it.
     setIsOpen(false);
-    setExpandedSection(null);
-    menuButtonRef.current?.focus();
+    openerRef.current?.focus();
   }, []);
 
-  const openMenu = useCallback(() => {
-    setIsOpen(true);
-    // Only the current section opens, so its link to the current page is visible.
-    setExpandedSection(mainNav.find((item) => item.children && item.href === activeHref)?.label ?? null);
-  }, [activeHref]);
+  const openMenu = useCallback(
+    (opener: HTMLButtonElement) => {
+      openerRef.current = opener;
+      setIsOpen(true);
+      // Only the current section opens, so its link to the current page is visible.
+      setExpandedSection(mainNav.find((item) => item.children && item.href === activeHref)?.label ?? null);
+    },
+    [activeHref],
+  );
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     const headerBar = headerBarRef.current;
     if (!headerBar) {
       return undefined;
     }
 
-    const updateHeight = () => {
-      setHeaderBarHeight(headerBar.offsetHeight);
-    };
-
-    updateHeight();
-    const observer = new ResizeObserver(updateHeight);
+    const observer = new IntersectionObserver(([entry]) => setIsBarVisible(entry.isIntersecting));
     observer.observe(headerBar);
     return () => observer.disconnect();
   }, []);
@@ -120,9 +125,8 @@ export function HeaderMobileMenu({ path, activeHref, blogUrl }: HeaderMobileMenu
       return undefined;
     }
 
-    const dialog = dialogRef.current;
     const drawer = drawerRef.current;
-    if (!dialog || !drawer) {
+    if (!drawer) {
       return undefined;
     }
 
@@ -139,8 +143,7 @@ export function HeaderMobileMenu({ path, activeHref, blogUrl }: HeaderMobileMenu
         return;
       }
 
-      // The trap spans the header bar too, so the close button stays reachable.
-      const elements = getFocusableElements(dialog);
+      const elements = getFocusableElements(drawer);
       if (elements.length === 0) {
         return;
       }
@@ -166,133 +169,138 @@ export function HeaderMobileMenu({ path, activeHref, blogUrl }: HeaderMobileMenu
   }, [closeMenu, isOpen]);
 
   return (
-    <div
-      ref={dialogRef}
-      role={isOpen ? "dialog" : undefined}
-      aria-modal={isOpen ? true : undefined}
-      aria-label={isOpen ? pl.header.menuToggleLabel : undefined}
-    >
-      <div
-        ref={headerBarRef}
-        className="relative z-50 flex items-center justify-between gap-space-4 bg-surface-page px-page-margin-mobile py-space-5"
-      >
-        <Link href="/" className="flex min-h-tap-min-mobile-header flex-col justify-center font-serif leading-tight">
+    <>
+      <div ref={headerBarRef} className={barClass}>
+        <Link href="/" className={logoClass}>
           <div className="text-size-logo-m text-text-h2">{pl.meta.orgShortName}</div>
           <div className="text-size-caption-m text-text-tertiary">{pl.meta.orgSubtitle}</div>
         </Link>
         <button
-          ref={menuButtonRef}
           type="button"
-          onClick={() => (isOpen ? closeMenu() : openMenu())}
+          onClick={(event) => openMenu(event.currentTarget)}
           aria-expanded={isOpen}
           aria-controls={drawerId}
           aria-label={pl.header.menuToggleLabel}
-          className="flex h-tap-min-mobile-header w-tap-min-mobile-header flex-none items-center justify-center border border-border-button text-text-body"
+          className={barButtonClass}
         >
-          <MenuIcon open={isOpen} />
+          <MenuIcon open={false} />
         </button>
       </div>
 
-      {isOpen && (
-        <div
-          ref={drawerRef}
-          id={drawerId}
-          className="fixed inset-x-0 bottom-0 z-40 overflow-y-auto bg-surface-page motion-safe:transition-none"
-          style={{ top: headerBarHeight }}
-        >
-          <nav className="grid">
-            {mainNav.map((item) => {
-              const isActive = item.href === activeHref;
-              const ariaCurrent = navAriaCurrent(item.href, activeHref, path);
+      <button
+        type="button"
+        onClick={(event) => openMenu(event.currentTarget)}
+        aria-expanded={isOpen}
+        aria-controls={drawerId}
+        aria-label={pl.header.menuToggleLabel}
+        data-visible={!isBarVisible}
+        className="menu-fab"
+      >
+        <MenuIcon open={false} />
+      </button>
 
-              if (!item.children) {
-                return (
-                  <Link
-                    key={item.label}
-                    href={item.href}
-                    onClick={closeMenu}
-                    aria-current={ariaCurrent}
-                    className={
-                      "border-b border-line-neutral px-page-margin-mobile py-space-5 text-size-h3-m " +
-                      (isActive ? "text-accent-text" : "text-text-list-title")
-                    }
-                  >
-                    {item.label}
-                  </Link>
-                );
-              }
+      <div
+        ref={drawerRef}
+        id={drawerId}
+        role="dialog"
+        aria-modal="true"
+        aria-label={pl.header.menuToggleLabel}
+        data-open={isOpen}
+        inert={!isOpen}
+        className="menu-drawer fixed inset-0 z-50 overflow-y-auto bg-surface-page"
+      >
+        <div className={barClass}>
+          <Link href="/" onClick={closeMenu} className={logoClass}>
+            <div className="text-size-logo-m text-text-h2">{pl.meta.orgShortName}</div>
+            <div className="text-size-caption-m text-text-tertiary">{pl.meta.orgSubtitle}</div>
+          </Link>
+          <button
+            type="button"
+            onClick={closeMenu}
+            aria-label={pl.header.menuCloseLabel}
+            className={barButtonClass}
+          >
+            <MenuIcon open />
+          </button>
+        </div>
 
-              const expanded = expandedSection === item.label;
-              const sectionId = `${drawerId}-${item.label}`;
+        <nav className="grid">
+          {mainNav.map((item) => {
+            const isActive = item.href === activeHref;
 
+            if (!item.children) {
               return (
-                <div key={item.label} className="border-b border-line-neutral">
-                  <div className="flex items-center justify-between">
-                    <Link
-                      href={item.href}
-                      onClick={closeMenu}
-                      aria-current={ariaCurrent}
-                      className={
-                        "flex-1 px-page-margin-mobile py-space-5 text-size-h3-m " +
-                        (isActive ? "text-accent-text" : "text-text-list-title")
-                      }
-                    >
-                      {item.label}
-                    </Link>
-                    <button
-                      type="button"
-                      onClick={() => setExpandedSection(expanded ? null : item.label)}
-                      aria-expanded={expanded}
-                      aria-controls={sectionId}
-                      aria-label={`${expanded ? pl.header.sectionCollapseLabel : pl.header.sectionExpandLabel} ${item.label}`}
-                      className="mr-space-1 flex h-tap-min w-tap-min flex-none items-center justify-center text-text-tertiary"
-                    >
-                      <ChevronIcon expanded={expanded} />
-                    </button>
-                  </div>
-                  {expanded && (
-                    <div id={sectionId} className="pb-space-3">
-                      {item.children.map((child) => (
-                        <Link
-                          key={child.label}
-                          href={child.href}
-                          onClick={closeMenu}
-                          aria-current={child.href === path ? "page" : undefined}
-                          className="block py-space-4 pr-page-margin-mobile pl-menu-indent text-size-ui-m text-text-secondary"
-                        >
-                          {child.label}
-                        </Link>
-                      ))}
-                    </div>
-                  )}
-                </div>
+                <Link
+                  key={item.label}
+                  href={item.href}
+                  onClick={closeMenu}
+                  aria-current={navAriaCurrent(item.href, activeHref, path)}
+                  className={
+                    "border-b border-line-neutral px-page-margin-mobile py-space-5 text-size-h3-m " +
+                    (isActive ? "text-accent-text" : "text-text-list-title")
+                  }
+                >
+                  {item.label}
+                </Link>
               );
-            })}
-          </nav>
+            }
 
-          <div className="px-page-margin-mobile pb-space-6 pt-space-6">
-            <Button block size="lg" href="/warsztaty" className="mb-space-4" onClick={closeMenu}>
-              {pl.header.primaryCta}
-            </Button>
-            <Button block size="lg" variant="secondary" href="/kontakt" onClick={closeMenu}>
-              {pl.header.contactCta}
-            </Button>
-            <div className="mt-space-4 flex flex-wrap items-center gap-x-space-3 text-size-ui text-text-tertiary">
-              <Link href={newsLink.href} onClick={closeMenu} className="tap-target-nav">
-                {newsLink.label}
-              </Link>
-              <span aria-hidden="true">·</span>
-              <Link href={publicationsLink.href} onClick={closeMenu} className="tap-target-nav">
-                {publicationsLink.label}
-              </Link>
-              <span aria-hidden="true">·</span>
-              <ExternalLink href={blogUrl} showIcon={false} onClick={closeMenu} className="tap-target-nav">
-                {pl.header.blogLink}
-              </ExternalLink>
-            </div>
+            const expanded = expandedSection === item.label;
+            const sectionId = `${drawerId}-${item.label}`;
+
+            return (
+              <div key={item.label} className="border-b border-line-neutral">
+                <button
+                  type="button"
+                  onClick={() => setExpandedSection(expanded ? null : item.label)}
+                  aria-expanded={expanded}
+                  aria-controls={sectionId}
+                  className={
+                    "flex w-full cursor-pointer items-center justify-between px-page-margin-mobile py-space-5 text-left text-size-h3-m " +
+                    (isActive ? "text-accent-text" : "text-text-list-title")
+                  }
+                >
+                  {item.label}
+                  <ChevronIcon expanded={expanded} className="flex-none text-text-tertiary" />
+                </button>
+                {expanded && (
+                  <div id={sectionId} className="pb-space-3">
+                    {item.children.map((child) => (
+                      <Link
+                        key={child.label}
+                        href={child.href}
+                        onClick={closeMenu}
+                        aria-current={navAriaCurrent(child.href, sectionActiveHref, path)}
+                        className={
+                          "block py-space-4 pr-page-margin-mobile pl-menu-indent text-size-ui-m " +
+                          (child.href === sectionActiveHref ? "text-accent-text" : "text-text-secondary")
+                        }
+                      >
+                        {child.label}
+                      </Link>
+                    ))}
+                  </div>
+                )}
+              </div>
+            );
+          })}
+        </nav>
+
+        <div className="px-page-margin-mobile pb-space-6 pt-space-6">
+          <Button block size="lg" href="/warsztaty" onClick={closeMenu}>
+            {pl.header.primaryCta}
+          </Button>
+          <div className="mt-space-4 flex flex-wrap items-center gap-x-space-3 text-size-ui text-text-tertiary">
+            <Link href={publicationsLink.href} onClick={closeMenu} className="tap-target-nav">
+              {publicationsLink.label}
+            </Link>
+            <span aria-hidden="true">·</span>
+            <ExternalLink href={blogUrl} showIcon={false} onClick={closeMenu} className="tap-target-nav">
+              {pl.header.blogLink}
+            </ExternalLink>
           </div>
         </div>
-      )}
-    </div>
+      </div>
+    </>
   );
 }

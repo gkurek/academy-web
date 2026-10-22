@@ -16,7 +16,7 @@ export type NavLink = {
 
 export type MainNavItem = NavLink & {
   // Sub-links shown in the mobile menu accordion for this section.
-  // Sections without `children` render as a flat link (O Akademii, Aktualności, Kontakt).
+  // Sections without `children` render as a flat link (Aktualności, Kontakt).
   children?: NavLink[];
 };
 
@@ -54,11 +54,10 @@ export const sectionNav: Record<SectionKey, NavLink[]> = {
 const sectionKeys = Object.keys(sectionNav) as SectionKey[];
 
 export const mainNav: MainNavItem[] = [
-  { label: "O Akademii", href: "/o-akademii" },
-  // The hub link is the section heading itself, so the accordion skips it —
-  // except in Ikony, where the hub item has its own label (Galeria).
-  { label: "Warsztaty", href: "/warsztaty", children: sectionNav.warsztaty.slice(1) },
-  { label: "Wykłady", href: "/wyklady", children: sectionNav.wyklady.slice(1) },
+  // The whole accordion row toggles, so each list starts with the section hub.
+  { label: "O Akademii", href: "/o-akademii", children: sectionNav["o-akademii"] },
+  { label: "Warsztaty", href: "/warsztaty", children: sectionNav.warsztaty },
+  { label: "Wykłady", href: "/wyklady", children: sectionNav.wyklady },
   { label: "Ikony", href: "/ikony", children: sectionNav.ikony },
   { label: "Aktualności", href: "/aktualnosci" },
   { label: "Kontakt", href: "/kontakt" },
@@ -89,7 +88,7 @@ export function sectionLink(href: string): NavLink {
 // Publikacje) + Kontakt group (Polityka prywatności as child). Hub headings link to section routes; children include routes omitted from mainNav.
 export const footerSitemapGroups: MainNavItem[] = [
   { ...navItem("/o-akademii"), children: sectionNav["o-akademii"].slice(1) },
-  navItem("/warsztaty"),
+  { ...navItem("/warsztaty"), children: sectionNav.warsztaty.slice(1) },
   { ...navItem("/wyklady"), children: sectionNav.wyklady },
   { ...navItem("/ikony"), children: sectionNav.ikony },
 ];

@@ -20,10 +20,8 @@ const plSource = {
   header: {
     mainNavAriaLabel: "Menu główne",
     menuToggleLabel: "Menu",
-    sectionExpandLabel: "Rozwiń sekcję",
-    sectionCollapseLabel: "Zwiń sekcję",
+    menuCloseLabel: "Zamknij menu",
     primaryCta: "Zapisy na warsztaty",
-    contactCta: "Kontakt",
     blogLink: "Blog",
   },
   sectionNav: {
