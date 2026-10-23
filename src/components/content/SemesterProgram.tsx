@@ -3,6 +3,7 @@ import { useId } from "react";
 import type { SemesterItem } from "@/content/offers";
 import { pl } from "@/i18n/pl";
 import { PageHeading } from "@/components/core/PageHeading";
+import { SemesterTile } from "@/components/content/SemesterTile";
 
 const ROMAN_NUMERALS = ["I", "II", "III", "IV", "V", "VI"] as const;
 
@@ -27,35 +28,15 @@ export function SemesterProgram({ semesters }: SemesterProgramProps) {
       </p>
       <div className="hairline-grid-2">
         {semesters.map((semester, index) => (
-          <article
+          <SemesterTile
             key={`${index}-${semester.title}`}
-            className="bg-surface-tile flex flex-col md:flex-row gap-offer-semester-gap-m md:gap-offer-semester-gap px-space-4 py-offer-semester-y-m md:px-offer-semester-x md:py-offer-semester-y"
-          >
-            <div
-              aria-hidden="true"
-              className="font-serif text-size-offer-semester-num-m md:text-size-offer-semester-num leading-none text-accent-text md:shrink-0 md:w-offer-semester-num-width text-left"
-            >
-              {ROMAN_NUMERALS[index] ?? String(index + 1)}
-            </div>
-            <div className="min-w-0">
-              {/* The numeral is decorative; the ordinal stays in the heading for screen readers only. */}
-              <PageHeading level="sub" className="mb-space-3">
-                <span className="sr-only">
-                  {`${pl.offers.semesterTileHeadings[index] ?? pl.offers.semesterTileFallback.replace("{n}", String(index + 1))}: `}
-                </span>
-                {semester.title}
-              </PageHeading>
-              {semester.topics && semester.topics.length > 0 ? (
-                <ul className="text-size-body leading-body text-text-tertiary list-disc ps-space-4 md:ps-space-5 space-y-space-1">
-                  {semester.topics.map((topic) => (
-                    <li key={topic}>{topic}</li>
-                  ))}
-                </ul>
-              ) : semester.body ? (
-                <p className="text-size-body leading-body text-text-tertiary">{semester.body}</p>
-              ) : null}
-            </div>
-          </article>
+            semester={semester}
+            numeral={ROMAN_NUMERALS[index] ?? String(index + 1)}
+            ordinal={
+              pl.offers.semesterTileHeadings[index] ??
+              pl.offers.semesterTileFallback.replace("{n}", String(index + 1))
+            }
+          />
         ))}
       </div>
     </section>
