@@ -63,8 +63,22 @@ export const mainNav: MainNavItem[] = [
   { label: "Kontakt", href: "/kontakt" },
 ];
 
-/** Section outside the main menu — footer sitemap and the mobile menu's bottom row. */
+/** Section outside the desktop main menu — footer sitemap and the mobile menu. */
 export const publicationsLink: NavLink = { label: "Publikacje", href: "/publikacje" };
+
+/**
+ * Mobile menu mirrors the footer sitemap: the main menu plus Publikacje after
+ * Aktualności, and Kontakt as an accordion holding Polityka prywatności.
+ */
+export const mobileNav: MainNavItem[] = mainNav.flatMap((item) => {
+  if (item.href === "/aktualnosci") {
+    return [item, publicationsLink];
+  }
+  if (item.href === "/kontakt") {
+    return [{ ...item, children: sectionNav.kontakt }];
+  }
+  return [item];
+});
 
 /** Main menu item by href — a typo fails the build instead of rendering a blank label. */
 export function navItem(href: string): MainNavItem {

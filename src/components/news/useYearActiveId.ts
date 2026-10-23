@@ -17,8 +17,14 @@ function getYearStartElements(): HTMLElement[] {
   );
 }
 
+// A year link scrolls its card to `scroll-margin-top` (nav height + gap), so the
+// card counts as reached at that same line — not at the bare nav height.
+function getYearStartLine(element: HTMLElement): number {
+  const scrollMargin = parseFloat(window.getComputedStyle(element).scrollMarginTop);
+  return (Number.isNaN(scrollMargin) ? getYearNavOffset() : scrollMargin) + 1;
+}
+
 function resolveActiveYear(years: string[]): string | undefined {
-  const offset = getYearNavOffset();
   const yearStarts = getYearStartElements();
 
   if (yearStarts.length === 0) {
@@ -28,7 +34,7 @@ function resolveActiveYear(years: string[]): string | undefined {
   let active = years[0];
 
   yearStarts.forEach((element) => {
-    if (element.getBoundingClientRect().top <= offset) {
+    if (element.getBoundingClientRect().top <= getYearStartLine(element)) {
       active = element.dataset.yearStart ?? active;
     }
   });

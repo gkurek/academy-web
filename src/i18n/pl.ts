@@ -21,8 +21,6 @@ const plSource = {
     mainNavAriaLabel: "Menu główne",
     menuToggleLabel: "Menu",
     menuCloseLabel: "Zamknij menu",
-    primaryCta: "Zapisy na warsztaty",
-    blogLink: "Blog",
   },
   sectionNav: {
     ariaLabel: "Nawigacja sekcji",

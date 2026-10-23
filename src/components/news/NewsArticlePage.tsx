@@ -21,6 +21,7 @@ import {
   type LoadedNews,
 } from "@/content/news";
 import { pl } from "@/i18n/pl";
+import { navItem } from "@/navigation";
 
 export interface NewsArticlePageProps {
   entry: LoadedNews;
@@ -87,6 +88,9 @@ export function NewsArticlePage({ entry, path }: NewsArticlePageProps) {
         <article className={articleClass}>
           <header className="news-article-head">
             <p className="news-article-meta">
+              {/* Section label: on mobile the main nav is hidden, so this names the section. */}
+              <span className="news-article-kind">{navItem("/aktualnosci").label}</span>
+              {" · "}
               <span className="news-article-kind">{kindLabel}</span>
               {" · "}
               <NewsDateMeta

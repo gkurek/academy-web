@@ -2,11 +2,9 @@
 
 import { useCallback, useEffect, useId, useRef, useState } from "react";
 import Link from "next/link";
-import { Button } from "@/components/core/Button";
-import { ExternalLink } from "@/components/core/ExternalLink";
 import { ChevronIcon } from "@/components/core/icons";
 import { pl } from "@/i18n/pl";
-import { mainNav, navAriaCurrent, publicationsLink } from "@/navigation";
+import { mobileNav, navAriaCurrent } from "@/navigation";
 
 export interface HeaderMobileMenuProps {
   /** Route path — `aria-current="page"` on the link to it. */
@@ -15,7 +13,6 @@ export interface HeaderMobileMenuProps {
   activeHref?: string;
   /** Href of the current SectionNav item — highlighted gold in the open accordion. */
   sectionActiveHref?: string;
-  blogUrl: string;
 }
 
 function MenuIcon({ open }: { open: boolean }) {
@@ -60,7 +57,7 @@ const logoClass = "flex min-h-tap-min-mobile-header flex-col justify-center font
 const barButtonClass =
   "flex h-tap-min-mobile-header w-tap-min-mobile-header flex-none items-center justify-center border border-border-button text-text-body";
 
-export function HeaderMobileMenu({ path, activeHref, sectionActiveHref, blogUrl }: HeaderMobileMenuProps) {
+export function HeaderMobileMenu({ path, activeHref, sectionActiveHref }: HeaderMobileMenuProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [expandedSection, setExpandedSection] = useState<string | null>(null);
   // The floating button shows once the header bar has scrolled out of view.
@@ -81,7 +78,7 @@ export function HeaderMobileMenu({ path, activeHref, sectionActiveHref, blogUrl 
       openerRef.current = opener;
       setIsOpen(true);
       // Only the current section opens, so its link to the current page is visible.
-      setExpandedSection(mainNav.find((item) => item.children && item.href === activeHref)?.label ?? null);
+      setExpandedSection(mobileNav.find((item) => item.children && item.href === activeHref)?.label ?? null);
     },
     [activeHref],
   );
@@ -225,8 +222,10 @@ export function HeaderMobileMenu({ path, activeHref, sectionActiveHref, blogUrl 
         </div>
 
         <nav className="grid">
-          {mainNav.map((item) => {
-            const isActive = item.href === activeHref;
+          {mobileNav.map((item) => {
+            // Publikacje is outside mainNav, so resolveNav gives it no activeHref — match the path.
+            const isActive =
+              item.href === activeHref || path === item.href || Boolean(path?.startsWith(`${item.href}/`));
 
             if (!item.children) {
               return (
@@ -246,7 +245,8 @@ export function HeaderMobileMenu({ path, activeHref, sectionActiveHref, blogUrl 
             }
 
             const expanded = expandedSection === item.label;
-            const sectionId = `${drawerId}-${item.label}`;
+            // Built from the href slug: an IDREF must not contain spaces (labels do).
+            const sectionId = `${drawerId}-${item.href.replace(/\//g, "")}`;
 
             return (
               <div key={item.label} className="border-b border-line-neutral">
@@ -286,20 +286,6 @@ export function HeaderMobileMenu({ path, activeHref, sectionActiveHref, blogUrl 
           })}
         </nav>
 
-        <div className="px-page-margin-mobile pb-space-6 pt-space-6">
-          <Button block size="lg" href="/warsztaty" onClick={closeMenu}>
-            {pl.header.primaryCta}
-          </Button>
-          <div className="mt-space-4 flex flex-wrap items-center gap-x-space-3 text-size-ui text-text-tertiary">
-            <Link href={publicationsLink.href} onClick={closeMenu} className="tap-target-nav">
-              {publicationsLink.label}
-            </Link>
-            <span aria-hidden="true">·</span>
-            <ExternalLink href={blogUrl} showIcon={false} onClick={closeMenu} className="tap-target-nav">
-              {pl.header.blogLink}
-            </ExternalLink>
-          </div>
-        </div>
       </div>
     </>
   );
