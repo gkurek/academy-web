@@ -465,12 +465,6 @@ const plSource = {
     mapLinkLabel: "Otwórz w Mapach Google",
     photo: {
       alt: "Fasada Kościoła Środowisk Twórczych przy placu Teatralnym – portyk z czterema kolumnami między białymi skrzydłami budynku",
-      creditLead: "Fot. Adrian Grycuk, ",
-      sourceLabel: "Wikimedia Commons",
-      sourceUrl:
-        "https://commons.wikimedia.org/wiki/File:Ko%C5%9Bci%C3%B3%C5%82_%C5%9Bw._Brata_Alberta_i_%C5%9Bw._Andrzeja_Aposto%C5%82a_w_Warszawie_2019.jpg",
-      licenseLabel: "CC BY-SA 3.0 PL",
-      licenseUrl: "https://creativecommons.org/licenses/by-sa/3.0/pl/deed.pl",
     },
     organizerHeading: "Organizator",
     organizerLead: "Akademia Ikony jest projektem wiodącym fundacji ",

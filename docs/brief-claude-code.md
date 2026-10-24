@@ -419,7 +419,7 @@ Telefon jako `tel:+48601734705`.
 
 - Nazwa: AKADEMIA IKONY – Studium Ikonograficzne św. Andrzeja Apostoła. Założona 2010, w KŚT od 2012.
 - Miejsce: Kościół Środowisk Twórczych pw. św. Andrzeja Apostoła i św. Brata Alberta Chmielowskiego, Plac Teatralny, Warszawa. Rektor: ks. Grzegorz Michalczyk. Przestrzeń bez barier architektonicznych.
-- Zdjęcie na /kontakt: Adrian Grycuk, Wikimedia Commons, CC BY-SA 3.0 PL — `public/media/contact/kosciol-srodowisk-tworczych.jpg`, podpis w `pl.contact.photo` (mapa Google usunięta 2026-10-17).
+- Zdjęcie na /kontakt: własne zdjęcie EJK (podmienione 2026-10-24), bez podpisu — `public/media/contact/kosciol-srodowisk-tworczych.jpg`, `alt` w `pl.contact.photo` (mapa Google usunięta 2026-10-17).
 - Organizator: fundacja IKONA DZIŚ, www.ikonadzis.org.
 - Kontakt ogólny/warsztaty/ikony: `akademiaikony@gmail.com`, tel. `601 734 705` (Elżbieta Jackowska-Kurek).
 - Wykłady/sekretariat: `sekretariat.ikony22@gmail.com` (Maurycy Lubak).
