@@ -1,6 +1,6 @@
 # Plan 10/R — Review serwisu (techniczne, wizualne, treść)
 
-Status: **blok R zamknięty lokalnie** 2026-10-06 (R0–R5, RF-0…RF-21, V1–V4, RF-13a; zatwierdzone przez właściciela, w tym Safari iOS i przegląd RV-F) · merge do `main` ✅ (PR #15) · zostaje **C1–C2** — warunek (T1–T29) spełniony 2026-10-25, start po uwagach z przeglądu UX · zatwierdzony 2026-10-04  
+Status: **blok R zamknięty lokalnie** 2026-10-06 (R0–R5, RF-0…RF-21, V1–V4, RF-13a; zatwierdzone przez właściciela, w tym Safari iOS i przegląd RV-F) · merge do `main` ✅ (PR #15) · **C1–C2 ✅ zamknięte 2026-10-25** (`docs/review/07-plan-content.md`) · zatwierdzony 2026-10-04  
 Gałąź: `feat/10-review` od `main` — dokumenty review i paczki poprawek; k8 zostaje na `feat/10-finishing` (merge do `main` niezależnie)  
 Staging: https://academy-web-lovat.vercel.app/  
 Makiety: tokeny `design/README`, odczyt wartości `docs/design-mockup-guide.md` (tylko jako punkt odniesienia w V1–V4).
@@ -158,7 +158,7 @@ Brak — review nie dotyka `content/`.
 - [x] RF-13a: decyzja o skali odstępów i belce zapisana (2026-10-05);
 - [x] RF-21: ręczny przegląd wizualny i poprawki RV-F zamknięte lokalnie (2026-10-06);
 - [ ] deploy na staging, nowy baseline `check:visual`, merge `feat/10-review` → `main` (właściciel);
-- [ ] C1–C2 zakończone (po EJK);
+- [x] C1–C2 zakończone (2026-10-25);
 - [x] build + lint bez regresji po każdej paczce poprawek (ostatnia: `10/RF-21`).
 
 ## Ryzyka i pytania otwarte
@@ -185,5 +185,5 @@ Brak — review nie dotyka `content/`.
 | V4 — globalne i stany | Opus 5.5 | ✅ 2026-10-05 | `docs/review/06-visual-4-global.md`: kryteria G1–G11 przed oglądaniem; skrypty `.visual/v4/` (Tab 21 tras × 390 / 1440, hover 259 elementów przy 1440, lightbox 7 tras × 2, akordeony, TOC, pasek lat, filtry, 404, `reduced-motion`, axe w stanach otwartych); **13 zgłoszeń V4-01…V4-13** (1 bug, 5 niespójność, 7 drobiazg): **bug** — fokus z klawiatury nie odsłania częściowo ukrytej pozycji w przewijanym rzędzie na 390 (filtry `/ikony`, pasek lat); header 768–950 (125 px, sygnatura w 4 wierszach); menu mobilne zawsze z rozwiniętymi „Ikonami”; lightbox mobile z tłem 85 % (strona prześwituje, tekst pod paskiem); animacje hover poza „tylko kolor” (podkreślenie `scaleX`, obrys przycisku w dwóch etapach, opóźnienie przy `reduce`); cele dotyku 19–41 px. Działa: 0 przesunięć przy hoverze, fokus 2 px / 2 px na 21 trasach (poza `iframe` mapy), lightbox / menu / akordeony / 404 z klawiatury, axe 0 w stanach otwartych. **Brama RF-13a:** założenia trzymają; dopisana lewa kreska `SeasonAccordion` (2 px) do zakresu RF-13. Paczki **RF-15…RF-20** + dopisania do RF-13 / RF-14 w `docs/archive/plans/10-review-fixes.md` — **zatwierdzone 2026-10-05** (V4-07: tylko zmiana koloru) |
 | Poprawki wizualne | — | ✅ RF-13…RF-20 2026-10-06 (lokalnie, zatwierdzone) | RF-13/14: skala odstępów i role typograficzne; RF-15: jeden próg 1024; RF-16: mobile 390; RF-17: fokus i cele dotyku; RF-18: hover, menu, lightbox; RF-19: zakończenia stron i CTA; RF-20: miara, łamanie, twarde spacje. Weryfikacja końcowa 2026-10-06: axe 0 naruszeń (42 przebiegi), CLS 0, knip czysty, jscpd 0 TSX / 15 CSS, `check:visual` 0 FAIL, smoke 11/11 |
 | RF-21 — ręczny przegląd i poprawki | Opus 5.5 (+ właściciel) | ✅ 2026-10-06 (commit `10/RF-21`) | **RV-F-01** — kurs: `.offer-enrollment-grid`, cytat wąsko + zapis szeroko od 1024; **RV-F-02** — zamówienie: H2 w `OfferLeadIntro`; **RV-F-03** — `/aktualnosci` ≥768: `YearNav` + `useScrollEdges`, strzałki; **RV-F-04** — `/kontakt`: jedna skala typografii (`contact.css`, `ContactPage`, `OnlineAside`). **RF-21e:** hero `/` (`home.json`, `page.tsx`), `LectureCycleTitle`, `LightboxPreload`, `ArticleList`, `wyklady.mdx`, `2026-2027.json`; wpisy `RF-21a`/`RF-21b` w `visual-check.expected.json`. Szczegóły: `docs/archive/plans/10-review-fixes.md` §RF-21a…e. Następny krok: deploy, `check:visual` → nowy baseline, merge do `main`. |
-| C1 — zgodność z planem | Opus 5.5 | ⬜ (po EJK) | |
-| C2 — treść | Opus 5.5 | ⬜ (po EJK) | |
+| C1 — zgodność z planem | Opus 5.5 | ✅ 2026-10-25 | `docs/review/07-plan-content.md`: 6 zgłoszeń C1-01…06 (0 bug); C1-01 (→ „zapisy", brief poprawiony) i C1-02 (→ Senatorska 18B) rozstrzygnięte 2026-10-25 |
+| C2 — treść | Opus 5.5 | ✅ 2026-10-25 | `docs/review/07-plan-content.md`: 6 zgłoszeń C2-01…06 (0 bug); rozstrzygnięte: C2-01 (brief zaktualizowany do treści albumu), C2-02 (słowo „katalog” zostaje — wyjątek), C2-03 (7 `alt` rozkładówek napisanych), C2-04 (martwy tekst usunięty); C2-05 (fallbacki zostają jako zabezpieczenie) i C2-06 (copy `/wyklady` sprawdzone) bez zmian |
