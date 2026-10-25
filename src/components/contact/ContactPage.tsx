@@ -9,6 +9,7 @@ import { PageHeading } from "@/components/core/PageHeading";
 import { TextLink } from "@/components/core/TextLink";
 import { SectionPageShell } from "@/components/layout/SectionPageShell";
 import { getPhoneHref, getSiteSettings } from "@/content/settings";
+import type { Image } from "@/content/types";
 import { pl } from "@/i18n/pl";
 import { nbspChildren } from "@/lib/typography";
 
@@ -17,6 +18,7 @@ export interface ContactPageProps {
   path: string;
   /** Page heading — the nav label, same as the document title. */
   title: string;
+  photo: Image;
   Content: ComponentType<{ components?: MDXComponents }>;
 }
 
@@ -25,7 +27,7 @@ const contactLinkClass = "text-size-role-row-title-m leading-heading md:text-siz
 // The church name runs long (settings text carries no-break spaces after single letters): break before „pw.” and „i św.” so the address reads as three short lines plus the street.
 const PLACE_BREAK_RE = /\s(?=pw\.|i\sśw\.)/;
 
-export function ContactPage({ path, title, Content }: ContactPageProps) {
+export function ContactPage({ path, title, photo, Content }: ContactPageProps) {
   const settings = getSiteSettings();
   const telHref = getPhoneHref();
   const placeLines = settings.place.split(PLACE_BREAK_RE);
@@ -73,7 +75,7 @@ export function ContactPage({ path, title, Content }: ContactPageProps) {
 
         <div className="contact-page-aside">
           <div className="order-2 lg:order-1">
-            <ContactPhoto />
+            <ContactPhoto photo={photo} />
           </div>
           <div className="order-1 lg:order-2">
             <EntranceNote Content={Content} mapUrl={mapUrl} />

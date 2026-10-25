@@ -1,18 +1,20 @@
 import Image from "next/image";
 
-import { pl } from "@/i18n/pl";
+import type { Image as ImageData } from "@/content/types";
+
+export interface ContactPhotoProps {
+  photo: ImageData;
+}
 
 /** Church facade photo on /kontakt (own photo by EJK — no credit line). */
-export function ContactPhoto() {
-  const { photo } = pl.contact;
-
+export function ContactPhoto({ photo }: ContactPhotoProps) {
   return (
     <figure className="-mx-page-margin-mobile md:mx-0">
       <Image
-        src="/media/contact/kosciol-srodowisk-tworczych.jpg"
+        src={photo.src}
         alt={photo.alt}
-        width={1280}
-        height={959}
+        width={photo.width}
+        height={photo.height}
         sizes="(min-width: 1024px) 422px, 100vw"
         className="block h-auto w-full bg-surface-tile"
       />
