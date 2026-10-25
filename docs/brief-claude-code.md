@@ -210,7 +210,7 @@ type AnnualExhibition = {
   title: string;                // osobne pole (K-84), np. „Mistyka dziś”
   vernissage?: string;          // domyślnie data ostatniego wykładu sezonu
   dateEnd?: string;             // domyślnie 31 sierpnia roku wernisażu
-  photos?: Image[];
+  photos?: Image[];             // nieczytane przez /ikony/wystawy — zdjęcia strony to stały wybór w page.mdx (K-154)
   newsSlug?: string;            // relacja doroczna ↔ wpis Aktualności (K-103)
 };
 ```
@@ -363,7 +363,7 @@ Szacunek ręcznej korekty po migracji: ~10 stron statycznych, 16 sezonów wykła
 - Galeria: dwie sztywne sekcje (ikony Elżbiety Jackowskiej-Kurek → ikony uczniów), filtr **tematu** przez query string (`?temat=<slug-tagu>`), bez filtra autora; lightbox. W siatce — sam tytuł; w lightboxie — pełny autor, wymiary i technika (`IconWork`). Lista nazwisk uczniów w sekcji uczniów, generowana z danych.
 - Aktualności: jeden strumień wpisów z etykietą typu (`kind`), jedna chronologiczna lista z nawigacją po latach (K-70), wpis pojedynczy; bez filtrów kategorii w v1 (K-50, K-52).
 - Publikacje (K-76): `/publikacje` — sekcja albumu + lista artykułów; podstrona albumu z blokiem metryczki/zakupu (`dostepny` / `wyczerpany`, wzorowany na `FactsBox`), zakup przez `mailto:` na sekretariat i na wykładach w KŚT; artykuły ze blokiem źródła (album / media / tylko zajawka + link); linki spis treści ↔ artykuł (`toc[].articleSlug`). Terminologia UI: **album**, nie „książka” ani „katalog”.
-- Kontakt: `SectionNav` Kontakt · Polityka prywatności; adres, zdjęcie fasady kościoła z podpisem licencyjnym (`ContactPhoto`; mapa Google usunięta 2026-10-17), dwa maile z opisem, telefon, info o wejściu od strony zakrystii (treść redakcyjna w MDX), blok „Akademia w sieci” w `OnlineAside`.
+- Kontakt: `SectionNav` Kontakt · Polityka prywatności; adres, zdjęcie fasady kościoła bez podpisu (`ContactPhoto`, dane w `content/pages/kontakt.json`; mapa Google usunięta 2026-10-17), dwa maile z opisem, telefon, info o wejściu od strony zakrystii (treść redakcyjna w MDX), blok „Akademia w sieci” w `OnlineAside`.
 - Mobile-first, WCAG AA (kontrast, fokus, alt), `prefers-reduced-motion`.
 - SEO: metadata + Open Graph per strona, sitemap, 301 ze starych URL.
 - JSON-LD: `Organization` (z `parentOrganization` → Fundacja), `Person` (EJK, z `sameAs`), `Event` (wykłady bieżącego sezonu), `Course` (kurs, plener).
@@ -419,7 +419,7 @@ Telefon jako `tel:+48601734705`.
 
 - Nazwa: AKADEMIA IKONY – Studium Ikonograficzne św. Andrzeja Apostoła. Założona 2010, w KŚT od 2012.
 - Miejsce: Kościół Środowisk Twórczych pw. św. Andrzeja Apostoła i św. Brata Alberta Chmielowskiego, Plac Teatralny, Warszawa. Rektor: ks. Grzegorz Michalczyk. Przestrzeń bez barier architektonicznych.
-- Zdjęcie na /kontakt: własne zdjęcie EJK (podmienione 2026-10-24), bez podpisu — `public/media/contact/kosciol-srodowisk-tworczych.jpg`, `alt` w `pl.contact.photo` (mapa Google usunięta 2026-10-17).
+- Zdjęcie na /kontakt: własne zdjęcie EJK (podmienione 2026-10-24), bez podpisu — `public/media/contact/kosciol-srodowisk-tworczych.jpg`; ścieżka, `alt` i wymiary w `content/pages/kontakt.json` (od 2026-10-25, wcześniej `alt` w `pl.contact.photo`; mapa Google usunięta 2026-10-17).
 - Organizator: fundacja IKONA DZIŚ, www.ikonadzis.org.
 - Kontakt ogólny/warsztaty/ikony: `akademiaikony@gmail.com`, tel. `601 734 705` (Elżbieta Jackowska-Kurek).
 - Wykłady/sekretariat: `sekretariat.ikony22@gmail.com` (Maurycy Lubak).

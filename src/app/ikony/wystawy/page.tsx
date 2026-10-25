@@ -7,7 +7,6 @@ import {
   getFirstAnnualExhibitionYear,
   getLastFinishedAnnualExhibition,
   getLatestAnnualExhibition,
-  getLatestAnnualExhibitionWithPhotos,
 } from "@/content/exhibition";
 import { navTitle } from "@/navigation";
 
@@ -26,7 +25,6 @@ export default function ExhibitionRoutePage() {
       page={getExhibitionPage()}
       latestAnnual={getLatestAnnualExhibition()}
       lastFinished={getLastFinishedAnnualExhibition()}
-      latestWithPhotos={getLatestAnnualExhibitionWithPhotos()}
       nowNext={getExhibitionNowNext()}
       firstAnnualYear={getFirstAnnualExhibitionYear()}
     />

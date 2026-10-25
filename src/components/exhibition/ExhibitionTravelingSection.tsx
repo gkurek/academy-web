@@ -1,21 +1,28 @@
 import { Button } from "@/components/core/Button";
 import { TextLink } from "@/components/core/TextLink";
+import { ExhibitionAnnualTiles } from "@/components/exhibition/ExhibitionAnnualTiles";
 import { getExhibitionCopy } from "@/content/exhibition";
-import type { ExhibitionTravelingPlace } from "@/content/types";
+import type { ExhibitionTravelingPlace, Image } from "@/content/types";
 import { pl } from "@/i18n/pl";
 import { PageHeading } from "@/components/core/PageHeading";
 
 export interface ExhibitionTravelingSectionProps {
   mailtoHref: string;
   places: ExhibitionTravelingPlace[];
+  photos: Image[];
+  /** Further photos behind the "more photos" link; the lightbox continues after `photos`. */
+  gallery: Image[];
 }
 
 export function ExhibitionTravelingSection({
   mailtoHref,
   places,
+  photos,
+  gallery,
 }: ExhibitionTravelingSectionProps) {
   const { traveling } = pl.exhibition;
   const travelingCopy = getExhibitionCopy().traveling;
+  const lightboxPhotos = [...photos, ...gallery];
 
   return (
     <section
@@ -48,13 +55,20 @@ export function ExhibitionTravelingSection({
           </p>
         </div>
 
-        <div className="exhibition-cta-block">
-          <p className="exhibition-cta-intro">{traveling.inviteCta}</p>
-          <Button href={mailtoHref} variant="primary" block size="lg">
-            {traveling.mailtoLabel}
-          </Button>
+        <div className="min-w-0">
+          <div className="exhibition-cta-block">
+            <p className="exhibition-cta-intro">{traveling.inviteCta}</p>
+            <Button href={mailtoHref} variant="primary" block size="lg">
+              {traveling.mailtoLabel}
+            </Button>
+          </div>
         </div>
       </div>
+
+      {photos.length > 0 ? (
+        // Same 4:3 tile row as #doroczna, without the caption.
+        <ExhibitionAnnualTiles photos={photos} gallery={lightboxPhotos} />
+      ) : null}
     </section>
   );
 }

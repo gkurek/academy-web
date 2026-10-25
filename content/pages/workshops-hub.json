@@ -1,14 +1,14 @@
 {
   "lead": "Pisania ikon uczymy w Kościele Środowisk Twórczych na Placu Teatralnym w Warszawie. Do wyboru dwie ścieżki: kurs w roku akademickim albo tygodniowy plener latem — obie z indywidualnym prowadzeniem.",
   "image": {
-    "src": "/media/home/pracownia.jpg",
-    "alt": "Praca nad ikoną",
-    "width": 960,
-    "height": 540
+    "src": "/media/workshop/hub-hero.jpg",
+    "alt": "Dłoń z pędzlem nad ikoną Matki Bożej z Dzieciątkiem",
+    "width": 2048,
+    "height": 780
   },
   "cards": {
     "kurs-roczny-i-trzyletni": {
-      "excerpt": "Na początek kurs roczny, zakończony własną ikoną. Kto chce iść dalej, kontynuuje w kursie trzyletnim — aż po ikony dogmatyczne — a potem na kursach doskonalących.",
+      "excerpt": "Na początek kurs roczny, zakończony własną ikoną. Kto chce iść dalej, kontynuuje w kursie trzyletnim — aż po ikony wielopostaciowe i świąteczne — a potem na kursach doskonalących.",
       "bullets": [
         "Raz w tygodniu, październik–czerwiec",
         "Grupy dzienne i wieczorowe, materiały na miejscu",

@@ -188,10 +188,6 @@ const plSource = {
     ],
     plenerQuotesHeading: "Głosy z pleneru",
     plenerWhereWeWereInline: "Gościły nas m.in.:",
-    figurePlaceholders: {
-      kursPracownia: "[zdjęcie: pracownia, praca nad ikoną]",
-      lssPlener: "[zdjęcie: plener, praca przy ikonach]",
-    },
     // Closing line of an offer page: the FactsBox enrollment mailto as an inline link ({link}).
     closingCta: {
       plener: {
@@ -203,9 +199,6 @@ const plSource = {
     sideCta: {
       title: "Kursy doskonalące i konsultacje indywidualne",
       mailtoLabel: "Zapytaj",
-      photoPlaceholders: {
-        kursDalszaDroga: "[zdjęcie: praca przy ikonie]",
-      },
     },
     enrollmentByKind: {
       kurs: {
@@ -315,7 +308,7 @@ const plSource = {
       workshopsLink: "Chcesz napisać własną ikonę?",
     },
     nowNext: {
-      ariaLabel: "Co teraz wisi w kościele",
+      ariaLabel: "Co teraz można zobaczyć w kościele",
       nowLabel: "Teraz w kościele",
       nextLabel: "Następnie",
       permanentNowSubline: "Ekspozycja codzienna, do połowy czerwca {year}",
@@ -324,18 +317,6 @@ const plSource = {
       annualNextTitle: "Wystawa doroczna {year}",
       vernissageSubline: "Wernisaż {date}, podczas ostatniego wykładu sezonu",
       permanentFromSeptemberSuffix: "od września",
-    },
-    frames: {
-      heroWide: "[zdjęcie: lewa nawa kościoła, szeroki kadr · 21:8]",
-      permanentStandard: "[zdjęcie: ikony przy ołtarzu, lewa nawa · 2:1]",
-      permanentStandard2: "[zdjęcie: detal ikony, lewa nawa · 4:3]",
-      closingWide: "[zdjęcie: wystawa wyjazdowa, Święta Lipka, szeroki kadr · 21:8]",
-      tilePlaceholders: [
-        "[zdjęcie: chrystus pantokrator · 4:3]",
-        "[zdjęcie: wernisaż · 4:3]",
-        "[zdjęcie: matka boża znaku · 4:3]",
-        "[zdjęcie: wykład elżbiety jackowskiej-kurek · 4:3]",
-      ],
     },
     permanent: {
       sectionId: "ekspozycja",
@@ -348,22 +329,17 @@ const plSource = {
     },
     annual: {
       sectionId: "doroczna",
-      photoArchiveLink: "Fotorelacje z poprzednich wystaw dorocznych",
-      tilesCaption: "Wystawa {year} · {count} zdjęć – zobacz wszystkie",
       facts: {
         when: "Kiedy",
         vernissage: "Wernisaż",
         onDisplay: "Na wystawie",
         admission: "Wstęp",
-        lecturesProgramLink: "Program i terminy wykładów",
       },
     },
     tours: {
       sectionId: "oprowadzania",
       title: "Oprowadzania",
       scheduleNewsLink: "Aktualnościach",
-      mailtoLabel: "Zapytaj o oprowadzanie",
-      mailtoSubject: "Oprowadzanie po wystawie – grupa",
     },
     traveling: {
       sectionId: "wyjazdowe",
@@ -463,9 +439,6 @@ const plSource = {
     phoneLabel: "Telefon",
     entranceHeading: "Wejście od strony zakrystii",
     mapLinkLabel: "Otwórz w Mapach Google",
-    photo: {
-      alt: "Fasada Kościoła Środowisk Twórczych przy placu Teatralnym – portyk z czterema kolumnami między białymi skrzydłami budynku",
-    },
     organizerHeading: "Organizator",
     organizerLead: "Akademia Ikony jest projektem wiodącym fundacji ",
     organizerLinkLabel: "IKONA DZIŚ",

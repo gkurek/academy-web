@@ -144,15 +144,4 @@
     }
   }
 
-  .offer-figure-exhibition-frame .exhibition-frame-placeholder {
-    aspect-ratio: unset;
-    height: var(--offer-figure-h-m);
-  }
-
-  @media (min-width: 768px) {
-    .offer-figure-exhibition-frame .exhibition-frame-placeholder {
-      height: var(--offer-figure-h);
-    }
-  }
-
 }

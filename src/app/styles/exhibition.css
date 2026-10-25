@@ -132,9 +132,9 @@
     width: 100%;
   }
 
-  .exhibition-permanent-layout__media .exhibition-frame--tile-pair-lead .exhibition-frame-media,
-  .exhibition-permanent-layout__media .exhibition-frame--tile-pair-lead .exhibition-frame-placeholder {
-    aspect-ratio: var(--exhibition-aspect-tile);
+  /* One row at every width: columns follow the photo ratios, so both photos share one height. */
+  .exhibition-permanent-layout__media.exhibition-permanent-layout__media--photos {
+    grid-template-columns: var(--permanent-photo-cols);
   }
 
   .exhibition-section-copy {
@@ -220,49 +220,21 @@
     width: 100%;
   }
 
-  .exhibition-frame-media,
-  .exhibition-frame-placeholder {
+  /* Photos sit edge to edge, no outline. */
+  .exhibition-frame-media {
     position: relative;
     display: block;
     width: 100%;
     overflow: hidden;
-    border: 1px solid var(--line-gold);
     background: var(--surface-tile);
   }
 
-  .exhibition-frame--wide .exhibition-frame-media,
-  .exhibition-frame--wide .exhibition-frame-placeholder,
-  .exhibition-frame-media.exhibition-frame--wide,
-  .exhibition-frame-placeholder.exhibition-frame--wide {
+  .exhibition-frame--wide .exhibition-frame-media {
     aspect-ratio: var(--exhibition-aspect-standard);
   }
 
-  .exhibition-frame--standard .exhibition-frame-media,
-  .exhibition-frame--standard .exhibition-frame-placeholder,
-  .exhibition-frame-media.exhibition-frame--standard,
-  .exhibition-frame-placeholder.exhibition-frame--standard {
-    aspect-ratio: var(--exhibition-aspect-standard);
-  }
-
-  .exhibition-frame--square .exhibition-frame-media,
-  .exhibition-frame--square .exhibition-frame-placeholder,
-  .exhibition-frame-media.exhibition-frame--square,
-  .exhibition-frame-placeholder.exhibition-frame--square {
-    aspect-ratio: var(--exhibition-aspect-square);
-  }
-
-  .exhibition-frame--tile .exhibition-frame-media,
-  .exhibition-frame--tile .exhibition-frame-placeholder,
-  .exhibition-frame-media.exhibition-frame--tile,
-  .exhibition-frame-placeholder.exhibition-frame--tile {
+  .exhibition-frame--tile .exhibition-frame-media {
     aspect-ratio: var(--exhibition-aspect-tile);
-  }
-
-  .exhibition-frame--tile-pair-lead .exhibition-frame-media,
-  .exhibition-frame--tile-pair-lead .exhibition-frame-placeholder,
-  .exhibition-frame-media.exhibition-frame--tile-pair-lead,
-  .exhibition-frame-placeholder.exhibition-frame--tile-pair-lead {
-    aspect-ratio: var(--exhibition-aspect-tile-pair-lead);
   }
 
   .exhibition-frame-image {
@@ -293,54 +265,6 @@
     margin: 0;
   }
 
-  .exhibition-annual-tiles-caption {
-    margin: var(--space-4) 0 0;
-    font-size: var(--size-ui);
-    line-height: var(--leading-body);
-    color: var(--text-secondary);
-  }
-
-  .exhibition-annual-tiles-caption-button {
-    padding: 0;
-    border: 0;
-    border-bottom: 1px solid var(--accent-veil);
-    background: transparent;
-    font: inherit;
-    color: var(--accent-text);
-    cursor: pointer;
-  }
-
-  .exhibition-annual-tiles-caption-button:hover {
-    color: var(--accent-hover);
-    border-bottom-color: var(--accent-hover);
-  }
-
-
-  .exhibition-media-placeholder {
-    box-sizing: border-box;
-    display: flex;
-    align-items: flex-end;
-    justify-content: flex-start;
-    min-height: 0;
-    padding: var(--space-4) var(--space-5);
-    text-align: start;
-    background: repeating-linear-gradient(
-      135deg,
-      var(--umbra-850) 0 var(--space-4),
-      var(--umbra-800) var(--space-4) calc(2 * var(--space-4))
-    );
-  }
-
-  .exhibition-frame-placeholder.exhibition-media-placeholder {
-    border: 1px solid var(--line-gold);
-  }
-
-  .exhibition-media-placeholder-text {
-    margin: 0;
-    font-size: var(--size-caption);
-    line-height: var(--leading-body);
-    color: var(--text-tertiary);
-  }
 
   .exhibition-traveling-grid {
     display: grid;
@@ -424,10 +348,7 @@
       line-height: var(--leading-prose);
     }
 
-    .exhibition-frame--wide .exhibition-frame-media,
-    .exhibition-frame--wide .exhibition-frame-placeholder,
-    .exhibition-frame-media.exhibition-frame--wide,
-    .exhibition-frame-placeholder.exhibition-frame--wide {
+    .exhibition-frame--wide .exhibition-frame-media {
       aspect-ratio: var(--exhibition-aspect-wide);
     }
 
@@ -445,17 +366,6 @@
 
     .exhibition-now-next-subline {
       font-size: var(--size-body-lg);
-    }
-
-    .exhibition-tours-pass {
-      grid-template-columns: minmax(0, 1fr) auto;
-      gap: var(--exhibition-section-col-gap);
-      align-items: center;
-    }
-
-    .exhibition-tours-pass__cta {
-      width: auto;
-      flex: none;
     }
 
     .exhibition-annual-tiles-row {
@@ -513,16 +423,6 @@
       gap: var(--exhibition-section-col-gap);
     }
 
-    /* Tours: CTA fills the right (facts-width) column. */
-    .exhibition-tours-pass {
-      grid-template-columns: minmax(0, 1fr) var(--exhibition-facts-w);
-    }
-
-    .exhibition-tours-pass__cta {
-      width: 100%;
-      text-align: center;
-    }
-
     .exhibition-permanent-layout {
       grid-template-columns: var(--exhibition-facts-w) minmax(0, 1fr);
       column-gap: var(--exhibition-section-col-gap);
@@ -548,11 +448,6 @@
       width: 100%;
       grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
       gap: var(--space-4);
-    }
-
-    .exhibition-permanent-layout__media .exhibition-frame--tile-pair-lead .exhibition-frame-media,
-    .exhibition-permanent-layout__media .exhibition-frame--tile-pair-lead .exhibition-frame-placeholder {
-      aspect-ratio: var(--exhibition-aspect-tile-pair-lead);
     }
 
     .exhibition-traveling-grid {

@@ -4,13 +4,13 @@
   "lead": "Akademia Ikony skupia tych, którzy chcą pogłębić wiedzę o\u00a0świecie ikony, o\u00a0sztuce, tradycji i\u00a0duchowości chrześcijańskiego Wschodu i\u00a0Zachodu. Jesteśmy grupą twórców, którzy w\u00a0procesie twórczym odkrywają głębię i\u00a0piękno wiary chrześcijańskiej – i\u00a0pomagają odkrywać je innym. Zapraszamy nie tylko ikonografów, ale wszystkich zainteresowanych.",
   "hero": {
     "src": "/media/workshop/hero.jpg",
-    "alt": "Uczestnik maluje ikonę przy stole z\u00a0pigmentami i\u00a0lampą",
-    "width": 2048,
-    "height": 1536,
+    "alt": "Pisanie ikony Matki Bożej z Dzieciątkiem przy stole z paletą farb",
+    "width": 720,
+    "height": 540,
     "caption": "Praca nad ikoną w\u00a0pracowni"
   },
   "mission": {
-    "heading": "Czemu służymy",
+    "heading": "Nasza misja",
     "declarations": [
       {
         "highlight": "Odkrywamy i\u00a0pomagamy odkrywać głębię i\u00a0piękno wiary w\u00a0procesie twórczym.",

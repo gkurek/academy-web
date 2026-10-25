@@ -60,8 +60,7 @@ export function WorkshopsHubPage({ path, offers }: WorkshopsHubPageProps) {
         </p>
       </section>
 
-      {/* Placeholder label unused: the hub image is required (validateHub). */}
-      <ExhibitionFrame aspect="wide" image={hub.image} placeholderLabel="" className="workshops-hub-photo" priority />
+      <ExhibitionFrame image={hub.image} className="workshops-hub-photo" priority />
 
       <section className="mt-section-gap">
         <div className="offer-card-grid">
