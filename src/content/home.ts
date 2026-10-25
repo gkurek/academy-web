@@ -5,7 +5,7 @@ import { assertImage } from "@/content/validate";
 import { navItem } from "@/navigation";
 
 /** Pillar targets in `home.json` order — hrefs come from `navigation.ts`, not from the JSON. */
-const PILLAR_HREFS = ["/warsztaty", "/wyklady", "/ikony"].map((href) => navItem(href).href);
+const PILLAR_HREFS = ["/warsztaty", "/wyklady", "/ikony/wystawy"].map((href) => navItem(href).href);
 type HomePillar = {
   title: string;
   body: string;

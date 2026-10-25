@@ -45,8 +45,8 @@ export const sectionNav: Record<SectionKey, NavLink[]> = {
     { label: "Wykładowcy", href: "/wyklady/wykladowcy" },
   ],
   ikony: [
-    { label: "Galeria", href: "/ikony" },
     { label: "Wystawy", href: "/ikony/wystawy" },
+    { label: "Galeria", href: "/ikony" },
   ],
   kontakt: [{ label: "Kontakt", href: "/kontakt" }, privacyPolicyLink],
 };
@@ -58,7 +58,7 @@ export const mainNav: MainNavItem[] = [
   { label: "O Akademii", href: "/o-akademii", children: sectionNav["o-akademii"] },
   { label: "Warsztaty", href: "/warsztaty", children: sectionNav.warsztaty },
   { label: "Wykłady", href: "/wyklady", children: sectionNav.wyklady },
-  { label: "Ikony", href: "/ikony", children: sectionNav.ikony },
+  { label: "Ikony", href: "/ikony/wystawy", children: sectionNav.ikony },
   { label: "Aktualności", href: "/aktualnosci" },
   { label: "Kontakt", href: "/kontakt" },
 ];
@@ -104,7 +104,7 @@ export const footerSitemapGroups: MainNavItem[] = [
   { ...navItem("/o-akademii"), children: sectionNav["o-akademii"].slice(1) },
   { ...navItem("/warsztaty"), children: sectionNav.warsztaty.slice(1) },
   { ...navItem("/wyklady"), children: sectionNav.wyklady },
-  { ...navItem("/ikony"), children: sectionNav.ikony },
+  { ...navItem("/ikony/wystawy"), children: sectionNav.ikony },
 ];
 
 // Sections without subpages — third column on desktop (lg), full-width row on mobile.
