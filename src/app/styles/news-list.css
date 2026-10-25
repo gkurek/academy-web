@@ -156,6 +156,8 @@
   }
 
   .news-featured-read-more {
+    /* Column flex stretches children; keep the bottom border as wide as the label. */
+    align-self: flex-start;
     font-size: var(--size-ui);
     line-height: var(--leading-body);
     color: var(--accent-text);
