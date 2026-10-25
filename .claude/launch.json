@@ -7,6 +7,12 @@
       "runtimeArgs": ["run", "dev"],
       "port": 3000,
       "autoPort": true
+    },
+    {
+      "name": "tag-photos",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": ["tsx", "scripts/tag-photos.ts"],
+      "port": 4123
     }
   ]
 }
