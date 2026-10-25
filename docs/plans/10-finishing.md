@@ -1,6 +1,6 @@
 # Plan 10 — Finishing (ewaluacja, poprawki, SEO, optymalizacja)
 
-Status: **zatwierdzony** 2026-10-03 · fala 1 ✅ 2026-10-04 · k8 ✅ (T1–T29, 8a, 8b, 8c; 2026-10-25) · **następne: C1–C2 → k9**  
+Status: **zatwierdzony** 2026-10-03 · fala 1 ✅ 2026-10-04 · k8 ✅ (T1–T29, 8a, 8b, 8c; 2026-10-25) · C1–C2 ✅ (2026-10-25) · **następne: k9**  
 Gałąź: `feat/10-finishing`  
 Makiety: tokeny `design/README`, odczyt wartości `docs/design-mockup-guide.md`. Fala 2 nie ma nowych makiet.
 

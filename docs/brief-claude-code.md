@@ -95,14 +95,14 @@ type OfferFacts = {             // blok „W skrócie”
   audience?: string;
   price?: string;               // „400 zł / rok”
   enrollmentDeadline?: string;  // tekst wiersza w FactsBox (np. „Do 24 września 2026”); nie ISO
-  enrollmentStart?: string;     // plener: wiersz „Nabór” (np. „Rusza w marcu 2027”)
-  enrollmentRule?: string;      // plener: wiersz „Zasada naboru” (np. „Kolejność zgłoszeń”)
+  enrollmentStart?: string;     // plener: wiersz „Zapisy” (np. „Rusza w marcu 2027”)
+  enrollmentRule?: string;      // plener: wiersz „Zasada zapisów” (np. „Kolejność zgłoszeń”)
   enrollmentEmail: string;
   enrollmentPhone?: string;
   enrollmentSubject: string;    // ujednolicony temat mailto
   firstMeeting?: string;        // tekst wiersza w FactsBox; data maszynowa w `firstMeetingDate`
-  enrollmentOpens?: string;       // ISO (YYYY-MM-DD) — kurs: początek naboru (N7)
-  enrollmentClose?: string;     // ISO — kurs: koniec naboru (N7)
+  enrollmentOpens?: string;       // ISO (YYYY-MM-DD) — kurs: początek zapisów (N7)
+  enrollmentClose?: string;     // ISO — kurs: koniec zapisów (N7)
   firstMeetingDate?: string;    // ISO — kurs: pierwsze zajęcia (N7)
   registrationClose?: string;   // ISO — LSŚ: koniec zapisów (N7)
   dateStart?: string;           // ISO — LSŚ: start pleneru (N7)
@@ -230,7 +230,7 @@ type Publication = {
   publisher: string;              // „Fundacja IKONA DZIŚ”
   isbn?: string;                  // do podania
   pages: number;
-  format: string;                 // „23 × 23 cm”
+  format: string;                 // „22 × 21 cm”
   price?: number;                 // PLN; brak = nie w sprzedaży
   availability: 'dostepny' | 'wyczerpany';
   cover: Image;
@@ -356,7 +356,7 @@ Szacunek ręcznej korekty po migracji: ~10 stron statycznych, 16 sezonów wykła
 **Musi być:**
 - Strona główna: hero, sekcja „Najbliższe” (z CMS/danych), trzy filary, wybrane ikony, cytat, blok „Prowadząca” (mały, nie dominujący), miejsce, kontakt.
 - Strony ofertowe (kurs, plener, wykłady) z blokiem `FactsBox`/„W skrócie” zasilanym z `OfferFacts` — nie z tekstu w body.
-- Dwa stany `FactsBox`: stan z `getEnrollmentState(offer)` (K-144) — nabór **otwarty** (CTA złote, `mailto:` z `facts.enrollmentSubject`) i **zamknięty** (przycisk drugorzędny + nota z `pl.factsBox.ctaByKind`). Kurs i plener zamknięte: **„Powiadom mnie o naborze”** i osobne tematy `mailto:` z §7 (z `pl.ts`, nie z `facts.enrollmentSubject` — `getEnrollmentMailtoHref`). Wykłady zamknięte: „Zapytaj o miejsce mailem”. Przy zamkniętym naborze **brak** przycisku telefonu w `FactsBox`, gdy w danym stanie CTA nie ma `telLabel` (kurs, plener, wykłady); przy otwartym — `mailto:` + `tel:` jak dotąd. Zamówienie: telefon w obu stanach.
+- Dwa stany `FactsBox`: stan z `getEnrollmentState(offer)` (K-144) — zapisy **otwarte** (CTA złote, `mailto:` z `facts.enrollmentSubject`) i **zamknięte** (przycisk drugorzędny + nota z `pl.factsBox.ctaByKind`). Kurs, plener i wykłady zamknięte: **„Powiadom mnie o zapisach”** i osobne tematy `mailto:` z §7 (z `pl.ts`, nie z `facts.enrollmentSubject` — `getEnrollmentMailtoHref`). Przy zamkniętych zapisach **brak** przycisku telefonu w `FactsBox`, gdy w danym stanie CTA nie ma `telLabel` (kurs, plener, wykłady); przy otwartym — `mailto:` + `tel:` jak dotąd. Zamówienie: telefon w obu stanach.
 - **Akademia Ikony nie sprzedaje ikon (K-151, decyzja EJK 2026-10-14).** Bez strony zamówień, bez CTA sprzedażowych w galerii i lightboxie; sprzedaż ikon — wyłącznie EJK osobiście (docelowo strona autorska). Album nadal w sprzedaży.
 - Zapisy: `mailto:` (tematy §7, logika K-144) + `tel:` tam, gdzie CTA ma `telLabel`. Sekcja „Jak się zapisać” na kursie: adres `{enrollmentEmail}` jako link `mailto:` z tym samym href co `FactsBox`. Przygotować miejsce pod formularz w v2 (nie budować go teraz).
 - Program bieżącego sezonu wykładów jako lista (data, tytuł, prowadzący); archiwum jako rozwijane sezony (`SeasonAccordion`).
@@ -380,10 +380,10 @@ Szacunek ręcznej korekty po migracji: ~10 stron statycznych, 16 sezonów wykła
 **Tematy `mailto:` (dokładne stringi, nie parafrazować):**
 - `Zgłoszenie – kurs roczny 2026/2027`
 - `Zgłoszenie – Letnia Szkoła Światła 2027`
-- `Powiadomienie o naborze – kurs roczny` / `Powiadomienie o naborze – Letnia Szkoła Światła` (2026-10-08; przycisk „Powiadom mnie o naborze” przy zamkniętym naborze, temat z `pl.ts`, nie z `facts.enrollmentSubject`)
+- `Powiadomienie o zapisach – kurs roczny` / `Powiadomienie o zapisach – Letnia Szkoła Światła` / `Powiadomienie o zapisach – wykłady` (2026-10-25: „zapisy”, nie „nabór”; przycisk „Powiadom mnie o zapisach” przy zamkniętych zapisach, temat z `pl.ts`, nie z `facts.enrollmentSubject`)
 - `Zgłoszenie – wykłady 2026/2027`
 - `Zapytanie – kursy doskonalące i konsultacje` (LY2, 2026-10-04; `akademiaikony@gmail.com`, sekcja „Dalsza droga” kursu)
-- `Zamówienie – album „Ikona dziś. Akademia Ikony 2010–2025”` (K-76; zapis do potwierdzenia razem z tytułem albumu)
+- `Zamówienie – album „Ikona dziś. Akademia Ikony 2010–2025”` (K-76; tytuł potwierdzony 2026-10-25)
 
 Telefon jako `tel:+48601734705`.
 
@@ -411,14 +411,14 @@ Telefon jako `tel:+48601734705`.
 **Decyzje strukturalne z handoffu:**
 - `/wyklady` = hub + bieżący sezon + zwinięte archiwum; `/wyklady/archiwum` = osobna trasa z pełną listą.
 - `/publikacje` — układ wg K-76: album + artykuły, bez `SectionNav` i bez zakładek; podstrony albumu i artykułu na szablonie strony tekstowej. Makieta oczekiwana: `design/Akademia Ikony - Publikacje.dc.html` + `design/README-publikacje.md` (sloty `PU-*`).
-- Terminologia wydawnicza: w treści, UI, CTA i `mailto:` używamy słowa **„album”**; nie „książka” ani „katalog” (wyjątek: nazwy plików ze starej strony WP).
+- Terminologia wydawnicza: w treści, UI, CTA i `mailto:` używamy słowa **„album”**; nie „książka” ani „katalog” (wyjątki: nazwy plików ze starej strony WP oraz zdanie „Album to katalog ikon…” we wpisie `wernisaz-albumu-ikona-dzis` — świadomy wybór właściciela, 2026-10-25).
 
 ---
 
 ## 8. Fakty stałe (źródło prawdy dla treści — wpisać dosłownie, nie parafrazować)
 
 - Nazwa: AKADEMIA IKONY – Studium Ikonograficzne św. Andrzeja Apostoła. Założona 2010, w KŚT od 2012.
-- Miejsce: Kościół Środowisk Twórczych pw. św. Andrzeja Apostoła i św. Brata Alberta Chmielowskiego, Plac Teatralny, Warszawa. Rektor: ks. Grzegorz Michalczyk. Przestrzeń bez barier architektonicznych.
+- Miejsce: Kościół Środowisk Twórczych pw. św. Andrzeja Apostoła i św. Brata Alberta Chmielowskiego, ul. Senatorska 18B, Warszawa (potwierdzone przez właściciela 2026-10-25). Rektor: ks. Grzegorz Michalczyk. Przestrzeń bez barier architektonicznych.
 - Zdjęcie na /kontakt: własne zdjęcie EJK (podmienione 2026-10-24), bez podpisu — `public/media/contact/kosciol-srodowisk-tworczych.jpg`; ścieżka, `alt` i wymiary w `content/pages/kontakt.json` (od 2026-10-25, wcześniej `alt` w `pl.contact.photo`; mapa Google usunięta 2026-10-17).
 - Organizator: fundacja IKONA DZIŚ, www.ikonadzis.org.
 - Kontakt ogólny/warsztaty/ikony: `akademiaikony@gmail.com`, tel. `601 734 705` (Elżbieta Jackowska-Kurek).
@@ -426,8 +426,8 @@ Telefon jako `tel:+48601734705`.
 - Blog: studiumikony.blogspot.com. Facebook: facebook.com/akademiaikony. YouTube: @akademiaikony3822.
 - Warsztaty 2026/2027: zgłoszenia do 24.09.2026 mailem; rozmowa wstępna ~30 min; pierwsze spotkanie 6.10.2026, 18:00; raz w tygodniu, październik–czerwiec, grupy wieczorne i dzienne; materiały na miejscu.
 - Wykłady 2026/2027: „Ikona – korzenie i owoce wiary. Mistyka dziś”; wybrane wtorki 18:00–20:30; 400 zł/rok; zapisy do końca września 2026; terminy: 06.10, 10.11, 08.12, 19.01, 16.02, 09.03, 13.04, 11.05, 08.06, 11.06, 12.06 (wernisaż, AGAPA).
-- Letnia Szkoła Światła: plenery tygodniowe lipiec–wrzesień (potwierdzone przez właściciela 2026-10-17); nocleg i wyżywienie w cenie, materiały na miejscu; nabór na 2027 rusza w marcu 2027, kolejność zgłoszeń.
-- Album jubileuszowy (K-76): tytuł **„IKONA DZIŚ. AKADEMIA IKONY 2010–2025”** (zapis do potwierdzenia; na starej stronie WP był z przecinkiem). Wydawca: Fundacja IKONA DZIŚ (self-publishing), rok **2025**. **132** strony, format **23 × 23 cm**, cena **140 zł**. Dostępny; wysyłka pocztą; sprzedaż na wykładach w KŚT. ISBN: **do podania**. Zamówienie: `mailto:` na sekretariat (`sekretariat.ikony22@gmail.com`) z tematem jak w §7; koszt wysyłki i dane do przelewu — w odpowiedzi mailowej, nie na stronie.
+- Letnia Szkoła Światła: plenery tygodniowe lipiec–wrzesień (potwierdzone przez właściciela 2026-10-17); nocleg i wyżywienie w cenie, materiały na miejscu; zapisy na 2027 ruszają w marcu 2027, kolejność zgłoszeń.
+- Album jubileuszowy (K-76): tytuł **„Ikona dziś. Akademia Ikony 2010–2025”** (zapis potwierdzony przez właściciela 2026-10-25). Wydawca: Fundacja IKONA DZIŚ (self-publishing), rok **2025**. **178** stron, format **22 × 21 cm**, cena **140 zł**. Dostępny; wysyłka pocztą; sprzedaż na wykładach w KŚT. ISBN: **978-83-978648-0-1**. Zamówienie: `mailto:` na sekretariat (`sekretariat.ikony22@gmail.com`) z tematem jak w §7; koszt wysyłki i dane do przelewu — w odpowiedzi mailowej, nie na stronie.
 - Uwaga prawna (pełne zdanie, wielka litera na początku): „Nauczanie w Akademii Ikony nie niesie za sobą żadnych skutków formalnych.”
 
 ---
