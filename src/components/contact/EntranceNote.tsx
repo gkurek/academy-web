@@ -12,7 +12,7 @@ export interface EntranceNoteProps {
   mapUrl: string;
 }
 
-/** „Wejście” block on /kontakt — gold bar left, entrance instructions (MDX), access note and map link. */
+/** „Wejście” block on /kontakt — gold bar on top, entrance instructions (MDX), access note and map link. */
 export function EntranceNote({ Content, mapUrl }: EntranceNoteProps) {
   const { contact, footer } = pl;
 

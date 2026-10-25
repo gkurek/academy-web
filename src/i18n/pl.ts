@@ -271,7 +271,7 @@ const plSource = {
     title: "Warsztaty pisania ikon",
     quotesHeading: "Głosy uczestników",
     studentIconsHeading: "Ikony naszych uczniów",
-    studentIconsLink: "Wszystkie ikony uczniów",
+    studentIconsLink: "Cała galeria",
     faqHeading: "Zanim zaczniesz",
     // Closing block under the quotes (makieta 2c) — plain mailto, no subject (none in brief §7).
     closing: {

@@ -134,7 +134,8 @@ export function FactsBox({ facts, kind, enrollment }: FactsBoxProps) {
           href={mailtoHref}
           variant={enrollment === "open" ? "primary" : "secondary"}
           block
-          size="md"
+          size="lg"
+          compactMobile
         >
           {cta.mailtoLabel}
         </Button>
@@ -142,7 +143,7 @@ export function FactsBox({ facts, kind, enrollment }: FactsBoxProps) {
         {/* Closed enrollment states omit telLabel: no phone while there is nothing to sign up for. */}
         {"telLabel" in cta && (
           <>
-            <Button href={phoneHref} variant="secondary" block size="md" className="md:hidden">
+            <Button href={phoneHref} variant="secondary" block size="lg" compactMobile className="md:hidden">
               {fillTemplate(cta.telLabel, { phone })}
             </Button>
 

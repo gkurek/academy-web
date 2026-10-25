@@ -104,7 +104,7 @@ export function ExhibitionPage({
       <header>
         <div className="exhibition-hero-grid">
           <p
-            className="exhibition-hero-grid__eyebrow text-size-caption uppercase tracking-caption-wide text-text-tertiary"
+            className="exhibition-hero-grid__eyebrow font-serif text-size-body text-accent-text"
           >
             {copy.page.eyebrow}
           </p>

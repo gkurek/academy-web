@@ -39,7 +39,7 @@ export function NewsCard({ entry }: NewsCardProps) {
         ) : null}
       </div>
 
-      <span className="news-card-read-more" aria-hidden="true">{pl.news.readMore}</span>
+      <span className="news-card-read-more link-underline-target link-underline-target--border" aria-hidden="true">{pl.news.readMore}</span>
     </article>
   );
 }
