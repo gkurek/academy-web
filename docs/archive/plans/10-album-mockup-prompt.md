@@ -1,6 +1,6 @@
 # Prompt do Claude Design — strona albumu `/publikacje/ikona-dzis` (układ desktop)
 
-Status: **gotowy do wysłania** 2026-10-18 · zamawia: właściciel · ocena wyniku: nowa sesja w etapie 10.
+Status: **zamknięty** 2026-10-25 — prompt wysłany (przygotowany 2026-10-18), wynik Claude Design wdrożony na `/publikacje/ikona-dzis`.
 Załączyć do rozmowy z Claude Design:
 
 - `design/Akademia Ikony - Publikacje.dc.html` + `design/README-publikacje.md` (makieta rundy 1: PU-70/71 spis, `TocList`);

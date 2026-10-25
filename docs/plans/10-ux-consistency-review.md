@@ -1,6 +1,6 @@
 # Przegląd spójności UX/UI — desktop (2026-10-19)
 
-Status: **analiza + częściowe poprawki, do omówienia w nowej sesji.** Nie jest to zatwierdzony plan kawałków — punkty „do zrobienia” wymagają decyzji przed implementacją.
+Status: **rozstrzygnięty 2026-10-25.** Decyzje właściciela (numeracja jak w omówieniu w czacie): przyciski — wysokość, szerokość, filtr Galerii, linki (1–4) ✅; etykieta nad H1 (5) ✅; akcent kart (6) ✅; koniec strony (7), Aktualności bez SectionNav (8), nagłówek z boku w O Akademii (9), ramka „W skrócie” na Wystawach (10) — **bez zmian**; dwie formy opinii (11) — bez zmian, pas na `/` to świadomy akcent; H2 „Najbliższe” (12) ✅; dane kontaktowe na `/kontakt` (13) — bez zmian. Realizacja: kawałek **8c** w `10-finishing.md`.
 
 ## Metoda
 
@@ -64,4 +64,4 @@ Pozostałe obserwacje (niższy priorytet):
 - Opinie: dwie formy (pas wyśrodkowany na głównej vs karty na warsztatach) — spisać jako decyzję.
 - H2 „Najbliższe” na głównej 21px vs standard 34px.
 - Kontakt powtarza dane ze stopki tuż nad nią — rozważyć ukrycie kolumny kontaktowej stopki na `/kontakt`.
-- ~~Placeholdery „[zdjęcie: …]” (Warsztaty, Kurs, LSŚ, Wystawy) — największa słabość wizualna, sprawa treści.~~ ✅ 2026-10-24/25 — zdjęcia podmienione, placeholdery usunięte z kodu (`10-photo-library-curation.md`).
+- ~~Placeholdery „[zdjęcie: …]” (Warsztaty, Kurs, LSŚ, Wystawy) — największa słabość wizualna, sprawa treści.~~ ✅ 2026-10-24/25 — zdjęcia podmienione, placeholdery usunięte z kodu (`docs/archive/plans/10-photo-library-curation.md`).

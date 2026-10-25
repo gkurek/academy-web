@@ -1,6 +1,6 @@
 # Pula zdjęć ze starej strony WP — przesiew i wybór zdjęć na stronę
 
-Status: **plan zatwierdzony** (2026-10-24, wersja przebudowana: od kategorii właściciela, nie od filtrów na całym zbiorze). Zastępuje szkic z 2026-10-23.
+Status: **zamknięty** 2026-10-25 (plan zatwierdzony 2026-10-24, wersja przebudowana: od kategorii właściciela, nie od filtrów na całym zbiorze; zastąpił szkic z 2026-10-23). Wszystkie kroki zakończone, `_inbox/` pusty.
 
 ## Cel
 
@@ -23,11 +23,11 @@ Z puli ~420 zdjęć ze starej strony WP wybrać zdjęcia do brakujących i wymie
 - [x] **Etykiety placeholderów wystawy** (2026-10-24) — w `src/i18n/pl.ts` (`exhibition.frames`) zostało samo `[zdjęcie · proporcja]`.
 - [x] **Placeholdery zdjęć usunięte z kodu** (2026-10-25) — po podmianie żaden nie był już wyświetlany. `ExhibitionFrame` wymaga zdjęcia (zostaje tylko kadr szeroki), `ExhibitionAnnualTiles` pokazuje tyle kafli, ile zdjęć (≤ 4), `OfferFigure` i `OfferSideCta` bez wariantu zastępczego; brak zdjęcia = kadr się nie renderuje. Usunięte: etykiety `exhibition.frames`, `offers.figurePlaceholders`, `offers.sideCta.photoPlaceholders`, style `.exhibition-media-placeholder*` / `.exhibition-frame-placeholder` / `--standard` / `--square` / `--tile-pair-lead`, tokeny `--offer-side-photo-aspect`, `--offer-figure-h(-m)`, `--exhibition-aspect-square`. Zostaje zastępcze zdjęcie wykładowcy (`LecturerCard`, wykładowca bez zdjęcia).
 - [x] **Zdjęcie Kontaktu w `content/`** (2026-10-25) — ścieżka, `alt` i wymiary z `ContactPhoto` / `pl.contact.photo` przeniesione do `content/pages/kontakt.json` (walidacja `assertImage`); w `src/` nie ma już ścieżek `/media/…` poza przekierowaniami.
-- [x] **Nowe zdjęcia z `_inbox/`** (2026-10-24) — 97 wklejonych: 16 duplikatów usuniętych (12 identycznych SHA-256 z biblioteką lub między sobą, 4 prawie-identyczne tej samej rozdzielczości), 79 przeniesionych do `2026/10/` i dopisanych do `metadata.json` (`status: "local"`, bez podpisów; kopia `metadata.before-inbox.json`). 2 zostały w `_inbox/` do decyzji (wyższa rozdzielczość niż wersje w bibliotece).
-- [ ] **Krok 2 — przegląd „inne”** (właściciel).
+- [x] **Nowe zdjęcia z `_inbox/`** (2026-10-24) — 97 wklejonych: 16 duplikatów usuniętych (12 identycznych SHA-256 z biblioteką lub między sobą, 4 prawie-identyczne tej samej rozdzielczości), 79 przeniesionych do `2026/10/` i dopisanych do `metadata.json` (`status: "local"`, bez podpisów; kopia `metadata.before-inbox.json`). 2 pozostałe rozstrzygnięte przez właściciela — `_inbox/` pusty (2026-10-25).
+- [x] **Krok 2 — przegląd „inne”** (właściciel) — zamknięty 2026-10-25.
 - [x] **Krok 3 — klasyfikacja techniczna** (2026-10-24, Claude) — zawężona do 3 kategorii: wystawy, warsztaty, akademia – uczestnicy. `scripts/classify-photos.ts` → `_scan/classification.json`; flagi i gwiazdka w `tag-photos.ts` (od 2026-10-24: typ na slot, patrz Krok 5). Flaga „już na stronie” liczy się bez `public/media/news/**` (dHash ≤ 8/64). Rozmycie/ciemne pominięte (dotyczyło ikon). Progi A/B/C (długi/krótki bok): warsztaty 1600/900 · 960/540; wystawy 1400/700 · 960/600; uczestnicy 1600/900 · 960/600. Wynik: warsztaty 54 (A13 B25 C16, na stronie 16); wystawy 109 (A42 B43 C24, na stronie 2); uczestnicy 18 (A13 B0 C5, na stronie 2).
-- [ ] **Krok 4 — liczenie i decyzja o dalszych filtrach**.
-- [ ] **Krok 5 — wybór na konkretne miejsca** (właściciel, aplikacja). Potwierdzone 2026-10-24 (3 sloty, pliki zoptymalizowane mozjpeg q85, `alt` zatwierdzone K-122, podpis tylko w O Akademii — bez zmian):
+- [x] **Krok 4 — liczenie i decyzja o dalszych filtrach** — zamknięty 2026-10-25 (bez dalszych filtrów).
+- [x] **Krok 5 — wybór na konkretne miejsca** (właściciel, aplikacja). Potwierdzone 2026-10-24 (3 sloty, pliki zoptymalizowane mozjpeg q85, `alt` zatwierdzone K-122, podpis tylko w O Akademii — bez zmian):
   - Warsztaty – hero: `2026/10/514953350_…_n.jpg` → `public/media/workshop/hub-hero.jpg`, kadr 21:8 2048×780 (nowa ścieżka, bo `home/pracownia.jpg` dzieli news „Nowy rok w Akademii”).
   - O Akademii – hero: dawne zdjęcie hubu `home/pracownia.jpg` (zielony stół) → `public/media/workshop/hero.jpg`, kadr 4:3 720×540; poprzedni plik w `_scan/originals/workshop-hero.jpg`.
   - Kurs roczny – zdjęcie pod „Jak wygląda nauka” (dawny placeholder `kursPracownia`): `2022/07/10986879_…_o.jpg` → `public/media/offers/kurs-roczny-i-trzyletni/pracownia.jpg`, kadr ≈2,5:1 2048×819; `OfferFigure` ze zdjęciem bez stałej wysokości (`w-full h-auto`).
@@ -36,7 +36,7 @@ Z puli ~420 zdjęć ze starej strony WP wybrać zdjęcia do brakujących i wymie
   - Wystawy ikon – wystawa doroczna, 4 kafle 4:3 (potwierdzone 2026-10-24), w kolejności: `2017/09/10407074_…_n.jpg` → `annual-boy-at-easels.jpg` (960×720); `2025/06/448770846_…_n.jpg` (pion, przycięty do 4:3 od y=170) → `annual-opening-speech.jpg` (1536×1152); `2026/10/DSC08795.JPG` → `annual-icons-on-table.jpg` (1600×1200); `2026/10/2023-wernisaz-doroczny-3.jpg` → `annual-easels.jpg` (1600×1200). Wszystkie w `public/media/exhibition/`, mozjpeg q85, dłuższy bok ≤ 1600. Podpięte w `content/exhibition/page.mdx` jako `annualImages` (nowe opcjonalne pole `PermanentExhibition`), wyświetlane, dopóki ostatnia wystawa doroczna nie ma własnych `photos`; kafle otwierają lightbox (tylko te cztery). Złota obwódka zdjęta ze zdjęć w ramkach wystawy (zostaje na placeholderach). `alt` zatwierdzone (K-122): „Chłopiec ogląda ikony na sztalugach z czerwonym tłem”; „Elżbieta Jackowska-Kurek przemawia podczas wernisażu wystawy dorocznej”; „Ikony uczestników Akademii rozłożone na stole z czerwonym obrusem”; „Ikony uczestników ustawione na sztalugach podczas wystawy dorocznej”.
   - Wystawy ikon – galeria w #doroczna (2026-10-24): 21 zdjęć z gwiazdką (kolejność `starred`) → `public/media/exhibition/annual-gallery-01…21.jpg`, mozjpeg q85, dłuższy bok ≤ 1600, bez kadrowania; podpięte jako `annualGallery` (nowe opcjonalne pole `PermanentExhibition`). Usunięte po przeglądzie: `annual-gallery-01`, `-06`, `-14` (numery 5, 10, 18 w liczniku lightboxa), potem `-11` (trzy duże ikony na stojakach); numeracja plików ma luki. Jedna lista w lightboxie: 4 kafle + 17 zdjęć galerii (21); kafle otwierają ją od swojego numeru. Link „Zobacz więcej zdjęć” (`ExhibitionGalleryLink`) usunięty 2026-10-25 — do galerii wchodzi się wyłącznie klikając widoczny kafel; to samo w #wyjazdowe. `alt` zatwierdzone (K-122, 2026-10-24) — w `page.mdx`; osoby wskazane przez właściciela: Elżbieta Jackowska-Kurek (gallery-05, -10, -15, -21), ks. Grzegorz Michalczyk (gallery-10).
   - Wystawy ikon – ekspozycja codzienna (potwierdzone 2026-10-24): para ramek 2:1 + 4:3 zastąpiona dwoma zdjęciami w naturalnych proporcjach, w jednym rzędzie przy każdej szerokości (kolumny `fr` z proporcji zdjęć → równa wysokość; `--permanent-photo-cols`). `2021/08/DSC_0161-3.jpg` (przycięte tylko z sufitu i podłogi) → `permanent-three-icons.jpg` 1600×886, `alt` jak wcześniej w galerii (zatwierdzony); `2017/09/DSC01694.jpg` (bez kadrowania) → `permanent-icons-on-easels.jpg` 1600×900, `alt` zatwierdzony (K-122, 2026-10-25). mozjpeg q85. Bez lightboxa i bez złotej obwódki. Wpis `annual-gallery-11` (to samo zdjęcie co duże) wcześniej usunięty z galerii.
-- [ ] **Krok 6 — przeniesienie do projektu**.
+- [x] **Krok 6 — przeniesienie do projektu** — zamknięty 2026-10-25 (commit `6f49b79`).
 
 ## Mapa slotów (kolejność: uzupełnić → wymiana → ewentualna wymiana → OK)
 
@@ -51,8 +51,8 @@ Z puli ~420 zdjęć ze starej strony WP wybrać zdjęcia do brakujących i wymie
 | Wystawa – ekspozycja codzienna (2 zdjęcia w jednym rzędzie) | **zamknięte** 2026-10-24 (`exhibition/permanent-three-icons.jpg` 1600×886 + `permanent-icons-on-easels.jpg` 1600×900) | `alt` drugiego zatwierdzony (K-122, 2026-10-25) | wystawy |
 | Wystawa – wystawy wyjazdowe (4 kafle 4:3 + galeria 5 zdjęć; ramka 21:8 usunięta) | **zamknięte** 2026-10-25 (`exhibition/traveling-01…09.jpg`, gwiazdki 5, 1, 4, 6 na kaflach, reszta w kolejności `starred` w galerii) | `alt` zatwierdzony (K-122, 2026-10-25) i wpisany w `page.mdx`; pliki już mozjpeg q85, bez zmian | wystawy |
 | Warsztaty – hub | **zamknięte** 2026-10-24 (`workshop/hub-hero.jpg`, 2048×780) | – | warsztaty |
-| Home – filar „wykłady” (1440×810) | średnie | ewentualna wymiana | wykłady |
-| O Akademii – `workshop-boards`, `workshop-finished-icon` (800×600) | średnie | ewentualna wymiana | warsztaty |
+| Home – filar „wykłady” (1440×810) | **zamknięte** 2026-10-25 (decyzja właściciela) | – | wykłady |
+| O Akademii – `workshop-boards`, `workshop-finished-icon` (800×600) | **zamknięte** 2026-10-25 (decyzja właściciela) | – | warsztaty |
 | ~~Letnia Szkoła Światła – `grupa-w-swiatyni`~~ | nie ma takiego slotu: plik `public/media/offers/letnia-szkola-swiatla/grupa-w-swiatyni.png` (526×610) dodany w 10/k8, nigdy niepodpięty; 2026-10-24 przeniesiony do `ejk-pic-library/_from-site/` | – | – |
 | Home – hero, filar „warsztaty”, filar „wystawa” (1000×714) | OK | – | – |
 | O Akademii – hero | **zamknięte** 2026-10-24 (`workshop/hero.jpg`, 720×540, dawne zdjęcie hubu) | – | – |
@@ -103,5 +103,4 @@ Na podstawie `tags.json` i wyboru: kopia i optymalizacja do `public/media/…`, 
 
 ## Otwarte
 
-- Czy „Dalsza droga” (kurs) zostaje osobnym slotem — potwierdzić w kroku 5.
-- Czy zdjęcie z `_from-site/` (`plener-przy-ikonach.jpg`) dołączyć do puli i tagować — wymaga wpisu w `metadata.json`.
+Brak (2026-10-25). „Dalsza droga” zamknięta jako osobny slot (mapa slotów); `_from-site/` — rozstrzygnięte przez właściciela przy zamknięciu.

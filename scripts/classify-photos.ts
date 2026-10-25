@@ -1,6 +1,6 @@
 /**
  * Technical classification of the WP photo library (~/Desktop/ejk-pic-library), step 3 of
- * docs/plans/10-photo-library-curation.md. READ-ONLY: nothing is moved or deleted.
+ * docs/archive/plans/10-photo-library-curation.md. READ-ONLY: nothing is moved or deleted.
  * For photos tagged with one of CATEGORIES in tags.json it computes real pixel size, rank A/B/C,
  * orientation, and an "already on site" flag (dHash vs public/media, excluding public/media/news/**).
  * Output: <dir>/_scan/classification.json (read by scripts/tag-photos.ts) and a console summary.

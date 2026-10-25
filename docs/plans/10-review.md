@@ -1,6 +1,6 @@
 # Plan 10/R — Review serwisu (techniczne, wizualne, treść)
 
-Status: **blok R zamknięty lokalnie** 2026-10-06 (R0–R5, RF-0…RF-21, V1–V4, RF-13a; zatwierdzone przez właściciela, w tym Safari iOS i przegląd RV-F) · zostaje **deploy na staging + merge do `main`** (właściciel) oraz **C1–C2 po EJK** · zatwierdzony 2026-10-04  
+Status: **blok R zamknięty lokalnie** 2026-10-06 (R0–R5, RF-0…RF-21, V1–V4, RF-13a; zatwierdzone przez właściciela, w tym Safari iOS i przegląd RV-F) · merge do `main` ✅ (PR #15) · zostaje **C1–C2** — warunek (T1–T29) spełniony 2026-10-25, start po uwagach z przeglądu UX · zatwierdzony 2026-10-04  
 Gałąź: `feat/10-review` od `main` — dokumenty review i paczki poprawek; k8 zostaje na `feat/10-finishing` (merge do `main` niezależnie)  
 Staging: https://academy-web-lovat.vercel.app/  
 Makiety: tokeny `design/README`, odczyt wartości `docs/design-mockup-guide.md` (tylko jako punkt odniesienia w V1–V4).
