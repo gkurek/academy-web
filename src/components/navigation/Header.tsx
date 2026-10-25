@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { getSiteSettings } from "@/content/settings";
 import { pl } from "@/i18n/pl";
 import { mainNav, navAriaCurrent, resolveNav } from "@/navigation";
 import { HeaderMobileMenu } from "@/components/navigation/HeaderMobileMenu";
@@ -11,8 +10,8 @@ export interface HeaderProps {
 }
 
 export function Header({ path }: HeaderProps) {
-  const settings = getSiteSettings();
-  const activeHref = resolveNav(path).active?.href;
+  const nav = resolveNav(path);
+  const activeHref = nav.active?.href;
 
   return (
     <header className="rule-gold-b">
@@ -39,7 +38,11 @@ export function Header({ path }: HeaderProps) {
       </div>
 
       <div className="lg:hidden">
-        <HeaderMobileMenu path={path} activeHref={activeHref} blogUrl={settings.blogUrl} />
+        <HeaderMobileMenu
+          path={path}
+          activeHref={activeHref}
+          sectionActiveHref={nav.sectionActive?.href}
+        />
       </div>
     </header>
   );

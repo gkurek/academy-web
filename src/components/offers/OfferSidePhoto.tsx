@@ -10,8 +10,6 @@ export interface OfferSidePhotoProps {
   alt: string;
   width: number;
   height: number;
-  /** CSS `object-position` of the cropped photo; defaults to center. */
-  imagePosition?: string;
   caption?: string;
 }
 
@@ -25,7 +23,6 @@ export function OfferSidePhoto({
   alt,
   width,
   height,
-  imagePosition,
   caption,
 }: OfferSidePhotoProps) {
   return (
@@ -34,20 +31,16 @@ export function OfferSidePhoto({
         {children}
       </Prose>
 
-      {/* lg: the photo fills the text height instead of setting it, so the next section's gap is
-          always measured from the text (the photo column has no intrinsic height). */}
-      <figure className="lg:self-stretch lg:flex lg:flex-col">
-        <div className="lg:relative lg:flex-1">
-          <Image
-            src={src}
-            alt={alt}
-            width={width}
-            height={height}
-            sizes="(min-width: 1024px) 42vw, 100vw"
-            className="w-full aspect-offer-side-photo object-cover lg:absolute lg:inset-0 lg:h-full lg:aspect-auto"
-            style={imagePosition ? { objectPosition: imagePosition } : undefined}
-          />
-        </div>
+      {/* Whole photo at its natural aspect ratio, no crop. */}
+      <figure>
+        <Image
+          src={src}
+          alt={alt}
+          width={width}
+          height={height}
+          sizes="(min-width: 1024px) 42vw, 100vw"
+          className="w-full h-auto"
+        />
         {/* Same caption style as OfferFigure. */}
         {caption ? (
           <figcaption className="font-serif italic text-size-body text-text-tertiary mt-space-3">

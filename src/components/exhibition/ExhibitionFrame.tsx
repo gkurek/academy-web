@@ -2,68 +2,30 @@ import Image from "next/image";
 
 import type { Image as ContentImage } from "@/content/types";
 
-type ExhibitionFrameAspect =
-  | "wide"
-  | "standard"
-  | "square"
-  | "tile"
-  | "tilePairLead";
-
 export interface ExhibitionFrameProps {
-  image?: ContentImage;
-  aspect: ExhibitionFrameAspect;
-  placeholderLabel: string;
+  image: ContentImage;
   className?: string;
   /** Above-the-fold image (LCP) — eager load, high fetch priority. */
   priority?: boolean;
 }
 
-const aspectClass: Record<ExhibitionFrameAspect, string> = {
-  wide: "exhibition-frame--wide",
-  standard: "exhibition-frame--standard",
-  square: "exhibition-frame--square",
-  tile: "exhibition-frame--tile",
-  tilePairLead: "exhibition-frame--tile-pair-lead",
-};
-
-export function ExhibitionFrame({
-  image,
-  aspect,
-  placeholderLabel,
-  className,
-  priority = false,
-}: ExhibitionFrameProps) {
-  const rootClass = ["exhibition-frame", aspectClass[aspect], className].filter(Boolean).join(" ");
+/** Wide cropped photo frame (`--exhibition-aspect-wide` from md, `-standard` below) with an optional caption. */
+export function ExhibitionFrame({ image, className, priority = false }: ExhibitionFrameProps) {
+  const rootClass = ["exhibition-frame", "exhibition-frame--wide", className].filter(Boolean).join(" ");
 
   return (
     <figure className={rootClass}>
-      {image?.src ? (
-        <span className="exhibition-frame-media">
-          <Image
-            src={image.src}
-            alt={image.alt}
-            fill
-            priority={priority}
-            sizes={
-              aspect === "wide"
-                ? "(min-width: 768px) 100vw, 100vw"
-                : aspect === "standard" ||
-                    aspect === "tile" ||
-                    aspect === "tilePairLead"
-                  ? "(min-width: 768px) 50vw, 100vw"
-                  : "(min-width: 768px) 25vw, 50vw"
-            }
-            className="exhibition-frame-image"
-          />
-        </span>
-      ) : (
-        <div
-          className={`exhibition-media-placeholder exhibition-frame-placeholder ${aspectClass[aspect]}`}
-        >
-          <p className="exhibition-media-placeholder-text">{placeholderLabel}</p>
-        </div>
-      )}
-      {image?.caption ? (
+      <span className="exhibition-frame-media">
+        <Image
+          src={image.src}
+          alt={image.alt}
+          fill
+          priority={priority}
+          sizes="100vw"
+          className="exhibition-frame-image"
+        />
+      </span>
+      {image.caption ? (
         <figcaption className="exhibition-frame-caption">{image.caption}</figcaption>
       ) : null}
     </figure>

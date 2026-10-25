@@ -1,38 +1,23 @@
 import Image from "next/image";
 
-import { ExternalLink } from "@/components/core/ExternalLink";
-import { pl } from "@/i18n/pl";
+import type { Image as ImageData } from "@/content/types";
 
-const linkClass = "underline hover:text-accent-hover transition-ui-colors";
+export interface ContactPhotoProps {
+  photo: ImageData;
+}
 
-/** Church facade photo on /kontakt (Wikimedia Commons, CC BY-SA — credit is required). */
-export function ContactPhoto() {
-  const { photo } = pl.contact;
-
+/** Church facade photo on /kontakt (own photo by EJK — no credit line). */
+export function ContactPhoto({ photo }: ContactPhotoProps) {
   return (
     <figure className="-mx-page-margin-mobile md:mx-0">
       <Image
-        src="/media/contact/kosciol-srodowisk-tworczych.jpg"
+        src={photo.src}
         alt={photo.alt}
-        width={1600}
-        height={983}
+        width={photo.width}
+        height={photo.height}
         sizes="(min-width: 1024px) 422px, 100vw"
         className="block h-auto w-full bg-surface-tile"
       />
-      <figcaption className="mt-space-2 px-page-margin-mobile text-size-caption leading-body text-text-tertiary md:px-0">
-        {photo.creditLead}
-        <ExternalLink href={photo.sourceUrl} showIcon={false} className={linkClass}>
-          {photo.sourceLabel}
-        </ExternalLink>
-        {", "}
-        <ExternalLink
-          href={photo.licenseUrl}
-          showIcon={false}
-          className={`${linkClass} whitespace-nowrap`}
-        >
-          {photo.licenseLabel}
-        </ExternalLink>
-      </figcaption>
     </figure>
   );
 }

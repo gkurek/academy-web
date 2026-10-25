@@ -190,8 +190,6 @@
   --spacing-offer-quote-feature-y: var(--offer-quote-feature-y);
   --spacing-offer-quote-image-mt: var(--offer-quote-image-mt);
   --spacing-offer-quote-image-h: var(--offer-quote-image-h);
-  --spacing-offer-figure-h: var(--offer-figure-h);
-  --spacing-offer-figure-h-m: var(--offer-figure-h-m);
   --text-size-offer-semester-num: var(--offer-semester-num);
   --text-size-offer-semester-num-m: var(--offer-semester-num-m);
   --text-size-offer-quote: var(--offer-quote-feature);
@@ -236,7 +234,6 @@
   --spacing-lecturer-affiliation-mb: var(--lecturer-affiliation-mb);
   --text-size-lecturer-affiliation: var(--lecturer-affiliation-size);
   --aspect-lecturer-photo: var(--lecturer-photo-aspect);
-  --aspect-offer-side-photo: var(--offer-side-photo-aspect);
   --grid-template-columns-lecturer-row: var(--lecturer-photo-col) 1fr;
   --grid-template-columns-lecturer-row-m: var(--lecturer-photo-col-m) 1fr;
 

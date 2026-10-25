@@ -1,6 +1,6 @@
 # Przegląd spójności UX/UI — desktop (2026-10-19)
 
-Status: **analiza + częściowe poprawki, do omówienia w nowej sesji.** Nie jest to zatwierdzony plan kawałków — punkty „do zrobienia” wymagają decyzji przed implementacją.
+Status: **rozstrzygnięty 2026-10-25.** Decyzje właściciela (numeracja jak w omówieniu w czacie): przyciski — wysokość, szerokość, filtr Galerii, linki (1–4) ✅; etykieta nad H1 (5) ✅; akcent kart (6) ✅; koniec strony (7), Aktualności bez SectionNav (8), nagłówek z boku w O Akademii (9), ramka „W skrócie” na Wystawach (10) — **bez zmian**; dwie formy opinii (11) — bez zmian, pas na `/` to świadomy akcent; H2 „Najbliższe” (12) ✅; dane kontaktowe na `/kontakt` (13) — bez zmian. Realizacja: kawałek **8c** w `10-finishing.md`.
 
 ## Metoda
 
@@ -48,7 +48,7 @@ Pozostałe wyjątki (świadomie zostawione): O Akademii — pas tła ma własny 
 3. **Przyciski**
    - Jedna wysokość i font: „Powiadom mnie o zapisach” 60px/16.5px vs reszta 64px/17.5px.
    - Reguła szerokości: w karcie/ramce pełna szerokość, w treści szerokość tekstu.
-   - Wystawy: dwa złote przyciski główne ~300px od siebie („Zapytaj o oprowadzanie”, „Napisz do nas”) — jeden obrysowy; do tego jeden stoi luzem, drugi w karcie z belką.
+   - Wystawy: ~~dwa złote przyciski główne ~300px od siebie~~ — przycisk „Zapytaj o oprowadzanie” usunięty 2026-10-25; został jeden złoty („Napisz do nas”, wyjazdowe).
    - Galeria: aktywny filtr wygląda jak przycisk główny (złote wypełnienie) — zamienić na złoty obrys lub podkreślenie.
    - Linki: trzy style (złoty z podkreśleniem z ramki / złoty bez podkreślenia „Czytaj dalej” / szary `underline` w podpisie zdjęcia) — zrównać dwa pierwsze.
 4. **Etykieta nad H1 i akcenty kart**
@@ -64,4 +64,4 @@ Pozostałe obserwacje (niższy priorytet):
 - Opinie: dwie formy (pas wyśrodkowany na głównej vs karty na warsztatach) — spisać jako decyzję.
 - H2 „Najbliższe” na głównej 21px vs standard 34px.
 - Kontakt powtarza dane ze stopki tuż nad nią — rozważyć ukrycie kolumny kontaktowej stopki na `/kontakt`.
-- Placeholdery „[zdjęcie: …]” (Warsztaty, Kurs, LSŚ, Wystawy) — największa słabość wizualna, sprawa treści.
+- ~~Placeholdery „[zdjęcie: …]” (Warsztaty, Kurs, LSŚ, Wystawy) — największa słabość wizualna, sprawa treści.~~ ✅ 2026-10-24/25 — zdjęcia podmienione, placeholdery usunięte z kodu (`docs/archive/plans/10-photo-library-curation.md`).

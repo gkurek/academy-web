@@ -1,14 +1,9 @@
-import { Button } from "@/components/core/Button";
 import { TextLink } from "@/components/core/TextLink";
 import { getExhibitionCopy } from "@/content/exhibition";
 import { pl } from "@/i18n/pl";
 import { PageHeading } from "@/components/core/PageHeading";
 
-export interface ExhibitionToursSectionProps {
-  mailtoHref: string;
-}
-
-export function ExhibitionToursSection({ mailtoHref }: ExhibitionToursSectionProps) {
+export function ExhibitionToursSection() {
   const { tours } = pl.exhibition;
   const toursCopy = getExhibitionCopy().tours;
 
@@ -29,15 +24,6 @@ export function ExhibitionToursSection({ mailtoHref }: ExhibitionToursSectionPro
             {toursCopy.introAfter}
           </p>
         </div>
-        <Button
-          href={mailtoHref}
-          variant="primary"
-          block
-          size="lg"
-          className="exhibition-tours-pass__cta md:inline-block"
-        >
-          {tours.mailtoLabel}
-        </Button>
       </div>
     </section>
   );

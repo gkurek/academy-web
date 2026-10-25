@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 };
 
 export default function ContactRoutePage() {
-  const { Content } = getContactPage();
+  const { photo, Content } = getContactPage();
 
-  return <ContactPage path={path} title={title} Content={Content} />;
+  return <ContactPage path={path} title={title} photo={photo} Content={Content} />;
 }

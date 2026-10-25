@@ -29,13 +29,13 @@
     color: var(--text-secondary);
   }
 
-  /* Entrance note — gold bar on the left, same pattern as LectureList / AboutQuote. */
+  /* Entrance note — info card: gold bar on top like FactsBox (left bar is reserved for in-text quotes). */
   .contact-entrance {
     display: grid;
     gap: var(--space-4);
     padding: var(--space-5);
     background: var(--surface-card);
-    border-left: var(--accent-bar) solid var(--accent);
+    border-top: var(--accent-bar) solid var(--accent);
   }
 
   .contact-entrance .prose-text > p {

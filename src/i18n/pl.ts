@@ -20,11 +20,7 @@ const plSource = {
   header: {
     mainNavAriaLabel: "Menu główne",
     menuToggleLabel: "Menu",
-    sectionExpandLabel: "Rozwiń sekcję",
-    sectionCollapseLabel: "Zwiń sekcję",
-    primaryCta: "Zapisy na warsztaty",
-    contactCta: "Kontakt",
-    blogLink: "Blog",
+    menuCloseLabel: "Zamknij menu",
   },
   sectionNav: {
     ariaLabel: "Nawigacja sekcji",
@@ -192,10 +188,6 @@ const plSource = {
     ],
     plenerQuotesHeading: "Głosy z pleneru",
     plenerWhereWeWereInline: "Gościły nas m.in.:",
-    figurePlaceholders: {
-      kursPracownia: "[zdjęcie: pracownia, praca nad ikoną]",
-      lssPlener: "[zdjęcie: plener, praca przy ikonach]",
-    },
     // Closing line of an offer page: the FactsBox enrollment mailto as an inline link ({link}).
     closingCta: {
       plener: {
@@ -207,9 +199,6 @@ const plSource = {
     sideCta: {
       title: "Kursy doskonalące i konsultacje indywidualne",
       mailtoLabel: "Zapytaj",
-      photoPlaceholders: {
-        kursDalszaDroga: "[zdjęcie: praca przy ikonie]",
-      },
     },
     enrollmentByKind: {
       kurs: {
@@ -282,7 +271,7 @@ const plSource = {
     title: "Warsztaty pisania ikon",
     quotesHeading: "Głosy uczestników",
     studentIconsHeading: "Ikony naszych uczniów",
-    studentIconsLink: "Wszystkie ikony uczniów",
+    studentIconsLink: "Cała galeria",
     faqHeading: "Zanim zaczniesz",
     // Closing block under the quotes (makieta 2c) — plain mailto, no subject (none in brief §7).
     closing: {
@@ -319,7 +308,7 @@ const plSource = {
       workshopsLink: "Chcesz napisać własną ikonę?",
     },
     nowNext: {
-      ariaLabel: "Co teraz wisi w kościele",
+      ariaLabel: "Co teraz można zobaczyć w kościele",
       nowLabel: "Teraz w kościele",
       nextLabel: "Następnie",
       permanentNowSubline: "Ekspozycja codzienna, do połowy czerwca {year}",
@@ -328,18 +317,6 @@ const plSource = {
       annualNextTitle: "Wystawa doroczna {year}",
       vernissageSubline: "Wernisaż {date}, podczas ostatniego wykładu sezonu",
       permanentFromSeptemberSuffix: "od września",
-    },
-    frames: {
-      heroWide: "[zdjęcie: lewa nawa kościoła, szeroki kadr · 21:8]",
-      permanentStandard: "[zdjęcie: ikony przy ołtarzu, lewa nawa · 2:1]",
-      permanentStandard2: "[zdjęcie: detal ikony, lewa nawa · 4:3]",
-      closingWide: "[zdjęcie: wystawa wyjazdowa, Święta Lipka, szeroki kadr · 21:8]",
-      tilePlaceholders: [
-        "[zdjęcie: chrystus pantokrator · 4:3]",
-        "[zdjęcie: wernisaż · 4:3]",
-        "[zdjęcie: matka boża znaku · 4:3]",
-        "[zdjęcie: wykład elżbiety jackowskiej-kurek · 4:3]",
-      ],
     },
     permanent: {
       sectionId: "ekspozycja",
@@ -352,22 +329,17 @@ const plSource = {
     },
     annual: {
       sectionId: "doroczna",
-      photoArchiveLink: "Fotorelacje z poprzednich wystaw dorocznych",
-      tilesCaption: "Wystawa {year} · {count} zdjęć – zobacz wszystkie",
       facts: {
         when: "Kiedy",
         vernissage: "Wernisaż",
         onDisplay: "Na wystawie",
         admission: "Wstęp",
-        lecturesProgramLink: "Program i terminy wykładów",
       },
     },
     tours: {
       sectionId: "oprowadzania",
       title: "Oprowadzania",
       scheduleNewsLink: "Aktualnościach",
-      mailtoLabel: "Zapytaj o oprowadzanie",
-      mailtoSubject: "Oprowadzanie po wystawie – grupa",
     },
     traveling: {
       sectionId: "wyjazdowe",
@@ -467,15 +439,6 @@ const plSource = {
     phoneLabel: "Telefon",
     entranceHeading: "Wejście od strony zakrystii",
     mapLinkLabel: "Otwórz w Mapach Google",
-    photo: {
-      alt: "Fasada Kościoła Środowisk Twórczych przy placu Teatralnym – portyk z czterema kolumnami między białymi skrzydłami budynku",
-      creditLead: "Fot. Adrian Grycuk, ",
-      sourceLabel: "Wikimedia Commons",
-      sourceUrl:
-        "https://commons.wikimedia.org/wiki/File:Ko%C5%9Bci%C3%B3%C5%82_%C5%9Bw._Brata_Alberta_i_%C5%9Bw._Andrzeja_Aposto%C5%82a_w_Warszawie_2019.jpg",
-      licenseLabel: "CC BY-SA 3.0 PL",
-      licenseUrl: "https://creativecommons.org/licenses/by-sa/3.0/pl/deed.pl",
-    },
     organizerHeading: "Organizator",
     organizerLead: "Akademia Ikony jest projektem wiodącym fundacji ",
     organizerLinkLabel: "IKONA DZIŚ",

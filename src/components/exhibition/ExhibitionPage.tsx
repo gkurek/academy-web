@@ -1,4 +1,6 @@
-import { Button } from "@/components/core/Button";
+import Image from "next/image";
+import type { CSSProperties } from "react";
+
 import { TextLink } from "@/components/core/TextLink";
 import { ExhibitionAnnualTiles } from "@/components/exhibition/ExhibitionAnnualTiles";
 import { ExhibitionFactsPanel } from "@/components/exhibition/ExhibitionFactsPanel";
@@ -32,7 +34,6 @@ export interface ExhibitionPageProps {
   page: LoadedExhibitionPage;
   latestAnnual: AnnualExhibition;
   lastFinished?: AnnualExhibition;
-  latestWithPhotos?: AnnualExhibition;
   nowNext: ExhibitionNowNextState;
   firstAnnualYear: number;
 }
@@ -42,15 +43,13 @@ export function ExhibitionPage({
   page,
   latestAnnual,
   lastFinished,
-  latestWithPhotos,
   nowNext,
   firstAnnualYear,
 }: ExhibitionPageProps) {
   const annualActive = isAnnualExhibitionActive(latestAnnual);
-  const { page: pageLabels, permanent, annual, facts, frames, tours, traveling } = pl.exhibition;
+  const { page: pageLabels, permanent, annual, facts, traveling } = pl.exhibition;
   const copy = getExhibitionCopy();
   const enrollmentEmail = getEnrollmentEmail();
-  const toursMailtoHref = buildMailtoHref(enrollmentEmail, tours.mailtoSubject);
   const travelingMailtoHref = buildMailtoHref(enrollmentEmail, traveling.mailtoSubject);
 
   const annualFactRows = [
@@ -88,16 +87,16 @@ export function ExhibitionPage({
       ? copy.annual.scheduleNext.replace("{monthYear}", monthYear)
       : copy.annual.scheduleNextMissing;
 
-  const annualPhotos = latestAnnual.photos ?? [];
-  const tilesCaption =
-    latestWithPhotos && (latestWithPhotos.photos?.length ?? 0) > 0
-      ? annual.tilesCaption
-          .replace("{year}", String(getAnnualExhibitionYear(latestWithPhotos.seasonSlug)))
-          .replace("{count}", String(latestWithPhotos.photos?.length ?? 0))
-      : undefined;
+  // Curated photos from several years (K-154), never a given exhibition's own photos. The tiles
+  // open one lightbox list: the tiles first, then the rest of the gallery.
+  const annualTilePhotos = page.annualImages ?? [];
+  const annualGallery = [...annualTilePhotos, ...(page.annualGallery ?? [])];
 
   // Media paths are trusted here; `npm run check:media` verifies the files exist at build (D9).
-  const { heroImage, permanentImage, permanentImage2, closingImage } = page;
+  const { heroImage, permanentImage, permanentImage2 } = page;
+  const permanentPhotos = [permanentImage, permanentImage2].filter(
+    (photo): photo is NonNullable<typeof photo> => Boolean(photo),
+  );
 
   return (
     <SectionPageShell path={path}>
@@ -105,7 +104,7 @@ export function ExhibitionPage({
       <header>
         <div className="exhibition-hero-grid">
           <p
-            className="exhibition-hero-grid__eyebrow text-size-caption uppercase tracking-caption-wide text-text-tertiary"
+            className="exhibition-hero-grid__eyebrow font-serif text-size-body text-accent-text"
           >
             {copy.page.eyebrow}
           </p>
@@ -123,13 +122,11 @@ export function ExhibitionPage({
       </header>
 
       <LightboxProvider>
-        <div className="exhibition-hero-frame mb-space-6">
-          <ExhibitionFrame
-            image={heroImage}
-            aspect="wide"
-            placeholderLabel={frames.heroWide}
-          />
-        </div>
+        {heroImage ? (
+          <div className="exhibition-hero-frame mb-space-6">
+            <ExhibitionFrame image={heroImage} />
+          </div>
+        ) : null}
 
         <section
           id={annual.sectionId}
@@ -154,27 +151,13 @@ export function ExhibitionPage({
                 {copy.annual.scheduleSince.replace("{firstYear}", String(firstAnnualYear))}{" "}
                 {scheduleNext}
               </p>
-              <p className="exhibition-section-copy">
-                <TextLink standalone href="/aktualnosci">{annual.photoArchiveLink}</TextLink>
-              </p>
             </div>
             <div className="exhibition-section-grid__facts min-w-0">
-              <ExhibitionFactsPanel
-                rows={annualFactRows}
-                footerLink={
-                  <Button href="/wyklady" variant="secondary" block size="lg">
-                    {annual.facts.lecturesProgramLink}
-                  </Button>
-                }
-              />
+              <ExhibitionFactsPanel rows={annualFactRows} />
             </div>
           </div>
 
-          <ExhibitionAnnualTiles
-            photos={annualPhotos}
-            placeholderLabels={frames.tilePlaceholders}
-            caption={tilesCaption}
-          />
+          <ExhibitionAnnualTiles photos={annualTilePhotos} gallery={annualGallery} />
         </section>
 
         <section
@@ -201,35 +184,43 @@ export function ExhibitionPage({
                 </p>
               ))}
             </div>
-            <div className="exhibition-permanent-layout__media">
-              <ExhibitionFrame
-                image={permanentImage}
-                aspect="tilePairLead"
-                placeholderLabel={frames.permanentStandard}
-              />
-              <ExhibitionFrame
-                image={permanentImage2}
-                aspect="tile"
-                placeholderLabel={frames.permanentStandard2}
-              />
-            </div>
+            {permanentPhotos.length > 0 ? (
+              // Photos keep their own proportions; columns follow the ratios so both share one height.
+              <div
+                className="exhibition-permanent-layout__media exhibition-permanent-layout__media--photos"
+                style={
+                  {
+                    "--permanent-photo-cols": permanentPhotos
+                      .map((photo) => `${photo.width / photo.height}fr`)
+                      .join(" "),
+                  } as CSSProperties
+                }
+              >
+                {permanentPhotos.map((photo) => (
+                  <figure key={photo.src} className="m-0">
+                    <Image
+                      src={photo.src}
+                      alt={photo.alt}
+                      width={photo.width}
+                      height={photo.height}
+                      sizes="(min-width: 1024px) 50vw, 100vw"
+                      className="block h-auto w-full"
+                    />
+                  </figure>
+                ))}
+              </div>
+            ) : null}
           </div>
         </section>
 
-        <ExhibitionToursSection mailtoHref={toursMailtoHref} />
+        <ExhibitionToursSection />
 
         <ExhibitionTravelingSection
           mailtoHref={travelingMailtoHref}
           places={page.travelingPlaces}
+          photos={page.travelingImages ?? []}
+          gallery={page.travelingGallery ?? []}
         />
-
-        <div className="exhibition-section exhibition-closing-frame">
-          <ExhibitionFrame
-            image={closingImage}
-            aspect="wide"
-            placeholderLabel={frames.closingWide}
-          />
-        </div>
       </LightboxProvider>
 
       <footer className="exhibition-page-footer">

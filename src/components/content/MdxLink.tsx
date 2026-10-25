@@ -10,7 +10,12 @@ export function MdxLink({ href, children }: ComponentPropsWithoutRef<"a">) {
   }
 
   return (
-    <TextLink href={href} external={/^https?:\/\//.test(href)}>
+    <TextLink
+      href={href}
+      external={/^https?:\/\//.test(href)}
+      // A phone number split across lines reads as two numbers.
+      className={href.startsWith("tel:") ? "whitespace-nowrap" : undefined}
+    >
       {nbspChildren(children)}
     </TextLink>
   );

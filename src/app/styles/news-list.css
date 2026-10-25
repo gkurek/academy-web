@@ -168,7 +168,7 @@
 
   .news-featured:focus-within .news-featured-read-more,
   .news-featured:hover .news-featured-read-more {
-    text-decoration: underline;
+    border-bottom-color: var(--accent-hover);
   }
 
 
@@ -286,7 +286,7 @@
 
   .news-card:focus-within .news-card-read-more,
   .news-card:hover .news-card-read-more {
-    text-decoration: underline;
+    border-bottom-color: var(--accent-hover);
   }
 
   @media (min-width: 768px) {

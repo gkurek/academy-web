@@ -16,7 +16,7 @@ export type NavLink = {
 
 export type MainNavItem = NavLink & {
   // Sub-links shown in the mobile menu accordion for this section.
-  // Sections without `children` render as a flat link (O Akademii, Aktualności, Kontakt).
+  // Sections without `children` render as a flat link (Aktualności, Kontakt).
   children?: NavLink[];
 };
 
@@ -45,8 +45,8 @@ export const sectionNav: Record<SectionKey, NavLink[]> = {
     { label: "Wykładowcy", href: "/wyklady/wykladowcy" },
   ],
   ikony: [
-    { label: "Galeria", href: "/ikony" },
     { label: "Wystawy", href: "/ikony/wystawy" },
+    { label: "Galeria", href: "/ikony" },
   ],
   kontakt: [{ label: "Kontakt", href: "/kontakt" }, privacyPolicyLink],
 };
@@ -54,18 +54,31 @@ export const sectionNav: Record<SectionKey, NavLink[]> = {
 const sectionKeys = Object.keys(sectionNav) as SectionKey[];
 
 export const mainNav: MainNavItem[] = [
-  { label: "O Akademii", href: "/o-akademii" },
-  // The hub link is the section heading itself, so the accordion skips it —
-  // except in Ikony, where the hub item has its own label (Galeria).
-  { label: "Warsztaty", href: "/warsztaty", children: sectionNav.warsztaty.slice(1) },
-  { label: "Wykłady", href: "/wyklady", children: sectionNav.wyklady.slice(1) },
-  { label: "Ikony", href: "/ikony", children: sectionNav.ikony },
+  // The whole accordion row toggles, so each list starts with the section hub.
+  { label: "O Akademii", href: "/o-akademii", children: sectionNav["o-akademii"] },
+  { label: "Warsztaty", href: "/warsztaty", children: sectionNav.warsztaty },
+  { label: "Wykłady", href: "/wyklady", children: sectionNav.wyklady },
+  { label: "Ikony", href: "/ikony/wystawy", children: sectionNav.ikony },
   { label: "Aktualności", href: "/aktualnosci" },
   { label: "Kontakt", href: "/kontakt" },
 ];
 
-/** Section outside the main menu — footer sitemap and the mobile menu's bottom row. */
+/** Section outside the desktop main menu — footer sitemap and the mobile menu. */
 export const publicationsLink: NavLink = { label: "Publikacje", href: "/publikacje" };
+
+/**
+ * Mobile menu mirrors the footer sitemap: the main menu plus Publikacje after
+ * Aktualności, and Kontakt as an accordion holding Polityka prywatności.
+ */
+export const mobileNav: MainNavItem[] = mainNav.flatMap((item) => {
+  if (item.href === "/aktualnosci") {
+    return [item, publicationsLink];
+  }
+  if (item.href === "/kontakt") {
+    return [{ ...item, children: sectionNav.kontakt }];
+  }
+  return [item];
+});
 
 /** Main menu item by href — a typo fails the build instead of rendering a blank label. */
 export function navItem(href: string): MainNavItem {
@@ -89,9 +102,9 @@ export function sectionLink(href: string): NavLink {
 // Publikacje) + Kontakt group (Polityka prywatności as child). Hub headings link to section routes; children include routes omitted from mainNav.
 export const footerSitemapGroups: MainNavItem[] = [
   { ...navItem("/o-akademii"), children: sectionNav["o-akademii"].slice(1) },
-  navItem("/warsztaty"),
+  { ...navItem("/warsztaty"), children: sectionNav.warsztaty.slice(1) },
   { ...navItem("/wyklady"), children: sectionNav.wyklady },
-  { ...navItem("/ikony"), children: sectionNav.ikony },
+  { ...navItem("/ikony/wystawy"), children: sectionNav.ikony },
 ];
 
 // Sections without subpages — third column on desktop (lg), full-width row on mobile.

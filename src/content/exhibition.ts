@@ -218,11 +218,6 @@ export function getFirstAnnualExhibitionYear(): number {
   return getAnnualExhibitionYear(oldest.seasonSlug);
 }
 
-/** Newest season with at least one photo (K-127 tile caption). */
-export function getLatestAnnualExhibitionWithPhotos(): AnnualExhibition | undefined {
-  return getAnnualExhibitions().find((exhibition) => (exhibition.photos?.length ?? 0) > 0);
-}
-
 /** Hero „Teraz w kościele / Następnie” — date-driven state only (K-85, K-127). */
 export function getExhibitionNowNext(today: string = todayInWarsaw()): ExhibitionNowNext {
   const latest = getLatestAnnualExhibition();

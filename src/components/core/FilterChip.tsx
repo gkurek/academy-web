@@ -24,7 +24,7 @@ export function FilterChip({
         "inline-block rounded-none px-space-5 py-space-3 text-size-ui no-underline",
         "transition-ui-colors",
         active
-          ? "border border-accent bg-accent font-semibold text-text-on-gold"
+          ? "border border-accent bg-transparent font-semibold text-accent-text"
           : "border border-border-button bg-transparent font-normal text-text-body hover:border-accent-text hover:text-accent-text",
         className,
       ]

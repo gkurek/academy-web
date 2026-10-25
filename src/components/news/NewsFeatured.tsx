@@ -48,7 +48,7 @@ export function NewsFeatured({ entry }: NewsFeaturedProps) {
         {entry.displayExcerpt ? (
           <p className="news-featured-excerpt">{entry.displayExcerpt}</p>
         ) : null}
-        <span className="news-featured-read-more" aria-hidden="true">{pl.news.readMoreFeatured}</span>
+        <span className="news-featured-read-more link-underline-target link-underline-target--border" aria-hidden="true">{pl.news.readMoreFeatured}</span>
       </div>
       </article>
     </section>

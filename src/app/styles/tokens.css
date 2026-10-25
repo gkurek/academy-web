@@ -116,6 +116,9 @@
 
   --tap-min: 48px;
   --tap-min-mobile-header: 44px;
+  /* Floating menu button (mobile, k8b): square in the bottom-right corner. */
+  --menu-fab-size: var(--space-9);
+  --menu-fab-offset: var(--page-margin-mobile);
 
   --content-max: 1180px;
   --measure-lead: 680px;
@@ -209,8 +212,6 @@
   --offer-quote-feature-m: 21px;
   --offer-quote-image-h: 180px;
   --offer-quote-image-mt: 26px;
-  --offer-figure-h: 340px;
-  --offer-figure-h-m: 220px;
   --offer-day-rhythm-time-col: 140px;
   --offer-day-rhythm-gap: 28px;
   --offer-day-rhythm-x: 28px;
@@ -332,8 +333,6 @@
   --lecturer-affiliation-size: var(--size-body-lg);
   --lecturer-affiliation-mb: 14px;
   --lecturer-photo-aspect: 4 / 5;
-  /* Offer side photo: landscape crop keeps the right column close to the text height (V3-06). */
-  --offer-side-photo-aspect: 4 / 3;
 
   /* Text pages — /o-akademii section rows (6a) and /pracownia TocSidebar (6c/6i). */
   --text-page-heading-col: 280px;
@@ -387,7 +386,6 @@
   /* /ikony/wystawy — mockup 9a–9e (WY-*). */
   --exhibition-aspect-wide: 21 / 8;
   --exhibition-aspect-standard: 3 / 2;
-  --exhibition-aspect-square: 1 / 1;
   --exhibition-aspect-tile: 4 / 3;
   /* 60/40 pair: same row height as 4:3 tile at 40% width → 2:1 at 60%. */
   --exhibition-aspect-tile-pair-lead: 2 / 1;

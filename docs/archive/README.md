@@ -72,6 +72,9 @@ Poprzednia ścieżka: `docs/plans/`. W `docs/plans/` zostają wyłącznie plany 
 | `10-k6-lectures.md` | 10/k6 — wykłady (LK1–LK6) | 2026-10-04 |
 | `10-k7-layout.md` | 10/k7 — reszta layoutu (LY1–LY6) | 2026-10-04 |
 | `10-review-fixes.md` | 10/R — paczki poprawek RF-0…RF-21 (po review R0–R5, V1–V4) | 2026-10-06 |
+| `10-photo-library-curation.md` | 10/k8 — przesiew puli zdjęć ze starej strony WP, mapa slotów, wybór zdjęć | 2026-10-25 |
+| `10-album-mockup-prompt.md` | 10 — prompt do Claude Design dla `/publikacje/ikona-dzis` (wynik wdrożony) | 2026-10-25 |
+| `10-ux-consistency-review.md` | 10 — przegląd spójności UX/UI (desktop), decyzje pkt 1–13; realizacja w 10/8c | 2026-10-25 |
 
 ## Dokumenty sesji zamkniętych
 

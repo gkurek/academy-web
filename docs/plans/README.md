@@ -5,9 +5,9 @@ Bez zatwierdzonego planu nie piszemy kodu w danym etapie (`CLAUDE.md`, §Rytm pr
 
 | Plik | Etap | Status |
 | --- | --- | --- |
-| `10-finishing.md` | 10 — ewaluacja, poprawki, SEO, optymalizacja | 🟠 fala 1 ✅ (k1–k7); następny k8 |
-| `10-review.md` | 10 / blok R — review serwisu (techniczne, wizualne, treść) | 🔵 zatwierdzony; następny R0 |
+| `10-finishing.md` | 10 — ewaluacja, poprawki, SEO, optymalizacja | 🟠 fala 1 ✅ (k1–k7); k8 ✅ (treść, 8a, 8b, 8c); następne: C1–C2 → k9 |
+| `10-review.md` | 10 / blok R — review serwisu (techniczne, wizualne, treść) | ✅ R0–R5, V1–V4 (w `main`); zostaje C1–C2 — warunek spełniony |
 | `11-wdrozenie.md` | 11 — wdrożenie | ⬜ plan nie powstał |
 
 Plany kawałków etapu 10 (`10-kN-*.md`) powstają tu na czas kawałka i po jego zamknięciu idą do archiwum.
-Plany etapów 1–9 i zamknięte kawałki 10/k1–k7: `docs/archive/plans/` (spis w `docs/archive/README.md`).
+Plany etapów 1–9, zamknięte kawałki 10/k1–k7 oraz zamknięte plany pomocnicze etapu 10 (pula zdjęć, prompt albumu, przegląd UX): `docs/archive/plans/` (spis w `docs/archive/README.md`).

@@ -31,7 +31,7 @@ export function OfferCard({ eyebrow, title, excerpt, bullets, href, ctaLabel, ct
       </ul>
       {/* Last subgrid row (offers.css) — bottom-aligned so buttons line up across the row. */}
       <div className="self-end">
-        <Button href={href} variant={ctaVariant} size="lg" compactMobile className="w-full md:w-auto">
+        <Button href={href} variant={ctaVariant} size="lg" compactMobile block>
           {ctaLabel}
         </Button>
       </div>

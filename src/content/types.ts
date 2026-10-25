@@ -328,11 +328,19 @@ export type PermanentExhibition = {
   title: string;
   lead: string;
   iconCount: { from: number; to: number };
-  /** K-127: optional frame images; omitted = placeholder in UI. */
+  /** K-127: optional frame images; omitted = not rendered. */
   heroImage?: Image;
   permanentImage?: Image;
   permanentImage2?: Image;
   closingImage?: Image;
+  /** Tiles under #doroczna — curated from several years, fixed (K-154). */
+  annualImages?: Image[];
+  /** Further photos opened from the #doroczna link; the lightbox continues after `annualImages`. */
+  annualGallery?: Image[];
+  /** Tiles under #wyjazdowe. */
+  travelingImages?: Image[];
+  /** Further photos opened from the #wyjazdowe link; the lightbox continues after `travelingImages`. */
+  travelingGallery?: Image[];
   /** K-127 / K-87: curated list for #wyjazdowe (not derived from News.venue). */
   travelingPlaces: ExhibitionTravelingPlace[];
   sample?: boolean;

@@ -1,5 +1,6 @@
 import { nbspDeep } from "@/lib/typography";
-import type { AboutPageData, PrivacyPolicyPageData, WorkshopPageData } from "@/content/types";
+import type { AboutPageData, Image, PrivacyPolicyPageData, WorkshopPageData } from "@/content/types";
+import kontaktMeta from "../../content/pages/kontakt.json";
 import oAkademiiMeta from "../../content/pages/o-akademii.json";
 import privacyPolicyMeta from "../../content/pages/polityka-prywatnosci.json";
 import pracowniaMeta from "../../content/pages/pracownia.json";
@@ -8,7 +9,7 @@ import ContactContent from "../../content/pages/kontakt.mdx";
 import * as workshopParagraphs from "../../content/pages/pracownia.mdx";
 import { getLecturerProfileHref } from "@/content/lecturers";
 import { getSiteSettings } from "@/content/settings";
-import { assertMdxExports } from "@/content/validate";
+import { assertImage, assertMdxExports } from "@/content/validate";
 
 /** Inline link in an MDX-exported paragraph: a lecturer profile or a site-settings link. */
 type InlineLinkSource = { text: string; lecturer: string } | { text: string; link: "foundation" };
@@ -76,7 +77,12 @@ export type LoadedWorkshopPage = WithoutBody<WorkshopPageData> & {
   curriculumParagraphs: string[];
 };
 
-export type LoadedContactPage = {
+type ContactPageMeta = {
+  /** Church facade photo beside the address. */
+  photo: Image;
+};
+
+export type LoadedContactPage = ContactPageMeta & {
   Content: typeof ContactContent;
 };
 
@@ -85,6 +91,9 @@ export type LoadedPrivacyPolicyPage = WithoutBody<PrivacyPolicyPageData>;
 const aboutPageMeta = nbspDeep(oAkademiiMeta as WithoutBody<AboutPageData>);
 const workshopPageMeta = nbspDeep(pracowniaMeta as WithoutBody<WorkshopPageData>);
 const privacyPolicyPageMeta = nbspDeep(privacyPolicyMeta as WithoutBody<PrivacyPolicyPageData>);
+const contactPageMeta = nbspDeep(kontaktMeta as ContactPageMeta);
+
+assertImage(contactPageMeta.photo, "content/pages/kontakt.json photo");
 
 export function getAboutPage(): LoadedAboutPage {
   return {
@@ -103,7 +112,7 @@ export function getWorkshopPage(): LoadedWorkshopPage {
 }
 
 export function getContactPage(): LoadedContactPage {
-  return { Content: ContactContent };
+  return { ...contactPageMeta, Content: ContactContent };
 }
 
 export function getPrivacyPolicyPage(): LoadedPrivacyPolicyPage {

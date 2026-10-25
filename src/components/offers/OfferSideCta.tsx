@@ -6,27 +6,19 @@ import { pl } from "@/i18n/pl";
 import { buildMailtoHref } from "@/lib/mailto";
 import { Prose } from "@/components/core/Prose";
 
-export type OfferSideCtaPlaceholderKey = keyof typeof pl.offers.sideCta.photoPlaceholders;
-
-/** Optional photo (or its placeholder) above the CTA card; photo fields all together or none. */
+/** Optional photo above the CTA card; photo fields all together or none. */
 type OfferSideCtaPhoto =
   | {
       imageSrc: string;
       imageAlt: string;
       imageWidth: number;
       imageHeight: number;
-      /** CSS `object-position` of the cropped photo (focal point of this image); defaults to center. */
-      imagePosition?: string;
-      placeholder?: never;
     }
   | {
       imageSrc?: never;
       imageAlt?: never;
       imageWidth?: never;
       imageHeight?: never;
-      imagePosition?: never;
-      /** Striped frame with a label until the photo arrives. */
-      placeholder?: OfferSideCtaPlaceholderKey;
     };
 
 export type OfferSideCtaProps = OfferSideCtaPhoto & {
@@ -48,8 +40,6 @@ export function OfferSideCta({
   imageAlt,
   imageWidth,
   imageHeight,
-  imagePosition,
-  placeholder,
   email,
   subject,
 }: OfferSideCtaProps) {
@@ -72,15 +62,8 @@ export function OfferSideCta({
             width={imageWidth}
             height={imageHeight}
             sizes="(min-width: 1024px) 400px, 100vw"
-            className="w-full aspect-offer-side-photo object-cover"
-            style={imagePosition ? { objectPosition: imagePosition } : undefined}
+            className="w-full h-auto"
           />
-        ) : placeholder ? (
-          <div className="exhibition-media-placeholder w-full aspect-offer-side-photo">
-            <p className="exhibition-media-placeholder-text">
-              {sideCta.photoPlaceholders[placeholder]}
-            </p>
-          </div>
         ) : null}
         <aside
           aria-labelledby={headingId}
