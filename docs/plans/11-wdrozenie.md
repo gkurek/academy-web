@@ -112,7 +112,7 @@ Brak.
 | Kawałek | Status | Uwagi z checkpointu |
 | --- | --- | --- |
 | 11-0 Sesja K-07 | ✅ | 2026-10-26: PostHog Cloud EU bez ciasteczek; proxy w 11f, eksport CSV WP Statistics w 11f; Umami (Cloud bez API, self-hosted za dużo utrzymania), GoatCounter (jedna osoba) i CF Web Analytics (brak zdarzeń) odrzucone |
-| 11a Cloudflare w repo | 🟡 | 2026-10-26: konfiguracja w repo (`wrangler.jsonc` z Workers Logs, `open-next.config.ts`, skrypty `cf:*`); aktualizacja zależności (K-164: Next 16.4.3, React 19.3.1, adapter 1.20.13, TS 6.0, `npm audit` = 0); `.open-next`/`.wrangler` w ignorach ESLint; build, lint, `cf:build` OK; panel Workers Builds ustawiony i zweryfikowany (Production i Previews Base: `npm run cf:build`, `NODE_VERSION`; hook `manual-build` → `main`; Access na podglądach — 302 do logowania, produkcja 200); czeka: pierwszy build na Cloudflare |
+| 11a Cloudflare w repo | 🟡 | 2026-10-26: konfiguracja w repo (`wrangler.jsonc` z Workers Logs, `open-next.config.ts`, skrypty `cf:*`); aktualizacja zależności (K-164: Next 16.4.3, React 19.3.1, adapter 1.20.13, TS 6.0, `npm audit` = 0); `.open-next`/`.wrangler` w ignorach ESLint; build, lint, `cf:build` OK; panel Workers Builds ustawiony i zweryfikowany (Production i Previews Base: `npm run cf:build`, `NODE_VERSION`; hook `manual-build` → `main`; Access na podglądach — 302 do logowania, produkcja 200); build podglądu `feat/11-going-live` na Cloudflare OK po dodaniu bloku `previews` w `wrangler.jsonc` (`wrangler preview` nie dziedziczy bindingów; `WORKER_SELF_REFERENCE` celowo pominięty); produkcyjny `workers.dev`: `Disallow: /`; pierwszy build produkcji z nową konfiguracją — po merge do `main` |
 | 11b Wydajność obrazów | ⬜ | |
 | 11c Analityka | ⬜ | |
 | 11d Rebuild i monitoring | ⬜ | |
