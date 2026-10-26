@@ -7,7 +7,7 @@ import { plainText } from "@/lib/typography";
 export type JsonLdNode = Record<string, unknown>;
 
 export const CONTEXT = "https://schema.org";
-export const ORGANIZATION_ID = `${SITE_URL}/#organization`;
+const ORGANIZATION_ID = `${SITE_URL}/#organization`;
 
 /** Absolute URL of a site path or `/media/…` file. */
 export function absoluteUrl(path: string): string {

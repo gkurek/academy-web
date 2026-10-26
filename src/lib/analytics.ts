@@ -10,7 +10,7 @@ import type { Offer } from "@/content/types";
  * - `email_click` — any other `mailto:` link.
  * - `phone_click` — any `tel:` link.
  */
-export type ClickEvent = "enroll_click" | "email_click" | "phone_click";
+type ClickEvent = "enroll_click" | "email_click" | "phone_click";
 
 export type EventAttributes = { "data-event"?: ClickEvent } & { [param: `data-event-${string}`]: string };
 
