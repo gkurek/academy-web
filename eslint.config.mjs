@@ -16,6 +16,9 @@ const eslintConfig = defineConfig([
     "design/**",
     // Local visual-check output and ad-hoc probes (gitignored)
     ".visual/**",
+    // OpenNext / Wrangler build output (gitignored)
+    ".open-next/**",
+    ".wrangler/**",
   ]),
 ]);
 

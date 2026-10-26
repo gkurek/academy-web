@@ -1,0 +1,26 @@
+{
+  // Next.js on Cloudflare Workers via OpenNext (K-09). Builds and deploys: Workers Builds (K-161).
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "akademiaikony",
+  "main": ".open-next/worker.js",
+  "compatibility_date": "2026-10-01",
+  "compatibility_flags": ["nodejs_compat", "global_fetch_strictly_public"],
+  "assets": {
+    "directory": ".open-next/assets",
+    "binding": "ASSETS"
+  },
+  "services": [
+    {
+      "binding": "WORKER_SELF_REFERENCE",
+      "service": "akademiaikony"
+    }
+  ],
+  // next/image optimization through Cloudflare Images; revisited in 11b (image loading)
+  "images": {
+    "binding": "IMAGES"
+  },
+  // Workers Logs (K-162)
+  "observability": {
+    "enabled": true
+  }
+}

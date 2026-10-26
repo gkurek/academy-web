@@ -12,15 +12,25 @@
     "check:states": "tsx scripts/check-upcoming-states.ts && tsx scripts/check-exhibition-states.ts",
     "check:visual": "tsx scripts/visual-check.ts",
     "check:content": "tsx scripts/check-content.ts",
-    "check:media": "tsx scripts/check-media.ts"
+    "check:media": "tsx scripts/check-media.ts",
+    "cf:build": "opennextjs-cloudflare build",
+    "cf:preview": "opennextjs-cloudflare build && opennextjs-cloudflare preview",
+    "cf:deploy": "opennextjs-cloudflare deploy",
+    "cf:upload": "opennextjs-cloudflare upload"
   },
   "dependencies": {
     "@mdx-js/loader": "^3.1.1",
     "@mdx-js/react": "^3.1.1",
-    "@next/mdx": "^16.3.5",
-    "next": "16.3.4",
-    "react": "19.2.8",
-    "react-dom": "19.2.8"
+    "@next/mdx": "^16.4.3",
+    "@opennextjs/cloudflare": "1.20.13",
+    "next": "16.4.3",
+    "react": "19.3.1",
+    "react-dom": "19.3.1"
+  },
+  "overrides": {
+    "@node-minify/core": {
+      "glob": "^10.5.0"
+    }
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
@@ -29,12 +39,13 @@
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "eslint": "^9",
-    "eslint-config-next": "16.3.4",
-    "knip": "^6.39.0",
-    "playwright": "^1.63.0",
+    "eslint-config-next": "16.4.3",
+    "knip": "^6.43.0",
+    "playwright": "^1.64.1",
     "sharp": "^0.35.5",
     "tailwindcss": "^4",
     "tsx": "^4.23.15",
-    "typescript": "^5"
+    "typescript": "^6.0.3",
+    "wrangler": "^4.153.0"
   }
 }
