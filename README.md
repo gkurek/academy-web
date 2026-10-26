@@ -29,6 +29,9 @@ To learn more about Next.js, take a look at the following resources:
 
 You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
-## Staging deploy (Vercel)
+## CI and deploy
 
-Every merge to `main` runs `.github/workflows/staging.yml`: lint, build, then deploy to the project's `*.vercel.app` URL.
+Every push to `main` runs `.github/workflows/staging.yml` (lint + build only). Deploy is done by the hosts' Git integrations:
+
+- Vercel deploys `main` to the project's `*.vercel.app` URL — until the DNS switch in stage 11 (11f), then disconnected.
+- Cloudflare Workers Builds (target host, K-09) also builds `main`; it fails until the Cloudflare config lands in stage 11 (11a). Plan: `docs/plans/11-wdrozenie.md`.
