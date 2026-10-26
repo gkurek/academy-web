@@ -1,9 +1,11 @@
 import { nbspDeep } from "@/lib/typography";
 import type { AboutPageData, Image, PrivacyPolicyPageData, WorkshopPageData } from "@/content/types";
+import newsListMeta from "../../content/pages/aktualnosci.json";
 import kontaktMeta from "../../content/pages/kontakt.json";
 import oAkademiiMeta from "../../content/pages/o-akademii.json";
 import privacyPolicyMeta from "../../content/pages/polityka-prywatnosci.json";
 import pracowniaMeta from "../../content/pages/pracownia.json";
+import publicationsHubMeta from "../../content/pages/publikacje.json";
 import * as aboutParagraphs from "../../content/pages/o-akademii.mdx";
 import ContactContent from "../../content/pages/kontakt.mdx";
 import * as workshopParagraphs from "../../content/pages/pracownia.mdx";
@@ -119,4 +121,15 @@ export function getPrivacyPolicyPage(): LoadedPrivacyPolicyPage {
   return {
     ...privacyPolicyPageMeta,
   };
+}
+
+/** Intro under the heading of a list page whose entries come from other content files. */
+export type ListPageIntro = { lead: string };
+
+export function getNewsListPage(): ListPageIntro {
+  return { lead: nbspDeep(newsListMeta.lead) };
+}
+
+export function getPublicationsHubPage(): ListPageIntro {
+  return { lead: nbspDeep(publicationsHubMeta.lead) };
 }

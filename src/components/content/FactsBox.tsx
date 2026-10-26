@@ -6,6 +6,7 @@ import { getOfferDateValues } from "@/content/offers";
 import { getPhoneHref, getSiteSettings } from "@/content/settings";
 import type { OfferFacts } from "@/content/types";
 import { pl } from "@/i18n/pl";
+import { enrollEvent } from "@/lib/analytics";
 import { fillRequiredTemplate, fillTemplate } from "@/lib/fillTemplate";
 import { getEnrollmentMailtoHref } from "@/lib/mailto";
 
@@ -132,6 +133,7 @@ export function FactsBox({ facts, kind, enrollment }: FactsBoxProps) {
 
         <Button
           href={mailtoHref}
+          event={enrollEvent(kind, enrollment)}
           variant={enrollment === "open" ? "primary" : "secondary"}
           block
           size="lg"

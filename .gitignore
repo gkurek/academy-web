@@ -43,3 +43,7 @@ next-env.d.ts
 
 # visual regression output (baseline, head, diffs)
 /.visual/
+
+# Lighthouse raw reports (~60 MB) stay on disk only; tables live in docs/lighthouse/README.md
+/docs/lighthouse/*.report.*
+/docs/lighthouse/after-10c/

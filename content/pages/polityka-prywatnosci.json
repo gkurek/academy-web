@@ -2,7 +2,7 @@
   "slug": "polityka-prywatnosci",
   "title": "Polityka prywatności",
   "lead": "Administratorem danych jest Fundacja IKONA DZIŚ, organizator Akademii Ikony. Dane podane w zgłoszeniu na warsztaty lub wykłady wykorzystujemy wyłącznie do prowadzenia zapisów i kontaktu w sprawach organizacyjnych.",
-  "lastUpdated": "2026-01-04",
+  "lastUpdated": "2026-10-26",
   "contactEmail": "akademiaikony@gmail.com",
   "toc": [
     { "id": "administrator-danych", "label": "Administrator danych" },
@@ -58,8 +58,11 @@
     {
       "id": "cookies",
       "paragraphs": [
-        "Serwis nie używa ciasteczek marketingowych ani narzędzi analitycznych opartych na plikach cookies. Na stronie kontaktu osadzamy mapę Google Maps; Google może przetwarzać dane techniczne zgodnie z własną polityką prywatności."
+        "Serwis nie używa ciasteczek marketingowych ani narzędzi analitycznych opartych na plikach cookies. Na stronie kontaktu jest link do Map Google; dopiero po jego kliknięciu Google może przetwarzać dane techniczne zgodnie z własną polityką prywatności."
       ]
     }
-  ]
+  ],
+  "seo": {
+    "description": "Polityka prywatności Akademii Ikony: kto administruje danymi, jakie dane zbieramy w zgłoszeniach na warsztaty i wykłady i w jakim celu."
+  }
 }

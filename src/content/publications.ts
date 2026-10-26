@@ -1,7 +1,7 @@
 import { nbspDeep } from "@/lib/typography";
 import type { ComponentType } from "react";
 
-import type { Publication } from "@/content/types";
+import type { Article, Publication } from "@/content/types";
 import { assertLecturerSlugExists } from "@/content/authors";
 import { articleModules } from "@/content/articles-registry";
 import { publicationModules } from "@/content/publications-registry";
@@ -136,6 +136,11 @@ export function requirePublication(): PublicationFrontmatter {
 
 export function getPublicationBySlug(slug: string): PublicationFrontmatter | undefined {
   return publicationEntries.find((entry) => entry.slug === slug);
+}
+
+/** The album an article comes from; media articles have none. */
+export function getArticleAlbum(article: Pick<Article, "source">): PublicationFrontmatter | undefined {
+  return article.source.kind === "album" ? getPublicationBySlug(article.source.publicationSlug) : undefined;
 }
 
 export function loadPublicationBySlug(slug: string): LoadedPublication | undefined {

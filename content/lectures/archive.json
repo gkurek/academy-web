@@ -40,5 +40,9 @@
       "width": 1600,
       "height": 1200
     }
-  ]
+  ],
+  "seo": {
+    "description": "Archiwum wykładów Akademii Ikony od sezonu 2012/2013: tematy i prelegenci kolejnych sezonów oraz zdjęcia ze spotkań.",
+    "ogImage": "/media/og/wyklady.jpg"
+  }
 }

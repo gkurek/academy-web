@@ -2,9 +2,9 @@
 
 ## Dokumenty i kiedy je czytać
 
-- `docs/plan-claude-code.md` – plan żywy: rytm pracy, tabela postępu, etapy **10–11**, decyzje wiążące, otwarte pozycje treści; czytaj na starcie każdej sesji planistycznej.
-- `docs/plans/0N-*.md` – plan bieżącego etapu; czytaj na starcie każdej sesji implementacyjnej. Są tu wyłącznie plany **10, 11**.
-- `docs/archive/` – **nie czytaj w normalnej sesji.** Zamknięte plany etapów 1–9 i kawałków 10/k1–k7, raport migracji WP, zamknięte sesje dokumentacyjne i `plan-claude-code-historia.md` (opisy etapów 1–9, decyzje zamknięte, dziennik do 2026-10-01). Sięgaj tam tylko po rekonstrukcję zamkniętej decyzji — mapa „szukasz → idź do" jest w `docs/plan-claude-code.md` §7, spis w `docs/archive/README.md`. Pliki w archiwum cytują dawne ścieżki `docs/plans/0N-*.md`; dziś to `docs/archive/plans/0N-*.md` — nie przepisujemy ich, żeby zachować treść z dnia zamknięcia.
+- `docs/plan-claude-code.md` – plan żywy: rytm pracy, tabela postępu, etap **11** (etap 10 zamknięty), decyzje wiążące, otwarte pozycje treści; czytaj na starcie każdej sesji planistycznej.
+- `docs/plans/0N-*.md` – plan bieżącego etapu; czytaj na starcie każdej sesji implementacyjnej. Jest tu wyłącznie plan **11**.
+- `docs/archive/` – **nie czytaj w normalnej sesji.** Zamknięte plany etapów 1–10 (z kawałkami 10/k1–k7 i blokiem R), raport migracji WP, zamknięte sesje dokumentacyjne i `plan-claude-code-historia.md` (opisy etapów 1–9, decyzje zamknięte, dziennik do 2026-10-01). Sięgaj tam tylko po rekonstrukcję zamkniętej decyzji — mapa „szukasz → idź do" jest w `docs/plan-claude-code.md` §7, spis w `docs/archive/README.md`. Pliki w archiwum cytują dawne ścieżki `docs/plans/0N-*.md`; dziś to `docs/archive/plans/0N-*.md` — nie przepisujemy ich, żeby zachować treść z dnia zamknięcia.
 - `docs/brief-claude-code.md` – wymagania, architektura tras (§3), model treści (§4), fakty stałe (§8); czytaj przy pytaniach „co ma być”.
 - `docs/brief-full.md` – kontekst biznesowy; tylko przy niejasnościach co do treści lub copy, nie przy pytaniach technicznych.
 - `design/README` + `design/*.dc.html` – makiety i tokeny. Obowiązuje kierunek 1a i jego rozwinięcia 2a/3a/3b;
@@ -29,6 +29,7 @@ Przy konflikcie: `CLAUDE.md` > plan etapu > `brief-claude-code.md` > `brief-full
 - Obrazy tylko przez `next/image` z podanymi wymiarami. Fonty przez `next/font`, subsety `latin` + `latin-ext`.
 - Dostępność: każdy interaktywny element ma widoczny fokus (obrys 2px `#e8c765`, odstęp 2px); `alt` obowiązkowy; respektuj `prefers-reduced-motion`.
 - Tokeny designu z `design/README`; nie zmieniać bez wyraźnej prośby. Zakazane w produkcji: `#8d7d69`, rozmiar 13px, zaokrąglenia, `box-shadow` (makieta może mieć cień hero/lightbox — w kodzie nie; K-140 odwołane 2026-10-06), IBM Plex Mono.
+- Linki `mailto:` / `tel:` przez `Button`, `TextLink` albo z `{...linkEvent(href)}` na gołym `<a>`; CTA zapisów z `enrollEvent()` — konwencja zdarzeń w `docs/brief-claude-code.md` §7 (K-15).
 - Klasa semantyczna i narzędzie Tailwind nie ustawiają tej samej właściwości na tym samym elemencie. Rola typograficzna (`PageHeading`, `.list-title`, `.body-copy`, `.prose-*`) nie ustawia marginesów; margines dodaje wywołujący.
 - Komentarze w kodzie, nazwy zmiennych, komunikaty commitów i PR: po angielsku. Treść widoczna dla użytkownika: po polsku, przez `pl.ts` lub `content/`.
 

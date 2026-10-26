@@ -1,6 +1,6 @@
 # Plan 10 — Finishing (ewaluacja, poprawki, SEO, optymalizacja)
 
-Status: **zatwierdzony** 2026-10-03 · fala 1 ✅ 2026-10-04 · k8 ✅ (T1–T29, 8a, 8b, 8c; 2026-10-25) · C1–C2 ✅ (2026-10-25) · **następne: k9**  
+Status: **zatwierdzony** 2026-10-03 · fala 1 ✅ 2026-10-04 · k8 ✅ (T1–T29, 8a, 8b, 8c; 2026-10-25) · C1–C2 ✅ (2026-10-25) · k9 ✅ (9a–9d; 2026-10-26) · k10 plan zatwierdzony 2026-10-26 · **następne: 10a**  
 Gałąź: `feat/10-finishing`  
 Makiety: tokeny `design/README`, odczyt wartości `docs/design-mockup-guide.md`. Fala 2 nie ma nowych makiet.
 
@@ -72,6 +72,48 @@ Pliki: `FactsBox.tsx`, `OfferCard.tsx`, `FilterChip.tsx`, `NewsCard.tsx`, `NewsF
 
 **Zakres:** `docs/plan-claude-code.md` §3 etap 10, pkt 2 — metadata + OG, `sitemap.ts`, `robots.ts`, JSON-LD (`Organization`, `Person`, `Event` — K-17, `Course`, `Book`/`Article` — K-76), analityka bez ciasteczek (K-07, K-15), aktualizacja polityki prywatności (K-119). Plus pozycje z backlogu niżej oznaczone k9.
 
+**Plan zatwierdzony 2026-10-26** (sesja planistyczna). Wszystko, co zależy od hostingu, wyłączone — patrz „Poza k9”.
+
+**Stan wyjściowy:** `<title>` przez `navTitle()` (K-143) na wszystkich trasach; brak `description`, `metadataBase`, OG, canonical, `sitemap.ts`, `robots.ts`, JSON-LD. `Page.seo?: { description; ogImage? }` w modelu, nieużywane w `content/`. `<Breadcrumb>` widoczny tylko na albumie i artykułach (`/publikacje/[slug]`).
+
+**Decyzje k9**
+
+| ID | Decyzja |
+| --- | --- |
+| **K-155** | Host kanoniczny `https://www.akademiaikony.pl` — jak na obecnym WP (`rel=canonical` z `www`, 301 z wersji bez `www`). Przekierowanie na nowym hostingu — etap 11. |
+| **K-156** | Obraz OG = **zdjęcie** (wariant B), nie obraz generowany `next/og`. Kadr 1200×630. Strony z własnym zdjęciem biorą je; wpisy, artykuły, album — `cover`. Kadry wybrane przez właściciela 2026-10-26 — tabela niżej. |
+| **K-157** | JSON-LD: **bez** `FAQPage` (Google od 2023 nie pokazuje FAQ poza stronami rządowymi i medycznymi). `Person` — **tylko EJK**. `ExhibitionEvent` — tylko wystawa doroczna z datą `vernissage` w `annual.json` (dziś „Mistyka dziś”, 2027-06-12); wystawa stała bez. `Event` wykładów: `location` z `settings.json`, `offers` z `price` w `content/offers/wyklady.mdx` (400 zł / rok — cena za sezon). `Course` (kurs, LSŚ) **bez ceny** — cen kursu i pleneru nie podajemy na stronie. |
+| **K-158** | `BreadcrumbList` na **wszystkich podstronach** (bez strony głównej), także tam, gdzie nie ma widocznego `<Breadcrumb>`; etykiety z `navigation.ts`. Zysk kosmetyczny (ścieżka w wynikach Google na desktopie), nie pozycja. |
+
+**Kadry OG (K-156)** — źródła w `public/media/`; „kadr” = `object-position` przy przycięciu do 1200×630:
+
+| Strona | Zdjęcie | Kadr |
+| --- | --- | --- |
+| `/` i domyślny (strony bez zdjęcia: Pracownia, Publikacje, Aktualności, polityka, 404) | `home/warsztaty.jpg` | środek |
+| `/o-akademii` | `workshop/hero.jpg` | **dół** (50% 100% — mniej twarzy, więcej ikony) |
+| `/warsztaty` | `workshop/hub-hero.jpg` | środek |
+| `/warsztaty/kurs-roczny-i-trzyletni` | `offers/kurs-roczny-i-trzyletni/pracownia.jpg` | środek |
+| `/warsztaty/letnia-szkola-swiatla` | `offers/letnia-szkola-swiatla/pracownia.jpg` (1260×504 — lekkie powiększenie) | środek |
+| `/wyklady`, `/wyklady/archiwum`, `/wyklady/wykladowcy` | `home/wyklad.jpg` | środek |
+| `/ikony` | `exhibition/permanent-three-icons.jpg` | środek |
+| `/ikony/wystawy` | `exhibition/hero.jpg` | środek |
+| `/kontakt` | `contact/kosciol-srodowisk-tworczych.jpg` | **góra** (50% 20%) |
+
+Kadry przygotować jako pliki 1200×630 (np. `public/media/og/*.jpg`, skrypt `tsx` z `sharp` z zależności Next — bez nowej zależności) albo przez `opengraph-image.tsx` z obrazem źródłowym — wybór w 9a, zgłoszony w checkpoincie.
+
+**Kawałki**
+
+| Kawałek | Zakres | Pliki (orientacyjnie) |
+| --- | --- | --- |
+| **9a** Metadata i OG | `metadataBase` (K-155); `description` per trasa — propozycje Claude, gate K-122 w czacie przed zapisem do `content/` (`Page.seo.description`; wpisy i artykuły — `excerpt`); `openGraph` + `twitter` (`summary_large_image`), `og:locale` `pl_PL`, `og:site_name`; obrazy OG wg tabeli (K-156); `alternates.canonical` | `layout.tsx`, `page.tsx` tras, helper w `src/lib/`, `content/pages/*.json`, `pl.ts` |
+| **9b** Indeksacja | `sitemap.ts` (trasy statyczne + wpisy, artykuły, album; `lastModified` z dat treści, gdzie są); `robots.ts` — indeksacja tylko przy zmiennej env oznaczającej produkcję, każde inne środowisko `Disallow: /` + `noindex` | `src/app/sitemap.ts`, `src/app/robots.ts` |
+| **9c** JSON-LD | `Organization` (layout); `Person` EJK; `Event` — wykłady bieżącego sezonu (K-17); `ExhibitionEvent`; `Course` kurs i LSŚ; `Book` z `hasPart` z `Publication.chapters` (B2, K-137); `Article` z `isPartOf` → `Book`; `BreadcrumbList` (K-158). Jeden komponent emisji `<script type="application/ld+json">`. Walidacja: validator.schema.org + Rich Results Test (dev przez tunel albo wklejony HTML) | `src/lib/structured-data/*`, komponent `JsonLd` |
+| **9d** Pod analitykę | Konwencja zdarzeń K-15: atrybuty `data-event` (nazwy zdarzeń + parametry) na CTA zapisów, `mailto:`, `tel:` — **bez skryptu analityki**, tak by podpięcie narzędzia w etapie 11 było jednym plikiem; konwencja opisana w briefie §7 / `CLAUDE.md`. Polityka prywatności: poprawka zdania o „osadzonej mapie Google Maps” — na `/kontakt` jest tylko link (gate K-122) | `Button`, `OfferSideCta`, `ContactRow`, `Footer`, `MdxLink`, `content/pages/polityka-prywatnosci.json` |
+
+Kolejność 9a → 9b → 9c → 9d; checkpoint po każdym. Weryfikacja: build + lint; podgląd tagów (`curl` HTML), Facebook Sharing Debugger i walidator schema.org dopiero na stagingu (etap 11) — w k9 walidacja HTML lokalnie.
+
+**Poza k9 (zależne od hostingu → etap 11):** ustawienie `SITE_ENV=production` w środowisku buildu produkcji (9b); wybór narzędzia analitycznego (K-07, zawieszone), jego skrypt i akapit o analityce w polityce (K-119); DoD „zdarzenia widoczne w panelu”; B1 / K-35 (CTA w nagłówku — po danych z analityki); weryfikacja Search Console (TXT w DNS) i wysłanie `sitemap.xml`; 301 z wersji bez `www`; testy OG i Rich Results na publicznym adresie.
+
 ### Blok R — Review serwisu (równolegle do k8)
 
 **Zakres:** review techniczne (R0–R5), wizualne (V1–V4) i — po EJK — zgodności z planem i treści (C1–C2); poprawki osobnym planem `docs/archive/plans/10-review-fixes.md`. Plan, decyzje RV-1…RV-7 i postęp: **`docs/plans/10-review.md`**. Przejmuje z k10 ewaluację kodu i przegląd tras (RV-1).
@@ -79,6 +121,26 @@ Pliki: `FactsBox.tsx`, `OfferCard.tsx`, `FilterChip.tsx`, `NewsCard.tsx`, `NewsF
 ### Kawałek 10 — Audyty, dokumentacja
 
 **Zakres (okrojony przez RV-1):** ewaluacja kodu dodanego w k9 (delta po bloku R); Lighthouse dla 5 tras (`docs/lighthouse/`); synchronizacja dokumentów; przygotowanie testu 301 na stagingu (wykonanie — etap 11). Plus pozycje z backlogu niżej oznaczone k10 — B4 i B5 wchodzą jako wyłączenia do R0 i rozstrzygnięcie w `docs/archive/plans/10-review-fixes.md`.
+
+**Plan zatwierdzony 2026-10-26** (sesja planistyczna). Decyzje:
+
+| ID | Decyzja |
+| --- | --- |
+| **K10-1** | Lighthouse przez jednorazowe `npx lighthouse` — bez wpisu w `package.json`. |
+| **K10-2** | Pomiar mobile **i** desktop dla 5 tras: `/`, `/warsztaty/kurs-roczny-i-trzyletni`, `/wyklady`, `/ikony`, `/aktualnosci`; na buildzie produkcyjnym (`prod-preview`, `next start -p 3005`). Progi DoD: a11y ≥ 95, wydajność ≥ 90 mobile. |
+| **K10-3** | Trasa poniżej progu → poprawki w k10 (10c), nie odkładamy do etapu 11. |
+| **K10-4** | `scripts/check-redirects.ts` powstaje w k10 (lista starych URL-i z briefu §5, status + cel); lokalnie uruchamiany w 10d, na stagingu — etap 11. |
+
+**Kawałki** (checkpoint po każdym):
+
+| Kawałek | Zakres | Pliki / wynik |
+| --- | --- | --- |
+| **10a** Delta kodu po k9 | Przegląd kodu z k9: `src/lib/metadata.ts`, `src/lib/structured-data/*`, `src/lib/analytics.ts`, `JsonLd`, `sitemap.ts`, `robots.ts`, `siteEnv.ts`, `content/seo.ts`. Kryteria: over-engineering, duplikacje, konwencje (`CLAUDE.md`, brief §7), Server/Client, strict. Jednorazowo `tsc`, `lint`, `knip`, `jscpd` (RV-3, bez zapisu do `package.json`). Drobne poprawki od razu, większe — propozycja w checkpoincie. | `docs/review/08-k9-delta.md` |
+| **10b** Lighthouse | Pomiar wg K10-1/K10-2; raporty (HTML/JSON) + tabela wyników i wnioski. Rozstrzygnięcie **B6** (`imageLarge`, K-39) na podstawie wyników. | `docs/lighthouse/` (+ `README.md` z tabelą) |
+| **10c** Poprawki po Lighthouse | Warunek K10-3 spełniony: mobile perf < 90 na 7 z 17 tras (`/` 87, `/ikony` 85, `/warsztaty` 87, `/publikacje` 87, album 86, `/ikony/wystawy` 89, `/o-akademii` 89). **Zakres uzgodniony 2026-10-26** — jeden pakiet wspólnych zasobów: ograniczenie blokującego CSS (2 arkusze, ~350 ms), analiza chunku JS 70 KB (~40 % nieużywane, polyfille `legacy-javascript`), `fetchpriority` na pierwszej miniaturze `/ikony`. **Bez zgody właściciela nie ruszamy:** fontów (EB Garamond `latin-ext` 111 KB jest potrzebny dla polskich znaków), jakości zdjęć (q90 z 8c), tokenów. Do rozstrzygnięcia: `text-decoration` obok kreski K-135 dla linku w akapicie (a11y 96 na `/o-akademii`, `/kontakt` — fałszywy alarm reguły `link-in-text-block`, próg ≥ 95 spełniony). **Pomiar po zmianach:** pełny, wszystkie 17 tras × mobile/desktop, do `docs/lighthouse/after-10c/`, porównanie z stanem przed (instrukcja w `docs/lighthouse/README.md`). Robiony w nowej sesji. | `docs/lighthouse/` + wg wyników 10b |
+| **10d** Dokumenty, 301, discovery | (1) Synchronizacja briefu §3/§4/§7/§8, planu §2–§4 i DoD z kodem; zamknięte k8/k9 → archiwum. (2) `scripts/check-redirects.ts` (K10-4). (3) DoD etapu: punkty zależne od hostingu/publicznego adresu (walidator schema.org, podgląd OG, zdarzenia w panelu) oznaczone jako **przeniesione do etapu 11**, nie odhaczone. (4) Pozycja **„sesja discovery o hostingu”** w `docs/plan-claude-code.md` §3 etap 11: pytania K-09 (hosting), B9 (ISR / dobowy rebuild), K-07 (Plausible vs Umami), `SITE_ENV=production`, 301 z wersji bez `www` (K-155), B1/K-35 (CTA w nagłówku po danych analityki). | `docs/`, `scripts/check-redirects.ts` |
+
+Kolejność 10a → 10b → (10c) → 10d. Kryterium „gotowe” k10: DoD etapu 10 — każdy punkt odhaczony albo świadomie przeniesiony do etapu 11 z adnotacją; build + lint OK.
 
 ## Backlog fali 2 — poza treścią
 
@@ -92,8 +154,8 @@ Pozycje techniczne i decyzje przeniesione z kawałków fali 1. Treść EJK — `
 | B4 ✅ | k10 | `mdx-components.tsx` używa wartości arbitralnych Tailwind (`[&:has(>em:only-child)]…`) — wbrew konwencji repo. **Zamknięte:** w `mdx-components.tsx` jest 0 wartości arbitralnych (R4, status B4); `10/RF-6` | `10-k3-news.md` § Diagnoza |
 | B5 ✅ | k10 | `scripts/migrate-wp/` — martwy kod po zamkniętej migracji (`report.ts` wskazuje na przeniesiony `scripts/migrate-report.md`); zdecydować: usunąć czy zostawić jako zapis. **Zamknięte:** usunięte w `10/RF-6` razem z 13 skryptami jednorazowymi i `archive/wp-fetch-static/`; historia w git | porządki 2026-10-04 |
 | B6 | k10 | `imageLarge` w `IconWork` (K-39) — tylko jeśli Lighthouse lub przegląd pokaże, że cap skali nie wystarcza | `10-k2-lightbox.md` |
-| B7 | po prezentacji | Sticky `FactsBox` na stronach ofertowych (K-37) | `10-k7-layout.md` LY6 |
-| B8 | po prezentacji | Filtr Aktualności po wystawach dla linku „Fotorelacje z poprzednich wystaw dorocznych” (dziś `/aktualnosci` bez filtra) | `10-k3-news.md` § Ryzyka |
+| B7 ✅ | po prezentacji | Sticky `FactsBox` na stronach ofertowych (K-37). **Zamknięte bez zmian:** prezentacja — pełna akceptacja, klient nie zgłosił (2026-10-26) | `10-k7-layout.md` LY6 |
+| B8 ✅ | po prezentacji | **Zamknięte bez zmian** (prezentacja — pełna akceptacja, 2026-10-26): | Filtr Aktualności po wystawach dla linku „Fotorelacje z poprzednich wystaw dorocznych” (dziś `/aktualnosci` bez filtra) | `10-k3-news.md` § Ryzyka |
 | B9 | etap 11 | Dobowy rebuild albo ISR na hostingu — warunek poprawnych kafli „Najbliższe” i stanu wystawy (K-136 N9, K-85) | `10-k4-home.md` N9 |
 | B10 | właściciel / Claude Design | `design/README` nie opisuje makiety wystaw 13a/14a; **`design/README` — opis stopki nadal niezsynchronizowany** (w kodzie: **K-149** / Stopka v2; góra `#1a140f`, legal `#120e0b`) | `10-k1-exhibitions.md`, `10-k7-layout.md` |
 
@@ -105,18 +167,19 @@ Brak nowych plików `sample`. Placeholdery `[do uzupełnienia]` — wiersz w `do
 
 Z `docs/plan-claude-code.md` §3, etap 10:
 
-- [ ] przegląd wszystkich tras z briefu §3 odhaczony; lista poprawek po prezentacji zamknięta lub świadomie przeniesiona do wdrożenia;
-- [ ] walidator schema.org bez błędów dla czterech typów; podgląd OG sprawdzony dla strony głównej i jednej ofertowej;
-- [ ] zdarzenia analityczne widoczne w panelu narzędzia w środowisku testowym;
-- [ ] przegląd kodu zakończony: usunięte lub uzasadnione miejsca over-engineered; brak oczywistych duplikacji i naruszeń konwencji repo;
-- [ ] raport Lighthouse dla 5 tras (główna, kurs, wykłady, galeria `/ikony`, aktualności) w `docs/lighthouse/`;
+- [x] przegląd wszystkich tras z briefu §3 odhaczony (blok R); lista poprawek po prezentacji zamknięta — prezentacja z klientem zakończona pełną akceptacją, bez uwag (stan na 2026-10-26);
+- [ ] walidator schema.org bez błędów dla czterech typów; podgląd OG sprawdzony dla strony głównej i jednej ofertowej — **→ etap 11** (publiczny adres);
+- [ ] zdarzenia analityczne widoczne w panelu narzędzia w środowisku testowym — **→ etap 11** (K-07 zawieszone);
+- [x] przegląd kodu zakończony: usunięte lub uzasadnione miejsca over-engineered; brak oczywistych duplikacji i naruszeń konwencji repo (blok R, `docs/review/08-k9-delta.md`);
+- [x] raport Lighthouse dla 5 tras w `docs/lighthouse/` (2026-10-26; a11y ≥ 95 ✓; perf mobile ≥ 90 spełniony na 10 z 17 tras — reszta **→ etap 11**, pomiar na hostingu);
 - [x] lightbox `/ikony` na iOS Safari (K-38) — test OK 2026-10-03;
-- [ ] `npm run build` i `npm run lint` bez regresji; dokumentacja zsynchronizowana z kodem i decyzjami etapu.
+- [x] `npm run build` i `npm run lint` bez regresji; dokumentacja zsynchronizowana z kodem i decyzjami etapu (10d, 2026-10-26).
 
 ## Ryzyka i pytania otwarte
 
-- **K-07** Plausible vs Umami — rozstrzygnąć na starcie k9 (wpływa na politykę prywatności, K-119).
-- **Prezentacja z klientem** — termin i staging; od niej zależą B7, B8 i część DoD #1.
+- **K-07** narzędzie analityczne — **zawieszone do sesji discovery o hostingu (etap 11)**; stan analizy: `docs/legacy-wp-analytics-notes.md` §5. k9 przygotowuje tylko konwencję zdarzeń (9d).
+- ~~**Prezentacja z klientem**~~ — odbyta, pełna akceptacja bez uwag; B7, B8 zamknięte bez zmian, DoD #1 odhaczony (2026-10-26).
+- **Opóźnienie obrazu hero (~1 s, Vercel i Cloudflare)** — przeniesione do etapu 11 jako kawałek optymalizacji aplikacji (decyzja właściciela 2026-10-26; opis: `docs/plan-claude-code.md` §3 etap 11 „Discovery”).
 - ~~**Tempo k8**~~ — backlog treści zamknięty 2026-10-25.
 - **Przegląd UX** (`docs/archive/plans/10-ux-consistency-review.md`) — rozstrzygnięty i zrealizowany 2026-10-25 (kawałek 8c).
 
@@ -130,5 +193,5 @@ Z `docs/plan-claude-code.md` §3, etap 10:
 | 8b — menu mobilne | ✅ 2026-10-22, OK właściciela 2026-10-25 | **Korekta 2026-10-23 (`345fb98`, zastępuje pkt 3):** dolny rząd szuflady usunięty („Zapisy na warsztaty”, Blog); menu odwzorowuje mapę stopki — doszły Publikacje i akordeon Kontakt (Kontakt · Polityka prywatności); `aria-controls` bez spacji. Pkt 1–6 wdrożone: `.menu-fab` (utilities.css, tokeny `--menu-fab-size`/`--menu-fab-offset`), dolny odstęp stopki pod przycisk wycofany po przeglądzie (2026-10-22); szuflada `fixed inset-0` z własnym paskiem i `role="dialog"`, stale zamontowana (`inert` gdy zamknięta), `.menu-drawer` — fade + przesunięcie 200 ms w obie strony, bez animacji przy `prefers-reduced-motion`; cały wiersz sekcji = przycisk akordeonu; `mainNav.children` = pełne `sectionNav` (stopka Warsztatów nadal `slice(1)`); prop `sectionActiveHref` z `resolveNav`; `pl.header`: + `menuCloseLabel`, − `contactCta`, `sectionExpandLabel`, `sectionCollapseLabel`. Przycisk nie chowa się przy otwartym menu (zakrywa go szuflada; fokus wraca na niego pewnie). Przy okazji przeglądu mobile: `trojca-swieta-2017.jpg` (pierwsza ikona galerii, lightbox ładował 1,8 MB) → 1200×1600, mozjpeg q82 4:2:0, 183 KB (limit 1600 px z K-138, jakość jak miniatury K-138), wymiary w `icons.json` |
 | 8c — spójność UX | ✅ 2026-10-25, OK właściciela (commit `10/8c: UX consistency…`) | pkt 1–7 wdrożone: `FactsBox` CTA i telefon `lg` + `compactMobile` (64 px; jedna linia też na 375 px); `OfferCard` CTA `block`; `FilterChip` aktywny = złoty obrys; „Czytaj” / „Czytaj dalej” w `NewsCard` / `NewsFeatured` ze stałym podkreśleniem `link-underline-target--border` (hover: kolor kreski) — `Pillars` i `LecturesGalleryLink` już je miały; etykieta nad H1 na Wystawach Garamond złoty; `.contact-entrance` belka u góry; H2 „Najbliższe” `role-section-h2`. Sprawdzone 375 / 390 / 1440 px (bez poziomego scrolla). Przy okazji: `.claude/launch.json` + konfiguracja `prod-preview` (`next start -p 3005`) — podgląd, gdy `next dev` z innej sesji zajmuje folder |
 | R — review serwisu | ✅ część techniczna i wizualna 2026-10-06 | R0–R5, RF-0…RF-21, V1–V4 zamknięte, w `main` (PR #15); zostaje C1–C2 — warunek (T1–T29) spełniony 2026-10-25; postęp w `10-review.md`, `docs/archive/plans/10-review-fixes.md` |
-| 9 — SEO / analityka | ⬜ | |
-| 10 — audyty / docs | ⬜ | okrojony przez RV-1 |
+| 9 — SEO / analityka | ✅ 2026-10-26, OK właściciela (9a–9d) | kawałki 9a–9d, decyzje K-155…K-158; analityka (K-07) → etap 11. **9a:** `pageMetadata()` w `src/lib/metadata.ts` (description, canonical, OG, Twitter `summary_large_image`, `og:locale` `pl_PL`, `og:site_name`), `metadataBase` + domyślne OG/description w `layout.tsx` (fallback dla 404); `seo: { description, ogImage? }` w pliku treści każdej trasy statycznej, odczyt przez `src/content/seo.ts`; nowe `content/pages/aktualnosci.json`, `publikacje.json` (lead przeniesiony z `pl.ts`), `ikony.json`; opisy — copy Claude, zaakceptowane (K-122) z korektą `/wyklady/wykladowcy`; obrazy OG: `scripts/generate-og-images.ts` (sharp) → `public/media/og/*.jpg` 1200×630 wg tabeli K-156; wpisy — `excerpt` + `cover` (bez okładki — domyślny), album — `lead` + `cover`, artykuły — `excerpt` + okładka albumu (teksty z mediów — domyślny). **9b:** `src/app/sitemap.ts` (97 adresów: trasy statyczne z `getStaticPagePaths()` w `seo.ts`, wpisy, album, artykuły; `lastModified` tylko z dat treści — data wpisu, jeśli minęła, i `lastUpdated` polityki; `revalidate` 1 d), `src/app/robots.ts`, `src/lib/siteEnv.ts`; indeksacja tylko przy `SITE_ENV=production` (czytane przy buildzie), w innym razie `Disallow: /` + `noindex, nofollow` z `layout.tsx`. **Etap 11: ustawić `SITE_ENV=production` na hostingu produkcyjnym — bez niej Google nie zaindeksuje strony.**. **9c:** jeden emiter `JsonLd` (`src/components/core/JsonLd.tsx`, nbsp → spacja, `<` escapowane); budowniczy w `src/lib/structured-data/` (`site`, `breadcrumbs`, `person`, `events`, `course`, `publications`); `Organization` w `layout.tsx` (z `parentOrganization` → Fundacja, `founder` → EJK, `sameAs` FB/YT/blog); `BreadcrumbList` w `SectionPageShell` na każdej podstronie (K-158; strony spoza nawigacji podają `breadcrumbTitle`); `Person` EJK na `/o-akademii`; 11 × `Event` na `/wyklady` (data bez godziny, `offers` 400 PLN, `performer`, `superEvent` cyklu); `ExhibitionEvent` „Wystawa doroczna Akademii Ikony „Mistyka dziś”” (szablon `pl.meta.annualExhibitionEventName`, decyzja właściciela) (2027-06-12 → 2027-08-31); `Course` kurs (z miejscem) i LSŚ (bez), bez ceny; `Book` z `hasPart` z `chapters` (B2) i ofertą 140 PLN; `Article` z `isPartOf` → `Book` dla tekstów z albumu; nowe `pl.meta.foundingYear`, `foundationName`; helper `getArticleAlbum()` w `publications.ts`. Walidacja: JSON poprawny w 102 plikach HTML; validator.schema.org / Rich Results — etap 11. **9d:** `src/lib/analytics.ts` (`enroll_click` / `email_click` / `phone_click`, `enrollEvent()`, `linkEvent()`); auto-zdarzenie z `href` w `Button`, `TextLink`, `a` w `mdx-components.tsx`, `Footer`; `enroll_click` jawnie w `FactsBox` i `OfferClosingCta`; 0 linków `mailto:`/`tel:` bez `data-event` w 102 plikach HTML; konwencja w brief §7 i `CLAUDE.md`; polityka: zdanie o mapie → „link do Map Google” (copy Claude, zaakceptowane K-122), `lastUpdated` 2026-10-26 |
+| 10 — audyty / docs | ✅ 2026-10-26 (commit `10/10c-10d`) | **Etap 10 zamknięty** — prezentacja z klientem: pełna akceptacja; opóźnienie hero → etap 11. Okrojony przez RV-1; kawałki 10a (delta k9) → 10b (Lighthouse) → 10c (poprawki, warunkowo) → 10d (dokumenty, 301, discovery); decyzje K10-1…K10-4; 2/4 — **10b ✅ 2026-10-26** (`docs/lighthouse/README.md`: a11y 100 i BP 100 wszędzie, desktop ≥ 99, mobile perf 85–91; pod progiem `/` 87 i `/ikony` 85 → 10c); **10a ✅ 2026-10-26** (`docs/review/08-k9-delta.md`: tsc/lint 0, jscpd TSX 0 klonów; 2 zbędne eksporty z k9 zdjęte; reszta uwag knip poza k9 bez zmian); **10c ✅ 2026-10-26** (bez zmian w kodzie: `fetchPriority` na `/ikony` i `inlineCss` bez poprawy mobile, cofnięte; `text-decoration` obok kreski K-135 nie dodajemy; wynik w `docs/lighthouse/README.md` § 10c; progi mobile perf ≥ 90 → pomiar na hostingu w etapie 11); **10d ✅ 2026-10-26** (`scripts/check-redirects.ts` — 109 wpisów × 2 warianty, 218/218 OK na `next start`; brief §3/§5 zsynchronizowany z kodem; DoD: punkty zależne od hostingu → etap 11; pozycja „sesja discovery o hostingu” w `docs/plan-claude-code.md` §3 etap 11) |

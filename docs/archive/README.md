@@ -42,7 +42,7 @@ decyzja o martwym kodzie — etap 10, k10, B5). Otwarte pozycje dla EJK przepisa
 
 ## Plany zamkniętych etapów i kawałków — `archive/plans/`
 
-Poprzednia ścieżka: `docs/plans/`. W `docs/plans/` zostają wyłącznie plany otwarte (dziś: `10-finishing`, `10-review`, `11-wdrozenie`).
+Poprzednia ścieżka: `docs/plans/`. W `docs/plans/` zostają wyłącznie plany otwarte (dziś: `11-wdrozenie`). Etap 10 zamknięty 2026-10-26 — `10-finishing.md` (plan, backlog B1–B10, postęp) i `10-review.md` (blok R) przeniesione tu tego dnia.
 
 | Plik | Etap | Zamknięty |
 | --- | --- | --- |
@@ -58,6 +58,8 @@ Poprzednia ścieżka: `docs/plans/`. W `docs/plans/` zostają wyłącznie plany 
 | `07b-review-fixes.md` | 7b/7c — korekty aktualności | 2026-09-22 |
 | `08-pozostale.md` | 8 — strony pozostałe | 2026-09-26 |
 | `08b-review-fixes.md` | 8b — przebudowa wystawy, korekty | 2026-09-26 |
+| `10-finishing.md` | 10 — wykończenie: ewaluacja, poprawki, SEO, audyty | 2026-10-26 |
+| `10-review.md` | 10 / blok R — review techniczne, wizualne, treści | 2026-10-26 |
 | `09-migration-v2.md` | 9 — migracja WP, plan nadrzędny (kawałki v2 1–3, DoD 8/8) | 2026-10-01 |
 | `09-migration.md` | 9 — CLI migracji (`--dry-run`, `--only`, `--force`; K-122) | 2026-10-01 |
 | `09-migration-wp-pages.md` | 9 — inwentaryzacja stron WP (P0–P8) | 2026-10-01 |

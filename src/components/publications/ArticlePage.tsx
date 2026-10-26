@@ -22,7 +22,7 @@ export function ArticlePage({ article, path }: ArticlePageProps) {
   const { Content } = article;
 
   return (
-    <SectionPageShell path={path}>
+    <SectionPageShell path={path} breadcrumbTitle={article.title}>
       <article className="publication-page publication-article">
         <Breadcrumb
           items={[

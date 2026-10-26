@@ -119,5 +119,9 @@
       { "href": "/pracownia", "label": "Pracownia" },
       { "href": "/kontakt", "label": "Kontakt" }
     ]
+  },
+  "seo": {
+    "description": "Akademia Ikony – studium ikonograficzne przy Kościele Środowisk Twórczych w Warszawie. Kim jesteśmy i co robimy oprócz warsztatów i wykładów.",
+    "ogImage": "/media/og/o-akademii.jpg"
   }
 }

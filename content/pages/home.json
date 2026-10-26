@@ -48,5 +48,9 @@
   "testimonial": {
     "quote": "„Kreska po kresce wspinamy się na Górę Tabor.”",
     "author": "Elżbieta Jackowska-Kurek, założycielka Akademii"
+  },
+  "seo": {
+    "description": "Warsztaty pisania ikon i wykłady ikonograficzne w Kościele Środowisk Twórczych w Warszawie. Kurs roczny i trzyletni, letni plener, wystawy. Od 2010 roku.",
+    "ogImage": "/media/og/home.jpg"
   }
 }

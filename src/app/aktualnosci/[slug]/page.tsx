@@ -4,6 +4,8 @@ import { notFound } from "next/navigation";
 
 import { NewsArticlePage } from "@/components/news/NewsArticlePage";
 import { getNews, loadNewsBySlug } from "@/content/news";
+import { getDefaultDescription, getDefaultOgImage } from "@/content/seo";
+import { pageMetadata } from "@/lib/metadata";
 
 // Event phase (zapowiedź / relacja) depends on the date — rebuild daily like `/` (K-85, B9).
 export const revalidate = 86400;
@@ -26,9 +28,12 @@ export async function generateMetadata({ params }: NewsArticleRouteProps): Promi
     return {};
   }
 
-  return {
+  return pageMetadata({
+    path: `/aktualnosci/${slug}`,
     title: plainText(entry.title),
-  };
+    description: entry.excerpt ? plainText(entry.excerpt) : getDefaultDescription(),
+    image: entry.cover ?? getDefaultOgImage(),
+  });
 }
 
 export default async function NewsArticleRoute({ params }: NewsArticleRouteProps) {

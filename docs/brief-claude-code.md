@@ -44,7 +44,7 @@ Strona jest częścią szerszego ekosystemu (Akademia + Fundacja + planowana str
 /wyklady/archiwum          14 sezonów archiwalnych, rozwijane (bieżący 2026/2027 — piętnasty)
 /wyklady/wykladowcy
 /ikony                     galeria: sekcje Elżbieta / uczniowie + filtr tematu
-/ikony/[slug]              pojedyncza ikona (opcjonalnie w v1)
+/ikony/[slug]              pojedyncza ikona — nie powstała w v1 (ikony otwiera `Lightbox` na `/ikony`)
 /ikony/wystawy             trzy formy wystaw w KŚT; kotwice `#doroczna`, `#ekspozycja`, `#oprowadzania`, `#wyjazdowe` (K-127, k1)
 /aktualnosci               lista z typem wpisu (`kind`), w tym archiwum wystaw, oprowadzań i wyjazdów studyjnych (w tym dawne plenery LSŚ → `kind: 'wyjazd'`; K-50, K-52, K-125)
 /aktualnosci/[slug]
@@ -298,9 +298,9 @@ type SiteSettings = {
 
 **Krok 5 — galeria → `IconWork`:** regex `^(.+?),\s*(\d+)x(\d+)\s*\(cm\)$` na podpis; wariant „pisany/pisana ręką X” → `author: 'student'`, `authorName: X`. Spodziewać się literówek w źródle (np. „Advokata” vs „Advocata”, „Matyaszczak” vs „Matyaszczyk”) — logować niejasne przypadki, nie zgadywać.
 
-**Krok 6 — przekierowania:** wygenerować `docs/redirects.json` (stary → nowy URL) z tabeli poniżej, użyć w `next.config.ts`.
+**Krok 6 — przekierowania:** *(zrealizowane)* lista stary → nowy URL w `src/config/redirects.json`, wczytywana i walidowana (duplikaty, łańcuchy) przez `src/lib/redirects.ts` w `next.config.ts` jako 301/308. Test statusu i celu każdego wpisu (także wariant z ukośnikiem na końcu, jak w starym WP): `npx tsx scripts/check-redirects.ts [baseUrl]` — lokalnie na `next start`, na stagingu w etapie 11.
 
-**Skrypt migracji** (`scripts/migrate-wp.ts`, uruchamiany przez `tsx`) ma:
+**Skrypt migracji** *(zapis historyczny — migracja zamknięta, skrypty usunięte w `10/RF-6`; przekierowania: `src/config/redirects.json`)* (`scripts/migrate-wp.ts`, uruchamiany przez `tsx`) miał:
 1. pobrać pages/posts (REST albo WXR, oba źródła za flagą),
 2. HTML → MDX do `content/pages`, `content/news`,
 3. pobrać oryginały obrazów do `public/media/` (pomijając `/cache/`),
@@ -386,6 +386,10 @@ Szacunek ręcznej korekty po migracji: ~10 stron statycznych, 16 sezonów wykła
 - `Zamówienie – album „Ikona dziś. Akademia Ikony 2010–2025”` (K-76; tytuł potwierdzony 2026-10-25)
 
 Telefon jako `tel:+48601734705`.
+
+**Zdarzenia analityczne (K-15, k9/9d):** linki niosą `data-event` + parametry `data-event-*`; skrypt narzędzia (K-07) dochodzi w etapie 11 jako jeden nasłuchiwacz kliknięć, bez zmian w komponentach. Typy i helpery: `src/lib/analytics.ts`.
+- `enroll_click` — CTA zapisów: przycisk `FactsBox` i link `OfferClosingCta`; `data-event-offer` (`kurs` / `plener` / `wyklady`), `data-event-state` (stan zapisów na przycisku). Nadawane jawnie przez `enrollEvent()`.
+- `email_click` — każdy inny `mailto:`; `phone_click` — każdy `tel:`. Nadawane automatycznie z `href` w `Button`, `TextLink`, mapowaniu `a` w `mdx-components.tsx` i w gołym `<a>` przez `linkEvent()`.
 
 **Nazwy komponentów (użyć tych nazw w kodzie, żeby zgadzały się z design/README):**
 `Header`, `Footer`, `SectionNav`, `Breadcrumb`, `Hero`, `FactsBox`, `OfferCard`, `LectureList`, `SeasonAccordion`, `IconGrid`, `Lightbox`, `NewsCard`, `Testimonial`, `MapBlock`, `TocSidebar` (strona tekstowa). W MDX ofert: `OfferFigure`, `OfferSideCta` (k7), `OfferSidePhoto` (k8 — sekcja tekst + zdjęcie w prawej kolumnie). W MDX artykułów: `ArticleFigure` (k8, T26 — zdjęcie w kolumnie tekstu, bez kadrowania, opcjonalny podpis). `EventCard` usunięty (K-50, 2026-09-21) — dział „Wydarzenia” zlikwidowany, wpisy renderują się przez `NewsCard`.

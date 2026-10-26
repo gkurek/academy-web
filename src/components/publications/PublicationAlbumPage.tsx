@@ -25,7 +25,7 @@ export function PublicationAlbumPage({ publication, path }: PublicationAlbumPage
     ? getNewsBySlug(publication.relatedNewsSlug)
     : undefined;
   return (
-    <SectionPageShell path={path}>
+    <SectionPageShell path={path} breadcrumbTitle={publication.title}>
       <div className="publication-page">
         <Breadcrumb
           items={[

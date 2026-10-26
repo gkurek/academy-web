@@ -3,6 +3,7 @@ import Link from "next/link";
 import { ExternalLink } from "@/components/core/ExternalLink";
 import { getEnrollmentEmail, getSiteSettings } from "@/content/settings";
 import { pl } from "@/i18n/pl";
+import { linkEvent } from "@/lib/analytics";
 import { fillTemplate } from "@/lib/fillTemplate";
 import { currentYearInWarsaw } from "@/lib/isoDate";
 import {
@@ -33,6 +34,7 @@ function FooterContact() {
   const settings = getSiteSettings();
   // Short church lines — full dedication (brief §8) is on /kontakt.
   const primaryEmail = getEnrollmentEmail();
+  const primaryEmailHref = `mailto:${primaryEmail}`;
 
   return (
     <div className="flex flex-col gap-space-5">
@@ -51,7 +53,7 @@ function FooterContact() {
         <span className="block">{settings.address}</span>
       </address>
 
-      <a href={`mailto:${primaryEmail}`} className={contactDataClass}>
+      <a href={primaryEmailHref} className={contactDataClass} {...linkEvent(primaryEmailHref)}>
         <span className={footerLinkUnderline}>{primaryEmail}</span>
       </a>
 

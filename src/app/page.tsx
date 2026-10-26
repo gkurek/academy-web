@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { Fragment } from "react";
 import { SectionPageShell } from "@/components/layout/SectionPageShell";
 import { Button } from "@/components/core/Button";
@@ -8,10 +9,14 @@ import { Pillars } from "@/components/home/Pillars";
 import { FeaturedIcons } from "@/components/home/FeaturedIcons";
 import { getHomePage } from "@/content/home";
 import { getCurrentSeasonLabel } from "@/content/lectures";
+import { getPageSeo } from "@/content/seo";
 import { pl } from "@/i18n/pl";
 import { fillTemplate } from "@/lib/fillTemplate";
+import { pageMetadata } from "@/lib/metadata";
 
 export const revalidate = 86400;
+
+export const metadata: Metadata = pageMetadata({ path: "/", ...getPageSeo("/") });
 
 function heroTitleWithLineBreaks(title: string) {
   return title.split("\n").map((line, index) => (
