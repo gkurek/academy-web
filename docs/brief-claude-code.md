@@ -44,7 +44,7 @@ Strona jest częścią szerszego ekosystemu (Akademia + Fundacja + planowana str
 /wyklady/archiwum          14 sezonów archiwalnych, rozwijane (bieżący 2026/2027 — piętnasty)
 /wyklady/wykladowcy
 /ikony                     galeria: sekcje Elżbieta / uczniowie + filtr tematu
-/ikony/[slug]              pojedyncza ikona (opcjonalnie w v1)
+/ikony/[slug]              pojedyncza ikona — nie powstała w v1 (ikony otwiera `Lightbox` na `/ikony`)
 /ikony/wystawy             trzy formy wystaw w KŚT; kotwice `#doroczna`, `#ekspozycja`, `#oprowadzania`, `#wyjazdowe` (K-127, k1)
 /aktualnosci               lista z typem wpisu (`kind`), w tym archiwum wystaw, oprowadzań i wyjazdów studyjnych (w tym dawne plenery LSŚ → `kind: 'wyjazd'`; K-50, K-52, K-125)
 /aktualnosci/[slug]
@@ -298,9 +298,9 @@ type SiteSettings = {
 
 **Krok 5 — galeria → `IconWork`:** regex `^(.+?),\s*(\d+)x(\d+)\s*\(cm\)$` na podpis; wariant „pisany/pisana ręką X” → `author: 'student'`, `authorName: X`. Spodziewać się literówek w źródle (np. „Advokata” vs „Advocata”, „Matyaszczak” vs „Matyaszczyk”) — logować niejasne przypadki, nie zgadywać.
 
-**Krok 6 — przekierowania:** wygenerować `docs/redirects.json` (stary → nowy URL) z tabeli poniżej, użyć w `next.config.ts`.
+**Krok 6 — przekierowania:** *(zrealizowane)* lista stary → nowy URL w `src/config/redirects.json`, wczytywana i walidowana (duplikaty, łańcuchy) przez `src/lib/redirects.ts` w `next.config.ts` jako 301/308. Test statusu i celu każdego wpisu (także wariant z ukośnikiem na końcu, jak w starym WP): `npx tsx scripts/check-redirects.ts [baseUrl]` — lokalnie na `next start`, na stagingu w etapie 11.
 
-**Skrypt migracji** (`scripts/migrate-wp.ts`, uruchamiany przez `tsx`) ma:
+**Skrypt migracji** *(zapis historyczny — migracja zamknięta, skrypty usunięte w `10/RF-6`; przekierowania: `src/config/redirects.json`)* (`scripts/migrate-wp.ts`, uruchamiany przez `tsx`) miał:
 1. pobrać pages/posts (REST albo WXR, oba źródła za flagą),
 2. HTML → MDX do `content/pages`, `content/news`,
 3. pobrać oryginały obrazów do `public/media/` (pomijając `/cache/`),

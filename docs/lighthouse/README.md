@@ -76,3 +76,14 @@ npx lighthouse http://localhost:3005/ --only-categories=performance,accessibilit
 ```
 
 Trasy i nazwy plików: `home` `/`, `kurs` `/warsztaty/kurs-roczny-i-trzyletni`, `wyklady` `/wyklady`, `ikony` `/ikony`, `aktualnosci` `/aktualnosci`; oraz z drugiej tabeli (`warsztaty`, `lss`, `archiwum`, `wykladowcy`, `wystawy`, `o-akademii`, `pracownia`, `publikacje`, `kontakt`, `polityka`, `album` = `/publikacje/ikona-dzis`, `wpis-galeria` = `/aktualnosci/wernisaz-albumu-ikona-dzis`). Wyniki wahają się o kilka punktów — dla tras blisko progu zrobić 3 przebiegi i podać medianę.
+
+## 10c — wynik prób (2026-10-26)
+
+Próby bez zmiany wyniku, **zmiany cofnięte** (brak zmian w kodzie):
+
+- `fetchPriority="high"` na pierwszej miniaturze `/ikony`: mobile 84 / 84 / 83 (przed: 85), LCP 4,5–4,7 s — bez efektu, LCP ograniczony siecią w symulacji.
+- `experimental.inlineCss: true` (zgoda właściciela na zmianę `next.config.ts`), pełny pomiar 17 tras: mobile **gorzej lub bez zmian** na większości tras (`/` 84 vs 87, `/aktualnosci` 82 vs 90, `/o-akademii` 88 vs 89, album 85 vs 86; nigdzie wyraźnie lepiej), desktop bez zmian. Inline powiększa HTML i usuwa cache CSS między trasami.
+- Chunk JS / polyfille (13 KB `legacy-javascript`) pochodzą z rdzenia Next; bez zmian konfiguracji nie do usunięcia.
+- `text-decoration` obok kreski K-135 — nie dodajemy (a11y 96 ≥ 95, wzorzec K-135 zostaje).
+
+**Wniosek:** mobile 85–91 to koszt wspólnych zasobów w symulacji wolnej sieci; ostateczny pomiar — etap 11, na docelowym hostingu (kompresja, HTTP/2, cache, CDN mogą dać więcej niż zmiany w kodzie).
