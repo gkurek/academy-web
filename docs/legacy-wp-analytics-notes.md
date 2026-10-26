@@ -51,7 +51,7 @@ Stan na 2026-10-25. Źródło: przegląd `akademiaikony.pl` i `wp-admin` (tylko 
 
 - Import danych: Plausible importuje z GA4, Umami **nie** (tylko Umami/CSV, przez zespół, plan Pro). Z WP Statistics nie importuje żadne z nich → archiwum w CSV.
 - Umami 3.4 (09.2026) ma adnotacje (datowane znaczniki na wykresie) – do potwierdzenia w dokumentacji; przydatne do oznaczenia daty wdrożenia.
-- **K-07 ZAWIESZONE do sesji discovery o hostingu (etap 11).** Wynik tej analizy (2026-10-25):
+- **K-07 ZAMKNIĘTE 2026-10-26 (kawałek 11-0): PostHog Cloud EU, tryb bez ciasteczek, managed reverse proxy od startu na domenie** — pełne brzmienie w `docs/plan-claude-code.md` §4. Poniżej stan analizy sprzed decyzji. Wynik analizy (2026-10-25):
   - Wymagania właściciela: tanio/za darmo, mały ruch, śledzenie tylko najważniejszych rzeczy, bez ciasteczek, **API** – docelowo zakładka analityki w panelu CMS (EJK ma widzieć wyniki bez wchodzenia do narzędzia dostawcy, doświadczenie zbliżone do WP Statistics).
   - **Umami Cloud Hobby (darmowy) odpada:** brak API (cennik umami.is); API od planu Pro, 20 USD/mies. Do potwierdzenia na koncie (Accounts → API Keys).
   - Kandydaci: **Umami self-hosted** (0 zł, pełne API, wymaga Node + Postgres) · **Plausible Cloud** (~9 USD/mies., Stats API, import z GA4, zero utrzymania) · **Matomo self-hosted** (0 zł, bogate API, działa na zwykłym PHP + MySQL, ciężki) · **GoatCounter** (0 zł, API, bardzo prosty, skromne wykresy) · **własny moduł w CMS** (liczenie wejść w własnej bazie; pełna kontrola, ale praca + filtrowanie botów).
