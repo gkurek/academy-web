@@ -5,6 +5,7 @@ import type { EnrollmentState } from "@/content/enrollment";
 import { getOfferDateValues } from "@/content/offers";
 import type { OfferFacts } from "@/content/types";
 import { pl } from "@/i18n/pl";
+import { enrollEvent } from "@/lib/analytics";
 import { fillRequiredTemplate } from "@/lib/fillTemplate";
 import { getEnrollmentMailtoHref } from "@/lib/mailto";
 
@@ -32,7 +33,7 @@ export function OfferClosingCta({ facts, kind, enrollment }: OfferClosingCtaProp
       {parts.map((part, index) => (
         <Fragment key={index}>
           {index > 0 && (
-            <TextLink href={getEnrollmentMailtoHref(facts, kind, enrollment)}>{copy.link}</TextLink>
+            <TextLink href={getEnrollmentMailtoHref(facts, kind, enrollment)} {...enrollEvent(kind, enrollment)}>{copy.link}</TextLink>
           )}
           {part}
         </Fragment>

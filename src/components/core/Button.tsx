@@ -1,6 +1,8 @@
 import Link from "next/link";
 import type { MouseEventHandler, ReactNode } from "react";
 
+import { linkEvent, type EventAttributes } from "@/lib/analytics";
+
 export interface ButtonProps {
   children: ReactNode;
   /** Target href — usually a mailto: link with a subject from design/README §5. */
@@ -14,6 +16,8 @@ export interface ButtonProps {
   disabled?: boolean;
   onClick?: MouseEventHandler<HTMLAnchorElement>;
   className?: string;
+  /** Analytics click event (K-15); defaults to the one derived from `href` (`mailto:` / `tel:`). */
+  event?: EventAttributes;
 }
 
 const sizeClasses: Record<NonNullable<ButtonProps["size"]>, string> = {
@@ -46,6 +50,7 @@ export function Button({
   disabled = false,
   onClick,
   className,
+  event,
 }: ButtonProps) {
   const classes = [
     "rounded-none border text-center cursor-pointer box-border",
@@ -72,6 +77,7 @@ export function Button({
       onClick={disabled ? undefined : onClick}
       aria-disabled={disabled || undefined}
       className={classes}
+      {...(disabled ? {} : (event ?? linkEvent(href)))}
     >
       {children}
     </a>

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 
+import { JsonLd } from "@/components/core/JsonLd";
 import { ExhibitionPage } from "@/components/exhibition/ExhibitionPage";
 import {
   getExhibitionNowNext,
@@ -8,25 +9,32 @@ import {
   getLastFinishedAnnualExhibition,
   getLatestAnnualExhibition,
 } from "@/content/exhibition";
+import { getPageSeo } from "@/content/seo";
+import { pageMetadata } from "@/lib/metadata";
+import { annualExhibitionNode } from "@/lib/structured-data/events";
 import { navTitle } from "@/navigation";
 
 export const revalidate = 86400;
 
 const path = "/ikony/wystawy";
 
-export const metadata: Metadata = {
-  title: navTitle(path),
-};
+export const metadata: Metadata = pageMetadata({ path, title: navTitle(path), ...getPageSeo(path) });
 
 export default function ExhibitionRoutePage() {
+  const latestAnnual = getLatestAnnualExhibition();
+  const exhibitionEvent = annualExhibitionNode(latestAnnual, path, getPageSeo(path).image.src);
+
   return (
-    <ExhibitionPage
-      path={path}
-      page={getExhibitionPage()}
-      latestAnnual={getLatestAnnualExhibition()}
-      lastFinished={getLastFinishedAnnualExhibition()}
-      nowNext={getExhibitionNowNext()}
-      firstAnnualYear={getFirstAnnualExhibitionYear()}
-    />
+    <>
+      {exhibitionEvent && <JsonLd data={exhibitionEvent} />}
+      <ExhibitionPage
+        path={path}
+        page={getExhibitionPage()}
+        latestAnnual={latestAnnual}
+        lastFinished={getLastFinishedAnnualExhibition()}
+        nowNext={getExhibitionNowNext()}
+        firstAnnualYear={getFirstAnnualExhibitionYear()}
+      />
+    </>
   );
 }

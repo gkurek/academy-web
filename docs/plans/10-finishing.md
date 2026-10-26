@@ -1,6 +1,6 @@
 # Plan 10 — Finishing (ewaluacja, poprawki, SEO, optymalizacja)
 
-Status: **zatwierdzony** 2026-10-03 · fala 1 ✅ 2026-10-04 · k8 ✅ (T1–T29, 8a, 8b, 8c; 2026-10-25) · C1–C2 ✅ (2026-10-25) · **następne: k9**  
+Status: **zatwierdzony** 2026-10-03 · fala 1 ✅ 2026-10-04 · k8 ✅ (T1–T29, 8a, 8b, 8c; 2026-10-25) · C1–C2 ✅ (2026-10-25) · k9 ✅ (9a–9d; 2026-10-26) · **następne: k10**  
 Gałąź: `feat/10-finishing`  
 Makiety: tokeny `design/README`, odczyt wartości `docs/design-mockup-guide.md`. Fala 2 nie ma nowych makiet.
 
@@ -72,6 +72,48 @@ Pliki: `FactsBox.tsx`, `OfferCard.tsx`, `FilterChip.tsx`, `NewsCard.tsx`, `NewsF
 
 **Zakres:** `docs/plan-claude-code.md` §3 etap 10, pkt 2 — metadata + OG, `sitemap.ts`, `robots.ts`, JSON-LD (`Organization`, `Person`, `Event` — K-17, `Course`, `Book`/`Article` — K-76), analityka bez ciasteczek (K-07, K-15), aktualizacja polityki prywatności (K-119). Plus pozycje z backlogu niżej oznaczone k9.
 
+**Plan zatwierdzony 2026-10-26** (sesja planistyczna). Wszystko, co zależy od hostingu, wyłączone — patrz „Poza k9”.
+
+**Stan wyjściowy:** `<title>` przez `navTitle()` (K-143) na wszystkich trasach; brak `description`, `metadataBase`, OG, canonical, `sitemap.ts`, `robots.ts`, JSON-LD. `Page.seo?: { description; ogImage? }` w modelu, nieużywane w `content/`. `<Breadcrumb>` widoczny tylko na albumie i artykułach (`/publikacje/[slug]`).
+
+**Decyzje k9**
+
+| ID | Decyzja |
+| --- | --- |
+| **K-155** | Host kanoniczny `https://www.akademiaikony.pl` — jak na obecnym WP (`rel=canonical` z `www`, 301 z wersji bez `www`). Przekierowanie na nowym hostingu — etap 11. |
+| **K-156** | Obraz OG = **zdjęcie** (wariant B), nie obraz generowany `next/og`. Kadr 1200×630. Strony z własnym zdjęciem biorą je; wpisy, artykuły, album — `cover`. Kadry wybrane przez właściciela 2026-10-26 — tabela niżej. |
+| **K-157** | JSON-LD: **bez** `FAQPage` (Google od 2023 nie pokazuje FAQ poza stronami rządowymi i medycznymi). `Person` — **tylko EJK**. `ExhibitionEvent` — tylko wystawa doroczna z datą `vernissage` w `annual.json` (dziś „Mistyka dziś”, 2027-06-12); wystawa stała bez. `Event` wykładów: `location` z `settings.json`, `offers` z `price` w `content/offers/wyklady.mdx` (400 zł / rok — cena za sezon). `Course` (kurs, LSŚ) **bez ceny** — cen kursu i pleneru nie podajemy na stronie. |
+| **K-158** | `BreadcrumbList` na **wszystkich podstronach** (bez strony głównej), także tam, gdzie nie ma widocznego `<Breadcrumb>`; etykiety z `navigation.ts`. Zysk kosmetyczny (ścieżka w wynikach Google na desktopie), nie pozycja. |
+
+**Kadry OG (K-156)** — źródła w `public/media/`; „kadr” = `object-position` przy przycięciu do 1200×630:
+
+| Strona | Zdjęcie | Kadr |
+| --- | --- | --- |
+| `/` i domyślny (strony bez zdjęcia: Pracownia, Publikacje, Aktualności, polityka, 404) | `home/warsztaty.jpg` | środek |
+| `/o-akademii` | `workshop/hero.jpg` | **dół** (50% 100% — mniej twarzy, więcej ikony) |
+| `/warsztaty` | `workshop/hub-hero.jpg` | środek |
+| `/warsztaty/kurs-roczny-i-trzyletni` | `offers/kurs-roczny-i-trzyletni/pracownia.jpg` | środek |
+| `/warsztaty/letnia-szkola-swiatla` | `offers/letnia-szkola-swiatla/pracownia.jpg` (1260×504 — lekkie powiększenie) | środek |
+| `/wyklady`, `/wyklady/archiwum`, `/wyklady/wykladowcy` | `home/wyklad.jpg` | środek |
+| `/ikony` | `exhibition/permanent-three-icons.jpg` | środek |
+| `/ikony/wystawy` | `exhibition/hero.jpg` | środek |
+| `/kontakt` | `contact/kosciol-srodowisk-tworczych.jpg` | **góra** (50% 20%) |
+
+Kadry przygotować jako pliki 1200×630 (np. `public/media/og/*.jpg`, skrypt `tsx` z `sharp` z zależności Next — bez nowej zależności) albo przez `opengraph-image.tsx` z obrazem źródłowym — wybór w 9a, zgłoszony w checkpoincie.
+
+**Kawałki**
+
+| Kawałek | Zakres | Pliki (orientacyjnie) |
+| --- | --- | --- |
+| **9a** Metadata i OG | `metadataBase` (K-155); `description` per trasa — propozycje Claude, gate K-122 w czacie przed zapisem do `content/` (`Page.seo.description`; wpisy i artykuły — `excerpt`); `openGraph` + `twitter` (`summary_large_image`), `og:locale` `pl_PL`, `og:site_name`; obrazy OG wg tabeli (K-156); `alternates.canonical` | `layout.tsx`, `page.tsx` tras, helper w `src/lib/`, `content/pages/*.json`, `pl.ts` |
+| **9b** Indeksacja | `sitemap.ts` (trasy statyczne + wpisy, artykuły, album; `lastModified` z dat treści, gdzie są); `robots.ts` — indeksacja tylko przy zmiennej env oznaczającej produkcję, każde inne środowisko `Disallow: /` + `noindex` | `src/app/sitemap.ts`, `src/app/robots.ts` |
+| **9c** JSON-LD | `Organization` (layout); `Person` EJK; `Event` — wykłady bieżącego sezonu (K-17); `ExhibitionEvent`; `Course` kurs i LSŚ; `Book` z `hasPart` z `Publication.chapters` (B2, K-137); `Article` z `isPartOf` → `Book`; `BreadcrumbList` (K-158). Jeden komponent emisji `<script type="application/ld+json">`. Walidacja: validator.schema.org + Rich Results Test (dev przez tunel albo wklejony HTML) | `src/lib/structured-data/*`, komponent `JsonLd` |
+| **9d** Pod analitykę | Konwencja zdarzeń K-15: atrybuty `data-event` (nazwy zdarzeń + parametry) na CTA zapisów, `mailto:`, `tel:` — **bez skryptu analityki**, tak by podpięcie narzędzia w etapie 11 było jednym plikiem; konwencja opisana w briefie §7 / `CLAUDE.md`. Polityka prywatności: poprawka zdania o „osadzonej mapie Google Maps” — na `/kontakt` jest tylko link (gate K-122) | `Button`, `OfferSideCta`, `ContactRow`, `Footer`, `MdxLink`, `content/pages/polityka-prywatnosci.json` |
+
+Kolejność 9a → 9b → 9c → 9d; checkpoint po każdym. Weryfikacja: build + lint; podgląd tagów (`curl` HTML), Facebook Sharing Debugger i walidator schema.org dopiero na stagingu (etap 11) — w k9 walidacja HTML lokalnie.
+
+**Poza k9 (zależne od hostingu → etap 11):** ustawienie `SITE_ENV=production` w środowisku buildu produkcji (9b); wybór narzędzia analitycznego (K-07, zawieszone), jego skrypt i akapit o analityce w polityce (K-119); DoD „zdarzenia widoczne w panelu”; B1 / K-35 (CTA w nagłówku — po danych z analityki); weryfikacja Search Console (TXT w DNS) i wysłanie `sitemap.xml`; 301 z wersji bez `www`; testy OG i Rich Results na publicznym adresie.
+
 ### Blok R — Review serwisu (równolegle do k8)
 
 **Zakres:** review techniczne (R0–R5), wizualne (V1–V4) i — po EJK — zgodności z planem i treści (C1–C2); poprawki osobnym planem `docs/archive/plans/10-review-fixes.md`. Plan, decyzje RV-1…RV-7 i postęp: **`docs/plans/10-review.md`**. Przejmuje z k10 ewaluację kodu i przegląd tras (RV-1).
@@ -115,7 +157,7 @@ Z `docs/plan-claude-code.md` §3, etap 10:
 
 ## Ryzyka i pytania otwarte
 
-- **K-07** Plausible vs Umami — rozstrzygnąć na starcie k9 (wpływa na politykę prywatności, K-119).
+- **K-07** narzędzie analityczne — **zawieszone do sesji discovery o hostingu (etap 11)**; stan analizy: `docs/legacy-wp-analytics-notes.md` §5. k9 przygotowuje tylko konwencję zdarzeń (9d).
 - **Prezentacja z klientem** — termin i staging; od niej zależą B7, B8 i część DoD #1.
 - ~~**Tempo k8**~~ — backlog treści zamknięty 2026-10-25.
 - **Przegląd UX** (`docs/archive/plans/10-ux-consistency-review.md`) — rozstrzygnięty i zrealizowany 2026-10-25 (kawałek 8c).
@@ -130,5 +172,5 @@ Z `docs/plan-claude-code.md` §3, etap 10:
 | 8b — menu mobilne | ✅ 2026-10-22, OK właściciela 2026-10-25 | **Korekta 2026-10-23 (`345fb98`, zastępuje pkt 3):** dolny rząd szuflady usunięty („Zapisy na warsztaty”, Blog); menu odwzorowuje mapę stopki — doszły Publikacje i akordeon Kontakt (Kontakt · Polityka prywatności); `aria-controls` bez spacji. Pkt 1–6 wdrożone: `.menu-fab` (utilities.css, tokeny `--menu-fab-size`/`--menu-fab-offset`), dolny odstęp stopki pod przycisk wycofany po przeglądzie (2026-10-22); szuflada `fixed inset-0` z własnym paskiem i `role="dialog"`, stale zamontowana (`inert` gdy zamknięta), `.menu-drawer` — fade + przesunięcie 200 ms w obie strony, bez animacji przy `prefers-reduced-motion`; cały wiersz sekcji = przycisk akordeonu; `mainNav.children` = pełne `sectionNav` (stopka Warsztatów nadal `slice(1)`); prop `sectionActiveHref` z `resolveNav`; `pl.header`: + `menuCloseLabel`, − `contactCta`, `sectionExpandLabel`, `sectionCollapseLabel`. Przycisk nie chowa się przy otwartym menu (zakrywa go szuflada; fokus wraca na niego pewnie). Przy okazji przeglądu mobile: `trojca-swieta-2017.jpg` (pierwsza ikona galerii, lightbox ładował 1,8 MB) → 1200×1600, mozjpeg q82 4:2:0, 183 KB (limit 1600 px z K-138, jakość jak miniatury K-138), wymiary w `icons.json` |
 | 8c — spójność UX | ✅ 2026-10-25, OK właściciela (commit `10/8c: UX consistency…`) | pkt 1–7 wdrożone: `FactsBox` CTA i telefon `lg` + `compactMobile` (64 px; jedna linia też na 375 px); `OfferCard` CTA `block`; `FilterChip` aktywny = złoty obrys; „Czytaj” / „Czytaj dalej” w `NewsCard` / `NewsFeatured` ze stałym podkreśleniem `link-underline-target--border` (hover: kolor kreski) — `Pillars` i `LecturesGalleryLink` już je miały; etykieta nad H1 na Wystawach Garamond złoty; `.contact-entrance` belka u góry; H2 „Najbliższe” `role-section-h2`. Sprawdzone 375 / 390 / 1440 px (bez poziomego scrolla). Przy okazji: `.claude/launch.json` + konfiguracja `prod-preview` (`next start -p 3005`) — podgląd, gdy `next dev` z innej sesji zajmuje folder |
 | R — review serwisu | ✅ część techniczna i wizualna 2026-10-06 | R0–R5, RF-0…RF-21, V1–V4 zamknięte, w `main` (PR #15); zostaje C1–C2 — warunek (T1–T29) spełniony 2026-10-25; postęp w `10-review.md`, `docs/archive/plans/10-review-fixes.md` |
-| 9 — SEO / analityka | ⬜ | |
+| 9 — SEO / analityka | ✅ 2026-10-26, OK właściciela (9a–9d) | kawałki 9a–9d, decyzje K-155…K-158; analityka (K-07) → etap 11. **9a:** `pageMetadata()` w `src/lib/metadata.ts` (description, canonical, OG, Twitter `summary_large_image`, `og:locale` `pl_PL`, `og:site_name`), `metadataBase` + domyślne OG/description w `layout.tsx` (fallback dla 404); `seo: { description, ogImage? }` w pliku treści każdej trasy statycznej, odczyt przez `src/content/seo.ts`; nowe `content/pages/aktualnosci.json`, `publikacje.json` (lead przeniesiony z `pl.ts`), `ikony.json`; opisy — copy Claude, zaakceptowane (K-122) z korektą `/wyklady/wykladowcy`; obrazy OG: `scripts/generate-og-images.ts` (sharp) → `public/media/og/*.jpg` 1200×630 wg tabeli K-156; wpisy — `excerpt` + `cover` (bez okładki — domyślny), album — `lead` + `cover`, artykuły — `excerpt` + okładka albumu (teksty z mediów — domyślny). **9b:** `src/app/sitemap.ts` (97 adresów: trasy statyczne z `getStaticPagePaths()` w `seo.ts`, wpisy, album, artykuły; `lastModified` tylko z dat treści — data wpisu, jeśli minęła, i `lastUpdated` polityki; `revalidate` 1 d), `src/app/robots.ts`, `src/lib/siteEnv.ts`; indeksacja tylko przy `SITE_ENV=production` (czytane przy buildzie), w innym razie `Disallow: /` + `noindex, nofollow` z `layout.tsx`. **Etap 11: ustawić `SITE_ENV=production` na hostingu produkcyjnym — bez niej Google nie zaindeksuje strony.**. **9c:** jeden emiter `JsonLd` (`src/components/core/JsonLd.tsx`, nbsp → spacja, `<` escapowane); budowniczy w `src/lib/structured-data/` (`site`, `breadcrumbs`, `person`, `events`, `course`, `publications`); `Organization` w `layout.tsx` (z `parentOrganization` → Fundacja, `founder` → EJK, `sameAs` FB/YT/blog); `BreadcrumbList` w `SectionPageShell` na każdej podstronie (K-158; strony spoza nawigacji podają `breadcrumbTitle`); `Person` EJK na `/o-akademii`; 11 × `Event` na `/wyklady` (data bez godziny, `offers` 400 PLN, `performer`, `superEvent` cyklu); `ExhibitionEvent` „Wystawa doroczna Akademii Ikony „Mistyka dziś”” (szablon `pl.meta.annualExhibitionEventName`, decyzja właściciela) (2027-06-12 → 2027-08-31); `Course` kurs (z miejscem) i LSŚ (bez), bez ceny; `Book` z `hasPart` z `chapters` (B2) i ofertą 140 PLN; `Article` z `isPartOf` → `Book` dla tekstów z albumu; nowe `pl.meta.foundingYear`, `foundationName`; helper `getArticleAlbum()` w `publications.ts`. Walidacja: JSON poprawny w 102 plikach HTML; validator.schema.org / Rich Results — etap 11. **9d:** `src/lib/analytics.ts` (`enroll_click` / `email_click` / `phone_click`, `enrollEvent()`, `linkEvent()`); auto-zdarzenie z `href` w `Button`, `TextLink`, `a` w `mdx-components.tsx`, `Footer`; `enroll_click` jawnie w `FactsBox` i `OfferClosingCta`; 0 linków `mailto:`/`tel:` bez `data-event` w 102 plikach HTML; konwencja w brief §7 i `CLAUDE.md`; polityka: zdanie o mapie → „link do Map Google” (copy Claude, zaakceptowane K-122), `lastUpdated` 2026-10-26 |
 | 10 — audyty / docs | ⬜ | okrojony przez RV-1 |

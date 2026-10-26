@@ -83,7 +83,7 @@ export function NewsArticlePage({ entry, path }: NewsArticlePageProps) {
   });
 
   return (
-    <SectionPageShell path={path}>
+    <SectionPageShell path={path} breadcrumbTitle={entry.title}>
       <LightboxProvider>
         <article className={articleClass}>
           <header className="news-article-head">

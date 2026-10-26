@@ -387,6 +387,10 @@ Szacunek ręcznej korekty po migracji: ~10 stron statycznych, 16 sezonów wykła
 
 Telefon jako `tel:+48601734705`.
 
+**Zdarzenia analityczne (K-15, k9/9d):** linki niosą `data-event` + parametry `data-event-*`; skrypt narzędzia (K-07) dochodzi w etapie 11 jako jeden nasłuchiwacz kliknięć, bez zmian w komponentach. Typy i helpery: `src/lib/analytics.ts`.
+- `enroll_click` — CTA zapisów: przycisk `FactsBox` i link `OfferClosingCta`; `data-event-offer` (`kurs` / `plener` / `wyklady`), `data-event-state` (stan zapisów na przycisku). Nadawane jawnie przez `enrollEvent()`.
+- `email_click` — każdy inny `mailto:`; `phone_click` — każdy `tel:`. Nadawane automatycznie z `href` w `Button`, `TextLink`, mapowaniu `a` w `mdx-components.tsx` i w gołym `<a>` przez `linkEvent()`.
+
 **Nazwy komponentów (użyć tych nazw w kodzie, żeby zgadzały się z design/README):**
 `Header`, `Footer`, `SectionNav`, `Breadcrumb`, `Hero`, `FactsBox`, `OfferCard`, `LectureList`, `SeasonAccordion`, `IconGrid`, `Lightbox`, `NewsCard`, `Testimonial`, `MapBlock`, `TocSidebar` (strona tekstowa). W MDX ofert: `OfferFigure`, `OfferSideCta` (k7), `OfferSidePhoto` (k8 — sekcja tekst + zdjęcie w prawej kolumnie). W MDX artykułów: `ArticleFigure` (k8, T26 — zdjęcie w kolumnie tekstu, bez kadrowania, opcjonalny podpis). `EventCard` usunięty (K-50, 2026-09-21) — dział „Wydarzenia” zlikwidowany, wpisy renderują się przez `NewsCard`.
 

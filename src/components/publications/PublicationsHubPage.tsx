@@ -16,11 +16,13 @@ import { PageHeading } from "@/components/core/PageHeading";
 export interface PublicationsHubPageProps {
   /** Route path — see SectionPageShellProps["path"]. */
   path: string;
+  /** Intro under the heading, from `content/pages/publikacje.json`. */
+  lead: string;
   publication: PublicationFrontmatter;
   articles: ArticleFrontmatter[];
 }
 
-export function PublicationsHubPage({ path, publication, articles }: PublicationsHubPageProps) {
+export function PublicationsHubPage({ path, lead, publication, articles }: PublicationsHubPageProps) {
   const secretariatEmail = getSecretariatEmail();
   const mailtoHref = buildMailtoHref(secretariatEmail, pl.publications.mailtoSubject);
 
@@ -38,7 +40,7 @@ export function PublicationsHubPage({ path, publication, articles }: Publication
       <div className="publication-page">
         <header className="publication-page-header">
           <PageHeading level="page" className="mb-space-5">{pl.publications.title}</PageHeading>
-          <p className="publication-page-lead">{pl.publications.lead}</p>
+          <p className="publication-page-lead">{lead}</p>
         </header>
 
         <section className="publication-hub-album" aria-labelledby="publication-hub-album-title">

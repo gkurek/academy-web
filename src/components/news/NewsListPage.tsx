@@ -16,6 +16,8 @@ export interface NewsListPageProps {
   archiveYears: string[];
   /** Route path — see SectionPageShellProps["path"]. */
   path: string;
+  /** Intro under the heading, from `content/pages/aktualnosci.json`. */
+  lead: string;
   featured?: NewsListEntry;
 }
 
@@ -26,6 +28,7 @@ export function NewsListPage({
   years,
   archiveYears,
   path,
+  lead,
   featured,
 }: NewsListPageProps) {
   return (
@@ -35,7 +38,7 @@ export function NewsListPage({
         {pl.news.title}
       </PageHeading>
       <p className="text-size-lead-m md:text-size-lead leading-body text-text-secondary max-w-measure-lead mb-space-6">
-        {pl.news.lead}
+        {lead}
       </p>
       {featured ? <NewsFeatured entry={featured} /> : null}
       <YearNav years={years} archiveYears={archiveYears} />

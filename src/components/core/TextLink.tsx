@@ -2,6 +2,7 @@ import Link from "next/link";
 import type { AnchorHTMLAttributes, ReactNode } from "react";
 
 import { ExternalLink } from "@/components/core/ExternalLink";
+import { linkEvent } from "@/lib/analytics";
 
 export interface TextLinkProps extends AnchorHTMLAttributes<HTMLAnchorElement> {
   href: string;
@@ -29,16 +30,19 @@ export function TextLink({
     .filter(Boolean)
     .join(" ");
 
+  // A `data-event` passed in `rest` (e.g. `enrollEvent`) overrides the one derived from `href` (K-15).
+  const attributes = { ...linkEvent(href), ...rest };
+
   if (external) {
     return (
-      <ExternalLink href={href} className={classes} {...rest}>
+      <ExternalLink href={href} className={classes} {...attributes}>
         <span className={underlineTargetClass}>{children}</span>
       </ExternalLink>
     );
   }
 
   return (
-    <Link href={href} className={classes} {...rest}>
+    <Link href={href} className={classes} {...attributes}>
       <span className={underlineTargetClass}>{children}</span>
     </Link>
   );

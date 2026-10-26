@@ -29,6 +29,7 @@ Przy konflikcie: `CLAUDE.md` > plan etapu > `brief-claude-code.md` > `brief-full
 - Obrazy tylko przez `next/image` z podanymi wymiarami. Fonty przez `next/font`, subsety `latin` + `latin-ext`.
 - Dostępność: każdy interaktywny element ma widoczny fokus (obrys 2px `#e8c765`, odstęp 2px); `alt` obowiązkowy; respektuj `prefers-reduced-motion`.
 - Tokeny designu z `design/README`; nie zmieniać bez wyraźnej prośby. Zakazane w produkcji: `#8d7d69`, rozmiar 13px, zaokrąglenia, `box-shadow` (makieta może mieć cień hero/lightbox — w kodzie nie; K-140 odwołane 2026-10-06), IBM Plex Mono.
+- Linki `mailto:` / `tel:` przez `Button`, `TextLink` albo z `{...linkEvent(href)}` na gołym `<a>`; CTA zapisów z `enrollEvent()` — konwencja zdarzeń w `docs/brief-claude-code.md` §7 (K-15).
 - Klasa semantyczna i narzędzie Tailwind nie ustawiają tej samej właściwości na tym samym elemencie. Rola typograficzna (`PageHeading`, `.list-title`, `.body-copy`, `.prose-*`) nie ustawia marginesów; margines dodaje wywołujący.
 - Komentarze w kodzie, nazwy zmiennych, komunikaty commitów i PR: po angielsku. Treść widoczna dla użytkownika: po polsku, przez `pl.ts` lub `content/`.
 

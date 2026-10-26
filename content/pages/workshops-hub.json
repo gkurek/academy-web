@@ -73,5 +73,9 @@
     "Artur",
     "Adam",
     "Maciej"
-  ]
+  ],
+  "seo": {
+    "description": "Warsztaty pisania ikon w Warszawie: kurs w roku akademickim albo tygodniowy plener latem. Indywidualne prowadzenie, materiały na miejscu.",
+    "ogImage": "/media/og/warsztaty.jpg"
+  }
 }

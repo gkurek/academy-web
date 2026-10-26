@@ -11,6 +11,10 @@ const plSource = {
     // Same name split into the two lines the logo lockup uses.
     orgShortName: "AKADEMIA IKONY",
     orgSubtitle: "Studium Ikonograficzne św. Andrzeja Apostoła",
+    // Structured data (JSON-LD) facts, verbatim from brief-claude-code.md §8.
+    foundingYear: "2010",
+    foundationName: "Fundacja IKONA DZIŚ",
+    annualExhibitionEventName: "Wystawa doroczna Akademii Ikony „{title}”",
   },
   a11y: {
     skipToContent: "Przejdź do treści",
@@ -358,8 +362,6 @@ const plSource = {
   publications: {
     breadcrumbHome: "Strona główna",
     title: "Publikacje",
-    lead:
-      "Na piętnaste urodziny Akademii wydaliśmy album podsumowujący piętnaście lat pracy. W tym dziale publikujemy też wybrane teksty z albumu i artykuły Elżbiety Jackowskiej-Kurek.",
     albumEyebrow: "Fundacja IKONA DZIŚ",
     imprint: "Album jubileuszowy, Fundacja IKONA DZIŚ, {year}",
     albumFallback: "albumu",
@@ -448,8 +450,6 @@ const plSource = {
   },
   news: {
     title: "Aktualności",
-    lead:
-      "Wykłady, warsztaty, plenery, wystawy i spotkania w Akademii Ikony – oraz archiwum od 2012 roku, w jednym strumieniu wpisów.",
     yearNavAriaLabel: "Przejdź do roku",
     yearNavLabel: "Przejdź do roku",
     yearNavMore: "…",
