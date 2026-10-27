@@ -15,6 +15,8 @@ export function ContactPhoto({ photo }: ContactPhotoProps) {
         alt={photo.alt}
         width={photo.width}
         height={photo.height}
+        loading="eager"
+        fetchPriority="high"
         sizes="(min-width: 1024px) 422px, 100vw"
         className="block h-auto w-full bg-surface-tile"
       />

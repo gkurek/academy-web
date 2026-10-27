@@ -49,7 +49,8 @@ function AboutHero({ title, lead, image }: { title: string; lead: string; image:
             height={image.height}
             className="about-hero-image"
             sizes="(max-width: 1023px) 100vw, 560px"
-            priority
+            loading="eager"
+            fetchPriority="high"
           />
           {image.caption ? <figcaption className="about-hero-caption">{image.caption}</figcaption> : null}
         </figure>

@@ -45,8 +45,10 @@ next-env.d.ts
 /.visual/
 
 # Lighthouse raw reports (~60 MB) stay on disk only; tables live in docs/lighthouse/README.md
-/docs/lighthouse/*.report.*
-/docs/lighthouse/after-10c/
+/docs/lighthouse/**/*.report.*
+
+# WebP variants of public/media, generated in predev/prebuild (11b)
+/public/media-webp/
 
 # OpenNext / Cloudflare build output and local state
 /.open-next/

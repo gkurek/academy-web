@@ -55,7 +55,8 @@ export function PublicationAlbumPage({ publication, path }: PublicationAlbumPage
                   fill
                   sizes="(min-width: 768px) 50vw, 100vw"
                   className="publication-album-cover-image"
-                  priority
+                  loading="eager"
+                  fetchPriority="high"
                 />
               </div>
               <p className="publication-album-cover-caption">{pl.publications.coverCaptionAlbum}</p>

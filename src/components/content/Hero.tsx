@@ -41,7 +41,8 @@ export function Hero({ title, lead, image, children }: HeroProps) {
             alt={image.alt}
             width={image.width}
             height={image.height}
-            priority
+            loading="eager"
+            fetchPriority="high"
             sizes="(min-width: 1024px) min(486px, 38vw), (min-width: 768px) 486px, 72vw"
             className="block w-full h-auto md:w-hero-image-w md:max-w-full md:h-auto md:max-h-hero-image-h object-contain"
           />

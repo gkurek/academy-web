@@ -15,10 +15,7 @@
       "service": "akademiaikony"
     }
   ],
-  // next/image optimization through Cloudflare Images; revisited in 11b (image loading)
-  "images": {
-    "binding": "IMAGES"
-  },
+  // No Cloudflare Images binding: next/image serves WebP variants prebuilt into static assets (11b).
   // Workers Logs (K-162)
   "observability": {
     "enabled": true
@@ -26,9 +23,6 @@
   // Worker Previews for non-production branches (K-161): bindings are not inherited from the top level.
   // WORKER_SELF_REFERENCE is left out on purpose: in a Preview it would call the production Worker.
   "previews": {
-    "images": {
-      "binding": "IMAGES"
-    },
     "observability": {
       "enabled": true
     }

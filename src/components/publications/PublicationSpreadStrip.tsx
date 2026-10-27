@@ -40,8 +40,6 @@ export function PublicationSpreadStrip({
       <ul className={gridClass}>
         {visibleSpreads.map((spread, index) => {
           const tileSrc = spread.thumbSrc ?? spread.src;
-          const tileUnoptimized =
-            spread.thumbSrc !== undefined && tileSrc.startsWith("/media/");
           const frameWidth = spread.thumbWidth ?? spread.width;
           const frameHeight = spread.thumbHeight ?? spread.height;
 
@@ -62,7 +60,6 @@ export function PublicationSpreadStrip({
                     alt=""
                     aria-hidden
                     fill
-                    unoptimized={tileUnoptimized}
                     sizes={
                       columns === 1
                         ? "100vw"
