@@ -15,6 +15,12 @@
       "port": 3005
     },
     {
+      "name": "cf-preview",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": ["opennextjs-cloudflare", "preview"],
+      "port": 8787
+    },
+    {
       "name": "tag-photos",
       "runtimeExecutable": "npx",
       "runtimeArgs": ["tsx", "scripts/tag-photos.ts"],

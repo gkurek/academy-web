@@ -124,7 +124,7 @@ export function ExhibitionPage({
       <LightboxProvider>
         {heroImage ? (
           <div className="exhibition-hero-frame mb-space-6">
-            <ExhibitionFrame image={heroImage} />
+            <ExhibitionFrame image={heroImage} priority />
           </div>
         ) : null}
 

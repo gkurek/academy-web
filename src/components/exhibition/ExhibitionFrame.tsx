@@ -20,8 +20,10 @@ export function ExhibitionFrame({ image, className, priority = false }: Exhibiti
           src={image.src}
           alt={image.alt}
           fill
-          priority={priority}
-          sizes="100vw"
+          loading={priority ? "eager" : "lazy"}
+          fetchPriority={priority ? "high" : "auto"}
+          // Measured frame width: ~84–88% of the viewport below 1280px, then ~80% up to the 1168px cap.
+          sizes="(min-width: 1280px) min(1168px, 80vw), 92vw"
           className="exhibition-frame-image"
         />
       </span>

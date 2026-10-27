@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import type { LoadedHomePillar } from "@/content/home";
+import { HIGH_IMAGE_QUALITY } from "@/lib/imageVariants";
 
 const pillarLinkClass =
   "tap-target-below-lg text-accent-text no-underline group-hover:text-accent-hover";
@@ -26,7 +27,7 @@ export function Pillars({ pillars }: PillarsProps) {
                 width={pillar.image.width}
                 height={pillar.image.height}
                 sizes="(min-width: 768px) 33vw, 100vw"
-                quality={90}
+                quality={HIGH_IMAGE_QUALITY}
                 className="w-full h-pillar-image-h-m md:h-pillar-image-h object-cover"
               />
               <h2 className="font-serif font-normal text-size-role-card-title-m md:text-size-role-card-title leading-heading text-text-h2 transition-ui-colors group-hover:text-accent-hover mt-space-5 md:mt-space-6 mb-space-3">

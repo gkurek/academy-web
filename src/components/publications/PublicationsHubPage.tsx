@@ -53,7 +53,8 @@ export function PublicationsHubPage({ path, lead, publication, articles }: Publi
                   fill
                   sizes="(min-width: 768px) 440px, 100vw"
                   className="publication-hub-cover-image"
-                  priority
+                  loading="eager"
+                  fetchPriority="high"
                 />
               </div>
               <p className="publication-hub-cover-caption">{pl.publications.coverCaption}</p>

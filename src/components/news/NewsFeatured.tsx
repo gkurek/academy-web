@@ -30,6 +30,8 @@ export function NewsFeatured({ entry }: NewsFeaturedProps) {
           alt=""
           width={entry.cover.width}
           height={entry.cover.height}
+          loading="eager"
+          fetchPriority="high"
           sizes="(min-width: 768px) 42vw, 100vw"
           className="news-featured-image"
         />
