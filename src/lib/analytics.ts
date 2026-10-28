@@ -2,8 +2,8 @@ import type { Offer } from "@/content/types";
 
 /**
  * Click events for analytics (K-15). Links carry them as `data-event` plus `data-event-*`
- * parameters; no tracking script runs yet — stage 11 adds one delegated click listener that
- * reads these attributes and forwards them to the chosen tool (K-07).
+ * parameters; one delegated click listener (`listenForClickEvents`, started from
+ * `instrumentation-client.ts`) reads these attributes and forwards them to PostHog (K-07).
  *
  * - `enroll_click` — enrollment CTA (FactsBox, offer side/closing CTA); `data-event-offer`
  *   = offer kind, `data-event-state` = enrollment state shown on the button.
@@ -27,4 +27,32 @@ export function linkEvent(href: string): EventAttributes {
     return { "data-event": "phone_click" };
   }
   return {};
+}
+
+const EVENT_PARAM_PREFIX = "data-event-";
+
+/**
+ * Delegated listener for every `data-event` click on the page. Capture phase, so a handler that
+ * stops propagation (e.g. a lightbox) cannot hide a tracked link. Parameters are sent without the
+ * prefix: `data-event-offer="kurs"` → `{ offer: "kurs" }`.
+ */
+export function listenForClickEvents(capture: (event: ClickEvent, properties: Record<string, string>) => void) {
+  document.addEventListener(
+    "click",
+    (click) => {
+      const target = click.target instanceof Element ? click.target.closest("[data-event]") : null;
+      const event = target?.getAttribute("data-event") as ClickEvent | null | undefined;
+      if (!target || !event) {
+        return;
+      }
+      const properties = Array.from(target.attributes)
+        .filter((attribute) => attribute.name.startsWith(EVENT_PARAM_PREFIX))
+        .reduce<Record<string, string>>(
+          (params, attribute) => ({ ...params, [attribute.name.slice(EVENT_PARAM_PREFIX.length)]: attribute.value }),
+          {},
+        );
+      capture(event, properties);
+    },
+    { capture: true },
+  );
 }
