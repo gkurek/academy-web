@@ -7,8 +7,6 @@ import { getNews, loadNewsBySlug } from "@/content/news";
 import { getDefaultDescription, getDefaultOgImage } from "@/content/seo";
 import { pageMetadata } from "@/lib/metadata";
 
-// Event phase (zapowiedź / relacja) depends on the date — rebuild daily like `/` (K-85, B9).
-export const revalidate = 86400;
 // Every slug is known at build time; unknown ones are a static 404.
 export const dynamicParams = false;
 

@@ -15,7 +15,7 @@
     "check:content": "tsx scripts/check-content.ts",
     "check:media": "tsx scripts/check-media.ts",
     "images:variants": "tsx scripts/generate-image-variants.ts",
-    "cf:build": "opennextjs-cloudflare build",
+    "cf:build": "opennextjs-cloudflare build && opennextjs-cloudflare populateCache local",
     "cf:preview": "opennextjs-cloudflare build && opennextjs-cloudflare preview",
     "cf:deploy": "opennextjs-cloudflare deploy",
     "cf:upload": "opennextjs-cloudflare upload"
