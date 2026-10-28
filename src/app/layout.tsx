@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { EB_Garamond, IBM_Plex_Sans } from "next/font/google";
+import localFont from "next/font/local";
 import { JsonLd } from "@/components/core/JsonLd";
 import { getDefaultDescription, getDefaultOgImage } from "@/content/seo";
 import { pl } from "@/i18n/pl";
@@ -9,16 +9,21 @@ import { FOUNDER_ID } from "@/lib/structured-data/person";
 import { organizationNode } from "@/lib/structured-data/site";
 import "./globals.css";
 
-const ebGaramond = EB_Garamond({
+// Self-hosted subsets (Basic Latin, Latin-1, Polish, typographic punctuation) instead of Google's
+// latin + latin-ext files: 70 KB instead of 222 KB before LCP on a cold visit (11b, K-163).
+// Source, character set and regeneration: `src/app/fonts/README.md`.
+const ebGaramond = localFont({
+  src: "./fonts/eb-garamond-pl.woff2",
   variable: "--font-serif",
-  subsets: ["latin", "latin-ext"],
-  weight: ["400", "500", "600"],
+  weight: "400 600",
+  adjustFontFallback: "Times New Roman",
 });
 
-const ibmPlexSans = IBM_Plex_Sans({
+const ibmPlexSans = localFont({
+  src: "./fonts/ibm-plex-sans-pl.woff2",
   variable: "--font-sans",
-  subsets: ["latin", "latin-ext"],
-  weight: "variable",
+  weight: "400 700",
+  adjustFontFallback: "Arial",
 });
 
 const defaultOgImage = getDefaultOgImage();
