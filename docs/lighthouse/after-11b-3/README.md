@@ -78,7 +78,7 @@ Wszystkie 17 tras: dokument 200 + `x-opennext-cache: HIT`, wariant `RSC: 1` 200 
 
 ## Próby z błędem
 
-Wszystkich prób: 68 (planowo 102 mobile + 17 desktop = 119). Prób z błędem: **0**.
+Wszystkich prób: 68 (planowo 51 mobile + 17 desktop = 68). Prób z błędem: **0**.
 Brak — każdy przebieg zakończył się poprawnie w pierwszej próbie.
 
 ## Workers Logs (produkcja, okno pomiaru)
