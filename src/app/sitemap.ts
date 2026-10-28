@@ -8,9 +8,6 @@ import { getStaticPagePaths } from "@/content/seo";
 import { todayInWarsaw } from "@/lib/isoDate";
 import { SITE_URL } from "@/lib/metadata";
 
-// News dates can lie ahead (announcements) — rebuild daily like the news routes (K-85).
-export const revalidate = 86400;
-
 /** `lastModified` only where content carries a real date; a future event date is left out. */
 function pastDate(isoDate: string | undefined, today: string): string | undefined {
   return isoDate && isoDate <= today ? isoDate : undefined;

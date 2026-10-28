@@ -15,7 +15,7 @@ export function FeaturedIconsGallery({ icons }: FeaturedIconsGalleryProps) {
 
   return (
     <>
-      <IconGrid items={icons} mobileCount={4} eagerCount={4} fillLastRow onSelect={lightbox.open} />
+      <IconGrid items={icons} mobileCount={4} fillLastRow onSelect={lightbox.open} />
       <IconLightbox
         items={icons}
         index={lightbox.index}

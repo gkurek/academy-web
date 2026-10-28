@@ -14,8 +14,6 @@ import { pageMetadata } from "@/lib/metadata";
 import { annualExhibitionNode } from "@/lib/structured-data/events";
 import { navTitle } from "@/navigation";
 
-export const revalidate = 86400;
-
 const path = "/ikony/wystawy";
 
 export const metadata: Metadata = pageMetadata({ path, title: navTitle(path), ...getPageSeo(path) });
