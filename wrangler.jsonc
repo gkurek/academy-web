@@ -16,9 +16,13 @@
     }
   ],
   // No Cloudflare Images binding: next/image serves WebP variants prebuilt into static assets (11b).
-  // Workers Logs (K-162)
+  // Workers Logs + Issues: 5xx, exceptions and CPU limit errors grouped in the dashboard (K-162).
+  // Issues must stay enabled here, otherwise the next deploy turns it off.
   "observability": {
-    "enabled": true
+    "enabled": true,
+    "issues": {
+      "enabled": true
+    }
   },
   // Worker Previews for non-production branches (K-161): bindings are not inherited from the top level.
   // WORKER_SELF_REFERENCE is left out on purpose: in a Preview it would call the production Worker.
