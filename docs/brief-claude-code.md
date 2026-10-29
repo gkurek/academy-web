@@ -21,7 +21,7 @@ Strona jest częścią szerszego ekosystemu (Akademia + Fundacja + planowana str
 - **Frontend:** Next.js (App Router), TypeScript strict, React Server Components domyślnie; Client Components tylko gdy potrzebna interakcja (menu, lightbox, akordeon).
 - **Stylowanie:** Tailwind; tokeny z handoffu Claude Design jako zmienne w `globals.css` (`@theme` / CSS variables), używane przez klasy Tailwind (patrz `design/README`).
 - **Treść (v1):** pliki w repo — `content/` (MDX + JSON), zgodne z typami w `src/content/types.ts` (patrz §4). **Nie baza danych w v1.**
-- **Treść (v2, później):** ten sam model danych przeniesiony na SQLite/Postgres + panel `/admin` (Auth.js, 2–3 konta). Strony publiczne czytają z tej samej warstwy `src/content/*`, żeby zmiana źródła nie dotykała komponentów.
+- **Treść (v2, panel `/admin` — etap 12, K-165…K-167):** treść zostaje w `content/` w repo; panel `/admin` (osobna aplikacja i Worker w tym samym repo, logowanie Cloudflare Access, 2 konta) zapisuje zmiany commitem → build. Baza (D1) tylko na szkice i dzienne sumy analityki. Strony publiczne czytają z tej samej warstwy `src/content/*`. Plan: `docs/plans/12-admin.md`.
 - **Obrazy:** `next/image`; oryginały z WP zmigrowane do `public/media/` (na start) lub object storage; automatyczne WebP/AVIF.
 - **Zapisy (v1):** przyciski `mailto:` z ujednoliconymi tematami (lista w §6) + `tel:+48601734705`. Żaden backend formularzy w v1.
 - **Analityka:** Plausible lub Umami (bez ciasteczek), zdarzenia na klikach CTA zapisów, telefonu, `mailto:`. **Brak banera cookies** (nic go nie wymaga w v1).

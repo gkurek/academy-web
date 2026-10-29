@@ -1,89 +1,61 @@
-# Lighthouse — etap 10 / k10 (10b)
+# Lighthouse — podsumowanie pomiarów (etapy 10–11)
 
-Data: 2026-10-26 · środowisko: **local prod build** (`next start -p 3005`, Windows, Chrome headless, `npx lighthouse`, jeden przebieg na trasę i tryb) · kategorie: Performance, Accessibility, Best Practices.
+Jeden plik zamiast katalogów z pomiarami: 2026-10-29 surowe raporty (~560 MB, poza repo) i README cząstkowe (`after-11b/`, `after-11b-3/`, `after-11b-4/`, `after-11c-no-analytics/`) usunięte. Odwołania do tych katalogów w Postępie planu 11 to historia — liczby są niżej i w git (`git log -- docs/lighthouse`).
 
-Kategoria SEO pominięta celowo: poza produkcją strona ma `noindex` (`SITE_ENV`), więc wynik byłby nieistotny.
+**Metoda (od 11b):** produkcyjny `workers.dev` (Cloudflare Workers Free), Lighthouse 13.5, okno Chrome widoczne, świeża instancja na każdy przebieg. Mobile w presecie domyślnym (symulowane wolne 4G), 3 przebiegi, bierzemy medianę. Desktop z `--preset=desktop`. Kategorie Performance / Accessibility / Best Practices. SEO pomijamy, bo poza produkcją strona ma `noindex`. Kryterium K-163 dla mobile: Perf ≥ 90 i LCP ≤ 2,5 s.
 
-Progi DoD etapu 10: a11y ≥ 95, wydajność ≥ 90 (mobile).
+## Wynik końcowy (11b-4 + analityka, 2026-10-28) — odebrany przez właściciela
 
-## Wyniki
+| Trasa | Perf M | LCP M | Element LCP |
+| --- | --- | --- | --- |
+| `/` | 95 | 2,6 s ✗ | tekst lead |
+| `/aktualnosci` | 89 ✗ | 3,5 s ✗ | — (tekst po `load`) |
+| `/publikacje/ikona-dzis` | 96 | 2,4 s | okładka |
+| `/wyklady/archiwum` | 96 | 2,4 s | tekst lead |
+| `/ikony` | 95 | 2,5 s ✗ (2,51) | 1. miniatura |
+| `/kontakt` | 96 | 2,6 s ✗ | link w tekście |
+| `/warsztaty/kurs-roczny-i-trzyletni` | 97 | 2,1 s | tekst lead |
+| `/warsztaty/letnia-szkola-swiatla` | 98 | 2,1 s | tekst lead |
+| `/o-akademii` | 95 | 2,4 s | zdjęcie hero |
+| `/polityka-prywatnosci` | 96 | 2,1 s | akapit |
+| `/pracownia` | 97 | 2,1 s | tekst lead |
+| `/publikacje` | 96 | 2,6 s ✗ | okładka |
+| `/warsztaty` | 98 | 2,3 s | zdjęcie ramki |
+| `/aktualnosci/wernisaz-albumu-ikona-dzis` | 98 | 2,1 s | akapit |
+| `/wyklady/wykladowcy` | 98 | 2,4 s | tekst lead |
+| `/wyklady` | 98 | 2,1 s | akapit |
+| `/ikony/wystawy` | 97 | 2,4 s | tekst lead |
 
-| Trasa | Tryb | Perf | A11y | BP | LCP | TBT | CLS |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| `/` | mobile | **87** ✗ | 100 | 100 | 4,0 s | 30 ms | 0 |
-| `/` | desktop | 100 | 100 | 100 | 0,8 s | 0 ms | 0 |
-| `/warsztaty/kurs-roczny-i-trzyletni` | mobile | 91 | 100 | 100 | 3,5 s | 20 ms | 0 |
-| `/warsztaty/kurs-roczny-i-trzyletni` | desktop | 100 | 100 | 100 | 0,7 s | 0 ms | 0 |
-| `/wyklady` | mobile | 91 | 100 | 100 | 3,5 s | 40 ms | 0 |
-| `/wyklady` | desktop | 100 | 100 | 100 | 0,7 s | 0 ms | 0 |
-| `/ikony` | mobile | **85** ✗ | 100 | 100 | 4,4 s | 40 ms | 0 |
-| `/ikony` | desktop | 99 | 100 | 100 | 0,9 s | 0 ms | 0 |
-| `/aktualnosci` | mobile | 90 | 100 | 100 | 3,6 s | 30 ms | 0 |
-| `/aktualnosci` | desktop | 100 | 100 | 100 | 0,7 s | 0 ms | 0 |
+- **K-163 mobile: 12/17 tras.** Właściciel przyjął wynik z tym odstępstwem 2026-10-28.
+- **Desktop:** Perf 100 i LCP ≤ 0,6 s na wszystkich trasach. A11y 100, poza `/kontakt` i `/o-akademii` (96: reguła `link-in-text-block`; wzorzec podkreślenia K-135 zostaje świadomie). BP 100, CLS 0.
+- **Workers Logs w oknie pomiaru:** 0 błędów. TTFB mobile 50–130 ms.
 
-Raporty (tylko na dysku, poza repo — `.gitignore`; w repo zostaje ten README): `<trasa>-<mobile|desktop>.report.html` (podgląd) i `.report.json` (dane); trasy: `home`, `kurs`, `wyklady`, `ikony`, `aktualnosci`.
+## Droga do wyniku (mobile, zakres po 17 trasach)
+
+| Etap | Perf M | LCP M | Spełnia K-163 | Co zmieniono |
+| --- | --- | --- | --- | --- |
+| 10b (lokalnie, `next start`) | 85–92 | 3,3–4,4 s | — | stan wyjściowy |
+| przed 11b (`workers.dev`) | 89–95 | 2,9–3,7 s | 0/17 | — |
+| 11b-2 | 89,5–95 | 2,6–3,6 s | 0/17 | `_headers` (cache), LCP eager + `fetchPriority`, statyczne WebP w buildzie |
+| 11b-3 | 87–94 | 2,9–3,7 s | 0/17 | cache statyczny OpenNext (koniec 503 / limitu CPU) |
+| **11b-4** | **89–98** | **2,1–3,5 s** | **12/17** | własne podzbiory fontów: 220 → 69 KB, 2 preloady |
 
 ## Wnioski
 
-- **A11y 100 i Best Practices 100 na wszystkich trasach**, CLS 0 (`/aktualnosci` desktop 0,002) — progi a11y spełnione z zapasem.
-- **Desktop ≥ 99 wszędzie.** Mobile: trzy trasy na progu lub tuż nad (90–91), dwie pod nim: `/` (87) i `/ikony` (85).
-- Różnica między pomiarem „zaobserwowanym” a symulowanym jest duża: LCP zmierzony bez throttlingu to ~150 ms, symulowany Lighthouse’a (wolne 4G, 4× wolniejszy CPU) to 3,5–4,4 s. Wynik mobile jest więc ograniczony przez **sieć w symulacji**, nie przez pracę CPU (TBT 20–40 ms).
-- Wspólne dla wszystkich tras: dwa blokujące arkusze CSS (21 + 1,5 KB, ~350 ms w symulacji), cztery preładowane pliki fontów (~220 KB; największy to EB Garamond `latin-ext` 111 KB — potrzebny dla polskich znaków), jeden chunk JS 70 KB z ~40 % nieużywanego kodu i polyfillami (13 KB `legacy-javascript`).
-- `/ikony`: element LCP to pierwsza miniatura (`loading="eager"`, ale bez `fetchpriority=high`) — opóźnienie startu 1,0 s + pobranie 1,5 s w symulacji.
-- `/`: element LCP to akapit lead (czeka na font); obrazy kafli „Najbliższe” `wystawa.jpg` mogłyby być lżejsze o ~59 KB (q90 — świadoma decyzja 8c).
+1. **Mobile ogranicza sieć symulacji, nie obrazy ani CPU.** Przed LCP przeglądarka pobiera HTML, CSS, fonty i JS. Dopóki fonty ważyły 220 KB, ta podłoga wynosiła ok. 3 s nawet na stronie bez obrazów. Własne podzbiory fontów dały najwięcej: −0,6 do −0,9 s na każdej trasie.
+2. **Obrazy:** przekształcanie w locie (`/_next/image`, bez cache) zastąpiły warianty WebP generowane w buildzie, z długim cache. Obrazy LCP mają `eager` i `fetchPriority="high"`. Na desktopie pierwszy ekran ładuje się < 1 s.
+3. **Stabilność:** OpenNext bez incremental cache renderował każde żądanie od nowa i przekraczał limit 10 ms CPU, co dawało 142 × 503. Cache statyczny usunął ten problem. Daty na stronach odświeża dobowy rebuild (11d).
+4. **Koszt analityki** (porównanie z PostHogiem i bez, 5 tras): +80–115 ms TBT i −1 do −6 pkt Perf. LCP pogarsza się tylko na `/aktualnosci` (3,5 vs 2,9 s), bo SDK trafia w okno przed późnym LCP tekstu. Właściciel zaakceptował ten koszt.
+5. **Próby bez efektu (nie wracać):** `experimental.inlineCss` pogorszył wynik, a `fetchPriority` przed 11b nic nie zmienił. Po odbiorze odrzucone zostały: późniejszy init PostHoga, dalsze cięcie JS i pomiar headless.
+6. **Pomiar:** wyniki wahają się o kilka punktów. Przy trasach blisko progu robić 3 przebiegi i brać medianę, z oknem Chrome na pierwszym planie.
 
-## Zastrzeżenia
+## Do zrobienia
 
-- Pomiar lokalny nie obejmuje hostingu (TTFB, kompresji, nagłówków cache, CDN). **Ostateczny pomiar wydajności — etap 11, na docelowym hostingu** (K-09). Opcjonalny pomiar na stagingu dopisać do tego pliku jako osobną tabelę.
-- Jeden przebieg na konfigurację; wyniki Lighthouse wahają się o kilka punktów między przebiegami.
-
-## Pozostałe trasy (poza DoD)
-
-Te same ustawienia (local prod build, 2026-10-26). Pliki: `<nazwa>-<mobile|desktop>.report.*`.
-
-| Trasa (plik) | Perf M | A11y | BP | LCP M | Perf D |
-| --- | --- | --- | --- | --- | --- |
-| `/warsztaty` (`warsztaty`) | **87** ✗ | 100 | 100 | 4,0 s | 99 |
-| `/warsztaty/letnia-szkola-swiatla` (`lss`) | 91 | 100 | 100 | 3,5 s | 100 |
-| `/wyklady/archiwum` (`archiwum`) | 91 | 100 | 100 | 3,5 s | 100 |
-| `/wyklady/wykladowcy` (`wykladowcy`) | 91 | 100 | 100 | 3,5 s | 100 |
-| `/ikony/wystawy` (`wystawy`) | **89** ✗ | 100 | 100 | 3,8 s | 100 |
-| `/o-akademii` (`o-akademii`) | **89** ✗ | 96 | 100 | 3,8 s | 100 |
-| `/pracownia` (`pracownia`) | 91 | 100 | 100 | 3,5 s | 100 |
-| `/publikacje` (`publikacje`) | **87** ✗ | 100 | 100 | 4,1 s | 100 |
-| `/kontakt` (`kontakt`) | 91 | 96 | 100 | 3,5 s | 100 |
-| `/polityka-prywatnosci` (`polityka`) | 92 | 100 | 100 | 3,3 s | 100 |
-| `/publikacje/ikona-dzis` (`album`) | **86** ✗ | 100 | 100 | 4,2 s | 100 |
-| `/aktualnosci/wernisaz-albumu-ikona-dzis` (`wpis-galeria`) | 91 | 100 | 100 | 3,5 s | 99 |
-
-### Wnioski z drugiej tabeli
-
-- **Wspólny „próg” mobile to ~91 / LCP 3,5 s** — nawet strony tekstowe (polityka, wykładowcy) nie schodzą niżej. To koszt wspólnych zasobów (blokujący CSS, fonty, chunk JS), więc wspólna poprawka podniesie wszystkie trasy; strony z dużymi obrazami dokładają do tego kolejne 0,3–0,7 s.
-- Pod 90 mobile: `/` 87, `/ikony` 85, `/warsztaty` 87, `/publikacje` 87, album 86, `/ikony/wystawy` 89, `/o-akademii` 89 (7 z 17 tras). Desktop: wszędzie ≥ 99. Dostępność: 96–100.
-- **A11y 96 na `/o-akademii` i `/kontakt`** — reguła `link-in-text-block` (link do `ikonadzis.org` w akapicie). Link ma widoczne podkreślenie (`border` na wewnętrznym `span`, wzorzec K-135), ale audyt czyta tylko `text-decoration` linku, więc uznaje go za odróżniony samym kolorem (kontrast 1,18:1 z tekstem). Wynik spełnia próg ≥ 95; do rozstrzygnięcia w 10c, czy dodać `text-decoration` obok kreski.
-
-## Jak powtórzyć pomiar (porównanie przed / po 10c)
-
-Stan **przed** 10c = pliki w tym katalogu (2026-10-26; surowe raporty leżą na dysku w `docs/lighthouse/`, nie w repo — nie kasować przed porównaniem). Pomiar „po” zapisać do osobnego podkatalogu (`after-10c/`), żeby niczego nie nadpisać, i dopisać kolumnę „po” do tabel.
+- **11f — końcowy Lighthouse na domenie produkcyjnej.** Ta sama metoda, 17 tras. Wynik dopisać tutaj jako nową tabelę i porównać z tabelą końcową wyżej. Surowe raporty zapisywać w `docs/lighthouse/` (ignorowane przez `.gitignore`) i usunąć po spisaniu wyników.
 
 ```bash
-npm run build
-npx next start -p 3005          # osobny terminal (lub preview_start „prod-preview”)
-# dla każdej trasy i trybu (mobile = domyślny, desktop = --preset=desktop):
-npx lighthouse http://localhost:3005/ --only-categories=performance,accessibility,best-practices \
-  --output=json --output=html --output-path=docs/lighthouse/after-10c/home-mobile \
-  --chrome-flags="--headless=new --no-sandbox" --quiet
+npx lighthouse https://www.akademiaikony.pl/ --only-categories=performance,accessibility,best-practices \
+  --output=json --output=html --output-path=docs/lighthouse/home-mobile-1 --quiet
 ```
 
-Trasy i nazwy plików: `home` `/`, `kurs` `/warsztaty/kurs-roczny-i-trzyletni`, `wyklady` `/wyklady`, `ikony` `/ikony`, `aktualnosci` `/aktualnosci`; oraz z drugiej tabeli (`warsztaty`, `lss`, `archiwum`, `wykladowcy`, `wystawy`, `o-akademii`, `pracownia`, `publikacje`, `kontakt`, `polityka`, `album` = `/publikacje/ikona-dzis`, `wpis-galeria` = `/aktualnosci/wernisaz-albumu-ikona-dzis`). Wyniki wahają się o kilka punktów — dla tras blisko progu zrobić 3 przebiegi i podać medianę.
-
-## 10c — wynik prób (2026-10-26)
-
-Próby bez zmiany wyniku, **zmiany cofnięte** (brak zmian w kodzie):
-
-- `fetchPriority="high"` na pierwszej miniaturze `/ikony`: mobile 84 / 84 / 83 (przed: 85), LCP 4,5–4,7 s — bez efektu, LCP ograniczony siecią w symulacji.
-- `experimental.inlineCss: true` (zgoda właściciela na zmianę `next.config.ts`), pełny pomiar 17 tras: mobile **gorzej lub bez zmian** na większości tras (`/` 84 vs 87, `/aktualnosci` 82 vs 90, `/o-akademii` 88 vs 89, album 85 vs 86; nigdzie wyraźnie lepiej), desktop bez zmian. Inline powiększa HTML i usuwa cache CSS między trasami.
-- Chunk JS / polyfille (13 KB `legacy-javascript`) pochodzą z rdzenia Next; bez zmian konfiguracji nie do usunięcia.
-- `text-decoration` obok kreski K-135 — nie dodajemy (a11y 96 ≥ 95, wzorzec K-135 zostaje).
-
-**Wniosek:** mobile 85–91 to koszt wspólnych zasobów w symulacji wolnej sieci; ostateczny pomiar — etap 11, na docelowym hostingu (kompresja, HTTP/2, cache, CDN mogą dać więcej niż zmiany w kodzie).
+Pliki: `home` `/`, `aktualnosci`, `album` = `/publikacje/ikona-dzis`, `archiwum`, `ikony`, `kontakt`, `kurs`, `lss`, `o-akademii`, `polityka`, `pracownia`, `publikacje`, `warsztaty`, `wpis-galeria` = `/aktualnosci/wernisaz-albumu-ikona-dzis`, `wykladowcy`, `wyklady`, `wystawy` = `/ikony/wystawy`. Desktop: dodać `--preset=desktop`.

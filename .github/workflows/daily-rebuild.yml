@@ -1,0 +1,25 @@
+# Daily rebuild (K-159): pages are prerendered, so date-dependent content
+# ("Najbliższe" tiles, exhibition state) only changes on a new build.
+# Triggers the Cloudflare Workers Builds deploy hook for `main`.
+
+name: Daily rebuild
+
+on:
+  schedule:
+    # GitHub cron runs in UTC: 01:00 UTC = 03:00 CEST (summer) / 02:00 CET (winter)
+    - cron: "0 1 * * *"
+  workflow_dispatch:
+
+jobs:
+  trigger:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger Cloudflare deploy hook
+        env:
+          HOOK_URL: ${{ secrets.CF_DEPLOY_HOOK_URL }}
+        run: |
+          if [ -z "$HOOK_URL" ]; then
+            echo "::error::Secret CF_DEPLOY_HOOK_URL is not set"
+            exit 1
+          fi
+          curl --fail --silent --show-error -X POST "$HOOK_URL"
