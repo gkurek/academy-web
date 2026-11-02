@@ -1,3 +1,4 @@
+import { getDefaultOgImage } from "@/content/seo";
 import { getPhoneHref, getSiteSettings } from "@/content/settings";
 import { pl } from "@/i18n/pl";
 import { SITE_URL } from "@/lib/metadata";
@@ -27,6 +28,7 @@ function postalAddress(): JsonLdNode {
     "@type": "PostalAddress",
     streetAddress: address.slice(0, -ADDRESS_LOCALITY_SUFFIX.length),
     addressLocality: "Warszawa",
+    postalCode: "00-082",
     addressCountry: "PL",
   };
 }
@@ -51,6 +53,7 @@ export function organizationNode(founderId: string): JsonLdNode {
     name: orgName,
     alternateName: pl.meta.titleBrand,
     url: SITE_URL,
+    image: absoluteUrl(getDefaultOgImage().src),
     email: emails.find((email) => email.role === "enrollment")?.address,
     telephone: getPhoneHref().replace("tel:", ""),
     address: postalAddress(),
