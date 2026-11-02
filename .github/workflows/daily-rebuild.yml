@@ -6,8 +6,10 @@ name: Daily rebuild
 
 on:
   schedule:
-    # GitHub cron runs in UTC: 01:00 UTC = 03:00 CEST (summer) / 02:00 CET (winter)
-    - cron: "0 1 * * *"
+    # GitHub cron runs in UTC: 00:17 UTC = 02:17 CEST (summer) / 01:17 CET (winter).
+    # Off the top of the hour, where GitHub delays schedule events the most;
+    # early enough that a delay of several hours still ends before the morning.
+    - cron: "17 0 * * *"
   workflow_dispatch:
 
 jobs:
