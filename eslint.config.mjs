@@ -14,6 +14,8 @@ const eslintConfig = defineConfig([
     "next-env.d.ts",
     // Claude Design handoff mockups — not part of the app build
     "design/**",
+    // Admin panel — separate Next.js app with its own lint (admin/, K-165)
+    "admin/**",
     // Local visual-check output and ad-hoc probes (gitignored)
     ".visual/**",
     // OpenNext / Wrangler build output (gitignored)

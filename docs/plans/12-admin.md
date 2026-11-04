@@ -1,8 +1,8 @@
 # Plan 12 — Panel admin v1
 
-Status: zatwierdzony 2026-10-29; implementacja po zamknięciu etapu 11 (Access na `/admin/*` wymaga domeny na Cloudflare — 11f)
+Status: zatwierdzony 2026-10-29; **korekta 2026-11-04: najpierw v0.5 (tylko Analityka), start przed zamknięciem etapu 11** — panel lokalnie do 11f (Access na `/admin/*` wymaga domeny na Cloudflare), podpięcie PostHoga i wdrożenie po 11f. Reszta v1 po v0.5.
 Gałąź: `feat/12-admin`
-Makiety: do powstania w kawałku 12-0 (Claude Design → `design/`)
+Makiety: `design/Akademia Ikony - Panel.dc.html`, `design/Panel*.dc.html`, `design/README-panel.md` (12-0)
 
 ## Cel i zakres
 
@@ -23,6 +23,20 @@ Pełne brzmienie w `docs/plan-claude-code.md` §4.
 - **K-172 — zdjęcia we wpisach (bez biblioteki):** wgrywanie w formularzu wpisu; przeglądarka zmniejsza do rozmiaru źródłowego; `alt` wymagany; limit 20 zdjęć na wpis (większe relacje — przez repo); szkic trzyma zdjęcia w D1; publikacja commituje je razem z MDX do `public/media/news/<slug>/`; warianty WebP robi istniejący pipeline 11b (`images:variants`). **Biblioteka mediów → v2** (R2 + D1, kategorie, filtry, import istniejących zdjęć — ustalenia z sesji w „Backlog”).
 - **K-173 — makiety:** ekrany panelu projektowane w Claude Design przed implementacją (12-0); do rozważenia jasne tło (panel roboczy, nie strona publiczna). Tokeny strony (fonty, kolory akcentu) jako punkt wyjścia; zakazy z `CLAUDE.md` (cienie, zaokrąglenia, 13 px) obowiązują także panel, chyba że makieta i właściciel zdecydują inaczej.
 
+## v0.5 — Analityka (sesja planistyczna 2026-11-04, K-174)
+
+- **Zakres:** powłoka panelu + zakładka Analityka. Oferty, Aktualności, zdjęcia, `PublishStatusBar`, D1 i cron dziennych sum → v1 (retencja PostHog daje rok zapasu od 11f).
+- **Kolejność:** szkielet i układ Analityki teraz, lokalnie (`npm run dev` w `admin/`); PostHog, Access, routing `/admin` i wdrożenie po 11f (12b-3).
+- **Dane do czasu PostHoga:** przykładowe w pliku `sample` (§ „Dane sample”) za interfejsem źródła danych, który 12b-3 podmienia na zapytania HogQL.
+- **Stara strona:** dane statyczne — `scripts/import-wp-statistics.ts` zamienia CSV z `docs/analytics/` na JSON w `admin/` (w repo, czytany w buildzie panelu, bez D1).
+- **Motyw:** jasny i ciemny wg tokenów `README-panel.md` §2 (`--admin-*`, przełączane `data-theme` na `<html>`); domyślnie jasny; przełącznik w nagłówku obok „Strona publiczna ↗” — jeden przycisk z glifem (księżyc w jasnym, słońce w ciemnym; siatka 24 / 1,6), pole 48×48, fokus, etykieta dla czytnika. Makieta przełącznika nie ma — wygląd do oceny w checkpoincie 12a.
+- **`localStorage` — wyjątek zapisany w planie:** tylko w panelu i tylko dla wybranego motywu; krótki skrypt w `<head>` ustawia motyw przed pierwszym malowaniem. Strona publiczna bez zmian.
+- **Nawigacja:** w v0.5 widoczna tylko zakładka Analityka (Oferty i Aktualności ukryte).
+- **Wyjątki od zakazów (`README-panel.md` §3):** w v0.5 przyjęty tylko wyjątek 4 (`font-weight: 500` w etykietach); pozostałe rozstrzygane przy formularzach w v1.
+- **Nagłówek:** e-mail i „Wyloguj” do 11f jako placeholder; po 11f e-mail z nagłówka Access i wylogowanie Access.
+- **Zależności (zgoda, K-164):** w `admin/` `next`, `react`, `react-dom` w wersjach strony, `tailwindcss`, `chart.js`, `react-chartjs-2`; OpenNext i `wrangler` dopiero w 12b-3. `admin/` z własnym `package.json` i `package-lock.json` (bez npm workspaces).
+- **Rozbieżności z makietą (plan wygrywa):** agregacja Rok + Dzień dostępna (`README-panel.md` §8.9 ją wyłącza); etykiety „Odsłony” i „Odwiedzający (dziennie)” zamiast „Odwiedziny” / „Unikalni odwiedzający” (ustalenia w 12b).
+
 ## Pliki i komponenty
 
 Orientacyjnie — szczegóły w checkpointach.
@@ -38,10 +52,27 @@ Orientacyjnie — szczegóły w checkpointach.
 | `content/offers/letnia-szkola-swiatla.mdx`, `src/content/offers.ts` | zmiana | 12c: frontmatter bez danych sezonu; loader scala JSON |
 | `docs/brief-claude-code.md` §2 | zmiana | linia „Treść (v2)” → K-166 / K-167 (zrobione przy zapisie planu) |
 | `docs/admin-ejk.md`, `docs/runbook.md` | nowy / zmiana | 12f |
+| `admin/src/components/ThemeToggle.tsx`, `admin/src/app/globals.css` | nowy | 12a (v0.5): przełącznik motywu, tokeny `--admin-*` |
+| `admin/src/lib/analyticsSource.ts`, `admin/src/data/*` | nowy | 12b-1/12b-2: interfejs źródła danych, JSON starej strony, `sample` |
 
 ## Kawałki
 
 Kolejność: 12-0 → 12a → 12b → 12c → 12d → 12e → 12f. Checkpoint po każdym.
+**v0.5 (2026-11-04):** 12a (zakres v0.5 niżej) → 12b-1 → 12b-2 → [11f] → 12b-3; potem 12c…12f i części 12a odłożone do wdrożenia.
+
+### Kawałki v0.5
+
+**12a (v0.5) — Szkielet lokalny.** `admin/` (Next.js jak strona, `basePath: "/admin"`, Tailwind, TypeScript strict); tokeny `--admin-*` jasne i ciemne; lokalne fonty strony (`src/app/fonts/`); stringi w `admin/src/i18n/pl.ts`; import typów ze `src/content/types.ts`; `AdminShell`, `AdminTabs` (tylko Analityka), przełącznik motywu z zapamiętaniem. Bez Workers Builds, Access, routingu i D1 (→ 12b-3 / v1).
+Gotowe: `npm run dev`, `build`, `lint` w `admin/` OK; build i lint strony bez zmian; powłoka zgodna z makietą na 390 i 1440 w obu motywach; motyw zapamiętany bez mignięcia przy wczytaniu; przełącznik i zakładki obsługiwane klawiaturą.
+
+**12b-1 — Dane starej strony.** `scripts/import-wp-statistics.ts`: `wp-statistics-summary-totals.csv` → dzienne odsłony (`views`) i odwiedzający (`visitors`); `wp-statistics-pages-monthly.csv` → strony miesięcznie, stare adresy przepisane przez `src/config/redirects.json` na nowe; wynik JSON w `admin/` (format w checkpoincie).
+Gotowe: skrypt powtarzalny (ten sam wynik przy ponownym uruchomieniu); sumy kontrolne zgodne z CSV; adresy bez odpowiednika w mapie 301 wypisane w raporcie.
+
+**12b-2 — Układ Analityki.** `PeriodSwitch` (nad stroną), `AggregationSwitch` (w karcie odsłon), `ChartCard` (dane · ładowanie · brak danych · błąd z ponowieniem, tabela danych dla czytników), wykres odsłon / odwiedzających z serią „Stara strona” i adnotacją, najczęstsze strony, źródła, kliknięcia, urządzenia (Chart.js); dane `sample` dla nowej strony, dane starej z 12b-1; kolory wykresów z tokenów motywu.
+Gotowe: zgodność z makietą (z rozbieżnościami z § v0.5) na 390 i 1440 w obu motywach; wszystkie kombinacje okresu i agregacji działają; nawigacja klawiaturą po przełącznikach; build i lint OK.
+
+**12b-3 — PostHog i wdrożenie (po 11f).** Zakres 12b bez D1 i crona: klucz `phx_…` (tylko odczyt) jako sekret, zapytania HogQL z filtrem `$host` produkcji zamiast `sample`; z 12a: Workers Builds dla `admin/`, watch paths, routing `/admin*`, Access (2 konta), e-mail i wylogowanie z Access; OpenNext i `wrangler`.
+Gotowe: `/admin` na domenie tylko po logowaniu; wykresy na danych produkcji; klucz nie trafia do przeglądarki; strona publiczna bez regresji.
 
 ### Kawałek 12-0 — Makiety
 
@@ -56,6 +87,12 @@ Kryterium „gotowe”: `/admin` na podglądzie i na domenie wymaga logowania Ac
 ### Kawałek 12b — Analityka
 
 Zakres: K-168, K-169 — klucz `phx_…` (tylko odczyt) jako sekret Workera; zapytania HogQL po stronie serwera z filtrem `$host` produkcji; 5 wykresów + wybór okresu + przełącznik dzień / tydzień / miesiąc; cron dzienny zapisujący sumy do D1; `scripts/import-wp-statistics.ts` (CSV z 11f → D1, stare adresy przez mapę 301); seria „Stara strona” i adnotacja o metodzie liczenia.
+**Ustalenia z próbnej makiety (2026-11-04):**
+- **Metryki** (tryb bez ciasteczek, K-07): „Odsłony” = liczba `$pageview` (także nawigacja klienta; stara strona: `views`); „Odwiedzający (dziennie)” = unikalni w obrębie dnia (identyfikator z dzienną solą; stara strona: `visitors`, też dziennie). Przy okresie dłuższym niż dzień i słupkach tydzień / miesiąc „odwiedzający” to **suma dziennych unikalnych**, nie liczba różnych osób — krótkie objaśnienie pod przełącznikiem. Iloraz odsłon do odwiedzających = liczba stron na osobę dziennie. Nazwy „Odwiedziny” / „Unikalni odwiedzający” z makiety zastąpione powyższymi.
+- **Filtry:** wszystkie kombinacje okresu i agregacji dostępne, także Rok + Dzień; przełącznik „Jeden słupek to” w karcie wykresu odsłon (dotyczy tylko jej), nad stroną tylko wybór okresu.
+- **Seria „Stara strona”:** słupki, jak nowa strona (także przy Rok + Dzień).
+- **Kliknięcia:** `enroll_click` per oferta (kurs, LSŚ, wykłady); `email_click` z etykietą „E-mail” (zdarzenie bez parametru miejsca — każdy link `mailto:` poza zapisami), `phone_click` — „Telefon”.
+
 Kryterium „gotowe”: wykresy na prawdziwych danych produkcji; seria „Stara strona” widoczna na wykresie odwiedzin; klucz nie trafia do przeglądarki; czytelne na 390 px i desktopie; nawigacja klawiaturą po kontrolkach.
 
 ### Kawałek 12c — Oferty: Letnia Szkoła Światła
@@ -80,7 +117,7 @@ Kryterium „gotowe”: instrukcja przejrzana przez właściciela; DoD etapu odh
 
 ## Dane sample dodawane w tym etapie
 
-Brak.
+- 12b-2: przykładowe dane Analityki nowej strony (plik z `sample` w nazwie w `admin/`) — usuwane w 12b-3; wpis w `docs/plan-claude-code.md` §5 (T33).
 
 ## Kryteria ukończenia etapu
 
@@ -112,9 +149,13 @@ Brak.
 
 | Kawałek | Status | Uwagi z checkpointu |
 | --- | --- | --- |
-| 12-0 Makiety | ⬜ | |
-| 12a Szkielet | ⬜ | |
-| 12b Analityka | ⬜ | |
+| 12-0 Makiety | ✅ | 2026-11-04: makiety w `design/` (`Akademia Ikony - Panel.dc.html`, `Panel*.dc.html`, `README-panel.md`); próbny przegląd Analityki → ustalenia w 12b; miejsca niejasne `README-panel.md` §8 (poza §8.9) — przy formularzach v1 |
+| 12a (v0.5) Szkielet lokalny | ✅ | 2026-11-04: `admin/` (Next 16.4.3, port 3001, `basePath`, `turbopack.root` = repo), tokeny `--admin-*`, fonty strony bez kopii, `AdminShell` / `AdminTabs` / `ThemeToggle`, `/` → `/analityka`; na prośbę właściciela puste zakładki Warsztaty, Wykłady, Aktualności (zamiast „tylko Analityka” i „Oferty” z makiety); strona wyklucza `admin/` (tsconfig, eslint, `@source not`); czeka na OK |
+| 12b-1 Dane starej strony | ⬜ | |
+| 12b-2 Układ Analityki | ⬜ | |
+| 12b-3 PostHog i wdrożenie | ⬜ | po 11f |
+| 12a Szkielet (wdrożenie) | ⬜ | v1 — części poza v0.5 (D1) |
+| 12b Analityka (D1, cron) | ⬜ | v1 |
 | 12c Oferty: LSŚ | ⬜ | |
 | 12d Aktualności | ⬜ | |
 | 12e Zdjęcia we wpisach | ⬜ | |

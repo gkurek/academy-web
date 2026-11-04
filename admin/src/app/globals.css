@@ -1,0 +1,209 @@
+@import "tailwindcss";
+
+/* Panel tokens — design/README-panel.md §2. Two full sets; the active one is picked by
+   `data-theme` on <html> (set before first paint by the script in layout.tsx). Components
+   read only the `--admin-*` role variables, never a set directly. */
+:root {
+  --admin-light-bg: #f4efe6;
+  --admin-light-card: #fbf8f2;
+  --admin-light-tile: #ebe4d7;
+  --admin-light-sel: #e4dccd;
+  --admin-light-h: #1f1812;
+  --admin-light-tx: #2b231b;
+  --admin-light-sec: #54483b;
+  --admin-light-ter: #6a5c4c;
+  --admin-light-gold: #7d5f00;
+  --admin-light-goldh: #5f4800;
+  --admin-light-acc: #c9a227;
+  --admin-light-acch: #e8c765;
+  --admin-light-ongold: #18130f;
+  --admin-light-act: #a88414;
+  --admin-light-bar: #a88414;
+  --admin-light-old: #8f816f;
+  --admin-light-lg: rgba(168, 132, 20, .4);
+  --admin-light-ln: rgba(43, 35, 27, .14);
+  --admin-light-fb: #857766;
+  --admin-light-fbg: #fbf8f2;
+  --admin-light-btnb: #857766;
+  --admin-light-err: #a0331f;
+  --admin-light-dis: #9a8d7d;
+  --admin-light-scrim: rgba(24, 19, 15, .45);
+  --admin-light-focus: #7d5f00;
+
+  --admin-dark-bg: #18130f;
+  --admin-dark-card: #231b14;
+  --admin-dark-tile: #1f1913;
+  --admin-dark-sel: #2c2219;
+  --admin-dark-h: #f3ead9;
+  --admin-dark-tx: #ece2d3;
+  --admin-dark-sec: #c7b8a2;
+  --admin-dark-ter: #a2917c;
+  --admin-dark-gold: #e8c765;
+  --admin-dark-goldh: #f2d98a;
+  --admin-dark-acc: #c9a227;
+  --admin-dark-acch: #e8c765;
+  --admin-dark-ongold: #18130f;
+  --admin-dark-act: #c9a227;
+  --admin-dark-bar: #c9a227;
+  --admin-dark-old: #8a7a66;
+  --admin-dark-lg: rgba(201, 162, 39, .28);
+  --admin-dark-ln: rgba(236, 226, 211, .14);
+  --admin-dark-fb: #857766;
+  --admin-dark-fbg: #1f1913;
+  --admin-dark-btnb: rgba(236, 226, 211, .4);
+  --admin-dark-err: #e8957f;
+  --admin-dark-dis: #6b5e4d;
+  --admin-dark-scrim: rgba(0, 0, 0, .6);
+  --admin-dark-focus: #e8c765;
+
+  /* Layout and type sizes — mobile values first, desktop from 700px (mockup switch: vw < 700). */
+  --admin-pad: 20px;
+  --admin-header-pt: 14px;
+  --admin-header-pb: 10px;
+  --admin-tab-gap: 24px;
+  --admin-main-top: 26px;
+  --admin-main-gap: 22px;
+  --admin-size-signature: 19px;
+  --admin-size-ui: 16px;
+  --admin-size-small: 15px;
+  --admin-size-tab: 17px;
+  --admin-size-h1: 30px;
+}
+
+@media (min-width: 700px) {
+  :root {
+    --admin-pad: 56px;
+    --admin-header-pt: 18px;
+    --admin-header-pb: 18px;
+    --admin-tab-gap: 30px;
+    --admin-main-top: 40px;
+    --admin-main-gap: 28px;
+    --admin-size-signature: 23px;
+    --admin-size-ui: 15.5px;
+    --admin-size-small: 14.5px;
+    --admin-size-tab: 16.5px;
+    --admin-size-h1: 38px;
+  }
+}
+
+:root,
+[data-theme="light"] {
+  color-scheme: light;
+  --admin-bg: var(--admin-light-bg);
+  --admin-card: var(--admin-light-card);
+  --admin-tile: var(--admin-light-tile);
+  --admin-sel: var(--admin-light-sel);
+  --admin-h: var(--admin-light-h);
+  --admin-tx: var(--admin-light-tx);
+  --admin-sec: var(--admin-light-sec);
+  --admin-ter: var(--admin-light-ter);
+  --admin-gold: var(--admin-light-gold);
+  --admin-goldh: var(--admin-light-goldh);
+  --admin-acc: var(--admin-light-acc);
+  --admin-acch: var(--admin-light-acch);
+  --admin-ongold: var(--admin-light-ongold);
+  --admin-act: var(--admin-light-act);
+  --admin-bar: var(--admin-light-bar);
+  --admin-old: var(--admin-light-old);
+  --admin-lg: var(--admin-light-lg);
+  --admin-ln: var(--admin-light-ln);
+  --admin-fb: var(--admin-light-fb);
+  --admin-fbg: var(--admin-light-fbg);
+  --admin-btnb: var(--admin-light-btnb);
+  --admin-err: var(--admin-light-err);
+  --admin-dis: var(--admin-light-dis);
+  --admin-scrim: var(--admin-light-scrim);
+  --admin-focus: var(--admin-light-focus);
+}
+
+[data-theme="dark"] {
+  color-scheme: dark;
+  --admin-bg: var(--admin-dark-bg);
+  --admin-card: var(--admin-dark-card);
+  --admin-tile: var(--admin-dark-tile);
+  --admin-sel: var(--admin-dark-sel);
+  --admin-h: var(--admin-dark-h);
+  --admin-tx: var(--admin-dark-tx);
+  --admin-sec: var(--admin-dark-sec);
+  --admin-ter: var(--admin-dark-ter);
+  --admin-gold: var(--admin-dark-gold);
+  --admin-goldh: var(--admin-dark-goldh);
+  --admin-acc: var(--admin-dark-acc);
+  --admin-acch: var(--admin-dark-acch);
+  --admin-ongold: var(--admin-dark-ongold);
+  --admin-act: var(--admin-dark-act);
+  --admin-bar: var(--admin-dark-bar);
+  --admin-old: var(--admin-dark-old);
+  --admin-lg: var(--admin-dark-lg);
+  --admin-ln: var(--admin-dark-ln);
+  --admin-fb: var(--admin-dark-fb);
+  --admin-fbg: var(--admin-dark-fbg);
+  --admin-btnb: var(--admin-dark-btnb);
+  --admin-err: var(--admin-dark-err);
+  --admin-dis: var(--admin-dark-dis);
+  --admin-scrim: var(--admin-dark-scrim);
+  --admin-focus: var(--admin-dark-focus);
+}
+
+/* `dark:` follows the panel's own switch, not the OS preference. */
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
+/* Tailwind mappings — add one only with the first class that uses it. */
+@theme inline {
+  --font-serif: var(--font-garamond);
+  --font-sans: var(--font-plex);
+
+  --color-bg: var(--admin-bg);
+  --color-heading: var(--admin-h);
+  --color-body: var(--admin-tx);
+  --color-secondary: var(--admin-sec);
+  --color-tertiary: var(--admin-ter);
+  --color-gold: var(--admin-gold);
+  --color-gold-hover: var(--admin-goldh);
+  --color-active: var(--admin-act);
+  --color-line-gold: var(--admin-lg);
+  --color-line: var(--admin-ln);
+
+  --text-signature: var(--admin-size-signature);
+  --text-ui: var(--admin-size-ui);
+  --text-small: var(--admin-size-small);
+  --text-tab: var(--admin-size-tab);
+  --text-h1: var(--admin-size-h1);
+
+  --leading-logo: 1.15;
+  --tracking-logo: .14em;
+
+  --spacing-pad: var(--admin-pad);
+  --spacing-header-pt: var(--admin-header-pt);
+  --spacing-header-pb: var(--admin-header-pb);
+  --spacing-tab-gap: var(--admin-tab-gap);
+  --spacing-main-top: var(--admin-main-top);
+  --spacing-main-gap: var(--admin-main-gap);
+  --spacing-tap: 48px;
+  --spacing-tab: 52px;
+}
+
+@layer base {
+  body {
+    background: var(--admin-bg);
+    color: var(--admin-tx);
+    font-family: var(--font-plex), sans-serif;
+  }
+
+  a:focus-visible,
+  button:focus-visible,
+  [tabindex]:not([tabindex="-1"]):focus-visible {
+    outline: 2px solid var(--admin-focus);
+    outline-offset: 2px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    transition-delay: 0s !important;
+    scroll-behavior: auto !important;
+  }
+}

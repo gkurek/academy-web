@@ -77,7 +77,7 @@ Statusy: ⬜ nie zaczęty · 🟡 plan w przygotowaniu · 🔵 plan zatwierdzony
 | 1–9 | Budowa serwisu (1–8b) i migracja z WordPressa (9)                           | `docs/archive/plans/0N-*.md` — spis w `docs/archive/README.md` | ✅ zamknięte                                                                                                                                                                   | 2026-10-01 |
 | 10  | Wykończenie: ewaluacja serwisu, poprawki po prezentacji, SEO, optymalizacja | `docs/archive/plans/10-finishing.md`                           | ✅ zamknięty — fala 1 (k1–k7), blok R, k8 (+8a–8c), C1–C2, k9, k10 (10a–10d); prezentacja z klientem — pełna akceptacja, bez poprawek; punkty DoD zależne od hostingu i opóźnienie hero → etap 11 | 2026-10-26 |
 | 11  | Wdrożenie                                                                   | `docs/plans/11-wdrozenie.md`                                   | 🔵 w toku — 11-0, 11a, 11b, 11c, 11e ✅; 11d w toku; dalej 11f, 11g                                                                                                                  | —          |
-| 12  | Panel admin v1                                                              | `docs/plans/12-admin.md`                                       | 🔵 plan zatwierdzony 2026-10-29 — 12-0 makiety → 12a … 12f; implementacja po zamknięciu 11                                                                                      | —          |
+| 12  | Panel admin v1                                                              | `docs/plans/12-admin.md`                                       | 🔵 w toku (równolegle z 11) — 12-0 ✅; v0.5 Analityka (K-174): 12a lokalnie → 12b-1 → 12b-2 → po 11f 12b-3; potem 12c … 12f | —          |
 
 
 11 zaczyna się po zamknięciu 10.
@@ -243,6 +243,7 @@ wtedy szukaj go w §4H.
 | K-171 | Panel admin — Aktualności v1 | 12 | Formatki = układy `wydarzenie` / `galeria` / `program` + `kind` (K-128, K-153); pola wg układu; prosty edytor zapisujący MDX; szkic → D1, podgląd komponentami strony, „Opublikuj” → commit; edycja i ukrycie tą samą drogą | 2026-10-29 |
 | K-172 | Zdjęcia we wpisach (bez biblioteki) | 12 | Wgrywanie w formularzu, zmniejszanie w przeglądarce, `alt` wymagany, max 20 na wpis; commit do `public/media/news/<slug>/`, warianty z pipeline'u 11b. **Biblioteka mediów (R2 + D1, kategorie, filtry) → v2** | 2026-10-29 |
 | K-173 | Makiety panelu | 12 | Claude Design przed implementacją (12-0); do rozważenia jasne tło | 2026-10-29 |
+| K-174 | Panel admin v0.5 — Analityka | 12 | Start przed zamknięciem 11: szkielet + układ Analityki lokalnie (dane `sample`, stara strona z CSV WP Statistics → JSON), PostHog i wdrożenie po 11f; motyw jasny / ciemny z przełącznikiem, `localStorage` tylko w panelu dla motywu; D1, cron, Oferty, Aktualności → v1. Szczegóły: `docs/plans/12-admin.md` § v0.5 | 2026-11-04 |
 
 
 
@@ -263,6 +264,7 @@ Kolejność wierszy: pozycje otwarte (⬜) wg kolejności przeglądu stronami (O
 
 | #   | Obszar      | Pozycja                                                                                                                                                                         | Gdzie                                                                           | ✔   |
 | --- | ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | --- |
+| T33 | Panel admin | Przykładowe dane Analityki nowej strony (`sample`, 12b-2) — zastąpić zapytaniami PostHoga i usunąć w 12b-3 | `admin/` (plik `sample`) | ⬜ |
 | T15 | Aktualności | Formuły wpisów cyklicznych — zaakceptowane (K-128, 2026-10-25)                                                                                                                  | `docs/wpisy-cykliczne-aktualnosci-ejk.md`                                       | ✅   |
 | T29 | Cały serwis | Przegląd `alt` / `caption` wszystkich zdjęć z EJK, w tym 21 `alt` plakatów we wpisie zbiorczym `plakaty-z-wydarzen` (z T14) — przejrzane i zaakceptowane (2026-10-25)          | `content/**`                                                                    | ✅   |
 | T11 | Aktualności | Oprowadzania 2017 — redakcja akapitu o Trójcy Świętej                                                                                                                           | `oprowadzania-po-wystawie-2017.mdx`, `manifest.json`                            | ✅   |

@@ -1,4 +1,6 @@
 @import "tailwindcss";
+/* The admin panel (admin/, K-165) has its own Tailwind build — keep its classes out of the site CSS. */
+@source not "../../admin";
 
 /* Styles are split by domain under src/app/styles/. Import order is the cascade order
    (tokens → theme → base → utilities → typography/prose roles → page domains): do not reorder. */
