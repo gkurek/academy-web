@@ -150,7 +150,7 @@ Kryterium „gotowe”: instrukcja przejrzana przez właściciela; DoD etapu odh
 | Kawałek | Status | Uwagi z checkpointu |
 | --- | --- | --- |
 | 12-0 Makiety | ✅ | 2026-11-04: makiety w `design/` (`Akademia Ikony - Panel.dc.html`, `Panel*.dc.html`, `README-panel.md`); próbny przegląd Analityki → ustalenia w 12b; miejsca niejasne `README-panel.md` §8 (poza §8.9) — przy formularzach v1 |
-| 12a (v0.5) Szkielet lokalny | ✅ | 2026-11-04: `admin/` (Next 16.4.3, port 3001, `basePath`, `turbopack.root` = repo), tokeny `--admin-*`, fonty strony bez kopii, `AdminShell` / `AdminTabs` / `ThemeToggle`, `/` → `/analityka`; na prośbę właściciela puste zakładki Warsztaty, Wykłady, Aktualności (zamiast „tylko Analityka” i „Oferty” z makiety); strona wyklucza `admin/` (tsconfig, eslint, `@source not`); czeka na OK |
+| 12a (v0.5) Szkielet lokalny | ✅ | 2026-11-04: `admin/` (Next 16.4.3, port 3001, `basePath`, `turbopack.root` = repo), tokeny `--admin-*`, fonty strony bez kopii, `AdminShell` / `AdminTabs` / `ThemeToggle`, `/` → `/analityka`; na prośbę właściciela puste zakładki Warsztaty, Wykłady, Aktualności (zamiast „tylko Analityka” i „Oferty” z makiety); strona wyklucza `admin/` (tsconfig, eslint, `@source not`); sygnatura w jednej linii „AKADEMIA IKONY – PANEL REDAKCYJNY” |
 | 12b-1 Dane starej strony | ⬜ | |
 | 12b-2 Układ Analityki | ⬜ | |
 | 12b-3 PostHog i wdrożenie | ⬜ | po 11f |
