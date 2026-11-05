@@ -68,6 +68,21 @@
   --admin-size-small: 15px;
   --admin-size-tab: 17px;
   --admin-size-h1: 30px;
+
+  /* Analytics (mockup PanelAnalityka). */
+  --admin-size-h2: 22px;
+  --admin-size-h3: 20px;
+  --admin-size-num: 30px;
+  --admin-size-copy: 16.5px;
+  --admin-card-pt: 20px;
+  --admin-card-px: 18px;
+  --admin-card-pb: 22px;
+  --admin-grid-gap: 16px;
+  --admin-seg-px: 8px;
+  --admin-chart-visits: 240px;
+  --admin-chart-cta: 240px;
+  /* Phones wrap axis labels to 2–3 lines (lib/breakdown.ts), so the 4-row chart needs more height. */
+  --admin-chart-sources: 280px;
 }
 
 @media (min-width: 700px) {
@@ -83,6 +98,19 @@
     --admin-size-small: 14.5px;
     --admin-size-tab: 16.5px;
     --admin-size-h1: 38px;
+
+    --admin-size-h2: 24px;
+    --admin-size-h3: 22px;
+    --admin-size-num: 34px;
+    --admin-size-copy: 16px;
+    --admin-card-pt: 26px;
+    --admin-card-px: 28px;
+    --admin-card-pb: 28px;
+    --admin-grid-gap: 24px;
+    --admin-seg-px: 18px;
+    --admin-chart-visits: 300px;
+    --admin-chart-cta: 220px;
+    --admin-chart-sources: 200px;
   }
 }
 
@@ -163,15 +191,38 @@
   --color-active: var(--admin-act);
   --color-line-gold: var(--admin-lg);
   --color-line: var(--admin-ln);
+  --color-card: var(--admin-card);
+  --color-tile: var(--admin-tile);
+  --color-sel: var(--admin-sel);
+  --color-bar: var(--admin-bar);
+  --color-old: var(--admin-old);
+  --color-btn-border: var(--admin-btnb);
+  --color-error: var(--admin-err);
+  --color-accent: var(--admin-acc);
+  --color-accent-hover: var(--admin-acch);
+  --color-on-gold: var(--admin-ongold);
 
   --text-signature: var(--admin-size-signature);
   --text-ui: var(--admin-size-ui);
   --text-small: var(--admin-size-small);
   --text-tab: var(--admin-size-tab);
   --text-h1: var(--admin-size-h1);
+  --text-h2: var(--admin-size-h2);
+  --text-h3: var(--admin-size-h3);
+  --text-num: var(--admin-size-num);
+  --text-copy: var(--admin-size-copy);
 
   --leading-logo: 1.15;
+  --leading-copy: 1.6;
+  --leading-note: 1.55;
   --tracking-logo: .14em;
+
+  /* Mockup layout switch (vw < 700), same as the size variables above. */
+  --breakpoint-panel: 700px;
+
+  --container-note: 62em;
+  --container-lede: 52em;
+  --container-message: 30em;
 
   --spacing-pad: var(--admin-pad);
   --spacing-header-pt: var(--admin-header-pt);
@@ -181,6 +232,17 @@
   --spacing-main-gap: var(--admin-main-gap);
   --spacing-tap: 48px;
   --spacing-tab: 52px;
+  --spacing-card-t: var(--admin-card-pt);
+  --spacing-card-x: var(--admin-card-px);
+  --spacing-card-b: var(--admin-card-pb);
+  --spacing-grid-gap: var(--admin-grid-gap);
+  --spacing-seg-x: var(--admin-seg-px);
+  --spacing-swatch: 14px;
+  --spacing-chart-visits: var(--admin-chart-visits);
+  --spacing-chart-cta: var(--admin-chart-cta);
+  --spacing-chart-sources: var(--admin-chart-sources);
+  --spacing-chart-devices: 160px;
+  --spacing-chart-pages: 280px;
 }
 
 @layer base {
